@@ -237,7 +237,7 @@
 
       
           <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>评价排序算法的几个指标：</p><ul>
-<li><strong>时间复杂度</strong>：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(nlog<del>2</del>n)，坏的性能是O(n^2^)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(nlog<del>2</del>n)。</li>
+<li><strong>时间复杂度</strong>：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(nlog~2~n)，坏的性能是O(n^2^)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(nlog~2~n)。</li>
 <li><strong>空间复杂度</strong>：内存使用量</li>
 <li><strong>稳定性</strong>： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是<strong>稳定</strong>的，当有两个相等键值的纪录<strong>R</strong>和<strong>S</strong>，且在原本的列表中<strong>R</strong>出现在<strong>S</strong>之前，在排序过的列表中<strong>R</strong>也将会是在<strong>S</strong>之前。</li>
 <li><strong>依据排序的方法</strong>：插入、交换、选择、合并等等。  </li>
@@ -509,6 +509,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
