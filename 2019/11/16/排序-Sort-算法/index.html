@@ -59,8 +59,12 @@
 <meta property="og:description" content="排序分类评价排序算法的几个指标： 时间复杂度：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(nlog_2n)，坏的性能是O(n^2)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(nlog_2n)。 空间复杂度：内存使用量 稳定性： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bubble_sort_animation.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;bubble_sort.gif">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Selection_sort_animation.gif">
-<meta property="og:updated_time" content="2019-11-17T03:33:25.627Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;selection_sort.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Insertion_sort_animation.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;insertion_sort.gif">
+<meta property="og:updated_time" content="2019-11-17T05:19:11.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bubble_sort_animation.gif">
 
@@ -248,13 +252,13 @@
 
       
         <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>评价排序算法的几个指标：</p><ul>
-<li><strong>时间复杂度</strong>：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(<script type="math/tex">nlog_2n</script>)，坏的性能是O(<script type="math/tex">n^2</script>)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(<script type="math/tex">nlog_2n</script>)。</li>
+<li><strong>时间复杂度</strong>：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是<script type="math/tex">O(nlog_2n)</script>，坏的性能是<script type="math/tex">O(n^2)</script>。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要<script type="math/tex">O(nlog_2n)</script>。</li>
 <li><strong>空间复杂度</strong>：内存使用量</li>
 <li><strong>稳定性</strong>： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是<strong>稳定</strong>的，当有两个相等键值的纪录<strong>R</strong>和<strong>S</strong>，且在原本的列表中<strong>R</strong>出现在<strong>S</strong>之前，在排序过的列表中<strong>R</strong>也将会是在<strong>S</strong>之前。</li>
 <li><strong>依据排序的方法</strong>：插入、交换、选择、合并等等。  </li>
 </ul><a id="more"></a>
 
-<p>本文介绍了以下几种排序，推荐可视化网站<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">visualgo</a></p>
+<p>本文介绍了以下几种排序，推荐<strong>可视化网站<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">visualgo</a></strong>,下文代码都采用数组作为输入。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -270,8 +274,8 @@
 <tbody>
 <tr>
 <td style="text-align:center">冒泡排序</td>
-<td style="text-align:center">O(<script type="math/tex">n^2</script>)</td>
-<td style="text-align:center">O(<script type="math/tex">n^2</script>)</td>
+<td style="text-align:center"><script type="math/tex">O(n^2)</script></td>
+<td style="text-align:center"><script type="math/tex">O(n^2)</script></td>
 <td style="text-align:center">O(n)</td>
 <td style="text-align:center">O(1)</td>
 <td style="text-align:center">稳定</td>
@@ -294,26 +298,26 @@
 </tr>
 <tr>
 <td style="text-align:center">堆排序</td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
 <td style="text-align:center">O(1)</td>
 <td style="text-align:center">不稳定</td>
 </tr>
 <tr>
 <td style="text-align:center">归并排序</td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
 <td style="text-align:center">O(n)</td>
 <td style="text-align:center">稳定</td>
 </tr>
 <tr>
 <td style="text-align:center">快速排序</td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
 <td style="text-align:center"><script type="math/tex">O(n^2)</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
-<td style="text-align:center"><script type="math/tex">nlog_2n</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
+<td style="text-align:center"><script type="math/tex">O(nlog_2n)</script></td>
 <td style="text-align:center">不稳定</td>
 </tr>
 <tr>
@@ -365,14 +369,35 @@
 <li>针对所有的元素重复以上的步骤，除了最后一个。</li>
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 </ol>
+<p><img src="bubble_sort.gif" alt="冒泡流程"></p>
 <h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(size<span class="number">-1</span>-i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j],nums[j+<span class="number">1</span>]=nums[j+<span class="number">1</span>],nums[j]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
 <p>但是，该算法的最优时间复杂度<a href="https://www.cnblogs.com/melon-h/archive/2012/09/20/2694941.html" target="_blank" rel="noopener">并不是O(n)，而是<script type="math/tex">O(n^2)</script></a>。需改写才能实现最优理想状态：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        didSwap=<span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(size<span class="number">-1</span>-i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j],nums[j+<span class="number">1</span>]=nums[j+<span class="number">1</span>],nums[j]</span><br><span class="line">                didSwap=<span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> didSwap==<span class="literal">False</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>数据分区：（有序区，无序区）。<br>在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。 </p>
 <p> <img src="Selection_sort_animation.gif" alt="选择排序"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>初始状态：无序区为R[1..n]，有序区为空；</li>
+<li>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li>
+<li>n-1趟结束，数组有序化了。</li>
+</ol>
+<p><img src="selection_sort.gif" alt="选择流程"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        min_index = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, size):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[min_index]:</span><br><span class="line">               min_index = j</span><br><span class="line">        nums[i], nums[min_index] = nums[min_index], nums[i]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>数据分区：（有序区，无序区）。<br>把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。 </p>
+<p><img src="Insertion_sort_animation.gif" alt="插入排序"></p>
+<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>从第一个元素开始，该元素可以认为已经被排序；</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
+<li>如果该元素（已排序）大于新元素，将该元素移到下一位置；</li>
+<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li>
+<li>将新元素插入到该位置后；</li>
+<li>重复步骤2~5。</li>
+</ol>
+<p><img src="insertion_sort.gif" alt="插入流程"></p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">	size = len(nums)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,size):</span><br><span class="line">		cur_num=nums[i]</span><br><span class="line">		pre_index=i<span class="number">-1</span></span><br><span class="line">		<span class="keyword">while</span> nums[pre_index]&gt;cur_num <span class="keyword">and</span> pre_index&gt;=<span class="number">0</span>:</span><br><span class="line">			nums[pre_index+<span class="number">1</span>]=nums[pre_index]</span><br><span class="line">			pre_index-=<span class="number">1</span></span><br><span class="line">		nums[pre_index+<span class="number">1</span>]=cur_num</span><br><span class="line">	<span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zh.wikipedia.org/wiki/排序算法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95</a> </li>
 <li><a href="https://github.com/amusi/Deep-Learning-Interview-Book/blob/master/docs/数据结构与算法.md" target="_blank" rel="noopener">https://github.com/amusi/Deep-Learning-Interview-Book/blob/master/docs/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.md</a> </li>
+<li><a href="https://www.cnblogs.com/onepixel/p/7674659.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/p/7674659.html</a> </li>
 </ol>
 
     </div>
@@ -438,7 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程："><span class="nav-number">1.2.1.</span> <span class="nav-text">流程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">1.2.2.</span> <span class="nav-text">代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">1.3.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程："><span class="nav-number">1.2.1.</span> <span class="nav-text">流程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">1.2.2.</span> <span class="nav-text">代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">1.3.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">1.3.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">1.4.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆排序"><span class="nav-number">1.5.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
