@@ -50,17 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="Life goes on">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;tags&#x2F;index.html">
+  <meta name="description" content="分治概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换) 。">
+<meta name="keywords" content="python,分治,二分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分治算法(Divide-and-conquer algorithm)">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;18&#x2F;%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="Life goes on">
+<meta property="og:description" content="分治概念在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换) 。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-17T08:13:41.100Z">
+<meta property="og:updated_time" content="2019-11-18T09:43:35.551Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://lil-q.github.io/tags/">
+<link rel="canonical" href="http://lil-q.github.io/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -68,14 +69,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tags | Homeward
-  </title>
+  <title>分治算法(Divide-and-conquer algorithm) | Homeward</title>
   
 
 
@@ -180,57 +180,136 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="en">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          分治算法(Divide-and-conquer algorithm)
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">Tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-<div class="post-meta">
+              <time title="Created: 2019-11-18 16:35:13" itemprop="dateCreated datePublished" datetime="2019-11-18T16:35:13+08:00">2019-11-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
-</div>
+        </div>
+      </header>
 
-</header>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              8 tags in total
+        <h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换) 。</p><a id="more"></a>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>原问题与分解成的小问题具有相同的模式；</li>
+<li>原问题分解成的子问题可以独立求解，<strong>子问题之间没有相关性</strong>，这一点是分治算法跟动态规划的明显<a href="https://zhuanlan.zhihu.com/p/33048876" target="_blank" rel="noopener">区别</a>；</li>
+<li>具有分解终止条件，也就是说，当问题足够小时，可以直接求解；</li>
+<li>可以将子问题合并成原问题，而这个合并操作的复杂度不能太高，否则就起不到减小算法总体复杂度的效果了。</li>
+</ol>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="1-归并排序"><a href="#1-归并排序" class="headerlink" title="1. 归并排序"></a>1. <a href="https://lil-q.github.io/2019/11/16/排序-Sort-算法/">归并排序</a></h3><h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. <a href="https://lil-q.github.io/2019/11/16/排序-Sort-算法/">快速排序</a></h3><h3 id="3-二分查找"><a href="#3-二分查找" class="headerlink" title="3. 二分查找"></a>3. 二分查找</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://zh.wikipedia.org/wiki/分治法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%88%86%E6%B2%BB%E6%B3%95</a> </li>
+<li><a href="https://hotttao.github.io/2018/11/05/alog/divide/" target="_blank" rel="noopener">https://hotttao.github.io/2018/11/05/alog/divide/</a> </li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%88%86%E6%B2%BB/" rel="tag"># 分治</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/17/%E5%A0%86-heap/" rel="next" title="堆(heap)">
+                  <i class="fa fa-chevron-left"></i> 堆(heap)
+                </a>
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Sort/" style="font-size: 12px; color: #ccc">Sort</a> <a href="/tags/heap/" style="font-size: 12px; color: #ccc">heap</a> <a href="/tags/python/" style="font-size: 30px; color: #111">python</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 12px; color: #ccc">二分</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 12px; color: #ccc">分治</a> <a href="/tags/%E5%A0%86/" style="font-size: 12px; color: #ccc">堆</a> <a href="/tags/%E6%84%9F%E6%80%A7/" style="font-size: 12px; color: #ccc">感性</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 12px; color: #ccc">排序</a>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
             </div>
           </div>
-        
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </article>
+  
+  
+  
 
-    
-    
-    
   </div>
 
 
           </div>
           
+    <div class="comments" id="comments"></div>
 
         </div>
           
@@ -255,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治"><span class="nav-number">1.</span> <span class="nav-text">分治</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-归并排序"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-快速排序"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-二分查找"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 二分查找</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
