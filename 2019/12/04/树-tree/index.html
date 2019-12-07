@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="树定义树（tree）是一种抽象数据类型（ADT）或是实现这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。它是由n（n&amp;gt;0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点： 每个节点都只有有限个子节点或无子节点 没有父节点的节点称为根节点 每一个非根节点有且只有一个父节点 除了根节点外，每个子">
+<meta name="keywords" content="树,tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树(tree)">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;index.html">
+<meta property="og:site_name" content="Homeward">
+<meta property="og:description" content="树定义树（tree）是一种抽象数据类型（ADT）或是实现这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。它是由n（n&amp;gt;0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点： 每个节点都只有有限个子节点或无子节点 没有父节点的节点称为根节点 每一个非根节点有且只有一个父节点 除了根节点外，每个子">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;height-depth.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;tree-cate.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;BinaryTree2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;225px-Binary_search_tree.svg.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;720px-Binary_search_tree_delete.svg.png">
+<meta property="og:updated_time" content="2019-12-07T09:25:31.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%A0%91-tree&#x2F;height-depth.jpg">
+
+<link rel="canonical" href="http://lil-q.github.io/2019/12/04/%E6%A0%91-tree/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>树(tree) | Homeward</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homeward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2019/12/04/%E6%A0%91-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树(tree)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-04 21:53:50" itemprop="dateCreated datePublished" datetime="2019-12-04T21:53:50+08:00">2019-12-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/12/04/%E6%A0%91-tree/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/04/%E6%A0%91-tree/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="树"><a href="#树" class="headerlink" title="　树"></a>　树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>树</strong>（tree）是一种抽象数据类型（ADT）或是实现这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。它是由n（n&gt;0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点：</p><ul>
+<li>每个节点都只有有限个子节点或无子节点</li>
+<li>没有父节点的节点称为根节点</li>
+<li>每一个非根节点有且只有一个父节点</li>
+<li>除了根节点外，每个子节点可以分为多个不相交的子树</li>
+<li>树里面没有环路(cycle)</li>
+</ul><a id="more"></a>
+
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ol>
+<li><strong>节点的度(Degree)</strong>：一个节点含有的子树的个数称为该节点的度</li>
+<li><strong>树的度(Degree of tree)</strong>：一棵树中，最大的节点度称为树的度</li>
+<li><strong>叶节点(Leaf)</strong>：度为零的节点</li>
+<li><strong>分支节点(Branch node)</strong>：度不为零的节点</li>
+<li><strong>父节点(Parent)</strong>：若一个节点含有子节点，则这个节点称为其子节点的父节点</li>
+<li><strong>子节点(child)</strong>：一个节点含有的子树的根节点称为该节点的子节点</li>
+<li><strong>兄弟节点(siblings)</strong>：具有相同父节点的节点互称为兄弟节点</li>
+<li><strong>层次(level)</strong>：从根开始定义起，根为第1层，根的子节点为第2层，以此类推</li>
+<li><strong>深度(depth)</strong>：对于任意节点n,n的深度为从根到n的唯一路径长，根的深度为0</li>
+<li><strong>高度(height)</strong>：对于任意节点n,n的高度为从n到一片树叶的最长路径长，所有树叶的高度为0</li>
+<li><strong>节点的祖先(ancestor)</strong>：从根到该节点所经分支上的所有节点</li>
+<li><strong>森林(forest)</strong>：由m（m&gt;=0）棵互不相交的树的集合称为森林</li>
+</ol>
+<p><img src="height-depth.jpg" alt="层次深度和高度"></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>本文将介绍二叉树(Binary tree)，二叉搜索树(Binary search tree)，红黑树(Red–black tree)，Ｂ树(B-tree)，字典树(Trie)。</p>
+<p><img src="tree-cate.jpg" alt="cate"></p>
+<p>这里区分一下完全二叉树、满二叉树、完美二叉树:</p>
+<ol>
+<li>完全二叉树：最后一层的叶子节点均需在最左边</li>
+<li>满二叉树：满足完全二叉树性质，树中除了叶子节点，每个节点都有两个子节点</li>
+<li>完美二叉树：满足满二叉树性质，树的叶子节点铺满最后一层</li>
+</ol>
+<p><img src="BinaryTree2.png" alt="full"></p>
+<h2 id="二叉树-Binary-tree"><a href="#二叉树-Binary-tree" class="headerlink" title="二叉树(Binary tree)"></a>二叉树(Binary tree)</h2><p><strong>二叉树</strong>（英语：Binary tree）是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建一个单节点</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self.val = value</span><br><span class="line">        self.left = <span class="literal">None</span> <span class="comment">#左节点</span></span><br><span class="line">        self.right = <span class="literal">None</span> <span class="comment">#右节点</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string"># 建一个二叉树</span></span><br><span class="line"><span class="string">#           1 </span></span><br><span class="line"><span class="string">#         /   \ </span></span><br><span class="line"><span class="string">#        2     3</span></span><br><span class="line"><span class="string">#       / \   / \</span></span><br><span class="line"><span class="string">#      4   5 6   7</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">root = Node(<span class="number">1</span>)</span><br><span class="line">stack = [root]</span><br><span class="line">value = <span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">	cur = stack.pop(<span class="number">0</span>)</span><br><span class="line">	cur.left = Node(value)</span><br><span class="line">	stack.append(cur.left)</span><br><span class="line">	value += <span class="number">1</span></span><br><span class="line">	cur.right = Node(value)</span><br><span class="line">	stack.append(cur.right)</span><br><span class="line">	value += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>二叉树的遍历有前序遍历、中序遍历、后序遍历和层序遍历等，这里用迭代和递归两个方法介绍。</p>
+<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    print(root.val, end = <span class="string">' '</span>)</span><br><span class="line">    preorderTraversal(root.left)</span><br><span class="line">    preorderTraversal(root.right)</span><br></pre></td></tr></table></figure>
+<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorderTraversalIter</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    stack = [root]</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        print(node.val, end = <span class="string">' '</span>)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            stack.append(node.right)</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            stack.append(node.left)</span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorderTraversalIter</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">while</span> root <span class="keyword">or</span> stack:</span><br><span class="line">        <span class="keyword">while</span> root:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            print(root.val, end = <span class="string">' '</span>)</span><br><span class="line">            root=root.left</span><br><span class="line">        root=stack.pop()</span><br><span class="line">        root=root.right</span><br></pre></td></tr></table></figure>
+<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><h5 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span>  </span><br><span class="line">    inorderTraversal(root.left)</span><br><span class="line">    print(root.val)</span><br><span class="line">    inorderTraversal(root.right)</span><br></pre></td></tr></table></figure>
+<h5 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代"></a>迭代</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorderTraversalIter</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">while</span> root <span class="keyword">or</span> stack:</span><br><span class="line">        <span class="keyword">while</span> root:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            root=root.left</span><br><span class="line">        root=stack.pop()</span><br><span class="line">        print(root.val, end = <span class="string">' '</span>)</span><br><span class="line">        root=root.right</span><br></pre></td></tr></table></figure>
+<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><h5 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span>  </span><br><span class="line">    postorderTraversal(root.left)</span><br><span class="line">    postorderTraversal(root.right)</span><br><span class="line">    print(root.val)</span><br></pre></td></tr></table></figure>
+<h5 id="迭代-2"><a href="#迭代-2" class="headerlink" title="迭代"></a>迭代</h5><p>比较tricky的办法是吧后序遍历转变成中右左遍历的倒序，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postorderTraversalIter</span><span class="params">(root)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        stack = [root]</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> node.left :</span><br><span class="line">                stack.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">            res.append(node.val)</span><br><span class="line">        <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postorderTraversalIter</span><span class="params">(root)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">while</span> root <span class="keyword">or</span> stack:</span><br><span class="line">        <span class="keyword">while</span> root:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            res.append(root.val)</span><br><span class="line">            root = root.right</span><br><span class="line">        root = stack.pop()</span><br><span class="line">        root = root.left</span><br><span class="line">    <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">levelOrderTraversal</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="comment"># 使用列表模拟先进先出队列queue</span></span><br><span class="line">    queue = [root]</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> node.left :</span><br><span class="line">            queue.append(node.left)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            queue.append(node.right)</span><br><span class="line">        print(node.val, end = <span class="string">' '</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">前序遍历_递归：</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">4</span> <span class="number">5</span> <span class="number">3</span> <span class="number">6</span> <span class="number">7</span> </span><br><span class="line">前序遍历_迭代：</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">4</span> <span class="number">5</span> <span class="number">3</span> <span class="number">6</span> <span class="number">7</span> </span><br><span class="line">中序遍历_递归：</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">5</span> <span class="number">1</span> <span class="number">6</span> <span class="number">3</span> <span class="number">7</span> </span><br><span class="line">中序遍历_迭代：</span><br><span class="line"><span class="number">4</span> <span class="number">2</span> <span class="number">5</span> <span class="number">1</span> <span class="number">6</span> <span class="number">3</span> <span class="number">7</span> </span><br><span class="line">后序遍历_递归：</span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">2</span> <span class="number">6</span> <span class="number">7</span> <span class="number">3</span> <span class="number">1</span> </span><br><span class="line">后序遍历_迭代：</span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">2</span> <span class="number">6</span> <span class="number">7</span> <span class="number">3</span> <span class="number">1</span> </span><br><span class="line">层序遍历：</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<h3 id="二叉树的序列化"><a href="#二叉树的序列化" class="headerlink" title="二叉树的序列化"></a>二叉树的序列化</h3><p>「序列化」（serialization），指的是把复杂的数据结构转化为线性结构，以方便存储的过程。序列化得到的线性结构必须能重建出原有的结构，才有意义。</p>
+<h4 id="仅使用一种遍历的序列化方法"><a href="#仅使用一种遍历的序列化方法" class="headerlink" title="仅使用一种遍历的序列化方法"></a>仅使用一种遍历的序列化方法</h4><p>这是最常见的序列化方法。可以采用的遍历顺序包括先序、后序、层序。在遍历时，要把空指针也包含在遍历的结果中。例如，对下图的二叉树，进行先序、后序、层序遍历的结果分别为 12##3#4##、##2###431、123###4##（# 表示空指针）。</p>
+<p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" alt="xu"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reconstruct</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    stack = [root]</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        print(node.val, end=<span class="string">' '</span>)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            stack.append(node.right)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'#'</span>, end = <span class="string">' '</span>)</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            stack.append(node.left)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'#'</span>, end = <span class="string">' '</span>)</span><br></pre></td></tr></table></figure>
+<p>而仅根据（带空指针的）中序遍历，是不能重建二叉树的。比如，上面这棵树的中序遍历为 #2#1#3#4#。事实上可以证明，任何一棵二叉树的中序遍历结果，都会是空指针与树中结点交替出现的形式，所以空指针没有提供任何额外的信息。<a href="https://zhuanlan.zhihu.com/p/26418233" target="_blank" rel="noopener">原文</a></p>
+<h2 id="二叉搜索树-Binary-search-tree"><a href="#二叉搜索树-Binary-search-tree" class="headerlink" title="二叉搜索树(Binary search tree)"></a>二叉搜索树(Binary search tree)</h2><p><strong>二叉查找树</strong>（英语：Binary Search Tree），也称为<strong>二叉搜索树</strong>、<strong>有序二叉树</strong>（ordered binary tree）或<strong>排序二叉树</strong>（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
+<ol>
+<li>若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值</li>
+<li>若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值</li>
+<li>任意节点的左、右子树也分别为二叉查找树</li>
+<li>没有键值相等的节点</li>
+</ol>
+<p><img src="225px-Binary_search_tree.svg.png" alt="bst"></p>
+<p>空间复杂度：O(<em>n</em>)。</p>
+<p>时间复杂度：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">平均</th>
+<th style="text-align:center">最差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">搜索</td>
+<td style="text-align:center">O(log <em>n</em>)</td>
+<td style="text-align:center">O(<em>n</em>)</td>
+</tr>
+<tr>
+<td style="text-align:center">插入</td>
+<td style="text-align:center">O(log <em>n</em>)</td>
+<td style="text-align:center">O(<em>n</em>)</td>
+</tr>
+<tr>
+<td style="text-align:center">删除</td>
+<td style="text-align:center">O(log <em>n</em>)</td>
+<td style="text-align:center">O(<em>n</em>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="二叉搜索树的建立"><a href="#二叉搜索树的建立" class="headerlink" title="二叉搜索树的建立"></a>二叉搜索树的建立</h3><h4 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h4><ol>
+<li>若b是空树，则将<code>node</code>所指节点作为根节点插入，否则：</li>
+<li>若<code>node.val</code>等于b的根节点的数据域之值，则返回，否则：</li>
+<li>若<code>node.val</code>小于b的根节点的数据域之值，则把s所指节点插入到左子树中，否则：</li>
+<li>把<code>node</code>所指节点插入到右子树中</li>
+</ol>
+<p>新插入节点总是叶子节点，所以数字组成相同但是排序不同的序列所构造的二叉搜索树其实是不同的。但是序列化（见后文）的结果是一致的。</p>
+<h4 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h4><ol>
+<li>若b是空树，则搜索失败，否则：</li>
+<li>若x等于b的根节点的数据域之值，则查找成功；否则：</li>
+<li>若x小于b的根节点的数据域之值，则搜索左子树；否则：</li>
+<li>查找右子树</li>
+</ol>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/pythonchang-gui-jie-fa-by-lil-q/" target="_blank" rel="noopener">自己做leetcode 450时的解法</a>，非递归，算法有些复杂。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteNode</span><span class="params">(self, root: TreeNode, key: int)</span> -&gt; TreeNode:</span></span><br><span class="line">        <span class="comment"># 删除节点返回新的子树    </span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(node)</span>:</span></span><br><span class="line">            <span class="comment"># 没有子节点，返回None</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> <span class="keyword">not</span> node.right:<span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">            <span class="comment"># 没有左子节点，返回右子节点</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> node.left:<span class="keyword">return</span> node.right</span><br><span class="line">            <span class="comment"># 没有右子节点，返回左子节点</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> node.right:<span class="keyword">return</span> node.left</span><br><span class="line">            <span class="comment"># 待删除节点度为2，详细讨论</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 左子节点没有右子节点</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> node.left.right:</span><br><span class="line">                    node.left.right=node.right</span><br><span class="line">                    <span class="keyword">return</span> node.left</span><br><span class="line">                <span class="comment"># 右子节点没有左子节点</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="keyword">not</span> node.left.right:</span><br><span class="line">                    node.left.right=node.right</span><br><span class="line">                    <span class="keyword">return</span> node.left </span><br><span class="line">                <span class="comment"># 都不满足，返回左子树最大值</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="comment"># 记录父节点pre</span></span><br><span class="line">                    pre=left=node.left</span><br><span class="line">                    <span class="keyword">while</span> left.right:</span><br><span class="line">                        pre=left</span><br><span class="line">                        left=left.right</span><br><span class="line">                    <span class="comment"># 保存待最大值的左子树到父节点的右子树</span></span><br><span class="line">                    pre.right=left.left</span><br><span class="line">                    left.left=node.left</span><br><span class="line">                    left.right=node.right</span><br><span class="line">                    <span class="keyword">return</span> left</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:<span class="keyword">return</span> root        </span><br><span class="line">        <span class="keyword">if</span> root.val==key:</span><br><span class="line">            root=delete(root)</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line">        father=node=root</span><br><span class="line">        <span class="keyword">while</span> node.val!=key:</span><br><span class="line">            <span class="keyword">if</span> node.val&gt;key:</span><br><span class="line">                father=node</span><br><span class="line">                node=node.left</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                father=node</span><br><span class="line">                node=node.right</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:<span class="keyword">return</span> root</span><br><span class="line">        <span class="keyword">if</span> father.left==node:father.left=delete(node)</span><br><span class="line">        <span class="keyword">else</span>: father.right=delete(node)</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<p>这里给出递归的方式。递归的好处在于不用考虑寻找父节点以及待删除结点到底是父节点的左子节点还是右子节点。</p>
+<p>在二叉查找树删去一个结点，分三种情况讨论：</p>
+<ol>
+<li>若待删除结点p为叶子结点，即PL（左子树）和PR（右子树）均为空树。由于删去叶子结点不破坏整棵树的结构，则只需修改其双亲结点的指针即可。</li>
+<li>若待删除结点只有左子树PL或右子树PR，此时只要令PL或PR直接成为其双亲结点f的左子树（当p是左子树）或右子树（当p是右子树）即可，作此修改也不破坏二叉查找树的特性。</li>
+<li>若p结点的左子树和右子树均不空。在删去p之后，为保持其它元素之间的相对位置不变，可按中序遍历保持有序进行调整，可以有两种做法：其一是令p的左子树为f的左/右（依p是f的左子树还是右子树而定）子树，s为p左子树的最右下的结点，而p的右子树为s的右子树；其二是令p的直接前驱（in-order predecessor）或直接后继（in-order successor）替代p，然后再从二叉查找树中删去它的直接前驱（或直接后继）。</li>
+</ol>
+<p><img src="720px-Binary_search_tree_delete.svg.png" alt="deletenode"></p>
+<h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinarySearchTree</span>:</span></span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self.val = value</span><br><span class="line">        self.left=<span class="literal">None</span></span><br><span class="line">        self.right=<span class="literal">None</span></span><br><span class="line">    <span class="comment"># 查找最小值</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_min</span><span class="params">(self)</span>:</span></span><br><span class="line">        current = self</span><br><span class="line">        <span class="keyword">while</span> current.left:</span><br><span class="line">            current = current.left</span><br><span class="line">        <span class="keyword">return</span> current   </span><br><span class="line">    <span class="comment"># 查找最大值</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_max</span><span class="params">(self)</span>:</span></span><br><span class="line">        current = self</span><br><span class="line">        <span class="keyword">while</span> current.right:</span><br><span class="line">            current = current.right</span><br><span class="line">        <span class="keyword">return</span> current   </span><br><span class="line">    <span class="comment"># 插入一个节点</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        node = BinarySearchTree(value)</span><br><span class="line">        current = self</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">if</span> value &lt; current.val:</span><br><span class="line">                <span class="keyword">if</span> current.left <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    current.left = node</span><br><span class="line">                    <span class="keyword">return</span> </span><br><span class="line">                current = current.left</span><br><span class="line">            <span class="keyword">elif</span> value &gt; current.val:</span><br><span class="line">                <span class="keyword">if</span> current.right <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    current.right = node</span><br><span class="line">                    <span class="keyword">return</span> </span><br><span class="line">                current = current.right</span><br><span class="line">            <span class="keyword">else</span>: <span class="keyword">return</span> self</span><br><span class="line">    <span class="comment"># 查找节点</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        current = self</span><br><span class="line">        <span class="keyword">while</span> current:</span><br><span class="line">            <span class="keyword">if</span> current.val == value:</span><br><span class="line">                <span class="keyword">return</span> current</span><br><span class="line">            current = current.left <span class="keyword">if</span> value &lt; current.val <span class="keyword">else</span> current.right</span><br><span class="line">        <span class="comment"># 此时current==None</span></span><br><span class="line">        <span class="keyword">return</span> current</span><br><span class="line">    <span class="comment"># 删除节点</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.find(value):</span><br><span class="line">            <span class="keyword">if</span> value&lt;self.val:</span><br><span class="line">                self.left=self.left.delete(value)</span><br><span class="line">                <span class="keyword">return</span> self</span><br><span class="line">            <span class="keyword">elif</span> value&gt;self.val:</span><br><span class="line">                self.right=self.right.delete(value)</span><br><span class="line">                <span class="keyword">return</span> self</span><br><span class="line">            <span class="keyword">elif</span> self.left <span class="keyword">and</span> self.right:</span><br><span class="line">                val=self.right.findMin().val</span><br><span class="line">                self.val=val</span><br><span class="line">                self.right=self.right.delete(val)</span><br><span class="line">                <span class="keyword">return</span> self</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> self.left:</span><br><span class="line">                    <span class="keyword">return</span> self.left</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> self.right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>
+<p><em>注：代码中没有考虑空树。</em></p>
+<h2 id="黑红树-Red–black-tree"><a href="#黑红树-Red–black-tree" class="headerlink" title="黑红树(Red–black tree)"></a>黑红树(Red–black tree)</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://zh.wikipedia.org/wiki/树_(数据结构" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)</a>)</li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/die-dai-he-di-gui-by-powcai/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/die-dai-he-di-gui-by-powcai/</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/26418233" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26418233</a></li>
+<li><a href="https://python123.io/index/topics/data_structure/binary_tree" target="_blank" rel="noopener">https://python123.io/index/topics/data_structure/binary_tree</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%A0%91/" rel="tag"># 树</a>
+              <a href="/tags/tree/" rel="tag"># tree</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" rel="next" title="分治算法(Divide-and-conquer algorithm)">
+                  <i class="fa fa-chevron-left"></i> 分治算法(Divide-and-conquer algorithm)
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/05/%E8%B0%88%E8%B0%88%E7%94%9F%E6%B4%BB/" rel="prev" title="他消失了">
+                  他消失了 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">1.</span> <span class="nav-text">　树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">1.1.1.</span> <span class="nav-text">术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树-Binary-tree"><span class="nav-number">1.3.</span> <span class="nav-text">二叉树(Binary tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的遍历"><span class="nav-number">1.3.1.</span> <span class="nav-text">二叉树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前序遍历"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#递归"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代"><span class="nav-number">1.3.1.1.2.</span> <span class="nav-text">迭代</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中序遍历"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">中序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#递归-1"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代-1"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">迭代</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后序遍历"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">后序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#递归-2"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代-2"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">迭代</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层序遍历"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">层序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的序列化"><span class="nav-number">1.3.2.</span> <span class="nav-text">二叉树的序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仅使用一种遍历的序列化方法"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">仅使用一种遍历的序列化方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树-Binary-search-tree"><span class="nav-number">1.4.</span> <span class="nav-text">二叉搜索树(Binary search tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉搜索树的建立"><span class="nav-number">1.4.1.</span> <span class="nav-text">二叉搜索树的建立</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入节点"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">插入节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找节点"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">查找节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除节点"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整体代码"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">整体代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黑红树-Red–black-tree"><span class="nav-number">1.5.</span> <span class="nav-text">黑红树(Red–black tree)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戚天天"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">戚天天</p>
+  <div class="site-description" itemprop="description">Life goes on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:qitiantian@outlook.com" title="E-Mail → mailto:qitiantian@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戚天天</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-child"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fire"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
+    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
+    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
