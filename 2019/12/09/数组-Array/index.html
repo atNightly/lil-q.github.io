@@ -58,12 +58,12 @@
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="数组(Array)数组数据结构(array data structure)，简称数组(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="d:&#x2F;qblog&#x2F;hexo&#x2F;source&#x2F;_posts&#x2F;数组-Array&#x2F;312300343319616.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;数组-Array&#x2F;312300343319616.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png">
-<meta property="og:updated_time" content="2019-12-24T03:58:46.328Z">
+<meta property="og:updated_time" content="2019-12-24T05:49:07.988Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:&#x2F;qblog&#x2F;hexo&#x2F;source&#x2F;_posts&#x2F;数组-Array&#x2F;312300343319616.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;数组-Array&#x2F;312300343319616.jpg">
 
 <link rel="canonical" href="http://lil-q.github.io/2019/12/09/%E6%95%B0%E7%BB%84-Array/">
 
@@ -355,7 +355,7 @@
 <script type="math/tex; mode=display">h = s[0] · 31^{L–1} + … + s[L – 3] · 31^2 + s[L – 2] · 31^1 + s[L – 1] · 31^0</script><p>举个例子，比如要获取”call”的哈希值，字符串c对应的unicode为99，a对应的unicode为97，L对应的unicode为108，所以字符串”call”的哈希值为 3045982 = 99·31^3 + 97·31^2 + 108·31^1 + 108·31^0 = 108 + 31· (108 + 31 · (97 + 31 · (99)))。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(getHashCode(<span class="string">"call"</span>))</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">输出： 3045982</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
 <p>如果对每个字符去哈希值可能会比较耗时，所以可以通过间隔取N个字符来获取哈西值来节省时间，比如，可以 获取每8-9个字符来获取哈希值。但是，对于某些情况，不同的字符串会产生相同的哈希值，这就是前面说到的哈希冲突（Hash Collisions），比如下面的四个字符串：</p>
-<p><img src="D:\qblog\hexo\source\_posts\数组-Array\312300343319616.jpg" alt="hash code collision"></p>
+<p><img src="数组-Array\312300343319616.jpg" alt="hash code collision"></p>
 <p>如果我们按照每8个字符取哈希的话，就会得到一样的哈希值。</p>
 <h2 id="哈希冲撞"><a href="#哈希冲撞" class="headerlink" title="哈希冲撞"></a>哈希冲撞</h2><p>如果将2450个密钥散列到一百万个存储桶中，即使具有完全均匀的随机分布，则根据生日问题，至少有两个密钥散列到同一存储桶的机率大约为95％。<script type="math/tex">1*\frac{10^6-1}{10^6}*\frac{10^6-2}{10^6}</script>…<script type="math/tex">\frac{10^6-2449}{10^6}</script></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">res=<span class="number">1</span></span><br><span class="line">n=<span class="number">1000000</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2450</span>):</span><br><span class="line">	res*=(n<span class="number">-1</span>)/n</span><br><span class="line">print(res)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">0.9975529975784029</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
