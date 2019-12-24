@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="数组(Array)数组数据结构(array data structure)，简称数组(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了">
+<meta name="keywords" content="数组,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组(Array)和哈希表(Hash table)">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;index.html">
+<meta property="og:site_name" content="Homeward">
+<meta property="og:description" content="数组(Array)数组数据结构(array data structure)，简称数组(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="d:&#x2F;qblog&#x2F;hexo&#x2F;source&#x2F;_posts&#x2F;数组-Array&#x2F;312300343319616.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png">
+<meta property="og:updated_time" content="2019-12-12T04:01:28.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:&#x2F;qblog&#x2F;hexo&#x2F;source&#x2F;_posts&#x2F;数组-Array&#x2F;312300343319616.jpg">
+
+<link rel="canonical" href="http://lil-q.github.io/2019/12/09/%E6%95%B0%E7%BB%84-Array/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>数组(Array)和哈希表(Hash table) | Homeward</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homeward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2019/12/09/%E6%95%B0%E7%BB%84-Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数组(Array)和哈希表(Hash table)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-09 16:16:52" itemprop="dateCreated datePublished" datetime="2019-12-09T16:16:52+08:00">2019-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/12/09/%E6%95%B0%E7%BB%84-Array/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/09/%E6%95%B0%E7%BB%84-Array/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组(Array)"></a>数组(Array)</h1><p><strong>数组数据结构</strong>(array data structure)，简称<strong>数组</strong>(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。</p><p>数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了计算机的定址逻辑。在大多数现代计算机和许多外部存储设备中，存储器如同一维数组，索引就是其地址。编译器、处理单元（特别是向量处理器），经常会针对数组操作进行优化。</p><a id="more"></a>
+
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>Python中 list 数据结构的复杂度。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>操作说明</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index(value)</td>
+<td>查找list某个元素的索引</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>a = index(value)</td>
+<td>索引赋值</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>append(value)</td>
+<td>队尾添加</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>队尾删除</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>pop(index)</td>
+<td>根据索引删除某个元素</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>insert(index, value)</td>
+<td>根据索引插入某个元素</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>iterration</td>
+<td>列表迭代</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>search(in)</td>
+<td>列表搜索（其实就是in关键字）</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>slice [x:y]</td>
+<td>切片, 获取x, y为O(1), 获取x,y 中间的值为O(k)</td>
+<td>O(k)</td>
+</tr>
+<tr>
+<td>del slice [x:y]</td>
+<td>删除切片，删除切片后数据需要重新移动/合并</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>列表反转</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>排序</td>
+<td>O(nlogn)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="哈希表-Hash-table"><a href="#哈希表-Hash-table" class="headerlink" title="哈希表(Hash table)"></a>哈希表(Hash table)</h1><p><strong>散列表</strong>（<strong>Hash table</strong>，也叫<strong>哈希表</strong>），是根据键(Key)而直接访问在内存存储位置的数据结构。也就是说，它通过计算一个关于键值的函数，将所需查询的数据映射到表中一个位置来访问记录，这加快了查找速度。这个映射函数称做<strong>散列函数</strong>，存放记录的数组称做<strong>散列表</strong>。</p>
+<h2 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h2><p>散列函数能使对一个数据序列的访问过程更加迅速有效，通过散列函数，数据元素将被更快定位。</p>
+<ol>
+<li><strong>直接定址法</strong>：取关键字或关键字的某个线性函数值为散列地址。</li>
+<li><strong>数字分析法</strong>：假设关键字是以<em>r</em>为基的数，并且哈希表中可能出现的关键字都是事先知道的，则可取关键字的若干数位组成哈希地址。</li>
+<li><strong>平方取中法</strong>：取关键字平方后的中间几位为哈希地址。通常在选定哈希函数时不一定能知道关键字的全部情况，取其中的哪几位也不一定合适，而一个数平方后的中间几位数和数的每一位都相关，由此使随机分布的关键字得到的哈希地址也是随机的。取的位数由表长决定。</li>
+<li><strong>折叠法</strong>：将关键字分割成位数相同的几部分（最后一部分的位数可以不同），然后取这几部分的叠加和（舍去进位）作为哈希地址。</li>
+<li><strong>随机数法</strong></li>
+<li><strong>除留余数法</strong>：取关键字被某个不大于散列表表长m的数p除后所得的余数为散列地址。不仅可以对关键字直接取模，也可在<strong>折叠法</strong>、<strong>平方取中法</strong>等运算之后取模。对p的选择很重要，一般取素数或m，若p选择不好，容易产生冲突。</li>
+</ol>
+<h3 id="1-正整数"><a href="#1-正整数" class="headerlink" title="1. 正整数"></a>1. 正整数</h3><p>获取正整数哈希值最常用的方法是使用除留余数法。即对于大小为素数M的数组，对于任意正整数k，计算k除以M的余数。M一般取素数。</p>
+<h3 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h3><p>将字符串作为键的时候，我们也可以将他作为一个大的整数，采用保留除余法。我们可以将组成字符串的每一个字符取值然后进行哈希，比如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHashCode</span><span class="params">(str)</span>:</span></span><br><span class="line">    hash = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> str:</span><br><span class="line">        hash = int(char) + (<span class="number">31</span> * hash)</span><br><span class="line">    <span class="keyword">return</span> hash</span><br></pre></td></tr></table></figure>
+<p>上面的哈希值是Horner计算字符串哈希值的方法，公式为:</p>
+<script type="math/tex; mode=display">h = s[0] · 31^{L–1} + … + s[L – 3] · 31^2 + s[L – 2] · 31^1 + s[L – 1] · 31^0</script><p>举个例子，比如要获取”call”的哈希值，字符串c对应的unicode为99，a对应的unicode为97，L对应的unicode为108，所以字符串”call”的哈希值为 3045982 = 99·31^3 + 97·31^2 + 108·31^1 + 108·31^0 = 108 + 31· (108 + 31 · (97 + 31 · (99)))。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(getHashCode(<span class="string">"call"</span>))</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">输出： 3045982</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>如果对每个字符去哈希值可能会比较耗时，所以可以通过间隔取N个字符来获取哈西值来节省时间，比如，可以 获取每8-9个字符来获取哈希值。但是，对于某些情况，不同的字符串会产生相同的哈希值，这就是前面说到的哈希冲突（Hash Collisions），比如下面的四个字符串：</p>
+<p><img src="D:\qblog\hexo\source\_posts\数组-Array\312300343319616.jpg" alt="hash code collision"></p>
+<p>如果我们按照每8个字符取哈希的话，就会得到一样的哈希值。</p>
+<h2 id="哈希冲撞"><a href="#哈希冲撞" class="headerlink" title="哈希冲撞"></a>哈希冲撞</h2><p>如果将2450个密钥散列到一百万个存储桶中，即使具有完全均匀的随机分布，则根据生日问题，至少有两个密钥散列到同一存储桶的机率大约为95％。<script type="math/tex">1*\frac{10^6-1}{10^6}*\frac{10^6-2}{10^6}</script>…<script type="math/tex">\frac{10^6-2449}{10^6}</script></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">res=<span class="number">1</span></span><br><span class="line">n=<span class="number">1000000</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2450</span>):</span><br><span class="line">	res*=(n<span class="number">-1</span>)/n</span><br><span class="line">print(res)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">0.9975529975784029</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://zh.wikipedia.org/zh-hans/生日攻击" target="_blank" rel="noopener">有兴趣可以了解一下生日攻击。</a></p>
+<h3 id="1-Separate-chaining"><a href="#1-Separate-chaining" class="headerlink" title="1. Separate chaining"></a>1. Separate chaining</h3><p>每一个<code>bucket</code>指向一个数组、链表或其他数据结构。</p>
+<p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" alt="spe"></p>
+<h3 id="2-Open-addressing"><a href="#2-Open-addressing" class="headerlink" title="2. Open addressing"></a>2. Open addressing</h3><p>每一个<code>bucket</code>存放一个<code>entry record</code>,添加时如果已占用就下移一格，查找同理。</p>
+<p><img src="570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png" alt="opa"></p>
+<h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>Python中 dict 数据结构的复杂度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>操作说明</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>copy</td>
+<td>复制</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>get(value)</td>
+<td>获取</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>set(value)</td>
+<td>修改</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>delete(value)</td>
+<td>删除</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>search(in)</td>
+<td>字典搜索</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>iterration</td>
+<td>字典迭代</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-力扣（leetcode）204-计数质数"><a href="#1-力扣（leetcode）204-计数质数" class="headerlink" title="1. 力扣（leetcode）204. 计数质数"></a>1. <a href="https://leetcode-cn.com/problems/count-primes/" target="_blank" rel="noopener">力扣（leetcode）204. 计数质数</a></h2><blockquote>
+<p>统计所有小于非负整数 <em>n</em> 的质数的数量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n: int)</span> -&gt; int:</span></span><br><span class="line">       isPrime = [<span class="number">1</span>] * n </span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, int(n ** <span class="number">0.5</span>) + <span class="number">1</span>):</span><br><span class="line">           <span class="keyword">if</span> isPrime[i]:</span><br><span class="line">               <span class="keyword">for</span> j <span class="keyword">in</span> range(i * i, n, i):</span><br><span class="line">                   isPrime[j] = <span class="number">0</span></span><br><span class="line">       counts = <span class="number">0</span></span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,len(isPrime)):</span><br><span class="line">           <span class="keyword">if</span> isPrime[i] : counts += <span class="number">1</span></span><br><span class="line">       <span class="keyword">return</span> counts</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="2-力扣（leetcode）355-设计推特"><a href="#2-力扣（leetcode）355-设计推特" class="headerlink" title="2. 力扣（leetcode）355. 设计推特"></a>2. <a href="https://leetcode-cn.com/problems/design-twitter/" target="_blank" rel="noopener">力扣（leetcode）355. 设计推特</a></h2><blockquote>
+<p>设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：</p>
+<p>postTweet(userId, tweetId): 创建一条新的推文<br>getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的开始排序。<br>follow(followerId, followeeId): 关注一个用户<br>unfollow(followerId, followeeId): 取消关注一个用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">&gt;<span class="class"><span class="keyword">class</span> <span class="title">Twitter</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       Initialize your data structure here.</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       self.timeline = defaultdict(list)</span><br><span class="line">       self.userId_follower = defaultdict(set)</span><br><span class="line">       self.now = <span class="number">1</span></span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">post</span>:</span></span><br><span class="line">   	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, tweetId, time)</span>:</span></span><br><span class="line">   		self.id = tweetId</span><br><span class="line">   		self.time = time</span><br><span class="line">   		self.next = <span class="literal">None</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">postTweet</span><span class="params">(self, userId: int, tweetId: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       Compose a new tweet.</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       po = self.post(tweetId, self.now)</span><br><span class="line">       <span class="keyword">if</span> len(self.timeline[userId]) &gt; <span class="number">0</span>:</span><br><span class="line">       	po.next = self.timeline[userId][<span class="number">-1</span>]</span><br><span class="line">       self.timeline[userId].append(po)</span><br><span class="line">       self.now += <span class="number">1</span></span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">getNewsFeed</span><span class="params">(self, userId)</span>:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       res = []</span><br><span class="line">       queue = []</span><br><span class="line">       <span class="keyword">for</span> uid <span class="keyword">in</span> self.userId_follower[userId] | &#123;userId&#125;:</span><br><span class="line">           <span class="keyword">if</span> len(self.timeline[uid]) &gt; <span class="number">0</span>:</span><br><span class="line">           	queue.append(self.timeline[uid][<span class="number">-1</span>])</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">if</span> <span class="keyword">not</span> queue: <span class="keyword">return</span> []</span><br><span class="line">       <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">       	maxIndex = <span class="number">0</span></span><br><span class="line">       	maxId = <span class="number">0</span></span><br><span class="line">       	f = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(queue)):</span><br><span class="line">        	<span class="keyword">if</span> queue[i] <span class="keyword">and</span> (queue[i].time &gt; maxId):</span><br><span class="line">        		maxId=queue[i].time</span><br><span class="line">        		maxIndex = i</span><br><span class="line">        		f = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> f == <span class="number">0</span> <span class="keyword">and</span> <span class="keyword">not</span> queue[<span class="number">0</span>]: <span class="keyword">break</span></span><br><span class="line">        res.append(queue[maxIndex].id)</span><br><span class="line">        queue[maxIndex]=queue[maxIndex].next </span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> res</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">follow</span><span class="params">(self, followerId: int, followeeId: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       Follower follows a followee. If the operation is invalid, it should be a no-op.</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       self.userId_follower[followerId].add(followeeId)</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">unfollow</span><span class="params">(self, followerId: int, followeeId: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">       <span class="string">"""</span></span><br><span class="line"><span class="string">       Follower unfollows a followee. If the operation is invalid, it should be a no-op.</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       self.userId_follower[followerId].discard(followeeId)</span><br></pre></td></tr></table></figure>
+<p>采用了<a href="https://leetcode-cn.com/problems/design-twitter/solution/mian-xiang-dui-xiang-she-ji-he-bing-k-ge-you-xu-li/" target="_blank" rel="noopener">优先队列</a>的思路</p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://zh.wikipedia.org/wiki/数组" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84</a></li>
+<li><a href="https://zh.wikipedia.org/zh-hans/哈希表" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-hans/%E5%93%88%E5%B8%8C%E8%A1%A8</a></li>
+<li><a href="https://www.cnblogs.com/yangecnu/p/Introduce-Hashtable.html" target="_blank" rel="noopener">https://www.cnblogs.com/yangecnu/p/Introduce-Hashtable.html</a></li>
+<li><a href="https://www.jianshu.com/p/fa57d21b9ad7" target="_blank" rel="noopener">https://www.jianshu.com/p/fa57d21b9ad7</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/08/%E6%A0%88-Stack-%E5%92%8C%E9%98%9F%E5%88%97-Queue/" rel="next" title="栈(Stack)和队列(Queue)">
+                  <i class="fa fa-chevron-left"></i> 栈(Stack)和队列(Queue)
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组-Array"><span class="nav-number">1.</span> <span class="nav-text">数组(Array)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.1.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希表-Hash-table"><span class="nav-number">2.</span> <span class="nav-text">哈希表(Hash table)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希函数"><span class="nav-number">2.1.</span> <span class="nav-text">哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-正整数"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 正整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字符串"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希冲撞"><span class="nav-number">2.2.</span> <span class="nav-text">哈希冲撞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Separate-chaining"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. Separate chaining</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Open-addressing"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Open addressing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度分析-1"><span class="nav-number">2.3.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-力扣（leetcode）204-计数质数"><span class="nav-number">3.1.</span> <span class="nav-text">1. 力扣（leetcode）204. 计数质数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-力扣（leetcode）355-设计推特"><span class="nav-number">3.2.</span> <span class="nav-text">2. 力扣（leetcode）355. 设计推特</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戚天天"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">戚天天</p>
+  <div class="site-description" itemprop="description">Life goes on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:qitiantian@outlook.com" title="E-Mail → mailto:qitiantian@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戚天天</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-child"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fire"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
+    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
+    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
