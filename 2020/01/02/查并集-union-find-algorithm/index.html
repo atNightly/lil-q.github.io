@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作： 查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。 也就是说，不支持集合的分离、删除。Quick-Find算法以下图为例，连通关系为[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8,">
+<meta name="keywords" content="python,查并集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查并集(Union-find algorithm)">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;index.html">
+<meta property="og:site_name" content="Homeward">
+<meta property="og:description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作： 查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。 也就是说，不支持集合的分离、删除。Quick-Find算法以下图为例，连通关系为[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8,">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;uf1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;1339479431_6633.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;1339479587_5986.png">
+<meta property="og:updated_time" content="2020-01-03T05:45:37.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;uf1.png">
+
+<link rel="canonical" href="http://lil-q.github.io/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>查并集(Union-find algorithm) | Homeward</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homeward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          查并集(Union-find algorithm)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-02 12:54:02" itemprop="dateCreated datePublished" datetime="2020-01-02T12:54:02+08:00">2020-01-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 <strong>合并</strong> 及 <strong>查询</strong> 问题。 它支持两种操作：</p><ul>
+<li>查找（Find）：确定某个元素处于哪个子集；</li>
+<li>合并（Union）：将两个子集合并成一个集合。</li>
+</ul><p>也就是说，不支持集合的分离、删除。</p><h1 id="Quick-Find算法"><a href="#Quick-Find算法" class="headerlink" title="Quick-Find算法"></a>Quick-Find算法</h1><p>以下图为例，连通关系为<code>[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8, 9)]</code>。</p><a id="more"></a>
+
+
+
+<p><img src="uf1.png" alt="uf"></p>
+<p>首先初始化所有节点，认为它们属于一个组，因此不连通的节点必然就属于不同的组：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>element</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group number / id</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>输入pair<code>(1, 2)</code>，则将<strong>所有</strong><code>group number</code>为<code>0</code>和<code>1</code>的<code>element</code>改为一致（都为<code>0</code>或都为<code>1</code>，这里以较小值为例）。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>element</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group number / id</td>
+<td>0</td>
+<td>1</td>
+<td><strong>1</strong></td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>输入pair<code>(0， 1)</code>，这里就需要把<code>element 1</code>和<code>element 2</code>的<code>group number</code>都改为<code>0</code>，：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>element</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group number / id</td>
+<td>0</td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>正因为每次都需要找到所有的特定<code>group number</code>的<code>element</code>，所以<code>union</code>的时间复杂度为O(N)，<code>find</code>的时间复杂度为O(1)。N为<code>element</code>的个数，下同。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuickFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    id=[]</span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,n)</span>:</span></span><br><span class="line">        self.count = n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            self.id.append(i)</span><br><span class="line">                        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(p) == self.find(q)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self,p)</span>:</span>    </span><br><span class="line">        <span class="keyword">return</span> self.id[p]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        idp = self.find(p)</span><br><span class="line">        idq = self.find(q)</span><br><span class="line">        <span class="keyword">if</span> idp != idq:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.id)):</span><br><span class="line">                <span class="keyword">if</span> self.id[i] == idq: <span class="comment"># 将q所在组内的所有节点的id都设为p的当前id</span></span><br><span class="line">                    self.id[i] = idp</span><br><span class="line">            self.count -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="Quick-Union算法"><a href="#Quick-Union算法" class="headerlink" title="Quick-Union算法"></a>Quick-Union算法</h1><p>对于只需要实现查找和合并的并查集，O(n)的时间复杂度还是太高了，当时间复杂度需要降低到对数级，我们自然想到了<strong>树</strong>这个数据结构。由于并查集初始化中每一个<code>element</code>对于一个<code>group number</code>，所以可以通过数组中的跳转来实现树的寻找父节点功能。以下图为例，最开始每一个<code>element</code>的父节点都是自身，每次查找沿着父节点向上， 直到根节点。每次合并把找到的两个根节点的其中一个设置为另一个的父节点。</p>
+<p><img src="1339479431_6633.png" alt="qu"></p>
+<p><code>union</code>和<code>find</code>的时间复杂度取决于树的高度。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuickUnion</span><span class="params">(object)</span>:</span></span><br><span class="line">    id=[]</span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,n)</span>:</span></span><br><span class="line">        self.count = n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            self.id.append(i)</span><br><span class="line">                       </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(p) == self.find(q)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self,p)</span>:</span>    </span><br><span class="line">        <span class="keyword">while</span> (p != self.id[p]):</span><br><span class="line">            p = self.id[p]</span><br><span class="line">        <span class="keyword">return</span> p</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        root_p = self.find(p)</span><br><span class="line">        root_q = self.find(q)</span><br><span class="line">        <span class="keyword">if</span> root_p != root_q:</span><br><span class="line">            self.id[root_q] = root_p</span><br><span class="line">            self.count -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><em>注意：此时<code>self.id</code>存放的不再是每个元素的组别而是父节点。</em></p>
+<h1 id="Weighted-Quick-Union-算法"><a href="#Weighted-Quick-Union-算法" class="headerlink" title="Weighted Quick-Union 算法"></a>Weighted Quick-Union 算法</h1><p>既然采用了<strong>树</strong>的结构，就有可能出现极端情况，是的树操作的时间复杂度退化成O(N)。为了避免这种情况，常规方法是使用平衡树，而对于并查集，只需要在<code>union</code>时，选择将小的树合并到大树上就可以了。</p>
+<p><img src="1339479587_5986.png" alt="wqu"></p>
+<p>理论上在平衡树合并两个树时，应当用根的高度来衡量两个树的大小，但是这里使用根节点的子孙节点的数量来衡量，<code>union</code>和<code>find</code>的时间复杂度接近于O(log  N)。这是因为这个方法还可以优化，通过路径压缩可以将<code>union</code>和<code>find</code>的时间复杂度降低至O(1)，而这样做会改变根的高度。</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeightedQuickUnion</span><span class="params">(object)</span>:</span></span><br><span class="line">    id=[]</span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    sz=[]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,n)</span>:</span></span><br><span class="line">        self.count = n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            self.id.append(i)</span><br><span class="line">            self.sz.append(<span class="number">1</span>) <span class="comment"># inital size of each tree is 1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(p) == self.find(q)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self,p)</span>:</span>   </span><br><span class="line">        <span class="keyword">while</span> (p != self.id[p]):</span><br><span class="line">            p = self.id[p]</span><br><span class="line">        <span class="keyword">return</span> p</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self,p,q)</span>:</span></span><br><span class="line">        root_p = self.find(p)</span><br><span class="line">        root_q = self.find(q)</span><br><span class="line">        <span class="keyword">if</span> root_p != root_q:</span><br><span class="line">            <span class="keyword">if</span> self.sz[root_p] &lt; self.sz[root_q]:</span><br><span class="line">                self.id[root_p] = root_q</span><br><span class="line">                self.sz[root_q] += self.sz[root_p]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.id[root_q] = root_p</span><br><span class="line">                self.sz[root_p] += self.sz[root_q]               </span><br><span class="line">            self.count -=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>输出<code>self.sz</code>可以看到<code>id = 1</code>和<code>id = 5</code>的组别包含了所有元素，<code>id = 4</code>组中的<code>4-7</code>实际上已经移动到<code>id = 5</code>组中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">size:  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<h1 id="Weighted-Quick-Union-With-Path-Compression-算法"><a href="#Weighted-Quick-Union-With-Path-Compression-算法" class="headerlink" title="Weighted Quick-Union With Path Compression 算法"></a>Weighted Quick-Union With Path Compression 算法</h1><p>第一种方法是在<code>find</code>方法的执行过程中保存所有路过的中间节点到一个数组中，然后在<code>while</code>循环结束之后，将这些中间节点的父节点指向根节点。但是这个方法在<code>find</code>操作很频繁时会频繁生成中间节点数组，相应的分配销毁的时间自然就上升了。另一种方法是在寻找<code>q</code>的根节点的同时不断改变父节点，相当于在寻找根节点的同时，不断地将<code>q</code>移动到上一级的节点下，对路径进行了压缩，使整个树结构扁平化。相应的实现如下，实际上只需要在<code>find</code>方法中添加一行代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self,p)</span>:</span>   </span><br><span class="line">        <span class="keyword">while</span> (p != self.id[p]):</span><br><span class="line">            self.id[p] = self.id[self.id[p]]</span><br><span class="line">            p = self.id[p]</span><br><span class="line">        <span class="keyword">return</span> p</span><br></pre></td></tr></table></figure>
+<p>这样<code>self.id</code>中保存的既是个元素的组别又是各元素的父节点，正因为如此<code>union</code>和<code>find</code>的时间复杂度降低到了O(1)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final parent/id list <span class="keyword">is</span> <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>随着一步步地深入，我们最终将查并集<code>union</code>和<code>find</code>的时间复杂度降低到了O(1)。本文中的四种算法的时间复杂度如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Algorithm</strong></th>
+<th style="text-align:center"><strong>Constructor</strong></th>
+<th style="text-align:center"><strong>Union</strong></th>
+<th style="text-align:center"><strong>Find</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Quick-Find</strong></td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">O(N)</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Quick-Union</strong></td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Tree height</td>
+<td style="text-align:center">Tree height</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Weighted Quick-Union</strong></td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">near to O(log N)</td>
+<td style="text-align:center">near to O(log N)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Weighted Quick-Union With Path Compression</strong></td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Very near to O(1)</td>
+<td style="text-align:center">Very near to O(1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>需要注意<code>Path Compression</code>是将各节点压缩到根节点下，所以<code>Weighted</code>仍然有意义。当然如果还需要输出连通路径，这个方法是没办法实现的，需要BFS或DFS算法来实现。</p>
+<p><a href>完整测试代码地址</a></p>
+<p></p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://blog.csdn.net/Guo15331092/article/details/78702686" target="_blank" rel="noopener">https://blog.csdn.net/Guo15331092/article/details/78702686</a></li>
+<li><a href="https://www.jianshu.com/p/72da76a34db1" target="_blank" rel="noopener">https://www.jianshu.com/p/72da76a34db1</a></li>
+<li><a href="https://blog.csdn.net/dm_vincent/article/details/7655764" target="_blank" rel="noopener">https://blog.csdn.net/dm_vincent/article/details/7655764</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E6%9F%A5%E5%B9%B6%E9%9B%86/" rel="tag"># 查并集</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/27/%E5%9B%BE-graph/" rel="next" title="图(graph)">
+                  <i class="fa fa-chevron-left"></i> 图(graph)
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="prev" title="计算机基础">
+                  计算机基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Find算法"><span class="nav-number">2.</span> <span class="nav-text">Quick-Find算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Union算法"><span class="nav-number">3.</span> <span class="nav-text">Quick-Union算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Weighted-Quick-Union-算法"><span class="nav-number">4.</span> <span class="nav-text">Weighted Quick-Union 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Weighted-Quick-Union-With-Path-Compression-算法"><span class="nav-number">5.</span> <span class="nav-text">Weighted Quick-Union With Path Compression 算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戚天天"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">戚天天</p>
+  <div class="site-description" itemprop="description">Life goes on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戚天天</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-child"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fire"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
+    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
+    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
