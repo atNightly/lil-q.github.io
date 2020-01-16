@@ -50,13 +50,13 @@
   };
 </script>
 
-  <meta name="description" content="分类评价排序算法的几个指标： 时间复杂度：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(nlog_2n)，坏的性能是O(n^2)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(nlog_2n)。 空间复杂度：内存使用量 稳定性： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当">
+  <meta name="description" content="十种排序算法的python实现及复杂度分析">
 <meta name="keywords" content="python,排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法(Sorting algorithm)">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="分类评价排序算法的几个指标： 时间复杂度：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是O(nlog_2n)，坏的性能是O(n^2)。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要O(nlog_2n)。 空间复杂度：内存使用量 稳定性： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当">
+<meta property="og:description" content="十种排序算法的python实现及复杂度分析">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bubble_sort_animation.gif">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;bubble_sort.gif">
@@ -75,7 +75,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;radix_sorted.gif">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bucket_sort_1.svg.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bucket_sort_2.svg.png">
-<meta property="og:updated_time" content="2019-12-24T06:29:02.992Z">
+<meta property="og:updated_time" content="2020-01-16T03:43:46.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95&#x2F;Bubble_sort_animation.gif">
 
@@ -276,13 +276,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>评价排序算法的几个指标：</p><ul>
+        <p>十种排序算法的python实现及复杂度分析</p>
+<a id="more"></a>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>评价排序算法的几个指标：</p>
+<ul>
 <li><strong>时间复杂度</strong>：包括平均时间复杂度、最坏时间复杂度和最好时间复杂度。一般而言，好的性能是<script type="math/tex">O(nlog_2n)</script>，坏的性能是<script type="math/tex">O(n^2)</script>。对于一个排序理想的性能是O(n)，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要<script type="math/tex">O(nlog_2n)</script>。</li>
 <li><strong>空间复杂度</strong>：内存使用量</li>
 <li><strong>稳定性</strong>： 稳定排序算法会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是<strong>稳定</strong>的，当有两个相等键值的纪录<strong>R</strong>和<strong>S</strong>，且在原本的列表中<strong>R</strong>出现在<strong>S</strong>之前，在排序过的列表中<strong>R</strong>也将会是在<strong>S</strong>之前。</li>
 <li><strong>依据排序的方法</strong>：插入、交换、选择、合并等等。  </li>
-</ul><a id="more"></a>
-
+</ul>
 <p>本文介绍了以下几种排序，推荐<strong>可视化网站<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">visualgo</a></strong>，下文代码都采用数组作为输入。</p>
 <div class="table-container">
 <table>
@@ -398,7 +400,7 @@
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(size<span class="number">-1</span>-i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j],nums[j+<span class="number">1</span>]=nums[j+<span class="number">1</span>],nums[j]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
 <p>但是，该算法的最优时间复杂度<a href="https://www.cnblogs.com/melon-h/archive/2012/09/20/2694941.html" target="_blank" rel="noopener">并不是O(n)，而是<script type="math/tex">O(n^2)</script></a>。需改写才能实现最优理想状态：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        didSwap=<span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(size<span class="number">-1</span>-i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j],nums[j+<span class="number">1</span>]=nums[j+<span class="number">1</span>],nums[j]</span><br><span class="line">                didSwap=<span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> didSwap==<span class="literal">False</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>数据分区：（有序区，无序区）。<br>在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。 </p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>数据分区：（有序区，无序区）。<br/>在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。 </p>
 <p> <img src="Selection_sort_animation.gif" alt="选择排序"></p>
 <h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>初始状态：无序区为R[1..n]，有序区为空；</li>
@@ -407,7 +409,7 @@
 </ol>
 <p><img src="selection_sort.gif" alt="选择流程"></p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">    size = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(size<span class="number">-1</span>):</span><br><span class="line">        min_index = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, size):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[min_index]:</span><br><span class="line">               min_index = j</span><br><span class="line">        nums[i], nums[min_index] = nums[min_index], nums[i]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>数据分区：（有序区，无序区）。<br>把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。 </p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>数据分区：（有序区，无序区）。<br/>把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。 </p>
 <p><img src="Insertion_sort_animation.gif" alt="插入排序"></p>
 <h3 id="流程-2"><a href="#流程-2" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>从第一个元素开始，该元素可以认为已经被排序；</li>
@@ -502,7 +504,7 @@
 <h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bucket_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> nums:<span class="keyword">return</span> nums</span><br><span class="line">	maxValue=nums[<span class="number">0</span>]</span><br><span class="line">	minValue=nums[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">		<span class="keyword">if</span> num&gt;maxValue:</span><br><span class="line">			maxValue=num </span><br><span class="line">		<span class="keyword">elif</span> num&lt;minValue:</span><br><span class="line">			minValue=num</span><br><span class="line">	<span class="comment"># 将数据映射到桶中</span></span><br><span class="line">	bucketSize=<span class="number">100</span> <span class="comment"># 设定桶的大小</span></span><br><span class="line">	bucketCount=(maxValue-minValue)//bucketSize+<span class="number">1</span> <span class="comment"># 计算桶的数量</span></span><br><span class="line">	buckets=[[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(bucketCount)]</span><br><span class="line">	<span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">		buckets[(num-minValue)//bucketSize].append(num)</span><br><span class="line">	<span class="comment"># 对桶内排序，这里使用插入排序，也可以递归桶排序。</span></span><br><span class="line">	res=[]</span><br><span class="line">	<span class="keyword">for</span> k <span class="keyword">in</span> buckets:       </span><br><span class="line">		res=res+insertion_sorted(k)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line"><span class="comment"># 插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sorted</span><span class="params">(nums)</span>:</span></span><br><span class="line">	size = len(nums)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,size):</span><br><span class="line">		cur_num=nums[i]</span><br><span class="line">		pre_index=i<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span> nums[pre_index]&gt;cur_num <span class="keyword">and</span> pre_index&gt;=<span class="number">0</span>:</span><br><span class="line">			nums[pre_index+<span class="number">1</span>]=nums[pre_index]</span><br><span class="line">			pre_index-=<span class="number">1</span></span><br><span class="line">		nums[pre_index+<span class="number">1</span>]=cur_num</span><br><span class="line">	<span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>桶排序、基数排序和计数排序都属于非比较类排序，其中计数排序和基数排序都用到了桶排序的思想。计数排序一共分了0，1，2…maxValue一共maxValue+1个桶，每个桶表示一个数；而基数排序则分了十个桶，从第一位开始递归桶排序。冒泡排序，选择排序，插入排序都是比较两个数然后交换。堆排序，归并排序，快速排序则是运用了分治的思想。</p>
 <p><a href="https://github.com/lil-q/sorting-algorithm-python" target="_blank" rel="noopener"><strong>完整代码</strong></a></p>
-<p></p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
+<p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zh.wikipedia.org/wiki/排序算法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95</a> </li>
 <li><a href="https://github.com/amusi/Deep-Learning-Interview-Book/blob/master/docs/数据结构与算法.md" target="_blank" rel="noopener">https://github.com/amusi/Deep-Learning-Interview-Book/blob/master/docs/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.md</a> </li>

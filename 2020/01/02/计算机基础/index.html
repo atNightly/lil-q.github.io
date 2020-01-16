@@ -50,17 +50,17 @@
   };
 </script>
 
-  <meta name="description" content="储存单位 位(bit)：数据存储的最小单位。在计算机中的二进制数系统中，位，简记为b,也称为比特，每个0或1就是一个位(bit)。计算机中的CPU位数指的是CPU一次能处理的最大位数。例如32位计算机的CPU一个机器周期内可以处理32位二进制数据的计算机。 字节(byte)：是8个二进制数，即8 bit 就称为一个字节（Byte）。字节这个词最早起源于1956年前后，由IBM公司提出。最早的拼写方">
+  <meta name="description" content="总结一些计算机基础知识">
 <meta name="keywords" content="计算机基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机基础">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="储存单位 位(bit)：数据存储的最小单位。在计算机中的二进制数系统中，位，简记为b,也称为比特，每个0或1就是一个位(bit)。计算机中的CPU位数指的是CPU一次能处理的最大位数。例如32位计算机的CPU一个机器周期内可以处理32位二进制数据的计算机。 字节(byte)：是8个二进制数，即8 bit 就称为一个字节（Byte）。字节这个词最早起源于1956年前后，由IBM公司提出。最早的拼写方">
+<meta property="og:description" content="总结一些计算机基础知识">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180503165002430.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180716165243972.jpg">
-<meta property="og:updated_time" content="2020-01-03T06:38:41.476Z">
+<meta property="og:updated_time" content="2020-01-16T03:49:55.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180503165002430.png">
 
@@ -261,13 +261,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="储存单位"><a href="#储存单位" class="headerlink" title="储存单位"></a>储存单位</h1><ul>
+        <p>总结一些计算机基础知识</p>
+<a id="more"></a>
+<h1 id="储存单位"><a href="#储存单位" class="headerlink" title="储存单位"></a>储存单位</h1><ul>
 <li><strong>位(bit)</strong>：数据存储的最小单位。在计算机中的二进制数系统中，位，简记为b,也称为比特，每个0或1就是一个位(bit)。计算机中的CPU位数指的是CPU一次能处理的最大位数。例如32位计算机的CPU一个机器周期内可以处理32位二进制数据的计算机。</li>
 <li><strong>字节(byte)</strong>：是8个二进制数，即8 bit 就称为一个字节（Byte）。字节这个词最早起源于1956年前后，由IBM公司提出。最早的拼写方式是bite，但是为了避免与bit混淆用y代替了i。</li>
 <li><strong>字(word)</strong>：字由若干字节构成，字的位数叫字长，一台8位机子：一个字等于1个字节，字长为8位，如果是16位的机子，一个字等于2个字节，字长为16，字是计算机处理数据和运算的单位。</li>
-</ul><a id="more"></a>
+</ul>
 <h1 id="数字编码"><a href="#数字编码" class="headerlink" title="数字编码"></a>数字编码</h1><p>我们知道现在计算机普遍使用二进制来表示，这是因为二进制能够工作的更好。对于二进制数来说，单独的讲某一个位没有太多的意义，但是可以将多个位组合起来，再加上某种解释，就可以用来表示我们日常生活中常用的数字。 计算机中常用表示的数又分为<strong>有符号数</strong>、<strong>无符号数</strong>和<strong>浮点数</strong>。</p>
-<p><img src="20180503165002430.png" alt="image"></p>
+<p><img src="20180503165002430.png" alt="image1"></p>
 <h2 id="无符号"><a href="#无符号" class="headerlink" title="无符号"></a>无符号</h2><p>无符号表示大于或者等于0的数字，是基于传统的二进制表示法进行编码。无符号的二进制数表示一个很重要的特性，也就是对于任何介于0~2^w-1 之间的数值都有一个唯一w为的值编码。</p>
 <h2 id="有符号数"><a href="#有符号数" class="headerlink" title="有符号数"></a>有符号数</h2><p>有符号数表示可以为正或者为负的数字，通常采用<strong>补码</strong>进行编码。 负数是有符号的数值,对于负数来说，我们最难的就是如何表示它的负号.先来看看什么是<strong>原码</strong>、<strong>补码</strong>、<strong>反码</strong>。</p>
 <p><strong>原码</strong></p>
@@ -287,7 +289,7 @@
 <p>至此，我们可以使用补码来表示我们生活中常用的正数、负数；当然，这是我们丢弃了最高位的代价来换取的。</p>
 <h2 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h2><p>小数点为定点，用来表示小数的，采用的是BCD码来编码。BCD码将0~9中的每个数用4位二进制数来表示，这样对于32位就可以表示8个数字，表示的数字范围也就是0~999999.99之间的1亿个实数。</p>
 <p>BCD编码也有很多用途，比如银行、超市这种需要用到小数记金额的情况就很合适，但是如果表示很小、或者很大的数就不是很合适了，比如地球到太阳的距离，一个氢原子的半径等等。而且这样编码非常浪费，对于32位整数我们可以表示将近40亿个数字，而BCD编码的数字只能表示1亿个数字。</p>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.jpg" alt="image"></p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.jpg" alt="image2"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://blog.csdn.net/return9/article/details/79888603" target="_blank" rel="noopener">https://blog.csdn.net/return9/article/details/79888603</a></li>
 <li><a href="https://blog.csdn.net/chihujiang3132/article/details/100930007" target="_blank" rel="noopener">https://blog.csdn.net/chihujiang3132/article/details/100930007</a></li>

@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="数组(Array)数组数据结构(array data structure)，简称数组(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了">
+  <meta name="description" content="数组和哈希表的学习和python实现">
 <meta name="keywords" content="python,数组,哈希表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组(Array)和哈希表(Hash table)">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="数组(Array)数组数据结构(array data structure)，简称数组(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了">
+<meta property="og:description" content="数组和哈希表的学习和python实现">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;312300343319616.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png">
-<meta property="og:updated_time" content="2019-12-27T12:00:03.786Z">
+<meta property="og:updated_time" content="2020-01-16T03:47:47.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;%E6%95%B0%E7%BB%84-Array&#x2F;312300343319616.jpg">
 
@@ -262,8 +262,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组(Array)"></a>数组(Array)</h1><p><strong>数组数据结构</strong>(array data structure)，简称<strong>数组</strong>(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。</p><p>数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了计算机的定址逻辑。在大多数现代计算机和许多外部存储设备中，存储器如同一维数组，索引就是其地址。编译器、处理单元（特别是向量处理器），经常会针对数组操作进行优化。</p><a id="more"></a>
-
+        <p>数组和哈希表的学习和python实现</p>
+<a id="more"></a>
+<h1 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组(Array)"></a>数组(Array)</h1><p><strong>数组数据结构</strong>(array data structure)，简称<strong>数组</strong>(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。</p>
+<p>数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了计算机的定址逻辑。在大多数现代计算机和许多外部存储设备中，存储器如同一维数组，索引就是其地址。编译器、处理单元（特别是向量处理器），经常会针对数组操作进行优化。</p>
 <h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>Python中 list 数据结构的复杂度。</p>
 <div class="table-container">
 <table>

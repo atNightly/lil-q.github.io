@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="定义 在通常情况下，使用列表储存堆，堆树是一颗完全二叉树，二项堆和斐波那契堆不属于二叉树  堆树中某个节点的值总是不大于或不小于其孩子节点的值  堆树中每个节点的子树都是堆树  当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。">
+  <meta name="description" content="定义 在通常情况下，使用列表储存堆，堆树是一颗完全二叉树，二项堆和斐波那契堆不属于二叉树  堆树中某个节点的值总是不大于或不小于其孩子节点的值  堆树中每个节点的子树都是堆树   当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。">
 <meta name="keywords" content="堆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="堆(Heap)">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%A0%86-heap&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="定义 在通常情况下，使用列表储存堆，堆树是一颗完全二叉树，二项堆和斐波那契堆不属于二叉树  堆树中某个节点的值总是不大于或不小于其孩子节点的值  堆树中每个节点的子树都是堆树  当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。">
+<meta property="og:description" content="定义 在通常情况下，使用列表储存堆，堆树是一颗完全二叉树，二项堆和斐波那契堆不属于二叉树  堆树中某个节点的值总是不大于或不小于其孩子节点的值  堆树中每个节点的子树都是堆树   当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%A0%86-heap&#x2F;建堆.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%A0%86-heap&#x2F;heapflow.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%A0%86-heap&#x2F;heapinsert.png">
-<meta property="og:updated_time" content="2020-01-03T07:16:35.622Z">
+<meta property="og:updated_time" content="2020-01-16T03:40:16.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%A0%86-heap&#x2F;建堆.png">
 
@@ -266,8 +266,9 @@
 <li>在通常情况下，使用列表储存堆，堆树是一颗<a href="https://www.zhihu.com/question/36134980/answer/87490177" target="_blank" rel="noopener">完全二叉树</a>，二项堆和斐波那契堆不属于二叉树 </li>
 <li>堆树中某个节点的值总是不大于或不小于其孩子节点的值 </li>
 <li>堆树中每个节点的子树都是堆树 </li>
-</ol><p>当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。</p><a id="more"></a>
-
+</ol>
+<p>当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。</p>
+<a id="more"></a>
 <h2 id="堆的建立"><a href="#堆的建立" class="headerlink" title="堆的建立"></a>堆的建立</h2><p>堆的建立并不建立一个新的树，而是对数组进行原地改动，第一个数（index=0）为完全二叉树的level 0，即根，第二个数和第三个数为level 1，以此类推。</p>
 <p><img src="建堆.png" alt="建堆"></p>
 <p>由于数组是升序数组，我们直接得到了最小堆。但是如果要进行升序排序，算法上需要建立最大堆。也就是说，当原数组是升序时，堆排序算法遇到了最坏情况。本文也以这种情况作为例子。</p>
@@ -289,7 +290,7 @@
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>特殊地，当我们交换根和最后一个叶子节点时，就能够提出最大值，并且存放在<code>index=-1</code>的位置。然后再对前n-1个数组成的最大堆进行该处理，以此类推，最终完成堆排序。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_sorted</span><span class="params">(heap)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(heap)):</span><br><span class="line">        heap[<span class="number">0</span>], heap[-i] = heap[-i], heap[<span class="number">0</span>]</span><br><span class="line">        adjust_heap(<span class="number">0</span>, n - i,heap)</span><br><span class="line">    <span class="keyword">return</span> heap</span><br><span class="line">heapSort=heap_sorted(heap)</span><br><span class="line">print(<span class="string">"heapSort:"</span>,heapSort)</span><br><span class="line"><span class="comment">#输出：heapSort: [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Heap" target="_blank" rel="noopener">完整测试代码地址</a></p>
-<p></p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
+<p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/pai-xu-by-powcai-2/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/pai-xu-by-powcai-2/</a></li>
 </ol>

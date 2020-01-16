@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作： 查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。 也就是说，不支持集合的分离、删除。Quick-Find算法以下图为例，连通关系为[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8,">
+  <meta name="description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作：  查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。">
 <meta name="keywords" content="python,查并集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="查并集(Union-find algorithm)">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作： 查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。 也就是说，不支持集合的分离、删除。Quick-Find算法以下图为例，连通关系为[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8,">
+<meta property="og:description" content="定义并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 合并 及 查询 问题。 它支持两种操作：  查找（Find）：确定某个元素处于哪个子集； 合并（Union）：将两个子集合并成一个集合。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;uf1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;1339479431_6633.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;1339479587_5986.png">
-<meta property="og:updated_time" content="2020-01-03T07:16:29.889Z">
+<meta property="og:updated_time" content="2020-01-16T03:41:01.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm&#x2F;uf1.png">
 
@@ -262,13 +262,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 <strong>合并</strong> 及 <strong>查询</strong> 问题。 它支持两种操作：</p><ul>
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>并查集是一种树形的数据结构，顾名思义，它用于处理一些不交集的 <strong>合并</strong> 及 <strong>查询</strong> 问题。 它支持两种操作：</p>
+<ul>
 <li>查找（Find）：确定某个元素处于哪个子集；</li>
 <li>合并（Union）：将两个子集合并成一个集合。</li>
-</ul><p>也就是说，不支持集合的分离、删除。</p><h1 id="Quick-Find算法"><a href="#Quick-Find算法" class="headerlink" title="Quick-Find算法"></a>Quick-Find算法</h1><p>以下图为例，连通关系为<code>[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8, 9)]</code>。</p><a id="more"></a>
-
-
-
+</ul>
+<a id="more"></a>
+<p>也就是说，不支持集合的分离、删除。</p>
+<h1 id="Quick-Find算法"><a href="#Quick-Find算法" class="headerlink" title="Quick-Find算法"></a>Quick-Find算法</h1><p>以下图为例，连通关系为<code>[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8, 9)]</code>。</p>
 <p><img src="uf1.png" alt="uf"></p>
 <p>首先初始化所有节点，认为它们属于一个组，因此不连通的节点必然就属于不同的组：</p>
 <div class="table-container">
@@ -433,7 +434,7 @@
 </div>
 <p>需要注意<code>Path Compression</code>是将各节点压缩到根节点下，所以<code>Weighted</code>仍然有意义。当然如果还需要输出连通路径，这个方法是没办法实现的，需要BFS或DFS算法来实现。</p>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Union-Find" target="_blank" rel="noopener">完整测试代码地址</a></p>
-<p></p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
+<p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://blog.csdn.net/Guo15331092/article/details/78702686" target="_blank" rel="noopener">https://blog.csdn.net/Guo15331092/article/details/78702686</a></li>
 <li><a href="https://www.jianshu.com/p/72da76a34db1" target="_blank" rel="noopener">https://www.jianshu.com/p/72da76a34db1</a></li>
