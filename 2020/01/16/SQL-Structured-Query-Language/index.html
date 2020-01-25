@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="SQL基础语句快查">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL(Structured Query Language)">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;16&#x2F;SQL-Structured-Query-Language&#x2F;index.html">
+<meta property="og:site_name" content="Homeward">
+<meta property="og:description" content="SQL基础语句快查">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;16&#x2F;SQL-Structured-Query-Language&#x2F;joins.png">
+<meta property="og:updated_time" content="2020-01-22T11:21:53.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;16&#x2F;SQL-Structured-Query-Language&#x2F;joins.png">
+
+<link rel="canonical" href="http://lil-q.github.io/2020/01/16/SQL-Structured-Query-Language/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>SQL(Structured Query Language) | Homeward</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homeward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/01/16/SQL-Structured-Query-Language/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL(Structured Query Language)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-16 13:59:07" itemprop="dateCreated datePublished" datetime="2020-01-16T13:59:07+08:00">2020-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/01/16/SQL-Structured-Query-Language/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/16/SQL-Structured-Query-Language/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>SQL基础语句快查</p>
+<a id="more"></a>
+<p>原教程地址：<a href="http://www.xuesql.cn/" target="_blank" rel="noopener">http://www.xuesql.cn/</a></p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h2 id="1-1-什么是SQL-Structured-Query-Language"><a href="#1-1-什么是SQL-Structured-Query-Language" class="headerlink" title="1.1 什么是SQL(Structured Query Language)"></a>1.1 什么是SQL(Structured Query Language)</h2><p><code>SQL</code>, 全称为Structured Query Language（结构化查询语言)。 要讲SQL就绕不开database(数据库), 平时所说的数据库，一般就是指的 <code>Relational database(关系型数据库)</code>。</p>
+<p>大家知道数据库是用来存储大量数据的一种软件，那么SQL呢是用来操作数据里的数据，具体来说SQL可以做数据查询，数据更新，写入数据等等。</p>
+<h2 id="1-2-关系型数据库-Relational-databases"><a href="#1-2-关系型数据库-Relational-databases" class="headerlink" title="1.2 关系型数据库(Relational databases)"></a>1.2 关系型数据库(Relational databases)</h2><p>在学习SQL语法之前有必要解释一下什么是关系型数据库（Relational databases)？数据库由若干张<code>表</code>(Table)组成，这里说的数据Table很像Excel里的表; 正如Excel里的表格，Table也是由 <code>行(rows)</code>和<code>列(columns)</code>组成。</p>
+<p>一个Table存储一个类别的数据，每一行是一条数据，每一列是这种数据的一个属性； Table就像一个二维的表格，<code>列(columns)</code>是有限固定的，<code>行(rows)</code>是无限不固定的。</p>
+<h1 id="查询-SELECT"><a href="#查询-SELECT" class="headerlink" title="查询(SELECT)"></a>查询(SELECT)</h1><p>Select 查询某些属性列（specific columns）的语法。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>（列名）, another_column, …</span><br><span class="line"><span class="keyword">FROM</span> mytable（表名）;</span><br></pre></td></tr></table></figure>
+<p>Select 查询所有列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable（表名）;</span><br></pre></td></tr></table></figure>
+<h1 id="条件查询-WHERE"><a href="#条件查询-WHERE" class="headerlink" title="条件查询 (WHERE)"></a>条件查询 (WHERE)</h1><p>条件查询语法。WHERE</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, …</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> condition</span><br><span class="line">    <span class="keyword">AND</span>/<span class="keyword">OR</span> another_condition</span><br><span class="line">    <span class="keyword">AND</span>/<span class="keyword">OR</span> …;</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operator（关键字）</th>
+<th>Condition（意思）</th>
+<th><strong>SQL Example(例子）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=, !=, &lt; &lt;=, &gt;, &gt;=</td>
+<td>Standard numerical operators 基础的 大于，等于等比较</td>
+<td>col_name != 4</td>
+</tr>
+<tr>
+<td>BETWEEN … AND …</td>
+<td>Number is within range of two values (inclusive) 在两个数之间</td>
+<td>col_name BETWEEN 1.5 AND 10.5</td>
+</tr>
+<tr>
+<td>NOT BETWEEN … AND …</td>
+<td>Number is not within range of two values (inclusive) 不在两个数之间</td>
+<td>col_name NOT BETWEEN 1 AND 10</td>
+</tr>
+<tr>
+<td>IN (…)</td>
+<td>Number exists in a list 在一个列表</td>
+<td>col_name IN (2, 4, 6)</td>
+</tr>
+<tr>
+<td>NOT IN (…)</td>
+<td>Number does not exist in a list 不在一个列表</td>
+<td>col_name NOT IN (1, 3, 5)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="模糊查询-LIKE-和-通配符-）"><a href="#模糊查询-LIKE-和-通配符-）" class="headerlink" title="模糊查询(LIKE) 和 通配符(%）"></a>模糊查询(LIKE) 和 通配符(%）</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Operator（操作符）</th>
+<th>Condition（解释）</th>
+<th>Example（例子）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>Case sensitive exact string comparison (<em>notice the single equals</em>)完全等于</td>
+<td>col_name = “abc”</td>
+</tr>
+<tr>
+<td>!= or &lt;&gt;</td>
+<td>Case sensitive exact string inequality comparison 不等于</td>
+<td>col_name != “abcd”</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>Case insensitive exact string comparison 没有用通配符等价于 =</td>
+<td>col_name LIKE “ABC”</td>
+</tr>
+<tr>
+<td>NOT LIKE</td>
+<td>Case insensitive exact string inequality comparison 没有用通配符等价于 !=</td>
+<td>col_name NOT LIKE “ABCD”</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Used anywhere in a string to match a sequence of zero or more characters (only with LIKE or NOT LIKE) 通配符，代表匹配0个以上的字符</td>
+<td>col_name LIKE “%AT%” (matches “AT”, “ATTIC”, “CAT” or even “BATS”) “%AT%” 代表AT 前后可以有任意字符</td>
+</tr>
+<tr>
+<td>_</td>
+<td>Used anywhere in a string to match a single character (only with LIKE or NOT LIKE) 和% 相似，代表1个字符</td>
+<td>col<em>name LIKE “AN</em>“ (matches “AND”, but not “AN”)</td>
+</tr>
+<tr>
+<td>IN (…)</td>
+<td>String exists in a list 在列表</td>
+<td>col_name IN (“A”, “B”, “C”)</td>
+</tr>
+<tr>
+<td>NOT IN (…)</td>
+<td>String does not exist in a list 不在列表</td>
+<td>col_name NOT IN (“D”, “E”, “F”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="过滤-DISTINCT"><a href="#过滤-DISTINCT" class="headerlink" title="过滤(DISTINCT)"></a>过滤(DISTINCT)</h1><p>选取出唯一的结果的语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">column</span>, another_column, … </span><br><span class="line"><span class="keyword">FROM</span> mytable </span><br><span class="line"><span class="keyword">WHERE</span> condition(s);</span><br></pre></td></tr></table></figure>
+<h1 id="排序-ORDER"><a href="#排序-ORDER" class="headerlink" title="排序(ORDER)"></a>排序(ORDER)</h1><p>结果排序（ordered results）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, … </span><br><span class="line"><span class="keyword">FROM</span> mytable </span><br><span class="line"><span class="keyword">WHERE</span> condition(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span>/<span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p><code>ASC</code>：升序；<code>DESC</code>：降序。</p>
+<h1 id="选取-LIMIT-OFFSET"><a href="#选取-LIMIT-OFFSET" class="headerlink" title="选取(LIMIT, OFFSET)"></a>选取(LIMIT, OFFSET)</h1><p><code>LIMIT</code> 和 <code>OFFSET</code> 子句通常和<code>ORDER BY</code> 语句一起使用，当我们对整个结果集排序之后，我们可以 <code>LIMIT</code>来指定只返回多少行结果 ,用 <code>OFFSET</code>来指定从哪一行开始返回。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, another_column, …</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> condition(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">column</span> <span class="keyword">ASC</span>/<span class="keyword">DESC</span>, another_column <span class="keyword">ASC</span>/<span class="keyword">DESC</span>, …</span><br><span class="line"><span class="keyword">LIMIT</span> num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+<h1 id="多表联合-JOIN"><a href="#多表联合-JOIN" class="headerlink" title="多表联合(JOIN)"></a>多表联合(JOIN)</h1><p><code>主键(primary key)</code>, 一般关系数据表中，都会有一个属性列设置为 <code>主键(primary key)</code>。主键是唯一标识一条数据的，不会重复复（想象你的身份证号码)。一个最常见的主键就是auto-incrementing integer(自增ID，每写入一行数据ID+1, 当然字符串，hash值等只要是每条数据是唯一的也可以设为主键。借助<code>主键(primary key)</code>（当然其他唯一性的属性也可以），我们可以把两个表中具有相同 主键ID的数据连接起来。</p>
+<p><img src="joins.png" alt="joins"></p>
+<h2 id="INNER-JOIN"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h2><p>用INNER JOIN 连接表的语法。通过<code>ON</code>条件描述的关联关系;<code>INNER JOIN</code> 先将两个表数据连接到一起. 两个表中如果通过ID互相找不到的数据将会舍弃。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> table1.column, table2.another_table_column, … </span><br><span class="line"><span class="keyword">FROM</span> table1 （主表） </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> table2 （要连接的表）    </span><br><span class="line">	<span class="keyword">ON</span> table1.id = table2.matching_id </span><br><span class="line"><span class="keyword">WHERE</span> condition(s) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> table1.column, … <span class="keyword">ASC</span>/<span class="keyword">DESC</span> </span><br><span class="line"><span class="keyword">LIMIT</span> num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+<h2 id="OUTER-JOINs"><a href="#OUTER-JOINs" class="headerlink" title="OUTER JOINs"></a>OUTER JOINs</h2><p><code>INNER JOIN</code> 只会保留两个表都存在的数据（还记得之前的交集吗），这看起来意味着一些数据的丢失，在某些场景下会有问题.</p>
+<p>用LEFT/RIGHT/FULL JOINs 做多表查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> table1.column, table2.another_table_column, … </span><br><span class="line"><span class="keyword">FROM</span> table1 （主表） </span><br><span class="line"><span class="keyword">LEFT</span>/<span class="keyword">RIGHT</span>/<span class="keyword">FULL</span> <span class="keyword">JOIN</span> table2 （要连接的表）    </span><br><span class="line">	<span class="keyword">ON</span> table1.id = table2.matching_id </span><br><span class="line"><span class="keyword">WHERE</span> condition(s) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> table1.column, … <span class="keyword">ASC</span>/<span class="keyword">DESC</span> </span><br><span class="line"><span class="keyword">LIMIT</span> num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+<h1 id="表达式-AS"><a href="#表达式-AS" class="headerlink" title="表达式(AS)"></a>表达式(AS)</h1><p>当我们用表达式对col属性计算时，很多事可以在SQL内完成，这让SQL更加灵活，但表达式如果长了则很难一下子读懂。所以SQL提供了<code>AS</code>关键字， 来给表达式取一个别名.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col_expression <span class="keyword">AS</span> expr_description</span><br><span class="line"><span class="keyword">FROM</span> table1 <span class="keyword">AS</span> newTableName</span><br><span class="line"><span class="keyword">WHERE</span> condition(s)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> expr_description <span class="keyword">ASC</span>/<span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> num_limit <span class="keyword">OFFSET</span> num_offset;</span><br></pre></td></tr></table></figure>
+<h1 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h1><p>下面介绍几个常用统计函数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>COUNT(<em>*</em></strong>)<strong>, </strong>COUNT(column)**</td>
+<td>计数！COUNT(*) 统计数据行数，COUNT(column) 统计column非NULL的行数.</td>
+</tr>
+<tr>
+<td><strong>MIN(column)</strong></td>
+<td>找column最小的一行.</td>
+</tr>
+<tr>
+<td><strong>MAX(column)</strong></td>
+<td>找column最大的一行.</td>
+</tr>
+<tr>
+<td><strong>AVG(column)</strong></td>
+<td>对column所有行取平均值.</td>
+</tr>
+<tr>
+<td><strong>SUM(column)</strong></td>
+<td>对column所有行求和.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当不求整组数据时，可以使用<code>GROUP BY</code> 对数据分组。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, <span class="keyword">count</span>(*)*<span class="number">100</span>/(<span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">FROM</span> table1) <span class="keyword">FROM</span> table1 </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">column</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span>;</span><br></pre></td></tr></table></figure>
+<p>可以通过嵌套一个select来实现百分比的求解。</p>
+<p>数据库是先对数据做<code>WHERE</code>，然后对结果做分组，如果我们要对分组完的数据再筛选就需要使用 <code>HAVING</code> 语法。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> group_by_column, AGG_FUNC(column_expression) <span class="keyword">AS</span> aggregate_result_alias, …</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> condition</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">column</span></span><br><span class="line"><span class="keyword">HAVING</span> group_condition;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/14/%E6%9D%BE%E5%B1%B1%E6%B9%96/" rel="next" title="松山湖">
+                  <i class="fa fa-chevron-left"></i> 松山湖
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/01/18/%E7%90%86%E6%83%B3/" rel="prev" title="理想">
+                  理想 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是SQL-Structured-Query-Language"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是SQL(Structured Query Language)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-关系型数据库-Relational-databases"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 关系型数据库(Relational databases)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询-SELECT"><span class="nav-number">2.</span> <span class="nav-text">查询(SELECT)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件查询-WHERE"><span class="nav-number">3.</span> <span class="nav-text">条件查询 (WHERE)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模糊查询-LIKE-和-通配符-）"><span class="nav-number">4.</span> <span class="nav-text">模糊查询(LIKE) 和 通配符(%）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤-DISTINCT"><span class="nav-number">5.</span> <span class="nav-text">过滤(DISTINCT)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序-ORDER"><span class="nav-number">6.</span> <span class="nav-text">排序(ORDER)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选取-LIMIT-OFFSET"><span class="nav-number">7.</span> <span class="nav-text">选取(LIMIT, OFFSET)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多表联合-JOIN"><span class="nav-number">8.</span> <span class="nav-text">多表联合(JOIN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INNER-JOIN"><span class="nav-number">8.1.</span> <span class="nav-text">INNER JOIN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OUTER-JOINs"><span class="nav-number">8.2.</span> <span class="nav-text">OUTER JOINs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式-AS"><span class="nav-number">9.</span> <span class="nav-text">表达式(AS)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计"><span class="nav-number">10.</span> <span class="nav-text">统计</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戚天天"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">戚天天</p>
+  <div class="site-description" itemprop="description">Life goes on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戚天天</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-child"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fire"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
+    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
+    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
