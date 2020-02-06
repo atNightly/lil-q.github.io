@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="HTML学习笔记">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-06T06:27:48.269Z">
+<meta property="og:updated_time" content="2020-02-06T09:34:27.181Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://lil-q.github.io/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/">
@@ -260,20 +260,24 @@
       
         <p><a href="https://www.runoob.com/html/html-tutorial.html" target="_blank" rel="noopener">HTML学习</a>笔记</p>
 <a id="more"></a>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>超文本标记语言</strong>（英语：<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage，简称：<strong>HTML</strong>）是一种用于创建网页的标准标记语言。HTML是一种基础技术，常与<strong>CSS</strong>、<strong>JavaScript</strong>一起被众多网站用于设计网页、网页应用程序以及移动应用程序的用户界面。网页浏览器可以读取HTML文件，并将其渲染成可视化网页。HTML描述了一个网站的结构语义随着线索的呈现，使之成为一种标记语言而非编程语言。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>超文本标记语言</strong>（英语：<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage，简称：<strong>HTML</strong>）是一种用于创建网页的标准标记语言。HTML 是一种基础技术，常与 <strong>CSS</strong>、<strong>JavaScript</strong> 一起被众多网站用于设计网页、网页应用程序以及移动应用程序的用户界面。网页浏览器可以读取 HTML 文件，并将其渲染成可视化网页。HTML 描述了一个网站的结构语义随着线索的呈现，使之成为一种标记语言而非编程语言。</p>
 <h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>标题（Heading）是通过 <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> 标签进行定义的。<br><code>&lt;h1&gt;</code> 定义最大的标题。 <code>&lt;h6&gt;</code> 定义最小的标题。<br><code>&lt;a&gt;</code> 将在后文介绍。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;这是一个标题。&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;这是一个标题。&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
-<p><h1><a id="title1">这是一个标题。</a></h1></p>
-<p><h2>这是一个标题。</h2></p>
-<h3>这是一个标题。</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;标题一（跳回）&lt;/a&gt;&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;标题二&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;标题三&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
+<p><h1><a id="title1">标题一（跳回）</a></h1></p>
+<p><h2>标题二</h2></p>
+<h3>标题三</h3>
 
 <h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落是通过 <code>&lt;p&gt;</code> 标签定义的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;段落一&lt;/p&gt;</span><br><span class="line">&lt;p&gt;段落二&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <p>段落一</p> <p>段落二</p>
+## 换行
 
-<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>使用<code>&lt;br&gt;</code>标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</p>
-<p>可使用 <code>&lt;pre&gt;</code> 标签对空行和空格进行控制。</p>
+使用 `<br>` 标签，与 markdown 相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `<pre>` 标签对空行和空格进行控制。
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
 <p>始不垂翅，<br>终能奋翼</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	始不垂翅，</span><br><span class="line">	终能奋翼</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
@@ -314,27 +318,57 @@ USA
 <h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  </span><br><span class="line">&lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <p>该段落文字从左到右显示。</p>  
 <p><bdo dir="rtl">该段落文字从右到左显示。</bdo></p> 
-## 引用
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;WWF&apos;s goal is to: </span><br><span class="line">&lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;</span><br><span class="line">We hope they succeed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;WWF&apos;s goal is to: </span><br><span class="line">&lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;</span><br><span class="line">We hope they succeed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <p>WWF's goal is to: 
 <q>Build a future where people live in harmony with nature.</q>
 We hope they succeed.</p>
 
 <h2 id="划线"><a href="#划线" class="headerlink" title="划线"></a>划线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<p><p>My favorite color is <del>blue</del> <ins>red</ins>!</p></p>
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="url">链接文本</a></p>
-<h2 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="https://lil-q.github.io/" target="_blank">访问主页!</a></p>
-<h2 id="id-属性"><a href="#id-属性" class="headerlink" title="id 属性"></a>id 属性</h2><p>在HTML文档中插入ID:</p>
+<p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+# 链接
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<a href="url">链接文本</a>
+
+## target 属性
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<a href="https://lil-q.github.io/" target="_blank">访问主页!</a>
+
+##  id 属性
+
+在HTML文档中插入ID:
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+
+在HTML文档中创建一个链接到"有用的提示部分(id="tips"）"：
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+
+或者，从另一个页面创建一个链接到"有用的提示部分(id="tips"）"：
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="#title1">返回标题章节</a></p>
+
+下面这个例子将跳回标题章节中提到的位置。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#title1&quot;&gt;返回标题章节&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<a href="#title1">返回标题章节</a>
+
+## 邮箱设置
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">这是一个电子邮件链接：</span><br><span class="line">&lt;a href=&quot;mailto:someone@example.com?cc=someoneelse@example.com&amp;bcc=andsomeoneelse@example.com&amp;subject=Summer%20Party&amp;body=You%20are%20invited%20to%20a%20big%20summer%20party!&quot; target=&quot;_top&quot;&gt;发送邮件!&lt;/a&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>
+这是一个电子邮件链接：
+<a href="mailto:someone@example.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">发送邮件!</a>
+</p>
+
+<p><strong>注意:</strong> 单词之间的空格使用 %20 代替，以确保浏览器可以正常显示文本。</p>
 
     </div>
 
@@ -398,7 +432,7 @@ We hope they succeed.</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">这是一个标题。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">这是一个标题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.1.</span> <span class="nav-text">这是一个标题。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本"><span class="nav-number">4.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#段落"><span class="nav-number">4.1.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换行"><span class="nav-number">4.2.</span> <span class="nav-text">换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平线"><span class="nav-number">4.3.</span> <span class="nav-text">水平线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.4.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">4.5.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址"><span class="nav-number">4.6.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释-1"><span class="nav-number">4.7.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方向"><span class="nav-number">4.8.</span> <span class="nav-text">方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划线"><span class="nav-number">4.9.</span> <span class="nav-text">划线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">5.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#target-属性"><span class="nav-number">5.1.</span> <span class="nav-text">target 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#id-属性"><span class="nav-number">5.2.</span> <span class="nav-text">id 属性</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">标题一（跳回）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">标题二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.1.</span> <span class="nav-text">标题三</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本"><span class="nav-number">4.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#段落"><span class="nav-number">4.1.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平线"><span class="nav-number">4.2.</span> <span class="nav-text">水平线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">4.4.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址"><span class="nav-number">4.5.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释-1"><span class="nav-number">4.6.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方向"><span class="nav-number">4.7.</span> <span class="nav-text">方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.8.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划线"><span class="nav-number">4.9.</span> <span class="nav-text">划线</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
