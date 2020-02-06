@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="HTML学习笔记">
+<meta name="keywords" content="网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML学习">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;05&#x2F;HTML%E5%AD%A6%E4%B9%A0&#x2F;index.html">
+<meta property="og:site_name" content="Homeward">
+<meta property="og:description" content="HTML学习笔记">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-06T05:34:48.855Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://lil-q.github.io/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>HTML学习 | Homeward</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Homeward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.png">
+      <meta itemprop="name" content="戚天天">
+      <meta itemprop="description" content="Life goes on">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homeward">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-05 18:24:30" itemprop="dateCreated datePublished" datetime="2020-02-05T18:24:30+08:00">2020-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://www.runoob.com/html/html-tutorial.html" target="_blank" rel="noopener">HTML学习</a>笔记</p>
+<a id="more"></a>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>超文本标记语言</strong>（英语：<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage，简称：<strong>HTML</strong>）是一种用于创建网页的标准标记语言。HTML是一种基础技术，常与<strong>CSS</strong>、<strong>JavaScript</strong>一起被众多网站用于设计网页、网页应用程序以及移动应用程序的用户界面。网页浏览器可以读取HTML文件，并将其渲染成可视化网页。HTML描述了一个网站的结构语义随着线索的呈现，使之成为一种标记语言而非编程语言。</p>
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><p>标题（Heading）是通过 <h1> - <h6> 标签进行定义的。<br><h1> 定义最大的标题。 <h6> 定义最小的标题。<br><a>将在后文介绍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;这是一个标题。&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;这是一个标题。&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
+<p><h1><a id="title1">这是一个标题。</a></h1></p>
+<p><h2>这是一个标题。</h2></p>
+<h3>这是一个标题。</h3>
+
+<h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落是通过 <p> 标签定义的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;段落一 &lt;/p&gt;</span><br><span class="line">&lt;p&gt;段落二&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>段落一 </p> <p>段落二</p>
+## 换行
+
+使用`<br>`标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `<pre>` 标签对空行和空格进行控制。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>始不垂翅，<br>终能奋翼</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	始不垂翅，</span><br><span class="line">	终能奋翼</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>
+    始不垂翅，
+    终能奋翼
+</p>
+
+<h2 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;下面有一条水平线&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;p&gt;上面有一条水平线&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>下面有一条水平线</p>
+<hr>
+<p>上面有一条水平线</p>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。</p>
+<p>注释写法如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这是一个注释 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;</span><br><span class="line">&lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;</span><br><span class="line">这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;</span><br></pre></td></tr></table></figure>
+<p><b>加粗文本</b><br><br><i>斜体文本</i><br><br><code>电脑自动输出</code><br><br>这是 <sub> 下标</sub> 和 <sup> 上标</sup></p>
+<p>通常标签<code>&lt;strong&gt;</code>替换加粗标签<code>&lt;b&gt;</code>来使用，<code>&lt;em&gt;</code>替换<code>&lt;i&gt;</code>标签使用。</p>
+<p>然而，这些标签的含义是不同的：</p>
+<blockquote>
+<p><code>&lt;b&gt;</code>与<code>&lt;i&gt;</code>定义粗体或斜体文本。</p>
+<p><code>&lt;strong&gt;</code>或者<code>&lt;em&gt;</code>意味着你要呈现的文本是重要的，所以要突出显示。</p>
+</blockquote>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;address&gt;</span><br><span class="line">Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; </span><br><span class="line">Visit us at:&lt;br&gt;</span><br><span class="line">Example.com&lt;br&gt;</span><br><span class="line">Box 564, Disneyland&lt;br&gt;</span><br><span class="line">USA</span><br><span class="line">&lt;/address&gt;</span><br></pre></td></tr></table></figure>
+<address>
+Written by <a href="mailto:qitiantianc137@outlook.com" target="_blank" rel="noopener">lil-q</a>.<br> 
+Visit us at:<br>
+Example.com<br>
+Box 564, Disneyland<br>
+USA
+</address>
+
+<h2 id="注释-1"><a href="#注释-1" class="headerlink" title="注释"></a>注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;</span><br><span class="line">&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;</span><br></pre></td></tr></table></figure>
+<p><abbr title="etcetera">etc.</abbr></p>
+<acronym title="upset">happy</acronym>
+
+<h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  </span><br><span class="line">&lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>该段落文字从左到右显示。</p>  
+<p><bdo dir="rtl">该段落文字从右到左显示。</bdo></p> 
+## 引用
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;WWF&apos;s goal is to: </span><br><span class="line">&lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;</span><br><span class="line">We hope they succeed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>WWF's goal is to: 
+<q>Build a future where people live in harmony with nature.</q>
+We hope they succeed.</p>
+
+<h2 id="划线"><a href="#划线" class="headerlink" title="划线"></a>划线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p><p>My favorite color is <del>blue</del> <ins>red</ins>!</p></p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="url">链接文本</a></p>
+<h2 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="https://lil-q.github.io/" target="_blank">访问主页!</a></p>
+<h2 id="id-属性"><a href="#id-属性" class="headerlink" title="id 属性"></a>id 属性</h2><p>在HTML文档中插入ID:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="#title1">返回标题章节</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag"># 网页</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/02/01/%E5%BA%94%E7%94%A8%E4%B8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE/" rel="next" title="2019-nCoV疫情数据可视化地图">
+                  <i class="fa fa-chevron-left"></i> 2019-nCoV疫情数据可视化地图
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text"> -  标签进行定义的。 定义最大的标题。  定义最小的标题。将在后文介绍。
+123&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;这是一个标题。&lt;/h2&gt;&lt;h3&gt;这是一个标题。&lt;/h3&gt;
+这是一个标题。
+这是一个标题。
+这是一个标题。
+
+文本段落段落是通过  标签定义的。
+12&lt;p&gt;段落一 &lt;/p&gt;&lt;p&gt;段落二&lt;/p&gt;
+段落一  段落二
+## 换行
+
+使用``标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `` 标签对空行和空格进行控制。
+
+1&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;
+
+始不垂翅，终能奋翼
+1234&lt;p&gt;	始不垂翅，	终能奋翼&lt;/p&gt;
+
+
+    始不垂翅，
+    终能奋翼
+
+
+水平线123&lt;p&gt;下面有一条水平线&lt;/p&gt;&lt;hr&gt;&lt;p&gt;上面有一条水平线&lt;/p&gt;
+下面有一条水平线
+
+上面有一条水平线
+
+注释可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+注释写法如下:
+1&lt;!-- 这是一个注释 --&gt;
+格式1234&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;&lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;&lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;
+加粗文本斜体文本电脑自动输出这是  下标 和  上标
+通常标签&lt;strong&gt;替换加粗标签&lt;b&gt;来使用，&lt;em&gt;替换&lt;i&gt;标签使用。
+然而，这些标签的含义是不同的：
+
+&lt;b&gt;与&lt;i&gt;定义粗体或斜体文本。
+&lt;strong&gt;或者&lt;em&gt;意味着你要呈现的文本是重要的，所以要突出显示。
+
+地址1234567&lt;address&gt;Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; Visit us at:&lt;br&gt;Example.com&lt;br&gt;Box 564, Disneyland&lt;br&gt;USA&lt;/address&gt;
+
+Written by lil-q. 
+Visit us at:
+Example.com
+Box 564, Disneyland
+USA
+
+
+注释12&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;
+etc.
+happy
+
+方向12&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  &lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;
+该段落文字从左到右显示。  
+该段落文字从右到左显示。 
+## 引用
+
+123&lt;p&gt;WWF&#39;s goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;We hope they succeed.&lt;/p&gt;
+
+WWF&#39;s goal is to: 
+Build a future where people live in harmony with nature.
+We hope they succeed.
+
+划线1&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;
+My favorite color is blue red!
+链接1&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;
+链接文本
+target 属性1&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;
+访问主页!
+id 属性在HTML文档中插入ID:
+1&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;
+在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+返回标题章节
+</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#null"><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text"> 标签进行定义的。 定义最大的标题。  定义最小的标题。将在后文介绍。
+123&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;这是一个标题。&lt;/h2&gt;&lt;h3&gt;这是一个标题。&lt;/h3&gt;
+这是一个标题。
+这是一个标题。
+这是一个标题。
+
+文本段落段落是通过  标签定义的。
+12&lt;p&gt;段落一 &lt;/p&gt;&lt;p&gt;段落二&lt;/p&gt;
+段落一  段落二
+## 换行
+
+使用``标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `` 标签对空行和空格进行控制。
+
+1&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;
+
+始不垂翅，终能奋翼
+1234&lt;p&gt;	始不垂翅，	终能奋翼&lt;/p&gt;
+
+
+    始不垂翅，
+    终能奋翼
+
+
+水平线123&lt;p&gt;下面有一条水平线&lt;/p&gt;&lt;hr&gt;&lt;p&gt;上面有一条水平线&lt;/p&gt;
+下面有一条水平线
+
+上面有一条水平线
+
+注释可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+注释写法如下:
+1&lt;!-- 这是一个注释 --&gt;
+格式1234&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;&lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;&lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;
+加粗文本斜体文本电脑自动输出这是  下标 和  上标
+通常标签&lt;strong&gt;替换加粗标签&lt;b&gt;来使用，&lt;em&gt;替换&lt;i&gt;标签使用。
+然而，这些标签的含义是不同的：
+
+&lt;b&gt;与&lt;i&gt;定义粗体或斜体文本。
+&lt;strong&gt;或者&lt;em&gt;意味着你要呈现的文本是重要的，所以要突出显示。
+
+地址1234567&lt;address&gt;Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; Visit us at:&lt;br&gt;Example.com&lt;br&gt;Box 564, Disneyland&lt;br&gt;USA&lt;/address&gt;
+
+Written by lil-q. 
+Visit us at:
+Example.com
+Box 564, Disneyland
+USA
+
+
+注释12&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;
+etc.
+happy
+
+方向12&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  &lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;
+该段落文字从左到右显示。  
+该段落文字从右到左显示。 
+## 引用
+
+123&lt;p&gt;WWF&#39;s goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;We hope they succeed.&lt;/p&gt;
+
+WWF&#39;s goal is to: 
+Build a future where people live in harmony with nature.
+We hope they succeed.
+
+划线1&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;
+My favorite color is blue red!
+链接1&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;
+链接文本
+target 属性1&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;
+访问主页!
+id 属性在HTML文档中插入ID:
+1&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;
+在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+返回标题章节
+</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text"> 定义最大的标题。  定义最小的标题。将在后文介绍。
+123&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;这是一个标题。&lt;/h2&gt;&lt;h3&gt;这是一个标题。&lt;/h3&gt;
+这是一个标题。
+这是一个标题。
+这是一个标题。
+
+文本段落段落是通过  标签定义的。
+12&lt;p&gt;段落一 &lt;/p&gt;&lt;p&gt;段落二&lt;/p&gt;
+段落一  段落二
+## 换行
+
+使用``标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `` 标签对空行和空格进行控制。
+
+1&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;
+
+始不垂翅，终能奋翼
+1234&lt;p&gt;	始不垂翅，	终能奋翼&lt;/p&gt;
+
+
+    始不垂翅，
+    终能奋翼
+
+
+水平线123&lt;p&gt;下面有一条水平线&lt;/p&gt;&lt;hr&gt;&lt;p&gt;上面有一条水平线&lt;/p&gt;
+下面有一条水平线
+
+上面有一条水平线
+
+注释可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+注释写法如下:
+1&lt;!-- 这是一个注释 --&gt;
+格式1234&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;&lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;&lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;
+加粗文本斜体文本电脑自动输出这是  下标 和  上标
+通常标签&lt;strong&gt;替换加粗标签&lt;b&gt;来使用，&lt;em&gt;替换&lt;i&gt;标签使用。
+然而，这些标签的含义是不同的：
+
+&lt;b&gt;与&lt;i&gt;定义粗体或斜体文本。
+&lt;strong&gt;或者&lt;em&gt;意味着你要呈现的文本是重要的，所以要突出显示。
+
+地址1234567&lt;address&gt;Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; Visit us at:&lt;br&gt;Example.com&lt;br&gt;Box 564, Disneyland&lt;br&gt;USA&lt;/address&gt;
+
+Written by lil-q. 
+Visit us at:
+Example.com
+Box 564, Disneyland
+USA
+
+
+注释12&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;
+etc.
+happy
+
+方向12&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  &lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;
+该段落文字从左到右显示。  
+该段落文字从右到左显示。 
+## 引用
+
+123&lt;p&gt;WWF&#39;s goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;We hope they succeed.&lt;/p&gt;
+
+WWF&#39;s goal is to: 
+Build a future where people live in harmony with nature.
+We hope they succeed.
+
+划线1&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;
+My favorite color is blue red!
+链接1&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;
+链接文本
+target 属性1&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;
+访问主页!
+id 属性在HTML文档中插入ID:
+1&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;
+在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+返回标题章节
+</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#null"><span class="nav-number">4.0.0.0.0.1.</span> <span class="nav-text"> 定义最小的标题。将在后文介绍。
+123&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;这是一个标题。&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;这是一个标题。&lt;/h2&gt;&lt;h3&gt;这是一个标题。&lt;/h3&gt;
+这是一个标题。
+这是一个标题。
+这是一个标题。
+
+文本段落段落是通过  标签定义的。
+12&lt;p&gt;段落一 &lt;/p&gt;&lt;p&gt;段落二&lt;/p&gt;
+段落一  段落二
+## 换行
+
+使用``标签，与markdown相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。
+
+可使用 `` 标签对空行和空格进行控制。
+
+1&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;
+
+始不垂翅，终能奋翼
+1234&lt;p&gt;	始不垂翅，	终能奋翼&lt;/p&gt;
+
+
+    始不垂翅，
+    终能奋翼
+
+
+水平线123&lt;p&gt;下面有一条水平线&lt;/p&gt;&lt;hr&gt;&lt;p&gt;上面有一条水平线&lt;/p&gt;
+下面有一条水平线
+
+上面有一条水平线
+
+注释可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+注释写法如下:
+1&lt;!-- 这是一个注释 --&gt;
+格式1234&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;&lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;&lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;
+加粗文本斜体文本电脑自动输出这是  下标 和  上标
+通常标签&lt;strong&gt;替换加粗标签&lt;b&gt;来使用，&lt;em&gt;替换&lt;i&gt;标签使用。
+然而，这些标签的含义是不同的：
+
+&lt;b&gt;与&lt;i&gt;定义粗体或斜体文本。
+&lt;strong&gt;或者&lt;em&gt;意味着你要呈现的文本是重要的，所以要突出显示。
+
+地址1234567&lt;address&gt;Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; Visit us at:&lt;br&gt;Example.com&lt;br&gt;Box 564, Disneyland&lt;br&gt;USA&lt;/address&gt;
+
+Written by lil-q. 
+Visit us at:
+Example.com
+Box 564, Disneyland
+USA
+
+
+注释12&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;
+etc.
+happy
+
+方向12&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  &lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;
+该段落文字从左到右显示。  
+该段落文字从右到左显示。 
+## 引用
+
+123&lt;p&gt;WWF&#39;s goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;We hope they succeed.&lt;/p&gt;
+
+WWF&#39;s goal is to: 
+Build a future where people live in harmony with nature.
+We hope they succeed.
+
+划线1&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;
+My favorite color is blue red!
+链接1&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;
+链接文本
+target 属性1&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;
+访问主页!
+id 属性在HTML文档中插入ID:
+1&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;
+在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：
+1&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
+返回标题章节
+</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">这是一个标题。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">这是一个标题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.1.1.</span> <span class="nav-text">这是一个标题。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本"><span class="nav-number">6.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#段落"><span class="nav-number">6.1.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平线"><span class="nav-number">6.2.</span> <span class="nav-text">水平线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">6.3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">6.4.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址"><span class="nav-number">6.5.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释-1"><span class="nav-number">6.6.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方向"><span class="nav-number">6.7.</span> <span class="nav-text">方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划线"><span class="nav-number">6.8.</span> <span class="nav-text">划线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">7.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#target-属性"><span class="nav-number">7.1.</span> <span class="nav-text">target 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#id-属性"><span class="nav-number">7.2.</span> <span class="nav-text">id 属性</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戚天天"
+      src="/images/logo.png">
+  <p class="site-author-name" itemprop="name">戚天天</p>
+  <div class="site-description" itemprop="description">Life goes on</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戚天天</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-child"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fire"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
+    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
+    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
