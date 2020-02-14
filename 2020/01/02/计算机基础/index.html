@@ -51,16 +51,16 @@
 </script>
 
   <meta name="description" content="总结一些计算机基础知识">
-<meta name="keywords" content="计算机基础">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机基础">
+<meta property="og:title" content="C++编程基础">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="总结一些计算机基础知识">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180503165002430.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180716165243972.png">
-<meta property="og:updated_time" content="2020-01-16T03:52:06.934Z">
+<meta property="og:updated_time" content="2020-02-14T08:10:42.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80&#x2F;20180503165002430.png">
 
@@ -78,7 +78,7 @@
   };
 </script>
 
-  <title>计算机基础 | Homeward</title>
+  <title>C++编程基础 | Homeward</title>
   
 
 
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          计算机基础
+          C++编程基础
         </h1>
 
         <div class="post-meta">
@@ -223,8 +223,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础</span>
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">编程基础</span>
                   </a>
                 </span>
             </span>
@@ -268,6 +268,100 @@
 <li><strong>字节(byte)</strong>：是8个二进制数，即8 bit 就称为一个字节（Byte）。字节这个词最早起源于1956年前后，由IBM公司提出。最早的拼写方式是bite，但是为了避免与bit混淆用y代替了i。</li>
 <li><strong>字(word)</strong>：字由若干字节构成，字的位数叫字长，一台8位机子：一个字等于1个字节，字长为8位，如果是16位的机子，一个字等于2个字节，字长为16，字是计算机处理数据和运算的单位。</li>
 </ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">位</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">-128 到 127 或者 0 到 255</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">0 到 255</td>
+</tr>
+<tr>
+<td style="text-align:left">signed char</td>
+<td style="text-align:left">1 个字节</td>
+<td style="text-align:left">-128 到 127</td>
+</tr>
+<tr>
+<td style="text-align:left">int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">0 到 4294967295</td>
+</tr>
+<tr>
+<td style="text-align:left">signed int</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">-32768 到 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">0 到 65,535</td>
+</tr>
+<tr>
+<td style="text-align:left">signed short int</td>
+<td style="text-align:left">2 个字节</td>
+<td style="text-align:left">-32768 到 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td style="text-align:left">signed long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td style="text-align:left">unsigned long int</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">0 到 18,446,744,073,709,551,615</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">4 个字节</td>
+<td style="text-align:left">精度型占4个字节（32位）内存空间，+/- 3.4e +/- 38 (~7 个数字)</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">8 个字节</td>
+<td style="text-align:left">双精度型占8 个字节（64位）内存空间，+/- 1.7e +/- 308 (~15 个数字)</td>
+</tr>
+<tr>
+<td style="text-align:left">long double</td>
+<td style="text-align:left">16 个字节</td>
+<td style="text-align:left">长双精度型 16 个字节（128位）内存空间，可提供18-19位有效数字。</td>
+</tr>
+<tr>
+<td style="text-align:left">wchar_t</td>
+<td style="text-align:left">2 或 4 个字节</td>
+<td style="text-align:left">1 个宽字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意：</strong>不同系统会有所差异。</p>
 <h1 id="数字编码"><a href="#数字编码" class="headerlink" title="数字编码"></a>数字编码</h1><p>我们知道现在计算机普遍使用二进制来表示，这是因为二进制能够工作的更好。对于二进制数来说，单独的讲某一个位没有太多的意义，但是可以将多个位组合起来，再加上某种解释，就可以用来表示我们日常生活中常用的数字。 计算机中常用表示的数又分为<strong>有符号数</strong>、<strong>无符号数</strong>和<strong>浮点数</strong>。</p>
 <p><img src="20180503165002430.png" alt="image1"></p>
 <h2 id="无符号"><a href="#无符号" class="headerlink" title="无符号"></a>无符号</h2><p>无符号表示大于或者等于0的数字，是基于传统的二进制表示法进行编码。无符号的二进制数表示一个很重要的特性，也就是对于任何介于0~2^w-1 之间的数值都有一个唯一w为的值编码。</p>
@@ -290,7 +384,80 @@
 <h2 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h2><p>小数点为定点，用来表示小数的，采用的是BCD码来编码。BCD码将0~9中的每个数用4位二进制数来表示，这样对于32位就可以表示8个数字，表示的数字范围也就是0~999999.99之间的1亿个实数。</p>
 <p>BCD编码也有很多用途，比如银行、超市这种需要用到小数记金额的情况就很合适，但是如果表示很小、或者很大的数就不是很合适了，比如地球到太阳的距离，一个氢原子的半径等等。而且这样编码非常浪费，对于32位整数我们可以表示将近40亿个数字，而BCD编码的数字只能表示1亿个数字。</p>
 <h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.png" alt="image2"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">转义序列</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\</td>
+<td style="text-align:left">\ 字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\’</td>
+<td style="text-align:left">‘ 字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\”</td>
+<td style="text-align:left">“ 字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\?</td>
+<td style="text-align:left">? 字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\a</td>
+<td style="text-align:left">警报铃声</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">退格键</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页符</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">回车</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">水平制表符</td>
+</tr>
+<tr>
+<td style="text-align:left">\v</td>
+<td style="text-align:left">垂直制表符</td>
+</tr>
+<tr>
+<td style="text-align:left">\ooo</td>
+<td style="text-align:left">一到三位的八进制数</td>
+</tr>
+<tr>
+<td style="text-align:left">\xhh . . .</td>
+<td style="text-align:left">一个或多个数字的十六进制数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h1><p>在 C++ 中，有两种简单的定义常量的方式：</p>
+<ul>
+<li><p>使用 <strong>#define</strong> 预处理器。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> identifier value</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <strong>const</strong> 关键字。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> type variable = value;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Static"><a href="#Static" class="headerlink" title="Static"></a>Static</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://blog.csdn.net/return9/article/details/79888603" target="_blank" rel="noopener">https://blog.csdn.net/return9/article/details/79888603</a></li>
 <li><a href="https://blog.csdn.net/chihujiang3132/article/details/100930007" target="_blank" rel="noopener">https://blog.csdn.net/chihujiang3132/article/details/100930007</a></li>
 <li><a href="https://blog.csdn.net/whyel/article/details/81067989" target="_blank" rel="noopener">https://blog.csdn.net/whyel/article/details/81067989</a></li>
@@ -304,7 +471,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
           </div>
 
         
@@ -361,7 +528,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#储存单位"><span class="nav-number">1.</span> <span class="nav-text">储存单位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字编码"><span class="nav-number">2.</span> <span class="nav-text">数字编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无符号"><span class="nav-number">2.1.</span> <span class="nav-text">无符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有符号数"><span class="nav-number">2.2.</span> <span class="nav-text">有符号数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点数"><span class="nav-number">2.3.</span> <span class="nav-text">定点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">2.4.</span> <span class="nav-text">浮点数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#储存单位"><span class="nav-number">1.</span> <span class="nav-text">储存单位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字编码"><span class="nav-number">3.</span> <span class="nav-text">数字编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无符号"><span class="nav-number">3.1.</span> <span class="nav-text">无符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有符号数"><span class="nav-number">3.2.</span> <span class="nav-text">有符号数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点数"><span class="nav-number">3.3.</span> <span class="nav-text">定点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">3.4.</span> <span class="nav-text">浮点数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转义字符"><span class="nav-number">4.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义常量"><span class="nav-number">5.</span> <span class="nav-text">定义常量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Static"><span class="nav-number">6.</span> <span class="nav-text">Static</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -377,20 +544,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

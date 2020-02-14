@@ -50,15 +50,15 @@
   };
 </script>
 
-  <meta name="description" content="本文为学习PyTorch官方中文文档的学习笔记">
+  <meta name="description" content="PyTorch官方中文文档学习笔记">
 <meta name="keywords" content="PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyTorch基础">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;01&#x2F;02&#x2F;PyTorch%E5%AD%A6%E4%B9%A0&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="本文为学习PyTorch官方中文文档的学习笔记">
+<meta property="og:description" content="PyTorch官方中文文档学习笔记">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-16T03:41:26.249Z">
+<meta property="og:updated_time" content="2020-02-09T08:16:59.392Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://lil-q.github.io/2020/01/02/PyTorch%E5%AD%A6%E4%B9%A0/">
@@ -258,7 +258,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><em>本文为学习<a href="http://pytorch123.com/" target="_blank" rel="noopener">PyTorch官方中文文档</a>的学习笔记</em></p>
+        <p><a href="http://pytorch123.com/" target="_blank" rel="noopener">PyTorch官方中文文档</a>学习笔记</p>
 <a id="more"></a>
 <h1 id="张量-Tensors"><a href="#张量-Tensors" class="headerlink" title="张量(Tensors)"></a>张量(Tensors)</h1><h2 id="创建张量"><a href="#创建张量" class="headerlink" title="创建张量"></a>创建张量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个5x3的矩阵，不初始化</span></span><br><span class="line">x_1 = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造一个随机初始化的矩阵</span></span><br><span class="line">x_2 = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造一个矩阵全为 0，而且数据类型是 long</span></span><br><span class="line">x_3 = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造一个张量，直接使用数据</span></span><br><span class="line">x_4 = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
@@ -460,8 +460,8 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="next" title="计算机基础">
-                  <i class="fa fa-chevron-left"></i> 计算机基础
+                <a href="/2020/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="next" title="C++编程基础">
+                  <i class="fa fa-chevron-left"></i> C++编程基础
                 </a>
             </div>
 
@@ -526,20 +526,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
