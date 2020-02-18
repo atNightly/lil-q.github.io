@@ -53,14 +53,14 @@
   <meta name="description" content="OpenCV-python学习笔记一">
 <meta name="keywords" content="OpenCV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-python学习笔记">
+<meta property="og:title" content="OpenCV-python学习笔记一">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;09&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="OpenCV-python学习笔记一">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;09&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;1546842698102_gWO39TIUVK.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;09&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;2020-02-15_.png">
-<meta property="og:updated_time" content="2020-02-16T09:01:46.851Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;qttblog.oss-cn-hangzhou.aliyuncs.com&#x2F;2020-02-15_.png">
+<meta property="og:updated_time" content="2020-02-17T06:44:38.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;09&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;1546842698102_gWO39TIUVK.jpg">
 
@@ -78,7 +78,7 @@
   };
 </script>
 
-  <title>OpenCV-python学习笔记 | Homeward</title>
+  <title>OpenCV-python学习笔记一 | Homeward</title>
   
 
 
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          OpenCV-python学习笔记
+          OpenCV-python学习笔记一
         </h1>
 
         <div class="post-meta">
@@ -402,9 +402,9 @@
 <li>提取蓝色范围的物体</li>
 <li>只显示蓝色物体</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></span><br><span class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>])</span><br><span class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    <span class="comment"># 1.捕获视频中的一帧</span></span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.从BGR转换到HSV</span></span><br><span class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></span><br><span class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></span><br><span class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</span><br><span class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</span><br><span class="line">    cv2.imshow(<span class="string">'res'</span>, res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 蓝色的范围，不同光照条件下不一样，可灵活调整</span></span><br><span class="line">lower_blue = np.array([<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>])</span><br><span class="line">upper_blue = np.array([<span class="number">130</span>, <span class="number">255</span>, <span class="number">255</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    <span class="comment"># 1.捕获视频中的一帧</span></span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.从BGR转换到HSV</span></span><br><span class="line">    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.inRange()：介于lower/upper之间的为白色，其余黑色</span></span><br><span class="line">    mask = cv2.inRange(hsv, lower_blue, upper_blue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.只保留原图中的蓝色部分</span></span><br><span class="line">    res = cv2.bitwise_and(frame, frame, mask=mask)</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">'frame'</span>, frame)</span><br><span class="line">    cv2.imshow(<span class="string">'mask'</span>, mask)</span><br><span class="line">    cv2.imshow(<span class="string">'res'</span>, res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == ord(<span class="string">'q'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p>我房间比较暗，调低了点<code>lower_blue</code>中的饱和度和亮度，哆啦A梦如图：</p>
-<p><img src="2020-02-15_.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/2020-02-15_.png" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial" target="_blank" rel="noopener">https://github.com/ex2tron/OpenCV-Python-Tutorial</a></li>
 <li><a href="https://blog.csdn.net/m0_37167788/article/details/78603307" target="_blank" rel="noopener">https://blog.csdn.net/m0_37167788/article/details/78603307</a></li>
@@ -433,6 +433,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/" rel="prev" title="OpenCV-python学习笔记二">
+                  OpenCV-python学习笔记二 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -488,7 +491,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
