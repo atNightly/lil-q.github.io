@@ -50,16 +50,16 @@
   };
 </script>
 
-  <meta name="description" content="阈值分割固定阈值分割固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。 12# 阈值分割ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY) cv2.threshold()用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：  参数1：要处理的原图，一般是灰度图 参数">
+  <meta name="description" content="OpenCV-python学习笔记二">
 <meta name="keywords" content="OpenCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV-python学习笔记二">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="阈值分割固定阈值分割固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。 12# 阈值分割ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY) cv2.threshold()用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：  参数1：要处理的原图，一般是灰度图 参数">
+<meta property="og:description" content="OpenCV-python学习笔记二">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
-<meta property="og:updated_time" content="2020-02-17T11:13:02.971Z">
+<meta property="og:updated_time" content="2020-02-18T11:59:39.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
 
@@ -260,7 +260,106 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h1><h3 id="固定阈值分割"><a href="#固定阈值分割" class="headerlink" title="固定阈值分割"></a>固定阈值分割</h3><p>固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。</p>
+        <p>OpenCV-python学习笔记二</p>
+<a id="more"></a>
+<h1 id="滤波"><a href="#滤波" class="headerlink" title="滤波"></a>滤波</h1><p>滤波是一种卷积操作，常用于图像的预处理。低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
+<ul>
+<li>低通滤波器是模糊</li>
+<li>高通滤波器是锐化</li>
+</ul>
+<p>常见噪声有<a href="https://baike.baidu.com/item/椒盐噪声/3455958?fr=aladdin" target="_blank" rel="noopener">椒盐噪声</a>和<a href="https://baike.baidu.com/item/高斯噪声" target="_blank" rel="noopener">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
+<h2 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h2><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
+<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></span><br></pre></td></tr></table></figure>
+<h2 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h2><p>方框滤波跟均值滤波很像，如3×3的滤波核如下：</p>
+<script type="math/tex; mode=display">k = a\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>用<code>cv2.boxFilter()</code>函数实现，当</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现</span></span><br><span class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数2：<code>ddtype</code>为目标的数据类型，取-1表示和原图相同</li>
+<li>可选参数<code>normalize</code>为<code>True</code>的时候，方框滤波就是均值滤波，上式中的a就等于1/9；<code>normalize</code>为<code>False</code>的时候，a=1，相当于求区域内的像素和。</li>
+</ul>
+<h2 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h2><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小。显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="http://codec.wang/opencv-python-smoothing-images/#番外小篇：高斯滤波卷积核" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核：</p>
+<script type="math/tex; mode=display">k = \left[ \begin{matrix} 0.0625 & 0.125 & 0.0625 \newline 0.125 & 0.25 & 0.125 \newline 0.0625 & 0.125 & 0.0625 \end{matrix} \right]</script><p>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 高斯滤波</span></span><br><span class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
+<h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><p>中值又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除<strong>椒盐噪声</strong>和<strong>斑点噪声</strong>。中值是一种<strong>非线性操作</strong>，效率相比前面几种线性滤波要慢。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中值滤波</span></span><br><span class="line">median = cv2.medianBlur(img, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h2><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了另一种<strong>非线性滤波</strong>双边滤波。双边滤波在高斯滤波的基础上加入了对<strong>灰度信息的权重</strong>，即在邻域内，灰度值越接近中心点灰度值的点的权重更大，灰度值相差大的点权重越小。此权重大小，则由值域高斯函数确定。两者权重系数相乘，得到最终的卷积模板。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 双边滤波</span></span><br><span class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数2：d – Diameter of each pixel neighborhood that is used during filtering. If it is non-positive, it is computed from <code>sigmaSpace</code> .</li>
+<li>参数3：sigmaColor – Filter sigma in the color space. </li>
+<li>参数4：sigmaSpace – Filter sigma in the coordinate space. </li>
+</ul>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，前面我们用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫填充padding</strong>。</p>
+<p>上面的滤波函数都有一个可选参数<code>borderType</code>用来输入padding类型。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Enumerator</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BORDER_CONSTANT</td>
+<td>`iiiiii</td>
+<td>abcdefgh</td>
+<td>iiiiiii<code>with some specified</code>i`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_REPLICATE</td>
+<td>`aaaaaa</td>
+<td>abcdefgh</td>
+<td>hhhhhhh`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_REFLECT</td>
+<td>`fedcba</td>
+<td>abcdefgh</td>
+<td>hgfedcb`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_WRAP</td>
+<td>`cdefgh</td>
+<td>abcdefgh</td>
+<td>abcdefg`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_REFLECT_101</td>
+<td>`gfedcb</td>
+<td>abcdefgh</td>
+<td>gfedcba`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_TRANSPARENT</td>
+<td>`uvwxyz</td>
+<td>absdefgh</td>
+<td>ijklmno`</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_REFLECT101</td>
+<td>same as BORDER_REFLECT_101</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_DEFAULT</td>
+<td>same as BORDER_REFLECT_101</td>
+</tr>
+<tr>
+<td style="text-align:left">BORDER_ISOLATED</td>
+<td>do not look outside of ROI</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="滤波总结"><a href="#滤波总结" class="headerlink" title="滤波总结"></a>滤波总结</h2><ul>
+<li>在不知道用什么滤波器好的时候，优先高斯滤波<code>cv2.GaussianBlur()</code>，然后均值滤波<code>cv2.blur()</code>。</li>
+<li>斑点和椒盐噪声优先使用中值滤波<code>cv2.medianBlur()</code>。</li>
+<li>要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波<code>cv2.bilateralFilter()</code>。</li>
+<li>线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）。</li>
+<li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
+</ul>
+<h1 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h1><h2 id="固定阈值分割"><a href="#固定阈值分割" class="headerlink" title="固定阈值分割"></a>固定阈值分割</h2><p>固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阈值分割</span></span><br><span class="line">ret, th = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br></pre></td></tr></table></figure>
 <p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：</p>
 <ul>
@@ -271,7 +370,7 @@
 </ul>
 <p><img src="threshold.png" alt=""></p>
 <p>最常见的就是前两种，相当于二值化。</p>
-<h3 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h3><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<em>它并不适用于明暗分布不均的图片</em>。 <code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。</p>
+<h2 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h2><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<em>它并不适用于明暗分布不均的图片</em>。 <code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自适应阈值对比固定阈值</span></span><br><span class="line">img = cv2.imread(<span class="string">'img_name.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 固定阈值</span></span><br><span class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line"><span class="comment"># 自适应阈值</span></span><br><span class="line">th2 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</span><br><span class="line">th3 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</span><br><span class="line">images = [img, th1, th2, th3]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <ul>
 <li>参数1：要处理的原图</li>
@@ -285,8 +384,11 @@
 <li>参数5：小区域的面积，如11就是11*11的小块</li>
 <li>参数6：最终阈值等于小区域计算出的阈值再减去此值</li>
 </ul>
+<h2 id="Otsu阈值法"><a href="#Otsu阈值法" class="headerlink" title="Otsu阈值法"></a>Otsu阈值法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先进行高斯滤波，再使用Otsu阈值法</span></span><br><span class="line">blur = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</span><br><span class="line">ret3, th3 = cv2.threshold(blur, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">g=\omega_0\omega_1(\mu_0-\mu_1)^2</script><p><strong>$ g $就是前景与背景两类之间的方差，这个值越大，说明前景和背景的差别也就越大，效果越好。Otsu算法便是遍历阈值T，使得$ g $最大，所以又称为最大类间方差法。</strong>基本上双峰图片的阈值T在两峰之间的谷底。<a href="http://codec.wang/opencv-python-extra-otsu-thresholding/" target="_blank" rel="noopener">原文地址</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06. 阈值分割" target="_blank" rel="noopener">https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2</a></li>
+<li><a href="http://codec.wang/opencv-python-smoothing-images/#目标" target="_blank" rel="noopener">http://codec.wang/opencv-python-smoothing-images/#%E7%9B%AE%E6%A0%87</a></li>
 </ol>
 
     </div>
@@ -351,7 +453,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阈值分割"><span class="nav-number">1.</span> <span class="nav-text">阈值分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定阈值分割"><span class="nav-number">1.0.1.</span> <span class="nav-text">固定阈值分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自适应阈值"><span class="nav-number">1.0.2.</span> <span class="nav-text">自适应阈值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#滤波"><span class="nav-number">1.</span> <span class="nav-text">滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#均值滤波"><span class="nav-number">1.1.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方框滤波"><span class="nav-number">1.2.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯滤波"><span class="nav-number">1.3.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中值滤波"><span class="nav-number">1.4.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双边滤波"><span class="nav-number">1.5.</span> <span class="nav-text">双边滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">1.6.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滤波总结"><span class="nav-number">1.7.</span> <span class="nav-text">滤波总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阈值分割"><span class="nav-number">2.</span> <span class="nav-text">阈值分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#固定阈值分割"><span class="nav-number">2.1.</span> <span class="nav-text">固定阈值分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应阈值"><span class="nav-number">2.2.</span> <span class="nav-text">自适应阈值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Otsu阈值法"><span class="nav-number">2.3.</span> <span class="nav-text">Otsu阈值法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -488,6 +590,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
