@@ -61,7 +61,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;Background_Subtraction_Tutorial_Scheme.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;114759.png">
-<meta property="og:updated_time" content="2020-02-19T03:48:37.938Z">
+<meta property="og:updated_time" content="2020-02-19T04:29:11.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
 
@@ -294,66 +294,9 @@
 </ul>
 <h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><p>不难发现，前面我们用3×3的核对一副6×6的图像进行卷积，得到的是4×4的图，图片缩小了！那怎么办呢？我们可以<strong>把原图扩充一圈，再卷积，这个操作叫填充padding</strong>。</p>
 <p>上面的滤波函数都有一个可选参数<code>borderType</code>用来输入padding类型。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Enumerator</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">BORDER_CONSTANT</td>
-<td>`iiiiii</td>
-<td>abcdefgh</td>
-<td>iiiiiii<code>with some specified</code>i`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_REPLICATE</td>
-<td>`aaaaaa</td>
-<td>abcdefgh</td>
-<td>hhhhhhh`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_REFLECT</td>
-<td>`fedcba</td>
-<td>abcdefgh</td>
-<td>hgfedcb`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_WRAP</td>
-<td>`cdefgh</td>
-<td>abcdefgh</td>
-<td>abcdefg`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_REFLECT_101</td>
-<td>`gfedcb</td>
-<td>abcdefgh</td>
-<td>gfedcba`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_TRANSPARENT</td>
-<td>`uvwxyz</td>
-<td>absdefgh</td>
-<td>ijklmno`</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_REFLECT101</td>
-<td>same as BORDER_REFLECT_101</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_DEFAULT</td>
-<td>same as BORDER_REFLECT_101</td>
-</tr>
-<tr>
-<td style="text-align:left">BORDER_ISOLATED</td>
-<td>do not look outside of ROI</td>
-</tr>
-</tbody>
-</table>
-</div>
+<blockquote>
+<p>BORDER_CONSTANT  <code>iiiiii|abcdefgh|iiiiiii</code> with some specified <code>i</code>  <br>BORDER_REPLICATE  <code>aaaaaa|abcdefgh|hhhhhhh</code>  <br>BORDER_REFLECT  <code>fedcba|abcdefgh|hgfedcb</code>  <br>BORDER_WRAP  <code>cdefgh|abcdefgh|abcdefg</code>  <br>BORDER_REFLECT_101  <code>gfedcb|abcdefgh|gfedcba</code>  <br>BORDER_TRANSPARENT  <code>uvwxyz|absdefgh|ijklmno</code>  <br>BORDER_REFLECT101  same as BORDER_REFLECT_101  <br>BORDER_DEFAULT  same as BORDER_REFLECT_101  <br>BORDER_ISOLATED  do not look outside of ROI</p>
+</blockquote>
 <h2 id="滤波总结"><a href="#滤波总结" class="headerlink" title="滤波总结"></a>滤波总结</h2><ul>
 <li>在不知道用什么滤波器好的时候，优先高斯滤波<code>cv2.GaussianBlur()</code>，然后均值滤波<code>cv2.blur()</code>。</li>
 <li>斑点和椒盐噪声优先使用中值滤波<code>cv2.medianBlur()</code>。</li>
