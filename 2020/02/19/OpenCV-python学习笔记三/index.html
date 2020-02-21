@@ -62,7 +62,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_understand_erosion.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_morphological_struct_element.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_morphological_opening_closing.jpg">
-<meta property="og:updated_time" content="2020-02-20T06:20:31.939Z">
+<meta property="og:updated_time" content="2020-02-21T09:12:41.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;2020-02-20%20124157.png">
 
@@ -267,8 +267,8 @@
 <a id="more"></a>
 <h1 id="图片混合"><a href="#图片混合" class="headerlink" title="图片混合"></a>图片混合</h1><h2 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h2><p>图像混合<code>cv2.addWeighted()</code>要求两幅图片的形状（高度/宽度/通道数）必须相同，<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>分别为两幅图像的权重，b则是一个偏置：</p>
 <script type="math/tex; mode=display">dst = \omega_{1}\times img1+\omega_{2}\times img2 + b</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img1 = cv2.imread(<span class="string">'img1_name.jpg'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'img2_name.png'</span>)</span><br><span class="line">res = cv2.addWeighted(img1, <span class="number">0.6</span>, img2, <span class="number">0.4</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p>特别的，当<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>都为1，b为0时，就是两张图片相加。可以用<code>cv2.add()</code>函数。numpy 中可以直接用res = img1 + img2`相加，但这两者的结果并不相同：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = np.uint8([<span class="number">250</span>])</span><br><span class="line">y = np.uint8([<span class="number">10</span>])</span><br><span class="line">print(cv2.add(x, y))  <span class="comment"># 250+10 = 260 =&gt; 255 --255封顶</span></span><br><span class="line">print(x + y)  <span class="comment"># 250+10 = 260 % 256 = 4 --会溢出</span></span><br></pre></td></tr></table></figure>
+<p>特别的，当<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>都为1，b为0时，就是两张图片相加。可以用<code>cv2.add()</code>函数。numpy 中可以直接用<code>res = img1 + img2</code>相加，但这两者的结果并不相同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = np.uint8([<span class="number">250</span>])</span><br><span class="line">y = np.uint8([<span class="number">10</span>])</span><br><span class="line">print(cv2.add(x, y))  <span class="comment"># 250 + 10 = 260 =&gt; 255 --255封顶</span></span><br><span class="line">print(x + y)  <span class="comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></span><br></pre></td></tr></table></figure>
 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>按位操作包括按位与/或/非/异或操作，如果将两幅图片直接相加会改变图片的颜色，如果用图像混合，则会改变图片的透明度，所以我们需要用按位操作。</p>
 <ul>
 <li><code>cv2.bitwise_and()</code>：按位与操作 </li>

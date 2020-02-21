@@ -50,15 +50,19 @@
   };
 </script>
 
-  <meta name="description" content="Life goes on">
+  <meta name="description" content="NumPy的使用以及图片亮度和对比度分析">
+<meta name="keywords" content="OpenCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV-python学习笔记四">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="Life goes on">
+<meta property="og:description" content="NumPy的使用以及图片亮度和对比度分析">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-20T06:14:07.653Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare_wrong.jpg">
+<meta property="og:updated_time" content="2020-02-21T13:39:09.260Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare.jpg">
 
 <link rel="canonical" href="http://lil-q.github.io/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/">
 
@@ -213,6 +217,17 @@
 
               <time title="Created: 2020-02-20 14:14:07" itemprop="dateCreated datePublished" datetime="2020-02-20T14:14:07+08:00">2020-02-20</time>
             </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" itemprop="url" rel="index">
+                    <span itemprop="name">机器视觉</span>
+                  </a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
@@ -246,7 +261,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>NumPy的使用以及图片亮度和对比度分析</p>
+<a id="more"></a>
+<h1 id="OpenCV与NumPy"><a href="#OpenCV与NumPy" class="headerlink" title="OpenCV与NumPy"></a>OpenCV与NumPy</h1><p>OpenCV读取一张图片，返回的实际上是一个<code>numpy.ndarray</code>类。所以一些对<code>numpy.ndarray</code>的操作可以直接对<code>cv2.imread()</code>返回的对象使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'connelly.jpg'</span>)</span><br><span class="line">print(type(img)) <span class="comment"># &lt;class 'numpy.ndarray'&gt;</span></span><br><span class="line"></span><br><span class="line">rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line">print(rows, cols) <span class="comment"># 210 270</span></span><br></pre></td></tr></table></figure>
+<h2 id="访问和修改像素值"><a href="#访问和修改像素值" class="headerlink" title="访问和修改像素值"></a>访问和修改像素值</h2><p>根据像素值的行和列坐标可以访问特定像素点。对于BGR图像，它返回一个蓝色、绿色、红色值数组。灰度图像，只返回相应的亮度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">px = img[<span class="number">100</span>, <span class="number">120</span>]</span><br><span class="line">img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line">px_gray = img_gray[<span class="number">100</span>, <span class="number">120</span>]</span><br><span class="line">print(px) <span class="comment"># [130 131 181]</span></span><br><span class="line">print(px_gray) <span class="comment"># 146</span></span><br></pre></td></tr></table></figure>
+<p>可以用同样的方式修改像素值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img[<span class="number">100</span>, <span class="number">120</span>] = [<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>]</span><br></pre></td></tr></table></figure>
+<p>NumPy是一个用于快速数组计算的优化库。因此，使用原生python的数组简单地访问每个像素值，并修改它将非常缓慢，不推荐这种方法。</p>
+<p>上述方法通常用于选择数组区域，例如前5行和最后3列。对于单个像素访问，但用NumPy数组的方法、<code>array.tem()</code>和<code>array.itemset()</code>会更适合。因为它总是返回一个标量。因此，如果想访问所有的B，G，R值，你需要为所有通道分别调用<code>array.tem()</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取红色通道值</span></span><br><span class="line">print(img.item(<span class="number">100</span>, <span class="number">120</span>, <span class="number">2</span>)) <span class="comment"># 181</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改红色通道值</span></span><br><span class="line">img.itemset((<span class="number">100</span>, <span class="number">120</span>, <span class="number">2</span>), <span class="number">255</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="访问图像属性"><a href="#访问图像属性" class="headerlink" title="访问图像属性"></a>访问图像属性</h2><p>图像属性包括行数，列数和通道数，图像数据类型，像素数等。</p>
+<p><code>img.shape</code>可以访问图像的形状。 它返回一组行，列和通道的元组（如果图像是彩色的），如果图像是灰度，则返回的元组仅包含行数和列数。因此，检查加载的图像是灰度还是彩色图像是一种很好的方法。：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(img.shape) <span class="comment"># (210, 270, 3)</span></span><br></pre></td></tr></table></figure>
+<p><code>img.size</code>访问的像素总数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(img.size) <span class="comment"># 170100</span></span><br></pre></td></tr></table></figure>
+<p>图像数据类型由<code>img.dtype</code>获得：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(img.dtype) <span class="comment"># uint8</span></span><br></pre></td></tr></table></figure>
+<p> <code>img.dtype</code>在调试时非常重要，因为OpenCV-Python代码中的大量错误是由无效的数据类型引起的。</p>
+<h2 id="提取ROI"><a href="#提取ROI" class="headerlink" title="提取ROI"></a>提取ROI</h2><p>ROI (Region of Interest)即感兴趣的区域，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roi = img[<span class="number">100</span>:<span class="number">200</span>, <span class="number">200</span>:<span class="number">300</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接指定范围即可，上面表示行数为<code>100-200</code>，列数为<code>200-300</code>的区域</li>
+</ul>
+<h2 id="拆分和合并图像通道"><a href="#拆分和合并图像通道" class="headerlink" title="拆分和合并图像通道"></a>拆分和合并图像通道</h2><p>有时需要在B,G,R通道图像上单独工作。需要将BGR图像分割为单个平面或者需要将这些单独的通道连接到BGR图像。可以通过以下方式完成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b,g,r = cv2.split(img)</span><br><span class="line">img = cv2.merge((b,g,r))</span><br></pre></td></tr></table></figure>
+<p><code>cv2.split()</code> 是一项代价昂贵的的操作（就运算时间而言）。所以只有在需要时才使用这个方法。否则请使用Numpy索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = img[:,:,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>假设，想要将所有红色像素设为零，不需要像这样分割并将其等于零。 可以简单地使用Numpy索引，这样更快。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img[:,:,<span class="number">2</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h1 id="图片亮度和对比度"><a href="#图片亮度和对比度" class="headerlink" title="图片亮度和对比度"></a>图片亮度和对比度</h1><p>简单的改变图片的亮度和对比度可以是一个线性的过程：</p>
+<script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot f\left ( i,j \right )+\beta</script><script type="math/tex; mode=display">f\left ( i,j \right ) $$相当于就是原图像每个像素点对应色彩或灰度的映射。直观上看，$$ \alpha $$决定了对比度，$$ \alpha $$越大，各像素之间的差别越大，对比度越大。$$ \beta $$决定了亮度，$$ \beta $$越大，各像素整体都变大，亮度提升了。
+
+但其实这种表述并不准确，因为在对图像进行线性处理时存在溢出的问题，当$$ \beta $$值太大时，$$ g\left (i,j  \right ) $$由于超过数据类型的上限被OpenCV置为特定值（比如CV_8U会被置为255）。对于灰度图，这些值都被置为相同值，相当于这部分像素点对比度调节完全失效了；对于三通道的彩色图，有一部分通道溢出，则会导致对比度比预期小的现象。
+
+另一个层面上，$$ \alpha $$的改变也影响了亮度，因为上式中$$ \alpha $$的变化会统一的放大或缩小所有像素点的。当想要提高对比度时，如果不变化$$ \beta $$的值，视觉上的”亮度“还是会提升。不妨把上式改写成如下式子：
+
+$$ g\left (i,j  \right )= \alpha \cdot \left (f\left ( i,j \right )-T  \right )+\beta</script><p>当<script type="math/tex">\alpha</script>大于1时，式子2表示将比T小的像素点的灰度值变得更小，把比T大的像素点的灰度值变得更大，这样当T值等于图像的平均灰度值（当然，是否就是平均灰度值也有待商榷）时就不会带来<script type="math/tex">\alpha</script>的改变影响亮度的问题了。式子1实际上就是式子2中T等于0的特例，所有像素点的灰度值都大于等于0，所以整幅图像的亮度被<script type="math/tex">\alpha</script>影响了。</p>
+<p>完整的调整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'connelly.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处需注意，下面有说明</span></span><br><span class="line">res = np.uint8(np.clip((<span class="number">2</span> * (np.int16(img) - <span class="number">60</span>) + <span class="number">50</span>), <span class="number">0</span>, <span class="number">255</span>))</span><br><span class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并显示</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>输出效果如下：</p>
+<p><img src="compare.jpg" alt=""></p>
+<p>在用python改变图片的亮度和对比度时，有两个问题需要注意，第一个问题是数据类型，式子中其实有一个乘法，这是极有可能出现溢出的，如果代码是这样<code>res = np.uint8(np.clip((2 * img - 60) + 50), 0, 255))</code>，就会出先这样的结果:</p>
+<p><img src="compare_wrong.jpg" alt=""></p>
+<p>解决的办法有两个，一是改变img的类型：使用<code>np.int16(img)</code>代替<code>img</code>；二是用浮点数<code>2.0</code>代替<code>2</code>，这样<code>2.0 * img</code>的数据类型会自动变成<code>float64</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print((<span class="number">2.0</span> * img).dtype) <span class="comment"># float64</span></span><br></pre></td></tr></table></figure>
+<p>第二个问题是对于溢出NumPy和OpenCV的处理方式不同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = np.uint8([<span class="number">250</span>])</span><br><span class="line">y = np.uint8([<span class="number">10</span>])</span><br><span class="line">print(cv2.add(x, y))  <span class="comment"># 250 + 10 = 260 =&gt; 255 --255封顶</span></span><br><span class="line">print(x + y)  <span class="comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></span><br></pre></td></tr></table></figure>
+<p>如果我们使用NumPy处理就需要使用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="noopener"><code>np.clip()</code></a>函数将数据限定在0~255。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://www.numpy.org.cn/article/other/py_basic_ops.html#目标" target="_blank" rel="noopener">https://www.numpy.org.cn/article/other/py_basic_ops.html#%E7%9B%AE%E6%A0%87</a></li>
+<li><a href="https://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="noopener">https://blog.csdn.net/abc20002929/article/details/40474807</a></li>
+</ol>
+
     </div>
 
     
@@ -254,6 +322,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+          </div>
 
         
 
@@ -306,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV与NumPy"><span class="nav-number">1.</span> <span class="nav-text">OpenCV与NumPy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问和修改像素值"><span class="nav-number">1.1.</span> <span class="nav-text">访问和修改像素值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问图像属性"><span class="nav-number">1.2.</span> <span class="nav-text">访问图像属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取ROI"><span class="nav-number">1.3.</span> <span class="nav-text">提取ROI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分和合并图像通道"><span class="nav-number">1.4.</span> <span class="nav-text">拆分和合并图像通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片亮度和对比度"><span class="nav-number">2.</span> <span class="nav-text">图片亮度和对比度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -442,6 +514,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
