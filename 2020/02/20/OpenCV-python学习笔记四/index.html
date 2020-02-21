@@ -60,7 +60,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare_wrong.jpg">
-<meta property="og:updated_time" content="2020-02-21T13:39:09.260Z">
+<meta property="og:updated_time" content="2020-02-21T15:42:47.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B&#x2F;compare.jpg">
 
@@ -292,18 +292,15 @@
 <p>假设，想要将所有红色像素设为零，不需要像这样分割并将其等于零。 可以简单地使用Numpy索引，这样更快。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img[:,:,<span class="number">2</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h1 id="图片亮度和对比度"><a href="#图片亮度和对比度" class="headerlink" title="图片亮度和对比度"></a>图片亮度和对比度</h1><p>简单的改变图片的亮度和对比度可以是一个线性的过程：</p>
-<script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot f\left ( i,j \right )+\beta</script><script type="math/tex; mode=display">f\left ( i,j \right ) $$相当于就是原图像每个像素点对应色彩或灰度的映射。直观上看，$$ \alpha $$决定了对比度，$$ \alpha $$越大，各像素之间的差别越大，对比度越大。$$ \beta $$决定了亮度，$$ \beta $$越大，各像素整体都变大，亮度提升了。
-
-但其实这种表述并不准确，因为在对图像进行线性处理时存在溢出的问题，当$$ \beta $$值太大时，$$ g\left (i,j  \right ) $$由于超过数据类型的上限被OpenCV置为特定值（比如CV_8U会被置为255）。对于灰度图，这些值都被置为相同值，相当于这部分像素点对比度调节完全失效了；对于三通道的彩色图，有一部分通道溢出，则会导致对比度比预期小的现象。
-
-另一个层面上，$$ \alpha $$的改变也影响了亮度，因为上式中$$ \alpha $$的变化会统一的放大或缩小所有像素点的。当想要提高对比度时，如果不变化$$ \beta $$的值，视觉上的”亮度“还是会提升。不妨把上式改写成如下式子：
-
-$$ g\left (i,j  \right )= \alpha \cdot \left (f\left ( i,j \right )-T  \right )+\beta</script><p>当<script type="math/tex">\alpha</script>大于1时，式子2表示将比T小的像素点的灰度值变得更小，把比T大的像素点的灰度值变得更大，这样当T值等于图像的平均灰度值（当然，是否就是平均灰度值也有待商榷）时就不会带来<script type="math/tex">\alpha</script>的改变影响亮度的问题了。式子1实际上就是式子2中T等于0的特例，所有像素点的灰度值都大于等于0，所以整幅图像的亮度被<script type="math/tex">\alpha</script>影响了。</p>
+<script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot f\left ( i,j \right )+\beta\tag{1}</script><p>式子1中<script type="math/tex">f\left ( i,j \right )</script>相当于就是原图像每个像素点对应色彩或灰度的映射。直观上看，<script type="math/tex">\alpha</script>决定了对比度，<script type="math/tex">\alpha</script>越大，各像素之间的差别越大，对比度越大。<script type="math/tex">\beta</script>决定了亮度，<script type="math/tex">\beta</script>越大，各像素整体都变大，亮度提升了。</p>
+<p>但其实这种表述并不准确，因为在对图像进行线性处理时存在溢出的问题，当<script type="math/tex">\beta</script>值太大时，<script type="math/tex">g\left (i,j  \right )</script>由于超过数据类型的上限被OpenCV置为特定值（比如CV_8U会被置为255）。对于灰度图，这些值都被置为相同值，相当于这部分像素点对比度调节完全失效了；对于三通道的彩色图，有一部分通道溢出，则会导致对比度比预期小的现象。</p>
+<p>另一个层面上，<script type="math/tex">\alpha</script>的改变也影响了亮度，因为上式中<script type="math/tex">\alpha</script>的变化会统一的放大或缩小所有像素点的灰度值。当想要提高对比度时，如果不变化<script type="math/tex">\beta</script>的值，视觉上的”亮度“还是会提升。不妨把上式改写成如下式子：</p>
+<script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot \left (f\left ( i,j \right )-T  \right )+\beta\tag{2}</script><p>当<script type="math/tex">\alpha</script>大于1时，式子2表示将比T小的像素点的灰度值变得更小，把比T大的像素点的灰度值变得更大，这样当T值等于图像的平均灰度值（当然，是否就是平均灰度值也有待商榷）时就不会带来<script type="math/tex">\alpha</script>的改变影响亮度的问题了。式子1实际上就是式子2中T等于0的特例，所有像素点的灰度值都大于等于0，所以整幅图像的亮度被<script type="math/tex">\alpha</script>影响了。</p>
 <p>完整的调整代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'connelly.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处需注意，下面有说明</span></span><br><span class="line">res = np.uint8(np.clip((<span class="number">2</span> * (np.int16(img) - <span class="number">60</span>) + <span class="number">50</span>), <span class="number">0</span>, <span class="number">255</span>))</span><br><span class="line">tmp = np.hstack((img, res))  <span class="comment"># 两张图片横向合并显示</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'image'</span>, tmp)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p>输出效果如下：</p>
 <p><img src="compare.jpg" alt=""></p>
-<p>在用python改变图片的亮度和对比度时，有两个问题需要注意，第一个问题是数据类型，式子中其实有一个乘法，这是极有可能出现溢出的，如果代码是这样<code>res = np.uint8(np.clip((2 * img - 60) + 50), 0, 255))</code>，就会出先这样的结果:</p>
+<p>在用python改变图片的亮度和对比度时，有两个问题需要注意，第一个问题是数据类型，式子中其实有一个乘法，这是极有可能出现溢出的，如果代码是这样<code>res = np.uint8(np.clip((2 * img - 60) + 50), 0, 255))</code>，就会出现这样的结果:</p>
 <p><img src="compare_wrong.jpg" alt=""></p>
 <p>解决的办法有两个，一是改变img的类型：使用<code>np.int16(img)</code>代替<code>img</code>；二是用浮点数<code>2.0</code>代替<code>2</code>，这样<code>2.0 * img</code>的数据类型会自动变成<code>float64</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print((<span class="number">2.0</span> * img).dtype) <span class="comment"># float64</span></span><br></pre></td></tr></table></figure>
@@ -313,6 +310,7 @@ $$ g\left (i,j  \right )= \alpha \cdot \left (f\left ( i,j \right )-T  \right )+
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://www.numpy.org.cn/article/other/py_basic_ops.html#目标" target="_blank" rel="noopener">https://www.numpy.org.cn/article/other/py_basic_ops.html#%E7%9B%AE%E6%A0%87</a></li>
 <li><a href="https://blog.csdn.net/abc20002929/article/details/40474807" target="_blank" rel="noopener">https://blog.csdn.net/abc20002929/article/details/40474807</a></li>
+<li><a href="https://docs.opencv.org/2.4/doc/tutorials/core/basic_linear_transform/basic_linear_transform.html#basic-linear-transform" target="_blank" rel="noopener">https://docs.opencv.org/2.4/doc/tutorials/core/basic_linear_transform/basic_linear_transform.html#basic-linear-transform</a></li>
 </ol>
 
     </div>
