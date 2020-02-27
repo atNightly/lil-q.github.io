@@ -61,7 +61,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;Background_Subtraction_Tutorial_Scheme.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;114759.png">
-<meta property="og:updated_time" content="2020-02-20T05:57:51.207Z">
+<meta property="og:updated_time" content="2020-02-27T10:14:21.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
 
@@ -271,16 +271,16 @@
 </ul>
 <p>常见噪声有<a href="https://baike.baidu.com/item/椒盐噪声/3455958?fr=aladdin" target="_blank" rel="noopener">椒盐噪声</a>和<a href="https://baike.baidu.com/item/高斯噪声" target="_blank" rel="noopener">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
 <h2 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h2><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
-<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">kernel_{m} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></span><br></pre></td></tr></table></figure>
 <h2 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h2><p>方框滤波跟均值滤波很像，如3×3的滤波核如下：</p>
-<script type="math/tex; mode=display">k = a\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>用<code>cv2.boxFilter()</code>函数实现，当</p>
+<script type="math/tex; mode=display">kernel_{b} = a\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>用<code>cv2.boxFilter()</code>函数实现，当</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现</span></span><br><span class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>参数2：<code>ddtype</code>为目标的数据类型，取-1表示和原图相同</li>
 <li>可选参数<code>normalize</code>为<code>True</code>的时候，方框滤波就是均值滤波，上式中的a就等于1/9；<code>normalize</code>为<code>False</code>的时候，a=1，相当于求区域内的像素和。</li>
 </ul>
 <h2 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h2><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小。显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="http://codec.wang/opencv-python-smoothing-images/#番外小篇：高斯滤波卷积核" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核：</p>
-<script type="math/tex; mode=display">k = \left[ \begin{matrix} 0.0625 & 0.125 & 0.0625 \newline 0.125 & 0.25 & 0.125 \newline 0.0625 & 0.125 & 0.0625 \end{matrix} \right]</script><p>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
+<script type="math/tex; mode=display">kernel_{g} = \left[ \begin{matrix} 0.0625 & 0.125 & 0.0625 \newline 0.125 & 0.25 & 0.125 \newline 0.0625 & 0.125 & 0.0625 \end{matrix} \right]</script><p>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 高斯滤波</span></span><br><span class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
 <h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><p>中值又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除<strong>椒盐噪声</strong>和<strong>斑点噪声</strong>。中值是一种<strong>非线性操作</strong>，效率相比前面几种线性滤波要慢。</p>
