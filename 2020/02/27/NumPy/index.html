@@ -50,18 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="图像梯度和边缘检测">
-<meta name="keywords" content="OpenCV">
+  <meta name="description" content="简介NumPy是一个功能强大的Python库，主要用于对多维数组执行计算。NumPy这个词来源于两个单词—— Numerical和Python。NumPy提供了大量的库函数和操作，可以帮助程序员轻松地进行数值计算。这类数值计算广泛用于以下任务：  机器学习模型：在编写机器学习算法时，需要对矩阵进行各种数值计算。例如矩阵乘法、换位、加法等。NumPy提供了一个非常好的库，用于简单(在编写代码方面)和">
+<meta name="keywords" content="python,机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-python学习笔记五">
-<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;22&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94&#x2F;index.html">
+<meta property="og:title" content="NumPy">
+<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="图像梯度和边缘检测">
+<meta property="og:description" content="简介NumPy是一个功能强大的Python库，主要用于对多维数组执行计算。NumPy这个词来源于两个单词—— Numerical和Python。NumPy提供了大量的库函数和操作，可以帮助程序员轻松地进行数值计算。这类数值计算广泛用于以下任务：  机器学习模型：在编写机器学习算法时，需要对矩阵进行各种数值计算。例如矩阵乘法、换位、加法等。NumPy提供了一个非常好的库，用于简单(在编写代码方面)和">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-26T10:37:28.034Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;numpy_2D_slicing_diagram-1.jpg">
+<meta property="og:updated_time" content="2020-02-27T07:25:14.655Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;numpy_2D_slicing_diagram-1.jpg">
 
-<link rel="canonical" href="http://lil-q.github.io/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/">
+<link rel="canonical" href="http://lil-q.github.io/2020/02/27/NumPy/">
 
 
 <script id="page-configurations">
@@ -75,7 +77,7 @@
   };
 </script>
 
-  <title>OpenCV-python学习笔记五 | Homeward</title>
+  <title>NumPy | Homeward</title>
   
 
 
@@ -189,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/">
+    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/02/27/NumPy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo.png">
@@ -202,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          OpenCV-python学习笔记五
+          NumPy
         </h1>
 
         <div class="post-meta">
@@ -212,7 +214,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-02-22 17:51:07" itemprop="dateCreated datePublished" datetime="2020-02-22T17:51:07+08:00">2020-02-22</time>
+              <time title="Created: 2020-02-27 12:26:53" itemprop="dateCreated datePublished" datetime="2020-02-27T12:26:53+08:00">2020-02-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,8 +222,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" itemprop="url" rel="index">
-                    <span itemprop="name">机器视觉</span>
+                  <a href="/categories/python%E5%B8%B8%E7%94%A8%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">python常用库</span>
                   </a>
                 </span>
             </span>
@@ -242,8 +244,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/02/27/NumPy/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/27/NumPy/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -258,28 +260,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>图像梯度和边缘检测</p>
-<a id="more"></a>
-<h1 id="图像梯度"><a href="#图像梯度" class="headerlink" title="图像梯度"></a>图像梯度</h1><p>在谈及梯度之前需要先找到函数，图片是二维的离散函数，二维意味着需要找到求梯度的方向，离散意味着对于图片的梯度不是导数而是差分。下式就是按照水平从左到右方向每隔一个像素点求差分：</p>
-<script type="math/tex; mode=display">\Delta f\left ( i,j \right )=f\left ( i+1,j \right )-f\left ( i,j \right )</script><h2 id="Prewitt-operator"><a href="#Prewitt-operator" class="headerlink" title="Prewitt operator"></a>Prewitt operator</h2><p>将上式用卷积的方式处理是就可以是有下面这个卷积核（Prewitt 边缘检测算子）：</p>
-<script type="math/tex; mode=display">Prewitt = \frac{1}{9}\left[ \begin{matrix} -1 & 0 & 1 \newline -1 & 0 & 1 \newline -1 & 0 & 1 \end{matrix} \right]</script><p>使用Prewitt 算子处理后，值比较高的像素点意味着梯度较大，就是更解决边缘；值比较低的像素点意味着梯度较小，就是更解决平滑表面。</p>
-<h2 id="Sobel-operator"><a href="#Sobel-operator" class="headerlink" title="Sobel operator"></a>Sobel operator</h2><p>考虑到对正在处理行的数据需要更多的重视，对Prewitt 边缘检测算子改进就形成了Sobel 边缘检测算子：</p>
-<script type="math/tex; mode=display">Sobel = \frac{1}{9}\left[ \begin{matrix} -1 & 0 & 1 \newline -2 & 0 & 2 \newline -1 & 0 & 1 \end{matrix} \right]</script><p>如果是从上到下求差分那么算子就转换成：</p>
-<script type="math/tex; mode=display">Sobel = \frac{1}{9}\left[ \begin{matrix} -1 & -2 & -1 \newline 0 & 0 & 0 \newline 1 & 2 & 1 \end{matrix} \right]</script><p>分别计算偏 x 方向的 <script type="math/tex">G_{x}</script>，偏 y 方向的 <script type="math/tex">G_{y}</script>，求绝对值，压缩到 [0, 255]区间，即 <script type="math/tex">G\left ( x,y \right )=G_{x}+G_{y}</script> 就是 sobel 边缘检测后的图像。</p>
-<h2 id="Scharr-operator"><a href="#Scharr-operator" class="headerlink" title="Scharr operator"></a>Scharr operator</h2><p>Sobel算子在转动上没有完美的对称。因此Scharr想要改进这个特性。它曾提出了更大的5x5核心，不过后来最常被使用的是:</p>
-<script type="math/tex; mode=display">Scharr = \frac{1}{9}\left[ \begin{matrix} 3 & 0 & -3 \newline 10 & 0 & -10 \newline 3 & 0 & -3 \end{matrix} \right]</script><p>或者：</p>
-<script type="math/tex; mode=display">Scharr = \frac{1}{9}\left[ \begin{matrix} 3 & 10 & 3 \newline 0 & 0 & 0 \newline -3 & -10 & -3 \end{matrix} \right]</script><h2 id="Laplacian"><a href="#Laplacian" class="headerlink" title="Laplacian"></a>Laplacian</h2><p>上面两种算子都是针对图像这种二维离散函数求一阶差分得到的，而Laplace 算子则是求二阶差分。二阶差分定义如下：</p>
-<script type="math/tex; mode=display">\Delta^{2} \left [f  \right ]\left ( i, j \right )=f\left ( i+1, j \right )-2f\left ( i, j \right )+f\left ( i-1, j \right )</script><p>包含x轴、y轴两个方向的卷积核为：</p>
-<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 0 & 1 & 0 \newline 1 & -4 & 1 \newline 0 & 1 & 0 \end{matrix} \right]</script><p>包含四个方向的卷积核为：</p>
-<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & -8 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>使用Laplace 算子处理后，由于所求为二阶差分，值接近0的像素点更有可能是边缘，但是对于灰度值相近的区域，经过卷积后的值也很接近0。</p>
-<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst	= cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</span><br></pre></td></tr></table></figure>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>NumPy是一个功能强大的Python库，主要用于对多维数组执行计算。NumPy这个词来源于两个单词—— <code>Numerical</code>和<code>Python</code>。NumPy提供了大量的库函数和操作，可以帮助程序员轻松地进行数值计算。这类数值计算广泛用于以下任务：</p>
+<ul>
+<li><strong>机器学习模型</strong>：在编写机器学习算法时，需要对矩阵进行各种数值计算。例如矩阵乘法、换位、加法等。NumPy提供了一个非常好的库，用于简单(在编写代码方面)和快速(在速度方面)计算。NumPy数组用于存储训练数据和机器学习模型的参数。</li>
+<li><strong>图像处理和计算机图形学</strong>：计算机中的图像表示为多维数字数组。NumPy成为同样情况下最自然的选择。实际上，NumPy提供了一些优秀的库函数来快速处理图像。例如，镜像图像、按特定角度旋转图像等。</li>
+<li><strong>数学任务</strong>：NumPy对于执行各种数学任务非常有用，如数值积分、微分、内插、外推等。因此，当涉及到数学任务时，它形成了一种基于Python的MATLAB的快速替代。</li>
+</ul>
+<h1 id="数组-Arrays"><a href="#数组-Arrays" class="headerlink" title="数组(Arrays)"></a>数组(Arrays)</h1><p>NumPy围绕<code>ndarrays</code>展开的。它可以完成如下操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])   <span class="comment"># Create a rank 1 array</span></span><br><span class="line">print(type(a))            <span class="comment"># Prints "&lt;class 'numpy.ndarray'&gt;"</span></span><br><span class="line">print(a.shape)            <span class="comment"># Prints "(3,)"</span></span><br><span class="line">print(a[<span class="number">0</span>], a[<span class="number">1</span>], a[<span class="number">2</span>])   <span class="comment"># Prints "1 2 3"</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">5</span>                  <span class="comment"># Change an element of the array</span></span><br><span class="line">print(a)                  <span class="comment"># Prints "[5, 2, 3]"</span></span><br><span class="line"></span><br><span class="line">b = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])    <span class="comment"># Create a rank 2 array</span></span><br><span class="line">print(b.shape)                     <span class="comment"># Prints "(2, 3)"</span></span><br><span class="line">print(b[<span class="number">0</span>, <span class="number">0</span>], b[<span class="number">0</span>, <span class="number">1</span>], b[<span class="number">1</span>, <span class="number">0</span>])   <span class="comment"># Prints "1 2 4"</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><p>可以通过<code>ndarray</code>类的属性获取数组属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Array properties</span></span><br><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"></span><br><span class="line">print(type(a)) <span class="comment"># &gt;&gt;&gt;&lt;class 'numpy.ndarray'&gt;</span></span><br><span class="line"><span class="comment"># 数据类型</span></span><br><span class="line">print(a.dtype) <span class="comment"># &gt;&gt;&gt;int64</span></span><br><span class="line"><span class="comment"># 总数据量</span></span><br><span class="line">print(a.size) <span class="comment"># &gt;&gt;&gt;25</span></span><br><span class="line"><span class="comment"># 数组形状</span></span><br><span class="line">print(a.shape) <span class="comment"># &gt;&gt;&gt;(5, 5)</span></span><br><span class="line"><span class="comment"># 每项占用的字节数，这里int64占用8字节</span></span><br><span class="line">print(a.itemsize) <span class="comment"># &gt;&gt;&gt;8</span></span><br><span class="line"><span class="comment"># 数组维度</span></span><br><span class="line">print(a.ndim) <span class="comment"># &gt;&gt;&gt;2</span></span><br><span class="line"><span class="comment"># 所有数据消耗的字节数，小于等于数组占据的总字节数</span></span><br><span class="line">print(a.nbytes) <span class="comment"># &gt;&gt;&gt;200</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><h2 id="切片操作"><a href="#切片操作" class="headerlink" title="切片操作"></a>切片操作</h2><p><img src="numpy_2D_slicing_diagram-1.jpg" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://zh.wikipedia.org/wiki/差分" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86</a></li>
-<li><a href="https://www.jianshu.com/p/2334bee37de5" target="_blank" rel="noopener">https://www.jianshu.com/p/2334bee37de5</a></li>
-<li><a href="https://blog.csdn.net/zhougynui/article/details/78837198" target="_blank" rel="noopener">https://blog.csdn.net/zhougynui/article/details/78837198</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/索貝爾算子" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%B4%A2%E8%B2%9D%E7%88%BE%E7%AE%97%E5%AD%90</a></li>
-<li><a href="http://codec.wang/opencv-python-edge-detection/" target="_blank" rel="noopener">http://codec.wang/opencv-python-edge-detection/</a></li>
-<li><a href="https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gaa13106761eedf14798f37aa2d60404c9" target="_blank" rel="noopener">https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gaa13106761eedf14798f37aa2d60404c9</a></li>
+<li><a href="https://www.numpy.org.cn/article/basics/an_introduction_to_scientific_python_numpy.html#创建一个数组" target="_blank" rel="noopener">https://www.numpy.org.cn/article/basics/an_introduction_to_scientific_python_numpy.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84</a></li>
+<li></li>
 </ol>
 
     </div>
@@ -290,24 +284,22 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/" rel="next" title="OpenCV-python学习笔记四">
-                  <i class="fa fa-chevron-left"></i> OpenCV-python学习笔记四
+                <a href="/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/" rel="next" title="OpenCV-python学习笔记五">
+                  <i class="fa fa-chevron-left"></i> OpenCV-python学习笔记五
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/02/27/NumPy/" rel="prev" title="NumPy">
-                  NumPy <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -347,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图像梯度"><span class="nav-number">1.</span> <span class="nav-text">图像梯度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prewitt-operator"><span class="nav-number">1.1.</span> <span class="nav-text">Prewitt operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sobel-operator"><span class="nav-number">1.2.</span> <span class="nav-text">Sobel operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scharr-operator"><span class="nav-number">1.3.</span> <span class="nav-text">Scharr operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Laplacian"><span class="nav-number">1.4.</span> <span class="nav-text">Laplacian</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#边缘检测"><span class="nav-number">2.</span> <span class="nav-text">边缘检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sobel"><span class="nav-number">2.1.</span> <span class="nav-text">Sobel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组-Arrays"><span class="nav-number">2.</span> <span class="nav-text">数组(Arrays)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组属性"><span class="nav-number">2.1.</span> <span class="nav-text">数组属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组运算"><span class="nav-number">2.2.</span> <span class="nav-text">数组运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片操作"><span class="nav-number">2.3.</span> <span class="nav-text">切片操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -484,54 +476,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
