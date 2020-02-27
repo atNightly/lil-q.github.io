@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="图像梯度和边缘检测">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-26T10:37:28.034Z">
+<meta property="og:updated_time" content="2020-02-27T09:27:23.071Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://lil-q.github.io/2020/02/22/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94/">
@@ -265,15 +265,15 @@
 <script type="math/tex; mode=display">\Delta f\left ( i,j \right )=f\left ( i+1,j \right )-f\left ( i,j \right )</script><h2 id="Prewitt-operator"><a href="#Prewitt-operator" class="headerlink" title="Prewitt operator"></a>Prewitt operator</h2><p>将上式用卷积的方式处理是就可以是有下面这个卷积核（Prewitt 边缘检测算子）：</p>
 <script type="math/tex; mode=display">Prewitt = \frac{1}{9}\left[ \begin{matrix} -1 & 0 & 1 \newline -1 & 0 & 1 \newline -1 & 0 & 1 \end{matrix} \right]</script><p>使用Prewitt 算子处理后，值比较高的像素点意味着梯度较大，就是更解决边缘；值比较低的像素点意味着梯度较小，就是更解决平滑表面。</p>
 <h2 id="Sobel-operator"><a href="#Sobel-operator" class="headerlink" title="Sobel operator"></a>Sobel operator</h2><p>考虑到对正在处理行的数据需要更多的重视，对Prewitt 边缘检测算子改进就形成了Sobel 边缘检测算子：</p>
-<script type="math/tex; mode=display">Sobel = \frac{1}{9}\left[ \begin{matrix} -1 & 0 & 1 \newline -2 & 0 & 2 \newline -1 & 0 & 1 \end{matrix} \right]</script><p>如果是从上到下求差分那么算子就转换成：</p>
-<script type="math/tex; mode=display">Sobel = \frac{1}{9}\left[ \begin{matrix} -1 & -2 & -1 \newline 0 & 0 & 0 \newline 1 & 2 & 1 \end{matrix} \right]</script><p>分别计算偏 x 方向的 <script type="math/tex">G_{x}</script>，偏 y 方向的 <script type="math/tex">G_{y}</script>，求绝对值，压缩到 [0, 255]区间，即 <script type="math/tex">G\left ( x,y \right )=G_{x}+G_{y}</script> 就是 sobel 边缘检测后的图像。</p>
+<script type="math/tex; mode=display">Sobel_{x} = \frac{1}{9}\left[ \begin{matrix} -1 & 0 & 1 \newline -2 & 0 & 2 \newline -1 & 0 & 1 \end{matrix} \right]</script><p>如果是从上到下求差分那么算子就转换成：</p>
+<script type="math/tex; mode=display">Sobel_{y} = \frac{1}{9}\left[ \begin{matrix} -1 & -2 & -1 \newline 0 & 0 & 0 \newline 1 & 2 & 1 \end{matrix} \right]</script><p>分别计算偏 x 方向的 <script type="math/tex">G_{x}</script>，偏 y 方向的 <script type="math/tex">G_{y}</script>，求绝对值，压缩到 [0, 255]区间，即 <script type="math/tex">G\left ( x,y \right )=G_{x}+G_{y}</script> 就是 sobel 边缘检测后的图像。</p>
 <h2 id="Scharr-operator"><a href="#Scharr-operator" class="headerlink" title="Scharr operator"></a>Scharr operator</h2><p>Sobel算子在转动上没有完美的对称。因此Scharr想要改进这个特性。它曾提出了更大的5x5核心，不过后来最常被使用的是:</p>
-<script type="math/tex; mode=display">Scharr = \frac{1}{9}\left[ \begin{matrix} 3 & 0 & -3 \newline 10 & 0 & -10 \newline 3 & 0 & -3 \end{matrix} \right]</script><p>或者：</p>
-<script type="math/tex; mode=display">Scharr = \frac{1}{9}\left[ \begin{matrix} 3 & 10 & 3 \newline 0 & 0 & 0 \newline -3 & -10 & -3 \end{matrix} \right]</script><h2 id="Laplacian"><a href="#Laplacian" class="headerlink" title="Laplacian"></a>Laplacian</h2><p>上面两种算子都是针对图像这种二维离散函数求一阶差分得到的，而Laplace 算子则是求二阶差分。二阶差分定义如下：</p>
+<script type="math/tex; mode=display">Scharr_{x} = \frac{1}{9}\left[ \begin{matrix} 3 & 0 & -3 \newline 10 & 0 & -10 \newline 3 & 0 & -3 \end{matrix} \right]</script><p>或者：</p>
+<script type="math/tex; mode=display">Scharr_{y} = \frac{1}{9}\left[ \begin{matrix} 3 & 10 & 3 \newline 0 & 0 & 0 \newline -3 & -10 & -3 \end{matrix} \right]</script><h2 id="Laplacian"><a href="#Laplacian" class="headerlink" title="Laplacian"></a>Laplacian</h2><p>上面两种算子都是针对图像这种二维离散函数求一阶差分得到的，而Laplace 算子则是求二阶差分。二阶差分定义如下：</p>
 <script type="math/tex; mode=display">\Delta^{2} \left [f  \right ]\left ( i, j \right )=f\left ( i+1, j \right )-2f\left ( i, j \right )+f\left ( i-1, j \right )</script><p>包含x轴、y轴两个方向的卷积核为：</p>
-<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 0 & 1 & 0 \newline 1 & -4 & 1 \newline 0 & 1 & 0 \end{matrix} \right]</script><p>包含四个方向的卷积核为：</p>
-<script type="math/tex; mode=display">kernel = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & -8 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>使用Laplace 算子处理后，由于所求为二阶差分，值接近0的像素点更有可能是边缘，但是对于灰度值相近的区域，经过卷积后的值也很接近0。</p>
-<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst	= cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">Laplacian_{2} = \frac{1}{9}\left[ \begin{matrix} 0 & 1 & 0 \newline 1 & -4 & 1 \newline 0 & 1 & 0 \end{matrix} \right]</script><p>包含四个方向的卷积核为：</p>
+<script type="math/tex; mode=display">Laplacian_{4} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & -8 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>使用Laplace 算子处理后，由于所求为二阶差分，值接近0的像素点更有可能是边缘，但是对于灰度值相近的区域，经过卷积后的值也很接近0。</p>
+<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst = cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/差分" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86</a></li>
 <li><a href="https://www.jianshu.com/p/2334bee37de5" target="_blank" rel="noopener">https://www.jianshu.com/p/2334bee37de5</a></li>
