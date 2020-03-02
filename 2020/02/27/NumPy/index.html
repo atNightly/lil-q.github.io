@@ -51,16 +51,16 @@
 </script>
 
   <meta name="description" content="python常用库——NumPy">
-<meta name="keywords" content="python,机器学习">
+<meta name="keywords" content="python,NumPy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NumPy">
+<meta property="og:title" content="NumPy基础">
 <meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;index.html">
 <meta property="og:site_name" content="Homeward">
 <meta property="og:description" content="python常用库——NumPy">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;numpy_2D_slicing_diagram-1.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;Figure_1.png">
-<meta property="og:updated_time" content="2020-02-28T10:36:05.329Z">
+<meta property="og:updated_time" content="2020-02-29T04:56:30.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;27&#x2F;NumPy&#x2F;numpy_2D_slicing_diagram-1.jpg">
 
@@ -78,7 +78,7 @@
   };
 </script>
 
-  <title>NumPy | Homeward</title>
+  <title>NumPy基础 | Homeward</title>
   
 
 
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          NumPy
+          NumPy基础
         </h1>
 
         <div class="post-meta">
@@ -294,7 +294,7 @@
 <li>一个参数<code>where(array)</code>：输出<code>array</code>中真值（非零值）的坐标。</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Where</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">a=a.reshape(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">print(a)</span><br><span class="line"><span class="string">'''&gt;&gt;&gt;</span></span><br><span class="line"><span class="string">[[ 0 10 20 30 40]</span></span><br><span class="line"><span class="string"> [50 60 70 80 90]]</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">print(a % <span class="number">20</span> == <span class="number">0</span>)</span><br><span class="line"><span class="string">'''&gt;&gt;&gt;</span></span><br><span class="line"><span class="string">[[ True False  True False  True]</span></span><br><span class="line"><span class="string"> [False  True False  True False]]</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">b = np.where(a % <span class="number">20</span> == <span class="number">0</span>) </span><br><span class="line">c = np.where(a % <span class="number">20</span> == <span class="number">0</span>)[<span class="number">0</span>]</span><br><span class="line">print(b) <span class="comment"># &gt;&gt;&gt;(array([0, 0, 0, 1, 1], dtype=int64), array([0, 2, 4, 1, 3], dtype=int64))</span></span><br><span class="line">print(c) <span class="comment"># &gt;&gt;&gt;[0 0 0 1 1]</span></span><br></pre></td></tr></table></figure>
-<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>当维度不同的两个数组做运算时，自动将维度小的扩展成和另一个数组相同形状的处理就是广播。</p>
+<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>当维度不同的两个数组做运算时，自动将维度小的扩展成和另一个数组相同形状的处理就是广播。以下内容详情见参考[2]。</p>
 <p>将两个数组一起广播遵循以下规则：</p>
 <ol>
 <li>如果数组不具有相同的rank，则将较低等级数组的形状添加1，直到两个形状具有相同的长度。</li>
@@ -304,6 +304,7 @@
 <li>在一个数组的大小为1且另一个数组的大小大于1的任何维度中，第一个数组的行为就像沿着该维度复制一样</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute outer product of vectors</span></span><br><span class="line">v = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])  <span class="comment"># v has shape (3,)</span></span><br><span class="line">w = np.array([<span class="number">4</span>,<span class="number">5</span>])    <span class="comment"># w has shape (2,)</span></span><br><span class="line"><span class="comment"># To compute an outer product, we first reshape v to be a column</span></span><br><span class="line"><span class="comment"># vector of shape (3, 1); we can then broadcast it against w to yield</span></span><br><span class="line"><span class="comment"># an output of shape (3, 2), which is the outer product of v and w:</span></span><br><span class="line"><span class="comment"># [[ 4  5]</span></span><br><span class="line"><span class="comment">#  [ 8 10]</span></span><br><span class="line"><span class="comment">#  [12 15]]</span></span><br><span class="line">print(np.reshape(v, (<span class="number">3</span>, <span class="number">1</span>)) * w)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add a vector to each row of a matrix</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line"><span class="comment"># x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),</span></span><br><span class="line"><span class="comment"># giving the following matrix:</span></span><br><span class="line"><span class="comment"># [[2 4 6]</span></span><br><span class="line"><span class="comment">#  [5 7 9]]</span></span><br><span class="line">print(x + v)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add a vector to each column of a matrix</span></span><br><span class="line"><span class="comment"># x has shape (2, 3) and w has shape (2,).</span></span><br><span class="line"><span class="comment"># If we transpose x then it has shape (3, 2) and can be broadcast</span></span><br><span class="line"><span class="comment"># against w to yield a result of shape (3, 2); transposing this result</span></span><br><span class="line"><span class="comment"># yields the final result of shape (2, 3) which is the matrix x with</span></span><br><span class="line"><span class="comment"># the vector w added to each column. Gives the following matrix:</span></span><br><span class="line"><span class="comment"># [[ 5  6  7]</span></span><br><span class="line"><span class="comment">#  [ 9 10 11]]</span></span><br><span class="line">print((x.T + w).T)</span><br><span class="line"><span class="comment"># Another solution is to reshape w to be a column vector of shape (2, 1);</span></span><br><span class="line"><span class="comment"># we can then broadcast it directly against x to produce the same</span></span><br><span class="line"><span class="comment"># output.</span></span><br><span class="line">print(x + np.reshape(w, (<span class="number">2</span>, <span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Multiply a matrix by a constant:</span></span><br><span class="line"><span class="comment"># x has shape (2, 3). Numpy treats scalars as arrays of shape ();</span></span><br><span class="line"><span class="comment"># these can be broadcast together to shape (2, 3), producing the</span></span><br><span class="line"><span class="comment"># following array:</span></span><br><span class="line"><span class="comment"># [[ 2  4  6]</span></span><br><span class="line"><span class="comment">#  [ 8 10 12]]</span></span><br><span class="line">print(x * <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>注意：对一个<code>array</code>转置可以使用<code>array.T</code>，或者使用<code>np.reshape()</code>。对于矩阵可使用<code>np.transpose()</code>。</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="arange-和linspace"><a href="#arange-和linspace" class="headerlink" title="arange()和linspace()"></a>arange()和linspace()</h2><p><code>arange()</code>类似于内置函数<code>range()</code>，通过指定开始值、终值和步长创建表示等差数列的一维数组，<strong>得到的结果数组不包含终值</strong>。</p>
 <p><code>linspace()</code>通过指定开始值、终值和元素个数创建表示等差数列的一维数组。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.linspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">False</span>, dtype=<span class="literal">None</span>, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
@@ -332,7 +333,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/NumPy/" rel="tag"># NumPy</a>
           </div>
 
         
@@ -347,8 +348,8 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/02/28/%E9%9A%A7%E9%81%93/" rel="prev" title="隧道">
-                  隧道 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/02/29/NumPy%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="prev" title="NumPy数据分析">
+                  NumPy数据分析 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -418,7 +419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

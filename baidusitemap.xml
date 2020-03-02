@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://lil-q.github.io/2020/02/27/NumPy/</loc>
-    <lastmod>2020-02-28</lastmod>
+    <loc>http://lil-q.github.io/2020/02/29/NumPy%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2020-03-02</lastmod>
   </url>  <url>
-    <loc>http://lil-q.github.io/2020/02/28/%E9%9A%A7%E9%81%93/</loc>
-    <lastmod>2020-02-28</lastmod>
+    <loc>http://lil-q.github.io/2020/01/25/%E6%88%BF%E5%AD%90/</loc>
+    <lastmod>2020-03-02</lastmod>
+  </url>  <url>
+    <loc>http://lil-q.github.io/2020/02/27/NumPy/</loc>
+    <lastmod>2020-02-29</lastmod>
+  </url>  <url>
+    <loc>http://lil-q.github.io/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</loc>
+    <lastmod>2020-02-29</lastmod>
   </url>  <url>
     <loc>http://lil-q.github.io/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</loc>
     <lastmod>2020-02-27</lastmod>
@@ -22,14 +28,8 @@
     <loc>http://lil-q.github.io/2020/02/09/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
-    <loc>http://lil-q.github.io/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/</loc>
-    <lastmod>2020-02-21</lastmod>
-  </url>  <url>
     <loc>http://lil-q.github.io/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/</loc>
     <lastmod>2020-02-21</lastmod>
-  </url>  <url>
-    <loc>http://lil-q.github.io/2020/01/25/%E6%88%BF%E5%AD%90/</loc>
-    <lastmod>2020-02-18</lastmod>
   </url>  <url>
     <loc>http://lil-q.github.io/2019/12/04/%E6%A0%91-tree/</loc>
     <lastmod>2020-02-18</lastmod>
