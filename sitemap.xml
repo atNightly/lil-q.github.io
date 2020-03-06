@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lil-q.github.io/about/index.html</loc>
+    
+    <lastmod>2020-03-06T16:32:48.498Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lil-q.github.io/2019/12/09/%E6%95%B0%E7%BB%84-Array/</loc>
     
     <lastmod>2020-03-06T14:26:36.146Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>http://lil-q.github.io/2020/02/01/%E5%BA%94%E7%94%A8%E4%B8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE/</loc>
     
     <lastmod>2020-02-01T15:20:50.744Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lil-q.github.io/about/index.html</loc>
-    
-    <lastmod>2020-01-22T09:35:27.513Z</lastmod>
     
   </url>
   
