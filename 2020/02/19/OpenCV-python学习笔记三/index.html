@@ -1,274 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
-
-  <meta name="description" content="图像混合与形态学操作">
-<meta name="keywords" content="OpenCV">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-python学习笔记三">
-<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;index.html">
-<meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="图像混合与形态学操作">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;2020-02-20%20124157.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_understand_erosion.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_morphological_struct_element.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;cv2_morphological_opening_closing.jpg">
-<meta property="og:updated_time" content="2020-02-21T09:12:41.458Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;19&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89&#x2F;2020-02-20%20124157.png">
-
-<link rel="canonical" href="http://lil-q.github.io/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>OpenCV-python学习笔记三 | Homeward</title>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logoforapple.png">
+  <link rel="icon" type="image/png" href="/img/logo192.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="description" content="Life Goes On">
+  <meta name="author" content="戚天天">
+  <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
+  <title>OpenCV-python学习笔记三 - Homeward</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+<!-- 自定义样式保持在最底部 -->
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Homeward</strong>&nbsp;</a>
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Homeward</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
 </nav>
-</div>
-    </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="view intro-2" id="background" false
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7744.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Wednesday, February 19th 2020, 1:00 pm
+                </p>
+              
 
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/">
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    921 字
+                  </span>
+                
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.png">
-      <meta itemprop="name" content="戚天天">
-      <meta itemprop="description" content="Life Goes On">
-    </span>
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      3 分钟
+                  </span>
+                
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homeward">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          OpenCV-python学习笔记三
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-19 13:00:33" itemprop="dateCreated datePublished" datetime="2020-02-19T13:00:33+08:00">2020-02-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" itemprop="url" rel="index">
-                    <span itemprop="name">机器视觉</span>
-                  </a>
-                </span>
-            </span>
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-fire"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-        <p>图像混合与形态学操作</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+          <div class="markdown-body">
+            <p>图像混合与形态学操作</p>
 <a id="more"></a>
 <h1 id="图片混合"><a href="#图片混合" class="headerlink" title="图片混合"></a>图片混合</h1><h2 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h2><p>图像混合<code>cv2.addWeighted()</code>要求两幅图片的形状（高度/宽度/通道数）必须相同，<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>分别为两幅图像的权重，b则是一个偏置：</p>
-<script type="math/tex; mode=display">dst = \omega_{1}\times img1+\omega_{2}\times img2 + b</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img1 = cv2.imread(<span class="string">'img1_name.jpg'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'img2_name.png'</span>)</span><br><span class="line">res = cv2.addWeighted(img1, <span class="number">0.6</span>, img2, <span class="number">0.4</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">dst = \omega_{1}\times img1+\omega_{2}\times img2 + b</script><pre><code class="lang-python">img1 = cv2.imread(&#39;img1_name.jpg&#39;)
+img2 = cv2.imread(&#39;img2_name.png&#39;)
+res = cv2.addWeighted(img1, 0.6, img2, 0.4, 0)
+</code></pre>
 <p>特别的，当<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>都为1，b为0时，就是两张图片相加。可以用<code>cv2.add()</code>函数。numpy 中可以直接用<code>res = img1 + img2</code>相加，但这两者的结果并不相同：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = np.uint8([<span class="number">250</span>])</span><br><span class="line">y = np.uint8([<span class="number">10</span>])</span><br><span class="line">print(cv2.add(x, y))  <span class="comment"># 250 + 10 = 260 =&gt; 255 --255封顶</span></span><br><span class="line">print(x + y)  <span class="comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">x = np.uint8([250])
+y = np.uint8([10])
+print(cv2.add(x, y))  # 250 + 10 = 260 =&gt; 255 --255封顶
+print(x + y)  # 250 + 10 = 260 % 256 = 4 --会溢出
+</code></pre>
 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>按位操作包括按位与/或/非/异或操作，如果将两幅图片直接相加会改变图片的颜色，如果用图像混合，则会改变图片的透明度，所以我们需要用按位操作。</p>
 <ul>
 <li><code>cv2.bitwise_and()</code>：按位与操作 </li>
@@ -277,11 +193,36 @@
 <li><code>cv2.bitwise_xor()</code>：按位异或操作</li>
 </ul>
 <p>通过位操作，我们可以得到<a href="https://baike.baidu.com/item/掩膜/8544392?fr=aladdin" target="_blank" rel="noopener">掩膜</a>（mask）——用来对另外一幅图片进行局部的遮挡的二值化图片，通过掩膜把原图中要放logo的区域抠出来，再把logo放进去就行了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img1 = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'opencv-logo-white.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把logo放在左上角，所以我们只关心这一块区域</span></span><br><span class="line">rows, cols = img2.shape[:<span class="number">2</span>]</span><br><span class="line">roi = img1[:rows, :cols]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建掩膜</span></span><br><span class="line">img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line">ret, mask = cv2.threshold(img2gray, <span class="number">10</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">mask_inv = cv2.bitwise_not(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保留除logo外的背景</span></span><br><span class="line">img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)</span><br><span class="line">dst = cv2.add(img1_bg, img2)  <span class="comment"># 进行融合</span></span><br><span class="line">img1[:rows, :cols] = dst  <span class="comment"># 融合后放在原图上</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">"dst"</span>,img1)</span><br><span class="line">cv2.waitKey(<span class="number">10000</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="2020-02-20 124157.png" alt=""></p>
+<pre><code class="lang-python">import cv2
+
+img1 = cv2.imread(&#39;lena.jpg&#39;)
+img2 = cv2.imread(&#39;opencv-logo-white.png&#39;)
+
+# 把logo放在左上角，所以我们只关心这一块区域
+rows, cols = img2.shape[:2]
+roi = img1[:rows, :cols]
+
+# 创建掩膜
+img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+ret, mask = cv2.threshold(img2gray, 10, 255, cv2.THRESH_BINARY)
+mask_inv = cv2.bitwise_not(mask)
+
+# 保留除logo外的背景
+img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)
+dst = cv2.add(img1_bg, img2)  # 进行融合
+img1[:rows, :cols] = dst  # 融合后放在原图上
+
+cv2.imshow(&quot;dst&quot;,img1)
+cv2.waitKey(10000)
+</code></pre>
+<p><img src="2020-02-20 124157.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="形态学操作"><a href="#形态学操作" class="headerlink" title="形态学操作"></a>形态学操作</h1><h2 id="腐蚀膨胀"><a href="#腐蚀膨胀" class="headerlink" title="腐蚀膨胀"></a>腐蚀膨胀</h2><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有 0 和 255 ，所以小区域内有一个是 0 该像素点就为 0 。</p>
-<p><img src="cv2_understand_erosion.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 腐蚀</span></span><br><span class="line">img = cv2.imread(<span class="string">'j.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">kernel = np.ones((<span class="number">5</span>, <span class="number">5</span>), np.uint8)</span><br><span class="line">erosion = cv2.erode(img, kernel)</span><br></pre></td></tr></table></figure>
+<p><img src="cv2_understand_erosion.jpg" srcset="/img/loading.gif" alt=""></p>
+<pre><code class="lang-python"># 腐蚀
+img = cv2.imread(&#39;j.bmp&#39;, 0)
+kernel = np.ones((5, 5), np.uint8)
+erosion = cv2.erode(img, kernel)
+</code></pre>
 <ul>
 <li><code>kernel</code>：结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素：<ul>
 <li>矩形结构：<code>cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))</code>  </li>
@@ -290,310 +231,396 @@
 </ul>
 </li>
 </ul>
-<p><img src="cv2_morphological_struct_element.jpg" alt=""></p>
+<p><img src="cv2_morphological_struct_element.jpg" srcset="/img/loading.gif" alt=""></p>
 <h2 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h2><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 膨胀</span></span><br><span class="line">dilation = cv2.dilate(img, kernel)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python"># 膨胀
+dilation = cv2.dilate(img, kernel)
+</code></pre>
 <h2 id="开运算"><a href="#开运算" class="headerlink" title="开运算"></a>开运算</h2><p>先腐蚀后膨胀叫开运算（因为先腐蚀会分开物体，这样容易记住），其作用是：分离物体，消除小区域。这类形态学操作用<code>cv2.morphologyEx()</code>函数实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 定义结构元素</span></span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'j_noise_out.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="comment"># 开运算</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))  # 定义结构元素
+
+img = cv2.imread(&#39;j_noise_out.bmp&#39;, 0)
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  # 开运算
+</code></pre>
 <h2 id="闭运算"><a href="#闭运算" class="headerlink" title="闭运算"></a>闭运算</h2><p>闭运算则相反：先膨胀后腐蚀（先膨胀会使白色的部分扩张，以至于消除/“闭合”物体里面的小黑洞，所以叫闭运算）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'j_noise_in.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="comment"># 闭运算</span></span><br></pre></td></tr></table></figure>
-<p><img src="cv2_morphological_opening_closing.jpg" alt=""></p>
+<pre><code class="lang-python">img = cv2.imread(&#39;j_noise_in.bmp&#39;, 0)
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  # 闭运算
+</code></pre>
+<p><img src="cv2_morphological_opening_closing.jpg" srcset="/img/loading.gif" alt=""></p>
 <h2 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h2><ul>
 <li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'school.bmp'</span>, <span class="number">0</span>)</span><br><span class="line">gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">img = cv2.imread(&#39;school.bmp&#39;, 0)
+gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
+</code></pre>
 <ul>
 <li>顶帽：原图减去开运算后的图：<code>src - opening</code></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)
+</code></pre>
 <ul>
 <li>黑帽：闭运算后的图减去原图：<code>closing - src</code></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)
+</code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="http://codec.wang/opencv-python-erode-and-dilate/" target="_blank" rel="noopener">http://codec.wang/opencv-python-erode-and-dilate/</a></li>
 <li><a href="http://codec.wang/opencv-python-image-blending/" target="_blank" rel="noopener">http://codec.wang/opencv-python-image-blending/</a></li>
 </ol>
 
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+            <hr>
           </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/" rel="next" title="OpenCV-python学习笔记二">
-                  <i class="fa fa-chevron-left"></i> OpenCV-python学习笔记二
-                </a>
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/" rel="prev" title="OpenCV-python学习笔记四">
-                  OpenCV-python学习笔记四 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+              
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/OpenCV/">OpenCV</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="comments"></div>
-
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片混合"><span class="nav-number">1.</span> <span class="nav-text">图片混合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像混合"><span class="nav-number">1.1.</span> <span class="nav-text">图像混合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位操作"><span class="nav-number">1.2.</span> <span class="nav-text">位操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#形态学操作"><span class="nav-number">2.</span> <span class="nav-text">形态学操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#腐蚀膨胀"><span class="nav-number">2.1.</span> <span class="nav-text">腐蚀膨胀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#膨胀"><span class="nav-number">2.2.</span> <span class="nav-text">膨胀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开运算"><span class="nav-number">2.3.</span> <span class="nav-text">开运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭运算"><span class="nav-number">2.4.</span> <span class="nav-text">闭运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他形态学操作"><span class="nav-number">2.5.</span> <span class="nav-text">其他形态学操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="戚天天"
-      src="/images/logo.png">
-  <p class="site-author-name" itemprop="name">戚天天</p>
-  <div class="site-description" itemprop="description">Life Goes On</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">21</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">21</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container">
+        <div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
       </div>
-    </main>
+    
+  </div>
+</div>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+<!-- custom -->
 
-<div class="copyright">
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === 'true';
+    var verify = 'false' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "喂？",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
   
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">戚天天</span>
-</div>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
 
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-child"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-fire"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-        
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </footer>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
+
+    
+
+    <!-- cnzz Analytics icon -->
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var main = $('main');
+      var tocT = navHeight + (toc.offset().top - main.offset().top);
+      var tocLimMin = main.offset().top - navHeight;
+      var tocLimMax = $('#comments').offset().top - navHeight;
+      $(window).scroll(function () {
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': tocT,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
         }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
       }
     });
-  });
+  </script>
 
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
+
+
+
+
+
+
+  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "OpenCV-python学习笔记三&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
     }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
+    anchors.add(res.join(", "))
+  </script>
 
-    
 
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
   
 
 
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
-    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
-    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: '' || 'zh-cn',
-    path: location.pathname,
-    recordIP: false,
-    serverURLs: ''
-  });
-}, window.Valine);
-</script>
+
+
+
+
+
 
 </body>
 </html>

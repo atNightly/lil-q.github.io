@@ -1,268 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
-
-  <meta name="description" content="滤波与阈值分割">
-<meta name="keywords" content="OpenCV">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-python学习笔记二">
-<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;index.html">
-<meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="滤波与阈值分割">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;Background_Subtraction_Tutorial_Scheme.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;114759.png">
-<meta property="og:updated_time" content="2020-02-27T10:14:21.363Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C&#x2F;threshold.png">
-
-<link rel="canonical" href="http://lil-q.github.io/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>OpenCV-python学习笔记二 | Homeward</title>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logoforapple.png">
+  <link rel="icon" type="image/png" href="/img/logo192.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="description" content="Life Goes On">
+  <meta name="author" content="戚天天">
+  <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
+  <title>OpenCV-python学习笔记二 - Homeward</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+<!-- 自定义样式保持在最底部 -->
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Homeward</strong>&nbsp;</a>
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Homeward</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
 </nav>
-</div>
-    </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="view intro-2" id="background" false
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7744.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Monday, February 17th 2020, 2:44 pm
+                </p>
+              
 
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/">
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    2.3k 字
+                  </span>
+                
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.png">
-      <meta itemprop="name" content="戚天天">
-      <meta itemprop="description" content="Life Goes On">
-    </span>
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      9 分钟
+                  </span>
+                
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homeward">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          OpenCV-python学习笔记二
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-17 14:44:55" itemprop="dateCreated datePublished" datetime="2020-02-17T14:44:55+08:00">2020-02-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" itemprop="url" rel="index">
-                    <span itemprop="name">机器视觉</span>
-                  </a>
-                </span>
-            </span>
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-fire"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-        <p>滤波与阈值分割</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+          <div class="markdown-body">
+            <p>滤波与阈值分割</p>
 <a id="more"></a>
 <h1 id="滤波"><a href="#滤波" class="headerlink" title="滤波"></a>滤波</h1><p>滤波是一种卷积操作，常用于图像的预处理。低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
 <ul>
@@ -271,22 +181,32 @@
 </ul>
 <p>常见噪声有<a href="https://baike.baidu.com/item/椒盐噪声/3455958?fr=aladdin" target="_blank" rel="noopener">椒盐噪声</a>和<a href="https://baike.baidu.com/item/高斯噪声" target="_blank" rel="noopener">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
 <h2 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h2><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
-<script type="math/tex; mode=display">kernel_{m} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">'lena.jpg'</span>)</span><br><span class="line">blur = cv2.blur(img, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值模糊</span></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">kernel_{m} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><pre><code class="lang-python">img = cv2.imread(&#39;lena.jpg&#39;)
+blur = cv2.blur(img, (3, 3))  # 均值模糊
+</code></pre>
 <h2 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h2><p>方框滤波跟均值滤波很像，如3×3的滤波核如下：</p>
 <script type="math/tex; mode=display">kernel_{b} = a\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>用<code>cv2.boxFilter()</code>函数实现，当</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的均值滤波也可以用方框滤波实现</span></span><br><span class="line">blur = cv2.boxFilter(img, <span class="number">-1</span>, (<span class="number">3</span>, <span class="number">3</span>), normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python"># 前面的均值滤波也可以用方框滤波实现
+blur = cv2.boxFilter(img, -1, (3, 3), normalize=True)
+</code></pre>
 <ul>
 <li>参数2：<code>ddtype</code>为目标的数据类型，取-1表示和原图相同</li>
 <li>可选参数<code>normalize</code>为<code>True</code>的时候，方框滤波就是均值滤波，上式中的a就等于1/9；<code>normalize</code>为<code>False</code>的时候，a=1，相当于求区域内的像素和。</li>
 </ul>
 <h2 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h2><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小。显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="http://codec.wang/opencv-python-smoothing-images/#番外小篇：高斯滤波卷积核" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核：</p>
 <script type="math/tex; mode=display">kernel_{g} = \left[ \begin{matrix} 0.0625 & 0.125 & 0.0625 \newline 0.125 & 0.25 & 0.125 \newline 0.0625 & 0.125 & 0.0625 \end{matrix} \right]</script><p>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 高斯滤波</span></span><br><span class="line">gaussian = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python"># 高斯滤波
+gaussian = cv2.GaussianBlur(img, (5, 5), 1)
+</code></pre>
 <p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
 <h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><p>中值又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除<strong>椒盐噪声</strong>和<strong>斑点噪声</strong>。中值是一种<strong>非线性操作</strong>，效率相比前面几种线性滤波要慢。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中值滤波</span></span><br><span class="line">median = cv2.medianBlur(img, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python"># 中值滤波
+median = cv2.medianBlur(img, 5)
+</code></pre>
 <h2 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h2><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了另一种<strong>非线性滤波</strong>双边滤波。双边滤波在高斯滤波的基础上加入了对<strong>灰度信息的权重</strong>，即在邻域内，灰度值越接近中心点灰度值的点的权重更大，灰度值相差大的点权重越小。此权重大小，则由值域高斯函数确定。两者权重系数相乘，得到最终的卷积模板。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 双边滤波</span></span><br><span class="line">blur = cv2.bilateralFilter(img, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python"># 双边滤波
+blur = cv2.bilateralFilter(img, 9, 75, 75)
+</code></pre>
 <ul>
 <li>参数2：d – Diameter of each pixel neighborhood that is used during filtering. If it is non-positive, it is computed from <code>sigmaSpace</code> .</li>
 <li>参数3：sigmaColor – Filter sigma in the color space. </li>
@@ -305,7 +225,9 @@
 <li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
 </ul>
 <h1 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h1><h2 id="固定阈值分割"><a href="#固定阈值分割" class="headerlink" title="固定阈值分割"></a>固定阈值分割</h2><p>固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阈值分割</span></span><br><span class="line">ret, th = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-PYTHON"># 阈值分割
+ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+</code></pre>
 <p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：</p>
 <ul>
 <li>参数1：要处理的原图，<strong>一般是灰度图</strong></li>
@@ -313,10 +235,32 @@
 <li>参数3：最大阈值，一般为255</li>
 <li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="noopener">ThresholdTypes</a></li>
 </ul>
-<p><img src="threshold.png" alt=""></p>
+<p><img src="threshold.png" srcset="/img/loading.gif" alt=""></p>
 <p>最常见的就是前两种，相当于二值化。</p>
 <h2 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h2><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<strong>它并不适用于明暗分布不均的图片</strong>。 <code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自适应阈值对比固定阈值</span></span><br><span class="line">img = cv2.imread(<span class="string">'img_name.jpg'</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 固定阈值</span></span><br><span class="line">ret, th1 = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line"><span class="comment"># 自适应阈值</span></span><br><span class="line">th2 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="number">11</span>, <span class="number">4</span>)</span><br><span class="line">th3 = cv2.adaptiveThreshold(</span><br><span class="line">    img, <span class="number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="number">17</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">titles = [<span class="string">'Original'</span>, <span class="string">'Global(v = 127)'</span>, <span class="string">'Adaptive Mean'</span>, <span class="string">'Adaptive Gaussian'</span>]</span><br><span class="line">images = [img, th1, th2, th3]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, i + <span class="number">1</span>), plt.imshow(images[i], <span class="string">'gray'</span>)</span><br><span class="line">    plt.title(titles[i], fontsize=<span class="number">8</span>)</span><br><span class="line">    plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">import matplotlib.pyplot as plt
+import cv2
+
+# 自适应阈值对比固定阈值
+img = cv2.imread(&#39;img_name.jpg&#39;, 0)
+
+# 固定阈值
+ret, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+# 自适应阈值
+th2 = cv2.adaptiveThreshold(
+    img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 4)
+th3 = cv2.adaptiveThreshold(
+    img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 6)
+
+titles = [&#39;Original&#39;, &#39;Global(v = 127)&#39;, &#39;Adaptive Mean&#39;, &#39;Adaptive Gaussian&#39;]
+images = [img, th1, th2, th3]
+
+for i in range(4):
+    plt.subplot(2, 2, i + 1), plt.imshow(images[i], &#39;gray&#39;)
+    plt.title(titles[i], fontsize=8)
+    plt.xticks([]), plt.yticks([])
+plt.show()
+</code></pre>
 <ul>
 <li>参数1：要处理的原图</li>
 <li>参数2：最大阈值，一般为255</li>
@@ -329,304 +273,431 @@
 <li>参数5：小区域的面积，如11就是11*11的小块</li>
 <li>参数6：最终阈值等于小区域计算出的阈值再减去此值</li>
 </ul>
-<h2 id="Otsu阈值法"><a href="#Otsu阈值法" class="headerlink" title="Otsu阈值法"></a>Otsu阈值法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先进行高斯滤波，再使用Otsu阈值法</span></span><br><span class="line">blur = cv2.GaussianBlur(img, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</span><br><span class="line">ret3, th3 = cv2.threshold(blur, <span class="number">0</span>, <span class="number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</span><br></pre></td></tr></table></figure>
+<h2 id="Otsu阈值法"><a href="#Otsu阈值法" class="headerlink" title="Otsu阈值法"></a>Otsu阈值法</h2><pre><code class="lang-python"># 先进行高斯滤波，再使用Otsu阈值法
+blur = cv2.GaussianBlur(img, (5, 5), 0)
+ret3, th3 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+</code></pre>
 <script type="math/tex; mode=display">g=\omega_0\omega_1(\mu_0-\mu_1)^2</script><p><strong>$ g $就是前景与背景两类之间的方差，这个值越大，说明前景和背景的差别也就越大，效果越好。Otsu算法便是遍历阈值T，使得$ g $最大，所以又称为最大类间方差法。</strong>基本上双峰图片的阈值T在两峰之间的谷底。<a href="http://codec.wang/opencv-python-extra-otsu-thresholding/" target="_blank" rel="noopener">原文地址</a></p>
 <h2 id="背景差分"><a href="#背景差分" class="headerlink" title="背景差分"></a>背景差分</h2><p>背景差分（Background Subtraction, BS）是通过使用<strong>静态</strong>相机来生成前景蒙版（即包含属于场景中的<strong>移动对象</strong>的像素的二进制图像）的通用且广泛使用的技术。 顾名思义，BS是在当前帧和背景模型之间执行减法运算，其中场景的静态部分，或者可视为背景的所有内容将被减去，移动对象将会被提取出来。如下图所示。</p>
-<p><img src="Background_Subtraction_Tutorial_Scheme.png" alt=""></p>
+<p><img src="Background_Subtraction_Tutorial_Scheme.png" srcset="/img/loading.gif" alt=""></p>
 <p>后台建模包括两个主要步骤：</p>
 <ul>
 <li>背景初始化 </li>
 <li>当前帧更新 </li>
 </ul>
 <p>官方给出了下面的例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'This program shows how to use background subtraction methods provided by OpenCV. You can process both videos and images.'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--input'</span>, type=str, help=<span class="string">'Path to a video or a sequence of image.'</span>, default=<span class="string">'Video_name.mp4'</span>) <span class="comment"># 输入视频路径</span></span><br><span class="line">parser.add_argument(<span class="string">'--algo'</span>, type=str, help=<span class="string">'Background subtraction method (KNN, MOG2).'</span>, default=<span class="string">'KNN'</span>) <span class="comment"># 输入差分方法: KNN or MOG2</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="comment">## [create]</span></span><br><span class="line"><span class="comment">#create Background Subtractor objects</span></span><br><span class="line"><span class="keyword">if</span> args.algo == <span class="string">'MOG2'</span>:</span><br><span class="line">    backSub = cv.createBackgroundSubtractorMOG2()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    backSub = cv.createBackgroundSubtractorKNN()</span><br><span class="line"><span class="comment">## [create]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## [capture]</span></span><br><span class="line">capture = cv.VideoCapture(cv.samples.findFileOrKeep(args.input))</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> capture.isOpened:</span><br><span class="line">    print(<span class="string">'Unable to open: '</span> + args.input)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="comment">## [capture]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line">    <span class="keyword">if</span> frame <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## [apply]</span></span><br><span class="line">    <span class="comment">#update the background model</span></span><br><span class="line">    fgMask = backSub.apply(frame)</span><br><span class="line">    <span class="comment">## [apply]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## [display_frame_number]</span></span><br><span class="line">    <span class="comment">#get the frame number and write it on the current frame</span></span><br><span class="line">    cv.rectangle(frame, (<span class="number">10</span>, <span class="number">2</span>), (<span class="number">100</span>,<span class="number">20</span>), (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>), <span class="number">-1</span>)</span><br><span class="line">    cv.putText(frame, str(capture.get(cv.CAP_PROP_POS_FRAMES)), (<span class="number">15</span>, <span class="number">15</span>),</span><br><span class="line">               cv.FONT_HERSHEY_SIMPLEX, <span class="number">0.5</span> , (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">    <span class="comment">## [display_frame_number]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## [show]</span></span><br><span class="line">    <span class="comment">#show the current frame and the fg masks</span></span><br><span class="line">    cv.imshow(<span class="string">'Frame'</span>, frame)</span><br><span class="line">    cv.imshow(<span class="string">'FG Mask'</span>, fgMask)</span><br><span class="line">    <span class="comment">## [show]</span></span><br><span class="line"></span><br><span class="line">    keyboard = cv.waitKey(<span class="number">30</span>)</span><br><span class="line">    <span class="keyword">if</span> keyboard == ord(<span class="string">'q'</span>) <span class="keyword">or</span> keyboard == <span class="number">27</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">from __future__ import print_function
+import cv2 as cv
+import argparse
+
+parser = argparse.ArgumentParser(description=&#39;This program shows how to use background subtraction methods provided by OpenCV. You can process both videos and images.&#39;)
+parser.add_argument(&#39;--input&#39;, type=str, help=&#39;Path to a video or a sequence of image.&#39;, default=&#39;Video_name.mp4&#39;) # 输入视频路径
+parser.add_argument(&#39;--algo&#39;, type=str, help=&#39;Background subtraction method (KNN, MOG2).&#39;, default=&#39;KNN&#39;) # 输入差分方法: KNN or MOG2
+args = parser.parse_args()
+
+## [create]
+#create Background Subtractor objects
+if args.algo == &#39;MOG2&#39;:
+    backSub = cv.createBackgroundSubtractorMOG2()
+else:
+    backSub = cv.createBackgroundSubtractorKNN()
+## [create]
+
+## [capture]
+capture = cv.VideoCapture(cv.samples.findFileOrKeep(args.input))
+if not capture.isOpened:
+    print(&#39;Unable to open: &#39; + args.input)
+    exit(0)
+## [capture]
+
+while True:
+    ret, frame = capture.read()
+    if frame is None:
+        break
+
+    ## [apply]
+    #update the background model
+    fgMask = backSub.apply(frame)
+    ## [apply]
+
+    ## [display_frame_number]
+    #get the frame number and write it on the current frame
+    cv.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
+    cv.putText(frame, str(capture.get(cv.CAP_PROP_POS_FRAMES)), (15, 15),
+               cv.FONT_HERSHEY_SIMPLEX, 0.5 , (0,0,0))
+    ## [display_frame_number]
+
+    ## [show]
+    #show the current frame and the fg masks
+    cv.imshow(&#39;Frame&#39;, frame)
+    cv.imshow(&#39;FG Mask&#39;, fgMask)
+    ## [show]
+
+    keyboard = cv.waitKey(30)
+    if keyboard == ord(&#39;q&#39;) or keyboard == 27:
+        break
+</code></pre>
 <p>关于KNN，MOG2，GMG的区别之后再补充。移动的哆啦A梦如图</p>
-<p><img src="114759.png" alt=""></p>
+<p><img src="114759.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06. 阈值分割" target="_blank" rel="noopener">https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2</a></li>
 <li><a href="http://codec.wang/opencv-python-smoothing-images/#目标" target="_blank" rel="noopener">http://codec.wang/opencv-python-smoothing-images/#%E7%9B%AE%E6%A0%87</a></li>
 <li><a href="https://docs.opencv.org/4.2.0/d1/dc5/tutorial_background_subtraction.html" target="_blank" rel="noopener">https://docs.opencv.org/4.2.0/d1/dc5/tutorial_background_subtraction.html</a></li>
 </ol>
 
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+            <hr>
           </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/09/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="OpenCV-python学习笔记一">
-                  <i class="fa fa-chevron-left"></i> OpenCV-python学习笔记一
-                </a>
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/" rel="prev" title="OpenCV-python学习笔记三">
-                  OpenCV-python学习笔记三 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+              
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/OpenCV/">OpenCV</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="comments"></div>
-
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#滤波"><span class="nav-number">1.</span> <span class="nav-text">滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#均值滤波"><span class="nav-number">1.1.</span> <span class="nav-text">均值滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方框滤波"><span class="nav-number">1.2.</span> <span class="nav-text">方框滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯滤波"><span class="nav-number">1.3.</span> <span class="nav-text">高斯滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中值滤波"><span class="nav-number">1.4.</span> <span class="nav-text">中值滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双边滤波"><span class="nav-number">1.5.</span> <span class="nav-text">双边滤波</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">1.6.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滤波总结"><span class="nav-number">1.7.</span> <span class="nav-text">滤波总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阈值分割"><span class="nav-number">2.</span> <span class="nav-text">阈值分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#固定阈值分割"><span class="nav-number">2.1.</span> <span class="nav-text">固定阈值分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应阈值"><span class="nav-number">2.2.</span> <span class="nav-text">自适应阈值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Otsu阈值法"><span class="nav-number">2.3.</span> <span class="nav-text">Otsu阈值法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景差分"><span class="nav-number">2.4.</span> <span class="nav-text">背景差分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="戚天天"
-      src="/images/logo.png">
-  <p class="site-author-name" itemprop="name">戚天天</p>
-  <div class="site-description" itemprop="description">Life Goes On</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">21</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">21</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container">
+        <div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
       </div>
-    </main>
+    
+  </div>
+</div>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+<!-- custom -->
 
-<div class="copyright">
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === 'true';
+    var verify = 'false' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "喂？",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
   
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">戚天天</span>
-</div>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
 
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-child"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-fire"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-        
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </footer>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
+
+    
+
+    <!-- cnzz Analytics icon -->
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var main = $('main');
+      var tocT = navHeight + (toc.offset().top - main.offset().top);
+      var tocLimMin = main.offset().top - navHeight;
+      var tocLimMax = $('#comments').offset().top - navHeight;
+      $(window).scroll(function () {
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': tocT,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
         }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
       }
     });
-  });
+  </script>
 
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
+
+
+
+
+
+
+  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "OpenCV-python学习笔记二&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
     }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
+    anchors.add(res.join(", "))
+  </script>
 
-    
 
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
   
 
 
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
-    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
-    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: '' || 'zh-cn',
-    path: location.pathname,
-    recordIP: false,
-    serverURLs: ''
-  });
-}, window.Valine);
-</script>
+
+
+
+
+
 
 </body>
 </html>

@@ -1,279 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logoforapple.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
-
-  <meta name="description" content="生活不就是一张图吗？">
-<meta name="keywords" content="图">
-<meta property="og:type" content="article">
-<meta property="og:title" content="图(graph)">
-<meta property="og:url" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;index.html">
-<meta property="og:site_name" content="Homeward">
-<meta property="og:description" content="生活不就是一张图吗？">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;21cd2731928c7c13057eee000e3697de82ccc058.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;549bca1a52774846b25caff86d244d03ee63fd38.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;cc82379521bd84738e86d6cf9552738ca9138420.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph3.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph4.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph5.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;1920px-Floyd-Warshall_example.svg.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;2019-12-30%20224429.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;2-1Z106101951H4.gif">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph6.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;383px-MST_kruskal_en.gif">
-<meta property="og:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;graph7.png">
-<meta property="og:updated_time" content="2020-02-18T06:14:30.476Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lil-q.github.io&#x2F;2019&#x2F;12&#x2F;27&#x2F;%E5%9B%BE-graph&#x2F;21cd2731928c7c13057eee000e3697de82ccc058.png">
-
-<link rel="canonical" href="http://lil-q.github.io/2019/12/27/%E5%9B%BE-graph/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>图(graph) | Homeward</title>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logoforapple.png">
+  <link rel="icon" type="image/png" href="/img/logo192.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="description" content="Life Goes On">
+  <meta name="author" content="戚天天">
+  <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
+  <title>图(graph) - Homeward</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+<!-- 自定义样式保持在最底部 -->
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Homeward</strong>&nbsp;</a>
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Homeward</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
 </nav>
-</div>
-    </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="view intro-2" id="background" false
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7744.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Friday, December 27th 2019, 5:53 pm
+                </p>
+              
 
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://lil-q.github.io/2019/12/27/%E5%9B%BE-graph/">
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    6k 字
+                  </span>
+                
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo.png">
-      <meta itemprop="name" content="戚天天">
-      <meta itemprop="description" content="Life Goes On">
-    </span>
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      26 分钟
+                  </span>
+                
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homeward">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          图(graph)
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-27 17:53:49" itemprop="dateCreated datePublished" datetime="2019-12-27T17:53:49+08:00">2019-12-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-            </span>
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-fire"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/12/27/%E5%9B%BE-graph/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/%E5%9B%BE-graph/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-        <p>生活不就是一张图吗？</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+          <div class="markdown-body">
+            <p>生活不就是一张图吗？</p>
 <a id="more"></a>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p><strong>图</strong>(Graph)用于表示物件与物件之间的关系，是<a href="https://zh.wikipedia.org/wiki/圖論" target="_blank" rel="noopener">图论</a>的基本研究对象。一张图由一些小圆点（称为<strong>顶点</strong>或<strong>结点</strong>）和连结这些圆点的直线或曲线（称为<strong>边</strong>）组成。</p>
 <p>一个图 $G$ 是一个二元组，即序偶 $\langle V,E\rangle$ ，或记作 $G= \langle V,E\rangle$ ，其中 $V$ 是有限非空集合，称为 $G$ 的顶点集， $V$ 中的元素称为顶点或结点； $E$ 称为 $G$ 的边的集合， $\forall e_i \in E$ ，都有 $V$ 中的结点与之对应，称 $e_i$ 为 $G$ 的边。</p>
@@ -313,21 +212,43 @@
 <p>竞赛图：通过在完全图中为每条边分配方向而获得的有向图。</p>
 <p><em>参考资料：离散数学（修订版），田文成 周禄新 编著，天津文学出版社，P184-187</em></p>
 <h1 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h1><p>以下图作为例子。</p>
-<p><img src="21cd2731928c7c13057eee000e3697de82ccc058.png" alt="edge lists"></p>
+<p><img src="21cd2731928c7c13057eee000e3697de82ccc058.png" srcset="/img/loading.gif" alt="edge lists"></p>
 <h2 id="直接存边"><a href="#直接存边" class="headerlink" title="直接存边"></a>直接存边</h2><p>建立一个数组，数组里每个元素是图的一条边。</p>
 <p>这样做有个缺点，每次想要知道两个点之间是否有连边（或者说一条边是否存在），都需要在数组里进行一番查找。而且如果没有对边事先排序的话，就不能使用二分查找的方法（ $O(\log n)$ ），而是每次只能按顺序找（ $O(n)$ ），成本较高。</p>
 <p>什么时候会用到这个方法呢？最简单的一个例子是使用 Kruskal 算法求最小生成树的时候。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ [<span class="number">0</span>,<span class="number">1</span>], [<span class="number">0</span>,<span class="number">6</span>], [<span class="number">0</span>,<span class="number">8</span>], [<span class="number">1</span>,<span class="number">4</span>], [<span class="number">1</span>,<span class="number">6</span>], [<span class="number">1</span>,<span class="number">9</span>], [<span class="number">2</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">6</span>], [<span class="number">3</span>,<span class="number">4</span>], [<span class="number">3</span>,<span class="number">5</span>],</span><br><span class="line">[<span class="number">3</span>,<span class="number">8</span>], [<span class="number">4</span>,<span class="number">5</span>], [<span class="number">4</span>,<span class="number">9</span>], [<span class="number">7</span>,<span class="number">8</span>], [<span class="number">7</span>,<span class="number">9</span>] ]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">[ [0,1], [0,6], [0,8], [1,4], [1,6], [1,9], [2,4], [2,6], [3,4], [3,5],
+[3,8], [4,5], [4,9], [7,8], [7,9] ]
+</code></pre>
 <h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>邻接矩阵的英文名是 adjacency matrix。它的形式是 <code>bool adj[n][n]</code> ，这里面 $n$ 是节点个数， $adj[i][j]$ 表示 $i$ 和 $j$ 之间是否有边。</p>
 <p>如果边有权值，也可以直接用 <code>int adj[n][n]</code> ，直接把边权存进去。</p>
 <p>它的优点是可以在 $O(1)$ 时间内得到一条边是否存在，缺点是需要占用 $O(n^2)$ 的空间。对于一个稀疏的图（边相对于点数的平方比较少）来说，用邻接矩阵来存的话，成本偏高。</p>
-<p><img src="549bca1a52774846b25caff86d244d03ee63fd38.png" alt="matrix"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[ [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>] ]</span><br></pre></td></tr></table></figure>
+<p><img src="549bca1a52774846b25caff86d244d03ee63fd38.png" srcset="/img/loading.gif" alt="matrix"></p>
+<pre><code class="lang-python">[ [0, 1, 0, 0, 0, 0, 1, 0, 1, 0],
+  [1, 0, 0, 0, 1, 0, 1, 0, 0, 1],
+  [0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 1, 1, 0, 0, 1, 0],
+  [0, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+  [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+  [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+  [1, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+  [0, 1, 0, 0, 1, 0, 0, 1, 0, 0] ]
+</code></pre>
 <h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>邻接表英文名是 adjacency list。它的形式是 <code>vector adj[n]</code> ，用 <code>adj[i]</code> 存以 $i$ 为起点的边。</p>
 <p>用 <code>vector</code> 无法科学地删除，所以常用 <code>list</code> 实现。</p>
 <p>它的特点是可以用来按顺序访问一个结点的出边（或者入边）。</p>
-<p><img src="cc82379521bd84738e86d6cf9552738ca9138420.png" alt="linklist"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[ [<span class="number">1</span>, <span class="number">6</span>, <span class="number">8</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">6</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  [<span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>] ]</span><br></pre></td></tr></table></figure>
+<p><img src="cc82379521bd84738e86d6cf9552738ca9138420.png" srcset="/img/loading.gif" alt="linklist"></p>
+<pre><code class="lang-python">[ [1, 6, 8],
+  [0, 4, 6, 9],
+  [4, 6],
+  [4, 5, 8],
+  [1, 2, 3, 5, 9],
+  [3, 4],
+  [0, 1, 2],
+  [8, 9],
+  [0, 3, 7],
+  [1, 4, 7] ]
+</code></pre>
 <h1 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h1><p><strong>图的遍历</strong>问题分为四类：</p>
 <ul>
 <li>遍历完所有的<strong>边</strong>而不能有重复，即所谓“欧拉路径问题”（又名<a href="https://zh.wikipedia.org/wiki/一笔画问题" target="_blank" rel="noopener">一笔画问题</a>）；</li>
@@ -338,36 +259,171 @@
 <p>对于第一和第三类问题已经得到了完满的解决，而第二和第四类问题则只得到了部分解决。</p>
 <p>第一类问题就是研究所谓的<a href="https://zh.wikipedia.org/wiki/欧拉图" target="_blank" rel="noopener">欧拉图</a>的性质，而第二类问题则是研究所谓的<a href="https://zh.wikipedia.org/wiki/哈密顿图" target="_blank" rel="noopener">哈密顿图</a>的性质。</p>
 <p>图的遍历方法有深度优先搜索法和广度(宽度)优先搜索法。以下图为例。</p>
-<p><img src="graph1.png" alt="graph"></p>
+<p><img src="graph1.png" srcset="/img/loading.gif" alt="graph"></p>
 <p>建立邻接表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adjacencylists = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">5</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">adjacencylists = [[1, 2, 3],
+                  [0, 4, 5],
+                  [0, 6],
+                  [0, 6],
+                  [1, 5],
+                  [1, 4, 6],
+                  [2, 3, 5]]
+</code></pre>
 <h2 id="深度优先搜索-Depth-First-Search-DFS"><a href="#深度优先搜索-Depth-First-Search-DFS" class="headerlink" title="深度优先搜索(Depth First Search, DFS)"></a>深度优先搜索(Depth First Search, DFS)</h2><p><strong>深度优先搜索算法</strong>(Depth-First-Search，DFS)是一种用于遍历或搜索<strong>树</strong>或<strong>图</strong>的算法。沿着树的深度遍历树的节点，尽可能深的搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。属于盲目搜索。</p>
-<p><img src="graph2.png" alt="graph2"></p>
+<p><img src="graph2.png" srcset="/img/loading.gif" alt="graph2"></p>
 <h2 id="广度优先搜索-Breadth-First-Search-BFS"><a href="#广度优先搜索-Breadth-First-Search-BFS" class="headerlink" title="广度优先搜索(Breadth First Search, BFS)"></a>广度优先搜索(Breadth First Search, BFS)</h2><p><strong>广度优先搜索算法</strong>(Breadth-First-Search，缩写为BFS)，又译作<strong>宽度优先搜索</strong>，或<strong>横向优先搜索</strong>，是一种图形搜索算法。简单的说，BFS是从<strong>根节点](<a href="https://zh.wikipedia.org/w/index.php?title=根節點&amp;action=edit&amp;redlink=1)开始，沿着树的宽度遍历树的" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=根節點&amp;action=edit&amp;redlink=1)开始，沿着树的宽度遍历树的</a></strong>节点**。如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。</p>
-<p><img src="graph3.png" alt="graph3"></p>
-<h2 id="Python的简易实现"><a href="#Python的简易实现" class="headerlink" title="Python的简易实现"></a>Python的简易实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置总节点数</span></span><br><span class="line">num_vertexs = <span class="number">7</span></span><br><span class="line"><span class="comment"># 建立邻接表</span></span><br><span class="line">adjacencylists = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">5</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">graph</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_vertexs, adjacencylists)</span>:</span></span><br><span class="line">		self.num_vertexs = num_vertexs</span><br><span class="line">		self.adjacencylists = adjacencylists</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, start)</span>:</span></span><br><span class="line">        <span class="comment"># 记录节点是否已经访问</span></span><br><span class="line">		visited = [<span class="literal">False</span>] * self.num_vertexs</span><br><span class="line">		res = []</span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(v)</span>:</span>	</span><br><span class="line">			<span class="keyword">if</span> visited[v]:</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			visited[v] = <span class="literal">True</span></span><br><span class="line">			res.append(v)</span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> self.adjacencylists[v]:</span><br><span class="line">				helper(i)</span><br><span class="line">		helper(start)</span><br><span class="line">		<span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(self, start)</span>:</span></span><br><span class="line">		visited = [<span class="literal">False</span>] * self.num_vertexs</span><br><span class="line">		visited[start] = <span class="literal">True</span></span><br><span class="line">		res = [start,]</span><br><span class="line">		queue = [start,]</span><br><span class="line">		<span class="keyword">while</span> queue:</span><br><span class="line">			cur = queue.pop(<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> self.adjacencylists[cur]:</span><br><span class="line">				<span class="keyword">if</span>  <span class="keyword">not</span> visited[i]:</span><br><span class="line">					queue.append(i)</span><br><span class="line">					visited[i] = <span class="literal">True</span></span><br><span class="line">					res.append(i)</span><br><span class="line">		<span class="keyword">return</span> res</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:    </span><br><span class="line">    <span class="comment"># 实例化</span></span><br><span class="line">    graph = graph(num_vertexs, adjacencylists)</span><br><span class="line"></span><br><span class="line">    t1 = graph.dfs(<span class="number">0</span>)</span><br><span class="line">    print(<span class="string">"深度优先搜索："</span>, t1)</span><br><span class="line">    t2 = graph.bfs(<span class="number">0</span>)</span><br><span class="line">    print(<span class="string">"广度优先搜索："</span>, t2)</span><br></pre></td></tr></table></figure>
+<p><img src="graph3.png" srcset="/img/loading.gif" alt="graph3"></p>
+<h2 id="Python的简易实现"><a href="#Python的简易实现" class="headerlink" title="Python的简易实现"></a>Python的简易实现</h2><pre><code class="lang-python"># 设置总节点数
+num_vertexs = 7
+# 建立邻接表
+adjacencylists = [[1, 2, 3],
+                  [0, 4, 5],
+                  [0, 6],
+                  [0, 6],
+                  [1, 5],
+                  [1, 4, 6],
+                  [2, 3, 5]]
+
+class graph:
+    def __init__(self, num_vertexs, adjacencylists):
+        self.num_vertexs = num_vertexs
+        self.adjacencylists = adjacencylists
+
+    def dfs(self, start):
+        # 记录节点是否已经访问
+        visited = [False] * self.num_vertexs
+        res = []
+        def helper(v):    
+            if visited[v]:
+                return
+            visited[v] = True
+            res.append(v)
+            for i in self.adjacencylists[v]:
+                helper(i)
+        helper(start)
+        return res
+
+    def bfs(self, start):
+        visited = [False] * self.num_vertexs
+        visited[start] = True
+        res = [start,]
+        queue = [start,]
+        while queue:
+            cur = queue.pop(0)
+            for i in self.adjacencylists[cur]:
+                if  not visited[i]:
+                    queue.append(i)
+                    visited[i] = True
+                    res.append(i)
+        return res
+
+if __name__ == &#39;__main__&#39;:    
+    # 实例化
+    graph = graph(num_vertexs, adjacencylists)
+
+    t1 = graph.dfs(0)
+    print(&quot;深度优先搜索：&quot;, t1)
+    t2 = graph.bfs(0)
+    print(&quot;广度优先搜索：&quot;, t2)
+</code></pre>
 <p>注意：这里用index表示节点名称，最后还需要映射出结果（假设0,1,2,3…分别对应A,B,C,D…下文会使用字典来实现邻接表，这样就不需要这一步了）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vertexs = [<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>, <span class="string">"F"</span>, <span class="string">"G"</span>]</span><br><span class="line">t3 = list(map(<span class="keyword">lambda</span> x: vertexs[x], t1))</span><br><span class="line">print(<span class="string">"深度优先搜索："</span>, t3)</span><br><span class="line">t4 = list(map(<span class="keyword">lambda</span> x: vertexs[x], t2))</span><br><span class="line">print(<span class="string">"广度优先搜索："</span>, t4)</span><br></pre></td></tr></table></figure>
-<p><img src="graph4.png" alt="graph2"></p>
+<pre><code class="lang-python">vertexs = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;]
+t3 = list(map(lambda x: vertexs[x], t1))
+print(&quot;深度优先搜索：&quot;, t3)
+t4 = list(map(lambda x: vertexs[x], t2))
+print(&quot;广度优先搜索：&quot;, t4)
+</code></pre>
+<p><img src="graph4.png" srcset="/img/loading.gif" alt="graph2"></p>
 <p>输出：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">深度优先搜索： [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">广度优先搜索： [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">深度优先搜索： [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>]</span><br><span class="line">广度优先搜索： [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">深度优先搜索： [0, 1, 4, 5, 6, 2, 3]
+广度优先搜索： [0, 1, 2, 3, 4, 5, 6]
+深度优先搜索： [&#39;A&#39;, &#39;B&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;C&#39;, &#39;D&#39;]
+广度优先搜索： [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;]
+</code></pre>
 <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>Dijkstra 算法使用了广度优先搜索解决赋权有向图或者无向图的单源最短路径问题，算法最终得到一个最短路径树。该算法常用于路由算法或者作为其他图算法的一个子模块。Dijkstra 算法属于单源算法，即只能求出某点到其它点最短距离，并不能得出任意两点之间的最短距离，只能用权值为正数的图，存在负数时可能回陷入死循环。</p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>Dijkstra算法采用的是一种贪心的策略，声明一个数组distances来保存源点到各个顶点的最短距离和一个保存已经找到了最短路径的顶点的集合：nodes。以下图为例，假设求A点到其他点的距离。</p>
-<p><img src="graph5.png" alt="graph2"></p>
+<p><img src="graph5.png" srcset="/img/loading.gif" alt="graph2"></p>
 <ol>
 <li><p>初始化distances，原点 s 的路径权重被赋为 0 （dis[s] = 0）。把到其他顶点的路径长度设为无穷大。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distances = &#123;<span class="string">'A'</span>: <span class="number">0</span>, <span class="string">'B'</span>: inf, <span class="string">'C'</span>: inf, <span class="string">'D'</span>: inf, <span class="string">'E'</span>: inf, <span class="string">'F'</span>: inf, <span class="string">'G'</span>: inf&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">distances = {&#39;A&#39;: 0, &#39;B&#39;: inf, &#39;C&#39;: inf, &#39;D&#39;: inf, &#39;E&#39;: inf, &#39;F&#39;: inf, &#39;G&#39;: inf}
+</code></pre>
 </li>
 <li><p>初始nodes，理论上集合nodes只有顶点s。这里创建了其他节点是方便之后的进堆操作，不用再考虑节点是否存在两种情况。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodes = [[<span class="number">0</span>, <span class="string">'A'</span>], [inf, <span class="string">'B'</span>], [inf, <span class="string">'C'</span>], [inf, <span class="string">'D'</span>], [inf, <span class="string">'E'</span>], [inf, <span class="string">'F'</span>], [inf, <span class="string">'G'</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">nodes = [[0, &#39;A&#39;], [inf, &#39;B&#39;], [inf, &#39;C&#39;], [inf, &#39;D&#39;], [inf, &#39;E&#39;], [inf, &#39;F&#39;], [inf, &#39;G&#39;]]
+</code></pre>
 </li>
 <li><p>从distances数组选择最小值，则该值就是源点s到该值对应的顶点的最短路径，并且把该点加入到nodes中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">distances = &#123;<span class="string">'A'</span>: <span class="number">0</span>, <span class="string">'B'</span>: <span class="number">4</span>, <span class="string">'C'</span>: <span class="number">2</span>, <span class="string">'D'</span>: <span class="number">3</span>, <span class="string">'E'</span>: inf, <span class="string">'F'</span>: inf, <span class="string">'G'</span>: inf&#125; <span class="comment"># 加入了A的近邻B，C，D</span></span><br><span class="line">nodes = [[<span class="number">2</span>, <span class="string">'C'</span>], [<span class="number">3</span>, <span class="string">'D'</span>], [<span class="number">4</span>, <span class="string">'B'</span>], [inf, <span class="string">'G'</span>], [inf, <span class="string">'E'</span>], [inf, <span class="string">'F'</span>]] <span class="comment"># A被推出，更新B，C，D</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">distances = {&#39;A&#39;: 0, &#39;B&#39;: 4, &#39;C&#39;: 2, &#39;D&#39;: 3, &#39;E&#39;: inf, &#39;F&#39;: inf, &#39;G&#39;: inf} # 加入了A的近邻B，C，D
+nodes = [[2, &#39;C&#39;], [3, &#39;D&#39;], [4, &#39;B&#39;], [inf, &#39;G&#39;], [inf, &#39;E&#39;], [inf, &#39;F&#39;]] # A被推出，更新B，C，D
+</code></pre>
 </li>
 <li><p>重复这个过程，直到nodes为s空或nodes中的最小值是无穷大（与剩下的节点都不连通）时。</p>
 </li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.vertices = &#123;&#125;</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_vertex</span><span class="params">(self, name, edges)</span>:</span></span><br><span class="line">        self.vertices[name] = edges</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortest_path</span><span class="params">(self, start, finish)</span>:</span></span><br><span class="line">        distances = &#123;&#125; <span class="comment"># 记录各点到起点距离</span></span><br><span class="line">        previous = &#123;&#125;  <span class="comment"># 记录先前路径，注意：对于求最小路径时，每个点的先前路径是唯一的。</span></span><br><span class="line">        nodes = [] <span class="comment"># 优先队列</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> vertex <span class="keyword">in</span> self.vertices:</span><br><span class="line">            <span class="keyword">if</span> vertex == start: <span class="comment"># 原点 s 的路径权重被赋为 0 （dis[s] = 0）。把到其他顶点的路径长度设为无穷大。</span></span><br><span class="line">                distances[vertex] = <span class="number">0</span></span><br><span class="line">                heapq.heappush(nodes, [<span class="number">0</span>, vertex])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                distances[vertex] = float(<span class="string">'inf'</span>)</span><br><span class="line">                heapq.heappush(nodes, [float(<span class="string">'inf'</span>), vertex])</span><br><span class="line">            previous[vertex] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> nodes:</span><br><span class="line">            smallest = heapq.heappop(nodes)[<span class="number">1</span>] <span class="comment"># pop优先队列的第一个节点</span></span><br><span class="line">            <span class="keyword">if</span> smallest == finish: <span class="comment"># 保存路径</span></span><br><span class="line">                path = []</span><br><span class="line">                cur = smallest</span><br><span class="line">                <span class="keyword">while</span> cur: <span class="comment"># 循环到起点，其先前节点为None，结束</span></span><br><span class="line">                    path.append(cur)</span><br><span class="line">                    cur = previous[cur]</span><br><span class="line">                path.reverse()</span><br><span class="line">            <span class="keyword">if</span> distances[smallest] == float(<span class="string">'inf'</span>): <span class="comment"># 剩余所有节点已不相邻</span></span><br><span class="line">                <span class="keyword">break</span>      </span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> self.vertices[smallest]: <span class="comment"># 获取近邻节点</span></span><br><span class="line">                alt = distances[smallest] + self.vertices[smallest][neighbor] </span><br><span class="line">                <span class="keyword">if</span> alt &lt; distances[neighbor]: <span class="comment"># 得到的路径比之前的近，则更新nodes，previous</span></span><br><span class="line">                    previous[neighbor] = smallest</span><br><span class="line">                    distances[neighbor] = alt</span><br><span class="line">                    <span class="keyword">for</span> n <span class="keyword">in</span> nodes:</span><br><span class="line">                        <span class="keyword">if</span> n[<span class="number">1</span>] == neighbor:</span><br><span class="line">                            n[<span class="number">0</span>] = alt</span><br><span class="line">                            <span class="keyword">break</span></span><br><span class="line">                    heapq.heapify(nodes)</span><br><span class="line">            <span class="comment">#print(distances,nodes)</span></span><br><span class="line">        <span class="keyword">return</span> distances[finish], path</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> str(self.vertices)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 实例化，这个类需要依次传入所有边。</span></span><br><span class="line">    g = Graph()</span><br><span class="line">    g.add_vertex(<span class="string">'A'</span>, &#123;<span class="string">'B'</span>: <span class="number">4</span>, <span class="string">'C'</span>: <span class="number">2</span>, <span class="string">'D'</span>: <span class="number">3</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'B'</span>, &#123;<span class="string">'A'</span>: <span class="number">4</span>, <span class="string">'E'</span>: <span class="number">2</span>, <span class="string">'F'</span>: <span class="number">5</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'C'</span>, &#123;<span class="string">'A'</span>: <span class="number">2</span>, <span class="string">'G'</span>: <span class="number">1</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'D'</span>, &#123;<span class="string">'A'</span>: <span class="number">3</span>, <span class="string">'G'</span>: <span class="number">2</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'E'</span>, &#123;<span class="string">'B'</span>: <span class="number">2</span>, <span class="string">'F'</span>: <span class="number">4</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'F'</span>, &#123;<span class="string">'B'</span>: <span class="number">5</span>, <span class="string">'E'</span>: <span class="number">4</span>, <span class="string">'G'</span>: <span class="number">3</span>&#125;)</span><br><span class="line">    g.add_vertex(<span class="string">'G'</span>, &#123;<span class="string">'C'</span>: <span class="number">1</span>, <span class="string">'D'</span>: <span class="number">2</span>, <span class="string">'F'</span>: <span class="number">3</span>&#125;)</span><br><span class="line">    </span><br><span class="line">    print(g.shortest_path(<span class="string">'A'</span>, <span class="string">'G'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">import heapq
+
+class Graph:
+
+    def __init__(self):
+        self.vertices = {}
+
+    def add_vertex(self, name, edges):
+        self.vertices[name] = edges
+
+    def shortest_path(self, start, finish):
+        distances = {} # 记录各点到起点距离
+        previous = {}  # 记录先前路径，注意：对于求最小路径时，每个点的先前路径是唯一的。
+        nodes = [] # 优先队列
+
+        for vertex in self.vertices:
+            if vertex == start: # 原点 s 的路径权重被赋为 0 （dis[s] = 0）。把到其他顶点的路径长度设为无穷大。
+                distances[vertex] = 0
+                heapq.heappush(nodes, [0, vertex])
+            else:
+                distances[vertex] = float(&#39;inf&#39;)
+                heapq.heappush(nodes, [float(&#39;inf&#39;), vertex])
+            previous[vertex] = None
+
+        while nodes:
+            smallest = heapq.heappop(nodes)[1] # pop优先队列的第一个节点
+            if smallest == finish: # 保存路径
+                path = []
+                cur = smallest
+                while cur: # 循环到起点，其先前节点为None，结束
+                    path.append(cur)
+                    cur = previous[cur]
+                path.reverse()
+            if distances[smallest] == float(&#39;inf&#39;): # 剩余所有节点已不相邻
+                break      
+            for neighbor in self.vertices[smallest]: # 获取近邻节点
+                alt = distances[smallest] + self.vertices[smallest][neighbor] 
+                if alt &lt; distances[neighbor]: # 得到的路径比之前的近，则更新nodes，previous
+                    previous[neighbor] = smallest
+                    distances[neighbor] = alt
+                    for n in nodes:
+                        if n[1] == neighbor:
+                            n[0] = alt
+                            break
+                    heapq.heapify(nodes)
+            #print(distances,nodes)
+        return distances[finish], path
+
+    def __str__(self):
+        return str(self.vertices)
+
+if __name__ == &#39;__main__&#39;:
+    # 实例化，这个类需要依次传入所有边。
+    g = Graph()
+    g.add_vertex(&#39;A&#39;, {&#39;B&#39;: 4, &#39;C&#39;: 2, &#39;D&#39;: 3})
+    g.add_vertex(&#39;B&#39;, {&#39;A&#39;: 4, &#39;E&#39;: 2, &#39;F&#39;: 5})
+    g.add_vertex(&#39;C&#39;, {&#39;A&#39;: 2, &#39;G&#39;: 1})
+    g.add_vertex(&#39;D&#39;, {&#39;A&#39;: 3, &#39;G&#39;: 2})
+    g.add_vertex(&#39;E&#39;, {&#39;B&#39;: 2, &#39;F&#39;: 4})
+    g.add_vertex(&#39;F&#39;, {&#39;B&#39;: 5, &#39;E&#39;: 4, &#39;G&#39;: 3})
+    g.add_vertex(&#39;G&#39;, {&#39;C&#39;: 1, &#39;D&#39;: 2, &#39;F&#39;: 3})
+
+    print(g.shortest_path(&#39;A&#39;, &#39;G&#39;))
+</code></pre>
 <h2 id="Floyd-Warshall算法"><a href="#Floyd-Warshall算法" class="headerlink" title="Floyd-Warshall算法"></a>Floyd-Warshall算法</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p><strong>Floyd-Warshall算法</strong>(Floyd-Warshall algorithm)，中文亦称<strong>弗洛伊德算法</strong>，是解决任意两点间的最短路径的一种算法，可以正确处理<strong>有向图</strong>或<strong>负权</strong>（但不可存在负权回路）的最短路径问题，同时也被用于计算有向图的传递闭包。</p>
 <p>Floyd 算法是一个经典的动态规划算法。</p>
 <p>设<script type="math/tex">D_{i,j,k}</script>为从<script type="math/tex">i</script>到<script type="math/tex">j</script>的只以<script type="math/tex">(i, j)</script>集合中的节点为中间节点的最短路径的长度。</p>
@@ -377,12 +433,49 @@
 </ol>
 <p>因此，<script type="math/tex">D_{i,j,k}=min(D_{i,j,k-1},D_{i,k,k-1}+D_{k,j,k-1})</script>。</p>
 <p>在实际算法中，为了节约空间，可以直接在原来空间上进行迭代，这样空间可降至二维。</p>
-<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p><img src="1920px-Floyd-Warshall_example.svg.png" alt="graphh"></p>
-<p><img src="2019-12-30 224429.png" alt="gg"></p>
+<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p><img src="1920px-Floyd-Warshall_example.svg.png" srcset="/img/loading.gif" alt="graphh"></p>
+<p><img src="2019-12-30 224429.png" srcset="/img/loading.gif" alt="gg"></p>
 <p>Floyd-Warshall算法的<a href="https://zh.wikipedia.org/wiki/时间复杂度" target="_blank" rel="noopener">时间复杂度</a>为<script type="math/tex">O(N^{3})</script>，<a href="https://zh.wikipedia.org/wiki/空间复杂度" target="_blank" rel="noopener">空间复杂度</a>为<script type="math/tex">O(N^{2})</script>。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">floyd</span><span class="params">(graph)</span>:</span></span><br><span class="line">    length = len(graph)</span><br><span class="line">    path = &#123;&#125;</span><br><span class="line">    <span class="comment"># 建立初始路径path</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</span><br><span class="line">        path[i] = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(length):</span><br><span class="line">            <span class="keyword">if</span> i != j <span class="keyword">and</span> graph[i][j] != float(<span class="string">'inf'</span>):</span><br><span class="line">                path[i][j] = [i, j]</span><br><span class="line">    <span class="comment"># i为选取的中间节点</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(length):        </span><br><span class="line">        <span class="comment"># j为中间节点i的前节点</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(length):</span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># k为中间节点i的后节点</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(length):</span><br><span class="line">                <span class="keyword">if</span> k == i <span class="keyword">or</span> k == j:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                new_len = graph[j][i] + graph[i][k]</span><br><span class="line">                <span class="keyword">if</span> graph[j][k] &gt; new_len:</span><br><span class="line">                    graph[j][k] = new_len</span><br><span class="line">                    new_node = i</span><br><span class="line">                    <span class="comment"># 合并路径</span></span><br><span class="line">                    path[j][k] = path[j][i][:<span class="number">-1</span>] + path[i][k]</span><br><span class="line">    <span class="keyword">return</span> graph, path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ini = float(<span class="string">'inf'</span>)</span><br><span class="line">    graph_list = [  </span><br><span class="line">                    [<span class="number">0</span>, ini, <span class="number">-2</span>, ini],</span><br><span class="line">                    [<span class="number">4</span>, <span class="number">0</span>, <span class="number">3</span>, ini],</span><br><span class="line">                    [ini, ini, <span class="number">0</span>, <span class="number">2</span>],</span><br><span class="line">                    [ini, <span class="number">-1</span>, ini, <span class="number">0</span>]</span><br><span class="line">                 ]</span><br><span class="line">    new_graph, path = floyd(graph_list)</span><br><span class="line">    print(new_graph, <span class="string">'\n\n\n'</span>, path)</span><br></pre></td></tr></table></figure>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def floyd(graph):
+    length = len(graph)
+    path = {}
+    # 建立初始路径path
+    for i in range(length):
+        path[i] = {}
+        for j in range(length):
+            if i != j and graph[i][j] != float(&#39;inf&#39;):
+                path[i][j] = [i, j]
+    # i为选取的中间节点
+    for i in range(length):        
+        # j为中间节点i的前节点
+        for j in range(length):
+            if i == j:
+                continue
+            # k为中间节点i的后节点
+            for k in range(length):
+                if k == i or k == j:
+                    continue
+                new_len = graph[j][i] + graph[i][k]
+                if graph[j][k] &gt; new_len:
+                    graph[j][k] = new_len
+                    new_node = i
+                    # 合并路径
+                    path[j][k] = path[j][i][:-1] + path[i][k]
+    return graph, path
+
+if __name__ == &#39;__main__&#39;:
+    ini = float(&#39;inf&#39;)
+    graph_list = [  
+                    [0, ini, -2, ini],
+                    [4, 0, 3, ini],
+                    [ini, ini, 0, 2],
+                    [ini, -1, ini, 0]
+                 ]
+    new_graph, path = floyd(graph_list)
+    print(new_graph, &#39;\n\n\n&#39;, path)
+</code></pre>
 <h1 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h1><p>对连通<strong>图</strong>进行遍历，过程中所经过的边和顶点的组合可看做是一棵普通树，通常称为生成树。</p>
-<p><img src="2-1Z106101951H4.gif" alt="连通图及其对应的生成树"></p>
+<p><img src="2-1Z106101951H4.gif" srcset="/img/loading.gif" alt="连通图及其对应的生成树"></p>
 <p>a) 是一张连通图，b) 是其对应的 2 种生成树。</p>
 <p>连通图中，由于任意两顶点之间可能含有多条通路，遍历连通图的方式有多种，往往一张连通图可能有多种不同的生成树与之对应。</p>
 <p>连通图中的生成树必须满足以下 2 个条件：</p>
@@ -399,29 +492,122 @@
 <li>将 v 加入集合 Vnew 中，将 <u, v> 边加入集合 Enew 中</li>
 <li>重复步骤 3、4 直到 Vnew = V</li>
 </ol>
-<p><img src="graph6.png" alt="g"></p>
+<p><img src="graph6.png" srcset="/img/loading.gif" alt="g"></p>
 <p>时间复杂度：<script type="math/tex">O(V^2)</script></p>
-<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prim</span><span class="params">(graph, root)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> type(graph)==dict</span><br><span class="line"></span><br><span class="line">    nodes = list(graph)</span><br><span class="line">    nodes.remove(root)</span><br><span class="line">    </span><br><span class="line">    visited = [root]</span><br><span class="line">    path = []</span><br><span class="line">    next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> nodes:</span><br><span class="line">        distance = float(<span class="string">'inf'</span>) </span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> graph[s]:</span><br><span class="line">                <span class="keyword">if</span> d <span class="keyword">in</span> visited <span class="keyword">or</span> s == d:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> graph[s][d] &lt; distance:</span><br><span class="line">                    distance = graph[s][d]</span><br><span class="line">                    pre = s</span><br><span class="line">                    next = d</span><br><span class="line">        path.append((pre, next))</span><br><span class="line">        visited.append(next)</span><br><span class="line">        nodes.remove(next)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ini = float(<span class="string">'inf'</span>)</span><br><span class="line">    graph_dict = &#123;  <span class="string">'A'</span>: &#123;<span class="string">'A'</span>: ini, <span class="string">'B'</span>: <span class="number">4</span>,   <span class="string">'C'</span>: <span class="number">2</span>,   <span class="string">'D'</span>: <span class="number">3</span>,   <span class="string">'E'</span>: ini, <span class="string">'F'</span>: ini, <span class="string">'G'</span>: ini&#125;,</span><br><span class="line">                    <span class="string">'B'</span>: &#123;<span class="string">'A'</span>: <span class="number">4</span>,   <span class="string">'B'</span>: ini, <span class="string">'C'</span>: ini, <span class="string">'D'</span>: ini, <span class="string">'E'</span>: <span class="number">2</span>,   <span class="string">'F'</span>: <span class="number">5</span>,   <span class="string">'G'</span>: ini&#125;,</span><br><span class="line">                    <span class="string">'C'</span>: &#123;<span class="string">'A'</span>: <span class="number">2</span>,   <span class="string">'B'</span>: ini, <span class="string">'C'</span>: ini, <span class="string">'D'</span>: ini, <span class="string">'E'</span>: ini, <span class="string">'F'</span>: ini, <span class="string">'G'</span>: <span class="number">1</span>  &#125;,</span><br><span class="line">                    <span class="string">'D'</span>: &#123;<span class="string">'A'</span>: <span class="number">3</span>,   <span class="string">'B'</span>: ini, <span class="string">'C'</span>: ini, <span class="string">'D'</span>: ini, <span class="string">'E'</span>: ini, <span class="string">'F'</span>: ini, <span class="string">'G'</span>: <span class="number">2</span>  &#125;,</span><br><span class="line">                    <span class="string">'E'</span>: &#123;<span class="string">'A'</span>: ini, <span class="string">'B'</span>: <span class="number">2</span>,   <span class="string">'C'</span>: ini, <span class="string">'D'</span>: ini, <span class="string">'E'</span>: ini, <span class="string">'F'</span>: <span class="number">4</span>,   <span class="string">'G'</span>: ini&#125;,</span><br><span class="line">                    <span class="string">'F'</span>: &#123;<span class="string">'A'</span>: ini, <span class="string">'B'</span>: <span class="number">5</span>,   <span class="string">'C'</span>: ini, <span class="string">'D'</span>: ini, <span class="string">'E'</span>: <span class="number">4</span>,   <span class="string">'F'</span>: ini, <span class="string">'G'</span>: <span class="number">3</span>  &#125;,</span><br><span class="line">                    <span class="string">'G'</span>: &#123;<span class="string">'A'</span>: ini, <span class="string">'B'</span>: ini, <span class="string">'C'</span>: <span class="number">1</span>,   <span class="string">'D'</span>: <span class="number">2</span>,   <span class="string">'E'</span>: ini, <span class="string">'F'</span>: <span class="number">3</span>,   <span class="string">'G'</span>: ini&#125;,</span><br><span class="line">                 &#125;</span><br><span class="line">    path = prim(graph_dict, <span class="string">'A'</span>)</span><br><span class="line">    print(<span class="string">"path:"</span>, path)</span><br></pre></td></tr></table></figure>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def prim(graph, root):
+    assert type(graph)==dict
+
+    nodes = list(graph)
+    nodes.remove(root)
+
+    visited = [root]
+    path = []
+    next = None
+
+    while nodes:
+        distance = float(&#39;inf&#39;) 
+        for s in visited:
+            for d in graph[s]:
+                if d in visited or s == d:
+                    continue
+                if graph[s][d] &lt; distance:
+                    distance = graph[s][d]
+                    pre = s
+                    next = d
+        path.append((pre, next))
+        visited.append(next)
+        nodes.remove(next)
+
+    return path
+
+if __name__ == &#39;__main__&#39;:
+    ini = float(&#39;inf&#39;)
+    graph_dict = {  &#39;A&#39;: {&#39;A&#39;: ini, &#39;B&#39;: 4,   &#39;C&#39;: 2,   &#39;D&#39;: 3,   &#39;E&#39;: ini, &#39;F&#39;: ini, &#39;G&#39;: ini},
+                    &#39;B&#39;: {&#39;A&#39;: 4,   &#39;B&#39;: ini, &#39;C&#39;: ini, &#39;D&#39;: ini, &#39;E&#39;: 2,   &#39;F&#39;: 5,   &#39;G&#39;: ini},
+                    &#39;C&#39;: {&#39;A&#39;: 2,   &#39;B&#39;: ini, &#39;C&#39;: ini, &#39;D&#39;: ini, &#39;E&#39;: ini, &#39;F&#39;: ini, &#39;G&#39;: 1  },
+                    &#39;D&#39;: {&#39;A&#39;: 3,   &#39;B&#39;: ini, &#39;C&#39;: ini, &#39;D&#39;: ini, &#39;E&#39;: ini, &#39;F&#39;: ini, &#39;G&#39;: 2  },
+                    &#39;E&#39;: {&#39;A&#39;: ini, &#39;B&#39;: 2,   &#39;C&#39;: ini, &#39;D&#39;: ini, &#39;E&#39;: ini, &#39;F&#39;: 4,   &#39;G&#39;: ini},
+                    &#39;F&#39;: {&#39;A&#39;: ini, &#39;B&#39;: 5,   &#39;C&#39;: ini, &#39;D&#39;: ini, &#39;E&#39;: 4,   &#39;F&#39;: ini, &#39;G&#39;: 3  },
+                    &#39;G&#39;: {&#39;A&#39;: ini, &#39;B&#39;: ini, &#39;C&#39;: 1,   &#39;D&#39;: 2,   &#39;E&#39;: ini, &#39;F&#39;: 3,   &#39;G&#39;: ini},
+                 }
+    path = prim(graph_dict, &#39;A&#39;)
+    print(&quot;path:&quot;, path)
+</code></pre>
 <p>可以看到输出顺序和上图是一致的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path: [(<span class="string">'A'</span>, <span class="string">'C'</span>), (<span class="string">'C'</span>, <span class="string">'G'</span>), (<span class="string">'G'</span>, <span class="string">'D'</span>), (<span class="string">'G'</span>, <span class="string">'F'</span>), (<span class="string">'A'</span>, <span class="string">'B'</span>), (<span class="string">'B'</span>, <span class="string">'E'</span>)]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">path: [(&#39;A&#39;, &#39;C&#39;), (&#39;C&#39;, &#39;G&#39;), (&#39;G&#39;, &#39;D&#39;), (&#39;G&#39;, &#39;F&#39;), (&#39;A&#39;, &#39;B&#39;), (&#39;B&#39;, &#39;E&#39;)]
+</code></pre>
 <h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p><strong>Kruskal算法</strong>是一种用来查找最小生成树的算法，由Joseph Kruskal在1956年发表。基于<a href="https://lil-q.github.io/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/">并查集</a>的数据结构。</p>
-<p><img src="383px-MST_kruskal_en.gif" alt="kru"></p>
+<p><img src="383px-MST_kruskal_en.gif" srcset="/img/loading.gif" alt="kru"></p>
 <h3 id="流程-3"><a href="#流程-3" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>新建图<script type="math/tex">G</script>，<script type="math/tex">G</script>中拥有原图中相同的节点，但没有边</li>
 <li>将原图中所有的边按权值从小到大排序</li>
 <li>从权值最小的边开始，如果这条边连接的两个节点于图<script type="math/tex">G</script>中不在同一个连通分量中，则添加这条边到图<script type="math/tex">G</script>中</li>
 <li>重复3，直至图<script type="math/tex">G</script>中所有的节点都在同一个连通分量中</li>
 </ol>
-<p><img src="graph7.png" alt="kur"></p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(id, p)</span>:</span></span><br><span class="line">	<span class="keyword">while</span> p != id[p]:</span><br><span class="line">		id[p] = id[id[p]]</span><br><span class="line">		p = id[p]</span><br><span class="line">	<span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(id, size, p, q)</span>:</span></span><br><span class="line">	root_p = find(id, p)</span><br><span class="line">	root_q = find(id, q)</span><br><span class="line">	<span class="keyword">if</span> root_p != root_q:</span><br><span class="line">		<span class="keyword">if</span> size[p] &lt; size[q]:</span><br><span class="line">			id[root_p] = root_q</span><br><span class="line">			size[q] += size[p]</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			id[root_q] = root_p</span><br><span class="line">			size[p] += size[q]</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kruskal</span><span class="params">(graph)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> type(graph)==dict</span><br><span class="line"></span><br><span class="line">    edges = [(graph[u][v], u, v) <span class="keyword">for</span> u <span class="keyword">in</span> graph <span class="keyword">for</span> v <span class="keyword">in</span> graph[u] <span class="keyword">if</span> graph[u][v] != float(<span class="string">'inf'</span>)]</span><br><span class="line">    path = []</span><br><span class="line">    id, size = &#123;u:u <span class="keyword">for</span> u <span class="keyword">in</span> graph&#125;, &#123;u:<span class="number">0</span> <span class="keyword">for</span> u <span class="keyword">in</span> graph&#125;</span><br><span class="line">    <span class="keyword">for</span> _, u, v <span class="keyword">in</span> sorted(edges):</span><br><span class="line">        <span class="keyword">if</span> find(id, u) != find(id, v):</span><br><span class="line">            path.append((u, v))</span><br><span class="line">            union(id, size, u, v)</span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
+<p><img src="graph7.png" srcset="/img/loading.gif" alt="kur"></p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def find(id, p):
+    while p != id[p]:
+        id[p] = id[id[p]]
+        p = id[p]
+    return p
+
+def union(id, size, p, q):
+    root_p = find(id, p)
+    root_q = find(id, q)
+    if root_p != root_q:
+        if size[p] &lt; size[q]:
+            id[root_p] = root_q
+            size[q] += size[p]
+        else:
+            id[root_q] = root_p
+            size[p] += size[q]
+
+
+def kruskal(graph):
+    assert type(graph)==dict
+
+    edges = [(graph[u][v], u, v) for u in graph for v in graph[u] if graph[u][v] != float(&#39;inf&#39;)]
+    path = []
+    id, size = {u:u for u in graph}, {u:0 for u in graph}
+    for _, u, v in sorted(edges):
+        if find(id, u) != find(id, v):
+            path.append((u, v))
+            union(id, size, u, v)
+    return path
+</code></pre>
 <p>输入与理论一致：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path:  [(<span class="string">'C'</span>, <span class="string">'G'</span>), (<span class="string">'A'</span>, <span class="string">'C'</span>), (<span class="string">'B'</span>, <span class="string">'E'</span>), (<span class="string">'D'</span>, <span class="string">'G'</span>), (<span class="string">'F'</span>, <span class="string">'G'</span>), (<span class="string">'A'</span>, <span class="string">'B'</span>)]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">path:  [(&#39;C&#39;, &#39;G&#39;), (&#39;A&#39;, &#39;C&#39;), (&#39;B&#39;, &#39;E&#39;), (&#39;D&#39;, &#39;G&#39;), (&#39;F&#39;, &#39;G&#39;), (&#39;A&#39;, &#39;B&#39;)]
+</code></pre>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-leetcode-778-水位上升的泳池中游泳"><a href="#1-leetcode-778-水位上升的泳池中游泳" class="headerlink" title="1. leetcode 778. 水位上升的泳池中游泳"></a>1. <a href="https://leetcode-cn.com/problems/swim-in-rising-water/" target="_blank" rel="noopener">leetcode 778. 水位上升的泳池中游泳</a></h2><p>在一个 N x N 的坐标方格 grid 中，每一个方格的值 grid[i][j] 表示在位置 (i,j) 的平台高度。</p>
 <p>现在开始下雨了。当时间为 t 时，此时雨水导致水池中任意位置的水位为 t 。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
 <p>你从坐标方格的左上平台 (0，0) 出发。最少耗时多久你才能到达坐标方格的右下平台 (N-1, N-1)？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">24</span>,<span class="number">23</span>,<span class="number">22</span>,<span class="number">21</span>,<span class="number">5</span>],[<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>],[<span class="number">11</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],[<span class="number">10</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>]]</span><br><span class="line">输入: <span class="number">16</span></span><br><span class="line">解释:</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span></span><br><span class="line">             　 <span class="number">5</span></span><br><span class="line"><span class="number">12</span>  <span class="number">13</span>  <span class="number">14</span>  <span class="number">15</span>  <span class="number">16</span></span><br><span class="line"><span class="number">11</span>  </span><br><span class="line"><span class="number">10</span>  <span class="number">9</span>   <span class="number">8</span>   <span class="number">7</span>   <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">输入: [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+输入: 16
+解释:
+0   1   2   3   4
+             　 5
+12  13  14  15  16
+11  
+10  9   8   7   6
+</code></pre>
 <p>使用简化版的Dijkstra算法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">swimInWater</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        N = len(grid)</span><br><span class="line">        seen = &#123;(<span class="number">0</span>, <span class="number">0</span>)&#125; <span class="comment"># 记录已经访问过的点</span></span><br><span class="line">        pq = [(grid[<span class="number">0</span>][<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span>)] <span class="comment"># 创建优先队列</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> pq:</span><br><span class="line">            d, r, c = heapq.heappop(pq)</span><br><span class="line">            <span class="comment"># 更新最小路径中的最大值</span></span><br><span class="line">            ans = max(ans, d)</span><br><span class="line">            <span class="keyword">if</span> r == c == N<span class="number">-1</span>: <span class="keyword">return</span> ans</span><br><span class="line">            <span class="comment"># 将有可能经过的点都加入到优先队列</span></span><br><span class="line">            <span class="keyword">for</span> cr, cc <span class="keyword">in</span> ((r<span class="number">-1</span>, c), (r+<span class="number">1</span>, c), (r, c<span class="number">-1</span>), (r, c+<span class="number">1</span>)):</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= cr &lt; N <span class="keyword">and</span> <span class="number">0</span> &lt;= cc &lt; N <span class="keyword">and</span> (cr, cc) <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                    heapq.heappush(pq, (grid[cr][cc], cr, cc))</span><br><span class="line">                    seen.add((cr, cc))</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">class Solution(object):
+    def swimInWater(self, grid):
+        N = len(grid)
+        seen = {(0, 0)} # 记录已经访问过的点
+        pq = [(grid[0][0], 0, 0)] # 创建优先队列
+        ans = 0
+        while pq:
+            d, r, c = heapq.heappop(pq)
+            # 更新最小路径中的最大值
+            ans = max(ans, d)
+            if r == c == N-1: return ans
+            # 将有可能经过的点都加入到优先队列
+            for cr, cc in ((r-1, c), (r+1, c), (r, c-1), (r, c+1)):
+                if 0 &lt;= cr &lt; N and 0 &lt;= cc &lt; N and (cr, cc) not in seen:
+                    heapq.heappush(pq, (grid[cr][cc], cr, cc))
+                    seen.add((cr, cc))
+</code></pre>
 <h2 id="2-leetcode-207-课程表"><a href="#2-leetcode-207-课程表" class="headerlink" title="2. leetcode 207. 课程表"></a>2. <a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">leetcode 207. 课程表</a></h2><p>现在你总共有 n 门课需要选，记为 0 到 n-1。在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们: [0,1]。给定课程总量以及它们的先决条件，判断是否可能完成所有课程的学习？</p>
 <p>这是典型的有向图的拓扑排序问题。有两种解法，利用入度表和深度有限搜索。</p>
 <h3 id="解法一：入度表"><a href="#解法一：入度表" class="headerlink" title="解法一：入度表"></a>解法一：入度表</h3><ol>
@@ -429,12 +615,52 @@
 <li>取出所有入度为0的点加入队列<code>queue</code></li>
 <li>宽度优先搜索，每从队列里取出一个节点，numCourses -= 1, 环内的节点入度不会为0，所以当有环时, numcourses不为0</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses: int, prerequisites: List[List[int]])</span> -&gt; bool:</span></span><br><span class="line">        indegrees = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(numCourses)]</span><br><span class="line">        adjacency = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(numCourses)]</span><br><span class="line">        queue = []</span><br><span class="line">        <span class="comment"># 将边信息转换为邻接表adjacency，同时记录每个点的入度indegrees</span></span><br><span class="line">        <span class="keyword">for</span> cur, pre <span class="keyword">in</span> prerequisites:</span><br><span class="line">            indegrees[cur] += <span class="number">1</span></span><br><span class="line">            adjacency[pre].append(cur)</span><br><span class="line">        <span class="comment"># 取出所有入度为0的点加入队列queue</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(indegrees)):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> indegrees[i]: queue.append(i)</span><br><span class="line">        <span class="comment"># 宽度优先搜索</span></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            pre = queue.pop(<span class="number">0</span>)</span><br><span class="line">            numCourses -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> cur <span class="keyword">in</span> adjacency[pre]:</span><br><span class="line">                indegrees[cur] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> indegrees[cur]: queue.append(cur)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> numCourses</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -&gt; bool:
+        indegrees = [0 for _ in range(numCourses)]
+        adjacency = [[] for _ in range(numCourses)]
+        queue = []
+        # 将边信息转换为邻接表adjacency，同时记录每个点的入度indegrees
+        for cur, pre in prerequisites:
+            indegrees[cur] += 1
+            adjacency[pre].append(cur)
+        # 取出所有入度为0的点加入队列queue
+        for i in range(len(indegrees)):
+            if not indegrees[i]: queue.append(i)
+        # 宽度优先搜索
+        while queue:
+            pre = queue.pop(0)
+            numCourses -= 1
+            for cur in adjacency[pre]:
+                indegrees[cur] -= 1
+                if not indegrees[cur]: queue.append(cur)
+        return not numCourses
+</code></pre>
 <h3 id="解法二：深度优先搜索"><a href="#解法二：深度优先搜索" class="headerlink" title="解法二：深度优先搜索"></a>解法二：深度优先搜索</h3><p>借助一个标志列表 flags，用于判断每个节点 i （课程）的状态：</p>
 <blockquote>
 <p>未被 DFS 访问：i == 0；<br>已被其他节点启动的DFS访问：i == -1；<br>已被当前节点启动的DFS访问：i == 1。 </p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        <span class="comment"># 深度优先搜索</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i,adjacency,flags)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> flags[i]==<span class="number">1</span>:<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">if</span> flags[i]==<span class="number">-1</span>:<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            flags[i]=<span class="number">1</span></span><br><span class="line">            print(i,adjacency)</span><br><span class="line">            <span class="keyword">for</span> nex <span class="keyword">in</span> adjacency[i]:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> dfs(nex,adjacency,flags):<span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            flags[i]=<span class="number">-1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 建立邻接表，并在最后加入一个节点指向所有的节点</span></span><br><span class="line">        flags=[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(numCourses+<span class="number">1</span>)]</span><br><span class="line">        adjacency=[[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(numCourses)] </span><br><span class="line">        adjacency.append([i <span class="keyword">for</span> i <span class="keyword">in</span> range(numCourses)])        </span><br><span class="line">        <span class="keyword">for</span> cur,pre <span class="keyword">in</span> prerequisites:</span><br><span class="line">            adjacency[pre].append(cur)</span><br><span class="line">        <span class="comment"># 对最后的dummy节点进行深度优先搜索    </span></span><br><span class="line">        <span class="keyword">return</span> dfs(numCourses,adjacency,flags)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">class Solution(object):
+    def canFinish(self, numCourses, prerequisites):
+        # 深度优先搜索
+        def dfs(i,adjacency,flags):
+            if flags[i]==1:return False
+            if flags[i]==-1:return True
+            flags[i]=1
+            print(i,adjacency)
+            for nex in adjacency[i]:
+                if not dfs(nex,adjacency,flags):return False
+            flags[i]=-1
+            return True
+        # 建立邻接表，并在最后加入一个节点指向所有的节点
+        flags=[0 for _ in range(numCourses+1)]
+        adjacency=[[] for _ in range(numCourses)] 
+        adjacency.append([i for i in range(numCourses)])        
+        for cur,pre in prerequisites:
+            adjacency[pre].append(cur)
+        # 对最后的dummy节点进行深度优先搜索    
+        return dfs(numCourses,adjacency,flags)
+</code></pre>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Graph" target="_blank" rel="noopener">完整测试代码地址</a></p>
 <p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
@@ -447,285 +673,359 @@
 <li><a href="https://leetcode-cn.com/problems/course-schedule/solution/course-schedule-tuo-bu-pai-xu-bfsdfsliang-chong-fa/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/course-schedule/solution/course-schedule-tuo-bu-pai-xu-bfsdfsliang-chong-fa/</a></li>
 </ol>
 
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%9B%BE/" rel="tag"># 图</a>
+            <hr>
           </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2019/12/09/%E6%95%B0%E7%BB%84-Array/" rel="next" title="数组(Array)和哈希表(Hash table)">
-                  <i class="fa fa-chevron-left"></i> 数组(Array)和哈希表(Hash table)
-                </a>
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/" rel="prev" title="查并集(Union-find algorithm)">
-                  查并集(Union-find algorithm) <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+              
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%9B%BE/">图</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="comments"></div>
-
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">图的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结点的度数"><span class="nav-number">1.2.</span> <span class="nav-text">结点的度数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子图的概念"><span class="nav-number">1.3.</span> <span class="nav-text">子图的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊的图"><span class="nav-number">1.4.</span> <span class="nav-text">特殊的图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图的存储"><span class="nav-number">2.</span> <span class="nav-text">图的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接存边"><span class="nav-number">2.1.</span> <span class="nav-text">直接存边</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">2.2.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接表"><span class="nav-number">2.3.</span> <span class="nav-text">邻接表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图的遍历"><span class="nav-number">3.</span> <span class="nav-text">图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先搜索-Depth-First-Search-DFS"><span class="nav-number">3.1.</span> <span class="nav-text">深度优先搜索(Depth First Search, DFS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先搜索-Breadth-First-Search-BFS"><span class="nav-number">3.2.</span> <span class="nav-text">广度优先搜索(Breadth First Search, BFS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python的简易实现"><span class="nav-number">3.3.</span> <span class="nav-text">Python的简易实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径算法"><span class="nav-number">4.</span> <span class="nav-text">最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">4.1.</span> <span class="nav-text">Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">4.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">4.1.2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floyd-Warshall算法"><span class="nav-number">4.2.</span> <span class="nav-text">Floyd-Warshall算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成树"><span class="nav-number">5.</span> <span class="nav-text">生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim算法"><span class="nav-number">5.1.</span> <span class="nav-text">Prim算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-2"><span class="nav-number">5.1.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">5.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">5.2.</span> <span class="nav-text">Kruskal算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-3"><span class="nav-number">5.2.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">5.2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">6.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-leetcode-778-水位上升的泳池中游泳"><span class="nav-number">6.1.</span> <span class="nav-text">1. leetcode 778. 水位上升的泳池中游泳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-leetcode-207-课程表"><span class="nav-number">6.2.</span> <span class="nav-text">2. leetcode 207. 课程表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解法一：入度表"><span class="nav-number">6.2.1.</span> <span class="nav-text">解法一：入度表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法二：深度优先搜索"><span class="nav-number">6.2.2.</span> <span class="nav-text">解法二：深度优先搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="戚天天"
-      src="/images/logo.png">
-  <p class="site-author-name" itemprop="name">戚天天</p>
-  <div class="site-description" itemprop="description">Life Goes On</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">21</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">21</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/lil-q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lil-q" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/mailto:qitiantianc137@outlook.com" title="E-Mail → mailto:qitiantianc137@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container">
+        <div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
       </div>
-    </main>
+    
+  </div>
+</div>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+<!-- custom -->
 
-<div class="copyright">
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === 'true';
+    var verify = 'false' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "喂？",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
   
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">戚天天</span>
-</div>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
 
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-child"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-fire"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-        
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </footer>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
+
+    
+
+    <!-- cnzz Analytics icon -->
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var main = $('main');
+      var tocT = navHeight + (toc.offset().top - main.offset().top);
+      var tocLimMin = main.offset().top - navHeight;
+      var tocLimMax = $('#comments').offset().top - navHeight;
+      $(window).scroll(function () {
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': tocT,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
         }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
       }
     });
-  });
+  </script>
 
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
+
+
+
+
+
+
+  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "图(graph)&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
     }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
+    anchors.add(res.join(", "))
+  </script>
 
-    
 
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
   
 
 
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz',
-    appKey: 'wqRfy95wLQRm4b7BByawaNCK',
-    placeholder: "留下你的足迹吧！ 输入邮箱可显示Gravatar头像哦！",
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: '' || 'zh-cn',
-    path: location.pathname,
-    recordIP: false,
-    serverURLs: ''
-  });
-}, window.Valine);
-</script>
+
+
+
+
+
 
 </body>
 </html>
