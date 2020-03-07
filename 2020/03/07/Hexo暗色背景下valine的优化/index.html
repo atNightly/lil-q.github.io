@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    965 字
+                    488 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      4 分钟
+                      1 分钟
                   </span>
                 
 
@@ -177,7 +177,7 @@
             <p>暗色背景下，通过修改CSS改变valine留言的外观，字体颜色，边框等</p>
 <a id="more"></a>
 <p>在布置完<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">fluid主题</a>后我发现暗色背景下的valine字体还是黑色的，很难辨识，再请教原作者后了解到可以使用自定义CSS的方式修改网页的布局。在Chrome浏览器中打开自己的网页，右键点击想修改的元素，选择检查就可以看到CSS了。</p>
-<p><img src="Inked2020-03-07 195959_LI.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/Inked2020-03-07%20195959_LI.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>上图中的配置项可以修改背景，边框，字体等，其中有一些划去的项表示有冲突且优先级不高的设置，所以没有执行。我们修改CSS的原理类似，添加新的设置并且设置更高的优先级来改变原本的样式。</p>
 <p>以fluid主题为例（其他很多主题也有类似自定义CSS的功能），具体步骤如下：</p>
 <ol>
@@ -196,136 +196,36 @@ custom_css: /css/custom.css
 <li><p>保存文件，<code>hexo clean</code> and <code>hexo d -g</code>。</p>
 </li>
 </ol>
-<p>简单修改了<a href="https://bestzuo.cn/posts/763113948.html" target="_blank" rel="noopener">这篇博客</a>给出的<code>custom.css</code>，就可以得到本博客下的valine样式了：</p>
+<p>由于我对CSS不熟悉，自己的valine只做了一些简单的修改：</p>
 <pre><code class="lang-css">/*valine 评论系统样式*/
-div#comments.comments.v{
-  margin-top: 0px !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
-div.vheader.item2{
-  border-bottom: 1px solid #5f5f5f;
-  height: 35px !important;
-}
-
 .v * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     line-height: 1 !important;
     color: #eee !important;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
 }
 
-.v .vwrap .vheader.item2 .vinput{
-  height: 30px !important;
-  border: 0px !important;
-  width: 25% !important;
-  margin: 0px !important;
+.v .vwrap .vheader .vinput {
+    border-bottom: 1px solid #000000 !important;
 }
 
-input.vnick.vinput{
-  border-right: 2px solid #333333 !important;
+.v .vbtn {
+    border: 1px solid #333333 !important;
+    background: #000000 !important;
 }
 
-div.vcontrol{
-  padding-top: 0px !important;
+.v .vlist .vcard .vhead .vsys {
+    background: #000000 !important;
 }
-
-div#comments.comments.v{
-  border: 0px;
-}
-
 
 .v .vwrap{
   border: 2px solid black !important;
-  height: 250px !important;
-  border-radius: 6px !important;
-  overflow: visible !important;
-  counter-reset: avater;
 }
 
-.v .vwrap .vedit .vemojis{
-  width: 600px !important;
-  background-color: #fff !important;
-  border-radius: 5px !important;
+.v .vlist .vcard .vquote {
+    border-left: 1px solid #000000 !important;
 }
 
-.v .vwrap .vedit .vpreview {
-  width: 600px !important;
-  background-color: #fff !important;
-  border-radius: 5px !important;
-}
-
-.v .vbtn{
-  background-color: #000 !important;
-  border: 1px solid #000 !important;
-  color: #fff !important;
-}
-
-.v .vwrap .vedit .vctrl{
-  text-align: left !important;
-}
-
-.v .vwrap .vedit .vctrl span{
-  background-color: #7f7f7f !important;
-  color: #fff !important;
-  border-radius: 3px !important;
-  padding: 3px !important;
-}
-
-.v .vwrap .vedit .vctrl{
-  padding: 0px !important;
-  margin: 0px !important;
-}
-
-.v .vlist .vcard .vquote .vcontent {
-  font-size: 15px;
-  font-weight: 200;
-}
-
-div.vedit{
-  height: 120px;
-}
-div.vcontrol{
-    margin-top: 30px;
-}
-
-.v .veditor{
-  min-height: 70px !important;
-  height: 100px !important;
-}
-
-.v .vlist .vcard {
-  border: 1px solid #ccc !important;
-  padding-left: 14px !important;
-  padding-right: 14px !important;
-  margin-bottom: 20px !important;
-  border-radius: 10px !important;
-}
-.v .vlist  .vquote .vcard{
-  border: 0px !important;
-  margin-bottom: 0px !important;
-  border-radius: 0px !important;
-  padding: 0px !important;
-}
-
-.v .vlist .vcard .vhead .vsys{
-  display:none !important;
-  background-color: #fff !important;
-}
-.v .vlist .vcard .vh .vmeta .vat{
-  background-color: #177714 !important;
-  color: #fff !important;
-  border-radius: 3px !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
-
-.v .vlist .vcard .vimg{
-  margin: 0 12px 0 0;
-  counter-increment: avater;
+.v .vlist .vcard .vh {
+    border-bottom: 1px solid #333 !important;
 }
 
 /*设置评论头像旋转*/
@@ -334,94 +234,6 @@ div.vcontrol{
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -transform: rotate(360deg);
-}
-
-.v .vlist .vcard .vquote{
-  margin-left: 40px; 
-}
-
-.v .vlist .vcard .vquote{
-  counter-reset: avaters;
-}
-
-.v .vlist .vcard .vquote .vimg{
-  display: avaters !important;
-}
-
-.v .vlist .vcard .vquote  .vhead:before{
-    display: block;
-    float: left;
-    width: 38px;
-    height: 38px;
-    line-height: 38px;
-    margin: 0 12px 0 0;
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-    font-style: normal;
-    background-color: #2d4e41;
-    border: 3px solid #60a1e5;
-    border-radius: 50%;
-    text-align: center;
-
-    /*content: counter(avater)&#39;.&#39;counter(avaters);
-    counter-increment: avaters;*/
-}
-
-.v .vlist .vcard p {
-  top: -1.5em;
-  position: relative;
-  z-index: 1;
-  margin: unset;
-}
-
-.v .vlist .vcard .vquote a.at {
-  font-size: 13px;
-  color: #bea124;
-  text-decoration: none;
-  border: unset;
-  position: relative;
-  top: -40px;
-}
-.v .vlist .vcard .vquote .vcontent{
-  font-size: 15px;
-  font-weight: 200;
-}
-
-.v .vlist .vcard .vcontent {
-  margin-top: 58px !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  padding-top: 0 !important;
-  margin-bottom: unset !important;
-}
-
-.v .vlist .vcard .vquote .vhead .vnick {
-  color: #5af !important;
-  font-weight: 300 !important;
-  font-size: 15px !important;
-}
-.v .vlist .vcard .vhead .vnick {
-  font-size: 18px !important;
-  font-weight: 500 !important;
-  color: #5b6b68 !important;
-}
-
-.v .vlist .vcard{
-  padding-top: 8px !important;
-}
-
-.v .vlist .vcard .vhead{
-  float: left !important;
-}
-
-.v .vlist .vcard .vh .vmeta{
-  float: right !important;
-}
-
-.v .vlist .vcard .vcontent.expand:after{
-  content: &quot;点击查看全部&quot; !important;
-  font-weight: 400 !important;
 }
 /**/
 </code></pre>
