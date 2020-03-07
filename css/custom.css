@@ -1,0 +1,8 @@
+.v * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 2;
+    color: #fff;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
