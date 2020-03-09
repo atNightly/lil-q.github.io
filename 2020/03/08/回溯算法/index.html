@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.3k 字
+                    1.9k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      5 分钟
+                      7 分钟
                   </span>
                 
 
@@ -310,10 +310,50 @@
         back_track()
         return res
 </code></pre>
+<p>全排列和N皇后其实是相似的，两者的不同点在于，全排列是处理一维数组，N皇后是处理二维数组。这一点具体体现在两者在处理<strong>分布</strong>时的不同，全排列递归的深度是N次，每次分布都是遍历数组中所有数；N皇后递归的深度只有两次，这是由每行每列只能有一个皇后，所以第一个循环是遍历行，对每一行执行第二个循环——遍历列。</p>
+<p>N皇后在处理<strong>试错</strong>时的条件相对苛刻一些，但是对角线这个条件其实可以简化：</p>
+<blockquote>
+<p>对于所有的主对角线有 <code>行号 + 列号 = 常数</code>，对于所有的次对角线有 <code>行号 - 列号 = 常数</code>.</p>
+</blockquote>
+<p>代码中我们用<code>visited_u</code>记录主对角线，用<code>visited_d</code>记录次对角线。</p>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">leetcode 10. 正则表达式匹配</a>：给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
+<blockquote>
+<p>‘.’ 匹配任意单个字符<br>‘*’ 匹配零个或多个前面的那一个元素<br>所谓匹配，是要涵盖整个字符串 s 的，而不是部分字符串。</p>
+</blockquote>
+<p>说明:</p>
+<blockquote>
+<p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</p>
+</blockquote>
+<pre><code class="lang-python">class Solution:
+    def isMatch(self, s: str, p: str) -&gt; bool:
+        size_s = len(s)
+        size_p = len(p)
+
+        def backtrack(i, j):
+            # 终止条件
+            if j &gt;= size_p: 
+                if i &gt;= size_s: 
+                    return True
+                else:
+                    return False
+            # 判断第一位是否配对
+            first_match = i &lt; size_s and (s[i] == p[j] or p[j] == &#39;.&#39;)
+            # 分两步，第一步————第二位存在且第二位是&#39;*&#39;
+            if j + 1 &lt; size_p and p[j + 1] == &#39;*&#39;:
+                if first_match: 
+                    return backtrack(i + 1, j) or backtrack(i, j + 2)
+                else: 
+                    return backtrack(i, j + 2)  
+            # 第二步————第二位不是&#39;*&#39;或不存在 
+            else: 
+                return first_match and backtrack(i + 1, j + 1)
+
+        return backtrack(0, 0)
+</code></pre>
+<p>正则表达式前两题不同之处在于，<strong>终止条件</strong>不是单一的处理，而是需要判断<code>True</code>or<code>False</code>。<strong>分布</strong>不再是循坏，而是分为两个情况讨论。没有<strong>执行</strong>和<strong>撤销</strong>的过程，因为参数直接传入递归函数，对当前函数内不产生影响。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/回溯法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%9B%9E%E6%BA%AF%E6%B3%95</a></li>
-<li></li>
 </ol>
 
             <hr>
