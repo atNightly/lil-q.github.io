@@ -36,4 +36,12 @@
     -ms-transform: rotate(360deg);
     -transform: rotate(360deg);
 }
+
+.tocbot-link {
+    color: #dedede !important;
+}
+
+.tocbot-active-link {
+    color: 55d !important;
+}
 /**/
