@@ -198,16 +198,16 @@
 <li><strong>节点的祖先(ancestor)</strong>：从根到该节点所经分支上的所有节点</li>
 <li><strong>森林(forest)</strong>：由m（m&gt;=0）棵互不相交的树的集合称为森林</li>
 </ol>
-<p><img src="height-depth.jpg" srcset="/img/loading.gif" alt="层次深度和高度"></p>
+<p><img src="height-depth.jpg" alt="层次深度和高度"></p>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>本文将介绍二叉树(Binary tree)、二叉搜索树(Binary search tree)和字典树(Trie)。关于AVL树(AVL tree)、红黑树(Red–black tree)和Ｂ树(B-tree)，不做深入探讨。</p>
-<p><img src="tree-cate.jpg" srcset="/img/loading.gif" alt="cate"></p>
+<p><img src="tree-cate.jpg" alt="cate"></p>
 <p>这里区分一下完全二叉树、满二叉树、完美二叉树:</p>
 <ol>
 <li>完全二叉树：最后一层的叶子节点均需在最左边</li>
 <li>满二叉树：满足完全二叉树性质，树中除了叶子节点，每个节点都有两个子节点</li>
 <li>完美二叉树：满足满二叉树性质，树的叶子节点铺满最后一层</li>
 </ol>
-<p><img src="BinaryTree2.png" srcset="/img/loading.gif" alt="full"></p>
+<p><img src="BinaryTree2.png" alt="full"></p>
 <h2 id="二叉树-Binary-tree"><a href="#二叉树-Binary-tree" class="headerlink" title="二叉树(Binary tree)"></a>二叉树(Binary tree)</h2><p><strong>二叉树</strong>（英语：Binary tree）是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
 <pre><code class="lang-python"># 建一个单节点
 class Node(object):
@@ -352,7 +352,7 @@ def postorderTraversalIter(root):
 </code></pre>
 <h3 id="二叉树的序列化"><a href="#二叉树的序列化" class="headerlink" title="二叉树的序列化"></a>二叉树的序列化</h3><p>「序列化」（serialization），指的是把复杂的数据结构转化为线性结构，以方便存储的过程。序列化得到的线性结构必须能重建出原有的结构，才有意义。</p>
 <h4 id="仅使用一种遍历的序列化方法"><a href="#仅使用一种遍历的序列化方法" class="headerlink" title="仅使用一种遍历的序列化方法"></a>仅使用一种遍历的序列化方法</h4><p>这是最常见的序列化方法。可以采用的遍历顺序包括先序、后序、层序。在遍历时，要把空指针也包含在遍历的结果中。例如，对下图的二叉树，进行先序、后序、层序遍历的结果分别为 12##3#4##、##2###431、123###4##（# 表示空指针）。</p>
-<p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" srcset="/img/loading.gif" alt="xu"></p>
+<p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" alt="xu"></p>
 <pre><code class="lang-python">def reconstruct(root):
     if not root:
         return res
@@ -377,7 +377,7 @@ def postorderTraversalIter(root):
 <li>任意节点的左、右子树也分别为二叉查找树</li>
 <li>没有键值相等的节点</li>
 </ol>
-<p><img src="225px-Binary_search_tree.svg.png" srcset="/img/loading.gif" alt="bst"></p>
+<p><img src="225px-Binary_search_tree.svg.png" alt="bst"></p>
 <p>空间复杂度：O(<em>n</em>)。</p>
 <p>时间复杂度：</p>
 <div class="table-container">
@@ -479,7 +479,7 @@ def postorderTraversalIter(root):
 <li>若待删除结点只有左子树PL或右子树PR，此时只要令PL或PR直接成为其双亲结点f的左子树（当p是左子树）或右子树（当p是右子树）即可，作此修改也不破坏二叉查找树的特性。</li>
 <li>若p结点的左子树和右子树均不空。在删去p之后，为保持其它元素之间的相对位置不变，可按中序遍历保持有序进行调整，可以有两种做法：其一是令p的左子树为f的左/右（依p是f的左子树还是右子树而定）子树，s为p左子树的最右下的结点，而p的右子树为s的右子树；其二是令p的直接前驱（in-order predecessor）或直接后继（in-order successor）替代p，然后再从二叉查找树中删去它的直接前驱（或直接后继）。</li>
 </ol>
-<p><img src="720px-Binary_search_tree_delete.svg.png" srcset="/img/loading.gif" alt="deletenode"></p>
+<p><img src="720px-Binary_search_tree_delete.svg.png" alt="deletenode"></p>
 <h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><pre><code class="lang-python">class BinarySearchTree:
     # 初始化
     def __init__(self, value):
@@ -595,12 +595,12 @@ def postorderTraversalIter(root):
 <li>从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
 </ol>
 <p>下面是一个具体的红黑树的图例：</p>
-<p><img src="675px-Red-black_tree_example.svg.png" srcset="/img/loading.gif" alt="rbt"></p>
+<p><img src="675px-Red-black_tree_example.svg.png" alt="rbt"></p>
 <p>操作有变色，左旋，右旋。</p>
 <h2 id="树堆-treap"><a href="#树堆-treap" class="headerlink" title="树堆(treap)"></a>树堆(treap)</h2><p><strong>树堆</strong>（Treap）是二叉排序树（Binary Sort Tree）与堆（Heap）结合产生的一种拥有堆性质的二叉排序树。</p>
 <p>但是这里要注意两点，第一点是Treap和二叉堆有一点不同，就是二叉堆必须是完全二叉树，而Treap并不一定是；第二点是Treap并不严格满足平衡二叉排序树（AVL树）的要求，即树堆中每个节点的左右子树高度之差的绝对值可能会超过1，只是近似满足平衡二叉排序树的性质。</p>
 <p>Treap每个节点记录两个数据，一个是键值，一个是随机附加的优先级，Treap在以关键码构成二叉排序树的同时，又以结点优先级形成最大堆和最小堆。所以Treap必须满足这两个性质，一是二叉排序树的性质，二是堆的性质。如下图，即为一个树堆。</p>
-<p><img src="330px-TreapAlphaKey.svg.png" srcset="/img/loading.gif" alt="treap"></p>
+<p><img src="330px-TreapAlphaKey.svg.png" alt="treap"></p>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Tree" target="_blank" rel="noopener">完整测试代码地址</a></p>
 <p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -770,8 +770,6 @@ def postorderTraversalIter(root):
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

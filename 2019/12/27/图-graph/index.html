@@ -214,7 +214,7 @@
 <p>竞赛图：通过在完全图中为每条边分配方向而获得的有向图。</p>
 <p><em>参考资料：离散数学（修订版），田文成 周禄新 编著，天津文学出版社，P184-187</em></p>
 <h1 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h1><p>以下图作为例子。</p>
-<p><img src="21cd2731928c7c13057eee000e3697de82ccc058.png" srcset="/img/loading.gif" alt="edge lists"></p>
+<p><img src="21cd2731928c7c13057eee000e3697de82ccc058.png" alt="edge lists"></p>
 <h2 id="直接存边"><a href="#直接存边" class="headerlink" title="直接存边"></a>直接存边</h2><p>建立一个数组，数组里每个元素是图的一条边。</p>
 <p>这样做有个缺点，每次想要知道两个点之间是否有连边（或者说一条边是否存在），都需要在数组里进行一番查找。而且如果没有对边事先排序的话，就不能使用二分查找的方法（ $O(\log n)$ ），而是每次只能按顺序找（ $O(n)$ ），成本较高。</p>
 <p>什么时候会用到这个方法呢？最简单的一个例子是使用 Kruskal 算法求最小生成树的时候。</p>
@@ -224,7 +224,7 @@
 <h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>邻接矩阵的英文名是 adjacency matrix。它的形式是 <code>bool adj[n][n]</code> ，这里面 $n$ 是节点个数， $adj[i][j]$ 表示 $i$ 和 $j$ 之间是否有边。</p>
 <p>如果边有权值，也可以直接用 <code>int adj[n][n]</code> ，直接把边权存进去。</p>
 <p>它的优点是可以在 $O(1)$ 时间内得到一条边是否存在，缺点是需要占用 $O(n^2)$ 的空间。对于一个稀疏的图（边相对于点数的平方比较少）来说，用邻接矩阵来存的话，成本偏高。</p>
-<p><img src="549bca1a52774846b25caff86d244d03ee63fd38.png" srcset="/img/loading.gif" alt="matrix"></p>
+<p><img src="549bca1a52774846b25caff86d244d03ee63fd38.png" alt="matrix"></p>
 <pre><code class="lang-python">[ [0, 1, 0, 0, 0, 0, 1, 0, 1, 0],
   [1, 0, 0, 0, 1, 0, 1, 0, 0, 1],
   [0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
@@ -239,7 +239,7 @@
 <h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>邻接表英文名是 adjacency list。它的形式是 <code>vector adj[n]</code> ，用 <code>adj[i]</code> 存以 $i$ 为起点的边。</p>
 <p>用 <code>vector</code> 无法科学地删除，所以常用 <code>list</code> 实现。</p>
 <p>它的特点是可以用来按顺序访问一个结点的出边（或者入边）。</p>
-<p><img src="cc82379521bd84738e86d6cf9552738ca9138420.png" srcset="/img/loading.gif" alt="linklist"></p>
+<p><img src="cc82379521bd84738e86d6cf9552738ca9138420.png" alt="linklist"></p>
 <pre><code class="lang-python">[ [1, 6, 8],
   [0, 4, 6, 9],
   [4, 6],
@@ -261,7 +261,7 @@
 <p>对于第一和第三类问题已经得到了完满的解决，而第二和第四类问题则只得到了部分解决。</p>
 <p>第一类问题就是研究所谓的<a href="https://zh.wikipedia.org/wiki/欧拉图" target="_blank" rel="noopener">欧拉图</a>的性质，而第二类问题则是研究所谓的<a href="https://zh.wikipedia.org/wiki/哈密顿图" target="_blank" rel="noopener">哈密顿图</a>的性质。</p>
 <p>图的遍历方法有深度优先搜索法和广度(宽度)优先搜索法。以下图为例。</p>
-<p><img src="graph1.png" srcset="/img/loading.gif" alt="graph"></p>
+<p><img src="graph1.png" alt="graph"></p>
 <p>建立邻接表：</p>
 <pre><code class="lang-python">adjacencylists = [[1, 2, 3],
                   [0, 4, 5],
@@ -272,9 +272,9 @@
                   [2, 3, 5]]
 </code></pre>
 <h2 id="深度优先搜索-Depth-First-Search-DFS"><a href="#深度优先搜索-Depth-First-Search-DFS" class="headerlink" title="深度优先搜索(Depth First Search, DFS)"></a>深度优先搜索(Depth First Search, DFS)</h2><p><strong>深度优先搜索算法</strong>(Depth-First-Search，DFS)是一种用于遍历或搜索<strong>树</strong>或<strong>图</strong>的算法。沿着树的深度遍历树的节点，尽可能深的搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。属于盲目搜索。</p>
-<p><img src="graph2.png" srcset="/img/loading.gif" alt="graph2"></p>
+<p><img src="graph2.png" alt="graph2"></p>
 <h2 id="广度优先搜索-Breadth-First-Search-BFS"><a href="#广度优先搜索-Breadth-First-Search-BFS" class="headerlink" title="广度优先搜索(Breadth First Search, BFS)"></a>广度优先搜索(Breadth First Search, BFS)</h2><p><strong>广度优先搜索算法</strong>(Breadth-First-Search，缩写为BFS)，又译作<strong>宽度优先搜索</strong>，或<strong>横向优先搜索</strong>，是一种图形搜索算法。简单的说，BFS是从<strong>根节点](<a href="https://zh.wikipedia.org/w/index.php?title=根節點&amp;action=edit&amp;redlink=1)开始，沿着树的宽度遍历树的" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=根節點&amp;action=edit&amp;redlink=1)开始，沿着树的宽度遍历树的</a></strong>节点**。如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。</p>
-<p><img src="graph3.png" srcset="/img/loading.gif" alt="graph3"></p>
+<p><img src="graph3.png" alt="graph3"></p>
 <h2 id="Python的简易实现"><a href="#Python的简易实现" class="headerlink" title="Python的简易实现"></a>Python的简易实现</h2><pre><code class="lang-python"># 设置总节点数
 num_vertexs = 7
 # 建立邻接表
@@ -335,7 +335,7 @@ print(&quot;深度优先搜索：&quot;, t3)
 t4 = list(map(lambda x: vertexs[x], t2))
 print(&quot;广度优先搜索：&quot;, t4)
 </code></pre>
-<p><img src="graph4.png" srcset="/img/loading.gif" alt="graph2"></p>
+<p><img src="graph4.png" alt="graph2"></p>
 <p>输出：</p>
 <pre><code class="lang-python">深度优先搜索： [0, 1, 4, 5, 6, 2, 3]
 广度优先搜索： [0, 1, 2, 3, 4, 5, 6]
@@ -344,7 +344,7 @@ print(&quot;广度优先搜索：&quot;, t4)
 </code></pre>
 <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>Dijkstra 算法使用了广度优先搜索解决赋权有向图或者无向图的单源最短路径问题，算法最终得到一个最短路径树。该算法常用于路由算法或者作为其他图算法的一个子模块。Dijkstra 算法属于单源算法，即只能求出某点到其它点最短距离，并不能得出任意两点之间的最短距离，只能用权值为正数的图，存在负数时可能回陷入死循环。</p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>Dijkstra算法采用的是一种贪心的策略，声明一个数组distances来保存源点到各个顶点的最短距离和一个保存已经找到了最短路径的顶点的集合：nodes。以下图为例，假设求A点到其他点的距离。</p>
-<p><img src="graph5.png" srcset="/img/loading.gif" alt="graph2"></p>
+<p><img src="graph5.png" alt="graph2"></p>
 <ol>
 <li><p>初始化distances，原点 s 的路径权重被赋为 0 （dis[s] = 0）。把到其他顶点的路径长度设为无穷大。</p>
 <pre><code class="lang-python">distances = {&#39;A&#39;: 0, &#39;B&#39;: inf, &#39;C&#39;: inf, &#39;D&#39;: inf, &#39;E&#39;: inf, &#39;F&#39;: inf, &#39;G&#39;: inf}
@@ -435,8 +435,8 @@ if __name__ == &#39;__main__&#39;:
 </ol>
 <p>因此，<script type="math/tex">D_{i,j,k}=min(D_{i,j,k-1},D_{i,k,k-1}+D_{k,j,k-1})</script>。</p>
 <p>在实际算法中，为了节约空间，可以直接在原来空间上进行迭代，这样空间可降至二维。</p>
-<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p><img src="1920px-Floyd-Warshall_example.svg.png" srcset="/img/loading.gif" alt="graphh"></p>
-<p><img src="2019-12-30 224429.png" srcset="/img/loading.gif" alt="gg"></p>
+<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p><img src="1920px-Floyd-Warshall_example.svg.png" alt="graphh"></p>
+<p><img src="2019-12-30 224429.png" alt="gg"></p>
 <p>Floyd-Warshall算法的<a href="https://zh.wikipedia.org/wiki/时间复杂度" target="_blank" rel="noopener">时间复杂度</a>为<script type="math/tex">O(N^{3})</script>，<a href="https://zh.wikipedia.org/wiki/空间复杂度" target="_blank" rel="noopener">空间复杂度</a>为<script type="math/tex">O(N^{2})</script>。</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def floyd(graph):
     length = len(graph)
@@ -477,7 +477,7 @@ if __name__ == &#39;__main__&#39;:
     print(new_graph, &#39;\n\n\n&#39;, path)
 </code></pre>
 <h1 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h1><p>对连通<strong>图</strong>进行遍历，过程中所经过的边和顶点的组合可看做是一棵普通树，通常称为生成树。</p>
-<p><img src="2-1Z106101951H4.gif" srcset="/img/loading.gif" alt="连通图及其对应的生成树"></p>
+<p><img src="2-1Z106101951H4.gif" alt="连通图及其对应的生成树"></p>
 <p>a) 是一张连通图，b) 是其对应的 2 种生成树。</p>
 <p>连通图中，由于任意两顶点之间可能含有多条通路，遍历连通图的方式有多种，往往一张连通图可能有多种不同的生成树与之对应。</p>
 <p>连通图中的生成树必须满足以下 2 个条件：</p>
@@ -494,7 +494,7 @@ if __name__ == &#39;__main__&#39;:
 <li>将 v 加入集合 Vnew 中，将 <u, v> 边加入集合 Enew 中</li>
 <li>重复步骤 3、4 直到 Vnew = V</li>
 </ol>
-<p><img src="graph6.png" srcset="/img/loading.gif" alt="g"></p>
+<p><img src="graph6.png" alt="g"></p>
 <p>时间复杂度：<script type="math/tex">O(V^2)</script></p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def prim(graph, root):
     assert type(graph)==dict
@@ -539,14 +539,14 @@ if __name__ == &#39;__main__&#39;:
 <pre><code class="lang-python">path: [(&#39;A&#39;, &#39;C&#39;), (&#39;C&#39;, &#39;G&#39;), (&#39;G&#39;, &#39;D&#39;), (&#39;G&#39;, &#39;F&#39;), (&#39;A&#39;, &#39;B&#39;), (&#39;B&#39;, &#39;E&#39;)]
 </code></pre>
 <h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p><strong>Kruskal算法</strong>是一种用来查找最小生成树的算法，由Joseph Kruskal在1956年发表。基于<a href="https://lil-q.github.io/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/">并查集</a>的数据结构。</p>
-<p><img src="383px-MST_kruskal_en.gif" srcset="/img/loading.gif" alt="kru"></p>
+<p><img src="383px-MST_kruskal_en.gif" alt="kru"></p>
 <h3 id="流程-3"><a href="#流程-3" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>新建图<script type="math/tex">G</script>，<script type="math/tex">G</script>中拥有原图中相同的节点，但没有边</li>
 <li>将原图中所有的边按权值从小到大排序</li>
 <li>从权值最小的边开始，如果这条边连接的两个节点于图<script type="math/tex">G</script>中不在同一个连通分量中，则添加这条边到图<script type="math/tex">G</script>中</li>
 <li>重复3，直至图<script type="math/tex">G</script>中所有的节点都在同一个连通分量中</li>
 </ol>
-<p><img src="graph7.png" srcset="/img/loading.gif" alt="kur"></p>
+<p><img src="graph7.png" alt="kur"></p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def find(id, p):
     while p != id[p]:
         id[p] = id[id[p]]
@@ -834,8 +834,6 @@ def kruskal(graph):
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

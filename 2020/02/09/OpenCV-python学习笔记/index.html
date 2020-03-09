@@ -178,7 +178,7 @@
 <a id="more"></a>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>18年结束毕业设计之后，对OpenCV接触很少了。那时使用的是C++，借由最近使用python较多，学习OpenCV-python算是一种温故。本文主要参考了<a href="http://codec.wang/opencv-python" target="_blank" rel="noopener">OpenCV-Python图像处理教程</a>以及<a href="https://docs.opencv.org/4.2.0/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
 <h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>需要注意图片的x，y轴排布，三通道以B-G-R排布，灰度图只有一个通道。</p>
-<p><img src="1546842698102_gWO39TIUVK.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="1546842698102_gWO39TIUVK.jpg" alt=""></p>
 <h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><pre><code class="lang-python"># 加载灰度图
 img = cv2.imread(&#39;lena.jpg&#39;, 0)
 </code></pre>
@@ -517,7 +517,7 @@ while(True):
         break
 </code></pre>
 <p>我房间比较暗，调低了点<code>lower_blue</code>中的饱和度和亮度，哆啦A梦如图：</p>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/2020-02-15_.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/2020-02-15_.png" alt=""></p>
 <h1 id="滑动条"><a href="#滑动条" class="headerlink" title="滑动条"></a>滑动条</h1><pre><code class="lang-python"># 创建一个名为test的窗口
 cv2.namedWindow(&#39;test&#39;)
 # 创建一个滑动条
@@ -701,8 +701,6 @@ cv2.createTrackbar(&#39;R&#39;, &#39;test&#39;, 0, 255, nothing)
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

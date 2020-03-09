@@ -278,7 +278,7 @@
 &#39;&#39;&#39;
 </code></pre>
 <p>如果对每个字符去哈希值可能会比较耗时，所以可以通过间隔取N个字符来获取哈西值来节省时间，比如，可以 获取每8-9个字符来获取哈希值。但是，对于某些情况，不同的字符串会产生相同的哈希值，这就是前面说到的哈希冲突（Hash Collisions），比如下面的四个字符串：</p>
-<p><img src="312300343319616.jpg" srcset="/img/loading.gif" alt="hash code collision"></p>
+<p><img src="312300343319616.jpg" alt="hash code collision"></p>
 <p>如果我们按照每8个字符取哈希的话，就会得到一样的哈希值。</p>
 <h2 id="哈希冲撞"><a href="#哈希冲撞" class="headerlink" title="哈希冲撞"></a>哈希冲撞</h2><p>如果将2450个密钥散列到一百万个存储桶中，即使具有完全均匀的随机分布，则根据生日问题，至少有两个密钥散列到同一存储桶的机率大约为95％。<script type="math/tex">1*\frac{10^6-1}{10^6}*\frac{10^6-2}{10^6}</script>…<script type="math/tex">\frac{10^6-2449}{10^6}</script></p>
 <pre><code class="lang-python">res=1
@@ -292,9 +292,9 @@ print(res)
 </code></pre>
 <p><a href="https://zh.wikipedia.org/zh-hans/生日攻击" target="_blank" rel="noopener">有兴趣可以了解一下生日攻击。</a></p>
 <h3 id="1-Separate-chaining"><a href="#1-Separate-chaining" class="headerlink" title="1. Separate chaining"></a>1. Separate chaining</h3><p>每一个<code>bucket</code>指向一个数组、链表或其他数据结构。</p>
-<p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" srcset="/img/loading.gif" alt="spe"></p>
+<p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" alt="spe"></p>
 <h3 id="2-Open-addressing"><a href="#2-Open-addressing" class="headerlink" title="2. Open addressing"></a>2. Open addressing</h3><p>每一个<code>bucket</code>存放一个<code>entry record</code>,添加时如果已占用就下移一格，查找同理。</p>
-<p><img src="570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png" srcset="/img/loading.gif" alt="opa"></p>
+<p><img src="570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png" alt="opa"></p>
 <h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>Python中 dict 数据结构的复杂度</p>
 <div class="table-container">
 <table>
@@ -596,8 +596,6 @@ class Twitter:
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

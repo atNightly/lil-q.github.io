@@ -287,14 +287,14 @@
 <li>m代表数据的最大值减最小值</li>
 </ul>
 <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>数据分区：（无序区，有序区）。<br>从无序区透过交换找出最大元素放到有序区前端。 </p>
-<p><img src="Bubble_sort_animation.gif" srcset="/img/loading.gif" alt="冒泡排序"></p>
+<p><img src="Bubble_sort_animation.gif" alt="冒泡排序"></p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li>
 <li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</li>
 <li>针对所有的元素重复以上的步骤，除了最后一个。</li>
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 </ol>
-<p><img src="bubble_sort.gif" srcset="/img/loading.gif" alt="冒泡流程"></p>
+<p><img src="bubble_sort.gif" alt="冒泡流程"></p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def bubble_sorted(nums):
     size = len(nums)
     for i in range(size-1):
@@ -317,13 +317,13 @@
     return nums
 </code></pre>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>数据分区：（有序区，无序区）。<br/>在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。 </p>
-<p> <img src="Selection_sort_animation.gif" srcset="/img/loading.gif" alt="选择排序"></p>
+<p> <img src="Selection_sort_animation.gif" alt="选择排序"></p>
 <h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>初始状态：无序区为R[1..n]，有序区为空；</li>
 <li>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li>
 <li>n-1趟结束，数组有序化了。</li>
 </ol>
-<p><img src="selection_sort.gif" srcset="/img/loading.gif" alt="选择流程"></p>
+<p><img src="selection_sort.gif" alt="选择流程"></p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def selection_sorted(nums):
     size = len(nums)
     for i in range(size-1):
@@ -335,7 +335,7 @@
     return nums
 </code></pre>
 <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>数据分区：（有序区，无序区）。<br/>把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。 </p>
-<p><img src="Insertion_sort_animation.gif" srcset="/img/loading.gif" alt="插入排序"></p>
+<p><img src="Insertion_sort_animation.gif" alt="插入排序"></p>
 <h3 id="流程-2"><a href="#流程-2" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>从第一个元素开始，该元素可以认为已经被排序；</li>
 <li>取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
@@ -344,7 +344,7 @@
 <li>将新元素插入到该位置后；</li>
 <li>重复步骤2~5。</li>
 </ol>
-<p><img src="insertion_sort.gif" srcset="/img/loading.gif" alt="插入流程"></p>
+<p><img src="insertion_sort.gif" alt="插入流程"></p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def insertion_sorted(nums):
     size = len(nums)
     for i in range(1,size):
@@ -357,7 +357,7 @@
     return nums
 </code></pre>
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>数据分区：（最大堆，有序区）。<br>从堆顶把根卸出来放在有序区之前，再恢复堆。 <a href="https://lil-q.github.io/2019/11/17/%E5%A0%86-heap/">关于堆</a></p>
-<p><img src="Sorting_heapsort_anim.gif" srcset="/img/loading.gif" alt="heap"></p>
+<p><img src="Sorting_heapsort_anim.gif" alt="heap"></p>
 <h3 id="流程-3"><a href="#流程-3" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>最大堆调整（Max Heapify）：将堆的末端子节点作调整，使得子节点永远小于父节点</li>
 <li>创建最大堆（Build Max Heap）：将堆中的所有数据重新排序</li>
@@ -387,13 +387,13 @@
     return nums
 </code></pre>
 <h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>把数据分为两段，从两段中逐个选最小的元素移入新数据段的末尾。<br>该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。  </p>
-<p><img src="Merge_sort_animation2.gif" srcset="/img/loading.gif" alt="merge"></p>
+<p><img src="Merge_sort_animation2.gif" alt="merge"></p>
 <h3 id="流程-4"><a href="#流程-4" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>把长度为n的输入序列分成两个长度为n/2的子序列；</li>
 <li>对这两个子序列分别采用归并排序；</li>
 <li>将两个排序好的子序列合并成一个最终的排序序列。</li>
 </ol>
-<p><img src="merge_sort.gif" srcset="/img/loading.gif" alt="mergef"></p>
+<p><img src="merge_sort.gif" alt="mergef"></p>
 <h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><h4 id="递归法（Top-down）："><a href="#递归法（Top-down）：" class="headerlink" title="递归法（Top-down）："></a>递归法（Top-down）：</h4><pre><code class="lang-python">def merge(left, right):
     result = []
     while left and right:
@@ -434,7 +434,7 @@ def merge_sort(L):
         r2-=1
 </code></pre>
 <p>这里参考了<a href="https://leetcode-cn.com/problems/merge-sorted-array/solution/he-bing-liang-ge-you-xu-shu-zu-by-leetcode/" target="_blank" rel="noopener">leetcode 88.合并两个有序数组</a>，采用双指针从后往前合并两个有序数组（其实也就是一个数组切片的前一半和后一半），实现了空间复杂度O(1)。</p>
-<p><img src="merge.jpg" srcset="/img/loading.gif" alt="merge"></p>
+<p><img src="merge.jpg" alt="merge"></p>
 <p><strong>方法一：使用生成器</strong></p>
 <pre><code class="lang-python"># 生成器产生2的幂
 def powerOfTwo(max):
@@ -465,13 +465,13 @@ def msi(nums):
 </code></pre>
 <p><a href="https://zh.wikipedia.org/wiki/排序算法" target="_blank" rel="noopener">时间复杂度是<script type="math/tex">O(nlog^2n)</script>,空间复杂度为: O(1)</a>。</p>
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>数据分区：（小数，基准元素，大数）。<br>在区间中随机挑选一个元素作基准，将小于基准的元素放在基准之前，大于基准的元素放在基准之后，再分别对小数区与大数区进行排序。 </p>
-<p><img src="Sorting_quicksort_anim.gif" srcset="/img/loading.gif" alt="quick"></p>
+<p><img src="Sorting_quicksort_anim.gif" alt="quick"></p>
 <h3 id="流程-5"><a href="#流程-5" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>从数列中挑出一个元素，称为 “基准”（pivot）；</li>
 <li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
 <li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
 </ol>
-<p><img src="quick_sorted.gif" srcset="/img/loading.gif" alt="quicks"></p>
+<p><img src="quick_sorted.gif" alt="quicks"></p>
 <h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">import random
 def quick_sorted(nums):
     if len(nums) &lt;= 1:
@@ -513,7 +513,7 @@ def quick_sorted(nums):
 <li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位</li>
 </ol>
 </blockquote>
-<p><img src="Sorting_shellsort_anim.gif" srcset="/img/loading.gif" alt="shell"></p>
+<p><img src="Sorting_shellsort_anim.gif" alt="shell"></p>
 <h3 id="流程-6"><a href="#流程-6" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>选择一个增量序列<script type="math/tex">t_1</script>，<script type="math/tex">t_2</script>，…，<script type="math/tex">t_k</script>，其中<script type="math/tex">t_i</script>&gt;<script type="math/tex">t_j</script>，<script type="math/tex">t_k</script>=1；</li>
 <li>按增量序列个数k，对序列进行k 趟排序；</li>
@@ -545,7 +545,7 @@ def quick_sorted(nums):
 <li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
 <li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li>
 </ol>
-<p><img src="counting_sorted.gif" srcset="/img/loading.gif" alt="countingsort"></p>
+<p><img src="counting_sorted.gif" alt="countingsort"></p>
 <h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def counting_sorted(nums):
     # 计数排序针对非负整数，初始化最大值为-1，也可以设为nums[0]
     maxValue=-1
@@ -569,7 +569,7 @@ def quick_sorted(nums):
 <li>从最低位开始取每个位组成radix数组；</li>
 <li>对radix进行计数排序（利用计数排序适用于小范围数的特点）；</li>
 </ol>
-<p><img src="radix_sorted.gif" srcset="/img/loading.gif" alt="radix"></p>
+<p><img src="radix_sorted.gif" alt="radix"></p>
 <h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def radix_sorted(nums):
     # 基数排序针对非负整数，初始化最大值为-1,也可以设为nums[0]
     maxValue=-1
@@ -593,8 +593,8 @@ def quick_sorted(nums):
 <li>对每个不是空的桶进行排序；</li>
 <li>从不是空的桶里把排好序的数据拼接起来。</li>
 </ol>
-<p><img src="Bucket_sort_1.svg.png" srcset="/img/loading.gif" alt="bucket1"></p>
-<p><img src="Bucket_sort_2.svg.png" srcset="/img/loading.gif" alt="bucket2"></p>
+<p><img src="Bucket_sort_1.svg.png" alt="bucket1"></p>
+<p><img src="Bucket_sort_2.svg.png" alt="bucket2"></p>
 <h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-python">def bucket_sorted(nums):
     if not nums:return nums
     maxValue=nums[0]
@@ -798,8 +798,6 @@ def insertion_sorted(nums):
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

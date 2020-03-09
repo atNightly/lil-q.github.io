@@ -183,7 +183,7 @@
 </ol>
 <p>当父节点的键值总是大于或等于任何一个子节点的键值时为最大堆。 当父节点的键值总是小于或等于任何一个子节点的键值时为最小堆。 本文以最大堆作为例子，最小堆类似。</p>
 <h2 id="堆的建立"><a href="#堆的建立" class="headerlink" title="堆的建立"></a>堆的建立</h2><p>堆的建立并不建立一个新的树，而是对数组进行原地改动，第一个数（index=0）为完全二叉树的level 0，即根，第二个数和第三个数为level 1，以此类推。</p>
-<p><img src="建堆.png" srcset="/img/loading.gif" alt="建堆"></p>
+<p><img src="建堆.png" alt="建堆"></p>
 <p>由于数组是升序数组，我们直接得到了最小堆。但是如果要进行升序排序，算法上需要建立最大堆。也就是说，当原数组是升序时，堆排序算法遇到了最坏情况。本文也以这种情况作为例子。</p>
 <pre><code class="lang-python">nums=[1,2,3,4,5]
 </code></pre>
@@ -205,7 +205,7 @@
 <li>从<code>index=n//2-1</code>开始，直到<code>index=0</code>，对每一个节点或根进行一次维护。</li>
 </ol>
 <p><em>注意：一次维护并不是最多只交换一次，而是交换到某节点满足最大堆条件或者<code>index&gt;=n</code>为止。</em></p>
-<p><img src="heapflow.png" srcset="/img/loading.gif" alt="heapflow"></p>
+<p><img src="heapflow.png" alt="heapflow"></p>
 <pre><code class="lang-python">def build_heap(nums):    
     n = len(nums)
     for i in range(n // 2 - 1, -1, -1):
@@ -229,7 +229,7 @@ heap=heap_insert(heap,6)
 print(&quot;heapIns:&quot;,heap)
 #输出：heapIns: [6, 4, 5, 1, 2, 3]
 </code></pre>
-<p><img src="heapinsert.png" srcset="/img/loading.gif" alt="charu"></p>
+<p><img src="heapinsert.png" alt="charu"></p>
 <h2 id="最大堆节点的删除"><a href="#最大堆节点的删除" class="headerlink" title="最大堆节点的删除"></a>最大堆节点的删除</h2><p>对一个节点的删除就是交换该节点和最后一个叶子节点的值，然后从该节点开始一次<code>adjust_heap()</code></p>
 <pre><code class="lang-python">def heap_delete(heap,idx):
     n=len(heap)
@@ -416,8 +416,6 @@ print(&quot;heapSort:&quot;,heapSort)
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

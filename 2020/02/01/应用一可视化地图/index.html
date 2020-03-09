@@ -177,7 +177,7 @@
             <p>爬取2019-nCoV新型冠状病毒肺炎各省份确诊人数分布数据并制作数据可视化地图</p>
 <a id="more"></a>
 <h1 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h1><p>在学习<a href="https://blog.csdn.net/xufive/article/details/104093197" target="_blank" rel="noopener">该博客</a>的数据爬取时发现数据似乎已经不再更新，所以重新在<a href="https://news.qq.com/zt2020/page/feiyan.htm?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">腾讯新闻网站</a>搜索相关数据。</p>
-<p><img src="213627.png" srcset="/img/loading.gif" alt="shuju"></p>
+<p><img src="213627.png" alt="shuju"></p>
 <p>使用<code>time</code>、<code>json</code>和<code>requests</code>获取数据。</p>
 <pre><code class="lang-python">import time, json, requests
 url = &#39;https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=&amp;_=%d&#39;%int(time.time()*1000)
@@ -275,7 +275,7 @@ map1 = map_visualmap(lastUpdateTime, pieces, data)
 map1.render()
 </code></pre>
 <p>最后的效果如下，</p>
-<p><img src="2sd15400.png" srcset="/img/loading.gif" alt="xiaoguo"></p>
+<p><img src="2sd15400.png" alt="xiaoguo"></p>
 <p>运行后会在根目录下生成<a href="https://lil-q.github.io/pageDemo/render.html">render.html</a></p>
 <p><a href="https://github.com/lil-q/2019-nCoV-VisualMap/blob/master/2019-nCoV-VisualMap.py" target="_blank" rel="noopener">完整代码</a></p>
 
@@ -438,8 +438,6 @@ map1.render()
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

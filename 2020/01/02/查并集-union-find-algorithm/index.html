@@ -183,7 +183,7 @@
 </ul>
 <p>也就是说，不支持集合的分离、删除。</p>
 <h1 id="Quick-Find算法"><a href="#Quick-Find算法" class="headerlink" title="Quick-Find算法"></a>Quick-Find算法</h1><p>以下图为例，连通关系为<code>[(1,2), (0, 1), (0, 3), (4, 7), (5, 6), (5, 7), (7, 8), (8, 9)]</code>。</p>
-<p><img src="uf1.png" srcset="/img/loading.gif" alt="uf"></p>
+<p><img src="uf1.png" alt="uf"></p>
 <p>首先初始化所有节点，认为它们属于一个组，因此不连通的节点必然就属于不同的组：</p>
 <div class="table-container">
 <table>
@@ -315,7 +315,7 @@
             self.count -= 1
 </code></pre>
 <h1 id="Quick-Union算法"><a href="#Quick-Union算法" class="headerlink" title="Quick-Union算法"></a>Quick-Union算法</h1><p>对于只需要实现查找和合并的并查集，O(n)的时间复杂度还是太高了，当时间复杂度需要降低到对数级，我们自然想到了<strong>树</strong>这个数据结构。由于并查集初始化中每一个<code>element</code>对于一个<code>group number</code>，所以可以通过数组中的跳转来实现树的寻找父节点功能。以下图为例，最开始每一个<code>element</code>的父节点都是自身，每次查找沿着父节点向上， 直到根节点。每次合并把找到的两个根节点的其中一个设置为另一个的父节点。</p>
-<p><img src="1339479431_6633.png" srcset="/img/loading.gif" alt="qu"></p>
+<p><img src="1339479431_6633.png" alt="qu"></p>
 <p><code>union</code>和<code>find</code>的时间复杂度取决于树的高度。</p>
 <h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><pre><code class="lang-python">class QuickUnion(object):
     id = []
@@ -343,7 +343,7 @@
 </code></pre>
 <p><em>注意：此时<code>self.id</code>存放的不再是每个元素的组别而是父节点。</em></p>
 <h1 id="Weighted-Quick-Union-算法"><a href="#Weighted-Quick-Union-算法" class="headerlink" title="Weighted Quick-Union 算法"></a>Weighted Quick-Union 算法</h1><p>既然采用了<strong>树</strong>的结构，就有可能出现极端情况，是的树操作的时间复杂度退化成O(N)。为了避免这种情况，常规方法是使用平衡树，而对于并查集，只需要在<code>union</code>时，选择将小的树合并到大树上就可以了。</p>
-<p><img src="1339479587_5986.png" srcset="/img/loading.gif" alt="wqu"></p>
+<p><img src="1339479587_5986.png" alt="wqu"></p>
 <p>理论上在平衡树合并两个树时，应当用根的高度来衡量两个树的大小，但是这里使用根节点的子孙节点的数量来衡量，<code>union</code>和<code>find</code>的时间复杂度接近于O(log  N)。这是因为这个方法还可以优化，通过路径压缩可以将<code>union</code>和<code>find</code>的时间复杂度降低至O(1)，而这样做会改变根的高度。</p>
 <h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><pre><code class="lang-python">class WeightedQuickUnion(object):
     id = []
@@ -675,8 +675,6 @@
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

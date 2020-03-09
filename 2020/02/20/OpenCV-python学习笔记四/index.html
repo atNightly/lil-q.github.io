@@ -250,9 +250,9 @@ cv2.imshow(&#39;image&#39;, tmp)
 cv2.waitKey(0)
 </code></pre>
 <p>输出效果如下：</p>
-<p><img src="compare.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="compare.jpg" alt=""></p>
 <p>在用python改变图片的亮度和对比度时，有两个问题需要注意，第一个问题是数据类型，式子中其实有一个乘法，这是极有可能出现溢出的，如果代码是这样<code>res = np.uint8(np.clip((2 * img - 60) + 50), 0, 255))</code>，就会出现这样的结果:</p>
-<p><img src="compare_wrong.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="compare_wrong.jpg" alt=""></p>
 <p>解决的办法有两个，一是改变img的类型：使用<code>np.int16(img)</code>代替<code>img</code>；二是用浮点数<code>2.0</code>代替<code>2</code>，这样<code>2.0 * img</code>的数据类型会自动变成<code>float64</code>。</p>
 <pre><code class="lang-python">print((2.0 * img).dtype) # float64
 </code></pre>
@@ -430,8 +430,6 @@ print(x + y)  # 250 + 10 = 260 % 256 = 4 --会溢出
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 

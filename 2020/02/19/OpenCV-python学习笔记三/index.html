@@ -217,9 +217,9 @@ img1[:rows, :cols] = dst  # 融合后放在原图上
 cv2.imshow(&quot;dst&quot;,img1)
 cv2.waitKey(10000)
 </code></pre>
-<p><img src="2020-02-20 124157.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="2020-02-20 124157.png" alt=""></p>
 <h1 id="形态学操作"><a href="#形态学操作" class="headerlink" title="形态学操作"></a>形态学操作</h1><h2 id="腐蚀膨胀"><a href="#腐蚀膨胀" class="headerlink" title="腐蚀膨胀"></a>腐蚀膨胀</h2><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有 0 和 255 ，所以小区域内有一个是 0 该像素点就为 0 。</p>
-<p><img src="cv2_understand_erosion.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="cv2_understand_erosion.jpg" alt=""></p>
 <pre><code class="lang-python"># 腐蚀
 img = cv2.imread(&#39;j.bmp&#39;, 0)
 kernel = np.ones((5, 5), np.uint8)
@@ -233,7 +233,7 @@ erosion = cv2.erode(img, kernel)
 </ul>
 </li>
 </ul>
-<p><img src="cv2_morphological_struct_element.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="cv2_morphological_struct_element.jpg" alt=""></p>
 <h2 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h2><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
 <pre><code class="lang-python"># 膨胀
 dilation = cv2.dilate(img, kernel)
@@ -248,7 +248,7 @@ opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  # 开运算
 <pre><code class="lang-python">img = cv2.imread(&#39;j_noise_in.bmp&#39;, 0)
 closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  # 闭运算
 </code></pre>
-<p><img src="cv2_morphological_opening_closing.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="cv2_morphological_opening_closing.jpg" alt=""></p>
 <h2 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h2><ul>
 <li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
 </ul>
@@ -429,8 +429,6 @@ gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
 <script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
 
 
 
