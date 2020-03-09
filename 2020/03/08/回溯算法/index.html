@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1k 字
+                    1.3k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      3 分钟
+                      5 分钟
                   </span>
                 
 
@@ -181,7 +181,7 @@
 <blockquote>
 <p>约束满足问题：在解决约束满足问题时，我们逐步构造更多的候选解，并且在确定某一部分候选解不可能补全成正确解之后放弃继续搜索这个部分候选解本身及其可以拓展出的子候选解，转而测试其他的部分候选解。</p>
 </blockquote>
-<p>回溯法采用<strong>试错</strong>的思想，它尝试<strong>分步</strong>的去解决一个问题。在分步解决问题的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将<strong>撤销</strong>上一步甚至是上几步的计算，再通过其它的可能的分步解答再次尝试寻找问题的答案，找到答案即算法运行至<strong>终止条件</strong>。</p>
+<p>回溯法采用<strong>试错</strong>的思想，它尝试<strong>分步</strong>的去解决一个问题。在分步<strong>执行</strong>的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将<strong>撤销</strong>上一步甚至是上几步的计算，再通过其它的可能的分步解答再次尝试寻找问题的答案，找到答案即算法运行至<strong>终止条件</strong>。</p>
 <p>回溯法通常用最简单的<strong>递归</strong>方法来实现，在反复重复上述的步骤后可能出现两种情况：</p>
 <ul>
 <li>找到一个可能存在的正确的答案</li>
@@ -234,6 +234,7 @@
 <ul>
 <li><strong>试错：</strong>判断当前数是否在前面出现过</li>
 <li><strong>分步：</strong>遍历所有数</li>
+<li><strong>执行</strong>：添加一位数字，并记录该数字为以访问</li>
 <li><strong>撤销：</strong>推出递归后需要撤销之前的改动以安全地进入下一个循环</li>
 <li><strong>终止条件：</strong>所有数都已遍历，或者临时数组长度等于原数组</li>
 </ul>
@@ -258,6 +259,56 @@
   &quot;.Q..&quot;]
 ]
 解释: 4 皇后问题存在两个不同的解法。
+</code></pre>
+<p>对于较为复杂的问题，我们可以用函数来封装若干步骤，比如<strong>试错</strong>、<strong>执行</strong>和<strong>撤销</strong>。</p>
+<pre><code class="lang-python">class Solution:
+    def solveNQueens(self, n: int) -&gt; List[List[str]]:
+        # 储存已有皇后的列
+        visited_c = [False] * n
+        # 储存已有皇后的/对角线
+        visited_u = [False] * (2 * n - 1)
+        # 储存已有皇后的\对角线
+        visited_d = [False] * (2 * n - 1)
+        # 储存所有皇后的列信息
+        queens = []
+        res = []
+        # 试错
+        def isValid(i, j):
+            return not (visited_c[j] or visited_u[i + j] or visited_d[i - j])
+        # 执行
+        def place_queen(i, j):
+            queens.append(j)
+            visited_c[j] = True 
+            visited_u[i + j] = True
+            visited_d[i - j] = True
+        # 撤销
+        def remove_queen(i, j):
+            queens.pop()
+            visited_c[j] = False
+            visited_u[i + j] = False
+            visited_d[i - j] = False
+        # 输出结果
+        def checkerboard():
+            tmp = []
+            for j in queens:
+                tmp.append(&#39;.&#39; * j + &#39;Q&#39; + &#39;.&#39; * (n - j - 1))
+            res.append(tmp)
+
+        def back_track(i=0):
+            # 终止条件
+            if i == n:
+                checkerboard()
+                return
+
+            for j in range(n):
+                if not isValid(i, j):
+                    continue
+                place_queen(i, j)
+                back_track(i + 1)
+                remove_queen(i, j)
+
+        back_track()
+        return res
 </code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
