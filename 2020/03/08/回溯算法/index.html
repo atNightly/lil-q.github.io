@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    2.3k 字
+                    2.9k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      9 分钟
+                      12 分钟
                   </span>
                 
 
@@ -415,7 +415,78 @@
 </code></pre>
 <p>原理如下图：</p>
 <p><img src="backtrack-2.png" alt=""></p>
-<h1 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h1><p>简单回溯法的时间复杂度通常是指数级别的。比如正则表达式使用回溯法求解的时间复杂度为<script type="math/tex">O\left ( (T+P)2^{T+\frac{P}{2}} \right )</script></p>
+<h1 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h1><p>简单回溯法的时间复杂度通常是指数级别的。比如正则表达式使用回溯法求解的时间复杂度为<script type="math/tex">O\left ( (T+P)2^{T+\frac{P}{2}} \right )</script>，<code>T</code> 和 <code>P</code> 分别表示匹配串和模式串的长度，<code>2</code>则是因为当出现<code>*</code>时，我们分两步试错。</p>
+<p>N皇后问题的时间复杂度为<script type="math/tex">O\left ( N！ \right )</script>，假设N足够大，第一个皇后有<code>N</code>种可能，第二个有<code>N-2</code>或<code>N-3</code>种可能，第三个有<code>N-4</code>、<code>N-5</code>或<code>N-6</code>种可能……总的来说时间复杂度是<script type="math/tex">O\left ( N！ \right )</script>。</p>
+<p>实际上，回溯法的很多递归都是重复的，引用备忘录可以在递归到重复的情况时，直接读取备忘录中的值，而不再执行一次深度可能很深的递归。下面是备忘录的一个例子：</p>
+<h2 id="1-leetcode-44-通配符匹配"><a href="#1-leetcode-44-通配符匹配" class="headerlink" title="1. leetcode 44. 通配符匹配"></a>1. <a href="https://leetcode-cn.com/problems/wildcard-matching/" target="_blank" rel="noopener">leetcode 44. 通配符匹配</a></h2><p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
+<blockquote>
+<p>‘?’ 可以匹配任何单个字符。<br>‘*’ 可以匹配任意字符串（包括空字符串）。<br>两个字符串完全匹配才算匹配成功。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<blockquote>
+<p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。</p>
+</blockquote>
+<p><strong>示例 1:</strong></p>
+<pre><code class="lang-txt">输入:
+s = &quot;aa&quot;
+p = &quot;a&quot;
+输出: false
+解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。
+</code></pre>
+<p>简单地通过一个<code>dict</code>来做备忘录：</p>
+<pre><code class="lang-python">class Solution:
+    def isMatch(self, s: str, p: str) -&gt; bool:
+        size_s = len(s)
+        size_p = len(p)
+        memo = {} # 备忘录
+
+        def backtrack(i, j):
+            if (i,j) in memo:
+                return memo[(i, j)]
+            else:
+                tmp = False
+                if j == size_p:
+                    if i == size_s: # 注意：这里如果不成立直接返回tmp的初始值False
+                        tmp =  True               
+                elif p[j] == &#39;*&#39;:
+                    if i &lt; size_s:
+                        tmp = backtrack(i, j + 1) or backtrack(i + 1, j)
+                    else:
+                        tmp = backtrack(i, j + 1)
+                else: 
+                    if i &lt; size_s and (s[i] == p[j] or p[j] == &#39;?&#39;):
+                        tmp = backtrack(i + 1, j + 1)
+                memo[(i, j)] = tmp
+                return memo[(i, j)]
+
+        return backtrack(0, 0)
+</code></pre>
+<p>除了自己创建备忘录，还可以使用python中的装饰器<a href="https://docs.python.org/zh-cn/3/library/functools.html#functools.lru_cache" target="_blank" rel="noopener">@functools.lru_cache()</a>将函数值存在缓存中。</p>
+<pre><code class="lang-python">import functools
+class Solution:
+    def isMatch(self, s: str, p: str) -&gt; bool:
+        size_s = len(s)
+        size_p = len(p)
+
+        @functools.lru_cache(maxsize=None, typed=False) # 递归函数前面加修饰器
+        def backtrack(i, j):
+            if j == size_p:
+                if i == size_s:
+                    return True
+                else : 
+                    return False         
+            if p[j] == &#39;*&#39;:
+                if i &lt; size_s:
+                    return backtrack(i, j + 1) or backtrack(i + 1, j)
+                else:
+                    return backtrack(i, j + 1)
+            else: 
+                if i &lt; size_s and (s[i] == p[j] or p[j] == &#39;?&#39;):
+                    return backtrack(i + 1, j + 1)
+                else: return False
+
+        return backtrack(0, 0)
+</code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/回溯法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%9B%9E%E6%BA%AF%E6%B3%95</a></li>
