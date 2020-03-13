@@ -389,7 +389,7 @@
 <p>这样<code>self.id</code>中保存的既是个元素的组别又是各元素的父节点，正因为如此<code>union</code>和<code>find</code>的时间复杂度降低到了O(1)。</p>
 <pre><code class="lang-python">final parent/id list is 1,1,1,1,5,5,5,5,5,5
 </code></pre>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-leetcode-200-岛屿数量"><a href="#1-leetcode-200-岛屿数量" class="headerlink" title="1. leetcode 200. 岛屿数量"></a>1. <a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">leetcode 200. 岛屿数量</a></h2><p>给定一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="leetcode-200-岛屿数量"><a href="#leetcode-200-岛屿数量" class="headerlink" title="leetcode 200. 岛屿数量"></a><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">leetcode 200. 岛屿数量</a></h2><p>给定一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。</p>
 <pre><code class="lang-python">输入:   1 1 1 1 0      ====&gt;     输出: 1  
         1 1 0 1 0      
         1 1 0 0 0
@@ -433,7 +433,7 @@
 
         return s
 </code></pre>
-<h2 id="2-leetcode-684-冗余连接"><a href="#2-leetcode-684-冗余连接" class="headerlink" title="2. leetcode 684. 冗余连接"></a>2. <a href="https://leetcode-cn.com/problems/redundant-connection/" target="_blank" rel="noopener">leetcode 684. 冗余连接</a></h2><p>在本问题中, 树指的是一个连通且无环的无向图。</p>
+<h2 id="leetcode-684-冗余连接"><a href="#leetcode-684-冗余连接" class="headerlink" title="leetcode 684. 冗余连接"></a><a href="https://leetcode-cn.com/problems/redundant-connection/" target="_blank" rel="noopener">leetcode 684. 冗余连接</a></h2><p>在本问题中, 树指的是一个连通且无环的无向图。</p>
 <p>输入一个图，该图由一个有着N个节点 (节点值不重复1, 2, …, N) 的树及一条附加的边构成。附加的边的两个顶点包含在1到N中间，这条附加的边不属于树中已存在的边。</p>
 <p>结果图是一个以边组成的二维数组。每一个边的元素是一对[u, v] ，满足 u &lt; v，表示连接顶点u 和v的无向图的边。</p>
 <p>返回一条可以删去的边，使得结果图是一个有着N个节点的树。如果有多个答案，则返回二维数组中最后出现的边。答案边 [u, v] 应满足相同的格式 u &lt; v。</p>
@@ -466,7 +466,7 @@
         for x, y in edges:
             if not union(x, y): return[x, y]
 </code></pre>
-<h2 id="3-leetcode-685-冗余连接-II"><a href="#3-leetcode-685-冗余连接-II" class="headerlink" title="3. leetcode 685. 冗余连接 II"></a>3. <a href="https://leetcode-cn.com/problems/redundant-connection-ii/" target="_blank" rel="noopener">leetcode 685. 冗余连接 II</a></h2><h2 id="4-leetcode-803-打砖块"><a href="#4-leetcode-803-打砖块" class="headerlink" title="4. leetcode 803. 打砖块"></a>4. <a href="https://leetcode-cn.com/problems/bricks-falling-when-hit/" target="_blank" rel="noopener">leetcode 803. 打砖块</a></h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>随着一步步地深入，我们最终将查并集<code>union</code>和<code>find</code>的时间复杂度降低到了O(1)。本文中的四种算法的时间复杂度如下表所示。</p>
+<h2 id="leetcode-685-冗余连接-II"><a href="#leetcode-685-冗余连接-II" class="headerlink" title="leetcode 685. 冗余连接 II"></a><a href="https://leetcode-cn.com/problems/redundant-connection-ii/" target="_blank" rel="noopener">leetcode 685. 冗余连接 II</a></h2><h2 id="leetcode-803-打砖块"><a href="#leetcode-803-打砖块" class="headerlink" title="leetcode 803. 打砖块"></a><a href="https://leetcode-cn.com/problems/bricks-falling-when-hit/" target="_blank" rel="noopener">leetcode 803. 打砖块</a></h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>随着一步步地深入，我们最终将查并集<code>union</code>和<code>find</code>的时间复杂度降低到了O(1)。本文中的四种算法的时间复杂度如下表所示。</p>
 <div class="table-container">
 <table>
 <thead>

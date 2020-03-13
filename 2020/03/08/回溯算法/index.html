@@ -316,7 +316,7 @@
 <p>对于所有的主对角线有 <code>行号 + 列号 = 常数</code>，对于所有的次对角线有 <code>行号 - 列号 = 常数</code>.</p>
 </blockquote>
 <p>代码中我们用<code>visited_u</code>记录主对角线，用<code>visited_d</code>记录次对角线。</p>
-<h1 id="回溯算法的一些细节"><a href="#回溯算法的一些细节" class="headerlink" title="回溯算法的一些细节"></a>回溯算法的一些细节</h1><h2 id="1-leetcode-10-正则表达式匹配"><a href="#1-leetcode-10-正则表达式匹配" class="headerlink" title="1.leetcode 10. 正则表达式匹配"></a>1.<a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">leetcode 10. 正则表达式匹配</a></h2><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
+<h1 id="回溯算法的一些细节"><a href="#回溯算法的一些细节" class="headerlink" title="回溯算法的一些细节"></a>回溯算法的一些细节</h1><h2 id="leetcode-10-正则表达式匹配"><a href="#leetcode-10-正则表达式匹配" class="headerlink" title="leetcode 10. 正则表达式匹配"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">leetcode 10. 正则表达式匹配</a></h2><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
 <blockquote>
 <p>‘.’ 匹配任意单个字符<br>‘*’ 匹配零个或多个前面的那一个元素<br>所谓匹配，是要涵盖整个字符串 s 的，而不是部分字符串。</p>
 </blockquote>
@@ -372,7 +372,7 @@
         backtrack(n, n, &#39;&#39;)
         return res
 </code></pre>
-<h2 id="2-leetcode-40-组合总和-II"><a href="#2-leetcode-40-组合总和-II" class="headerlink" title="2.leetcode 40. 组合总和 II"></a>2.<a href="https://leetcode-cn.com/problems/combination-sum-ii/" target="_blank" rel="noopener">leetcode 40. 组合总和 II</a></h2><p>给定一个数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
+<h2 id="leetcode-40-组合总和-II"><a href="#leetcode-40-组合总和-II" class="headerlink" title="leetcode 40. 组合总和 II"></a><a href="https://leetcode-cn.com/problems/combination-sum-ii/" target="_blank" rel="noopener">leetcode 40. 组合总和 II</a></h2><p>给定一个数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
 <p><strong>说明：</strong></p>
 <ul>
 <li>所有数字（包括目标数）都是正整数。</li>
@@ -418,7 +418,7 @@
 <h1 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h1><p>简单回溯法的时间复杂度通常是指数级别的。比如正则表达式使用回溯法求解的时间复杂度为<script type="math/tex">O\left ( (T+P)2^{T+\frac{P}{2}} \right )</script>，<code>T</code> 和 <code>P</code> 分别表示匹配串和模式串的长度，<code>2</code>则是因为当出现<code>*</code>时，我们分两步试错。</p>
 <p>N皇后问题的时间复杂度为<script type="math/tex">O\left ( N！ \right )</script>，假设N足够大，第一个皇后有<code>N</code>种可能，第二个有<code>N-2</code>或<code>N-3</code>种可能，第三个有<code>N-4</code>、<code>N-5</code>或<code>N-6</code>种可能……总的来说时间复杂度是<script type="math/tex">O\left ( N！ \right )</script>。</p>
 <p>实际上，回溯法的很多递归都是重复的，引用备忘录可以在递归到重复的情况时，直接读取备忘录中的值，而不再执行一次深度可能很深的递归。下面是备忘录的一个例子：</p>
-<h2 id="1-leetcode-44-通配符匹配"><a href="#1-leetcode-44-通配符匹配" class="headerlink" title="1. leetcode 44. 通配符匹配"></a>1. <a href="https://leetcode-cn.com/problems/wildcard-matching/" target="_blank" rel="noopener">leetcode 44. 通配符匹配</a></h2><p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
+<h2 id="leetcode-44-通配符匹配"><a href="#leetcode-44-通配符匹配" class="headerlink" title="leetcode 44. 通配符匹配"></a><a href="https://leetcode-cn.com/problems/wildcard-matching/" target="_blank" rel="noopener">leetcode 44. 通配符匹配</a></h2><p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
 <blockquote>
 <p>‘?’ 可以匹配任何单个字符。<br>‘*’ 可以匹配任意字符串（包括空字符串）。<br>两个字符串完全匹配才算匹配成功。</p>
 </blockquote>
