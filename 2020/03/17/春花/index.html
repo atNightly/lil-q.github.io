@@ -16,7 +16,7 @@
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
-  <title>动态规划 - Homeward</title>
+  <title>春花 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -110,7 +110,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7744.png') no-repeat center center;
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7935.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -123,7 +123,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Tuesday, March 10th 2020, 11:30 pm
+                  Tuesday, March 17th 2020, 10:06 pm
                 </p>
               
 
@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    250 字
+                    20 字
                   </span>
                 
 
@@ -174,33 +174,16 @@
         <div class="post-content mx-auto" id="post">
           
           <div class="markdown-body">
-            <p>“不如我们由头来过”</p>
+            <p>“期待春花开，能将夙愿偿，满庭花簇簇，添得许多香”</p>
 <a id="more"></a>
-<p>施工中~</p>
-<pre><code class="lang-python">class Solution:
-    def isMatch(self, s: str, p: str) -&gt; bool:
-        size_s = len(s)
-        size_p = len(p)
-        dp = [[False for _ in range(size_p + 1)] for _ in range(size_s + 1)]
-        # dp[-1][-1]表示s，p都为空时是配对的
-        dp[-1][-1] = True
-        # -1表示空字符，s为空字符是可以和p配对的，比如p=&#39;.*&#39;，所以需要计算i=-1的情况
-        for i in range(-1, size_s):  
-            # p为空，s不为空就一定不配对，所以不考虑p=-1的情况         
-            for j in range(size_p):
-                # p[j]不是&#39;*&#39;且s[i]=p[j],注意利用i&gt;=0排除空字符
-                if i &gt;= 0 and (s[i] == p[j] or p[j] == &#39;.&#39;):                 
-                    dp[i][j] = dp[i - 1][j - 1]
-                # p[j]是&#39;*&#39;
-                if p[j] == &#39;*&#39;:
-                    # &#39;*&#39;前面的能匹配，就有两种可能，匹配0次或若干次
-                    if i &gt;= 0 and (p[j - 1] == s[i] or p[j - 1] == &#39;.&#39;):
-                        dp[i][j] = dp[i - 1][j] or dp[i][j - 2]
-                    else:
-                        dp[i][j] = dp[i][j - 2]
-            # print(dp)
-        return dp[size_s - 1][size_p - 1]
-</code></pre>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7861.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7878.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7885.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7924.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7925.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7929.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7932.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7935.png" alt=""></p>
 
             <hr>
           </div>
@@ -211,7 +194,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                  <a class="hover-with-bg" href="/categories/%E6%B8%B8%E8%AE%B0/">游记</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -220,9 +203,7 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/python/">python</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                  <a class="hover-with-bg" href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
                 
               </span>
             
@@ -440,7 +421,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "动态规划&nbsp;",
+        "春花&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -497,32 +478,6 @@
   </script>
 
 
-
-  
-
-  
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-          }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
-    </script>
-
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
-
-  
 
 
 

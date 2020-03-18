@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    3k 字
+                    3.5k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      12 分钟
+                      14 分钟
                   </span>
                 
 
@@ -488,6 +488,65 @@ class Solution:
         return backtrack(0, 0)
 </code></pre>
 <p>加上备忘录的回溯和动态规划似乎很相似，我会在<a href="https://lil-q.github.io/2020/03/10/动态规划/">这里</a>探究一下两者的区别。</p>
+<h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p><strong>剪枝</strong>，顾名思义，就是删去一些不重要或无用的节点，来减小计算或搜索的复杂度。使用备忘录其实也可以看成剪枝，因为重复的计算是无意义的。对于特定的问题，可以之间从算法的角度剪枝，如下面的例子：</p>
+<h2 id="leetcode-60-第k个排列"><a href="#leetcode-60-第k个排列" class="headerlink" title="leetcode 60. 第k个排列"></a><a href="https://leetcode-cn.com/problems/permutation-sequence/" target="_blank" rel="noopener">leetcode 60. 第k个排列</a></h2><p>给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。</p>
+<p>按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：</p>
+<ol>
+<li><code>&quot;123&quot;</code></li>
+<li><code>&quot;132&quot;</code></li>
+<li><code>&quot;213&quot;</code></li>
+<li><code>&quot;231&quot;</code></li>
+<li><code>&quot;312&quot;</code></li>
+<li><code>&quot;321&quot;</code></li>
+</ol>
+<p>给定 n 和 k，返回第 k 个排列。</p>
+<p><strong>说明：</strong></p>
+<ul>
+<li>给定 <em>n</em> 的范围是 [1, 9]。</li>
+<li>给定 <em>k</em> 的范围是[1,  <em>n</em>!]。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<pre><code class="lang-txt">输入: n = 3, k = 3
+输出: &quot;213&quot;
+</code></pre>
+<p>这题使用回溯法时间复杂度很高，挖掘其数学规律可以减少很多运算，比如我们在确定第一个数为<code>1</code>时，剩下的数共有<code>(n-1)!</code>种可能的排列，如果<code>k &gt; (n-1)!</code>，那么第一个数一定大于<code>1</code>。以此类推我们可以确定每个位置的数。</p>
+<pre><code class="lang-python">class Solution:
+    def getPermutation(self, n: int, k: int) -&gt; str:
+
+        # 求阶乘
+        def fact(n):
+            out = 1
+            while n:
+                out *= n
+                n -= 1
+            return out
+
+        def backtrack(remainder, m, visited, permute):
+            if m &lt; 0:
+                return permute
+            for i in range(1, n + 1):
+                if i in visited:
+                    continue
+                if remainder - fact(m) &gt; 0: 
+                    remainder -= fact(m)
+                    continue
+                visited.add(i)
+                return backtrack(remainder, m-1, visited, permute + str(i))
+
+        return backtrack(k, n - 1, set(), &#39;&#39;)
+</code></pre>
+<p>这道题通过剪枝甚至已经不需要回溯到之前的状态，通过递归直接就得到答案了。那也许意味着，有更直接的解法。实际上，这正是<a href="https://baike.baidu.com/item/康托展开" target="_blank" rel="noopener">康托展开</a>的原理。</p>
+<pre><code class="lang-python">class Solution(object):
+    def getPermutation(self, n, k):
+        res = &#39;&#39;
+        nums = [str(i+1) for i in range(n)]
+        factor = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880] # 手动输入n!，也可以写函数现场算
+        k -= 1 # 注意
+        for i in range(n-1, -1, -1):
+            n, k = divmod(k, factor[i])
+            res += nums.pop(n)
+        return res
+</code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/回溯法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%9B%9E%E6%BA%AF%E6%B3%95</a></li>
