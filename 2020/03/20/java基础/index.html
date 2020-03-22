@@ -16,7 +16,7 @@
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
-  <title>Archives - Homeward</title>
+  <title>java基础 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -109,8 +109,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/book.JPG') no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7878.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -119,6 +119,40 @@
               
             </span>
 
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Friday, March 20th 2020, 7:33 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    151 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
             
           </div>
 
@@ -130,59 +164,110 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">27 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/01/16/SQL-Structured-Query-Language/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SQL(Structured Query Language)</span>
-      <span style="float: right;">01-16</span>
-    </a>
-  
-    
-    <a href="/2020/01/14/%E6%9D%BE%E5%B1%B1%E6%B9%96/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">松山湖</span>
-      <span style="float: right;">01-14</span>
-    </a>
-  
-    
-    <a href="/2020/01/02/PyTorch%E5%AD%A6%E4%B9%A0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">PyTorch基础</span>
-      <span style="float: right;">01-02</span>
-    </a>
-  
-    
-    <a href="/2020/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">C++编程基础</span>
-      <span style="float: right;">01-02</span>
-    </a>
-  
-    
-    <a href="/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">查并集(Union-find algorithm)</span>
-      <span style="float: right;">01-02</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+          <div class="markdown-body">
+            <p>java学习及面试题汇总</p>
+<a id="more"></a>
+<h1 id="Java对象的初始化顺序"><a href="#Java对象的初始化顺序" class="headerlink" title="Java对象的初始化顺序"></a>Java对象的初始化顺序</h1><ol>
+<li><strong>基类静态代码块、基类静态成员字段。</strong>优先级并列，按代码先后顺序，只有第一次加载时执行。</li>
+<li><strong>派生类静态代码块、派生类静态成员字段。</strong>优先级并列，按代码先后顺序，只有第一次加载时执行。</li>
+<li><strong>基类普通代码块、基类普通成员字段。</strong>优先级并列，按代码先后顺序。</li>
+<li><strong>基类构造函数。</strong></li>
+<li><strong>派生类普通代码块、派生类普通成员字段。</strong></li>
+<li><strong>派生类构造函数。</strong></li>
+</ol>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+              
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/java/">java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container">
+        <div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+      </div>
+    
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === 'true';
+    var verify = 'false' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "喂？",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -262,6 +347,52 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var main = $('main');
+      var tocT = navHeight + (toc.offset().top - main.offset().top);
+      var tocLimMin = main.offset().top - navHeight;
+      var tocLimMax = $('#comments').offset().top - navHeight;
+      $(window).scroll(function () {
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': tocT,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
 
 
 
@@ -290,7 +421,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "java基础&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
