@@ -38,6 +38,46 @@
 }
 
 .markdown-body {
-    font-size: 18px !important;
+    color: #eee !important;
+}
+
+
+
+.note-warning {
+    background-color: #7a788454 !important;
+    border-color: #3f3f42 !important;
+}
+
+.markdown-body hr {
+    background-color: #3f3f42 !important;
+}
+
+.pagination a:hover, .pagination .current {
+    background-color: #980101 !important;
+}
+
+.markdown-body table td, .markdown-body table th {
+    border: 1px solid #545454 !important;
+    background-color: #333333 !important;
+}
+
+.markdown-body a {
+    color: #6699cc !important;
+}
+
+.scroll-top-arrow {
+    color: #222222 !important;
+}
+
+#scroll-top-button {
+    background: #69c !important;
+}
+
+.markdown-body code {
+    background-color: #2d2d2d !important;
+}
+
+code {
+    color: #ff67ad !important;
 }
 /**/

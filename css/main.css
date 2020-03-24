@@ -7,13 +7,13 @@ header,
 }
 body {
   background-color: #333;
-  color: #999;
+  color: #eee;
 }
 body a {
-  color: #696969;
+  color: #eee;
 }
 body a:hover {
-  color: 55d;
+  color: #69c;
 }
 .hover-with-bg {
   display: inline-block;
@@ -30,7 +30,7 @@ body a:hover {
 #board {
   position: relative;
   margin-top: -3rem;
-  background-color: #eee;
+  background-color: #222;
   border-radius: 0.5rem;
   z-index: 3;
 }
@@ -545,7 +545,7 @@ h6::before {
   font-size: 15px;
 }
 .tocbot-link {
-  color: #999;
+  color: #bbb;
 }
 .tocbot-active-link {
   font-weight: 600;
@@ -618,5 +618,5 @@ h6::before {
   font-weight: 350;
 }
 .tagcloud a:hover {
-  color: 55d !important;
+  color: #69c !important;
 }
