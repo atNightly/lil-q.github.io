@@ -80,4 +80,12 @@
 code {
     color: #ff67ad !important;
 }
+
+.list-group-item {
+    background-color: #222 !important;
+}
+
+.list-group-item-action {
+    color: #eee !important;
+}
 /**/
