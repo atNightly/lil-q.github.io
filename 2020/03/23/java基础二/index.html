@@ -571,13 +571,11 @@ System.out.println(e2.get(2)); // 2
 </ul>
 <p><img src="PPjwP.png" alt=""></p>
 <p>从图中可以看出所有异常类型都是内置类<code>Throwable</code>的子类，因而<code>Throwable</code>在异常类的层次结构的顶层。接下来<code>Throwable</code>分成了两个不同的分支，一个分支是<code>Error</code>，它表示不希望被程序捕获或者是程序无法处理的错误。另一个分支是<code>Exception</code>，它表示用户程序可能捕捉的异常情况或者说是程序可以处理的异常。其中异常类<code>Exception</code>又分为运行时异常(<code>RuntimeException</code>)和非运行时异常。Java异常又可以分为不受检查异常（<code>Unchecked Exception</code>）和检查异常（<code>Checked Exception</code>）。</p>
-<p><strong>1. error和exception有什么区别</strong></p>
-<ul>
+<h2 id="error和exception的区别"><a href="#error和exception的区别" class="headerlink" title="error和exception的区别"></a>error和exception的区别</h2><ul>
 <li><code>Error</code>通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；</li>
 <li><code>Exception</code>通常情况下是可以被程序处理的，并且在程序中应该尽可能的去处理这些异常。</li>
 </ul>
-<p><strong>2. 检查异常和不受检查异常</strong></p>
-<ul>
+<h2 id="检查异常和不受检查异常"><a href="#检查异常和不受检查异常" class="headerlink" title="检查异常和不受检查异常"></a>检查异常和不受检查异常</h2><ul>
 <li><strong>检查异常：</strong>除了<code>RuntimeException</code>及其子类以外，其他的<code>Exception</code>类及其子类都属于这种异常，当程序中可能出现这类异常，要么使用<code>try-catch</code>语句进行捕获，要么用<code>throws</code>子句抛出，否则编译无法通过。</li>
 <li><strong>不受检查异常：</strong>包括<code>RuntimeException</code>及其子类和<code>Error</code>。</li>
 </ul>
@@ -585,12 +583,10 @@ System.out.println(e2.get(2)); // 2
 <p>由于运行时异常及其子类的不可查性，为了更合理、更容易地实现应用程序，Java规定，运行时异常将由Java运行时系统自动抛出，允许应用程序忽略运行时异常。</p>
 <p>对于方法运行中可能出现的<code>Error</code>，当运行方法不欲捕捉时，Java允许该方法不做任何抛出声明。因为，大多数<code>Error</code>异常属于永远不能被允许发生的状况，也属于合理的应用程序不该捕捉的异常。</p>
 <p>对于所有的检查异常，Java规定：一个方法必须捕捉，或者声明抛出方法之外。也就是说，当一个方法选择不捕捉检查异常时，它必须声明将抛出异常。</p>
-<p><strong>3. Java中异常处理机制</strong></p>
-<p>Java的异常处理本质上是抛出异常和捕获异常。</p>
+<h2 id="Java中异常处理机制"><a href="#Java中异常处理机制" class="headerlink" title="Java中异常处理机制"></a>Java中异常处理机制</h2><p>Java的异常处理本质上是抛出异常和捕获异常。</p>
 <p><strong>抛出异常：</strong>异常情形出现时，程序已经无法继续下去了，因为在当前环境下无法获得必要的信息来解决问题，所能做的就是从当前环境中跳出，并把问题提交给<strong>上一级环境</strong>，这就是抛出异常时所发生的事情。抛出异常后，会有几件事随之发生。首先，是像创建普通的java对象一样将使用<code>new</code>在堆上创建一个<strong>异常对象</strong>；然后，当前的执行路径（已经无法继续下去了）被终止，并且从当前环境中弹出<strong>对异常对象的引用</strong>。此时，异常处理机制接管程序，并开始寻找一个恰当的地方继续执行程序，这个恰当的地方就是异常处理程序或者异常处理器，它的任务是将程序从错误状态中恢复，以使程序要么换一种方式运行，要么继续运行下去。</p>
 <p><strong>捕获异常：</strong>在方法抛出异常之后，运行时系统将转为寻找合适的<strong>异常处理器</strong>（exception handler）。潜在的异常处理器是异常发生时<strong>依次存留在调用栈中的方法的集合</strong>。当异常处理器所能处理的异常类型与方法抛出的异常类型相符时，即为合适的异常处理器。运行时系统从发生异常的方法开始，依次回查调用栈中的方法，直至找到含有合适异常处理器的方法并执行。当运行时系统遍历调用栈而未找到合适的异常处理器，则运行时系统终止。同时，意味着Java程序的终止。</p>
-<p><strong>4. 异常处理基本语法</strong></p>
-<ul>
+<h2 id="异常处理基本语法"><a href="#异常处理基本语法" class="headerlink" title="异常处理基本语法"></a>异常处理基本语法</h2><ul>
 <li>try：用来指定一块预防所有异常的程序（监控区域）；</li>
 <li>catch：紧跟在try后面，用来捕获异常；</li>
 <li>throw：用来明确的抛出一个异常；</li>
@@ -613,13 +609,11 @@ System.out.println(e2.get(2)); // 2
 }
 </code></pre>
 <p>因为方法声明了可能抛出的异常，所以可以不写<code>catch</code>。</p>
-<p><strong>4. 你平时在项目中是怎样对异常进行处理的</strong></p>
-<ol>
+<h2 id="异常处理要领"><a href="#异常处理要领" class="headerlink" title="异常处理要领"></a>异常处理要领</h2><ol>
 <li>尽量避免出现runtimeException 。例如对于可能出现空指针的代码，带使用对象之前一定要判断一下该对象是否为空，必要的时候对runtimeException也进行try catch处理。</li>
 <li>进行try catch处理的时候要在catch代码块中对异常信息进行记录，通过调用异常类的相关方法获取到异常的相关信息，返回到web端，不仅要给用户良好的用户体验，也要能帮助程序员良好的定位异常出现的位置及原因。例如，以前做的一个项目，程序遇到异常页面会显示一个图片告诉用户哪些操作导致程序出现了什么异常，同时图片上有一个按钮用来点击展示异常的详细信息给程序员看的。</li>
 </ol>
-<p><strong>5. final、finally、finalize的区别</strong></p>
-<ol>
+<h2 id="final、finally、finalize的区别"><a href="#final、finally、finalize的区别" class="headerlink" title="final、finally、finalize的区别"></a>final、finally、finalize的区别</h2><ol>
 <li>final用于声明变量、方法和类的，分别表示变量值不可变，方法不可覆盖，类不可以继承</li>
 <li>finally是异常处理中的一个关键字，表示finally{}里面的代码一定要执行</li>
 <li>finalize是Object类的一个方法，在垃圾回收的时候会调用被回收对象的此方法。</li>
