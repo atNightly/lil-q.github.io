@@ -88,4 +88,10 @@ code {
 .list-group-item-action {
     color: #eee !important;
 }
+
+.markdown-body blockquote {
+    border-left: .25em solid #dfe2e5;
+    color: #ccc !important;
+    background-color: #333333 !important;
+}
 /**/
