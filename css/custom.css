@@ -94,4 +94,15 @@ code {
     color: #ccc !important;
     background-color: #333333 !important;
 }
+
+.hbe-input-container input:not(:placeholder-shown) + label {
+    color: #ececec !important;
+    -webkit-transform: translate(10px) scale(0.9);
+    transform: translate(10px) scale(0.9);
+}
+
+.hbe-input-container input {
+    padding: 5px 0 !important;
+    font-size: 16px !important;
+}
 /**/
