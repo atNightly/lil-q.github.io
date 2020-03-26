@@ -6,7 +6,7 @@ header,
   overflow-wrap: break-word;
 }
 body {
-  background-color: #252525;
+  background-color: #222;
   color: #eee;
 }
 body a {
@@ -30,7 +30,7 @@ body a:hover {
 #board {
   position: relative;
   margin-top: -3rem;
-  background-color: #222;
+  background-color: #333;
   border-radius: 0.5rem;
   z-index: 3;
 }
