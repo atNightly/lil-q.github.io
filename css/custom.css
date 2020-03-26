@@ -18,7 +18,7 @@
 }
 
 .v .vwrap{
-  border: 2px solid black !important;
+    border: 2px solid black !important;
 }
 
 .v .vlist .vcard .vquote {
@@ -97,8 +97,5 @@ code {
     background-color: #555 !important;
 }
 
-#board {
-    margin-top: -0.5rem !important;
-    border-radius: 0rem !important;
 }
 /**/

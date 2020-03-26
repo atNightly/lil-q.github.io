@@ -29,9 +29,9 @@ body a:hover {
 }
 #board {
   position: relative;
-  margin-top: -3rem;
+  margin-top: 0rem;
   background-color: #333;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   z-index: 3;
 }
 @media (max-width: 768px) {
@@ -44,8 +44,8 @@ body a:hover {
   }
 }
 .row {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
 }
 #local-search-result .search-list-title {
   border-left: 3px solid #0d47a1;
@@ -116,6 +116,7 @@ body a:hover {
   border: 0;
   background-color: transparent;
   font-size: 0.9rem;
+  font-weight: bold;
   padding: 0.5rem 0.75rem;
   line-height: 1.25;
   -webkit-border-radius: 0.125rem;
@@ -428,7 +429,7 @@ a.police-beian img {
   }
 }
 .index-card {
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 .index-img {
   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
@@ -482,8 +483,8 @@ a.police-beian img {
 }
 .post-content {
   box-sizing: border-box;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   max-width: 64rem;
 }
 @media (max-width: 768px) {
