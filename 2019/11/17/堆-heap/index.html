@@ -201,7 +201,7 @@
         adjust_heap(max_loc, max_len,nums)
 </code></pre>
 <h3 id="建立最大堆"><a href="#建立最大堆" class="headerlink" title="建立最大堆"></a>建立最大堆</h3><ol>
-<li>自底向上处理， 因为数组<code>list[n//2,n]</code>中的所有元素都在堆树的叶节点中，因此可以看成只包含一个元素的堆， 无需维护。其中<code>n=len(list)</code>。</li>
+<li>自底向上处理， 因为数组<code>list[n//2,n]</code>中的所有元素都在堆树的叶节点中，因此可以看成只包含一个元素的堆， 无需维护。其中<code>n=len(list)</code>；</li>
 <li>从<code>index=n//2-1</code>开始，直到<code>index=0</code>，对每一个节点或根进行一次维护。</li>
 </ol>
 <p><em>注意：一次维护并不是最多只交换一次，而是交换到某节点满足最大堆条件或者<code>index&gt;=n</code>为止。</em></p>
@@ -230,7 +230,7 @@ print(&quot;heapIns:&quot;,heap)
 #输出：heapIns: [6, 4, 5, 1, 2, 3]
 </code></pre>
 <p><img src="heapinsert.png" alt="charu"></p>
-<h2 id="最大堆节点的删除"><a href="#最大堆节点的删除" class="headerlink" title="最大堆节点的删除"></a>最大堆节点的删除</h2><p>对一个节点的删除就是交换该节点和最后一个叶子节点的值，然后从该节点开始一次<code>adjust_heap()</code></p>
+<h2 id="最大堆节点的删除"><a href="#最大堆节点的删除" class="headerlink" title="最大堆节点的删除"></a>最大堆节点的删除</h2><p>对一个节点的删除就是交换该节点和最后一个叶子节点的值，然后从该节点开始一次<code>adjust_heap()</code>：</p>
 <pre><code class="lang-python">def heap_delete(heap,idx):
     n=len(heap)
     heap[idx],heap[-1]=heap[-1],heap[idx]
