@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lil-q.gitee.io/blog/2020/02/01/%E5%BA%94%E7%94%A8%E4%B8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE/</loc>
+    
+    <lastmod>2020-03-26T10:03:06.965Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lil-q.gitee.io/blog/2019/11/16/%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2020-03-26T09:58:29.984Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lil-q.gitee.io/blog/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2020-03-26T09:58:10.729Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lil-q.gitee.io/blog/2020/03/09/%E8%8A%B1%E5%BA%97/</loc>
     
-    <lastmod>2020-03-26T05:07:13.921Z</lastmod>
+    <lastmod>2020-03-26T09:09:03.406Z</lastmod>
     
   </url>
   
@@ -107,13 +128,6 @@
   </url>
   
   <url>
-    <loc>https://lil-q.gitee.io/blog/2020/02/01/%E5%BA%94%E7%94%A8%E4%B8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE/</loc>
-    
-    <lastmod>2020-03-24T19:08:03.905Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lil-q.gitee.io/blog/2020/01/02/PyTorch%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2020-03-24T19:02:01.581Z</lastmod>
@@ -142,23 +156,9 @@
   </url>
   
   <url>
-    <loc>https://lil-q.gitee.io/blog/2019/11/16/%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2020-03-24T18:48:12.552Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lil-q.gitee.io/blog/2020/03/08/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2020-03-24T18:48:04.470Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lil-q.gitee.io/blog/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2020-03-24T18:47:54.258Z</lastmod>
     
   </url>
   

@@ -185,7 +185,18 @@ data = json.loads(requests.get(url=url).json()[&#39;data&#39;])
 print(data)
 </code></pre>
 <p>可以看到数据如下所示（省略部分内容）：</p>
-<pre><code class="lang-python">{&#39;chinaTotal&#39;: {&#39;date&#39;: &#39;02.01&#39;, &#39;confirm&#39;: &#39;11890&#39;, &#39;suspect&#39;: &#39;17988&#39;, &#39;dead&#39;: &#39;259&#39;, &#39;heal&#39;: &#39;269&#39;}, &#39;lastUpdateTime&#39;: &#39;2020-02-01 21:18:01&#39;, &#39;areaTree&#39;: [{&#39;name&#39;: &#39;中国&#39;, &#39;children&#39;: [{&#39;name&#39;: &#39;湖北&#39;, &#39;children&#39;: [...], &#39;total&#39;: {&#39;confirm&#39;: 7153, &#39;suspect&#39;: 0, &#39;dead&#39;: 249, &#39;heal&#39;: 166}, &#39;today&#39;: {&#39;confirm&#39;: 1347, &#39;suspect&#39;: -49, &#39;dead&#39;: 49, &#39;heal&#39;: 15}}, {&#39;name&#39;: &#39;浙江&#39;, &#39;children&#39;: [...], &#39;total&#39;: {&#39;confirm&#39;: 599, &#39;suspect&#39;: 0, &#39;dead&#39;: 0, &#39;heal&#39;: 20}, &#39;today&#39;: {&#39;confirm&#39;: 62, &#39;suspect&#39;: 0, &#39;dead&#39;: 0, &#39;heal&#39;: 7}}, ...
+<pre><code class="lang-python">{&#39;chinaTotal&#39;: {&#39;date&#39;: &#39;02.01&#39;, &#39;confirm&#39;: &#39;11890&#39;, &#39;suspect&#39;: &#39;17988&#39;, &#39;dead&#39;: &#39;259&#39;, &#39;heal&#39;: &#39;269&#39;}, 
+ &#39;lastUpdateTime&#39;: &#39;2020-02-01 21:18:01&#39;, 
+ &#39;areaTree&#39;: 
+     [{&#39;name&#39;: &#39;中国&#39;, 
+      &#39;children&#39;: [{&#39;name&#39;: &#39;湖北&#39;, 
+                    &#39;children&#39;: [...], 
+                    &#39;total&#39;: {&#39;confirm&#39;: 7153, &#39;suspect&#39;: 0, &#39;dead&#39;: 249, &#39;heal&#39;: 166}, 
+                    &#39;today&#39;: {&#39;confirm&#39;: 1347, &#39;suspect&#39;: -49, &#39;dead&#39;: 49, &#39;heal&#39;: 15}}, 
+                   {&#39;name&#39;: &#39;浙江&#39;, 
+                    &#39;children&#39;: [...], 
+                    &#39;total&#39;: {&#39;confirm&#39;: 599, &#39;suspect&#39;: 0, &#39;dead&#39;: 0, &#39;heal&#39;: 20}, 
+                    &#39;today&#39;: {&#39;confirm&#39;: 62, &#39;suspect&#39;: 0, &#39;dead&#39;: 0, &#39;heal&#39;: 7}}, ...
 </code></pre>
 <p>我们只获取各个省份确诊人数的信息已经最后更新的时间。</p>
 <pre><code class="lang-python">def catch_distribution():
@@ -276,7 +287,7 @@ map1.render()
 </code></pre>
 <p>最后的效果如下，</p>
 <p><img src="2sd15400.png" alt="xiaoguo"></p>
-<p>运行后会在根目录下生成<a href="https://lil-q.github.io/pageDemo/render.html" target="_blank" rel="noopener">render.html</a></p>
+<p>运行后会在根目录下生成<a href="http://lil-q.gitee.io/demo/render.html">render.html</a></p>
 <p><a href="https://github.com/lil-q/2019-nCoV-VisualMap/blob/master/2019-nCoV-VisualMap.py" target="_blank" rel="noopener">完整代码</a></p>
 
             <hr>
