@@ -6,11 +6,11 @@ header,
   overflow-wrap: break-word;
 }
 body {
-  background-color: #222;
-  color: #eee;
+  background-color: #111;
+  color: #ddd;
 }
 body a {
-  color: #eee;
+  color: #ddd;
 }
 body a:hover {
   color: #69c;
@@ -30,7 +30,7 @@ body a:hover {
 #board {
   position: relative;
   margin-top: 0rem;
-  background-color: #333;
+  background-color: #222;
   border-radius: 0rem;
   z-index: 3;
 }
