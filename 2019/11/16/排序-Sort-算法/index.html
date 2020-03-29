@@ -42,7 +42,7 @@
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 38vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -356,7 +356,7 @@
         nums[pre_index+1]=cur_num
     return nums
 </code></pre>
-<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>数据分区：（最大堆，有序区）。<br>从堆顶把根卸出来放在有序区之前，再恢复堆。 <a href="https://lil-q.github.io/2019/11/17/%E5%A0%86-heap/" target="_blank" rel="noopener">关于堆</a></p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>数据分区：（最大堆，有序区）。<br>从堆顶把根卸出来放在有序区之前，再恢复堆。 <a href="https://lil-q.github.io/2019/11/17/%E5%A0%86-heap/">关于堆</a></p>
 <p><img src="Sorting_heapsort_anim.gif" alt="heap"></p>
 <h3 id="流程-3"><a href="#流程-3" class="headerlink" title="流程"></a>流程</h3><ol>
 <li>最大堆调整（Max Heapify）：将堆的末端子节点作调整，使得子节点永远小于父节点</li>
@@ -417,7 +417,7 @@ def merge_sort(L):
     right = merge_sort(right)
     return merge(left, right)
 </code></pre>
-<p><a href="https://blog.csdn.net/YuZhiHui_No1/article/details/44223225" target="_blank" rel="noopener">时间复杂度是O(nlogn)，归并的空间复杂度为临时的数组和递归时压入栈的数据占用的空间：n + logn，所以空间复杂度为: O(n)</a> 。</p>
+<p>时间复杂度是O(nlogn)，归并的空间复杂度为临时的数组和递归时压入栈的数据占用的空间：n + logn，所以空间复杂度为: O(n)。<a href="https://blog.csdn.net/YuZhiHui_No1/article/details/44223225" target="_blank" rel="noopener">参考</a> </p>
 <h4 id="迭代法（Bottom-up）"><a href="#迭代法（Bottom-up）" class="headerlink" title="迭代法（Bottom-up）"></a>迭代法（Bottom-up）</h4><p>重写merge()，实现O(1)</p>
 <pre><code class="lang-python">def merge_iter(nums,l1,l2,r2):
     r1=l2-1
@@ -763,7 +763,7 @@ def insertion_sorted(nums):
   <div class="text-center py-3">
     <b>2020</b>
     <i class="iconfont icon-love"></i>
-    <b>戚天天</b>
+    <b>lil-q</b>
 
     
   <div>
