@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logoforapple.png">
+  <link rel="icon" type="image/png" href="/img/logo192.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="Life Goes On">
+  <meta name="author" content="戚天天">
+  <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
+  <title>java基础五 - Homeward</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 38vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Homeward</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7878.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Thursday, April 2nd 2020, 3:37 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.3k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      5 分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+          <div class="markdown-body">
+            <p>java学习及面试题汇总——Map</p>
+<a id="more"></a>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p><code>Map</code>是一种键-值映射表，当我们调用<code>put(K key, V value)</code>方法时，就把<code>key</code>和<code>value</code>做了映射并放入<code>Map</code>。当我们调用<code>V get(K key)</code>时，就可以通过<code>key</code>获取到对应的<code>value</code>。如果<code>key</code>不存在，则返回<code>null</code>。和<code>List</code>类似，<code>Map</code>也是一个接口，最常用的实现类是<code>HashMap</code>。</p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/javamap.png" alt=""></p>
+<ul>
+<li>TreeMap：基于<strong>红黑树</strong>实现。</li>
+<li>HashMap：基于<strong>哈希表</strong>实现。</li>
+<li>HashTable：和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程同时写入 HashTable 不会导致数据不一致。它是遗留类，不应该去使用它，而是使用 ConcurrentHashMap 来支持线程安全，ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</li>
+<li>LinkedHashMap：使用双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用（LRU）顺序。</li>
+</ul>
+<h2 id="Map遍历"><a href="#Map遍历" class="headerlink" title="Map遍历"></a>Map遍历</h2><p>要遍历<code>key</code>可以使用<code>for each</code>循环遍历<code>Map</code>实例的<code>keySet()</code>方法返回的<code>Set</code>集合，它包含不重复的<code>key</code>的集合：</p>
+<pre><code class="lang-java">for (String key : map.keySet()) {...}
+</code></pre>
+<p>同时遍历<code>key</code>和<code>value</code>可以使用<code>for each</code>循环遍历<code>Map</code>对象的<code>entrySet()</code>集合，它包含每一个<code>key-value</code>映射：</p>
+<pre><code class="lang-java">for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {...}
+</code></pre>
+<h2 id="equals-和hashCode"><a href="#equals-和hashCode" class="headerlink" title="equals()和hashCode()"></a>equals()和hashCode()</h2><p>正确使用<code>Map</code>必须保证：</p>
+<ol>
+<li>作为<code>key</code>的对象必须正确覆写<code>equals()</code>方法，相等的两个<code>key</code>实例调用<code>equals()</code>必须返回<code>true</code>；</li>
+<li>作为<code>key</code>的对象还必须正确覆写<code>hashCode()</code>方法，且<code>hashCode()</code>方法要严格遵循以下规范：<ul>
+<li>如果两个对象相等，则两个对象的<code>hashCode()</code>必须相等；</li>
+<li>如果两个对象不相等，则两个对象的<code>hashCode()</code>尽量不要相等。</li>
+</ul>
+</li>
+</ol>
+<p>自己写<code>hashCode()</code>时R 一般取 31，因为它是一个奇素数，如果是偶数的话，当出现乘法溢出，信息就会丢失，因为与 2 相乘相当于向左移一位，最左边的位丢失。并且一个数与 31 相乘可以转换成移位和减法：<code>31*x == (x&lt;&lt;5)-x</code>，编译器会自动进行这个优化。</p>
+<pre><code class="lang-java">@Override
+public int hashCode() {
+    int result = 17;
+    result = 31 * result + x;
+    result = 31 * result + y;
+    result = 31 * result + z;
+    return result;
+}
+</code></pre>
+<p>和实现<code>equals()</code>方法遇到的问题类似，如果<code>firstName</code>或<code>lastName</code>为<code>null</code>，上述代码工作起来就会抛<code>NullPointerException</code>。为了解决这个问题，我们在计算<code>hashCode()</code>的时候，经常借助<code>Objects.hash()</code>来计算：</p>
+<pre><code class="lang-java">int hashCode() {
+    return Objects.hash(firstName, lastName, age);
+}
+</code></pre>
+<p>所以，编写<code>equals()</code>和<code>hashCode()</code>遵循的原则是：<code>equals()</code>用到的用于比较的每一个字段，都<strong>必须</strong>在<code>hashCode()</code>中用于计算；<code>equals()</code>中没有使用到的字段，<strong>绝不可</strong>放在<code>hashCode()</code>中计算。</p>
+<p>Objects.hash()内部实现实则为Arrays.hashCode()方法</p>
+<pre><code class="lang-java">public static int hash(Object... values) {
+    return Arrays.hashCode(values);
+}
+</code></pre>
+<p>Arrays.hashCode()源码</p>
+<pre><code class="lang-java">public static int hashCode(Object a[]) {
+    if (a == null)
+        return 0;
+
+    int result = 1;
+
+    for (Object element : a)
+        result = 31 * result + (element == null ? 0 : element.hashCode());
+
+    return result;
+}
+</code></pre>
+<p>注意Objects.hash(Object…)，它的参数为不定参数，需要为Object对象。这会有以下一些影响：</p>
+<ol>
+<li>对基本类型做hashCode需要转换为包装类型，如long转换为Long</li>
+<li>会创建一个Object[]数组</li>
+</ol>
+<p>如果hashCode()方法被频繁调用的话，会有一定的性能影响。</p>
+<h2 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h2><p><code>hashCode()</code>内部使用了数组，在初始化时默认的数组大小只有16，任何<code>key</code>无论<code>hashCode()</code>多大都可以用类似方式处理：</p>
+<pre><code class="lang-java">int index = key.hashCode() &amp; 0xf;
+</code></pre>
+<p>当这个<code>hashMap</code>添加超过16个<code>key-value</code>时，<code>hashMap</code>会自动扩容，没扩容一次容量就会翻倍。因为内存每次扩容会导致重新分配已有的<code>key-value</code>，所以频繁扩容对<code>HashMap</code>的性能影响很大。如果确定要使用n个<code>key-value</code>的<code>HashMap</code>，最好在创建时就指定容量：</p>
+<pre><code class="lang-java">Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;(n);
+</code></pre>
+<h2 id="EnumMap"><a href="#EnumMap" class="headerlink" title="EnumMap"></a>EnumMap</h2><p>如果作为key的对象是<code>enum</code>类型，那么，还可以使用Java集合库提供的一种<code>EnumMap</code>，它在内部以一个非常紧凑的数组存储value，并且根据<code>enum</code>类型的key直接定位到内部数组的索引，并不需要计算<code>hashCode()</code>，不但效率最高，而且没有额外的空间浪费。</p>
+<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p><code>SortedMap</code>在遍历时严格按照Key的顺序遍历，最常用的实现类是<code>TreeMap</code>。作为<code>SortedMap</code>的Key必须实现<code>Comparable</code>接口，或者传入<code>Comparator</code>：</p>
+<pre><code class="lang-java">Map&lt;Person, Integer&gt; map = new TreeMap&lt;&gt;(new Comparator&lt;Person&gt;() {
+    public int compare(Person p1, Person p2) {
+        return p1.name.compareTo(p2.name);
+    }
+});
+</code></pre>
+<p>注意到<code>Comparator</code>接口要求实现一个比较方法，它负责比较传入的两个元素<code>a</code>和<code>b</code>，如果<code>a &lt; b</code>，则返回负数，通常是<code>-1</code>，如果<code>a == b</code>，则返回<code>0</code>，如果<code>a &gt; b</code>，则返回正数，通常是<code>1</code>。<code>TreeMap</code>内部根据比较结果对Key进行排序。要严格按照<code>compare()</code>规范实现比较逻辑，否则，<code>TreeMap</code>将不能正常工作。</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>由于Java的集合设计非常久远，中间经历过大规模改进，我们要注意到有一小部分集合类是遗留类，不应该继续使用：</p>
+<ul>
+<li><code>Hashtable</code>：一种线程安全的<code>Map</code>实现；</li>
+<li><code>Vector</code>：一种线程安全的<code>List</code>实现；</li>
+<li><code>Stack</code>：基于<code>Vector</code>实现的<code>LIFO</code>的栈。</li>
+</ul>
+<p>还有一小部分接口是遗留接口，也不应该继续使用：</p>
+<ul>
+<li><code>Enumeration</code>：已被<code>Iterator</code>取代。</li>
+</ul>
+<p>Java的集合类定义在<code>java.util</code>包中，支持泛型。Java集合使用统一的<code>Iterator</code>遍历，尽量不要使用遗留接口。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+              
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/java/">java</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container">
+        <div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+      </div>
+    
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === 'true';
+    var verify = 'false' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "喂？",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <b>2020</b>
+    <i class="iconfont icon-love"></i>
+    <b>lil-q</b>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="busuanzi_value_site_pv"></span>次访问 |
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="busuanzi_value_site_uv"></span>人来过
+    </span>
+    
+  </div>
+
+
+    
+
+    <!-- cnzz Analytics icon -->
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var main = $('main');
+      var tocT = navHeight + (toc.offset().top - main.offset().top);
+      var tocLimMin = main.offset().top - navHeight;
+      var tocLimMax = $('#comments').offset().top - navHeight;
+      $(window).scroll(function () {
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': tocT,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "java基础五&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

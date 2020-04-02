@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    5.2k 字
+                    5.4k 字
                   </span>
                 
 
@@ -330,13 +330,23 @@ class D extends C {
     ba.show(d); // A.show(C)
 }
 </code></pre>
-<p><strong>2. 重载（Overlode）</strong></p>
-<p>Override和Overload不同的是，如果方法签名如果不同，就是Overload，Overload方法是一个新方法；如果方法签名相同，并且返回值也相同，就是<code>Override</code>。</p>
 <p>在子类的覆写方法中，如果要调用父类的被覆写的方法，可以通过<code>super</code>来调用。</p>
+<ol>
+<li>重载（Overlode）**</li>
+</ol>
+<p>Override和Overload不同的是，如果方法签名如果不同，就是Overload，Overload方法是一个新方法；如果方法签名相同，并且返回值也相同，就是<code>Override</code>。</p>
 <h2 id="Object方法"><a href="#Object方法" class="headerlink" title="Object方法"></a>Object方法</h2><p>因为所有的<code>class</code>最终都继承自<code>Object</code>，而<code>Object</code>定义了几个重要的方法：</p>
 <h3 id="equals"><a href="#equals" class="headerlink" title="equals()"></a>equals()</h3><ul>
 <li>对于基本类型，== 判断两个值是否相等，基本类型没有 equals() 方法。</li>
 <li>对于引用类型，== 判断两个变量是否引用同一个对象，而 equals() 判断引用的对象是否等价。</li>
+</ul>
+<p><code>equals()</code>具有以下性质：</p>
+<ul>
+<li>自反性（Reflexive）：对于非<code>null</code>的<code>x</code>来说，<code>x.equals(x)</code>必须返回<code>true</code>；</li>
+<li>对称性（Symmetric）：对于非<code>null</code>的<code>x</code>和<code>y</code>来说，如果<code>x.equals(y)</code>为<code>true</code>，则<code>y.equals(x)</code>也必须为<code>true</code>；</li>
+<li>传递性（Transitive）：对于非<code>null</code>的<code>x</code>、<code>y</code>和<code>z</code>来说，如果<code>x.equals(y)</code>为<code>true</code>，<code>y.equals(z)</code>也为<code>true</code>，那么<code>x.equals(z)</code>也必须为<code>true</code>；</li>
+<li>一致性（Consistent）：对于非<code>null</code>的<code>x</code>和<code>y</code>来说，只要<code>x</code>和<code>y</code>状态不变，则<code>x.equals(y)</code>总是一致地返回<code>true</code>或者<code>false</code>；</li>
+<li>对<code>null</code>的比较：即<code>x.equals(null)</code>永远返回<code>false</code>。</li>
 </ul>
 <pre><code class="lang-java">public class EqualExample {
 

@@ -314,7 +314,7 @@ class Person {
 <li>Java动态代理只能代理接口，要代理类需要使用第三方的CLIGB等类库。</li>
 </ul>
 <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>在集合中存储对象并在使用前进行类型转换非常不方便。泛型防止了那种情况的发生。它提供了编译期的类型安全，确保你只能把正确类型的对象放入集合中，避免了在运行时出现ClassCastException。</p>
-<h2 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h2><p>可以把<code>ArrayList&lt;Integer&gt;</code>向上转型为<code>List&lt;Integer&gt;</code>（<code>T</code>不能变！），但不能把<code>ArrayList&lt;Integer&gt;</code>向上转型为<code>ArrayList&lt;Number&gt;</code>（<code>T</code>不能变成父类）。</p>
+<p>可以把<code>ArrayList&lt;Integer&gt;</code>向上转型为<code>List&lt;Integer&gt;</code>（<code>T</code>不能变！），但不能把<code>ArrayList&lt;Integer&gt;</code>向上转型为<code>ArrayList&lt;Number&gt;</code>（<code>T</code>不能变成父类）。</p>
 <h2 id="静态泛型方法"><a href="#静态泛型方法" class="headerlink" title="静态泛型方法"></a>静态泛型方法</h2><p>对于静态方法，我们可以单独改写为“泛型”方法，只需要使用另一个类型即可：</p>
 <pre><code class="lang-java">public class Pair&lt;T&gt; {
     private T first;
@@ -364,10 +364,10 @@ String first = (String) p.getFirst();
 String last = (String) p.getLast();
 </code></pre>
 <p>java泛型的<strong>局限</strong>：</p>
-<p><strong>局限一：</strong><code>&lt;T&gt;</code>不能是基本类型，例如<code>int</code>，因为实际类型是<code>Object</code>，<code>Object</code>类型无法持有基本类型。</p>
+<p><strong>局限一：<code>&lt;T&gt;</code>不能是基本类型</strong>，例如<code>int</code>，因为实际类型是<code>Object</code>，<code>Object</code>类型无法持有基本类型。</p>
 <pre><code class="lang-java">Pair&lt;int&gt; p = new Pair&lt;&gt;(1, 2); // compile error!
 </code></pre>
-<p><strong>局限二：</strong>无法取得带泛型的<code>Class</code>，如下代码最后获取到的是同一个<code>Class</code>，也就是<code>Pair</code>类的<code>Class</code>。</p>
+<p><strong>局限二：无法取得带泛型的<code>Class</code></strong>，如下代码最后获取到的是同一个<code>Class</code>，也就是<code>Pair</code>类的<code>Class</code>。</p>
 <pre><code class="lang-java">public class Main {
     public static void main(String[] args) {
         Pair&lt;String&gt; p1 = new Pair&lt;&gt;(&quot;Hello&quot;, &quot;world&quot;);
@@ -380,13 +380,13 @@ String last = (String) p.getLast();
     }
 }
 </code></pre>
-<p><strong>局限三：</strong>无法判断带泛型的<code>Class</code>：</p>
+<p><strong>局限三：无法判断带泛型的<code>Class</code>：</strong></p>
 <pre><code class="lang-Java">Pair&lt;Integer&gt; p = new Pair&lt;&gt;(123, 456);
 // Compile error:
 if (p instanceof Pair&lt;String&gt;.class) {
 }
 </code></pre>
-<p><strong>局限四：</strong>不能实例化<code>T</code>类型：</p>
+<p><strong>局限四：不能实例化<code>T</code>类型：</strong></p>
 <pre><code class="lang-java">public class Pair&lt;T&gt; {
     private T first;
     private T last;
@@ -420,7 +420,7 @@ last = new Object();
 <pre><code class="lang-java">Pair&lt;String&gt; pair = new Pair&lt;&gt;(String.class);
 </code></pre>
 <p>因为传入了<code>Class</code>的实例，所以我们借助<code>String.class</code>就可以实例化<code>String</code>类型。</p>
-<h3 id="避免泛型覆写"><a href="#避免泛型覆写" class="headerlink" title="　避免泛型覆写"></a>　避免泛型覆写</h3><p>有些时候，一个看似正确定义的方法会无法通过编译。例如：</p>
+<h3 id="避免泛型覆写"><a href="#避免泛型覆写" class="headerlink" title="避免泛型覆写"></a>避免泛型覆写</h3><p>有些时候，一个看似正确定义的方法会无法通过编译。例如：</p>
 <pre><code class="lang-java">public class Pair&lt;T&gt; {
     public boolean equals(T t) {
         return this == t;

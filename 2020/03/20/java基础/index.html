@@ -229,7 +229,7 @@ System.out.println(m == n); // true
 <p><strong>注意：</strong>不要同时使用静态初始化和动态初始化，也就是说，不要在进行数组初始化时，既指定数组的长度，也为每个数组元素分配初始值。一旦数组完成初始化，数组在内存中所占的空间将被固定下来，所以数组的长度将不可改变。</p>
 <h3 id="打印数组内容"><a href="#打印数组内容" class="headerlink" title="打印数组内容"></a>打印数组内容</h3><p>Java标准库提供了类方法<code>Arrays.toString()</code>，可以快速打印数组内容。</p>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>调用JDK提供的<code>Arrays.sort()</code>可以原地升序排序。如需降序：</p>
-<pre><code class="lang-java">Arrays.sort(a,Collections.reverseOrder());
+<pre><code class="lang-java">Arrays.sort(a, Collections.reverseOrder());
 </code></pre>
 <h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><h2 id="运算优先级"><a href="#运算优先级" class="headerlink" title="运算优先级"></a>运算优先级</h2><p>在Java的计算表达式中，运算优先级从高到低依次是：</p>
 <ul>
@@ -456,6 +456,9 @@ public class Main {
         //   new String(char[])并不会直接引用传入的char[]数组，而是会复制一份
         char[] cs = &quot;Hello&quot;.toCharArray(); // String -&gt; char[]
         String s = new String(cs); // char[] -&gt; String
+        // 判断是否为数字
+        char ch = s.charAt(1); // e
+        System.out.println(Character.isDigit(ch)); // false
     }
 }
 </code></pre>
