@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    5.9k 字
+                    6k 字
                   </span>
                 
 
@@ -242,7 +242,7 @@ System.out.println(m == n); // true
 <li><code>|</code></li>
 <li><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code></li>
 </ul>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">面试题15. 二进制中1的个数</a></p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">1. 面试题15. 二进制中1的个数</a></p>
 <pre><code class="lang-java">// 解一：
 public class Solution {
     public int hammingWeight(int n) {
@@ -263,6 +263,24 @@ public class Solution {
             n &amp;= n - 1;
         }
         return res;
+    }
+}
+</code></pre>
+<h4 id="2-快速幂"><a href="#2-快速幂" class="headerlink" title="2. 快速幂"></a><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">2. 快速幂</a></h4><pre><code class="lang-java">class Solution {
+    public double myPow(double x, int n) {
+        if (n == 0) return 1;
+        double p = 1;
+        long m = n; // int最小值转为正数会溢出，需要转为long
+        if (m &lt; 0) {
+            x = 1 / x;
+            m = -m;
+        }
+        while (m &gt; 0) {
+            if ((m &amp; 1) == 1) p *= x;
+            x *= x;
+            m &gt;&gt;&gt;= 1;
+        }
+        return p;
     }
 }
 </code></pre>
