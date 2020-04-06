@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    6k 字
+                    7.1k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      24 分钟
+                      29 分钟
                   </span>
                 
 
@@ -266,7 +266,8 @@ public class Solution {
     }
 }
 </code></pre>
-<h4 id="2-快速幂"><a href="#2-快速幂" class="headerlink" title="2. 快速幂"></a><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">2. 快速幂</a></h4><pre><code class="lang-java">class Solution {
+<p><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">2. 快速幂</a></p>
+<pre><code class="lang-java">class Solution {
     public double myPow(double x, int n) {
         if (n == 0) return 1;
         double p = 1;
@@ -398,7 +399,7 @@ String s2 = new String(b, StandardCharsets.UTF_8); // 按UTF-8转换
 public class Main {
     public static void main(String[] args) {
         String[] names = {&quot;Bob&quot;, &quot;Alice&quot;, &quot;Grace&quot;};
-        var sj = new StringJoiner(&quot;, &quot;, &quot;Hello &quot;, &quot;!&quot;);
+        var sj = new StringJoiner(&quot;, &quot;, &quot;Hello &quot;, &quot;!&quot;);// 分隔符。头，尾
         for (String name : names) {
             sj.add(name);
         }
@@ -474,6 +475,8 @@ public class Main {
         //   new String(char[])并不会直接引用传入的char[]数组，而是会复制一份
         char[] cs = &quot;Hello&quot;.toCharArray(); // String -&gt; char[]
         String s = new String(cs); // char[] -&gt; String
+        // 翻转
+        System.out.println(new StringBuilder(s).reverse().toString()); // olleH
         // 判断是否为数字
         char ch = s.charAt(1); // e
         System.out.println(Character.isDigit(ch)); // false
@@ -754,6 +757,99 @@ y.a = 1;
 <p><strong>5. 静态导包</strong></p>
 <p>在使用静态变量和方法时不用再指明 ClassName，从而简化代码，但可读性大大降低。</p>
 <pre><code class="lang-java">import static com.xxx.ClassName.*
+</code></pre>
+<h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><p>Stream API的特点是：</p>
+<ul>
+<li>Stream API提供了一套新的流式处理的抽象序列；</li>
+<li>Stream API支持函数式编程和链式操作；</li>
+<li>Stream可以表示无限序列，并且大多数情况下是惰性求值的。</li>
+</ul>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h3><p>从Java 8开始，我们可以用Lambda表达式替换单方法接口<code>FunctionalInterface</code>，如果只有一行<code>return xxx</code>的代码，完全可以用更简单的写法：</p>
+<pre><code class="lang-java">Arrays.sort(array, (s1, s2) -&gt; s1.compareTo(s2));
+</code></pre>
+<p>返回值的类型也是由编译器自动推断的，这里推断出的返回值是<code>int</code>，因此，只要返回<code>int</code>，编译器就不会报错。</p>
+<p><strong><a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/" target="_blank" rel="noopener">面试题40. 最小的k个数</a></strong></p>
+<pre><code class="lang-java">public ArrayList&lt;Integer&gt; GetLeastNumbers_Solution(int[] nums, int k) {
+    if (k &gt; nums.length || k &lt;= 0)
+        return new ArrayList&lt;&gt;();
+    PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;((o1, o2) -&gt; o2 - o1);
+    for (int num : nums) {
+        maxHeap.add(num);
+        if (maxHeap.size() &gt; k)
+            maxHeap.poll();
+    }
+    return new ArrayList&lt;&gt;(maxHeap);
+}
+</code></pre>
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><p>如果某个方法<strong>签名</strong>和<strong>返回类型</strong>恰好一致，就可以直接传入方法引用。对于实例方法有一个隐含的<code>this</code>参数，比如<code>String</code>类的<code>compareTo()</code>方法在实际调用的时候，第一个隐含参数总是传入<code>this</code>。</p>
+<h3 id="stream创建"><a href="#stream创建" class="headerlink" title="stream创建"></a>stream创建</h3><p>创建<code>Stream</code>的方法有 ：</p>
+<p><strong>1. 通过指定元素、指定数组、指定<code>Collection</code>创建<code>Stream</code>:</strong></p>
+<pre><code class="lang-java">Stream&lt;String&gt; stream = Stream.of(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;);
+Stream&lt;String&gt; stream1 = Arrays.stream(new String[] { &quot;A&quot;, &quot;B&quot;, &quot;C&quot; });
+Stream&lt;String&gt; stream2 = List.of(&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;).stream();
+</code></pre>
+<p><strong>2. 通过<code>Supplier</code>创建<code>Stream</code>，可以是无限序列：</strong></p>
+<pre><code class="lang-java">import java.util.function.*;
+import java.util.stream.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Stream&lt;Integer&gt; natual = Stream.generate(new NatualSupplier());
+        // 注意：无限序列必须先变成有限序列再打印:
+        natual.limit(20).forEach(System.out::println);
+    }
+}
+
+class NatualSupplier implements Supplier&lt;Integer&gt; {
+    int n = 0;
+    public Integer get() {
+        n++;
+        return n;
+    }
+}
+</code></pre>
+<p><strong>3. 通过其他类的相关方法创建：</strong></p>
+<p>创建<code>Stream</code>的第三种方法是通过一些API提供的接口，直接获得<code>Stream</code>。</p>
+<p>例如，<code>Files</code>类的<code>lines()</code>方法可以把一个文件变成一个<code>Stream</code>，每个元素代表文件的一行内容：</p>
+<pre><code class="lang-java">try (Stream&lt;String&gt; lines = Files.lines(Paths.get(&quot;/path/to/file.txt&quot;))) {
+    ...
+}
+</code></pre>
+<p>此方法对于按行遍历文本文件十分有用。</p>
+<p>另外，正则表达式的<code>Pattern</code>对象有一个<code>splitAsStream()</code>方法，可以直接把一个长字符串分割成<code>Stream</code>序列而不是数组：</p>
+<pre><code class="lang-java">Pattern p = Pattern.compile(&quot;\\s+&quot;);
+Stream&lt;String&gt; s = p.splitAsStream(&quot;The quick brown fox jumps over the lazy dog&quot;);
+s.forEach(System.out::println);
+</code></pre>
+<p>基本类型的<code>Stream</code>有<code>IntStream</code>、<code>LongStream</code>和<code>DoubleStream</code>。</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p><code>map()</code>方法接收的对象是<code>Function</code>接口对象，它定义了一个<code>apply()</code>方法，负责把一个<code>T</code>类型转换成<code>R</code>类型：</p>
+<pre><code class="lang-java">&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);
+</code></pre>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p>使用<code>filter()</code>方法可以对一个<code>Stream</code>的每个元素进行测试，通过测试的元素被过滤后生成一个新的<code>Stream</code>。</p>
+<pre><code class="lang-java">.filter(p -&gt; p.score &gt;= 60); // 找出及格的人
+</code></pre>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p><code>map()</code>和<code>filter()</code>都是<code>Stream</code>的转换方法，而<code>Stream.reduce()</code>则是<code>Stream</code>的一个聚合方法，它可以把一个<code>Stream</code>的所有元素按照聚合函数聚合成一个结果：</p>
+<pre><code class="lang-java">.reduce(0, (acc, n) -&gt; acc + n); // 累加
+.reduce(0, (acc, n) -&gt; acc * n); // 累乘
+</code></pre>
+<h3 id="collect"><a href="#collect" class="headerlink" title="collect()"></a>collect()</h3><p>把<code>Stream</code>的每个元素收集到<code>List</code>的方法是调用<code>collect()</code>并传入<code>Collectors.toList()</code>对象，它实际上是一个<code>Collector</code>实例，通过类似<code>reduce()</code>的操作，把每个元素添加到一个收集器中（实际上是<code>ArrayList</code>）。类似的，<code>collect(Collectors.toSet())</code>可以把<code>Stream</code>的每个元素收集到<code>Set</code>中。</p>
+<h3 id="toArray"><a href="#toArray" class="headerlink" title="toArray()"></a>toArray()</h3><p>把Stream的元素输出为数组和输出为List类似，我们只需要调用<code>toArray()</code>方法，并传入数组的“构造方法”：</p>
+<pre><code class="lang-java">List&lt;String&gt; list = List.of(&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;);
+String[] array = list.stream().toArray(String[]::new);
+</code></pre>
+<p>注意到传入的“构造方法”是<code>String[]::new</code>，它的签名实际上是<code>IntFunction</code>定义的<code>String[] apply(int)</code>，即传入<code>int</code>参数，获得<code>String[]</code>数组的返回值。</p>
+<h3 id="toMap"><a href="#toMap" class="headerlink" title="toMap()"></a>toMap()</h3><pre><code class="lang-java">public class Main {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; stream = Stream.of(&quot;APPL:Apple&quot;, &quot;MSFT:Microsoft&quot;);
+        Map&lt;String, String&gt; map = stream
+                .collect(Collectors.toMap(
+                        // 把元素s映射为key:
+                        s -&gt; s.substring(0, s.indexOf(&#39;:&#39;)),
+                        // 把元素s映射为value:
+                        s -&gt; s.substring(s.indexOf(&#39;:&#39;) + 1)));
+        System.out.println(map);
+    }
+}
 </code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes</a></li>
