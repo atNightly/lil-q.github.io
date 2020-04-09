@@ -348,8 +348,7 @@ List&lt;Integer&gt; list = List.of(array);
     ...
 </code></pre>
 <p>RandomAccess 接口标识着该类支持快速随机访问，java.io.Serializable是支持序列化接口。数组的默认大小为 10。</p>
-<h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><p>添加元素时如果容量不够时，需要使用 grow() 方法进行扩容，新容量的大小默认为 <code>oldCapacity + (oldCapacity &gt;&gt; 1)</code>，也就是旧容量的 1.5 倍。当需求的容量大于它时，则会选用两个<code>list</code>长度之和作为新容量，如果这个值大于</p>
-<p>扩容操作需要调用 <code>Arrays.copyOf()</code> 把原数组整个复制到新数组中，这个操作代价很高，因此最好在创建 ArrayList 对象时就指定大概的容量大小，减少扩容操作的次数。</p>
+<h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><p>添加元素时如果容量不够时，需要使用 grow() 方法进行扩容，新容量的大小默认为 <code>oldCapacity + (oldCapacity &gt;&gt; 1)</code>，也就是旧容量的 1.5 倍。当需求的容量大于它时，则会选用两个<code>list</code>长度之和作为新容量，扩容操作需要调用 <code>Arrays.copyOf()</code> 把原数组整个复制到新数组中，这个操作代价很高，因此最好在创建 ArrayList 对象时就指定大概的容量大小，减少扩容操作的次数。</p>
 <pre><code class="lang-java">public boolean addAll(Collection&lt;? extends E&gt; c) {
     Object[] a = c.toArray();
     modCount++;

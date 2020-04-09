@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    7.1k 字
+                    7.5k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      29 分钟
+                      31 分钟
                   </span>
                 
 
@@ -586,6 +586,24 @@ int x = n; // 编译器自动使用Integer.intValue()
 <li><strong>派生类普通代码块，派生类普通成员字段</strong>（并列优先级，按代码中出现先后顺序执行）</li>
 <li><strong>派生类构造函数</strong></li>
 </ol>
+<p><strong>静态代码块：</strong></p>
+<ol>
+<li>它是<strong>随着类的加载而执行，只执行一次，并优先于主函数</strong>。具体说，<strong>静态代码块是由类调用</strong>的。类调用时，先执行静态代码块，然后才执行主函数的。</li>
+<li><strong>静态代码块其实就是给类初始化的，而构造代码块是给对象初始化的</strong>。</li>
+<li>静态代码块中的变量是局部变量，与普通函数中的局部变量性质没有区别。</li>
+</ol>
+<p><strong>构造代码块：</strong></p>
+<ol>
+<li>构造代码块的作用是给对象进行初始化。</li>
+<li><strong>对象一建立就运行构造代码块了，而且优先于构造函数执行</strong>。这里要强调一下，有对象建立，才会运行构造代码块，类不能调用构造代码块的，而且<strong>构造代码块与构造函数的执行顺序是前者先于后者执行</strong>。</li>
+<li>构造代码块与构造函数的区别是：<strong>构造代码块是给所有对象进行统一初始化，而构造函数是给对应的对象初始化</strong>，因为构造函数是可以多个的，运行哪个构造函数就会建立什么样的对象，但无论建立哪个对象，都会先执行相同的构造代码块。也就是说，构造代码块中定义的是不同对象共性的初始化内容。</li>
+</ol>
+<p><strong>构造函数：</strong></p>
+<ol>
+<li><strong>对象一建立，就会调用与之相应的构造函数</strong>，也就是说，不建立对象，构造函数时不会运行的。</li>
+<li>构造函数的作用是用于给对象进行初始化。</li>
+<li>一个对象建立，构造函数只运行一次，而一般方法可以被该对象调用多次。</li>
+</ol>
 <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><pre><code class="lang-java">import java.util.Scanner; // 导入类
 
 public class Main {
@@ -856,6 +874,8 @@ String[] array = list.stream().toArray(String[]::new);
 <li><a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a></li>
 <li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744</a></li>
 <li><a href="https://www.zhihu.com/question/31203609" target="_blank" rel="noopener">值传递还是引用传递</a></li>
+<li><a href="https://www.zhihu.com/question/49196023" target="_blank" rel="noopener">初始化顺序</a></li>
+<li><a href="https://www.cnblogs.com/Qian123/p/5713440.html" target="_blank" rel="noopener">https://www.cnblogs.com/Qian123/p/5713440.html</a></li>
 </ol>
 
             <hr>
