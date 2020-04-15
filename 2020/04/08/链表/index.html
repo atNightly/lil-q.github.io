@@ -110,7 +110,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7878.png') no-repeat center center;
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    2.6k 字
+                    2.7k 字
                   </span>
                 
 
@@ -420,6 +420,7 @@ public class ListNode {
     }
 }
 </code></pre>
+<p>类似的双指针还有<a href="https://leetcode-cn.com/problems/palindrome-linked-list/solution/java-shuang-zhi-zhen-by-lil-q/" target="_blank" rel="noopener">leetcode 234. 回文链表</a>，<a href="https://leetcode-cn.com/problems/partition-list/solution/java-bu-chuang-jian-xin-de-jie-dian-by-lil-q/" target="_blank" rel="noopener">86. 分隔链表</a>。</p>
 <h2 id="多链表处理"><a href="#多链表处理" class="headerlink" title="多链表处理"></a>多链表处理</h2><h3 id="leetcode-2-两数相加"><a href="#leetcode-2-两数相加" class="headerlink" title="leetcode 2. 两数相加"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">leetcode 2. 两数相加</a></h3><p>给出两个<strong>非空</strong>的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储<strong>一位</strong>数字。</p>
 <p><strong>示例：</strong></p>
 <pre><code class="lang-txt">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
@@ -543,31 +544,36 @@ class Solution {
 <pre><code class="lang-java">class Solution {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode dummy = new ListNode(0), slow = dummy, fast = dummy;
+        ListNode dummy = new ListNode(0), slow = dummy, fast = head;
         dummy.next = head;
-        while (fast != null &amp;&amp; fast.next != null) { // 利用快慢指针找到中间节点的前节点
+        while (fast != null &amp;&amp; fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         ListNode l2 = sortList(slow.next);
-        slow.next = null; // 断链
+        slow.next = null;
         ListNode l1 = sortList(head);
         return merge(l1, l2);
     }
 
     public ListNode merge(ListNode l1, ListNode l2) {
-        if (l1 == null) return l2;
-        if (l2 == null) return l1;
-        if (l1.val &lt; l2.val) {
-            l1.next = merge(l1.next, l2);
-            return l1;
-        } else {
-            l2.next = merge(l1, l2.next);
-            return l2;
+        ListNode dummy = new ListNode(0), pre = dummy;
+        while (l1 != null &amp;&amp; l2 != null) {
+            if (l1.val &lt; l2.val) {
+                pre.next = l1;
+                l1 = l1.next;
+            } else {
+                pre.next = l2;
+                l2 = l2.next;
+            }
+            pre = pre.next;
         }
+        pre.next = l1 != null ? l1 : l2;
+        return dummy.next;
     }
 }
 </code></pre>
+<p>当然，递归的做法并不能满足空间复杂度<script type="math/tex">O(1)</script>的要求，可以利用自底向上的思想和位运算实现迭代算法，类似的题还有<a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/java-di-gui-by-lil-q/" target="_blank" rel="noopener">leetcode 109. 有序链表转换二叉搜索树</a>。</p>
 
             <hr>
           </div>
@@ -586,6 +592,8 @@ class Solution {
               
               <span>
                 <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/java/">java</a>
                 
                   <a class="hover-with-bg" href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
                 

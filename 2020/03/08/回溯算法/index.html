@@ -110,7 +110,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7878.png') no-repeat center center;
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    3.5k 字
+                    3.7k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      14 分钟
+                      15 分钟
                   </span>
                 
 
@@ -389,7 +389,7 @@
   [1, 1, 6]
 ]
 </code></pre>
-<p>当对选值有特殊要求时，<strong>分布</strong>就变得复杂一些了。</p>
+<p>当对选值有特殊要求时，<strong>分步</strong>就变得复杂一些了。</p>
 <pre><code class="lang-python">class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -&gt; List[List[int]]:
         res = []
@@ -487,7 +487,30 @@ class Solution:
 
         return backtrack(0, 0)
 </code></pre>
-<p>加上备忘录的回溯和动态规划似乎很相似，我会在<a href="https://lil-q.github.io/2020/03/10/动态规划/">这里</a>探究一下两者的区别。</p>
+<p>加上备忘录的回溯和动态规划似乎很相似：</p>
+<pre><code class="lang-python">class Solution:
+    def isMatch(self, s: str, p: str) -&gt; bool:
+        size_s = len(s)
+        size_p = len(p)
+        dp = [[False for _ in range(size_p + 1)] for _ in range(size_s + 1)]
+        # dp[-1][-1]表示s，p都为空时是配对的
+        dp[-1][-1] = True
+        # -1表示空字符，s为空字符是可以和p配对的，比如p=&#39;.*&#39;，所以需要计算i=-1的情况
+        for i in range(-1, size_s):  
+            # p为空，s不为空就一定不配对，所以不考虑p=-1的情况         
+            for j in range(size_p):
+                # p[j]不是&#39;*&#39;且s[i]=p[j],注意利用i&gt;=0排除空字符
+                if i &gt;= 0 and (s[i] == p[j] or p[j] == &#39;.&#39;):                 
+                    dp[i][j] = dp[i - 1][j - 1]
+                # p[j]是&#39;*&#39;
+                if p[j] == &#39;*&#39;:
+                    # &#39;*&#39;前面的能匹配，就有两种可能，匹配0次或若干次
+                    if i &gt;= 0 and (p[j - 1] == s[i] or p[j - 1] == &#39;.&#39;):
+                        dp[i][j] = dp[i - 1][j] or dp[i][j - 2]
+                    else:
+                        dp[i][j] = dp[i][j - 2]
+        return dp[size_s - 1][size_p - 1]
+</code></pre>
 <h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p><strong>剪枝</strong>，顾名思义，就是删去一些不重要或无用的节点，来减小计算或搜索的复杂度。使用备忘录其实也可以看成剪枝，因为重复的计算是无意义的。对于特定的问题，可以之间从算法的角度剪枝，如下面的例子：</p>
 <h2 id="leetcode-60-第k个排列"><a href="#leetcode-60-第k个排列" class="headerlink" title="leetcode 60. 第k个排列"></a><a href="https://leetcode-cn.com/problems/permutation-sequence/" target="_blank" rel="noopener">leetcode 60. 第k个排列</a></h2><p>给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。</p>
 <p>按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：</p>
