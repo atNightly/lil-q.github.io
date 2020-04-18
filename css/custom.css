@@ -75,7 +75,7 @@
     background: #69c !important;
 }
 
-.markdown-body code {
+.markdown-body .highlight pre, .markdown-body pre {
     background-color: #2d2d2d !important;
 }
 
