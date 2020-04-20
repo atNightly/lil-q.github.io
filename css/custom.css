@@ -76,7 +76,14 @@
 }
 
 code {
-    color: #ff67ad !important;
+    color: #ff67ad;
+}
+
+.markdown-body code {
+    background-color: #2d2d2d;
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #2d2d2d !important;
 }
 
 .list-group-item {
