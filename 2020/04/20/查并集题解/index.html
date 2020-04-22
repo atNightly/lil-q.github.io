@@ -110,7 +110,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.jpg') no-repeat center center;
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.5k 字
+                    1.8k 字
                   </span>
                 
 
@@ -140,7 +140,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      8 分钟
+                      9 分钟
                   </span>
                 
 
@@ -176,7 +176,7 @@
           <div class="markdown-body">
             <p>查并集的实践之路</p>
 <a id="more"></a>
-<p>查并集的进化之路在<a href="[https://lil-q.github.io/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/](https://lil-q.github.io/2020/01/02/查并集-union-find-algorithm/">这里</a>)。</p>
+<p>查并集的进化之路在<a href="https://lil-q.github.io/2020/01/02/查并集-union-find-algorithm/">这里</a>。</p>
 <h1 id="leetcode-200-岛屿数量"><a href="#leetcode-200-岛屿数量" class="headerlink" title="leetcode 200. 岛屿数量"></a><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">leetcode 200. 岛屿数量</a></h1><p><strong>解法一：</strong>查并集</p>
 <pre><code class="lang-java">class Solution {
     int[] parent;
@@ -482,6 +482,65 @@
         int f2 = find(j);
         if (f1 != f2) {
             parent[f2] = f1;
+        }
+    }
+}
+</code></pre>
+<h1 id="leetcode-924-尽量减少恶意软件的传播"><a href="#leetcode-924-尽量减少恶意软件的传播" class="headerlink" title="leetcode 924. 尽量减少恶意软件的传播"></a><a href="https://leetcode-cn.com/problems/minimize-malware-spread/" target="_blank" rel="noopener">leetcode 924. 尽量减少恶意软件的传播</a></h1><p><strong>示例：</strong></p>
+<pre><code class="lang-txt">输入：graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+输出：0
+</code></pre>
+<p>本体关键在于，<code>initial</code>中只出现一次的节点移除才是有收益的，移除这些节点中所在连通域最大的节点即可。</p>
+<pre><code class="lang-java">class Solution {
+    int[] size;
+    int[] parent;
+
+    public int minMalwareSpread(int[][] graph, int[] initial) {
+        int N = graph.length;
+        parent = new int[N];
+        for (int i = 0; i &lt; N; i++) parent[i] = i; // 初始化parent
+        size = new int[N];
+        Arrays.fill(size, 1); // 初始化size
+        Arrays.sort(initial); // 排序保证如果有多个节点满足条件，就返回索引最小的节点。
+        // 合并
+        for (int i = 0; i &lt; N; i++) {
+            for (int j = i + 1; j &lt; N; j++) {
+                if (graph[i][j] == 1) union(i, j);
+            }
+        }
+        // 计数
+        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+        for (int node : initial) {
+            int f = find(node);
+            map.put(f, map.getOrDefault(f, 0) + 1);
+        }
+
+        int cur_node = initial[0];
+        int cur_size = Integer.MIN_VALUE;
+        for (int node : initial) {
+            int f = find(node);
+            if (map.get(f) == 1 &amp;&amp; size[f] &gt; cur_size) { // 只出现一次才能说明移除是有用的
+                cur_node = node;
+                cur_size = size[f];
+            }
+        }
+        return cur_node;
+    }
+
+    public int find(int i) {
+        while (parent[i] != i) { // 路径压缩
+            parent[i] = parent[parent[i]];
+            i = parent[i];
+        }
+        return i;
+    }
+
+    public void union(int i, int j) {
+        int f1 = find(i);
+        int f2 = find(j);
+        if (f1 != f2) {
+            parent[f2] = f1;
+            size[f1] += size[f2]; // 合并两个root的size到新的root
         }
     }
 }
