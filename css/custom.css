@@ -56,6 +56,7 @@
 
 .pagination a:hover, .pagination .current {
     background-color: #980101 !important;
+    border-radius: 0rem !important;
 }
 
 .markdown-body table td, .markdown-body table th {
