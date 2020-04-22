@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>查并集题解 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, April 20th 2020, 10:54 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-04-20 22:54">
+                    Monday, April 20th 2020, 10:54 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    1.8k 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.9k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      9 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    33
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,473 +173,480 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>查并集的实践之路</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>查并集的实践之路</p>
 <a id="more"></a>
 <p>查并集的进化之路在<a href="https://lil-q.github.io/2020/01/02/查并集-union-find-algorithm/">这里</a>。</p>
 <h1 id="leetcode-200-岛屿数量"><a href="#leetcode-200-岛屿数量" class="headerlink" title="leetcode 200. 岛屿数量"></a><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">leetcode 200. 岛屿数量</a></h1><p><strong>解法一：</strong>查并集</p>
-<pre><code class="lang-java">class Solution {
-    int[] parent;
-    public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) return 0;
-        int rows = grid.length;
-        int cols = grid[0].length;
-        int count = rows * cols;
-        parent = new int[rows * cols];
-        Arrays.fill(parent, -1);
-        for (int i = 0; i &lt; rows; i++) {
-            for (int j = 0; j &lt; cols; j++) {
-                if (grid[i][j] == &#39;0&#39;) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[] parent;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> rows = grid.length;
+        <span class="hljs-keyword">int</span> cols = grid[<span class="hljs-number">0</span>].length;
+        <span class="hljs-keyword">int</span> count = rows * cols;
+        parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[rows * cols];
+        Arrays.fill(parent, -<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; cols; j++) &#123;
+                <span class="hljs-keyword">if</span> (grid[i][j] == <span class="hljs-string">'0'</span>) &#123;
                     count--;
-                    continue;
-                }
-                grid[i][j] = 0; // 可以剪枝
-                int index = i * cols + j;
-                if (j &gt; 0 &amp;&amp; grid[i][j - 1] == &#39;1&#39;) count -= union(index, index - 1);
-                if (j &lt; cols - 1 &amp;&amp; grid[i][j + 1] == &#39;1&#39;) count -= union(index, index + 1);
-                if (i &gt; 0 &amp;&amp; grid[i - 1][j] == &#39;1&#39;) count -= union(index, index - cols);
-                if (i &lt; rows - 1 &amp;&amp; grid[i + 1][j] == &#39;1&#39;) count -= union(index, index + cols);
-            }
-        } 
-        return count;
-    }
+                    <span class="hljs-keyword">continue</span>;
+                &#125;
+                grid[i][j] = <span class="hljs-number">0</span>; <span class="hljs-comment">// 可以剪枝</span>
+                <span class="hljs-keyword">int</span> index = i * cols + j;
+                <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; grid[i][j - <span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) count -= union(index, index - <span class="hljs-number">1</span>);
+                <span class="hljs-keyword">if</span> (j &lt; cols - <span class="hljs-number">1</span> &amp;&amp; grid[i][j + <span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) count -= union(index, index + <span class="hljs-number">1</span>);
+                <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; grid[i - <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) count -= union(index, index - cols);
+                <span class="hljs-keyword">if</span> (i &lt; rows - <span class="hljs-number">1</span> &amp;&amp; grid[i + <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) count -= union(index, index + cols);
+            &#125;
+        &#125; 
+        <span class="hljs-keyword">return</span> count;
+    &#125;
 
-    public int find(int i) {
-        if (parent[i] == -1) parent[i] = i;
-        while (i != parent[i]) { // 路径压缩
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (parent[i] == -<span class="hljs-number">1</span>) parent[i] = i;
+        <span class="hljs-keyword">while</span> (i != parent[i]) &#123; <span class="hljs-comment">// 路径压缩</span>
             parent[i] = parent[parent[i]];
             i = parent[i];
-        }
-        return i;
-    }
+        &#125;
+        <span class="hljs-keyword">return</span> i;
+    &#125;
 
-    public int union(int i, int j) {
-        int root1 = find(i);
-        int root2 = find(j);
-        if (root1 != root2) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> root1 = find(i);
+        <span class="hljs-keyword">int</span> root2 = find(j);
+        <span class="hljs-keyword">if</span> (root1 != root2) &#123;
             parent[root1] = root2;
-            return 1;
-        }
-        return 0;
-    }
-}
-</code></pre>
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>DFS</p>
-<pre><code class="lang-java">class Solution {
-    int rows;
-    int cols;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span> rows;
+    <span class="hljs-keyword">int</span> cols;
 
-    public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) return 0;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         rows = grid.length;
-        cols = grid[0].length;
-        int count = 0;
-        for (int i = 0; i &lt; rows; i++) {
-            for (int j = 0; j &lt; cols; j++) {
-                if (grid[i][j] == &#39;1&#39;) {
+        cols = grid[<span class="hljs-number">0</span>].length;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; cols; j++) &#123;
+                <span class="hljs-keyword">if</span> (grid[i][j] == <span class="hljs-string">'1'</span>) &#123;
                     count++;
                     dfs(i, j, grid);
-                }
-            }
-        } 
-        return count;
-    }
+                &#125;
+            &#125;
+        &#125; 
+        <span class="hljs-keyword">return</span> count;
+    &#125;
 
-    public void dfs(int i, int j, char[][] grid) {
-        grid[i][j] = 0;
-        if (j &gt; 0 &amp;&amp; grid[i][j - 1] == &#39;1&#39;) dfs(i, j - 1, grid);
-        if (j &lt; cols - 1 &amp;&amp; grid[i][j + 1] == &#39;1&#39;) dfs(i, j + 1, grid);
-        if (i &gt; 0 &amp;&amp; grid[i - 1][j] == &#39;1&#39;) dfs(i - 1, j, grid);
-        if (i &lt; rows - 1 &amp;&amp; grid[i + 1][j] == &#39;1&#39;) dfs(i + 1, j, grid);
-    }
-}
-</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
+        grid[i][j] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; grid[i][j - <span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) dfs(i, j - <span class="hljs-number">1</span>, grid);
+        <span class="hljs-keyword">if</span> (j &lt; cols - <span class="hljs-number">1</span> &amp;&amp; grid[i][j + <span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) dfs(i, j + <span class="hljs-number">1</span>, grid);
+        <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; grid[i - <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) dfs(i - <span class="hljs-number">1</span>, j, grid);
+        <span class="hljs-keyword">if</span> (i &lt; rows - <span class="hljs-number">1</span> &amp;&amp; grid[i + <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) dfs(i + <span class="hljs-number">1</span>, j, grid);
+    &#125;
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>BFS</p>
-<pre><code class="lang-java">class Solution {
-    public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) return 0;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
-        int nr = grid.length;
-        int nc = grid[0].length;
-        int count = 0;
-        Queue&lt;Integer&gt; neighbors = new LinkedList&lt;&gt;();
-
-        for (int r = 0; r &lt; nr; ++r) {
-            for (int c = 0; c &lt; nc; ++c) {
-                if (grid[r][c] == &#39;1&#39;) {
+        <span class="hljs-keyword">int</span> nr = grid.length;
+        <span class="hljs-keyword">int</span> nc = grid[<span class="hljs-number">0</span>].length;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        Queue&lt;Integer&gt; neighbors = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>; r &lt; nr; ++r) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c = <span class="hljs-number">0</span>; c &lt; nc; ++c) &#123;
+                <span class="hljs-keyword">if</span> (grid[r][c] == <span class="hljs-string">'1'</span>) &#123;
                     count++;
-                    grid[r][c] = &#39;0&#39;;
+                    grid[r][c] = <span class="hljs-string">'0'</span>;
                     neighbors.add(r * nc + c);
-                    while (!neighbors.isEmpty()) {
-                        int id = neighbors.remove();
-                        int row = id / nc;
-                        int col = id % nc;
-                        if (row - 1 &gt;= 0 &amp;&amp; grid[row-1][col] == &#39;1&#39;) {
-                            neighbors.add((row-1) * nc + col);
-                            grid[row-1][col] = &#39;0&#39;;
-                        }
-                        if (row + 1 &lt; nr &amp;&amp; grid[row+1][col] == &#39;1&#39;) {
-                            neighbors.add((row+1) * nc + col);
-                            grid[row+1][col] = &#39;0&#39;;
-                        }
-                        if (col - 1 &gt;= 0 &amp;&amp; grid[row][col-1] == &#39;1&#39;) {
-                            neighbors.add(row * nc + col-1);
-                            grid[row][col-1] = &#39;0&#39;;
-                        }
-                        if (col + 1 &lt; nc &amp;&amp; grid[row][col+1] == &#39;1&#39;) {
-                            neighbors.add(row * nc + col+1);
-                            grid[row][col+1] = &#39;0&#39;;
-                        }
-                    }
-                }
-            }
-        }
+                    <span class="hljs-keyword">while</span> (!neighbors.isEmpty()) &#123;
+                        <span class="hljs-keyword">int</span> id = neighbors.remove();
+                        <span class="hljs-keyword">int</span> row = id / nc;
+                        <span class="hljs-keyword">int</span> col = id % nc;
+                        <span class="hljs-keyword">if</span> (row - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span> &amp;&amp; grid[row-<span class="hljs-number">1</span>][col] == <span class="hljs-string">'1'</span>) &#123;
+                            neighbors.add((row-<span class="hljs-number">1</span>) * nc + col);
+                            grid[row-<span class="hljs-number">1</span>][col] = <span class="hljs-string">'0'</span>;
+                        &#125;
+                        <span class="hljs-keyword">if</span> (row + <span class="hljs-number">1</span> &lt; nr &amp;&amp; grid[row+<span class="hljs-number">1</span>][col] == <span class="hljs-string">'1'</span>) &#123;
+                            neighbors.add((row+<span class="hljs-number">1</span>) * nc + col);
+                            grid[row+<span class="hljs-number">1</span>][col] = <span class="hljs-string">'0'</span>;
+                        &#125;
+                        <span class="hljs-keyword">if</span> (col - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span> &amp;&amp; grid[row][col-<span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) &#123;
+                            neighbors.add(row * nc + col-<span class="hljs-number">1</span>);
+                            grid[row][col-<span class="hljs-number">1</span>] = <span class="hljs-string">'0'</span>;
+                        &#125;
+                        <span class="hljs-keyword">if</span> (col + <span class="hljs-number">1</span> &lt; nc &amp;&amp; grid[row][col+<span class="hljs-number">1</span>] == <span class="hljs-string">'1'</span>) &#123;
+                            neighbors.add(row * nc + col+<span class="hljs-number">1</span>);
+                            grid[row][col+<span class="hljs-number">1</span>] = <span class="hljs-string">'0'</span>;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
 
-        return count;
-    }
-}
-</code></pre>
+        <span class="hljs-keyword">return</span> count;
+    &#125;
+&#125;</code></pre></div>
 <h1 id="leetcode-547-朋友圈"><a href="#leetcode-547-朋友圈" class="headerlink" title="leetcode 547. 朋友圈"></a><a href="https://leetcode-cn.com/problems/friend-circles/" target="_blank" rel="noopener">leetcode 547. 朋友圈</a></h1><p>班上有 N 名学生。其中有些人是朋友，有些则不是。他们的友谊具有是传递性。如果已知 A 是 B 的朋友，B 是 C 的朋友，那么我们可以认为 A 也是 C 的朋友。所谓的朋友圈，是指所有朋友的集合。</p>
 <p>给定一个 N * N 的矩阵 M，表示班级中学生之间的朋友关系。如果<code>M[i][j] = 1</code>，表示已知第 i 个和 j 个学生互为朋友关系，否则为不知道。你必须输出所有学生中的已知的朋友圈总数。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="lang-txt">输入: 
+<div class="hljs"><pre><code class="hljs txt">输入: 
 [[1,1,0],
  [1,1,0],
  [0,0,1]]
 输出: 2 
 说明：已知学生0和学生1互为朋友，他们在一个朋友圈。
-第2个学生自己在一个朋友圈。所以返回2。
-</code></pre>
+第2个学生自己在一个朋友圈。所以返回2。</code></pre></div>
 <p><strong>解法一：</strong>查并集</p>
-<pre><code class="lang-java">class Solution {
-    int[] parent;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[] parent;
 
-    public int findCircleNum(int[][] M) {
-        parent = new int[M.length];
-        for (int i = 0; i &lt; parent.length; i++) parent[i] = i; // 初始化
-        for (int i = 0; i &lt; M.length; i++) {
-            for (int j = i + 1; j &lt; M.length; j++) {
-                if (M[i][j] == 1) union(i, j);
-            }
-        }
-        int count = 0;
-        for (int i = 0; i &lt; parent.length; i++) {
-            if (parent[i] == i) count++;
-        }
-        return count;
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCircleNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M)</span> </span>&#123;
+        parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[M.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; parent.length; i++) parent[i] = i; <span class="hljs-comment">// 初始化</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M.length; i++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; M.length; j++) &#123;
+                <span class="hljs-keyword">if</span> (M[i][j] == <span class="hljs-number">1</span>) union(i, j);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; parent.length; i++) &#123;
+            <span class="hljs-keyword">if</span> (parent[i] == i) count++;
+        &#125;
+        <span class="hljs-keyword">return</span> count;
+    &#125;
 
-    public int find(int i) {
-        while (parent[i] != i) { // 路径压缩
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">while</span> (parent[i] != i) &#123; <span class="hljs-comment">// 路径压缩</span>
             parent[i] = parent[parent[i]];
             i = parent[i];
-        }
-        return i;
-    }
+        &#125;
+        <span class="hljs-keyword">return</span> i;
+    &#125;
 
-    public void union(int i, int j) {
-        int f1 = find(i);
-        int f2 = find(j);
-        if (f1 != f2) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> f1 = find(i);
+        <span class="hljs-keyword">int</span> f2 = find(j);
+        <span class="hljs-keyword">if</span> (f1 != f2) &#123;
             parent[f1] = f2;
-        }
-    }
-}
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>DFS</p>
-<pre><code class="lang-java">public class Solution {
-    public void dfs(int[][] M, int i) {
-        for (int j = 0; j &lt; M.length; j++) {
-            if (M[i][j] == 1 &amp;&amp; M[j][j] == 1) { // 利用M[i][i]代替visited
-                M[j][j] = 0;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M, <span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; M.length; j++) &#123;
+            <span class="hljs-keyword">if</span> (M[i][j] == <span class="hljs-number">1</span> &amp;&amp; M[j][j] == <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 利用M[i][i]代替visited</span>
+                M[j][j] = <span class="hljs-number">0</span>;
                 dfs(M, j);
-            }
-        }
-    }
-    public int findCircleNum(int[][] M) {
-        int count = 0;
-        for (int i = 0; i &lt; M.length; i++) {
-            if (M[i][i] == 1) {
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCircleNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M.length; i++) &#123;
+            <span class="hljs-keyword">if</span> (M[i][i] == <span class="hljs-number">1</span>) &#123;
                 dfs(M, i);
                 count++;
-            }
-        }
-        return count;
-    }
-}
-</code></pre>
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> count;
+    &#125;
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>BFS</p>
-<pre><code class="lang-java">class Solution {
-    public int findCircleNum(int[][] M) {
-        int count = 0;
-        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
-        for (int i = 0; i &lt; M.length; i++) {
-            if (M[i][i] == 1) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCircleNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M.length; i++) &#123;
+            <span class="hljs-keyword">if</span> (M[i][i] == <span class="hljs-number">1</span>) &#123;
                 count++;
                 queue.add(i);
-                while (queue.size() != 0) {
-                    int k = queue.remove();
-                    for (int j = 0; j &lt; M.length; j++) {
-                        if (M[k][j] == 1 &amp;&amp; M[j][j] == 1) {
-                            M[j][j] = 0;
+                <span class="hljs-keyword">while</span> (queue.size() != <span class="hljs-number">0</span>) &#123;
+                    <span class="hljs-keyword">int</span> k = queue.remove();
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; M.length; j++) &#123;
+                        <span class="hljs-keyword">if</span> (M[k][j] == <span class="hljs-number">1</span> &amp;&amp; M[j][j] == <span class="hljs-number">1</span>) &#123;
+                            M[j][j] = <span class="hljs-number">0</span>;
                             queue.add(j);
-                        }
-                    }
-                }
-            }
-        }
-        return count; 
-    }
-}
-</code></pre>
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> count; 
+    &#125;
+&#125;</code></pre></div>
 <h1 id="leetcode-684-冗余连接"><a href="#leetcode-684-冗余连接" class="headerlink" title="leetcode 684. 冗余连接"></a><a href="https://leetcode-cn.com/problems/redundant-connection/" target="_blank" rel="noopener">leetcode 684. 冗余连接</a></h1><p><strong>示例：</strong></p>
-<pre><code class="lang-txt">输入: [[1,2], [1,3], [2,3]]
+<div class="hljs"><pre><code class="hljs txt">输入: [[1,2], [1,3], [2,3]]
 输出: [2,3]
 解释: 给定的无向图为:
   1
  / \
-2 - 3
-</code></pre>
+2 - 3</code></pre></div>
 <p>可以证明最早出现的已经<code>union</code>的<code>pair</code>即是解。</p>
-<pre><code class="lang-java">class Solution {
-    int[] parent;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[] parent;
 
-    public int[] findRedundantConnection(int[][] edges) {
-        int N = edges.length;
-        parent = new int[N + 1];
-        for (int i = 1; i &lt;= N; i++) parent[i] = i;
-        for (int[] edge : edges) {
-            if (!union(edge[0], edge[1])) return edge;
-        }
-        return new int[0];
-    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] findRedundantConnection(<span class="hljs-keyword">int</span>[][] edges) &#123;
+        <span class="hljs-keyword">int</span> N = edges.length;
+        parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N + <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) parent[i] = i;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] edge : edges) &#123;
+            <span class="hljs-keyword">if</span> (!union(edge[<span class="hljs-number">0</span>], edge[<span class="hljs-number">1</span>])) <span class="hljs-keyword">return</span> edge;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+    &#125;
 
-    public int find(int i) {
-        while(parent[i] != i) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">while</span>(parent[i] != i) &#123;
             parent[i] = parent[parent[i]];
             i = parent[i];
-        }
-        return i;
-    }
+        &#125;
+        <span class="hljs-keyword">return</span> i;
+    &#125;
 
-    public boolean union(int i, int j) {
-        int f1 = find(i);
-        int f2 = find(j);
-        if (f1 != f2) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> f1 = find(i);
+        <span class="hljs-keyword">int</span> f2 = find(j);
+        <span class="hljs-keyword">if</span> (f1 != f2) &#123;
             parent[f1] = f2;
-            return true;
-        }
-        return false;
-    }
-}
-</code></pre>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    &#125;
+&#125;</code></pre></div>
 <h1 id="leetcode-765-情侣牵手"><a href="#leetcode-765-情侣牵手" class="headerlink" title="leetcode 765. 情侣牵手"></a><a href="https://leetcode-cn.com/problems/couples-holding-hands/" target="_blank" rel="noopener">leetcode 765. 情侣牵手</a></h1><p>先给出贪心算法，每次合理的交换只能促成一对或者两对，这个数字是一定的，所以顺序遍历，每次都交换即可。利用数组储存位置信息可以在时间复杂度 <script type="math/tex">O(N)</script> 内解决问题。</p>
-<pre><code class="lang-java">class Solution {
-    public int minSwapsCouples(int[] row) {
-        int[] site = new int[row.length];
-        for (int i = 0; i &lt; row.length; i++) site[row[i]] = i;
-        int count = 0;
-        for (int i = 0; i &lt; row.length; i += 2) {
-            if (row[i] == (row[i + 1] ^ 1)) continue;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minSwapsCouples</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span> </span>&#123;
+        <span class="hljs-keyword">int</span>[] site = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row.length; i++) site[row[i]] = i;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row.length; i += <span class="hljs-number">2</span>) &#123;
+            <span class="hljs-keyword">if</span> (row[i] == (row[i + <span class="hljs-number">1</span>] ^ <span class="hljs-number">1</span>)) <span class="hljs-keyword">continue</span>;
             count++;
-            int s = site[row[i] ^ 1];
-            row[s] = row[i + 1];
-            site[row[i + 1]] = s;
-        }
-        return count;
-    }
-}
-</code></pre>
+            <span class="hljs-keyword">int</span> s = site[row[i] ^ <span class="hljs-number">1</span>];
+            row[s] = row[i + <span class="hljs-number">1</span>];
+            site[row[i + <span class="hljs-number">1</span>]] = s;
+        &#125;
+        <span class="hljs-keyword">return</span> count;
+    &#125;
+&#125;</code></pre></div>
 <p>利用查并集解题的关键在于把相邻的两个位置看出一组（官方题解叫做<a href="https://leetcode-cn.com/problems/couples-holding-hands/solution/qing-lu-qian-shou-by-leetcode/" target="_blank" rel="noopener">沙发</a>），每有一个连通域，交换次数就减一。</p>
-<pre><code class="lang-java">class Solution {
-    int[] parent;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[] parent;
 
-    public int minSwapsCouples(int[] row) {
-        int n = row.length;
-        int m = n / 2;
-        parent = new int[m];
-        for (int i = 0; i &lt; m; i++) parent[i] = i;
-        for (int i = 0; i &lt; n; i += 2) {
-            union(row[i] / 2, row[i + 1] / 2);
-        }
-        int count = m;
-        for (int i = 0; i &lt; m; i++) {
-            if (parent[i] == i) count -= 1; // 每有一个连通域减一
-        }
-        return count;
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minSwapsCouples</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> n = row.length;
+        <span class="hljs-keyword">int</span> m = n / <span class="hljs-number">2</span>;
+        parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) parent[i] = i;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i += <span class="hljs-number">2</span>) &#123;
+            union(row[i] / <span class="hljs-number">2</span>, row[i + <span class="hljs-number">1</span>] / <span class="hljs-number">2</span>);
+        &#125;
+        <span class="hljs-keyword">int</span> count = m;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) &#123;
+            <span class="hljs-keyword">if</span> (parent[i] == i) count -= <span class="hljs-number">1</span>; <span class="hljs-comment">// 每有一个连通域减一</span>
+        &#125;
+        <span class="hljs-keyword">return</span> count;
+    &#125;
 
-    public int find(int i) {
-        while (parent[i] != i) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">while</span> (parent[i] != i) &#123;
             parent[i] = parent[parent[i]];
             i = parent[i];
-        }
-        return i;
-    }
+        &#125;
+        <span class="hljs-keyword">return</span> i;
+    &#125;
 
-    public void union(int i, int j) {
-        int f1 = find(i);
-        int f2 = find(j);
-        if (f1 != f2) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> f1 = find(i);
+        <span class="hljs-keyword">int</span> f2 = find(j);
+        <span class="hljs-keyword">if</span> (f1 != f2) &#123;
             parent[f2] = f1;
-        }
-    }
-}
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 <h1 id="leetcode-924-尽量减少恶意软件的传播"><a href="#leetcode-924-尽量减少恶意软件的传播" class="headerlink" title="leetcode 924. 尽量减少恶意软件的传播"></a><a href="https://leetcode-cn.com/problems/minimize-malware-spread/" target="_blank" rel="noopener">leetcode 924. 尽量减少恶意软件的传播</a></h1><p><strong>示例：</strong></p>
-<pre><code class="lang-txt">输入：graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
-输出：0
-</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入：graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+输出：0</code></pre></div>
 <p>本体关键在于，<code>initial</code>中只出现一次的节点移除才是有收益的，移除这些节点中所在连通域最大的节点即可。</p>
-<pre><code class="lang-java">class Solution {
-    int[] size;
-    int[] parent;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[] size;
+    <span class="hljs-keyword">int</span>[] parent;
 
-    public int minMalwareSpread(int[][] graph, int[] initial) {
-        int N = graph.length;
-        parent = new int[N];
-        for (int i = 0; i &lt; N; i++) parent[i] = i; // 初始化parent
-        size = new int[N];
-        Arrays.fill(size, 1); // 初始化size
-        Arrays.sort(initial); // 排序保证如果有多个节点满足条件，就返回索引最小的节点。
-        // 合并
-        for (int i = 0; i &lt; N; i++) {
-            for (int j = i + 1; j &lt; N; j++) {
-                if (graph[i][j] == 1) union(i, j);
-            }
-        }
-        // 计数
-        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-        for (int node : initial) {
-            int f = find(node);
-            map.put(f, map.getOrDefault(f, 0) + 1);
-        }
-
-        int cur_node = initial[0];
-        int cur_size = Integer.MIN_VALUE;
-        for (int node : initial) {
-            int f = find(node);
-            if (map.get(f) == 1 &amp;&amp; size[f] &gt; cur_size) { // 只出现一次才能说明移除是有用的
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minMalwareSpread</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] graph, <span class="hljs-keyword">int</span>[] initial)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> N = graph.length;
+        parent = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) parent[i] = i; <span class="hljs-comment">// 初始化parent</span>
+        size = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N];
+        Arrays.fill(size, <span class="hljs-number">1</span>); <span class="hljs-comment">// 初始化size</span>
+        Arrays.sort(initial); <span class="hljs-comment">// 排序保证如果有多个节点满足条件，就返回索引最小的节点。</span>
+        <span class="hljs-comment">// 合并</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; N; j++) &#123;
+                <span class="hljs-keyword">if</span> (graph[i][j] == <span class="hljs-number">1</span>) union(i, j);
+            &#125;
+        &#125;
+        <span class="hljs-comment">// 计数</span>
+        Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> node : initial) &#123;
+            <span class="hljs-keyword">int</span> f = find(node);
+            map.put(f, map.getOrDefault(f, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+        &#125;
+        
+        <span class="hljs-keyword">int</span> cur_node = initial[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">int</span> cur_size = Integer.MIN_VALUE;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> node : initial) &#123;
+            <span class="hljs-keyword">int</span> f = find(node);
+            <span class="hljs-keyword">if</span> (map.get(f) == <span class="hljs-number">1</span> &amp;&amp; size[f] &gt; cur_size) &#123; <span class="hljs-comment">// 只出现一次才能说明移除是有用的</span>
                 cur_node = node;
                 cur_size = size[f];
-            }
-        }
-        return cur_node;
-    }
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> cur_node;
+    &#125;
 
-    public int find(int i) {
-        while (parent[i] != i) { // 路径压缩
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">while</span> (parent[i] != i) &#123; <span class="hljs-comment">// 路径压缩</span>
             parent[i] = parent[parent[i]];
             i = parent[i];
-        }
-        return i;
-    }
-
-    public void union(int i, int j) {
-        int f1 = find(i);
-        int f2 = find(j);
-        if (f1 != f2) {
+        &#125;
+        <span class="hljs-keyword">return</span> i;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> f1 = find(i);
+        <span class="hljs-keyword">int</span> f2 = find(j);
+        <span class="hljs-keyword">if</span> (f1 != f2) &#123;
             parent[f2] = f1;
-            size[f1] += size[f2]; // 合并两个root的size到新的root
-        }
-    }
-}
-</code></pre>
+            size[f1] += size[f2]; <span class="hljs-comment">// 合并两个root的size到新的root</span>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9F%A5%E5%B9%B6%E9%9B%86/">查并集</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/java/">java</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%9F%A5%E5%B9%B6%E9%9B%86/">查并集</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/22/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">贪心算法(greedy algorithm)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="hidden-mobile">动态规划(Dynamic programming)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -670,10 +680,12 @@
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -695,48 +707,27 @@
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -746,10 +737,12 @@
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -758,24 +751,17 @@
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -821,7 +807,7 @@
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -829,12 +815,14 @@
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -842,31 +830,50 @@
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
+
+
 
 
 

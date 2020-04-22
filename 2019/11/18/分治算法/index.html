@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>分治算法(Divide-and-conquer algorithm) - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, November 18th 2019, 4:35 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-11-18 16:35">
+                    Monday, November 18th 2019, 4:35 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     1.1k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      5 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    16
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>看见O(log n)时间复杂度就想到了分治算法</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>看见O(log n)时间复杂度就想到了分治算法</p>
 <a id="more"></a>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在计算机科学中，分治法是一种很重要的算法。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法(快速排序，归并排序)，傅立叶变换(快速傅立叶变换) 。</p>
 <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
@@ -185,220 +189,233 @@
 </ol>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="1-归并排序"><a href="#1-归并排序" class="headerlink" title="1. 归并排序"></a>1. <a href="https://lil-q.github.io/2019/11/16/排序-Sort-算法/">归并排序</a></h3><h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. <a href="https://lil-q.github.io/2019/11/16/排序-Sort-算法/">快速排序</a></h3><h3 id="3-二分查找"><a href="#3-二分查找" class="headerlink" title="3. 二分查找"></a>3. 二分查找</h3><p><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">leetcode 34. 在排序数组中查找元素的第一个和最后一个位置</a></p>
 <p>给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。你的算法时间复杂度必须是 O(log n) 级别。如果数组中不存在目标值，返回 [-1, -1]。</p>
-<pre><code class="lang-python">def extreme_insertion_index(self, nums, target, left): 
-    &#39;&#39;&#39;
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extreme_insertion_index</span><span class="hljs-params">(self, nums, target, left)</span>:</span> 
+    <span class="hljs-string">'''
     left是一个布尔值，用来决定target==nums[mid]情况下的选择：求左边界时，hi=mid，区间往左走；求右边界时，lo=mid+1，区间往右走。
-    &#39;&#39;&#39;
-    lo = 0
+    '''</span>
+    lo = <span class="hljs-number">0</span>
     hi = len(nums)
-    while lo &lt; hi:
-        mid = (lo + hi) // 2
-        if nums[mid] &gt; target or (left and target == nums[mid]):
+    <span class="hljs-keyword">while</span> lo &lt; hi:
+        mid = (lo + hi) // <span class="hljs-number">2</span>
+        <span class="hljs-keyword">if</span> nums[mid] &gt; target <span class="hljs-keyword">or</span> (left <span class="hljs-keyword">and</span> target == nums[mid]):
             hi = mid
-        else:
-            lo = mid+1
-    return lo
+        <span class="hljs-keyword">else</span>:
+            lo = mid+<span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> lo
 
-def searchRange(self, nums, target):
-    left_idx = self.extreme_insertion_index(nums, target, True)
-    if left_idx == len(nums) or nums[left_idx] != target:
-        return [-1, -1]
-    return [left_idx, self.extreme_insertion_index(nums, target, False)-1]
-</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">searchRange</span><span class="hljs-params">(self, nums, target)</span>:</span>
+    left_idx = self.extreme_insertion_index(nums, target, <span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">if</span> left_idx == len(nums) <span class="hljs-keyword">or</span> nums[left_idx] != target:
+        <span class="hljs-keyword">return</span> [<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>]
+    <span class="hljs-keyword">return</span> [left_idx, self.extreme_insertion_index(nums, target, <span class="hljs-literal">False</span>)<span class="hljs-number">-1</span>]</code></pre></div>
 <p>上面<code>extreme_insertion_index()</code>的代码是采用左闭右开的区间，也可以改写成以下闭区间的写法：</p>
-<pre><code class="lang-python">def extreme_insertion_index(self, nums, target, left):  
-    lo = 0
-    hi = len(nums)-1 # 闭区间
-    while lo &lt;= hi: # 加入=，防止hi-lo=1时漏判
-        mid = (lo + hi) // 2
-        if nums[mid] &gt; target or (left and target == nums[mid]):
-            hi = mid+1 # 需要加一，防止陷入死循环
-        else:
-            lo = mid+1
-    return lo
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extreme_insertion_index</span><span class="hljs-params">(self, nums, target, left)</span>:</span>  
+    lo = <span class="hljs-number">0</span>
+    hi = len(nums)<span class="hljs-number">-1</span> <span class="hljs-comment"># 闭区间</span>
+    <span class="hljs-keyword">while</span> lo &lt;= hi: <span class="hljs-comment"># 加入=，防止hi-lo=1时漏判</span>
+        mid = (lo + hi) // <span class="hljs-number">2</span>
+        <span class="hljs-keyword">if</span> nums[mid] &gt; target <span class="hljs-keyword">or</span> (left <span class="hljs-keyword">and</span> target == nums[mid]):
+            hi = mid+<span class="hljs-number">1</span> <span class="hljs-comment"># 需要加一，防止陷入死循环</span>
+        <span class="hljs-keyword">else</span>:
+            lo = mid+<span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> lo</code></pre></div>
 <h3 id="4-重建二叉树"><a href="#4-重建二叉树" class="headerlink" title="4. 重建二叉树"></a>4. 重建二叉树</h3><p> <a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">leetcode 105. 从前序与中序遍历序列构造二叉树</a></p>
 <p>根据一棵树的前序遍历与中序遍历构造二叉树（假设树中没有重复的元素）。</p>
 <p>例如，给出</p>
-<pre><code class="lang-python">前序遍历 preorder = [3,9,20,15,7]
-中序遍历 inorder = [9,3,15,20,7]
-</code></pre>
+<div class="hljs"><pre><code class="hljs python">前序遍历 preorder = [<span class="hljs-number">3</span>,<span class="hljs-number">9</span>,<span class="hljs-number">20</span>,<span class="hljs-number">15</span>,<span class="hljs-number">7</span>]
+中序遍历 inorder = [<span class="hljs-number">9</span>,<span class="hljs-number">3</span>,<span class="hljs-number">15</span>,<span class="hljs-number">20</span>,<span class="hljs-number">7</span>]</code></pre></div>
 <p>返回如下的二叉树：</p>
-<pre><code>    3
+<div class="hljs"><pre><code>    3
    / \
   9  20
     /  \
    15   7
-</code></pre><p>由于是树，我们很容易意识到左子树和右子树就是两个子问题。对于一个子问题，我们只需要找到根节点，连接左子树，连接右子树。</p>
-<pre><code class="lang-python">class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -&gt; TreeNode:
-        if not preorder: return None
-        root = TreeNode(preorder[0])
-        mid = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
-        root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
-        return root
-</code></pre>
+</code></pre></div><p>由于是树，我们很容易意识到左子树和右子树就是两个子问题。对于一个子问题，我们只需要找到根节点，连接左子树，连接右子树。</p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">buildTree</span><span class="hljs-params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> preorder: <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+        root = TreeNode(preorder[<span class="hljs-number">0</span>])
+        mid = inorder.index(preorder[<span class="hljs-number">0</span>])
+        root.left = self.buildTree(preorder[<span class="hljs-number">1</span>:mid + <span class="hljs-number">1</span>], inorder[:mid])
+        root.right = self.buildTree(preorder[mid + <span class="hljs-number">1</span>:], inorder[mid + <span class="hljs-number">1</span>:])
+        <span class="hljs-keyword">return</span> root</code></pre></div>
 <p>官方给出的方法更好，不需要反复传入<code>list</code>并且用<code>dict</code>代替了<code>list.index()</code>：</p>
-<pre><code class="lang-python">class Solution:
-    def buildTree(self, preorder, inorder):
-        &quot;&quot;&quot;
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">buildTree</span><span class="hljs-params">(self, preorder, inorder)</span>:</span>
+        <span class="hljs-string">"""
         :type preorder: List[int]
         :type inorder: List[int]
         :rtype: TreeNode
-        &quot;&quot;&quot;
-        def helper(in_left = 0, in_right = len(inorder)):
-            nonlocal pre_idx
-            # if there is no elements to construct subtrees
-            if in_left == in_right:
-                return None
-
-            # pick up pre_idx element as a root
+        """</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">helper</span><span class="hljs-params">(in_left = <span class="hljs-number">0</span>, in_right = len<span class="hljs-params">(inorder)</span>)</span>:</span>
+            <span class="hljs-keyword">nonlocal</span> pre_idx
+            <span class="hljs-comment"># if there is no elements to construct subtrees</span>
+            <span class="hljs-keyword">if</span> in_left == in_right:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+            
+            <span class="hljs-comment"># pick up pre_idx element as a root</span>
             root_val = preorder[pre_idx]
             root = TreeNode(root_val)
 
-            # root splits inorder list
-            # into left and right subtrees
+            <span class="hljs-comment"># root splits inorder list</span>
+            <span class="hljs-comment"># into left and right subtrees</span>
             index = idx_map[root_val]
 
-            # recursion 
-            pre_idx += 1
-            # build left subtree
+            <span class="hljs-comment"># recursion </span>
+            pre_idx += <span class="hljs-number">1</span>
+            <span class="hljs-comment"># build left subtree</span>
             root.left = helper(in_left, index)
-            # build right subtree
-            root.right = helper(index + 1, in_right)
-            return root
-
-        # start from first preorder element
-        pre_idx = 0
-        # build a hashmap value -&gt; its index
-        idx_map = {val:idx for idx, val in enumerate(inorder)} 
-        return helper()
-</code></pre>
+            <span class="hljs-comment"># build right subtree</span>
+            root.right = helper(index + <span class="hljs-number">1</span>, in_right)
+            <span class="hljs-keyword">return</span> root
+        
+        <span class="hljs-comment"># start from first preorder element</span>
+        pre_idx = <span class="hljs-number">0</span>
+        <span class="hljs-comment"># build a hashmap value -&gt; its index</span>
+        idx_map = &#123;val:idx <span class="hljs-keyword">for</span> idx, val <span class="hljs-keyword">in</span> enumerate(inorder)&#125; 
+        <span class="hljs-keyword">return</span> helper()</code></pre></div>
 <p>给出c++版本:</p>
-<pre><code class="lang-c++">class Solution {
-public:
-    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) {
-        int pos = 0;
-        return buildTree(preorder, pos, inorder, 0, preorder.size() - 1);
-    }
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">TreeNode* <span class="hljs-title">buildTree</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; preorder, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> pos = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> buildTree(preorder, pos, inorder, <span class="hljs-number">0</span>, preorder.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);
+    &#125;
 
-    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, int&amp; pos, vector&lt;int&gt;&amp;inorder, int left, int right){
-        if(pos &gt;= preorder.size()){
-            return 0;
-        }
-        int i = left;
-        for(i = left; i &lt;= right; i++){
-            if(inorder[i] == preorder[pos]){
-                break;
-            }
-        }
-        TreeNode* node = new TreeNode(preorder[pos]);
-        if (left &lt; i){node-&gt;left = buildTree(preorder, ++pos, inorder, left, i - 1);}
-        if (i &lt; right){node-&gt;right = buildTree(preorder, ++pos, inorder, i + 1, right);}
-        return node;  
-    }
-};
-</code></pre>
+    <span class="hljs-function">TreeNode* <span class="hljs-title">buildTree</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; preorder, <span class="hljs-keyword">int</span>&amp; pos, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp;inorder, <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span></span>&#123;
+        <span class="hljs-keyword">if</span>(pos &gt;= preorder.<span class="hljs-built_in">size</span>())&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+        <span class="hljs-keyword">int</span> i = left;
+        <span class="hljs-keyword">for</span>(i = left; i &lt;= right; i++)&#123;
+            <span class="hljs-keyword">if</span>(inorder[i] == preorder[pos])&#123;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+        &#125;
+        TreeNode* node = <span class="hljs-keyword">new</span> TreeNode(preorder[pos]);
+        <span class="hljs-keyword">if</span> (left &lt; i)&#123;node-&gt;left = buildTree(preorder, ++pos, inorder, left, i - <span class="hljs-number">1</span>);&#125;
+        <span class="hljs-keyword">if</span> (i &lt; right)&#123;node-&gt;right = buildTree(preorder, ++pos, inorder, i + <span class="hljs-number">1</span>, right);&#125;
+        <span class="hljs-keyword">return</span> node;  
+    &#125;
+&#125;;</code></pre></div>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zh.wikipedia.org/wiki/分治法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%88%86%E6%B2%BB%E6%B3%95</a> </li>
 <li><a href="https://hotttao.github.io/2018/11/05/alog/divide/" target="_blank" rel="noopener">https://hotttao.github.io/2018/11/05/alog/divide/</a> </li>
 <li><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/zai-pai-xu-shu-zu-zhong-cha-zhao-yuan-su-de-di-yi-/</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%88%86%E6%B2%BB/">分治</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%88%86/">二分</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/python/">python</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E5%88%86%E6%B2%BB/">分治</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%88%86/">二分</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/04/%E6%A0%91-tree/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">树(Tree)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/17/%E5%A0%86-heap/">
+                        <span class="hidden-mobile">堆(Heap)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -432,10 +449,12 @@ public:
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -457,48 +476,27 @@ public:
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -508,10 +506,12 @@ public:
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -520,24 +520,17 @@ public:
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -583,7 +576,7 @@ public:
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -591,16 +584,24 @@ public:
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

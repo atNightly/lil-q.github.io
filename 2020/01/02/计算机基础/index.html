@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>C++编程基础 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Thursday, January 2nd 2020, 5:33 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-01-02 17:33">
+                    Thursday, January 2nd 2020, 5:33 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     2k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      7 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    23
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>总结一些计算机基础知识</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>总结一些计算机基础知识</p>
 <a id="more"></a>
 <h1 id="储存单位"><a href="#储存单位" class="headerlink" title="储存单位"></a>储存单位</h1><ul>
 <li><strong>位(bit)</strong>：数据存储的最小单位。在计算机中的二进制数系统中，位，简记为b,也称为比特，每个0或1就是一个位(bit)。计算机中的CPU位数指的是CPU一次能处理的最大位数。例如32位计算机的CPU一个机器周期内可以处理32位二进制数据的计算机。</li>
@@ -276,7 +280,7 @@
 </div>
 <p><strong>注意：</strong>不同系统会有所差异。</p>
 <h1 id="数字编码"><a href="#数字编码" class="headerlink" title="数字编码"></a>数字编码</h1><p>我们知道现在计算机普遍使用二进制来表示，这是因为二进制能够工作的更好。对于二进制数来说，单独的讲某一个位没有太多的意义，但是可以将多个位组合起来，再加上某种解释，就可以用来表示我们日常生活中常用的数字。 计算机中常用表示的数又分为<strong>有符号数</strong>、<strong>无符号数</strong>和<strong>浮点数</strong>。</p>
-<p><img src="20180503165002430.png" alt="image1"></p>
+<p><img src="20180503165002430.png" srcset="/img/loading.gif" alt="image1"></p>
 <h2 id="无符号"><a href="#无符号" class="headerlink" title="无符号"></a>无符号</h2><p>无符号表示大于或者等于0的数字，是基于传统的二进制表示法进行编码。无符号的二进制数表示一个很重要的特性，也就是对于任何介于0~2^w-1 之间的数值都有一个唯一w为的值编码。</p>
 <h2 id="有符号数"><a href="#有符号数" class="headerlink" title="有符号数"></a>有符号数</h2><p>有符号数表示可以为正或者为负的数字，通常采用<strong>补码</strong>进行编码。 负数是有符号的数值,对于负数来说，我们最难的就是如何表示它的负号.先来看看什么是<strong>原码</strong>、<strong>补码</strong>、<strong>反码</strong>。</p>
 <p><strong>原码</strong></p>
@@ -296,30 +300,28 @@
 <p>至此，我们可以使用补码来表示我们生活中常用的正数、负数；当然，这是我们丢弃了最高位的代价来换取的。</p>
 <h2 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h2><p>小数点为定点，用来表示小数的，采用的是BCD码来编码。BCD码将0~9中的每个数用4位二进制数来表示，这样对于32位就可以表示8个数字，表示的数字范围也就是0~999999.99之间的1亿个实数。</p>
 <p>BCD编码也有很多用途，比如银行、超市这种需要用到小数记金额的情况就很合适，但是如果表示很小、或者很大的数就不是很合适了，比如地球到太阳的距离，一个氢原子的半径等等。而且这样编码非常浪费，对于32位整数我们可以表示将近40亿个数字，而BCD编码的数字只能表示1亿个数字。</p>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.png" alt="image2"></p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.png" srcset="/img/loading.gif" alt="image2"></p>
 <h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>srand函数是随机数发生器的初始化函数。</p>
-<pre><code class="lang-c++">void srand(unsigned seed)
-</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">srand</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> seed)</span></span></code></pre></div>
 <p><code>srand()</code>需要提供一个种子，这个种子会对应一个随机数，如果使用相同的种子后面的rand()函数会出现一样的随机数。如：<code>srand(1)</code>，直接使用 1 来初始化种子。不过为了防止随机数每次重复，常常使用系统时间来初始化，即使用 time 函数来获得系统时间，它的返回值为从 00:00:00 GMT, January 1, 1970 到现在所持续的秒数，然后将 time_t 型数据转化为(unsigned)型再传给 srand 函数，即： srand((unsigned) time(&amp;t)); 还有一个经常用法，不需要定义time_t型t变量，即： srand((unsigned) time(NULL))；直接传入一个空指针，因为你的程序中往往并不需要经过参数获得的t数据。</p>
-<pre><code class="lang-c++">#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;time.h&gt; /*用到了time函数，所以要有这个头文件*/
-#define MAX 10
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;time.h&gt; /*用到了time函数，所以要有这个头文件*/</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX 10</span>
 
-int main(void)
-{
-    int number[MAX] = { 0 };
-    int i;
-    srand((unsigned)time(NULL)); /*播种子*/
-    for (i = 0; i &lt; MAX; i++)
-    {
-        number[i] = rand() % 100; /*产生100以内的随机整数*/
-        printf(&quot;%d &quot;, number[i]);
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}
-</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>&#123;
+	<span class="hljs-keyword">int</span> number[MAX] = &#123; <span class="hljs-number">0</span> &#125;;
+	<span class="hljs-keyword">int</span> i;
+	srand((<span class="hljs-keyword">unsigned</span>)time(<span class="hljs-literal">NULL</span>)); <span class="hljs-comment">/*播种子*/</span>
+	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; MAX; i++)
+	&#123;
+		number[i] = rand() % <span class="hljs-number">100</span>; <span class="hljs-comment">/*产生100以内的随机整数*/</span>
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, number[i]);
+	&#125;
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 <h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><div class="table-container">
 <table>
 <thead>
@@ -387,12 +389,10 @@ int main(void)
 <h1 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h1><p>在 C++ 中，有两种简单的定义常量的方式：</p>
 <ul>
 <li><p>使用 <strong>#define</strong> 预处理器。</p>
-<pre><code class="lang-c++">#define identifier value
-</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> identifier value</span></code></pre></div>
 </li>
 <li><p>使用 <strong>const</strong> 关键字。</p>
-<pre><code class="lang-c++">const type variable = value;
-</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> type variable = value;</code></pre></div>
 </li>
 </ul>
 <h1 id="Struct和Class"><a href="#Struct和Class" class="headerlink" title="Struct和Class"></a>Struct和Class</h1><p>C++ 中关键字<code>struct</code>和<code>class</code>都是用来定义类的，二者除了默认访问限定符不同，结构体（包括共用体）默认成员为public，而类默认成员是private型的。其他所有方面都一样。</p>
@@ -403,95 +403,114 @@ int main(void)
 <li><a href="https://blog.csdn.net/whyel/article/details/81067989" target="_blank" rel="noopener">https://blog.csdn.net/whyel/article/details/81067989</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/01/02/PyTorch%E5%AD%A6%E4%B9%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PyTorch基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/02/%E6%9F%A5%E5%B9%B6%E9%9B%86-union-find-algorithm/">
+                        <span class="hidden-mobile">查并集(Union-find algorithm)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/C/">C++</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -525,10 +544,12 @@ int main(void)
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -550,48 +571,27 @@ int main(void)
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -601,10 +601,12 @@ int main(void)
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -613,24 +615,17 @@ int main(void)
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -676,7 +671,7 @@ int main(void)
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -684,16 +679,24 @@ int main(void)
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

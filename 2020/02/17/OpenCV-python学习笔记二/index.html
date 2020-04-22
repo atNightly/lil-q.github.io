@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>OpenCV-python学习笔记二 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, February 17th 2020, 2:44 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-17 14:44">
+                    Monday, February 17th 2020, 2:44 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     2.3k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      9 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    29
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>滤波与阈值分割</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>滤波与阈值分割</p>
 <a id="more"></a>
 <h1 id="滤波"><a href="#滤波" class="headerlink" title="滤波"></a>滤波</h1><p>滤波是一种卷积操作，常用于图像的预处理。低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。</p>
 <ul>
@@ -183,32 +187,27 @@
 </ul>
 <p>常见噪声有<a href="https://baike.baidu.com/item/椒盐噪声/3455958?fr=aladdin" target="_blank" rel="noopener">椒盐噪声</a>和<a href="https://baike.baidu.com/item/高斯噪声" target="_blank" rel="noopener">高斯噪声</a>，椒盐噪声可以理解为斑点，随机出现在图像中的黑点或白点；高斯噪声可以理解为拍摄图片时由于光照等原因造成的噪声。</p>
 <h2 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h2><p>均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用<code>cv2.blur()</code>实现，如3×3的卷积核：</p>
-<script type="math/tex; mode=display">kernel_{m} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><pre><code class="lang-python">img = cv2.imread(&#39;lena.jpg&#39;)
-blur = cv2.blur(img, (3, 3))  # 均值模糊
-</code></pre>
+<script type="math/tex; mode=display">kernel_{m} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><div class="hljs"><pre><code class="hljs python">img = cv2.imread(<span class="hljs-string">'lena.jpg'</span>)
+blur = cv2.blur(img, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>))  <span class="hljs-comment"># 均值模糊</span></code></pre></div>
 <h2 id="方框滤波"><a href="#方框滤波" class="headerlink" title="方框滤波"></a>方框滤波</h2><p>方框滤波跟均值滤波很像，如3×3的滤波核如下：</p>
 <script type="math/tex; mode=display">kernel_{b} = a\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & 1 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>用<code>cv2.boxFilter()</code>函数实现，当</p>
-<pre><code class="lang-python"># 前面的均值滤波也可以用方框滤波实现
-blur = cv2.boxFilter(img, -1, (3, 3), normalize=True)
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 前面的均值滤波也可以用方框滤波实现</span>
+blur = cv2.boxFilter(img, <span class="hljs-number">-1</span>, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), normalize=<span class="hljs-literal">True</span>)</code></pre></div>
 <ul>
 <li>参数2：<code>ddtype</code>为目标的数据类型，取-1表示和原图相同</li>
 <li>可选参数<code>normalize</code>为<code>True</code>的时候，方框滤波就是均值滤波，上式中的a就等于1/9；<code>normalize</code>为<code>False</code>的时候，a=1，相当于求区域内的像素和。</li>
 </ul>
 <h2 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h2><p>前面两种滤波方式，卷积核内的每个值都一样，也就是说图像区域中每个像素的权重也就一样。高斯滤波的卷积核权重并不相同：中间像素点权重最高，越远离中心的像素权重越小。显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用<a href="http://codec.wang/opencv-python-smoothing-images/#番外小篇：高斯滤波卷积核" target="_blank" rel="noopener">2维的高斯函数</a>，比如OpenCV中默认的3×3的高斯卷积核：</p>
 <script type="math/tex; mode=display">kernel_{g} = \left[ \begin{matrix} 0.0625 & 0.125 & 0.0625 \newline 0.125 & 0.25 & 0.125 \newline 0.0625 & 0.125 & 0.0625 \end{matrix} \right]</script><p>OpenCV中对应函数为<code>cv2.GaussianBlur(src,ksize,sigmaX)</code>：</p>
-<pre><code class="lang-python"># 高斯滤波
-gaussian = cv2.GaussianBlur(img, (5, 5), 1)
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 高斯滤波</span>
+gaussian = cv2.GaussianBlur(img, (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>), <span class="hljs-number">1</span>)</code></pre></div>
 <p>参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。</p>
 <h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><p>中值又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除<strong>椒盐噪声</strong>和<strong>斑点噪声</strong>。中值是一种<strong>非线性操作</strong>，效率相比前面几种线性滤波要慢。</p>
-<pre><code class="lang-python"># 中值滤波
-median = cv2.medianBlur(img, 5)
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 中值滤波</span>
+median = cv2.medianBlur(img, <span class="hljs-number">5</span>)</code></pre></div>
 <h2 id="双边滤波"><a href="#双边滤波" class="headerlink" title="双边滤波"></a>双边滤波</h2><p>模糊操作基本都会损失掉图像细节信息，尤其前面介绍的线性滤波器，图像的边缘信息很难保留下来。然而，边缘（edge）信息是图像中很重要的一个特征，所以这才有了另一种<strong>非线性滤波</strong>双边滤波。双边滤波在高斯滤波的基础上加入了对<strong>灰度信息的权重</strong>，即在邻域内，灰度值越接近中心点灰度值的点的权重更大，灰度值相差大的点权重越小。此权重大小，则由值域高斯函数确定。两者权重系数相乘，得到最终的卷积模板。</p>
-<pre><code class="lang-python"># 双边滤波
-blur = cv2.bilateralFilter(img, 9, 75, 75)
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 双边滤波</span>
+blur = cv2.bilateralFilter(img, <span class="hljs-number">9</span>, <span class="hljs-number">75</span>, <span class="hljs-number">75</span>)</code></pre></div>
 <ul>
 <li>参数2：d – Diameter of each pixel neighborhood that is used during filtering. If it is non-positive, it is computed from <code>sigmaSpace</code> .</li>
 <li>参数3：sigmaColor – Filter sigma in the color space. </li>
@@ -227,9 +226,8 @@ blur = cv2.bilateralFilter(img, 9, 75, 75)
 <li>非线性滤波方式：中值滤波、双边滤波（速度相对慢）。</li>
 </ul>
 <h1 id="阈值分割"><a href="#阈值分割" class="headerlink" title="阈值分割"></a>阈值分割</h1><h2 id="固定阈值分割"><a href="#固定阈值分割" class="headerlink" title="固定阈值分割"></a>固定阈值分割</h2><p>固定阈值分割很直接，像素点值大于阈值变成一类值，小于阈值变成另一类值。</p>
-<pre><code class="lang-PYTHON"># 阈值分割
-ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
-</code></pre>
+<div class="hljs"><pre><code class="hljs PYTHON"><span class="hljs-comment"># 阈值分割</span>
+ret, th = cv2.threshold(img, <span class="hljs-number">127</span>, <span class="hljs-number">255</span>, cv2.THRESH_BINARY)</code></pre></div>
 <p><code>cv2.threshold()</code>用来实现阈值分割，ret是return value缩写，代表当前的阈值，暂时不用理会。函数有4个参数：</p>
 <ul>
 <li>参数1：要处理的原图，<strong>一般是灰度图</strong></li>
@@ -237,32 +235,31 @@ ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 <li>参数3：最大阈值，一般为255</li>
 <li>参数4：阈值的方式，主要有5种，详情：<a href="https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576" target="_blank" rel="noopener">ThresholdTypes</a></li>
 </ul>
-<p><img src="threshold.png" alt=""></p>
+<p><img src="threshold.png" srcset="/img/loading.gif" alt=""></p>
 <p>最常见的就是前两种，相当于二值化。</p>
 <h2 id="自适应阈值"><a href="#自适应阈值" class="headerlink" title="自适应阈值"></a>自适应阈值</h2><p>看得出来固定阈值是在整幅图片上应用一个阈值进行分割，<strong>它并不适用于明暗分布不均的图片</strong>。 <code>cv2.adaptiveThreshold()</code>自适应阈值会每次取图片的一小部分计算阈值，这样图片不同区域的阈值就不尽相同。</p>
-<pre><code class="lang-python">import matplotlib.pyplot as plt
-import cv2
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> cv2
 
-# 自适应阈值对比固定阈值
-img = cv2.imread(&#39;img_name.jpg&#39;, 0)
+<span class="hljs-comment"># 自适应阈值对比固定阈值</span>
+img = cv2.imread(<span class="hljs-string">'img_name.jpg'</span>, <span class="hljs-number">0</span>)
 
-# 固定阈值
-ret, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
-# 自适应阈值
+<span class="hljs-comment"># 固定阈值</span>
+ret, th1 = cv2.threshold(img, <span class="hljs-number">127</span>, <span class="hljs-number">255</span>, cv2.THRESH_BINARY)
+<span class="hljs-comment"># 自适应阈值</span>
 th2 = cv2.adaptiveThreshold(
-    img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 4)
+    img, <span class="hljs-number">255</span>, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, <span class="hljs-number">11</span>, <span class="hljs-number">4</span>)
 th3 = cv2.adaptiveThreshold(
-    img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 6)
+    img, <span class="hljs-number">255</span>, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, <span class="hljs-number">17</span>, <span class="hljs-number">6</span>)
 
-titles = [&#39;Original&#39;, &#39;Global(v = 127)&#39;, &#39;Adaptive Mean&#39;, &#39;Adaptive Gaussian&#39;]
+titles = [<span class="hljs-string">'Original'</span>, <span class="hljs-string">'Global(v = 127)'</span>, <span class="hljs-string">'Adaptive Mean'</span>, <span class="hljs-string">'Adaptive Gaussian'</span>]
 images = [img, th1, th2, th3]
 
-for i in range(4):
-    plt.subplot(2, 2, i + 1), plt.imshow(images[i], &#39;gray&#39;)
-    plt.title(titles[i], fontsize=8)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>):
+    plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, i + <span class="hljs-number">1</span>), plt.imshow(images[i], <span class="hljs-string">'gray'</span>)
+    plt.title(titles[i], fontsize=<span class="hljs-number">8</span>)
     plt.xticks([]), plt.yticks([])
-plt.show()
-</code></pre>
+plt.show()</code></pre></div>
 <ul>
 <li>参数1：要处理的原图</li>
 <li>参数2：最大阈值，一般为255</li>
@@ -275,167 +272,184 @@ plt.show()
 <li>参数5：小区域的面积，如11就是11*11的小块</li>
 <li>参数6：最终阈值等于小区域计算出的阈值再减去此值</li>
 </ul>
-<h2 id="Otsu阈值法"><a href="#Otsu阈值法" class="headerlink" title="Otsu阈值法"></a>Otsu阈值法</h2><pre><code class="lang-python"># 先进行高斯滤波，再使用Otsu阈值法
-blur = cv2.GaussianBlur(img, (5, 5), 0)
-ret3, th3 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-</code></pre>
+<h2 id="Otsu阈值法"><a href="#Otsu阈值法" class="headerlink" title="Otsu阈值法"></a>Otsu阈值法</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 先进行高斯滤波，再使用Otsu阈值法</span>
+blur = cv2.GaussianBlur(img, (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>), <span class="hljs-number">0</span>)
+ret3, th3 = cv2.threshold(blur, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</code></pre></div>
 <script type="math/tex; mode=display">g=\omega_0\omega_1(\mu_0-\mu_1)^2</script><p><strong>$ g $就是前景与背景两类之间的方差，这个值越大，说明前景和背景的差别也就越大，效果越好。Otsu算法便是遍历阈值T，使得$ g $最大，所以又称为最大类间方差法。</strong>基本上双峰图片的阈值T在两峰之间的谷底。<a href="http://codec.wang/opencv-python-extra-otsu-thresholding/" target="_blank" rel="noopener">原文地址</a></p>
 <h2 id="背景差分"><a href="#背景差分" class="headerlink" title="背景差分"></a>背景差分</h2><p>背景差分（Background Subtraction, BS）是通过使用<strong>静态</strong>相机来生成前景蒙版（即包含属于场景中的<strong>移动对象</strong>的像素的二进制图像）的通用且广泛使用的技术。 顾名思义，BS是在当前帧和背景模型之间执行减法运算，其中场景的静态部分，或者可视为背景的所有内容将被减去，移动对象将会被提取出来。如下图所示。</p>
-<p><img src="Background_Subtraction_Tutorial_Scheme.png" alt=""></p>
+<p><img src="Background_Subtraction_Tutorial_Scheme.png" srcset="/img/loading.gif" alt=""></p>
 <p>后台建模包括两个主要步骤：</p>
 <ul>
 <li>背景初始化 </li>
 <li>当前帧更新 </li>
 </ul>
 <p>官方给出了下面的例子：</p>
-<pre><code class="lang-python">from __future__ import print_function
-import cv2 as cv
-import argparse
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
+<span class="hljs-keyword">import</span> cv2 <span class="hljs-keyword">as</span> cv
+<span class="hljs-keyword">import</span> argparse
 
-parser = argparse.ArgumentParser(description=&#39;This program shows how to use background subtraction methods provided by OpenCV. You can process both videos and images.&#39;)
-parser.add_argument(&#39;--input&#39;, type=str, help=&#39;Path to a video or a sequence of image.&#39;, default=&#39;Video_name.mp4&#39;) # 输入视频路径
-parser.add_argument(&#39;--algo&#39;, type=str, help=&#39;Background subtraction method (KNN, MOG2).&#39;, default=&#39;KNN&#39;) # 输入差分方法: KNN or MOG2
+parser = argparse.ArgumentParser(description=<span class="hljs-string">'This program shows how to use background subtraction methods provided by OpenCV. You can process both videos and images.'</span>)
+parser.add_argument(<span class="hljs-string">'--input'</span>, type=str, help=<span class="hljs-string">'Path to a video or a sequence of image.'</span>, default=<span class="hljs-string">'Video_name.mp4'</span>) <span class="hljs-comment"># 输入视频路径</span>
+parser.add_argument(<span class="hljs-string">'--algo'</span>, type=str, help=<span class="hljs-string">'Background subtraction method (KNN, MOG2).'</span>, default=<span class="hljs-string">'KNN'</span>) <span class="hljs-comment"># 输入差分方法: KNN or MOG2</span>
 args = parser.parse_args()
 
-## [create]
-#create Background Subtractor objects
-if args.algo == &#39;MOG2&#39;:
+<span class="hljs-comment">## [create]</span>
+<span class="hljs-comment">#create Background Subtractor objects</span>
+<span class="hljs-keyword">if</span> args.algo == <span class="hljs-string">'MOG2'</span>:
     backSub = cv.createBackgroundSubtractorMOG2()
-else:
+<span class="hljs-keyword">else</span>:
     backSub = cv.createBackgroundSubtractorKNN()
-## [create]
+<span class="hljs-comment">## [create]</span>
 
-## [capture]
+<span class="hljs-comment">## [capture]</span>
 capture = cv.VideoCapture(cv.samples.findFileOrKeep(args.input))
-if not capture.isOpened:
-    print(&#39;Unable to open: &#39; + args.input)
-    exit(0)
-## [capture]
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> capture.isOpened:
+    print(<span class="hljs-string">'Unable to open: '</span> + args.input)
+    exit(<span class="hljs-number">0</span>)
+<span class="hljs-comment">## [capture]</span>
 
-while True:
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
     ret, frame = capture.read()
-    if frame is None:
-        break
+    <span class="hljs-keyword">if</span> frame <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">break</span>
 
-    ## [apply]
-    #update the background model
+    <span class="hljs-comment">## [apply]</span>
+    <span class="hljs-comment">#update the background model</span>
     fgMask = backSub.apply(frame)
-    ## [apply]
+    <span class="hljs-comment">## [apply]</span>
 
-    ## [display_frame_number]
-    #get the frame number and write it on the current frame
-    cv.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
-    cv.putText(frame, str(capture.get(cv.CAP_PROP_POS_FRAMES)), (15, 15),
-               cv.FONT_HERSHEY_SIMPLEX, 0.5 , (0,0,0))
-    ## [display_frame_number]
+    <span class="hljs-comment">## [display_frame_number]</span>
+    <span class="hljs-comment">#get the frame number and write it on the current frame</span>
+    cv.rectangle(frame, (<span class="hljs-number">10</span>, <span class="hljs-number">2</span>), (<span class="hljs-number">100</span>,<span class="hljs-number">20</span>), (<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>), <span class="hljs-number">-1</span>)
+    cv.putText(frame, str(capture.get(cv.CAP_PROP_POS_FRAMES)), (<span class="hljs-number">15</span>, <span class="hljs-number">15</span>),
+               cv.FONT_HERSHEY_SIMPLEX, <span class="hljs-number">0.5</span> , (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    <span class="hljs-comment">## [display_frame_number]</span>
 
-    ## [show]
-    #show the current frame and the fg masks
-    cv.imshow(&#39;Frame&#39;, frame)
-    cv.imshow(&#39;FG Mask&#39;, fgMask)
-    ## [show]
+    <span class="hljs-comment">## [show]</span>
+    <span class="hljs-comment">#show the current frame and the fg masks</span>
+    cv.imshow(<span class="hljs-string">'Frame'</span>, frame)
+    cv.imshow(<span class="hljs-string">'FG Mask'</span>, fgMask)
+    <span class="hljs-comment">## [show]</span>
 
-    keyboard = cv.waitKey(30)
-    if keyboard == ord(&#39;q&#39;) or keyboard == 27:
-        break
-</code></pre>
+    keyboard = cv.waitKey(<span class="hljs-number">30</span>)
+    <span class="hljs-keyword">if</span> keyboard == ord(<span class="hljs-string">'q'</span>) <span class="hljs-keyword">or</span> keyboard == <span class="hljs-number">27</span>:
+        <span class="hljs-keyword">break</span></code></pre></div>
 <p>关于KNN，MOG2，GMG的区别之后再补充。移动的哆啦A梦如图</p>
-<p><img src="114759.png" alt=""></p>
+<p><img src="114759.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06. 阈值分割" target="_blank" rel="noopener">https://github.com/ex2tron/OpenCV-Python-Tutorial/tree/master/06.%20%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2</a></li>
 <li><a href="http://codec.wang/opencv-python-smoothing-images/#目标" target="_blank" rel="noopener">http://codec.wang/opencv-python-smoothing-images/#%E7%9B%AE%E6%A0%87</a></li>
 <li><a href="https://docs.opencv.org/4.2.0/d1/dc5/tutorial_background_subtraction.html" target="_blank" rel="noopener">https://docs.opencv.org/4.2.0/d1/dc5/tutorial_background_subtraction.html</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenCV/">OpenCV</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/19/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OpenCV-python学习笔记三</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/09/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">OpenCV-python学习笔记一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/OpenCV/">OpenCV</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -469,10 +483,12 @@ while True:
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -494,48 +510,27 @@ while True:
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -545,10 +540,12 @@ while True:
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -557,24 +554,17 @@ while True:
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -620,7 +610,7 @@ while True:
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -628,16 +618,24 @@ while True:
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

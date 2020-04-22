@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>Hexo暗色背景下valine的优化 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, March 7th 2020, 5:12 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-07 17:12">
+                    Saturday, March 7th 2020, 5:12 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    497 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    515 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      2 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    6
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,164 +173,181 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>暗色背景下，通过修改CSS改变valine留言的外观，字体颜色，边框等</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>暗色背景下，通过修改CSS改变valine留言的外观，字体颜色，边框等</p>
 <a id="more"></a>
 <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>在布置完<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">fluid主题</a>后我发现暗色背景下的valine字体还是黑色的，很难辨识，再请教原作者后了解到可以使用自定义CSS的方式修改网页的布局。在Chrome浏览器中打开自己的网页，右键点击想修改的元素，选择检查就可以看到CSS了。</p>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/Inked2020-03-07%20195959_LI.jpg" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/Inked2020-03-07%20195959_LI.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>上图中的配置项可以修改背景，边框，字体等，其中有一些划去的项表示有冲突且优先级不高的设置，所以没有执行。我们修改CSS的原理类似，添加新的设置并且设置更高的优先级来改变原本的样式。</p>
 <h1 id="自定义CSS"><a href="#自定义CSS" class="headerlink" title="自定义CSS"></a>自定义CSS</h1><p>以fluid主题为例（其他很多主题也有类似自定义CSS的功能），具体步骤如下：</p>
 <ol>
 <li><p>在<code>\hexo\themes\fluid\source\css</code>下创建<code>custom.css</code>文件，并在主题的配置文件<code>_config.yml</code>中添加如下路径。</p>
-<pre><code class="lang-yaml"># 指定自定义 css 文件路径，路径是相对 source 目录
-custom_css: /css/custom.css
-</code></pre>
+<div class="hljs"><pre><code class="hljs yaml"><span class="hljs-comment"># 指定自定义 css 文件路径，路径是相对 source 目录</span>
+<span class="hljs-attr">custom_css:</span> <span class="hljs-string">/css/custom.css</span></code></pre></div>
 </li>
 <li><p>在浏览器中找到需要修改的部分代码，修改后添加到<code>custom.css</code>，并在语句后面添加<code>!important</code>提高优先级以确保覆盖原有设置。例如修改valine输入的字体的颜色和高度就可以这样设置：</p>
-<pre><code class="lang-css">.v * {
-    line-height: 1 !important;
-    color: #eee !important;
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.v</span> * &#123;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
+&#125;</code></pre></div>
 </li>
 <li><p>保存文件，<code>hexo clean</code> and <code>hexo d -g</code>。</p>
 </li>
 </ol>
 <h1 id="本博客的例子"><a href="#本博客的例子" class="headerlink" title="本博客的例子"></a>本博客的例子</h1><p>由于我对CSS不熟悉，自己的valine只做了一些简单的修改：</p>
-<pre><code class="lang-css">/*valine 评论系统样式*/
-.v * {
-    line-height: 1 !important;
-    color: #eee !important;
-}
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*valine 评论系统样式*/</span>
+<span class="hljs-selector-class">.v</span> * &#123;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vwrap .vheader .vinput {
-    border-bottom: 1px solid #000000 !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vwrap</span> <span class="hljs-selector-class">.vheader</span> <span class="hljs-selector-class">.vinput</span> &#123;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000000</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vbtn {
-    border: 1px solid #333333 !important;
-    background: #000000 !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vbtn</span> &#123;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#333333</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#000000</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vlist .vcard .vhead .vsys {
-    background: #000000 !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vlist</span> <span class="hljs-selector-class">.vcard</span> <span class="hljs-selector-class">.vhead</span> <span class="hljs-selector-class">.vsys</span> &#123;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#000000</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vwrap{
-  border: 2px solid black !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vwrap</span>&#123;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid black <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vlist .vcard .vquote {
-    border-left: 1px solid #000000 !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vlist</span> <span class="hljs-selector-class">.vcard</span> <span class="hljs-selector-class">.vquote</span> &#123;
+    <span class="hljs-attribute">border-left</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000000</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-.v .vlist .vcard .vh {
-    border-bottom: 1px solid #333 !important;
-}
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vlist</span> <span class="hljs-selector-class">.vcard</span> <span class="hljs-selector-class">.vh</span> &#123;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#333</span> <span class="hljs-meta">!important</span>;
+&#125;
 
-/*设置评论头像旋转*/
-.v .vlist .vcard .vimg:hover {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -transform: rotate(360deg);
-}
-/**/
-</code></pre>
+<span class="hljs-comment">/*设置评论头像旋转*/</span>
+<span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vlist</span> <span class="hljs-selector-class">.vcard</span> <span class="hljs-selector-class">.vimg</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
+    <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
+    <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
+    <span class="hljs-attribute">-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
+&#125;
+<span class="hljs-comment">/**/</span></code></pre></div>
 <p>玩的开心！</p>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E9%A1%B5/">网页</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/08/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">回溯(Backtracking)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/29/NumPy%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="hidden-mobile">NumPy数据分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/%E7%BD%91%E9%A1%B5/">网页</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -361,10 +381,12 @@ custom_css: /css/custom.css
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -386,48 +408,27 @@ custom_css: /css/custom.css
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -437,10 +438,12 @@ custom_css: /css/custom.css
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -449,24 +452,17 @@ custom_css: /css/custom.css
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -512,7 +508,7 @@ custom_css: /css/custom.css
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -520,16 +516,24 @@ custom_css: /css/custom.css
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

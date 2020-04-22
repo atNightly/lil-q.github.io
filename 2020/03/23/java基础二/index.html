@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>java-面向对象和异常处理 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, March 23rd 2020, 2:08 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-23 14:08">
+                    Monday, March 23rd 2020, 2:08 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    5.4k 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    5.5k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      20 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    65
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>java学习及面试题汇总——面向对象和异常处理</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>java学习及面试题汇总——面向对象和异常处理</p>
 <a id="more"></a>
 <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>Java是一种面向对象的编程语言。面向对象编程，英文是Object-Oriented Programming，简称OOP。</p>
 <h2 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h2><div class="table-container">
@@ -229,12 +233,11 @@
 </ul>
 <p><code>instanceof</code>判断一个变量所指向的实例是否是指定类型，或者这个类型的子类。如果一个引用变量为<code>null</code>，那么对任何<code>instanceof</code>的判断都为<code>false</code>。</p>
 <p>利用<code>instanceof</code>，在向下转型前可以先判断：</p>
-<pre><code class="lang-java">Person p = new Student();
-if (p instanceof Student) {
-    // 只有判断成功才会向下转型:
-    Student s = (Student) p; // 一定会成功
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs java">Person p = <span class="hljs-keyword">new</span> Student();
+<span class="hljs-keyword">if</span> (p <span class="hljs-keyword">instanceof</span> Student) &#123;
+    <span class="hljs-comment">// 只有判断成功才会向下转型:</span>
+    Student s = (Student) p; <span class="hljs-comment">// 一定会成功</span>
+&#125;</code></pre></div>
 <p>从Java 14开始，判断<code>instanceof</code>后，可以直接转型为指定变量，避免再次强制转型。</p>
 <h2 id="Override和Overload"><a href="#Override和Overload" class="headerlink" title="Override和Overload"></a>Override和Overload</h2><p><strong>1. 重写（Override）</strong></p>
 <p>存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法。</p>
@@ -252,19 +255,18 @@ if (p instanceof Student) {
 <li>子类抛出的异常类型为 Exception，是父类抛出异常 Throwable 的子类。</li>
 <li>子类重写方法使用 @Override 注解，从而让编译器自动检查是否满足限制条件。</li>
 </ul>
-<pre><code class="lang-java">class SuperClass {
-    protected List&lt;Integer&gt; func() throws Throwable {
-        return new ArrayList&lt;&gt;();
-    }
-}
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SuperClass</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    &#125;
+&#125;
 
-class SubClass extends SuperClass {
-    @Override
-    public ArrayList&lt;Integer&gt; func() throws Exception {
-        return new ArrayList&lt;&gt;();
-    }
-}
-</code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SuperClass</span> </span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    &#125;
+&#125;</code></pre></div>
 <p>在调用一个方法时，先从本类中查找看是否有对应的方法，如果没有再到父类中查看，看是否从父类继承来。否则就要对参数进行转型，转成父类之后看是否有对应的方法。总的来说，方法调用的优先级为：</p>
 <ul>
 <li>this.func(this)</li>
@@ -272,7 +274,7 @@ class SubClass extends SuperClass {
 <li>this.func(super)</li>
 <li>super.func(super)</li>
 </ul>
-<pre><code class="lang-java">/*
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*
     A
     |
     B
@@ -280,56 +282,54 @@ class SubClass extends SuperClass {
     C
     |
     D
- */
+ */</span>
 
 
-class A {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;
 
-    public void show(A obj) {
-        System.out.println(&quot;A.show(A)&quot;);
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(A obj)</span> </span>&#123;
+        System.out.println(<span class="hljs-string">"A.show(A)"</span>);
+    &#125;
 
-    public void show(C obj) {
-        System.out.println(&quot;A.show(C)&quot;);
-    }
-}
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(C obj)</span> </span>&#123;
+        System.out.println(<span class="hljs-string">"A.show(C)"</span>);
+    &#125;
+&#125;
 
-class B extends A {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;
 
-    @Override
-    public void show(A obj) {
-        System.out.println(&quot;B.show(A)&quot;);
-    }
-}
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(A obj)</span> </span>&#123;
+        System.out.println(<span class="hljs-string">"B.show(A)"</span>);
+    &#125;
+&#125;
 
-class C extends B {
-}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">B</span> </span>&#123;
+&#125;
 
-class D extends C {
-}
-</code></pre>
-<pre><code class="lang-java">public static void main(String[] args) {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">C</span> </span>&#123;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
 
-    A a = new A();
-    B b = new B();
-    C c = new C();
-    D d = new D();
+    A a = <span class="hljs-keyword">new</span> A();
+    B b = <span class="hljs-keyword">new</span> B();
+    C c = <span class="hljs-keyword">new</span> C();
+    D d = <span class="hljs-keyword">new</span> D();
 
-    // 在 A 中存在 show(A obj)，直接调用
-    a.show(a); // A.show(A)
-    // 在 A 中不存在 show(B obj)，将 B 转型成其父类 A
-    a.show(b); // A.show(A)
-    // 在 B 中存在从 A 继承来的 show(C obj)，直接调用
-    b.show(c); // A.show(C)
-    // 在 B 中不存在 show(D obj)，但是存在从 A 继承来的 show(C obj)，将 D 转型成其父类 C
-    b.show(d); // A.show(C)
+    <span class="hljs-comment">// 在 A 中存在 show(A obj)，直接调用</span>
+    a.show(a); <span class="hljs-comment">// A.show(A)</span>
+    <span class="hljs-comment">// 在 A 中不存在 show(B obj)，将 B 转型成其父类 A</span>
+    a.show(b); <span class="hljs-comment">// A.show(A)</span>
+    <span class="hljs-comment">// 在 B 中存在从 A 继承来的 show(C obj)，直接调用</span>
+    b.show(c); <span class="hljs-comment">// A.show(C)</span>
+    <span class="hljs-comment">// 在 B 中不存在 show(D obj)，但是存在从 A 继承来的 show(C obj)，将 D 转型成其父类 C</span>
+    b.show(d); <span class="hljs-comment">// A.show(C)</span>
 
-    // 引用的还是 B 对象，所以 ba 和 b 的调用结果一样
-    A ba = new B();
-    ba.show(c); // A.show(C)
-    ba.show(d); // A.show(C)
-}
-</code></pre>
+    <span class="hljs-comment">// 引用的还是 B 对象，所以 ba 和 b 的调用结果一样</span>
+    A ba = <span class="hljs-keyword">new</span> B();
+    ba.show(c); <span class="hljs-comment">// A.show(C)</span>
+    ba.show(d); <span class="hljs-comment">// A.show(C)</span>
+&#125;</code></pre></div>
 <p>在子类的覆写方法中，如果要调用父类的被覆写的方法，可以通过<code>super</code>来调用。</p>
 <ol>
 <li>重载（Overlode）**</li>
@@ -348,182 +348,172 @@ class D extends C {
 <li>一致性（Consistent）：对于非<code>null</code>的<code>x</code>和<code>y</code>来说，只要<code>x</code>和<code>y</code>状态不变，则<code>x.equals(y)</code>总是一致地返回<code>true</code>或者<code>false</code>；</li>
 <li>对<code>null</code>的比较：即<code>x.equals(null)</code>永远返回<code>false</code>。</li>
 </ul>
-<pre><code class="lang-java">public class EqualExample {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EqualExample</span> </span>&#123;
 
-    private int x;
-    private int y;
-    private int z;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> x;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> y;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> z;
 
-    public EqualExample(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EqualExample</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> z)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.x = x;
+        <span class="hljs-keyword">this</span>.y = y;
+        <span class="hljs-keyword">this</span>.z = z;
+    &#125;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == o) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (o == <span class="hljs-keyword">null</span> || getClass() != o.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
 
         EqualExample that = (EqualExample) o;
 
-        if (x != that.x) return false;
-        if (y != that.y) return false;
-        return z == that.z;
-    }
-}
-</code></pre>
+        <span class="hljs-keyword">if</span> (x != that.x) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">if</span> (y != that.y) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">return</span> z == that.z;
+    &#125;
+&#125;</code></pre></div>
 <h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h3><p>hashCode() 返回哈希值，而 equals() 是用来判断两个对象是否等价。等价的两个对象散列值一定相同，但是散列值相同的两个对象不一定等价，这是因为计算哈希值具有随机性，两个值不同的对象可能计算出相同的哈希值。</p>
 <p>在覆盖 equals() 方法时应当总是覆盖 hashCode() 方法，保证等价的两个对象哈希值也相等。</p>
 <p>HashSet 和 HashMap 等集合类使用了 hashCode() 方法来计算对象应该存储的位置，因此要将对象添加到这些集合类中，需要让对应的类实现 hashCode() 方法。</p>
 <p>下面的代码中，新建了两个等价的对象，并将它们添加到 HashSet 中。我们希望将这两个对象当成一样的，只在集合中添加一个对象。但是 EqualExample 没有实现 hashCode() 方法，因此这两个对象的哈希值是不同的，最终导致集合添加了两个等价的对象。</p>
-<pre><code class="lang-java">EqualExample e1 = new EqualExample(1, 1, 1);
-EqualExample e2 = new EqualExample(1, 1, 1);
-System.out.println(e1.equals(e2)); // true
-HashSet&lt;EqualExample&gt; set = new HashSet&lt;&gt;();
+<div class="hljs"><pre><code class="hljs java">EqualExample e1 = <span class="hljs-keyword">new</span> EqualExample(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+EqualExample e2 = <span class="hljs-keyword">new</span> EqualExample(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+System.out.println(e1.equals(e2)); <span class="hljs-comment">// true</span>
+HashSet&lt;EqualExample&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();
 set.add(e1);
 set.add(e2);
-System.out.println(set.size());   // 2
-</code></pre>
+System.out.println(set.size());   <span class="hljs-comment">// 2</span></code></pre></div>
 <p>理想的哈希函数应当具有均匀性，即不相等的对象应当均匀分布到所有可能的哈希值上。这就要求了哈希函数要把所有域的值都考虑进来。可以将每个域都当成 R 进制的某一位，然后组成一个 R 进制的整数。</p>
 <p>R 一般取 31，因为它是一个奇素数，如果是偶数的话，当出现乘法溢出，信息就会丢失，因为与 2 相乘相当于向左移一位，最左边的位丢失。并且一个数与 31 相乘可以转换成移位和减法：<code>31*x == (x&lt;&lt;5)-x</code>，编译器会自动进行这个优化。</p>
-<pre><code class="lang-java">@Override
-public int hashCode() {
-    int result = 17;
-    result = 31 * result + x;
-    result = 31 * result + y;
-    result = 31 * result + z;
-    return result;
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">int</span> result = <span class="hljs-number">17</span>;
+    result = <span class="hljs-number">31</span> * result + x;
+    result = <span class="hljs-number">31</span> * result + y;
+    result = <span class="hljs-number">31</span> * result + z;
+    <span class="hljs-keyword">return</span> result;
+&#125;</code></pre></div>
 <h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>默认返回 ToStringExample@4554617c 这种形式，其中 @ 后面的数值为散列码的无符号十六进制表示。</p>
 <h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3><p><strong>1. cloneable</strong></p>
 <p>clone() 是 Object 的 protected 方法，它不是 public，一个类不显式去重写 clone()，其它类就不能直接去调用该类实例的 clone() 方法。</p>
 <p>重写 clone() 需要实现 Cloneable 接口。应该注意的是，clone() 方法并不是 Cloneable 接口的方法，而是 Object 的一个 protected 方法。Cloneable 接口只是规定，如果一个类没有实现 Cloneable 接口又调用了 clone() 方法，就会抛出 CloneNotSupportedException。</p>
-<pre><code class="lang-java">public class CloneExample implements Cloneable {
-    private int a;
-    private int b;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> a;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> b;
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-}
-</code></pre>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.clone();
+    &#125;
+&#125;</code></pre></div>
 <p>拷贝分为深拷贝和浅拷贝，两种方式生成的对象的地址是不同的，这有别于赋值。</p>
 <p><strong>2. 浅拷贝</strong></p>
 <p>拷贝对象和原始对象的引用类型引用同一个对象。</p>
-<pre><code class="lang-java">public class ShallowCloneExample implements Cloneable {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShallowCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
 
-    private int[] arr;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
-    public ShallowCloneExample() {
-        arr = new int[10];
-        for (int i = 0; i &lt; arr.length; i++) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ShallowCloneExample</span><span class="hljs-params">()</span> </span>&#123;
+        arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">10</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
             arr[i] = i;
-        }
-    }
+        &#125;
+    &#125;
 
-    public void set(int index, int value) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> value)</span> </span>&#123;
         arr[index] = value;
-    }
+    &#125;
 
-    public int get(int index) {
-        return arr[index];
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> arr[index];
+    &#125;
 
-    @Override
-    protected ShallowCloneExample clone() throws CloneNotSupportedException {
-        return (ShallowCloneExample) super.clone();
-    }
-}
-</code></pre>
-<pre><code class="lang-java">ShallowCloneExample e1 = new ShallowCloneExample();
-ShallowCloneExample e2 = null;
-try {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> ShallowCloneExample <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>&#123;
+        <span class="hljs-keyword">return</span> (ShallowCloneExample) <span class="hljs-keyword">super</span>.clone();
+    &#125;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">ShallowCloneExample e1 = <span class="hljs-keyword">new</span> ShallowCloneExample();
+ShallowCloneExample e2 = <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">try</span> &#123;
     e2 = e1.clone();
-} catch (CloneNotSupportedException e) {
+&#125; <span class="hljs-keyword">catch</span> (CloneNotSupportedException e) &#123;
     e.printStackTrace();
-}
-e1.set(2, 222);
-System.out.println(e2.get(2)); // 222
-</code></pre>
+&#125;
+e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 222</span></code></pre></div>
 <p><strong>3. 深拷贝</strong></p>
 <p>拷贝对象和原始对象的引用类型引用不同对象。</p>
-<pre><code class="lang-java">public class DeepCloneExample implements Cloneable {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DeepCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
 
-    private int[] arr;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
-    public DeepCloneExample() {
-        arr = new int[10];
-        for (int i = 0; i &lt; arr.length; i++) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DeepCloneExample</span><span class="hljs-params">()</span> </span>&#123;
+        arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">10</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
             arr[i] = i;
-        }
-    }
+        &#125;
+    &#125;
 
-    public void set(int index, int value) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> value)</span> </span>&#123;
         arr[index] = value;
-    }
+    &#125;
 
-    public int get(int index) {
-        return arr[index];
-    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> arr[index];
+    &#125;
 
-    @Override
-    protected DeepCloneExample clone() throws CloneNotSupportedException {
-        DeepCloneExample result = (DeepCloneExample) super.clone();
-        result.arr = new int[arr.length];
-        for (int i = 0; i &lt; arr.length; i++) {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> DeepCloneExample <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>&#123;
+        DeepCloneExample result = (DeepCloneExample) <span class="hljs-keyword">super</span>.clone();
+        result.arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[arr.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
             result.arr[i] = arr[i];
-        }
-        return result;
-    }
-}
-</code></pre>
-<pre><code class="lang-java">DeepCloneExample e1 = new DeepCloneExample();
-DeepCloneExample e2 = null;
-try {
+        &#125;
+        <span class="hljs-keyword">return</span> result;
+    &#125;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">DeepCloneExample e1 = <span class="hljs-keyword">new</span> DeepCloneExample();
+DeepCloneExample e2 = <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">try</span> &#123;
     e2 = e1.clone();
-} catch (CloneNotSupportedException e) {
+&#125; <span class="hljs-keyword">catch</span> (CloneNotSupportedException e) &#123;
     e.printStackTrace();
-}
-e1.set(2, 222);
-System.out.println(e2.get(2)); // 2
-</code></pre>
+&#125;
+e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre></div>
 <p><strong>4. clone() 的替代方案</strong></p>
 <p>使用 clone() 方法来拷贝一个对象即复杂又有风险，它会抛出异常，并且还需要类型转换。Effective Java 书上讲到，最好不要去使用 clone()，可以使用拷贝构造函数或者拷贝工厂来拷贝一个对象。</p>
-<pre><code class="lang-java">public class CloneConstructorExample {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneConstructorExample</span> </span>&#123;
 
-    private int[] arr;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
-    public CloneConstructorExample() {
-        arr = new int[10];
-        for (int i = 0; i &lt; arr.length; i++) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CloneConstructorExample</span><span class="hljs-params">()</span> </span>&#123;
+        arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">10</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
             arr[i] = i;
-        }
-    }
+        &#125;
+    &#125;
 
-    public CloneConstructorExample(CloneConstructorExample original) {
-        arr = new int[original.arr.length];
-        for (int i = 0; i &lt; original.arr.length; i++) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CloneConstructorExample</span><span class="hljs-params">(CloneConstructorExample original)</span> </span>&#123;
+        arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[original.arr.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; original.arr.length; i++) &#123;
             arr[i] = original.arr[i];
-        }
-    }
+        &#125;
+    &#125;
 
-    public void set(int index, int value) {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> value)</span> </span>&#123;
         arr[index] = value;
-    }
+    &#125;
 
-    public int get(int index) {
-        return arr[index];
-    }
-}
-</code></pre>
-<pre><code class="lang-java">CloneConstructorExample e1 = new CloneConstructorExample();
-CloneConstructorExample e2 = new CloneConstructorExample(e1);
-e1.set(2, 222);
-System.out.println(e2.get(2)); // 2
-</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> arr[index];
+    &#125;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">CloneConstructorExample e1 = <span class="hljs-keyword">new</span> CloneConstructorExample();
+CloneConstructorExample e2 = <span class="hljs-keyword">new</span> CloneConstructorExample(e1);
+e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre></div>
 <h2 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h2><p>接口和抽象类都是继承树的上层，他们的共同点如下：</p>
 <ol>
 <li>都是上层的抽象层。</li>
@@ -580,7 +570,7 @@ System.out.println(e2.get(2)); // 2
 <li><strong>受检异常</strong> ：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复；</li>
 <li><strong>非受检异常</strong> ：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序崩溃并且无法恢复。</li>
 </ul>
-<p><img src="PPjwP.png" alt=""></p>
+<p><img src="PPjwP.png" srcset="/img/loading.gif" alt=""></p>
 <p>从图中可以看出所有异常类型都是内置类<code>Throwable</code>的子类，因而<code>Throwable</code>在异常类的层次结构的顶层。接下来<code>Throwable</code>分成了两个不同的分支，一个分支是<code>Error</code>，它表示不希望被程序捕获或者是程序无法处理的错误。另一个分支是<code>Exception</code>，它表示用户程序可能捕捉的异常情况或者说是程序可以处理的异常。其中异常类<code>Exception</code>又分为运行时异常(<code>RuntimeException</code>)和非运行时异常。Java异常又可以分为不受检查异常（<code>Unchecked Exception</code>）和检查异常（<code>Checked Exception</code>）。</p>
 <h2 id="error和exception的区别"><a href="#error和exception的区别" class="headerlink" title="error和exception的区别"></a>error和exception的区别</h2><ul>
 <li><code>Error</code>通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；</li>
@@ -611,14 +601,13 @@ System.out.println(e2.get(2)); // 2
 </ol>
 <p>如果没有发生异常，就正常执行<code>try { ... }</code>语句块，然后执行<code>finally</code>。如果发生了异常，就中断执行<code>try { ... }</code>语句块，然后跳转执行匹配的<code>catch</code>语句块，最后执行<code>finally</code>。可见，<code>finally</code>是用来保证一些代码必须执行的。</p>
 <p>某些情况下，可以没有<code>catch</code>，只使用<code>try ... finally</code>结构。例如：</p>
-<pre><code class="lang-java">void process(String file) throws IOException {
-    try {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(String file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
         ...
-    } finally {
-        System.out.println(&quot;END&quot;);
-    }
-}
-</code></pre>
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        System.out.println(<span class="hljs-string">"END"</span>);
+    &#125;
+&#125;</code></pre></div>
 <p>因为方法声明了可能抛出的异常，所以可以不写<code>catch</code>。</p>
 <h2 id="异常处理要领"><a href="#异常处理要领" class="headerlink" title="异常处理要领"></a>异常处理要领</h2><ol>
 <li>尽量避免出现runtimeException 。例如对于可能出现空指针的代码，带使用对象之前一定要判断一下该对象是否为空，必要的时候对runtimeException也进行try catch处理。</li>
@@ -638,95 +627,114 @@ System.out.println(e2.get(2)); // 2
 <li><a href="https://www.tianmaying.com/tutorial/Java-Exceptionhttps://www.tianmaying.com/tutorial/Java-Exception" target="_blank" rel="noopener">异常处理</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/27/java%E5%9F%BA%E7%A1%80%E4%B8%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">java-反射和泛型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/20/java%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">java基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/java/">java</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -760,10 +768,12 @@ System.out.println(e2.get(2)); // 2
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -785,48 +795,27 @@ System.out.println(e2.get(2)); // 2
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -836,10 +825,12 @@ System.out.println(e2.get(2)); // 2
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -848,24 +839,17 @@ System.out.println(e2.get(2)); // 2
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -911,7 +895,7 @@ System.out.println(e2.get(2)); // 2
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -919,16 +903,24 @@ System.out.println(e2.get(2)); // 2
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

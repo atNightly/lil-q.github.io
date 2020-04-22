@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>数组(Array)和哈希表(Hash table) - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, December 9th 2019, 4:16 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-12-09 16:16">
+                    Monday, December 9th 2019, 4:16 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     2.1k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      8 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    26
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>数组和哈希表的学习和python实现</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>数组和哈希表的学习和python实现</p>
 <a id="more"></a>
 <h1 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组(Array)"></a>数组(Array)</h1><p><strong>数组数据结构</strong>(array data structure)，简称<strong>数组</strong>(Array)，是由相同类型的元素(element)的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引(index)可以计算出该元素对应的存储地址。</p>
 <p>数组是最早期和最重要的数据结构之一，很多程序都会用到数组。它们也用于实现许多其他数据结构，譬如列表(list)和字符串(string)。它们有成效地开展了计算机的定址逻辑。在大多数现代计算机和许多外部存储设备中，存储器如同一维数组，索引就是其地址。编译器、处理单元（特别是向量处理器），经常会针对数组操作进行优化。</p>
@@ -264,37 +268,34 @@
 </ol>
 <h3 id="1-正整数"><a href="#1-正整数" class="headerlink" title="1. 正整数"></a>1. 正整数</h3><p>获取正整数哈希值最常用的方法是使用除留余数法。即对于大小为素数M的数组，对于任意正整数k，计算k除以M的余数。M一般取素数。</p>
 <h3 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h3><p>将字符串作为键的时候，我们也可以将他作为一个大的整数，采用保留除余法。我们可以将组成字符串的每一个字符取值然后进行哈希，比如</p>
-<pre><code class="lang-python">def getHashCode(str):
-    hash = 0
-    for char in str:
-        hash = int(char) + (31 * hash)
-    return hash
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHashCode</span><span class="hljs-params">(str)</span>:</span>
+    hash = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> str:
+        hash = int(char) + (<span class="hljs-number">31</span> * hash)
+    <span class="hljs-keyword">return</span> hash</code></pre></div>
 <p>上面的哈希值是Horner计算字符串哈希值的方法，公式为:</p>
 <script type="math/tex; mode=display">h = s[0] · 31^{L–1} + … + s[L – 3] · 31^2 + s[L – 2] · 31^1 + s[L – 1] · 31^0</script><p>举个例子，比如要获取”call”的哈希值，字符串c对应的unicode为99，a对应的unicode为97，L对应的unicode为108，所以字符串”call”的哈希值为 3045982 = 99·31^3 + 97·31^2 + 108·31^1 + 108·31^0 = 108 + 31· (108 + 31 · (97 + 31 · (99)))。</p>
-<pre><code class="lang-python">print(getHashCode(&quot;call&quot;))
-&#39;&#39;&#39;
+<div class="hljs"><pre><code class="hljs python">print(getHashCode(<span class="hljs-string">"call"</span>))
+<span class="hljs-string">'''
 输出： 3045982
-&#39;&#39;&#39;
-</code></pre>
+'''</span></code></pre></div>
 <p>如果对每个字符去哈希值可能会比较耗时，所以可以通过间隔取N个字符来获取哈西值来节省时间，比如，可以 获取每8-9个字符来获取哈希值。但是，对于某些情况，不同的字符串会产生相同的哈希值，这就是前面说到的哈希冲突（Hash Collisions），比如下面的四个字符串：</p>
-<p><img src="312300343319616.jpg" alt="hash code collision"></p>
+<p><img src="312300343319616.jpg" srcset="/img/loading.gif" alt="hash code collision"></p>
 <p>如果我们按照每8个字符取哈希的话，就会得到一样的哈希值。</p>
 <h2 id="哈希冲撞"><a href="#哈希冲撞" class="headerlink" title="哈希冲撞"></a>哈希冲撞</h2><p>如果将2450个密钥散列到一百万个存储桶中，即使具有完全均匀的随机分布，则根据生日问题，至少有两个密钥散列到同一存储桶的机率大约为95％。<script type="math/tex">1*\frac{10^6-1}{10^6}*\frac{10^6-2}{10^6}</script>…<script type="math/tex">\frac{10^6-2449}{10^6}</script></p>
-<pre><code class="lang-python">res=1
-n=1000000
-for i in range(2450):
-    res*=(n-1)/n
+<div class="hljs"><pre><code class="hljs python">res=<span class="hljs-number">1</span>
+n=<span class="hljs-number">1000000</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2450</span>):
+	res*=(n<span class="hljs-number">-1</span>)/n
 print(res)
-&#39;&#39;&#39;
+<span class="hljs-string">'''
 0.9975529975784029
-&#39;&#39;&#39;
-</code></pre>
+'''</span></code></pre></div>
 <p><a href="https://zh.wikipedia.org/zh-hans/生日攻击" target="_blank" rel="noopener">有兴趣可以了解一下生日攻击。</a></p>
 <h3 id="1-Separate-chaining"><a href="#1-Separate-chaining" class="headerlink" title="1. Separate chaining"></a>1. Separate chaining</h3><p>每一个<code>bucket</code>指向一个数组、链表或其他数据结构。</p>
-<p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" alt="spe"></p>
+<p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" srcset="/img/loading.gif" alt="spe"></p>
 <h3 id="2-Open-addressing"><a href="#2-Open-addressing" class="headerlink" title="2. Open addressing"></a>2. Open addressing</h3><p>每一个<code>bucket</code>存放一个<code>entry record</code>,添加时如果已占用就下移一格，查找同理。</p>
-<p><img src="570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png" alt="opa"></p>
+<p><img src="570px-Hash_table_5_0_1_1_1_1_0_SP.svg.png" srcset="/img/loading.gif" alt="opa"></p>
 <h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>Python中 dict 数据结构的复杂度</p>
 <div class="table-container">
 <table>
@@ -340,91 +341,89 @@ print(res)
 </table>
 </div>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-力扣（leetcode）204-计数质数"><a href="#1-力扣（leetcode）204-计数质数" class="headerlink" title="1. 力扣（leetcode）204. 计数质数"></a>1. <a href="https://leetcode-cn.com/problems/count-primes/" target="_blank" rel="noopener">力扣（leetcode）204. 计数质数</a></h2><p>统计所有小于非负整数 <em>n</em> 的质数的数量。</p>
-<pre><code class="lang-python">class Solution:
-    def countPrimes(self, n: int) -&gt; int:
-        isPrime = [1] * n 
-        for i in range(2, int(n ** 0.5) + 1):
-            if isPrime[i]:
-                for j in range(i * i, n, i):
-                    isPrime[j] = 0
-        counts = 0
-        for i in range(2,len(isPrime)):
-            if isPrime[i] : counts += 1
-        return counts
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span>
+        isPrime = [<span class="hljs-number">1</span>] * n 
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>, int(n ** <span class="hljs-number">0.5</span>) + <span class="hljs-number">1</span>):
+            <span class="hljs-keyword">if</span> isPrime[i]:
+                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(i * i, n, i):
+                    isPrime[j] = <span class="hljs-number">0</span>
+        counts = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,len(isPrime)):
+            <span class="hljs-keyword">if</span> isPrime[i] : counts += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> counts</code></pre></div>
 <h2 id="2-力扣（leetcode）355-设计推特"><a href="#2-力扣（leetcode）355-设计推特" class="headerlink" title="2. 力扣（leetcode）355. 设计推特"></a>2. <a href="https://leetcode-cn.com/problems/design-twitter/" target="_blank" rel="noopener">力扣（leetcode）355. 设计推特</a></h2><p>设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：</p>
 <p>postTweet(userId, tweetId): 创建一条新的推文<br>getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的开始排序。<br>follow(followerId, followeeId): 关注一个用户<br>unfollow(followerId, followeeId): 取消关注一个用户</p>
-<pre><code class="lang-python">from collections import defaultdict
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
 
 
-class Twitter:
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Twitter</span>:</span>
 
-    def __init__(self):
-        &quot;&quot;&quot;
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">"""
         Initialize your data structure here.
-        &quot;&quot;&quot;
+        """</span>
         self.timeline = defaultdict(list)
         self.userId_follower = defaultdict(set)
-        self.now = 1
+        self.now = <span class="hljs-number">1</span>
 
-    class post:
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">post</span>:</span>
 
-        def __init__(self, tweetId, time):
-            self.id = tweetId
-            self.time = time
-            self.next = None
+    	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, tweetId, time)</span>:</span>
+    		self.id = tweetId
+    		self.time = time
+    		self.next = <span class="hljs-literal">None</span>
 
-    def postTweet(self, userId: int, tweetId: int) -&gt; None:
-        &quot;&quot;&quot;
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postTweet</span><span class="hljs-params">(self, userId: int, tweetId: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        <span class="hljs-string">"""
         Compose a new tweet.
-        &quot;&quot;&quot;
+        """</span>
         po = self.post(tweetId, self.now)
-        if len(self.timeline[userId]) &gt; 0:
-            po.next = self.timeline[userId][-1]
+        <span class="hljs-keyword">if</span> len(self.timeline[userId]) &gt; <span class="hljs-number">0</span>:
+        	po.next = self.timeline[userId][<span class="hljs-number">-1</span>]
         self.timeline[userId].append(po)
-        self.now += 1
+        self.now += <span class="hljs-number">1</span>
 
-
-    def getNewsFeed(self, userId):
-        &quot;&quot;&quot;
-        Retrieve the 10 most recent tweet ids in the user&#39;s news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
-        &quot;&quot;&quot;
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getNewsFeed</span><span class="hljs-params">(self, userId)</span>:</span>
+        <span class="hljs-string">"""
+        Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+        """</span>
         res = []
         queue = []
 
-        for uid in self.userId_follower[userId] | {userId}:
-            if len(self.timeline[uid]) &gt; 0:
-                queue.append(self.timeline[uid][-1])
+        <span class="hljs-keyword">for</span> uid <span class="hljs-keyword">in</span> self.userId_follower[userId] | &#123;userId&#125;:
+            <span class="hljs-keyword">if</span> len(self.timeline[uid]) &gt; <span class="hljs-number">0</span>:
+            	queue.append(self.timeline[uid][<span class="hljs-number">-1</span>])
+        
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> queue: <span class="hljs-keyword">return</span> []
+        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
+        	maxIndex = <span class="hljs-number">0</span>
+        	maxId = <span class="hljs-number">0</span>
+        	f = <span class="hljs-number">0</span>
+	        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(queue)):
+	        	<span class="hljs-keyword">if</span> queue[i] <span class="hljs-keyword">and</span> (queue[i].time &gt; maxId):
+	        		maxId=queue[i].time
+	        		maxIndex = i
+	        		f = <span class="hljs-number">1</span>
+	        <span class="hljs-keyword">if</span> f == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> queue[<span class="hljs-number">0</span>]: <span class="hljs-keyword">break</span>
+	        res.append(queue[maxIndex].id)
+	        queue[maxIndex]=queue[maxIndex].next 
+        
+        <span class="hljs-keyword">return</span> res
 
-        if not queue: return []
-        for _ in range(10):
-            maxIndex = 0
-            maxId = 0
-            f = 0
-            for i in range(len(queue)):
-                if queue[i] and (queue[i].time &gt; maxId):
-                    maxId=queue[i].time
-                    maxIndex = i
-                    f = 1
-            if f == 0 and not queue[0]: break
-            res.append(queue[maxIndex].id)
-            queue[maxIndex]=queue[maxIndex].next 
-
-        return res
-
-    def follow(self, followerId: int, followeeId: int) -&gt; None:
-        &quot;&quot;&quot;
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">follow</span><span class="hljs-params">(self, followerId: int, followeeId: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        <span class="hljs-string">"""
         Follower follows a followee. If the operation is invalid, it should be a no-op.
-        &quot;&quot;&quot;
+        """</span>
         self.userId_follower[followerId].add(followeeId)
 
-    def unfollow(self, followerId: int, followeeId: int) -&gt; None:
-        &quot;&quot;&quot;
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unfollow</span><span class="hljs-params">(self, followerId: int, followeeId: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+        <span class="hljs-string">"""
         Follower unfollows a followee. If the operation is invalid, it should be a no-op.
-        &quot;&quot;&quot;
+        """</span>
 
-        self.userId_follower[followerId].discard(followeeId)
-</code></pre>
+        self.userId_follower[followerId].discard(followeeId)</code></pre></div>
 <p>采用了<a href="https://leetcode-cn.com/problems/design-twitter/solution/mian-xiang-dui-xiang-she-ji-he-bing-k-ge-you-xu-li/" target="_blank" rel="noopener">优先队列</a>的思路</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/数组" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84</a></li>
@@ -433,99 +432,118 @@ class Twitter:
 <li><a href="https://www.jianshu.com/p/fa57d21b9ad7" target="_blank" rel="noopener">https://www.jianshu.com/p/fa57d21b9ad7</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/python/">python</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/27/%E5%9B%BE-graph/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">图(Graph)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/08/%E6%A0%88-Stack-%E5%92%8C%E9%98%9F%E5%88%97-Queue/">
+                        <span class="hidden-mobile">栈(Stack)和队列(Queue)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -559,10 +577,12 @@ class Twitter:
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -584,48 +604,27 @@ class Twitter:
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -635,10 +634,12 @@ class Twitter:
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -647,24 +648,17 @@ class Twitter:
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -710,7 +704,7 @@ class Twitter:
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -718,12 +712,14 @@ class Twitter:
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -731,31 +727,50 @@ class Twitter:
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
+
+
 
 
 

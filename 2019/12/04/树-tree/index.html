@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>树(Tree) - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Wednesday, December 4th 2019, 9:53 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-12-04 21:53">
+                    Wednesday, December 4th 2019, 9:53 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     4.2k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      17 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    52
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>之所以叫树是因为他看起来像一棵倒挂的树</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>之所以叫树是因为他看起来像一棵倒挂的树</p>
 <a id="more"></a>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>树</strong>（tree）是一种抽象数据类型（ADT）或是实现这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。它是由n（n&gt;0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点：</p>
 <ul>
@@ -198,177 +202,167 @@
 <li><strong>节点的祖先(ancestor)</strong>：从根到该节点所经分支上的所有节点</li>
 <li><strong>森林(forest)</strong>：由m（m&gt;=0）棵互不相交的树的集合称为森林</li>
 </ol>
-<p><img src="height-depth.jpg" alt="层次深度和高度"></p>
+<p><img src="height-depth.jpg" srcset="/img/loading.gif" alt="层次深度和高度"></p>
 <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>本文将介绍二叉树(Binary tree)、二叉搜索树(Binary search tree)和字典树(Trie)。关于AVL树(AVL tree)、红黑树(Red–black tree)和Ｂ树(B-tree)，不做深入探讨。</p>
-<p><img src="tree-cate.jpg" alt="cate"></p>
+<p><img src="tree-cate.jpg" srcset="/img/loading.gif" alt="cate"></p>
 <p>这里区分一下完全二叉树、满二叉树、完美二叉树:</p>
 <ol>
 <li>完全二叉树：最后一层的叶子节点均需在最左边</li>
 <li>满二叉树：满足完全二叉树性质，树中除了叶子节点，每个节点都有两个子节点</li>
 <li>完美二叉树：满足满二叉树性质，树的叶子节点铺满最后一层</li>
 </ol>
-<p><img src="BinaryTree2.png" alt="full"></p>
+<p><img src="BinaryTree2.png" srcset="/img/loading.gif" alt="full"></p>
 <h2 id="二叉树-Binary-tree"><a href="#二叉树-Binary-tree" class="headerlink" title="二叉树(Binary tree)"></a>二叉树(Binary tree)</h2><p><strong>二叉树</strong>（英语：Binary tree）是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
-<pre><code class="lang-python"># 建一个单节点
-class Node(object):
-    def __init__(self, value):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 建一个单节点</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, value)</span>:</span>
         self.val = value
-        self.left = None #左节点
-        self.right = None #右节点
-&#39;&#39;&#39;
+        self.left = <span class="hljs-literal">None</span> <span class="hljs-comment">#左节点</span>
+        self.right = <span class="hljs-literal">None</span> <span class="hljs-comment">#右节点</span>
+<span class="hljs-string">'''
 # 建一个二叉树
 #           1 
 #         /   \ 
 #        2     3
 #       / \   / \
 #      4   5 6   7
-&#39;&#39;&#39;
-root = Node(1)
+'''</span>
+root = Node(<span class="hljs-number">1</span>)
 stack = [root]
-value = 2
-for i in range(3):
-    cur = stack.pop(0)
-    cur.left = Node(value)
-    stack.append(cur.left)
-    value += 1
-    cur.right = Node(value)
-    stack.append(cur.right)
-    value += 1
-</code></pre>
+value = <span class="hljs-number">2</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+	cur = stack.pop(<span class="hljs-number">0</span>)
+	cur.left = Node(value)
+	stack.append(cur.left)
+	value += <span class="hljs-number">1</span>
+	cur.right = Node(value)
+	stack.append(cur.right)
+	value += <span class="hljs-number">1</span></code></pre></div>
 <h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>二叉树的遍历有前序遍历、中序遍历、后序遍历和层序遍历等，这里用迭代和递归两个方法介绍。</p>
-<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><pre><code class="lang-python">def preorderTraversal(root):
-    if not root:
-        return 
-    print(root.val, end = &#39; &#39;)
+<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> 
+    print(root.val, end = <span class="hljs-string">' '</span>)
     preorderTraversal(root.left)
-    preorderTraversal(root.right)
-</code></pre>
-<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><pre><code class="lang-python"># 方法一
-def preorderTraversalIter(root):
-    if not root:
-        return res
+    preorderTraversal(root.right)</code></pre></div>
+<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = [root]
-    while stack:
+    <span class="hljs-keyword">while</span> stack:
         node = stack.pop()
-        print(node.val, end = &#39; &#39;)
-        if node.right:
+        print(node.val, end = <span class="hljs-string">' '</span>)
+        <span class="hljs-keyword">if</span> node.right:
             stack.append(node.right)
-        if node.left:
+        <span class="hljs-keyword">if</span> node.left:
             stack.append(node.left)
-# 方法二
-def preorderTraversalIter(root):
-    if not root:
-        return res
+<span class="hljs-comment"># 方法二</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = []
-    while root or stack:
-        while root:
+    <span class="hljs-keyword">while</span> root <span class="hljs-keyword">or</span> stack:
+        <span class="hljs-keyword">while</span> root:
             stack.append(root)
-            print(root.val, end = &#39; &#39;)
+            print(root.val, end = <span class="hljs-string">' '</span>)
             root=root.left
         root=stack.pop()
-        root=root.right
-</code></pre>
-<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><h5 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h5><pre><code class="lang-python">def inorderTraversal(root):
-    if not root:
-        return  
+        root=root.right</code></pre></div>
+<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><h5 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span>  
     inorderTraversal(root.left)
     print(root.val)
-    inorderTraversal(root.right)
-</code></pre>
-<h5 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代"></a>迭代</h5><pre><code class="lang-python">def inorderTraversalIter(root):
-    if not root:
-        return res
+    inorderTraversal(root.right)</code></pre></div>
+<h5 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代"></a>迭代</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = []
-    while root or stack:
-        while root:
+    <span class="hljs-keyword">while</span> root <span class="hljs-keyword">or</span> stack:
+        <span class="hljs-keyword">while</span> root:
             stack.append(root)
             root=root.left
         root=stack.pop()
-        print(root.val, end = &#39; &#39;)
-        root=root.right
-</code></pre>
-<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><h5 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h5><pre><code class="lang-python">def postorderTraversal(root):
-    if not root:
-        return  
+        print(root.val, end = <span class="hljs-string">' '</span>)
+        root=root.right</code></pre></div>
+<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><h5 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span>  
     postorderTraversal(root.left)
     postorderTraversal(root.right)
-    print(root.val)
-</code></pre>
+    print(root.val)</code></pre></div>
 <h5 id="迭代-2"><a href="#迭代-2" class="headerlink" title="迭代"></a>迭代</h5><p>比较tricky的办法是吧后序遍历转变成中右左遍历的倒序，代码如下</p>
-<pre><code class="lang-python"># 方法一
-def postorderTraversalIter(root):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
     res = []
-    if not root:
-        return res
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = [root]
-    while stack:
+    <span class="hljs-keyword">while</span> stack:
         node = stack.pop()
-        if node.left :
+        <span class="hljs-keyword">if</span> node.left :
             stack.append(node.left)
-        if node.right:
+        <span class="hljs-keyword">if</span> node.right:
             stack.append(node.right)
         res.append(node.val)
-    return res[::-1]
-# 方法二
-def postorderTraversalIter(root):
+    <span class="hljs-keyword">return</span> res[::<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># 方法二</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
     res = []
-    if not root:
-        return res
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = []
-    while root or stack:
-        while root:
+    <span class="hljs-keyword">while</span> root <span class="hljs-keyword">or</span> stack:
+        <span class="hljs-keyword">while</span> root:
             stack.append(root)
             res.append(root.val)
             root = root.right
         root = stack.pop()
         root = root.left
-    return res[::-1]
-</code></pre>
-<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><pre><code class="lang-python">def levelOrderTraversal(root):
-    # 使用列表模拟先进先出队列queue
+    <span class="hljs-keyword">return</span> res[::<span class="hljs-number">-1</span>]</code></pre></div>
+<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrderTraversal</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-comment"># 使用列表模拟先进先出队列queue</span>
     queue = [root]
-    while queue:
-        node = queue.pop(0)
-        if node.left :
+    <span class="hljs-keyword">while</span> queue:
+        node = queue.pop(<span class="hljs-number">0</span>)
+        <span class="hljs-keyword">if</span> node.left :
             queue.append(node.left)
-        if node.right:
+        <span class="hljs-keyword">if</span> node.right:
             queue.append(node.right)
-        print(node.val, end = &#39; &#39;)
-</code></pre>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code class="lang-python">前序遍历_递归：
-1 2 4 5 3 6 7 
+        print(node.val, end = <span class="hljs-string">' '</span>)</code></pre></div>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><div class="hljs"><pre><code class="hljs python">前序遍历_递归：
+<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> 
 前序遍历_迭代：
-1 2 4 5 3 6 7 
+<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> 
 中序遍历_递归：
-4 2 5 1 6 3 7 
+<span class="hljs-number">4</span> <span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <span class="hljs-number">6</span> <span class="hljs-number">3</span> <span class="hljs-number">7</span> 
 中序遍历_迭代：
-4 2 5 1 6 3 7 
+<span class="hljs-number">4</span> <span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <span class="hljs-number">6</span> <span class="hljs-number">3</span> <span class="hljs-number">7</span> 
 后序遍历_递归：
-4 5 2 6 7 3 1 
+<span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span> 
 后序遍历_迭代：
-4 5 2 6 7 3 1 
+<span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span> 
 层序遍历：
-1 2 3 4 5 6 7
-</code></pre>
+<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span></code></pre></div>
 <h3 id="二叉树的序列化"><a href="#二叉树的序列化" class="headerlink" title="二叉树的序列化"></a>二叉树的序列化</h3><p>「序列化」（serialization），指的是把复杂的数据结构转化为线性结构，以方便存储的过程。序列化得到的线性结构必须能重建出原有的结构，才有意义。</p>
 <h4 id="仅使用一种遍历的序列化方法"><a href="#仅使用一种遍历的序列化方法" class="headerlink" title="仅使用一种遍历的序列化方法"></a>仅使用一种遍历的序列化方法</h4><p>这是最常见的序列化方法。可以采用的遍历顺序包括先序、后序、层序。在遍历时，要把空指针也包含在遍历的结果中。例如，对下图的二叉树，进行先序、后序、层序遍历的结果分别为 12##3#4##、##2###431、123###4##（# 表示空指针）。</p>
-<p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" alt="xu"></p>
-<pre><code class="lang-python">def reconstruct(root):
-    if not root:
-        return res
+<p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" srcset="/img/loading.gif" alt="xu"></p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reconstruct</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+        <span class="hljs-keyword">return</span> res
     stack = [root]
-    while stack:
+    <span class="hljs-keyword">while</span> stack:
         node = stack.pop()
-        print(node.val, end=&#39; &#39;)
-        if node.right:
+        print(node.val, end=<span class="hljs-string">' '</span>)
+        <span class="hljs-keyword">if</span> node.right:
             stack.append(node.right)
-        else:
-            print(&#39;#&#39;, end = &#39; &#39;)
-        if node.left:
+        <span class="hljs-keyword">else</span>:
+            print(<span class="hljs-string">'#'</span>, end = <span class="hljs-string">' '</span>)
+        <span class="hljs-keyword">if</span> node.left:
             stack.append(node.left)
-        else:
-            print(&#39;#&#39;, end = &#39; &#39;)
-</code></pre>
+        <span class="hljs-keyword">else</span>:
+            print(<span class="hljs-string">'#'</span>, end = <span class="hljs-string">' '</span>)</code></pre></div>
 <p>而仅根据（带空指针的）中序遍历，是不能重建二叉树的。比如，上面这棵树的中序遍历为 #2#1#3#4#。事实上可以证明，任何一棵二叉树的中序遍历结果，都会是空指针与树中结点交替出现的形式，所以空指针没有提供任何额外的信息。<a href="https://zhuanlan.zhihu.com/p/26418233" target="_blank" rel="noopener">原文</a></p>
 <h2 id="二叉搜索树-Binary-search-tree"><a href="#二叉搜索树-Binary-search-tree" class="headerlink" title="二叉搜索树(Binary search tree)"></a>二叉搜索树(Binary search tree)</h2><p><strong>二叉查找树</strong>（英语：Binary Search Tree），也称为<strong>二叉搜索树</strong>、<strong>有序二叉树</strong>（ordered binary tree）或<strong>排序二叉树</strong>（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
 <ol>
@@ -377,7 +371,7 @@ def postorderTraversalIter(root):
 <li>任意节点的左、右子树也分别为二叉查找树</li>
 <li>没有键值相等的节点</li>
 </ol>
-<p><img src="225px-Binary_search_tree.svg.png" alt="bst"></p>
+<p><img src="225px-Binary_search_tree.svg.png" srcset="/img/loading.gif" alt="bst"></p>
 <p>空间复杂度：O(<em>n</em>)。</p>
 <p>时间复杂度：</p>
 <div class="table-container">
@@ -422,56 +416,55 @@ def postorderTraversalIter(root):
 <li>查找右子树</li>
 </ol>
 <h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/pythonchang-gui-jie-fa-by-lil-q/" target="_blank" rel="noopener">自己做leetcode 450时的解法</a>，非递归，算法有些复杂。</p>
-<pre><code class="lang-python">class Solution:
-    def deleteNode(self, root: TreeNode, key: int) -&gt; TreeNode:
-        # 删除节点返回新的子树    
-        def delete(node):
-            # 没有子节点，返回None
-            if not node.left and not node.right:return None
-            # 没有左子节点，返回右子节点
-            elif not node.left:return node.right
-            # 没有右子节点，返回左子节点
-            elif not node.right:return node.left
-            # 待删除节点度为2，详细讨论
-            else:
-                # 左子节点没有右子节点
-                if not node.left.right:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(self, root: TreeNode, key: int)</span> -&gt; TreeNode:</span>
+        <span class="hljs-comment"># 删除节点返回新的子树    </span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete</span><span class="hljs-params">(node)</span>:</span>
+            <span class="hljs-comment"># 没有子节点，返回None</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node.left <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> node.right:<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+            <span class="hljs-comment"># 没有左子节点，返回右子节点</span>
+            <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> node.left:<span class="hljs-keyword">return</span> node.right
+            <span class="hljs-comment"># 没有右子节点，返回左子节点</span>
+            <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> node.right:<span class="hljs-keyword">return</span> node.left
+            <span class="hljs-comment"># 待删除节点度为2，详细讨论</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-comment"># 左子节点没有右子节点</span>
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node.left.right:
                     node.left.right=node.right
-                    return node.left
-                # 右子节点没有左子节点
-                elif not node.left.right:
+                    <span class="hljs-keyword">return</span> node.left
+                <span class="hljs-comment"># 右子节点没有左子节点</span>
+                <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> node.left.right:
                     node.left.right=node.right
-                    return node.left 
-                # 都不满足，返回左子树最大值
-                else:
-                    # 记录父节点pre
+                    <span class="hljs-keyword">return</span> node.left 
+                <span class="hljs-comment"># 都不满足，返回左子树最大值</span>
+                <span class="hljs-keyword">else</span>:
+                    <span class="hljs-comment"># 记录父节点pre</span>
                     pre=left=node.left
-                    while left.right:
+                    <span class="hljs-keyword">while</span> left.right:
                         pre=left
                         left=left.right
-                    # 保存待最大值的左子树到父节点的右子树
+                    <span class="hljs-comment"># 保存待最大值的左子树到父节点的右子树</span>
                     pre.right=left.left
                     left.left=node.left
                     left.right=node.right
-                    return left
-
-        if not root:return root        
-        if root.val==key:
+                    <span class="hljs-keyword">return</span> left
+        
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:<span class="hljs-keyword">return</span> root        
+        <span class="hljs-keyword">if</span> root.val==key:
             root=delete(root)
-            return root
+            <span class="hljs-keyword">return</span> root
         father=node=root
-        while node.val!=key:
-            if node.val&gt;key:
+        <span class="hljs-keyword">while</span> node.val!=key:
+            <span class="hljs-keyword">if</span> node.val&gt;key:
                 father=node
                 node=node.left
-            else:
+            <span class="hljs-keyword">else</span>:
                 father=node
                 node=node.right
-            if not node:return root
-        if father.left==node:father.left=delete(node)
-        else: father.right=delete(node)
-        return root
-</code></pre>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node:<span class="hljs-keyword">return</span> root
+        <span class="hljs-keyword">if</span> father.left==node:father.left=delete(node)
+        <span class="hljs-keyword">else</span>: father.right=delete(node)
+        <span class="hljs-keyword">return</span> root</code></pre></div>
 <p>这里给出递归的方式。递归的好处在于不用考虑寻找父节点以及待删除结点到底是父节点的左子节点还是右子节点。</p>
 <p>在二叉查找树删去一个结点，分三种情况讨论：</p>
 <ol>
@@ -479,106 +472,104 @@ def postorderTraversalIter(root):
 <li>若待删除结点只有左子树PL或右子树PR，此时只要令PL或PR直接成为其双亲结点f的左子树（当p是左子树）或右子树（当p是右子树）即可，作此修改也不破坏二叉查找树的特性。</li>
 <li>若p结点的左子树和右子树均不空。在删去p之后，为保持其它元素之间的相对位置不变，可按中序遍历保持有序进行调整，可以有两种做法：其一是令p的左子树为f的左/右（依p是f的左子树还是右子树而定）子树，s为p左子树的最右下的结点，而p的右子树为s的右子树；其二是令p的直接前驱（in-order predecessor）或直接后继（in-order successor）替代p，然后再从二叉查找树中删去它的直接前驱（或直接后继）。</li>
 </ol>
-<p><img src="720px-Binary_search_tree_delete.svg.png" alt="deletenode"></p>
-<h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><pre><code class="lang-python">class BinarySearchTree:
-    # 初始化
-    def __init__(self, value):
+<p><img src="720px-Binary_search_tree_delete.svg.png" srcset="/img/loading.gif" alt="deletenode"></p>
+<h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span>:</span>
+    <span class="hljs-comment"># 初始化</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, value)</span>:</span>
         self.val = value
-        self.left=None
-        self.right=None
-    # 查找最小值
-    def find_min(self):
+        self.left=<span class="hljs-literal">None</span>
+        self.right=<span class="hljs-literal">None</span>
+    <span class="hljs-comment"># 查找最小值</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_min</span><span class="hljs-params">(self)</span>:</span>
         current = self
-        while current.left:
+        <span class="hljs-keyword">while</span> current.left:
             current = current.left
-        return current   
-    # 查找最大值
-    def find_max(self):
+        <span class="hljs-keyword">return</span> current   
+    <span class="hljs-comment"># 查找最大值</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_max</span><span class="hljs-params">(self)</span>:</span>
         current = self
-        while current.right:
+        <span class="hljs-keyword">while</span> current.right:
             current = current.right
-        return current   
-    # 插入一个节点
-    def insert(self, value):
+        <span class="hljs-keyword">return</span> current   
+    <span class="hljs-comment"># 插入一个节点</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert</span><span class="hljs-params">(self, value)</span>:</span>
         node = BinarySearchTree(value)
         current = self
-        while True:
-            if value &lt; current.val:
-                if current.left is None:
+        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+            <span class="hljs-keyword">if</span> value &lt; current.val:
+                <span class="hljs-keyword">if</span> current.left <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
                     current.left = node
-                    return 
+                    <span class="hljs-keyword">return</span> 
                 current = current.left
-            elif value &gt; current.val:
-                if current.right is None:
+            <span class="hljs-keyword">elif</span> value &gt; current.val:
+                <span class="hljs-keyword">if</span> current.right <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
                     current.right = node
-                    return 
+                    <span class="hljs-keyword">return</span> 
                 current = current.right
-            else: return self
-    # 查找节点
-    def find(self, value):
+            <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> self
+    <span class="hljs-comment"># 查找节点</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find</span><span class="hljs-params">(self, value)</span>:</span>
         current = self
-        while current:
-            if current.val == value:
-                return current
-            current = current.left if value &lt; current.val else current.right
-        # 此时current==None
-        return current
-    # 删除节点
-    def delete(self,value):
-        if self.find(value):
-            if value&lt;self.val:
+        <span class="hljs-keyword">while</span> current:
+            <span class="hljs-keyword">if</span> current.val == value:
+                <span class="hljs-keyword">return</span> current
+            current = current.left <span class="hljs-keyword">if</span> value &lt; current.val <span class="hljs-keyword">else</span> current.right
+        <span class="hljs-comment"># 此时current==None</span>
+        <span class="hljs-keyword">return</span> current
+    <span class="hljs-comment"># 删除节点</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete</span><span class="hljs-params">(self,value)</span>:</span>
+        <span class="hljs-keyword">if</span> self.find(value):
+            <span class="hljs-keyword">if</span> value&lt;self.val:
                 self.left=self.left.delete(value)
-                return self
-            elif value&gt;self.val:
+                <span class="hljs-keyword">return</span> self
+            <span class="hljs-keyword">elif</span> value&gt;self.val:
                 self.right=self.right.delete(value)
-                return self
-            elif self.left and self.right:
+                <span class="hljs-keyword">return</span> self
+            <span class="hljs-keyword">elif</span> self.left <span class="hljs-keyword">and</span> self.right:
                 val=self.right.findMin().val
                 self.val=val
                 self.right=self.right.delete(val)
-                return self
-            else:
-                if self.left:
-                    return self.left
-                else:
-                    return self.right
-        else:
-            return self
-</code></pre>
+                <span class="hljs-keyword">return</span> self
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">if</span> self.left:
+                    <span class="hljs-keyword">return</span> self.left
+                <span class="hljs-keyword">else</span>:
+                    <span class="hljs-keyword">return</span> self.right
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> self</code></pre></div>
 <p><em>注：代码中没有考虑空树。</em></p>
 <h2 id="字典树-Trie"><a href="#字典树-Trie" class="headerlink" title="字典树(Trie)"></a>字典树(Trie)</h2><p>Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串。与二叉查找树不同，键不是直接保存在节点中，而是由节点在树中的位置决定。一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串，而根节点对应空字符串。一般情况下，不是所有的节点都有对应的值，只有叶子节点和部分内部节点所对应的键才有相关的值。</p>
-<pre><code class="lang-python">class Trie:
-    # 初始化
-    def __init__(self):
-        self.lookup = {}
-
-    def insert(self, word):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Trie</span>:</span>
+	<span class="hljs-comment"># 初始化</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.lookup = &#123;&#125;
+        
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert</span><span class="hljs-params">(self, word)</span>:</span>
         tree = self.lookup
-        for a in word:
-            if a not in tree:
-                tree[a] = {}
+        <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> word:
+            <span class="hljs-keyword">if</span> a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tree:
+                tree[a] = &#123;&#125;
             tree = tree[a]
-        # 单词结束标志
-        tree[&quot;#&quot;] = &quot;#&quot;
+        <span class="hljs-comment"># 单词结束标志</span>
+        tree[<span class="hljs-string">"#"</span>] = <span class="hljs-string">"#"</span>
 
-    def search(self, word):
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">search</span><span class="hljs-params">(self, word)</span>:</span>
         tree = self.lookup
-        for a in word:
-            if a not in tree:
-                return False
+        <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> word:
+            <span class="hljs-keyword">if</span> a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tree:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
             tree = tree[a]
-        if &quot;#&quot; in tree:
-            return True
-        return False  
+        <span class="hljs-keyword">if</span> <span class="hljs-string">"#"</span> <span class="hljs-keyword">in</span> tree:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>  
 
-    def startsWith(self, prefix):
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">startsWith</span><span class="hljs-params">(self, prefix)</span>:</span>
         tree = self.lookup
-        for a in prefix:
-            if a not in tree:
-                return False
+        <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> prefix:
+            <span class="hljs-keyword">if</span> a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tree:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
             tree = tree[a]
-        return True
-</code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></code></pre></div>
 <h2 id="B树-B-tree-和B-树-B-tree"><a href="#B树-B-tree-和B-树-B-tree" class="headerlink" title="B树(B-tree)和B+树(B+ tree)"></a>B树(B-tree)和B+树(B+ tree)</h2><p><strong>B树</strong>（B-tree）是一种自平衡的树，能够保持数据有序。这种数据结构能够让查找数据、顺序访问、插入数据及删除的动作，都在对数时间内完成。B树，概括来说是一个一般化的二叉查找树（binary search tree）一个节点可以拥有2个以上的子节点。与自平衡二叉查找树不同，B树适用于读写相对大的数据块的存储系统，例如磁盘。B树减少定位记录时所经历的中间过程，从而加快存取速度。B树这种数据结构可以用来描述外部存储。这种数据结构常被应用在数据库和文件系统的实现上。</p>
 <p><strong>B+ 树</strong>是一种树数据结构，通常用于数据库和操作系统的文件系统中。B+ 树的特点是能够保持数据稳定有序，其插入与修改拥有较稳定的对数时间复杂度。B+ 树元素自底向上插入，这与二叉树恰好相反。</p>
 <p>B+树与B树最大的不同是内部结点不保存数据，只用于索引，所有数据（或者说记录）都保存在叶子结点中。</p>
@@ -595,12 +586,12 @@ def postorderTraversalIter(root):
 <li>从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
 </ol>
 <p>下面是一个具体的红黑树的图例：</p>
-<p><img src="675px-Red-black_tree_example.svg.png" alt="rbt"></p>
+<p><img src="675px-Red-black_tree_example.svg.png" srcset="/img/loading.gif" alt="rbt"></p>
 <p>操作有变色，左旋，右旋。</p>
 <h2 id="树堆-treap"><a href="#树堆-treap" class="headerlink" title="树堆(treap)"></a>树堆(treap)</h2><p><strong>树堆</strong>（Treap）是二叉排序树（Binary Sort Tree）与堆（Heap）结合产生的一种拥有堆性质的二叉排序树。</p>
 <p>但是这里要注意两点，第一点是Treap和二叉堆有一点不同，就是二叉堆必须是完全二叉树，而Treap并不一定是；第二点是Treap并不严格满足平衡二叉排序树（AVL树）的要求，即树堆中每个节点的左右子树高度之差的绝对值可能会超过1，只是近似满足平衡二叉排序树的性质。</p>
 <p>Treap每个节点记录两个数据，一个是键值，一个是随机附加的优先级，Treap在以关键码构成二叉排序树的同时，又以结点优先级形成最大堆和最小堆。所以Treap必须满足这两个性质，一是二叉排序树的性质，二是堆的性质。如下图，即为一个树堆。</p>
-<p><img src="330px-TreapAlphaKey.svg.png" alt="treap"></p>
+<p><img src="330px-TreapAlphaKey.svg.png" srcset="/img/loading.gif" alt="treap"></p>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Tree" target="_blank" rel="noopener">完整测试代码地址</a></p>
 <p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -611,95 +602,114 @@ def postorderTraversalIter(root):
 <li><a href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/pythonjian-dan-shi-xian-by-powcai/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/pythonjian-dan-shi-xian-by-powcai/</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91/">树</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/08/%E6%A0%88-Stack-%E5%92%8C%E9%98%9F%E5%88%97-Queue/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">栈(Stack)和队列(Queue)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">分治算法(Divide-and-conquer algorithm)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/%E6%A0%91/">树</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -733,10 +743,12 @@ def postorderTraversalIter(root):
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -758,48 +770,27 @@ def postorderTraversalIter(root):
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -809,10 +800,12 @@ def postorderTraversalIter(root):
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -821,24 +814,17 @@ def postorderTraversalIter(root):
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -884,7 +870,7 @@ def postorderTraversalIter(root):
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -892,16 +878,24 @@ def postorderTraversalIter(root):
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

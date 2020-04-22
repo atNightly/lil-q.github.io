@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>java-Collection - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Monday, March 30th 2020, 6:34 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-30 18:34">
+                    Monday, March 30th 2020, 6:34 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    4k 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    4.1k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      17 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    56
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,15 +173,16 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>java学习及面试题汇总——Collection及其源码分析</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>java学习及面试题汇总——Collection及其源码分析</p>
 <a id="more"></a>
 <p>源码基于java 13。</p>
 <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>容器主要包括 Collection 和 Map 两种，Collection 存储着对象的集合，而 Map 存储着键值对（两个对象）的映射表。</p>
-<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/javacollection.png" alt=""></p>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/javacollection.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><p><code>List</code>接口，可以看到几个主要的接口方法：</p>
 <ul>
 <li>在末尾添加一个元素：<code>void add(E e)</code></li>
@@ -189,115 +193,103 @@
 <li>获取链表大小（包含元素的个数）：<code>int size()</code></li>
 </ul>
 <p><code>List</code>接口允许我们添加重复的元素，即<code>List</code>内部的元素可以重复，<code>List</code>还允许添加<code>null</code>。调用<code>List.of()</code>，它返回的是一个<strong>只读</strong><code>List</code>：</p>
-<pre><code class="lang-java">List&lt;Integer&gt; list = List.of(1, 2, 5);
-</code></pre>
+<div class="hljs"><pre><code class="hljs java">List&lt;Integer&gt; list = List.of(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);</code></pre></div>
 <p>但是<code>List.of()</code>方法不接受<code>null</code>值，如果传入<code>null</code>，会抛出<code>NullPointerException</code>异常。</p>
 <h2 id="List遍历"><a href="#List遍历" class="headerlink" title="List遍历"></a>List遍历</h2><p><code>List</code>的遍历采用了迭代器的设计模式：</p>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/iterator.png" alt=""></p>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/iterator.png" srcset="/img/loading.gif" alt=""></p>
 <p><code>Iterable</code>接口声明如下：</p>
-<pre><code class="lang-java">public interface Iterable&lt;T&gt; {
-    Iterator&lt;T&gt; iterator();
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;
+    <span class="hljs-function">Iterator&lt;T&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre></div>
 <p><code>Iterator</code>接口声明如下：</p>
-<pre><code class="lang-java">public interface Iterator&lt;E&gt; {
-    // 判断是否还有下一个对象，如果有，则返回true，否则false
-    boolean hasNext(); 
-    // 返回集合的下个值，此方法只能在hasNext方法返回true时调用
-    E next(); 
-    // 删除集合的当前值，此方法也只能在hasNext方法返回true时调用
-    void remove();
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
+    <span class="hljs-comment">// 判断是否还有下一个对象，如果有，则返回true，否则false</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>; 
+    <span class="hljs-comment">// 返回集合的下个值，此方法只能在hasNext方法返回true时调用</span>
+    <span class="hljs-function">E <span class="hljs-title">next</span><span class="hljs-params">()</span></span>; 
+    <span class="hljs-comment">// 删除集合的当前值，此方法也只能在hasNext方法返回true时调用</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre></div>
 <p><code>ListIterator</code>接口声明如下：</p>
-<pre><code class="lang-java">public interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt; {
-    // 支持双向移动
-    boolean hasNext();
-    E next();
-    boolean hasPrevious();
-    E previous();
-    // 产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引
-    int nextIndex();
-    int previousIndex();
-    void remove();
-    // 可以使用set()方法替换它访问过的最后一个元素
-    void set(E e);
-    // 可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素
-    void add(E e); 
-}
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ListIterator</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
+    <span class="hljs-comment">// 支持双向移动</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function">E <span class="hljs-title">next</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasPrevious</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function">E <span class="hljs-title">previous</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// 产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引</span>
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nextIndex</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">previousIndex</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// 可以使用set()方法替换它访问过的最后一个元素</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(E e)</span></span>;
+    <span class="hljs-comment">// 可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span></span>; 
+&#125;</code></pre></div>
 <p>通过<code>Iterator</code>遍历<code>List</code>永远是最高效的方式。并且，由于<code>Iterator</code>遍历是如此常用，所以，Java的<code>for each</code>循环本身就可以帮我们使用<code>Iterator</code>遍历。</p>
-<pre><code class="lang-java">import java.util.Iterator;
-import java.util.List;
-public class Main {
-    public static void main(String[] args) {
-        List&lt;String&gt; list = List.of(&quot;apple&quot;, &quot;pear&quot;, &quot;banana&quot;);
-        for (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Iterator;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        List&lt;String&gt; list = List.of(<span class="hljs-string">"apple"</span>, <span class="hljs-string">"pear"</span>, <span class="hljs-string">"banana"</span>);
+        <span class="hljs-keyword">for</span> (Iterator&lt;String&gt; it = list.iterator(); it.hasNext(); ) &#123;
             String s = it.next();
             System.out.println(s);
-        }
-    }
-}
-</code></pre>
-<pre><code class="lang-java">import java.util.List;
-public class Main {
-    public static void main(String[] args) {
-        List&lt;String&gt; list = List.of(&quot;apple&quot;, &quot;pear&quot;, &quot;banana&quot;);
-        for (String s : list) {
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        List&lt;String&gt; list = List.of(<span class="hljs-string">"apple"</span>, <span class="hljs-string">"pear"</span>, <span class="hljs-string">"banana"</span>);
+        <span class="hljs-keyword">for</span> (String s : list) &#123;
             System.out.println(s);
-        }
-    }
-}
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 <h2 id="List和Array转换"><a href="#List和Array转换" class="headerlink" title="List和Array转换"></a>List和Array转换</h2><h3 id="List-gt-Array"><a href="#List-gt-Array" class="headerlink" title="List -&gt; Array"></a>List -&gt; Array</h3><p>给<code>toArray(T[])</code>传入一个类型相同的<code>Array</code>，<code>List</code>内部自动把元素复制到传入的<code>Array</code>中：</p>
-<pre><code class="lang-java">import java.util.List;
-public class Main {
-    public static void main(String[] args) {
-        List&lt;Integer&gt; list = List.of(12, 34, 56);
-        Integer[] array = list.toArray(new Integer[3]);
-        for (Integer n : array) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        List&lt;Integer&gt; list = List.of(<span class="hljs-number">12</span>, <span class="hljs-number">34</span>, <span class="hljs-number">56</span>);
+        Integer[] array = list.toArray(<span class="hljs-keyword">new</span> Integer[<span class="hljs-number">3</span>]);
+        <span class="hljs-keyword">for</span> (Integer n : array) &#123;
             System.out.println(n);
-        }
-    }
-}
-</code></pre>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 <p><code>toArray(T[])</code>方法的泛型参数<code>&lt;T&gt;</code>并不是<code>List</code>接口定义的泛型参数<code>&lt;E&gt;</code>，所以，我们实际上可以传入其他类型的数组。</p>
-<pre><code class="lang-java">Number[] array = list.toArray(new Number[3]);
-</code></pre>
+<div class="hljs"><pre><code class="hljs java">Number[] array = list.toArray(<span class="hljs-keyword">new</span> Number[<span class="hljs-number">3</span>]);</code></pre></div>
 <p>如果传入的数组不够大，那么<code>List</code>内部会创建一个新的刚好够大的数组，填充后返回；如果传入的数组比<code>List</code>元素还要多，那么填充完元素后，剩下的数组元素一律填充<code>null</code>。实际上，最常用的是传入一个“恰好”大小的数组：</p>
-<pre><code class="lang-java">Integer[] array = list.toArray(new Integer[list.size()]);
-</code></pre>
-<h3 id="Array-gt-List"><a href="#Array-gt-List" class="headerlink" title="Array -&gt; List"></a>Array -&gt; List</h3><pre><code class="lang-java">Integer[] array = { 1, 2, 3 };
-List&lt;Integer&gt; list = List.of(array);
-</code></pre>
+<div class="hljs"><pre><code class="hljs java">Integer[] array = list.toArray(<span class="hljs-keyword">new</span> Integer[list.size()]);</code></pre></div>
+<h3 id="Array-gt-List"><a href="#Array-gt-List" class="headerlink" title="Array -&gt; List"></a>Array -&gt; List</h3><div class="hljs"><pre><code class="hljs java">Integer[] array = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;;
+List&lt;Integer&gt; list = List.of(array);</code></pre></div>
 <p>对于JDK 11之前的版本，可以使用<code>Arrays.asList(T...)</code>方法把数组转换成<code>List</code>。</p>
 <h2 id="contains-和indexOf"><a href="#contains-和indexOf" class="headerlink" title="contains()和indexOf()"></a>contains()和indexOf()</h2><p><code>List</code>内部按照放入元素的先后顺序存放，并且每个元素都可以通过索引确定自己的位置。<code>List</code>提供了<code>boolean contains(Object o)</code>方法来判断<code>List</code>是否包含某个指定元素。此外，<code>int indexOf(Object o)</code>方法可以返回某个元素的索引，如果元素不存在，就返回<code>-1</code>。</p>
 <p><code>List</code>内部并不是通过<code>==</code>判断两个元素是否相等，而是使用<code>equals()</code>方法判断两个元素是否相等，所以放入的实例必须要正确override。</p>
 <p>如果<code>this.name</code>为<code>null</code>，那么<code>equals()</code>方法会报错，因此，需要继续改写如下：</p>
-<pre><code class="lang-java">public boolean equals(Object o) {
-    if (o instanceof Person) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (o <span class="hljs-keyword">instanceof</span> Person) &#123;
         Person p = (Person) o;
-        boolean nameEquals = false;
-        if (this.name == null &amp;&amp; p.name == null) {
-            nameEquals = true;
-        }
-        if (this.name != null) {
-            nameEquals = this.name.equals(p.name);
-        }
-        return nameEquals &amp;&amp; this.age == p.age;
-    }
-    return false;
-}
-</code></pre>
+        <span class="hljs-keyword">boolean</span> nameEquals = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.name == <span class="hljs-keyword">null</span> &amp;&amp; p.name == <span class="hljs-keyword">null</span>) &#123;
+            nameEquals = <span class="hljs-keyword">true</span>;
+        &#125;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.name != <span class="hljs-keyword">null</span>) &#123;
+            nameEquals = <span class="hljs-keyword">this</span>.name.equals(p.name);
+        &#125;
+        <span class="hljs-keyword">return</span> nameEquals &amp;&amp; <span class="hljs-keyword">this</span>.age == p.age;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+&#125;</code></pre></div>
 <p>如果<code>Person</code>有好几个引用类型的字段，上面的写法就太复杂了。要简化引用类型的比较，我们使用<code>Objects.equals()</code>静态方法：</p>
-<pre><code class="lang-java">public boolean equals(Object o) {
-    if (o instanceof Person) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (o <span class="hljs-keyword">instanceof</span> Person) &#123;
         Person p = (Person) o;
-        return Objects.equals(this.name, p.name) &amp;&amp; this.age == p.age;
-    }
-    return false;
-}
-</code></pre>
+        <span class="hljs-keyword">return</span> Objects.equals(<span class="hljs-keyword">this</span>.name, p.name) &amp;&amp; <span class="hljs-keyword">this</span>.age == p.age;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+&#125;</code></pre></div>
 <h2 id="List实现类"><a href="#List实现类" class="headerlink" title="List实现类"></a>List实现类</h2><ul>
 <li>ArrayList：基于动态数组实现，支持随机访问。</li>
 <li>Vector：和 ArrayList 类似，但它是线程安全的。</li>
@@ -338,197 +330,198 @@ List&lt;Integer&gt; list = List.of(array);
 </table>
 </div>
 <p>通常情况下，我们总是优先使用<code>ArrayList</code>。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><pre><code class="lang-java">public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
-        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
-{
-    private static final long serialVersionUID = 8683452581122892189L;
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractList</span>&lt;<span class="hljs-title">E</span>&gt;
+        <span class="hljs-keyword">implements</span> <span class="hljs-title">List</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">RandomAccess</span>, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>
+</span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">8683452581122892189L</span>;
 
-    // Default initial capacity
-    private static final int DEFAULT_CAPACITY = 10;
-    ...
-</code></pre>
+    <span class="hljs-comment">// Default initial capacity</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DEFAULT_CAPACITY = <span class="hljs-number">10</span>;
+    ...</code></pre></div>
 <p>RandomAccess 接口标识着该类支持快速随机访问，java.io.Serializable是支持序列化接口。数组的默认大小为 10。</p>
 <h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><p>添加元素时如果容量不够时，需要使用 grow() 方法进行扩容，新容量的大小默认为 <code>oldCapacity + (oldCapacity &gt;&gt; 1)</code>，也就是旧容量的 1.5 倍。当需求的容量大于它时，则会选用两个<code>list</code>长度之和作为新容量，扩容操作需要调用 <code>Arrays.copyOf()</code> 把原数组整个复制到新数组中，这个操作代价很高，因此最好在创建 ArrayList 对象时就指定大概的容量大小，减少扩容操作的次数。</p>
-<pre><code class="lang-java">public boolean addAll(Collection&lt;? extends E&gt; c) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">addAll</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;
     Object[] a = c.toArray();
     modCount++;
-    int numNew = a.length;
-    if (numNew == 0)
-        return false;
+    <span class="hljs-keyword">int</span> numNew = a.length;
+    <span class="hljs-keyword">if</span> (numNew == <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
     Object[] elementData;
-    final int s;
-    // 加入的数组长度大于剩余空数组长度
-    if (numNew &gt; (elementData = this.elementData).length - (s = size))
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> s;
+    <span class="hljs-comment">// 加入的数组长度大于剩余空数组长度</span>
+    <span class="hljs-keyword">if</span> (numNew &gt; (elementData = <span class="hljs-keyword">this</span>.elementData).length - (s = size))
         elementData = grow(s + numNew);
-    System.arraycopy(a, 0, elementData, s, numNew);
+    System.arraycopy(a, <span class="hljs-number">0</span>, elementData, s, numNew);
     size = s + numNew;
-    return true;
-}
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+&#125;
 
-private Object[] grow(int minCapacity) {
-    int oldCapacity = elementData.length;
-    if (oldCapacity &gt; 0 || elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
-        int newCapacity = ArraysSupport.newLength(oldCapacity,
-                minCapacity - oldCapacity, /* minimum growth */
-                oldCapacity &gt;&gt; 1           /* preferred growth */);
-        return elementData = Arrays.copyOf(elementData, newCapacity);
-    } else {
-        return elementData = new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
-    }
-}
+<span class="hljs-keyword">private</span> Object[] grow(<span class="hljs-keyword">int</span> minCapacity) &#123;
+    <span class="hljs-keyword">int</span> oldCapacity = elementData.length;
+    <span class="hljs-keyword">if</span> (oldCapacity &gt; <span class="hljs-number">0</span> || elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;
+        <span class="hljs-keyword">int</span> newCapacity = ArraysSupport.newLength(oldCapacity,
+                minCapacity - oldCapacity, <span class="hljs-comment">/* minimum growth */</span>
+                oldCapacity &gt;&gt; <span class="hljs-number">1</span>           <span class="hljs-comment">/* preferred growth */</span>);
+        <span class="hljs-keyword">return</span> elementData = Arrays.copyOf(elementData, newCapacity);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">return</span> elementData = <span class="hljs-keyword">new</span> Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
+    &#125;
+&#125;
 
-private Object[] grow() {
-    return grow(size + 1);
-}
-</code></pre>
+<span class="hljs-keyword">private</span> Object[] grow() &#123;
+    <span class="hljs-keyword">return</span> grow(size + <span class="hljs-number">1</span>);
+&#125;</code></pre></div>
 <p>ArraySupport.class下的<code>newLength()</code>：</p>
-<pre><code class="lang-java">public static int newLength(int oldLength, int minGrowth, int prefGrowth) {
-    // assert oldLength &gt;= 0
-    // assert minGrowth &gt; 0
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">newLength</span><span class="hljs-params">(<span class="hljs-keyword">int</span> oldLength, <span class="hljs-keyword">int</span> minGrowth, <span class="hljs-keyword">int</span> prefGrowth)</span> </span>&#123;
+    <span class="hljs-comment">// assert oldLength &gt;= 0</span>
+    <span class="hljs-comment">// assert minGrowth &gt; 0</span>
 
-    int newLength = Math.max(minGrowth, prefGrowth) + oldLength;
-    if (newLength - MAX_ARRAY_LENGTH &lt;= 0) {
-        return newLength;
-    }
-    return hugeLength(oldLength, minGrowth); // 处理溢出情况
-}
-</code></pre>
+    <span class="hljs-keyword">int</span> newLength = Math.max(minGrowth, prefGrowth) + oldLength;
+    <span class="hljs-keyword">if</span> (newLength - MAX_ARRAY_LENGTH &lt;= <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-keyword">return</span> newLength;
+    &#125;
+    <span class="hljs-keyword">return</span> hugeLength(oldLength, minGrowth); <span class="hljs-comment">// 处理溢出情况</span>
+&#125;</code></pre></div>
 <p>Arrays.class下的<code>copyOf()</code>：</p>
-<pre><code class="lang-java">@SuppressWarnings(&quot;unchecked&quot;)
-public static &lt;T&gt; T[] copyOf(T[] original, int newLength) {
+<div class="hljs"><pre><code class="hljs java">@SuppressWarnings("unchecked")
+public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
     return (T[]) copyOf(original, newLength, original.getClass());
-}
+&#125;
 
 @HotSpotIntrinsicCandidate
-    public static &lt;T,U&gt; T[] copyOf(U[] original, int newLength, Class&lt;? extends T[]&gt; newType) {
-        @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;T,U&gt; T[] copyOf(U[] original, int newLength, Class&lt;? extends T[]&gt; newType) &#123;
+        @SuppressWarnings("unchecked")
         T[] copy = ((Object)newType == (Object)Object[].class)
             ? (T[]) new Object[newLength]
             : (T[]) Array.newInstance(newType.getComponentType(), newLength);
         System.arraycopy(original, 0, copy, 0,
                          Math.min(original.length, newLength));
         return copy;
-    }
-</code></pre>
+    &#125;</code></pre></div>
 <p>System.class下的<code>arraycopy()</code>：</p>
-<pre><code class="lang-java">public static native void arraycopy(Object src,  int  srcPos,
-                                    Object dest, int destPos,
-                                    int length);
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title">arraycopy</span><span class="hljs-params">(Object src,  <span class="hljs-keyword">int</span>  srcPos,
+                                    Object dest, <span class="hljs-keyword">int</span> destPos,
+                                    <span class="hljs-keyword">int</span> length)</span></span>;</code></pre></div>
 <h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p><code>remove()</code>调用了<code>fastRemove()</code>，其中调用 System.arraycopy() 将 index+1 后面的元素都复制到 index 位置上，该操作的时间复杂度为 O(N)，可以看到 ArrayList 删除元素的代价是非常高的。</p>
-<pre><code class="lang-java">public E remove(int index) {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
     Objects.checkIndex(index, size);
-    final Object[] es = elementData;
+    <span class="hljs-keyword">final</span> Object[] es = elementData;
 
-    @SuppressWarnings(&quot;unchecked&quot;) E oldValue = (E) es[index];
+    <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"unchecked"</span>) E oldValue = (E) es[index];
     fastRemove(es, index);
 
-    return oldValue;
-}
+    <span class="hljs-keyword">return</span> oldValue;
+&#125;
 
-private void fastRemove(Object[] es, int i) {
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fastRemove</span><span class="hljs-params">(Object[] es, <span class="hljs-keyword">int</span> i)</span> </span>&#123;
     modCount++;
-    final int newSize;
-    if ((newSize = size - 1) &gt; i)
-        System.arraycopy(es, i + 1, es, i, newSize - i);
-    es[size = newSize] = null;
-}
-</code></pre>
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> newSize;
+    <span class="hljs-keyword">if</span> ((newSize = size - <span class="hljs-number">1</span>) &gt; i)
+        System.arraycopy(es, i + <span class="hljs-number">1</span>, es, i, newSize - i);
+    es[size = newSize] = <span class="hljs-keyword">null</span>;
+&#125;</code></pre></div>
 <h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>保存元素的数组 <code>elementData</code> 使用 <code>transient</code> 修饰，该关键字声明数组默认不会被序列化。也就是说 <code>elementData</code> 的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
-<pre><code class="lang-java">transient Object[] elementData; // non-private to simplify nested class access
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">transient</span> Object[] elementData; <span class="hljs-comment">// non-private to simplify nested class access</span></code></pre></div>
 <p>ArrayList 实现了 writeObject() 和 readObject() 来控制只序列化数组中有元素填充那部分内容。</p>
-<pre><code class="lang-java">private void readObject(java.io.ObjectInputStream s)
-    throws java.io.IOException, ClassNotFoundException {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream s)</span>
+    <span class="hljs-keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;
 
-    // Read in size, and any hidden stuff
+    <span class="hljs-comment">// Read in size, and any hidden stuff</span>
     s.defaultReadObject();
 
-    // Read in capacity
-    s.readInt(); // ignored
+    <span class="hljs-comment">// Read in capacity</span>
+    s.readInt(); <span class="hljs-comment">// ignored</span>
 
-    if (size &gt; 0) {
-        // like clone(), allocate array based upon size not capacity
-        SharedSecrets.getJavaObjectInputStreamAccess().checkArray(s, Object[].class, size);
-        Object[] elements = new Object[size];
+    <span class="hljs-keyword">if</span> (size &gt; <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-comment">// like clone(), allocate array based upon size not capacity</span>
+        SharedSecrets.getJavaObjectInputStreamAccess().checkArray(s, Object[]<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">size</span>)</span>;
+        Object[] elements = <span class="hljs-keyword">new</span> Object[size];
 
-        // Read in all elements in the proper order.
-        for (int i = 0; i &lt; size; i++) {
+        <span class="hljs-comment">// Read in all elements in the proper order.</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;
             elements[i] = s.readObject();
-        }
+        &#125;
 
         elementData = elements;
-    } else if (size == 0) {
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (size == <span class="hljs-number">0</span>) &#123;
         elementData = EMPTY_ELEMENTDATA;
-    } else {
-        throw new java.io.InvalidObjectException(&quot;Invalid size: &quot; + size);
-    }
-}
-</code></pre>
-<pre><code class="lang-java">private void writeObject(java.io.ObjectOutputStream s)
-    throws java.io.IOException {
-    // Write out element count, and any hidden stuff
-    int expectedModCount = modCount;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> java.io.InvalidObjectException(<span class="hljs-string">"Invalid size: "</span> + size);
+    &#125;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream s)</span>
+    <span class="hljs-keyword">throws</span> java.io.IOException </span>&#123;
+    <span class="hljs-comment">// Write out element count, and any hidden stuff</span>
+    <span class="hljs-keyword">int</span> expectedModCount = modCount;
     s.defaultWriteObject();
 
-    // Write out size as capacity for behavioral compatibility with clone()
+    <span class="hljs-comment">// Write out size as capacity for behavioral compatibility with clone()</span>
     s.writeInt(size);
 
-    // Write out all elements in the proper order.
-    for (int i=0; i&lt;size; i++) {
+    <span class="hljs-comment">// Write out all elements in the proper order.</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;size; i++) &#123;
         s.writeObject(elementData[i]);
-    }
+    &#125;
 
-    if (modCount != expectedModCount) {
-        throw new ConcurrentModificationException();
-    }
-}
-</code></pre>
+    <span class="hljs-keyword">if</span> (modCount != expectedModCount) &#123;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();
+    &#125;
+&#125;</code></pre></div>
 <p>序列化时需要使用 ObjectOutputStream 的 writeObject() 将对象转换为字节流并输出。而 writeObject() 方法在传入的对象存在 writeObject() 的时候会去反射调用该对象的 writeObject() 来实现序列化。反序列化使用的是 ObjectInputStream 的 readObject() 方法，原理类似。</p>
-<pre><code class="lang-java">ArrayList list = new ArrayList();
-ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-oos.writeObject(list);
-</code></pre>
+<div class="hljs"><pre><code class="hljs java">ArrayList list = <span class="hljs-keyword">new</span> ArrayList();
+ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(file));
+oos.writeObject(list);</code></pre></div>
 <h4 id="fail-fast机制"><a href="#fail-fast机制" class="headerlink" title="fail-fast机制"></a>fail-fast机制</h4><p> AbstractList.class中使用 <code>modCount</code> 来记录 <code>ArrayList</code> 结构发生变化的次数。结构发生变化是指添加或者删除至少一个元素的所有操作，或者是调整内部数组的大小，仅仅只是设置元素的值不算结构发生变化。</p>
-<pre><code class="lang-java">protected transient int modCount = 0;
-</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> modCount = <span class="hljs-number">0</span>;</code></pre></div>
 <p>迭代器在调用<code>next()</code>、<code>remove()</code>方法时都是调用<code>checkForComodification()</code>方法，它检测<code>modCount == expectedModCount</code> ？ 若不等则抛出<code>ConcurrentModificationException</code>异常，从而产生fail-fast机制。</p>
 <p>有两种解决方案：</p>
 <ul>
 <li>在遍历过程中所有涉及到改变<code>modCount</code>值得地方全部加上<code>synchronized</code>或者直接使用<code>Collections.synchronizedList</code>（不推荐）；</li>
 <li>使用<code>CopyOnWriteArrayList</code>来替换<code>ArrayList</code>。</li>
 </ul>
+<h4 id="toArray"><a href="#toArray" class="headerlink" title="toArray()"></a>toArray()</h4><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Object[] toArray() &#123;
+        <span class="hljs-keyword">return</span> Arrays.copyOf(elementData, size);
+    &#125;</code></pre></div>
+<p>注意到传入的<code>elementData</code>和返回值是<code>Object[]</code>，如果需要传回原格式：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> &lt;T&gt; T[] toArray(T[] a) &#123;
+        <span class="hljs-keyword">if</span> (a.length &lt; size)
+            <span class="hljs-comment">// Make a new array of a's runtime type, but my contents:</span>
+            <span class="hljs-keyword">return</span> (T[]) Arrays.copyOf(elementData, size, a.getClass()); <span class="hljs-comment">// 利用反射</span>
+        System.arraycopy(elementData, <span class="hljs-number">0</span>, a, <span class="hljs-number">0</span>, size);
+        <span class="hljs-keyword">if</span> (a.length &gt; size)
+            a[size] = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">return</span> a;
+    &#125;</code></pre></div>
 <h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><h4 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h4><p>写操作在一个复制的数组上进行，读操作还是在原始数组中进行，读写分离，互不影响。</p>
 <p>写操作需要加锁，否则多线程写的时候会Copy出N个副本，防止并发写入时导致写入数据丢失。</p>
 <p>写操作结束之后需要把原始数组指向新的复制数组。</p>
-<pre><code class="lang-java">public boolean add(E e) {
-    final ReentrantLock lock = this.lock;
-    // 获得锁
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;
+    <span class="hljs-keyword">final</span> ReentrantLock lock = <span class="hljs-keyword">this</span>.lock;
+    <span class="hljs-comment">// 获得锁</span>
     lock.lock();
-    try {
+    <span class="hljs-keyword">try</span> &#123;
         Object[] elements = getArray();
-        int len = elements.length;
-        // 复制新数组
-        Object[] newElements = Arrays.copyOf(elements, len + 1);
-        // 插入新值
+        <span class="hljs-keyword">int</span> len = elements.length;
+        <span class="hljs-comment">// 复制新数组</span>
+        Object[] newElements = Arrays.copyOf(elements, len + <span class="hljs-number">1</span>);
+        <span class="hljs-comment">// 插入新值</span>
         newElements[len] = e;
-        // 原来的引用指向新的数组
+        <span class="hljs-comment">// 原来的引用指向新的数组</span>
         setArray(newElements);
-        return true;
-    } finally {
-        // 释放锁
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        <span class="hljs-comment">// 释放锁</span>
         lock.unlock();
-    }
-}
+    &#125;
+&#125;
 
-final void setArray(Object[] a) {
+<span class="hljs-function"><span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setArray</span><span class="hljs-params">(Object[] a)</span> </span>&#123;
     array = a;
-}Copy to clipboardErrorCopied
-@SuppressWarnings(&quot;unchecked&quot;)
-private E get(Object[] a, int index) {
-    return (E) a[index];
-}Copy to clipboardErrorCopied
-</code></pre>
+&#125;Copy to clipboardErrorCopied
+<span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"unchecked"</span>)
+<span class="hljs-function"><span class="hljs-keyword">private</span> E <span class="hljs-title">get</span><span class="hljs-params">(Object[] a, <span class="hljs-keyword">int</span> index)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> (E) a[index];
+&#125;Copy to clipboardErrorCopied</code></pre></div>
 <p>使用CopyOnWriteMap需要注意两件事情：</p>
 <ol>
 <li><strong>减少扩容开销。</strong>根据实际需要，初始化CopyOnWriteMap的大小，避免写时CopyOnWriteMap扩容的开销。</li>
@@ -595,8 +588,7 @@ private E get(Object[] a, int index) {
 </tbody>
 </table>
 </div>
-<h2 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h2><pre><code class="lang-java">public interface Deque&lt;E&gt; extends Queue&lt;E&gt; {...}
-</code></pre>
+<h2 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Deque</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Queue</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;...&#125;</code></pre></div>
 <p><code>Deque</code>实现了一个双端队列（Double Ended Queue），比较<code>Queue</code>和<code>Deque</code>出队和入队的方法：</p>
 <div class="table-container">
 <table>
@@ -653,32 +645,30 @@ private E get(Object[] a, int index) {
 <li>LinkedList：可以用它来实现双向队列。</li>
 <li>PriorityQueue：基于<strong>堆结构</strong>实现，可以用它来实现优先队列。</li>
 </ul>
-<h3 id="LinkedList源码分析"><a href="#LinkedList源码分析" class="headerlink" title="LinkedList源码分析"></a>LinkedList源码分析</h3><pre><code class="lang-java">public class LinkedList&lt;E&gt;
-    extends AbstractSequentialList&lt;E&gt;
-    implements List&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable
-{
-    transient int size = 0;
+<h3 id="LinkedList源码分析"><a href="#LinkedList源码分析" class="headerlink" title="LinkedList源码分析"></a>LinkedList源码分析</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span>&lt;<span class="hljs-title">E</span>&gt;
+    <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSequentialList</span>&lt;<span class="hljs-title">E</span>&gt;
+    <span class="hljs-keyword">implements</span> <span class="hljs-title">List</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">Deque</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>
+</span>&#123;
+    <span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;
 
-    // Pointer to first node.
-    transient Node&lt;E&gt; first;
+    <span class="hljs-comment">// Pointer to first node.</span>
+    <span class="hljs-keyword">transient</span> Node&lt;E&gt; first;
 
-    // Pointer to last node.
-    transient Node&lt;E&gt; last;
-    ...
-</code></pre>
+    <span class="hljs-comment">// Pointer to last node.</span>
+    <span class="hljs-keyword">transient</span> Node&lt;E&gt; last;
+    ...</code></pre></div>
 <p>LinkedList()中的节点定义如下：</p>
-<pre><code class="lang-java">private static class Node&lt;E&gt; {
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
         E item;
         Node&lt;E&gt; next;
         Node&lt;E&gt; prev;
 
-        Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
-            this.item = element;
-            this.next = next;
-            this.prev = prev;
-        }
-    }
-</code></pre>
+        Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;
+            <span class="hljs-keyword">this</span>.item = element;
+            <span class="hljs-keyword">this</span>.next = next;
+            <span class="hljs-keyword">this</span>.prev = prev;
+        &#125;
+    &#125;</code></pre></div>
 <h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>PriorityQueue中堆结构默认是<strong>最小堆</strong>，如需实现最大堆，覆写<code>compare()</code>即可。父子节点的编号之间有如下关系：</p>
 <ul>
 <li>leftNo = parentNo * 2 + 1</li>
@@ -695,97 +685,116 @@ private E get(Object[] a, int index) {
 <li><a href="https://www.cnblogs.com/vinozly/p/5171227.html" target="_blank" rel="noopener">Serializable</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/java/">java</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/02/java%E5%9F%BA%E7%A1%80%E4%BA%94/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">java-Map</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/27/java%E5%9F%BA%E7%A1%80%E4%B8%89/">
+                        <span class="hidden-mobile">java-反射和泛型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -819,10 +828,12 @@ private E get(Object[] a, int index) {
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -844,48 +855,27 @@ private E get(Object[] a, int index) {
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -895,10 +885,12 @@ private E get(Object[] a, int index) {
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -907,24 +899,17 @@ private E get(Object[] a, int index) {
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -970,7 +955,7 @@ private E get(Object[] a, int index) {
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -978,16 +963,24 @@ private E get(Object[] a, int index) {
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

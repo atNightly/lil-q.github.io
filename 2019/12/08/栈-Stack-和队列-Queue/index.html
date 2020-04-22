@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>栈(Stack)和队列(Queue) - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Sunday, December 8th 2019, 12:29 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-12-08 12:29">
+                    Sunday, December 8th 2019, 12:29 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     1.3k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      5 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    17
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>栈和队列的学习和python实现</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>栈和队列的学习和python实现</p>
 <a id="more"></a>
 <h1 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈(Stack)"></a>栈(Stack)</h1><p><strong>堆栈</strong>(stack)又称为<strong>栈</strong>或<strong>堆叠</strong>，是计算机科学中的一种抽象数据类型，只允许在有序的线性数据集合的一端（称为堆栈顶端，top）进行加入数据(push)和移除数据(pop)的运算。因而按照后进先出(LIFO, Last In First Out)原理运作。</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>堆栈使用两种基本操作：推入（压栈，push）和弹出（弹栈，pop）：</p>
@@ -183,250 +187,262 @@
 <li>弹出：将堆栈顶端数据移除，堆栈顶端移到移除后的下一笔数据。</li>
 </ul>
 <p>在python中，可用<code>list</code>模拟栈，<code>append()</code>模拟入栈，<code>pop()</code>模拟出栈。</p>
-<p><img src="300px-Data_stack.svg.png" alt="stack"></p>
+<p><img src="300px-Data_stack.svg.png" srcset="/img/loading.gif" alt="stack"></p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="leetcode-20-有效的括号"><a href="#leetcode-20-有效的括号" class="headerlink" title="leetcode 20.有效的括号"></a><a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="noopener">leetcode 20.有效的括号</a></h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。注意空字符串可被认为是有效字符串。</p>
 <p>有效字符串需满足：</p>
 <ol>
 <li>左括号必须用相同类型的右括号闭合。</li>
 <li>左括号必须以正确的顺序闭合。</li>
 </ol>
-<pre><code class="lang-python">class Solution:
-    def isValid(self, s: str) -&gt; bool:
-        dic={&#39;)&#39;:&#39;(&#39;,&#39;}&#39;:&#39;{&#39;,&#39;]&#39;:&#39;[&#39;}
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isValid</span><span class="hljs-params">(self, s: str)</span> -&gt; bool:</span>
+        dic=&#123;<span class="hljs-string">')'</span>:<span class="hljs-string">'('</span>,<span class="hljs-string">'&#125;'</span>:<span class="hljs-string">'&#123;'</span>,<span class="hljs-string">']'</span>:<span class="hljs-string">'['</span>&#125;
         stack=[]
-        for char in s:
-            # 右括号匹配栈顶的字符
-            if char in dic:
-                # 空栈或不匹配，则输出False
-                if not stack or stack[-1]!=dic[char]:
-                    return False
-                # 匹配成功，左括号出栈
-                else:
+        <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> s:
+            <span class="hljs-comment"># 右括号匹配栈顶的字符</span>
+            <span class="hljs-keyword">if</span> char <span class="hljs-keyword">in</span> dic:
+                <span class="hljs-comment"># 空栈或不匹配，则输出False</span>
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> stack <span class="hljs-keyword">or</span> stack[<span class="hljs-number">-1</span>]!=dic[char]:
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+                <span class="hljs-comment"># 匹配成功，左括号出栈</span>
+                <span class="hljs-keyword">else</span>:
                     stack.pop()
-            # 左括号直接插入
-            else:
+            <span class="hljs-comment"># 左括号直接插入</span>
+            <span class="hljs-keyword">else</span>:
                 stack.append(char)
-        return True if not stack else False
-</code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> stack <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span></code></pre></div>
 <h3 id="leetcode-84-柱状图中最大的矩形"><a href="#leetcode-84-柱状图中最大的矩形" class="headerlink" title="leetcode 84. 柱状图中最大的矩形"></a><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">leetcode 84. 柱状图中最大的矩形</a></h3><p>给定 <em>n</em> 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
 <p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
-<p><img src="histogram_area.png" alt="84"></p>
-<pre><code class="lang-python">class Solution:
-    def largestRectangleArea(self, heights: List[int]) -&gt; int:
-        stack = [0]
-        # 增加左右边界
-        heights = [0] + heights + [0]
-        res = 0
-        # 建立一个递增栈，记录index，方便计算宽度
-        for i in range(1,len(heights)):
-            # 当出现递减的数时，对栈内大于该数的数处理
-            while heights[stack[-1]] &gt; heights[i]:
+<p><img src="histogram_area.png" srcset="/img/loading.gif" alt="84"></p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">largestRectangleArea</span><span class="hljs-params">(self, heights: List[int])</span> -&gt; int:</span>
+        stack = [<span class="hljs-number">0</span>]
+        <span class="hljs-comment"># 增加左右边界</span>
+        heights = [<span class="hljs-number">0</span>] + heights + [<span class="hljs-number">0</span>]
+        res = <span class="hljs-number">0</span>
+        <span class="hljs-comment"># 建立一个递增栈，记录index，方便计算宽度</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(heights)):
+            <span class="hljs-comment"># 当出现递减的数时，对栈内大于该数的数处理</span>
+            <span class="hljs-keyword">while</span> heights[stack[<span class="hljs-number">-1</span>]] &gt; heights[i]:
                 tmp = stack.pop()
-                res = max(res, (i - stack[-1] - 1) * heights[tmp])
+                res = max(res, (i - stack[<span class="hljs-number">-1</span>] - <span class="hljs-number">1</span>) * heights[tmp])
             stack.append(i)
-        return res
-</code></pre>
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <h3 id="leetcode-316-去除重复字母"><a href="#leetcode-316-去除重复字母" class="headerlink" title="leetcode 316. 去除重复字母"></a><a href="https://leetcode-cn.com/problems/remove-duplicate-letters/" target="_blank" rel="noopener">leetcode 316. 去除重复字母</a></h3><p>给定一个仅包含小写字母的字符串，去除字符串中重复的字母，使得每个字母只出现一次。需保证返回结果的字典序最小（要求不能打乱其他字符的相对位置）。</p>
-<pre><code class="lang-python">class Solution:
-    def removeDuplicateLetters(self, s: str) -&gt; str:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">removeDuplicateLetters</span><span class="hljs-params">(self, s: str)</span> -&gt; str:</span>
         stack = []
         existed = set()
-        counter = {}
-        for c in s:
-            counter[c]=counter.get(c,0)+1
-        for c in s:
-            if c not in existed: 
-                # 后面还有这个数，我们才能放心的删除
-                while stack and stack[-1] &gt; c and counter[stack[-1]]:
+        counter = &#123;&#125;
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:
+            counter[c]=counter.get(c,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:
+            <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> existed: 
+                <span class="hljs-comment"># 后面还有这个数，我们才能放心的删除</span>
+                <span class="hljs-keyword">while</span> stack <span class="hljs-keyword">and</span> stack[<span class="hljs-number">-1</span>] &gt; c <span class="hljs-keyword">and</span> counter[stack[<span class="hljs-number">-1</span>]]:
                     existed.remove(stack.pop())
                 stack.append(c)
                 existed.add(c)
-            counter[c]-=1
-        return &#39;&#39;.join(stack)
-</code></pre>
+            counter[c]-=<span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>.join(stack)</code></pre></div>
 <p>其实也是建立了一个递增栈，但是这里需要满足所有的字母最后只出现一次。</p>
 <h1 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列(Queue)"></a>队列(Queue)</h1><p><strong>队列</strong>(queue)，是先进先出(FIFO, First-In-First-Out)的线性表。在具体应用中通常用链表或者数组来实现。</p>
 <h2 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h2><p>队列只允许在后端（<em>rear</em>）进行插入操作，在前端（<em>front</em>）进行删除操作。</p>
 <p>在python中，可用<code>list</code>模拟简单模拟队列，<code>append()</code>模拟插入，<code>pop(0)</code>模拟删除。或使用<code>deque</code>。</p>
-<pre><code class="lang-python">from collections import deque
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque</code></pre></div>
 <p><a href="https://zhuanlan.zhihu.com/p/45798936" target="_blank" rel="noopener">队列的实现分为顺序存储结构和链式存储结构，前者基于数组实现，后者则实基于单链表。</a>简单来说，顺序储存结构在进行队列删除操作时会留出空的储存空间，最后导致假溢。解决办法是引入了循环向量这个概念，也就是把队列的头尾相连接并且使用顺序存储结构进行数据存储的队列，这时队列称<strong>循环队列</strong>。</p>
-<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><h3 id="leetcode-622-设计循环队列"><a href="#leetcode-622-设计循环队列" class="headerlink" title="leetcode 622. 设计循环队列"></a><a href="https://leetcode-cn.com/problems/design-circular-queue/" target="_blank" rel="noopener">leetcode 622. 设计循环队列</a></h3><pre><code class="lang-python">class MyCircularQueue:
+<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><h3 id="leetcode-622-设计循环队列"><a href="#leetcode-622-设计循环队列" class="headerlink" title="leetcode 622. 设计循环队列"></a><a href="https://leetcode-cn.com/problems/design-circular-queue/" target="_blank" rel="noopener">leetcode 622. 设计循环队列</a></h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCircularQueue</span>:</span>
 
-    def __init__(self, k: int):
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, k: int)</span>:</span>
         self.size = k
-        self.cq = [0]*k
-        self.eq = 0
-        self.dq = 0
-        self.count = 0
+        self.cq = [<span class="hljs-number">0</span>]*k
+        self.eq = <span class="hljs-number">0</span>
+        self.dq = <span class="hljs-number">0</span>
+        self.count = <span class="hljs-number">0</span>
 
-    def enQueue(self, value: int) -&gt; bool:
-        if self.count == self.size:
-            return False
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">enQueue</span><span class="hljs-params">(self, value: int)</span> -&gt; bool:</span>
+        <span class="hljs-keyword">if</span> self.count == self.size:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
         self.cq[self.eq] = value
-        self.eq += 1
-        if self.eq == self.size:
-            self.eq = 0
-        self.count += 1
-        return True
+        self.eq += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> self.eq == self.size:
+            self.eq = <span class="hljs-number">0</span>
+        self.count += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
 
-    def deQueue(self) -&gt; bool:
-        if self.count == 0:
-            return False
-        self.dq += 1
-        if self.dq == self.size:
-            self.dq = 0
-        self.count -= 1
-        return True
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deQueue</span><span class="hljs-params">(self)</span> -&gt; bool:</span>
+        <span class="hljs-keyword">if</span> self.count == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+        self.dq += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> self.dq == self.size:
+            self.dq = <span class="hljs-number">0</span>
+        self.count -= <span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
 
-    def Front(self) -&gt; int:
-        if self.count == 0:
-            return -1
-        return self.cq[self.dq]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Front</span><span class="hljs-params">(self)</span> -&gt; int:</span>
+        <span class="hljs-keyword">if</span> self.count == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+        <span class="hljs-keyword">return</span> self.cq[self.dq]
 
-    def Rear(self) -&gt; int:
-        if self.count == 0:
-            return -1
-        return self.cq[self.eq-1]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Rear</span><span class="hljs-params">(self)</span> -&gt; int:</span>
+        <span class="hljs-keyword">if</span> self.count == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+        <span class="hljs-keyword">return</span> self.cq[self.eq<span class="hljs-number">-1</span>]
 
-    def isEmpty(self) -&gt; bool:
-        return self.count == 0
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">(self)</span> -&gt; bool:</span>
+        <span class="hljs-keyword">return</span> self.count == <span class="hljs-number">0</span>
 
-    def isFull(self) -&gt; bool:
-        return self.count == self.size
-</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isFull</span><span class="hljs-params">(self)</span> -&gt; bool:</span>
+        <span class="hljs-keyword">return</span> self.count == self.size</code></pre></div>
 <p>这里每当头尾指针溢出（也就是等于k时），将其置为0。当然也可以一直使用<code>self.eq%self.size</code>和<code>self.dq%self.size</code>作为指针。</p>
-<h3 id="leetcode-102-二叉树的层次遍历"><a href="#leetcode-102-二叉树的层次遍历" class="headerlink" title="leetcode 102. 二叉树的层次遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">leetcode 102. 二叉树的层次遍历</a></h3><pre><code class="lang-python">from collections import deque
-class Solution:
-    def levelOrder(self, root):
+<h3 id="leetcode-102-二叉树的层次遍历"><a href="#leetcode-102-二叉树的层次遍历" class="headerlink" title="leetcode 102. 二叉树的层次遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">leetcode 102. 二叉树的层次遍历</a></h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrder</span><span class="hljs-params">(self, root)</span>:</span>
         levels = []
-        if not root:
-            return levels        
-        level = 0
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+            <span class="hljs-keyword">return</span> levels        
+        level = <span class="hljs-number">0</span>
         queue = deque([root,])
-        while queue:
+        <span class="hljs-keyword">while</span> queue:
             levels.append([])
             level_length = len(queue)          
-            for i in range(level_length):
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(level_length):
                 node = queue.popleft()
                 levels[level].append(node.val)
-                if node.left:
+                <span class="hljs-keyword">if</span> node.left:
                     queue.append(node.left)
-                if node.right:
+                <span class="hljs-keyword">if</span> node.right:
                     queue.append(node.right)
-            level += 1 
-        return levels
-</code></pre>
+            level += <span class="hljs-number">1</span> 
+        <span class="hljs-keyword">return</span> levels</code></pre></div>
 <p>当然如果不分层的话会更直观：</p>
-<pre><code class="lang-python">from collections import deque
-def levelOrderTraversal(root):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrderTraversal</span><span class="hljs-params">(root)</span>:</span>
     res=[]
     queue = deque([root,])
-    while queue:
+    <span class="hljs-keyword">while</span> queue:
         node = queue.popleft()
-        if node.left :
+        <span class="hljs-keyword">if</span> node.left :
             queue.append(node.left)
-            if node.right:
+            <span class="hljs-keyword">if</span> node.right:
                 queue.append(node.right)
                 res.append(node.val)
-    return res
-</code></pre>
+    <span class="hljs-keyword">return</span> res</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/堆栈" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%A0%86%E6%A0%88</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/队列" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E9%98%9F%E5%88%97</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%88/">栈</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%98%9F%E5%88%97/">队列</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%A0%88/">栈</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E9%98%9F%E5%88%97/">队列</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/09/%E6%95%B0%E7%BB%84-Array/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数组(Array)和哈希表(Hash table)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/04/%E6%A0%91-tree/">
+                        <span class="hidden-mobile">树(Tree)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -460,10 +476,12 @@ def levelOrderTraversal(root):
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -485,48 +503,27 @@ def levelOrderTraversal(root):
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -536,10 +533,12 @@ def levelOrderTraversal(root):
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -548,24 +547,17 @@ def levelOrderTraversal(root):
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -611,7 +603,7 @@ def levelOrderTraversal(root):
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -619,16 +611,24 @@ def levelOrderTraversal(root):
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

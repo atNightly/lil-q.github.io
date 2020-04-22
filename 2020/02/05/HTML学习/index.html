@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>HTML学习 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Wednesday, February 5th 2020, 6:24 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-05 18:24">
+                    Wednesday, February 5th 2020, 6:24 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     2.1k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      9 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    28
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,52 +173,53 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>HTML学习笔记</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>HTML学习笔记</p>
 <a id="more"></a>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><strong>超文本标记语言</strong>（英语：<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage，简称：<strong>HTML</strong>）是一种用于创建网页的标准标记语言。HTML 是一种基础技术，常与 <strong>CSS</strong>、<strong>JavaScript</strong> 一起被众多网站用于设计网页、网页应用程序以及移动应用程序的用户界面。网页浏览器可以读取 HTML 文件，并将其渲染成可视化网页。HTML 描述了一个网站的结构语义随着线索的呈现，使之成为一种标记语言而非编程语言。</p>
 <p><h1><a id="title1">标题</a></h1><br>标题（Heading）是通过 <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> 标签进行定义的。<br><code>&lt;h1&gt;</code> 定义最大的标题。 <code>&lt;h6&gt;</code> 定义最小的标题。<br></p>
-<pre><code>&lt;h1&gt;演示标题一&lt;/h1&gt;
+<div class="hljs"><pre><code class="hljs plain">&lt;h1&gt;演示标题一&lt;/h1&gt;
 &lt;h2&gt;演示标题二&lt;/h2&gt;
-&lt;h3&gt;演示标题三&lt;/h3&gt;
-</code></pre><blockquote>
+&lt;h3&gt;演示标题三&lt;/h3&gt;</code></pre></div>
+<blockquote>
 <p><h1>演示标题一</h1></p>
 <p><h2>演示标题二</h2></p>
 <h3>演示标题三</h3>
 
 </blockquote>
 <h1 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h1><h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落是通过 <code>&lt;p&gt;</code> 标签定义的。</p>
-<pre><code>&lt;p&gt;段落一&lt;/p&gt;
-&lt;p&gt;段落二&lt;/p&gt;
-</code></pre><blockquote>
+<div class="hljs"><pre><code class="hljs plain">&lt;p&gt;段落一&lt;/p&gt;
+&lt;p&gt;段落二&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>段落一</p> <p>段落二</p>
 
 </blockquote>
 <h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>使用<code>&lt;br&gt;</code>标签，与 markdown 相同。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</p>
 <p>可使用 <code>&lt;pre&gt;</code> 标签对空行和空格进行控制。</p>
-<pre><code>&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;
-</code></pre><blockquote>
+<div class="hljs"><pre><code class="hljs plain">&lt;p&gt;始不垂翅，&lt;br&gt;终能奋翼&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>始不垂翅，<br>终能奋翼</p>
 
 </blockquote>
-<pre><code>&lt;p&gt;
-    始不垂翅，
-    终能奋翼
-&lt;/p&gt;
-</code></pre><blockquote>
+<div class="hljs"><pre><code class="hljs plain">&lt;p&gt;
+	始不垂翅，
+	终能奋翼
+&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>
     始不垂翅，
     终能奋翼
 </p>
 
 </blockquote>
-<h2 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h2><pre><code>&lt;p&gt;下面有一条水平线&lt;/p&gt;
+<h2 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h2><div class="hljs"><pre><code class="hljs plain">&lt;p&gt;下面有一条水平线&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;上面有一条水平线&lt;/p&gt;
-</code></pre><blockquote>
+&lt;p&gt;上面有一条水平线&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>下面有一条水平线</p>
 <hr>
 <p>上面有一条水平线</p>
@@ -224,13 +228,12 @@
 </blockquote>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。</p>
 <p>注释写法如下:</p>
-<pre><code class="lang-HTML">&lt;!-- 这是一个注释 --&gt;
-</code></pre>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><pre><code>&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;
+<div class="hljs"><pre><code class="hljs HTML"><span class="hljs-comment">&lt;!-- 这是一个注释 --&gt;</span></code></pre></div>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><div class="hljs"><pre><code class="hljs plain">&lt;b&gt;加粗文本&lt;/b&gt;&lt;br&gt;
 &lt;i&gt;斜体文本&lt;/i&gt;&lt;br&gt;
 &lt;code&gt;电脑自动输出&lt;/code&gt;&lt;br&gt;
-这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;
-</code></pre><blockquote>
+这是 &lt;sub&gt; 下标&lt;/sub&gt; 和 &lt;sup&gt; 上标&lt;/sup&gt;</code></pre></div>
+<blockquote>
 <p><b>加粗文本</b><br><br><i>斜体文本</i><br><br><code>电脑自动输出</code><br><br>这是 <sub> 下标</sub> 和 <sup> 上标</sup></p>
 </blockquote>
 <p>通常标签<code>&lt;strong&gt;</code>替换加粗标签<code>&lt;b&gt;</code>来使用，<code>&lt;em&gt;</code>替换<code>&lt;i&gt;</code>标签使用。</p>
@@ -239,14 +242,14 @@
 <p><code>&lt;b&gt;</code>与<code>&lt;i&gt;</code>定义粗体或斜体文本。</p>
 <p><code>&lt;strong&gt;</code>或者<code>&lt;em&gt;</code>意味着你要呈现的文本是重要的，所以要突出显示。</p>
 </blockquote>
-<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><pre><code>&lt;address&gt;
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><div class="hljs"><pre><code class="hljs plain">&lt;address&gt;
 Written by &lt;a href=&quot;mailto:qitiantianc137@outlook.com&quot;&gt;lil-q&lt;/a&gt;.&lt;br&gt; 
 Visit us at:&lt;br&gt;
 Example.com&lt;br&gt;
 Box 564, Disneyland&lt;br&gt;
 USA
-&lt;/address&gt;
-</code></pre><blockquote>
+&lt;/address&gt;</code></pre></div>
+<blockquote>
 <address>
 Written by <a href="mailto:qitiantianc137@outlook.com" target="_blank" rel="noopener">lil-q</a>.<br> 
 Visit us at:<br>
@@ -256,54 +259,54 @@ USA
 </address>
 
 </blockquote>
-<h2 id="注释-1"><a href="#注释-1" class="headerlink" title="注释"></a>注释</h2><pre><code>&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;
-&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;
-</code></pre><blockquote>
+<h2 id="注释-1"><a href="#注释-1" class="headerlink" title="注释"></a>注释</h2><div class="hljs"><pre><code class="hljs plain">&lt;abbr title=&quot;etcetera&quot;&gt;etc.&lt;/abbr&gt;
+&lt;acronym title=&quot;upset&quot;&gt;happy&lt;/acronym&gt;</code></pre></div>
+<blockquote>
 <p><abbr title="etcetera">etc.</abbr></p>
 <acronym title="upset">happy</acronym>
 
 </blockquote>
-<h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><pre><code>&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  
-&lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;
-</code></pre><blockquote>
+<h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><div class="hljs"><pre><code class="hljs plain">&lt;p&gt;该段落文字从左到右显示。&lt;/p&gt;  
+&lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;该段落文字从右到左显示。&lt;/bdo&gt;&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>该段落文字从左到右显示。</p>  
 <p><bdo dir="rtl">该段落文字从右到左显示。</bdo></p> 
 
 </blockquote>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><pre><code>&lt;p&gt;WWF&#39;s goal is to: 
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><div class="hljs"><pre><code class="hljs plain">&lt;p&gt;WWF&apos;s goal is to: 
 &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;
-We hope they succeed.&lt;/p&gt;
-</code></pre><blockquote>
+We hope they succeed.&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>WWF's goal is to: 
 <q>Build a future where people live in harmony with nature.</q>
 We hope they succeed.</p>
 
 </blockquote>
-<h2 id="划线"><a href="#划线" class="headerlink" title="划线"></a>划线</h2><pre><code>&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;
-</code></pre><blockquote>
+<h2 id="划线"><a href="#划线" class="headerlink" title="划线"></a>划线</h2><div class="hljs"><pre><code class="hljs plain">&lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; &lt;ins&gt;red&lt;/ins&gt;!&lt;/p&gt;</code></pre></div>
+<blockquote>
 <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
 
 </blockquote>
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><pre><code>&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;
-</code></pre><p><a href="url">链接文本</a></p>
-<h2 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h2><pre><code>&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;
-</code></pre><p><a href="https://lil-q.github.io/" target="_blank">访问主页!</a></p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><div class="hljs"><pre><code class="hljs plain">&lt;a href=&quot;lil-q.github.io&quot;&gt;链接文本&lt;/a&gt;</code></pre></div>
+<p><a href="url">链接文本</a></p>
+<h2 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h2><div class="hljs"><pre><code class="hljs plain">&lt;a href=&quot;https://lil-q.github.io/&quot; target=&quot;_blank&quot;&gt;访问主页!&lt;/a&gt;</code></pre></div>
+<p><a href="https://lil-q.github.io/" target="_blank">访问主页!</a></p>
 <h2 id="id-属性"><a href="#id-属性" class="headerlink" title="id 属性"></a>id 属性</h2><p>在HTML文档中插入ID:</p>
-<pre><code>&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;
-</code></pre><p>在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：</p>
-<pre><code>&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
-</code></pre><p>或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：</p>
-<pre><code>&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;
-</code></pre><p>上面的标题其实藏了一个链接：</p>
-<pre><code>&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;标题&lt;/a&gt;&lt;/h1&gt;
-</code></pre><p>下面这个例子将跳回标题章节的位置。</p>
-<pre><code>&lt;a href=&quot;#title1&quot;&gt;返回标题章节&lt;/a&gt;
-</code></pre><p><a href="#title1">返回标题章节</a></p>
-<h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><pre><code>&lt;p&gt;
+<div class="hljs"><pre><code class="hljs plain">&lt;a id=&quot;tips&quot;&gt;有用的提示部分&lt;/a&gt;</code></pre></div>
+<p>在HTML文档中创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;a href=&quot;#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</code></pre></div>
+<p>或者，从另一个页面创建一个链接到”有用的提示部分(id=”tips”）”：</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;a href=&quot;https://www.xxx.com/html/html-links.html#tips&quot;&gt;访问有用的提示部分&lt;/a&gt;</code></pre></div>
+<p>上面的标题其实藏了一个链接：</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;h1&gt;&lt;a id=&quot;title1&quot;&gt;标题&lt;/a&gt;&lt;/h1&gt;</code></pre></div>
+<p>下面这个例子将跳回标题章节的位置。</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;a href=&quot;#title1&quot;&gt;返回标题章节&lt;/a&gt;</code></pre></div>
+<p><a href="#title1">返回标题章节</a></p>
+<h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><div class="hljs"><pre><code class="hljs plain">&lt;p&gt;
 这是一个电子邮件链接：
 &lt;a href=&quot;mailto:someone@example.com?cc=someoneelse@example.com&amp;bcc=andsomeoneelse@example.com&amp;subject=Summer%20Party&amp;body=You%20are%20invited%20to%20a%20big%20summer%20party!&quot; target=&quot;_top&quot;&gt;发送邮件!&lt;/a&gt;
-&lt;/p&gt;
-</code></pre><p>
+&lt;/p&gt;</code></pre></div>
+<p>
 这是一个电子邮件链接：
 <a href="mailto:someone@example.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">发送邮件!</a>
 </p>
@@ -320,41 +323,41 @@ We hope they succeed.</p>
 <li>显示在搜索引擎结果页面的标题</li>
 </ul>
 <h2 id="base"><a href="#base" class="headerlink" title="base"></a>base</h2><p><code>&lt;base&gt;</code> 标签描述了基本的链接地址/链接目标，该标签作为 HTML 文档中所有的链接标签的默认链接:</p>
-<pre><code>&lt;head&gt;
+<div class="hljs"><pre><code class="hljs plain">&lt;head&gt;
 &lt;base href=&quot;http://www.xxx.com/images/&quot; target=&quot;_blank&quot;&gt;
-&lt;/head&gt;
-</code></pre><h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p><code>&lt;link&gt;</code> 标签定义了文档与外部资源之间的关系。</p>
+&lt;/head&gt;</code></pre></div>
+<h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p><code>&lt;link&gt;</code> 标签定义了文档与外部资源之间的关系。</p>
 <p><code>&lt;link&gt;</code> 标签通常用于链接到样式表:</p>
-<pre><code>&lt;head&gt;
+<div class="hljs"><pre><code class="hljs plain">&lt;head&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;
-&lt;/head&gt;
-</code></pre><h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p><code>&lt;style&gt;</code> 标签定义了HTML文档的样式文件引用地址.</p>
+&lt;/head&gt;</code></pre></div>
+<h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p><code>&lt;style&gt;</code> 标签定义了HTML文档的样式文件引用地址.</p>
 <p>在 <code>&lt;style&gt;</code> 元素中你也可以直接添加样式来渲染 HTML 文档:</p>
-<pre><code>&lt;head&gt;
+<div class="hljs"><pre><code class="hljs plain">&lt;head&gt;
 &lt;style type=&quot;text/css&quot;&gt;
-body {background-color:yellow}
-p {color:blue}
+body &#123;background-color:yellow&#125;
+p &#123;color:blue&#125;
 &lt;/style&gt;
-&lt;/head&gt;
-</code></pre><h2 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h2><p>meta 标签描述了一些基本的元数据。</p>
+&lt;/head&gt;</code></pre></div>
+<h2 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h2><p>meta 标签描述了一些基本的元数据。</p>
 <p><code>&lt;meta&gt;</code> 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。</p>
 <p>META 元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。</p>
 <p>元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务。</p>
 <p><code>&lt;meta&gt;</code> 一般放置于 <code>&lt;head&gt;</code> 区域</p>
 <p>为搜索引擎定义关键词:</p>
-<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;HTML, CSS, XML, XHTML, JavaScript&quot;&gt;
-</code></pre><p>为网页定义描述内容:</p>
-<pre><code>&lt;meta name=&quot;description&quot; content=&quot;免费 Web &amp; 编程 教程&quot;&gt;
-</code></pre><p>定义网页作者:</p>
-<pre><code>&lt;meta name=&quot;author&quot; content=&quot;Runoob&quot;&gt;
-</code></pre><p>每30秒钟刷新当前页面:</p>
-<pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;30&quot;&gt;
-</code></pre><h2 id="script"><a href="#script" class="headerlink" title="script"></a>script</h2><p><code>&lt;script&gt;</code> 标签用于加载脚本文件，如： JavaScript。</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;meta name=&quot;keywords&quot; content=&quot;HTML, CSS, XML, XHTML, JavaScript&quot;&gt;</code></pre></div>
+<p>为网页定义描述内容:</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;meta name=&quot;description&quot; content=&quot;免费 Web &amp; 编程 教程&quot;&gt;</code></pre></div>
+<p>定义网页作者:</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;meta name=&quot;author&quot; content=&quot;Runoob&quot;&gt;</code></pre></div>
+<p>每30秒钟刷新当前页面:</p>
+<div class="hljs"><pre><code class="hljs plain">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;30&quot;&gt;</code></pre></div>
+<h2 id="script"><a href="#script" class="headerlink" title="script"></a>script</h2><p><code>&lt;script&gt;</code> 标签用于加载脚本文件，如： JavaScript。</p>
 <p><code>&lt;script&gt;</code> 元素在以后的章节中会详细描述。</p>
 <h1 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h1><p>在 HTML 中，图像由<code>&lt;img&gt;</code> 标签定义。</p>
 <p><code>&lt;img&gt;</code> 是空标签，意思是说，它只包含属性，并且没有闭合标签。</p>
-<pre><code>&lt;img src=&quot;https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7339.png&quot; alt=&quot;flower&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
-</code></pre><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7339.png" alt="flower" width="300" height="200"></p>
+<div class="hljs"><pre><code class="hljs plain">&lt;img src=&quot;https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7339.png&quot; alt=&quot;flower&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;</code></pre></div>
+<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7339.png" srcset="/img/loading.gif" alt="flower" width="300" height="200"></p>
 <ul>
 <li>src 指 “source”。源属性的值是图像的 URL 地址。</li>
 <li>alt 属性用来为图像定义一串预备的可替换的文本。替换文本属性的值是用户定义的。</li>
@@ -366,95 +369,114 @@ p {color:blue}
 <li><a href="https://www.runoob.com/html/html-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/html/html-tutorial.html</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E9%A1%B5/">网页</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/09/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OpenCV-python学习笔记一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/01/%E5%BA%94%E7%94%A8%E4%B8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE/">
+                        <span class="hidden-mobile">2019-nCoV疫情数据可视化地图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
                 
-                  <a class="hover-with-bg" href="/tags/%E7%BD%91%E9%A1%B5/">网页</a>
                 
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -488,10 +510,12 @@ p {color:blue}
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -513,48 +537,27 @@ p {color:blue}
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -564,10 +567,12 @@ p {color:blue}
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -576,24 +581,17 @@ p {color:blue}
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -639,7 +637,7 @@ p {color:blue}
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -647,16 +645,24 @@ p {color:blue}
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>NumPy数据分析 - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, February 29th 2020, 12:21 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-29 12:21">
+                    Saturday, February 29th 2020, 12:21 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    2.8k 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    2.6k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      15 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    45
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,117 +173,106 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>NumPy数据分析与机器学习</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>NumPy数据分析与机器学习</p>
 <a id="more"></a>
 <h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><h2 id="导入数字和文本的数据集"><a href="#导入数字和文本的数据集" class="headerlink" title="导入数字和文本的数据集"></a>导入数字和文本的数据集</h2><p>导入鸢尾属植物数据集，保持文本不变。</p>
-<pre><code class="lang-python"># Solution
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;object&#39;)
-names = (&#39;sepallength&#39;, &#39;sepalwidth&#39;, &#39;petallength&#39;, &#39;petalwidth&#39;, &#39;species&#39;)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Solution</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'object'</span>)
+names = (<span class="hljs-string">'sepallength'</span>, <span class="hljs-string">'sepalwidth'</span>, <span class="hljs-string">'petallength'</span>, <span class="hljs-string">'petalwidth'</span>, <span class="hljs-string">'species'</span>)
 
-# Print the first 3 rows
-iris[:3]
-# &gt; array([[b&#39;5.1&#39;, b&#39;3.5&#39;, b&#39;1.4&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;],
-# &gt;        [b&#39;4.9&#39;, b&#39;3.0&#39;, b&#39;1.4&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;],
-# &gt;        [b&#39;4.7&#39;, b&#39;3.2&#39;, b&#39;1.3&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;]], dtype=object)
-</code></pre>
+<span class="hljs-comment"># Print the first 3 rows</span>
+iris[:<span class="hljs-number">3</span>]
+<span class="hljs-comment"># &gt; array([[b'5.1', b'3.5', b'1.4', b'0.2', b'Iris-setosa'],</span>
+<span class="hljs-comment"># &gt;        [b'4.9', b'3.0', b'1.4', b'0.2', b'Iris-setosa'],</span>
+<span class="hljs-comment"># &gt;        [b'4.7', b'3.2', b'1.3', b'0.2', b'Iris-setosa']], dtype=object)</span></code></pre></div>
 <p><strong>补充：</strong>在python3.x中字符串编码是<code>unicode</code>。对数据中<code>bytes</code>类型的字符串会用前缀<code>b</code>。</p>
 <p>提取特定列：</p>
-<pre><code class="lang-python"># **给定：**
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris_1d = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=None)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># **给定：**</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris_1d = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-literal">None</span>)
 print(iris_1d.shape)
 
-# Solution:
-species = np.array([row[4] for row in iris_1d])
-species[:5]
-# &gt; (150,)
-# &gt; array([b&#39;Iris-setosa&#39;, b&#39;Iris-setosa&#39;, b&#39;Iris-setosa&#39;, b&#39;Iris-setosa&#39;,
-# &gt;        b&#39;Iris-setosa&#39;],
-# &gt;       dtype=&#39;|S18&#39;)
-</code></pre>
+<span class="hljs-comment"># Solution:</span>
+species = np.array([row[<span class="hljs-number">4</span>] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> iris_1d])
+species[:<span class="hljs-number">5</span>]
+<span class="hljs-comment"># &gt; (150,)</span>
+<span class="hljs-comment"># &gt; array([b'Iris-setosa', b'Iris-setosa', b'Iris-setosa', b'Iris-setosa',</span>
+<span class="hljs-comment"># &gt;        b'Iris-setosa'],</span>
+<span class="hljs-comment"># &gt;       dtype='|S18')</span></code></pre></div>
 <h2 id="将1维元组数组转换为2维numpy数组"><a href="#将1维元组数组转换为2维numpy数组" class="headerlink" title="将1维元组数组转换为2维numpy数组"></a>将1维元组数组转换为2维numpy数组</h2><p>通过省略鸢尾属植物数据集种类的文本字段，将一维鸢尾属植物数据集转换为二维数组iris_2d。</p>
-<pre><code class="lang-python"># **给定：**
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris_1d = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=None)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># **给定：**</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris_1d = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-literal">None</span>)
 
-# Solution:
-# Method 1: Convert each row to a list and get the first 4 items
-iris_2d = np.array([row.tolist()[:4] for row in iris_1d])
-iris_2d[:4]
+<span class="hljs-comment"># Solution:</span>
+<span class="hljs-comment"># Method 1: Convert each row to a list and get the first 4 items</span>
+iris_2d = np.array([row.tolist()[:<span class="hljs-number">4</span>] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> iris_1d])
+iris_2d[:<span class="hljs-number">4</span>]
 
-# Alt Method 2: Import only the first 4 columns from source url
-iris_2d = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;float&#39;, usecols=[0,1,2,3])
-iris_2d[:4]
-# &gt; array([[ 5.1,  3.5,  1.4,  0.2],
-# &gt;        [ 4.9,  3. ,  1.4,  0.2],
-# &gt;        [ 4.7,  3.2,  1.3,  0.2],
-# &gt;        [ 4.6,  3.1,  1.5,  0.2]])
-</code></pre>
-<h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h1><h2 id="均值、中位数及标准差"><a href="#均值、中位数及标准差" class="headerlink" title="均值、中位数及标准差"></a>均值、中位数及标准差</h2><pre><code class="lang-python">mu, med, sd = np.mean(sepallength), np.median(sepallength), np.std(sepallength)
-</code></pre>
+<span class="hljs-comment"># Alt Method 2: Import only the first 4 columns from source url</span>
+iris_2d = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'float'</span>, usecols=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
+iris_2d[:<span class="hljs-number">4</span>]
+<span class="hljs-comment"># &gt; array([[ 5.1,  3.5,  1.4,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 4.9,  3. ,  1.4,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 4.7,  3.2,  1.3,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 4.6,  3.1,  1.5,  0.2]])</span></code></pre></div>
+<h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h1><h2 id="均值、中位数及标准差"><a href="#均值、中位数及标准差" class="headerlink" title="均值、中位数及标准差"></a>均值、中位数及标准差</h2><div class="hljs"><pre><code class="hljs python">mu, med, sd = np.mean(sepallength), np.median(sepallength), np.std(sepallength)</code></pre></div>
 <h2 id="垂直叠加两个数组"><a href="#垂直叠加两个数组" class="headerlink" title="垂直叠加两个数组"></a>垂直叠加两个数组</h2><p><strong>给定：</strong></p>
-<pre><code class="lang-python">a = np.arange(10).reshape(2,-1)
-b = np.repeat(1, 10).reshape(2,-1)
-</code></pre>
+<div class="hljs"><pre><code class="hljs python">a = np.arange(<span class="hljs-number">10</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>)
+b = np.repeat(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>)</code></pre></div>
 <p><strong>期望的输出：</strong></p>
-<pre><code class="lang-python"># &gt; array([[0, 1, 2, 3, 4],
-# &gt;        [5, 6, 7, 8, 9],
-# &gt;        [1, 1, 1, 1, 1],
-# &gt;        [1, 1, 1, 1, 1]])
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># &gt; array([[0, 1, 2, 3, 4],</span>
+<span class="hljs-comment"># &gt;        [5, 6, 7, 8, 9],</span>
+<span class="hljs-comment"># &gt;        [1, 1, 1, 1, 1],</span>
+<span class="hljs-comment"># &gt;        [1, 1, 1, 1, 1]])</span></code></pre></div>
 <p><strong>答案：</strong></p>
-<pre><code class="lang-python">a = np.arange(10).reshape(2,-1)
-b = np.repeat(1, 10).reshape(2,-1)
+<div class="hljs"><pre><code class="hljs python">a = np.arange(<span class="hljs-number">10</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>)
+b = np.repeat(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>)
 
-# Answers
-# Method 1:
-np.concatenate([a, b], axis=0)
+<span class="hljs-comment"># Answers</span>
+<span class="hljs-comment"># Method 1:</span>
+np.concatenate([a, b], axis=<span class="hljs-number">0</span>)
 
-# Method 2 (v may means vertical):
+<span class="hljs-comment"># Method 2 (v may means vertical):</span>
 np.vstack([a, b])
 
-# Method 3 (r may means row):
+<span class="hljs-comment"># Method 3 (r may means row):</span>
 np.r_[a, b]
-# &gt; array([[0, 1, 2, 3, 4],
-# &gt;        [5, 6, 7, 8, 9],
-# &gt;        [1, 1, 1, 1, 1],
-# &gt;        [1, 1, 1, 1, 1]])
-</code></pre>
+<span class="hljs-comment"># &gt; array([[0, 1, 2, 3, 4],</span>
+<span class="hljs-comment"># &gt;        [5, 6, 7, 8, 9],</span>
+<span class="hljs-comment"># &gt;        [1, 1, 1, 1, 1],</span>
+<span class="hljs-comment"># &gt;        [1, 1, 1, 1, 1]])</span></code></pre></div>
 <p>类似的我们可以用以下方法水平叠加两个数组：</p>
-<pre><code class="lang-python"># 使用第二轴concatenate
-np.concatenate([a, b], axis=1)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 使用第二轴concatenate</span>
+np.concatenate([a, b], axis=<span class="hljs-number">1</span>)
 
-# horizontal stack
+<span class="hljs-comment"># horizontal stack</span>
 np.hstack([a, b])
 
-# col:
+<span class="hljs-comment"># col:</span>
 np.c_[a, b]
-# &gt; array([[0, 1, 2, 3, 4, 1, 1, 1, 1, 1],
-# &gt;        [5, 6, 7, 8, 9, 1, 1, 1, 1, 1]])
-</code></pre>
-<h2 id="复制叠加数组"><a href="#复制叠加数组" class="headerlink" title="复制叠加数组"></a>复制叠加数组</h2><pre><code class="lang-python">np.repeat(a, 3)
-# &gt; array([1, 1, 1, 2, 2, 2, 3, 3, 3])
-np.tile(a, 3)
-# &gt; array([1, 2, 3, 1, 2, 3, 1, 2, 3])
-</code></pre>
+<span class="hljs-comment"># &gt; array([[0, 1, 2, 3, 4, 1, 1, 1, 1, 1],</span>
+<span class="hljs-comment"># &gt;        [5, 6, 7, 8, 9, 1, 1, 1, 1, 1]])</span></code></pre></div>
+<h2 id="复制叠加数组"><a href="#复制叠加数组" class="headerlink" title="复制叠加数组"></a>复制叠加数组</h2><div class="hljs"><pre><code class="hljs python">np.repeat(a, <span class="hljs-number">3</span>)
+<span class="hljs-comment"># &gt; array([1, 1, 1, 2, 2, 2, 3, 3, 3])</span>
+np.tile(a, <span class="hljs-number">3</span>)
+<span class="hljs-comment"># &gt; array([1, 2, 3, 1, 2, 3, 1, 2, 3])</span></code></pre></div>
 <h2 id="获取两个数组的公共项"><a href="#获取两个数组的公共项" class="headerlink" title="获取两个数组的公共项"></a>获取两个数组的公共项</h2><p><strong>给定：</strong></p>
-<pre><code class="lang-python">a = np.array([1,2,3,2,3,4,3,4,5,6])
-b = np.array([7,2,10,2,7,4,9,4,9,8])
-</code></pre>
+<div class="hljs"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>])
+b = np.array([<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>,<span class="hljs-number">7</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">8</span>])</code></pre></div>
 <p><strong>期望的输出：</strong></p>
-<pre><code class="lang-python">array([2, 4])
-</code></pre>
+<div class="hljs"><pre><code class="hljs python">array([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>])</code></pre></div>
 <p><strong>答案：</strong></p>
-<pre><code class="lang-python">a = np.array([1,2,3,2,3,4,3,4,5,6])
-b = np.array([7,2,10,2,7,4,9,4,9,8])
+<div class="hljs"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>])
+b = np.array([<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>,<span class="hljs-number">7</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">8</span>])
 np.intersect1d(a,b)
-# &gt; array([2, 4])
-</code></pre>
+<span class="hljs-comment"># &gt; array([2, 4])</span></code></pre></div>
 <p><strong>补充：</strong></p>
 <ol>
 <li>并集, <code>np.union1d(s ,t)</code>，返回排序的、去重的两个list的合集</li>
@@ -288,343 +280,340 @@ np.intersect1d(a,b)
 <li>差集, <code>np.setdiff1d(s, t, assume_unique=True)</code>, 返回排序的，去重的差集，assume_unique参数同上。</li>
 </ol>
 <h2 id="使用自定义函数处理数据"><a href="#使用自定义函数处理数据" class="headerlink" title="使用自定义函数处理数据"></a>使用自定义函数处理数据</h2><p><strong>给定：</strong></p>
-<pre><code class="lang-python">def maxx(x, y):
-    &quot;&quot;&quot;Get the maximum of two items&quot;&quot;&quot;
-    if x &gt;= y:
-        return x
-    else:
-        return y
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxx</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-string">"""Get the maximum of two items"""</span>
+    <span class="hljs-keyword">if</span> x &gt;= y:
+        <span class="hljs-keyword">return</span> x
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> y
 
-maxx(1, 5)
-# &gt; 5
-</code></pre>
+maxx(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>)
+<span class="hljs-comment"># &gt; 5</span></code></pre></div>
 <p><strong>期望的输出：</strong></p>
-<pre><code class="lang-python">a = np.array([5, 7, 9, 8, 6, 4, 5])
-b = np.array([6, 3, 4, 8, 9, 7, 1])
+<div class="hljs"><pre><code class="hljs python">a = np.array([<span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
+b = np.array([<span class="hljs-number">6</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>])
 pair_max(a, b)
-# &gt; array([ 6.,  7.,  9.,  8.,  9.,  7.,  5.])
-</code></pre>
+<span class="hljs-comment"># &gt; array([ 6.,  7.,  9.,  8.,  9.,  7.,  5.])</span></code></pre></div>
 <p><strong>答案：</strong></p>
-<pre><code class="lang-python">def maxx(x, y):
-    &quot;&quot;&quot;Get the maximum of two items&quot;&quot;&quot;
-    if x &gt;= y:
-        return x
-    else:
-        return y
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxx</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-string">"""Get the maximum of two items"""</span>
+    <span class="hljs-keyword">if</span> x &gt;= y:
+        <span class="hljs-keyword">return</span> x
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> y
 
 pair_max = np.vectorize(maxx, otypes=[float])
 
-a = np.array([5, 7, 9, 8, 6, 4, 5])
-b = np.array([6, 3, 4, 8, 9, 7, 1])
+a = np.array([<span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
+b = np.array([<span class="hljs-number">6</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>])
 
 pair_max(a, b)
-# &gt; array([ 6.,  7.,  9.,  8.,  9.,  7.,  5.])
-</code></pre>
+<span class="hljs-comment"># &gt; array([ 6.,  7.,  9.,  8.,  9.,  7.,  5.])</span></code></pre></div>
 <h2 id="交换二维数组中的两列"><a href="#交换二维数组中的两列" class="headerlink" title="交换二维数组中的两列"></a>交换二维数组中的两列</h2><p><strong>给定：</strong></p>
-<pre><code class="lang-python">arr = np.arange(9).reshape(3,3)
-arr
-</code></pre>
+<div class="hljs"><pre><code class="hljs python">arr = np.arange(<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)
+arr</code></pre></div>
 <p><strong>答案：</strong></p>
-<pre><code class="lang-python"># Input
-arr = np.arange(9).reshape(3,3)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+arr = np.arange(<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)
 arr
 
-# Solution
-arr[:, [1,0,2]]
-# &gt; array([[1, 0, 2],
-# &gt;        [4, 3, 5],
-# &gt;        [7, 6, 8]])
-</code></pre>
+<span class="hljs-comment"># Solution</span>
+arr[:, [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>]]
+<span class="hljs-comment"># &gt; array([[1, 0, 2],</span>
+<span class="hljs-comment"># &gt;        [4, 3, 5],</span>
+<span class="hljs-comment"># &gt;        [7, 6, 8]])</span></code></pre></div>
 <p>本质上就是花式索引（Fancy indexing）类似的，交换两行的方法如下：</p>
-<pre><code class="lang-python"># Solution
-arr[[1,0,2], :]
-# &gt; array([[3, 4, 5],
-# &gt;        [0, 1, 2],
-# &gt;        [6, 7, 8]])
-</code></pre>
-<h2 id="创建随机的二维数组"><a href="#创建随机的二维数组" class="headerlink" title="创建随机的二维数组"></a>创建随机的二维数组</h2><pre><code class="lang-python"># Solution Method 1:
-rand_arr = np.random.randint(low=5, high=10, size=(5,3)) + np.random.random((5,3))
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Solution</span>
+arr[[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>], :]
+<span class="hljs-comment"># &gt; array([[3, 4, 5],</span>
+<span class="hljs-comment"># &gt;        [0, 1, 2],</span>
+<span class="hljs-comment"># &gt;        [6, 7, 8]])</span></code></pre></div>
+<h2 id="创建随机的二维数组"><a href="#创建随机的二维数组" class="headerlink" title="创建随机的二维数组"></a>创建随机的二维数组</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Solution Method 1:</span>
+rand_arr = np.random.randint(low=<span class="hljs-number">5</span>, high=<span class="hljs-number">10</span>, size=(<span class="hljs-number">5</span>,<span class="hljs-number">3</span>)) + np.random.random((<span class="hljs-number">5</span>,<span class="hljs-number">3</span>))
 
-# Solution Method 2:
-rand_arr = np.random.uniform(5,10, size=(5,3))
-# &gt; [[ 8.50061025  9.10531502  6.85867783]
-# &gt;  [ 9.76262069  9.87717411  7.13466701]
-# &gt;  [ 7.48966403  8.33409158  6.16808631]
-# &gt;  [ 7.75010551  9.94535696  5.27373226]
-# &gt;  [ 8.0850361   5.56165518  7.31244004]]
-</code></pre>
+<span class="hljs-comment"># Solution Method 2:</span>
+rand_arr = np.random.uniform(<span class="hljs-number">5</span>,<span class="hljs-number">10</span>, size=(<span class="hljs-number">5</span>,<span class="hljs-number">3</span>))
+<span class="hljs-comment"># &gt; [[ 8.50061025  9.10531502  6.85867783]</span>
+<span class="hljs-comment"># &gt;  [ 9.76262069  9.87717411  7.13466701]</span>
+<span class="hljs-comment"># &gt;  [ 7.48966403  8.33409158  6.16808631]</span>
+<span class="hljs-comment"># &gt;  [ 7.75010551  9.94535696  5.27373226]</span>
+<span class="hljs-comment"># &gt;  [ 8.0850361   5.56165518  7.31244004]]</span></code></pre></div>
 <p>方法一是生成<code>[5,9]</code>的随机整数加上<code>[0,1]</code>的浮点数。</p>
-<h2 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h2><pre><code class="lang-python"># Input
-a = np.array([1,2,3,4,5])
-b = np.array([4,5,6,7,8])
+<h2 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a>欧氏距离</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+a = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])
+b = np.array([<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>])
 
-# Solution
+<span class="hljs-comment"># Solution</span>
 dist = np.linalg.norm(a-b)
 dist
-# &gt; 6.7082039324993694
-</code></pre>
-<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><h3 id="只打印小数点后三位"><a href="#只打印小数点后三位" class="headerlink" title="只打印小数点后三位"></a>只打印小数点后三位</h3><pre><code class="lang-python">np.set_printoptions(precision=3)
-</code></pre>
+<span class="hljs-comment"># &gt; 6.7082039324993694</span></code></pre></div>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><h3 id="只打印小数点后三位"><a href="#只打印小数点后三位" class="headerlink" title="只打印小数点后三位"></a>只打印小数点后三位</h3><div class="hljs"><pre><code class="hljs python">np.set_printoptions(precision=<span class="hljs-number">3</span>)</code></pre></div>
 <p>设置一次只有都会保持该状态。使用该函数时，下同。</p>
-<h3 id="e式科学记数法"><a href="#e式科学记数法" class="headerlink" title="e式科学记数法"></a>e式科学记数法</h3><pre><code class="lang-python">np.set_printoptions(suppress=False)
-</code></pre>
-<h3 id="限制数组输出中打印的项目数"><a href="#限制数组输出中打印的项目数" class="headerlink" title="限制数组输出中打印的项目数"></a>限制数组输出中打印的项目数</h3><pre><code class="lang-python">np.set_printoptions(threshold=6)
-</code></pre>
+<h3 id="e式科学记数法"><a href="#e式科学记数法" class="headerlink" title="e式科学记数法"></a>e式科学记数法</h3><div class="hljs"><pre><code class="hljs python">np.set_printoptions(suppress=<span class="hljs-literal">False</span>)</code></pre></div>
+<h3 id="限制数组输出中打印的项目数"><a href="#限制数组输出中打印的项目数" class="headerlink" title="限制数组输出中打印的项目数"></a>限制数组输出中打印的项目数</h3><div class="hljs"><pre><code class="hljs python">np.set_printoptions(threshold=<span class="hljs-number">6</span>)</code></pre></div>
 <p>如果需要输出全部，使用</p>
-<pre><code class="lang-python">np.set_printoptions(threshold=np.nan)
-</code></pre>
-<h1 id="机器学习相关"><a href="#机器学习相关" class="headerlink" title="机器学习相关"></a>机器学习相关</h1><h2 id="Min-Max-Normalization"><a href="#Min-Max-Normalization" class="headerlink" title="Min-Max Normalization"></a>Min-Max Normalization</h2><pre><code class="lang-python">arr = np.array([1, 2, 3, 4, 5])
+<div class="hljs"><pre><code class="hljs python">np.set_printoptions(threshold=np.nan)</code></pre></div>
+<h1 id="机器学习相关"><a href="#机器学习相关" class="headerlink" title="机器学习相关"></a>机器学习相关</h1><h2 id="Min-Max-Normalization"><a href="#Min-Max-Normalization" class="headerlink" title="Min-Max Normalization"></a>Min-Max Normalization</h2><div class="hljs"><pre><code class="hljs python">arr = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
 arr_max, arr_min = arr.max(), arr.min()
 
-# Solution Method 1:
+<span class="hljs-comment"># Solution Method 1:</span>
 (arr - arr_min) / (arr_max - arr_min)
 
-# Solution Method 2:
+<span class="hljs-comment"># Solution Method 2:</span>
 (arr - arr_min) / arr.ptp()
-# &gt; [0.   0.25 0.5  0.75 1.  ]
-</code></pre>
-<h2 id="计算Softmax得分"><a href="#计算Softmax得分" class="headerlink" title="计算Softmax得分"></a>计算Softmax得分</h2><pre><code class="lang-python"># Input
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;object&#39;)
-sepallength = np.array([float(row[0]) for row in iris])
+<span class="hljs-comment"># &gt; [0.   0.25 0.5  0.75 1.  ]</span></code></pre></div>
+<h2 id="计算Softmax得分"><a href="#计算Softmax得分" class="headerlink" title="计算Softmax得分"></a>计算Softmax得分</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'object'</span>)
+sepallength = np.array([float(row[<span class="hljs-number">0</span>]) <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> iris])
 
-# Solution
-def softmax(x):
-    &quot;&quot;&quot;Compute softmax values for each sets of scores in x.
-    https://stackoverflow.com/questions/34968722/how-to-implement-the-softmax-function-in-python&quot;&quot;&quot;
+<span class="hljs-comment"># Solution</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">softmax</span><span class="hljs-params">(x)</span>:</span>
+    <span class="hljs-string">"""Compute softmax values for each sets of scores in x.
+    https://stackoverflow.com/questions/34968722/how-to-implement-the-softmax-function-in-python"""</span>
     e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum(axis=0)
+    <span class="hljs-keyword">return</span> e_x / e_x.sum(axis=<span class="hljs-number">0</span>)
 
 print(softmax(sepallength))
-# &gt; [ 0.002  0.002  0.001  0.001  0.002  0.003  0.001  0.002  0.001  0.002
-# &gt;   0.003  0.002  0.002  0.001  0.004  0.004  0.003  0.002  0.004  0.002
-# &gt;   0.003  0.002  0.001  0.002  0.002  0.002  0.002  0.002  0.002  0.001
-# &gt;   0.002  0.003  0.002  0.003  0.002  0.002  0.003  0.002  0.001  0.002
-# &gt;   0.002  0.001  0.001  0.002  0.002  0.002  0.002  0.001  0.003  0.002
-# &gt;   0.015  0.008  0.013  0.003  0.009  0.004  0.007  0.002  0.01   0.002
-# &gt;   0.002  0.005  0.005  0.006  0.004  0.011  0.004  0.004  0.007  0.004
-# &gt;   0.005  0.006  0.007  0.006  0.008  0.01   0.012  0.011  0.005  0.004
-# &gt;   0.003  0.003  0.004  0.005  0.003  0.005  0.011  0.007  0.004  0.003
-# &gt;   0.003  0.006  0.004  0.002  0.004  0.004  0.004  0.007  0.002  0.004
-# &gt;   0.007  0.004  0.016  0.007  0.009  0.027  0.002  0.02   0.011  0.018
-# &gt;   0.009  0.008  0.012  0.004  0.004  0.008  0.009  0.03   0.03   0.005
-# &gt;   0.013  0.004  0.03   0.007  0.011  0.018  0.007  0.006  0.008  0.018
-# &gt;   0.022  0.037  0.008  0.007  0.006  0.03   0.007  0.008  0.005  0.013
-# &gt;   0.011  0.013  0.004  0.012  0.011  0.011  0.007  0.009  0.007  0.005]
-</code></pre>
+<span class="hljs-comment"># &gt; [ 0.002  0.002  0.001  0.001  0.002  0.003  0.001  0.002  0.001  0.002</span>
+<span class="hljs-comment"># &gt;   0.003  0.002  0.002  0.001  0.004  0.004  0.003  0.002  0.004  0.002</span>
+<span class="hljs-comment"># &gt;   0.003  0.002  0.001  0.002  0.002  0.002  0.002  0.002  0.002  0.001</span>
+<span class="hljs-comment"># &gt;   0.002  0.003  0.002  0.003  0.002  0.002  0.003  0.002  0.001  0.002</span>
+<span class="hljs-comment"># &gt;   0.002  0.001  0.001  0.002  0.002  0.002  0.002  0.001  0.003  0.002</span>
+<span class="hljs-comment"># &gt;   0.015  0.008  0.013  0.003  0.009  0.004  0.007  0.002  0.01   0.002</span>
+<span class="hljs-comment"># &gt;   0.002  0.005  0.005  0.006  0.004  0.011  0.004  0.004  0.007  0.004</span>
+<span class="hljs-comment"># &gt;   0.005  0.006  0.007  0.006  0.008  0.01   0.012  0.011  0.005  0.004</span>
+<span class="hljs-comment"># &gt;   0.003  0.003  0.004  0.005  0.003  0.005  0.011  0.007  0.004  0.003</span>
+<span class="hljs-comment"># &gt;   0.003  0.006  0.004  0.002  0.004  0.004  0.004  0.007  0.002  0.004</span>
+<span class="hljs-comment"># &gt;   0.007  0.004  0.016  0.007  0.009  0.027  0.002  0.02   0.011  0.018</span>
+<span class="hljs-comment"># &gt;   0.009  0.008  0.012  0.004  0.004  0.008  0.009  0.03   0.03   0.005</span>
+<span class="hljs-comment"># &gt;   0.013  0.004  0.03   0.007  0.011  0.018  0.007  0.006  0.008  0.018</span>
+<span class="hljs-comment"># &gt;   0.022  0.037  0.008  0.007  0.006  0.03   0.007  0.008  0.005  0.013</span>
+<span class="hljs-comment"># &gt;   0.011  0.013  0.004  0.012  0.011  0.011  0.007  0.009  0.007  0.005]</span></code></pre></div>
 <p>Softmax可以见<a href="http://cs231n.github.io/linear-classify/#softmax" target="_blank" rel="noopener">这篇</a>。</p>
 <h2 id="数组的百分位数"><a href="#数组的百分位数" class="headerlink" title="数组的百分位数"></a>数组的百分位数</h2><p>找到鸢尾属植物数据集的第5和第95百分位数</p>
-<pre><code class="lang-python"># Input
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-sepallength = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;float&#39;, usecols=[0])
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+sepallength = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'float'</span>, usecols=[<span class="hljs-number">0</span>])
 
-# Solution
-np.percentile(sepallength, q=[5, 95])
-# &gt; array([ 4.6  ,  7.255])
-</code></pre>
+<span class="hljs-comment"># Solution</span>
+np.percentile(sepallength, q=[<span class="hljs-number">5</span>, <span class="hljs-number">95</span>])
+<span class="hljs-comment"># &gt; array([ 4.6  ,  7.255])</span></code></pre></div>
 <h2 id="找到数组中缺失值的位置"><a href="#找到数组中缺失值的位置" class="headerlink" title="找到数组中缺失值的位置"></a>找到数组中缺失值的位置</h2><p>在iris_2d的sepallength中查找缺失值的数量和位置（第1列）</p>
-<pre><code class="lang-python"># Input
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris_2d = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;float&#39;, usecols=[0,1,2,3])
-iris_2d[np.random.randint(150, size=20), np.random.randint(4, size=20)] = np.nan
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris_2d = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'float'</span>, usecols=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
+iris_2d[np.random.randint(<span class="hljs-number">150</span>, size=<span class="hljs-number">20</span>), np.random.randint(<span class="hljs-number">4</span>, size=<span class="hljs-number">20</span>)] = np.nan
 
-# Solution
-print(&quot;Number of missing values: \n&quot;, np.isnan(iris_2d[:, 0]).sum())
-print(&quot;Position of missing values: \n&quot;, np.where(np.isnan(iris_2d[:, 0])))
-# &gt; Number of missing values: 
-# &gt;  5
-# &gt; Position of missing values: 
-# &gt;  (array([ 39,  88,  99, 130, 147]),)
-</code></pre>
+<span class="hljs-comment"># Solution</span>
+print(<span class="hljs-string">"Number of missing values: \n"</span>, np.isnan(iris_2d[:, <span class="hljs-number">0</span>]).sum())
+print(<span class="hljs-string">"Position of missing values: \n"</span>, np.where(np.isnan(iris_2d[:, <span class="hljs-number">0</span>])))
+<span class="hljs-comment"># &gt; Number of missing values: </span>
+<span class="hljs-comment"># &gt;  5</span>
+<span class="hljs-comment"># &gt; Position of missing values: </span>
+<span class="hljs-comment"># &gt;  (array([ 39,  88,  99, 130, 147]),)</span></code></pre></div>
 <p><code>np.isnan()</code>会返回一个布尔型的数组。</p>
-<h2 id="从数组中删除包含缺失值的行"><a href="#从数组中删除包含缺失值的行" class="headerlink" title="从数组中删除包含缺失值的行"></a>从数组中删除包含缺失值的行</h2><pre><code class="lang-python"># Input
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris_2d = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;float&#39;, usecols=[0,1,2,3])
-iris_2d[np.random.randint(150, size=20), np.random.randint(4, size=20)] = np.nan # 手动插入一些nan
+<h2 id="从数组中删除包含缺失值的行"><a href="#从数组中删除包含缺失值的行" class="headerlink" title="从数组中删除包含缺失值的行"></a>从数组中删除包含缺失值的行</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris_2d = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'float'</span>, usecols=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
+iris_2d[np.random.randint(<span class="hljs-number">150</span>, size=<span class="hljs-number">20</span>), np.random.randint(<span class="hljs-number">4</span>, size=<span class="hljs-number">20</span>)] = np.nan <span class="hljs-comment"># 手动插入一些nan</span>
 
-# Solution
-# No direct numpy function for this.
-# Method 1:
-any_nan_in_row = np.array([~np.any(np.isnan(row)) for row in iris_2d]) # ~表示按位取反
-iris_2d[any_nan_in_row][:5]
+<span class="hljs-comment"># Solution</span>
+<span class="hljs-comment"># No direct numpy function for this.</span>
+<span class="hljs-comment"># Method 1:</span>
+any_nan_in_row = np.array([~np.any(np.isnan(row)) <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> iris_2d]) <span class="hljs-comment"># ~表示按位取反</span>
+iris_2d[any_nan_in_row][:<span class="hljs-number">5</span>]
 
-# Method 2: (By Rong)
-iris_2d[np.sum(np.isnan(iris_2d), axis = 1) == 0][:5]
-# &gt; array([[ 4.9,  3. ,  1.4,  0.2],
-# &gt;        [ 4.7,  3.2,  1.3,  0.2],
-# &gt;        [ 4.6,  3.1,  1.5,  0.2],
-# &gt;        [ 5. ,  3.6,  1.4,  0.2],
-# &gt;        [ 5.4,  3.9,  1.7,  0.4]])
-</code></pre>
+<span class="hljs-comment"># Method 2: (By Rong)</span>
+iris_2d[np.sum(np.isnan(iris_2d), axis = <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>][:<span class="hljs-number">5</span>]
+<span class="hljs-comment"># &gt; array([[ 4.9,  3. ,  1.4,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 4.7,  3.2,  1.3,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 4.6,  3.1,  1.5,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 5. ,  3.6,  1.4,  0.2],</span>
+<span class="hljs-comment"># &gt;        [ 5.4,  3.9,  1.7,  0.4]])</span></code></pre></div>
 <p><code>numpy.any</code>(<em>a</em>, <em>axis=None**</em>,<strong> <em>out=None</em></strong>,<em>* </em>keepdims=<no value>*)有真值时返回1，没有时返回0。<br>注意<code>np.nan == np.nan</code>返回的是<code>False</code>，需要使用<code>np.isnan()</code>。</p>
-<h2 id="数组两列之间的相关性"><a href="#数组两列之间的相关性" class="headerlink" title="数组两列之间的相关性"></a>数组两列之间的相关性</h2><pre><code class="lang-python"># Input
-url = &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;
-iris = np.genfromtxt(url, delimiter=&#39;,&#39;, dtype=&#39;float&#39;, usecols=[0,1,2,3])
+<h2 id="数组两列之间的相关性"><a href="#数组两列之间的相关性" class="headerlink" title="数组两列之间的相关性"></a>数组两列之间的相关性</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Input</span>
+url = <span class="hljs-string">'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'</span>
+iris = np.genfromtxt(url, delimiter=<span class="hljs-string">','</span>, dtype=<span class="hljs-string">'float'</span>, usecols=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
 
-# Solution 1
-np.corrcoef(iris[:, 0], iris[:, 2])[0, 1]
+<span class="hljs-comment"># Solution 1</span>
+np.corrcoef(iris[:, <span class="hljs-number">0</span>], iris[:, <span class="hljs-number">2</span>])[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]
 
-# Solution 2
-from scipy.stats.stats import pearsonr  
-corr, p_value = pearsonr(iris[:, 0], iris[:, 2])
+<span class="hljs-comment"># Solution 2</span>
+<span class="hljs-keyword">from</span> scipy.stats.stats <span class="hljs-keyword">import</span> pearsonr  
+corr, p_value = pearsonr(iris[:, <span class="hljs-number">0</span>], iris[:, <span class="hljs-number">2</span>])
 print(corr)
 
-# Correlation coef indicates the degree of linear relationship between two numeric variables.
-# It can range between -1 to +1.
+<span class="hljs-comment"># Correlation coef indicates the degree of linear relationship between two numeric variables.</span>
+<span class="hljs-comment"># It can range between -1 to +1.</span>
 
-# The p-value roughly indicates the probability of an uncorrelated system producing 
-# datasets that have a correlation at least as extreme as the one computed.
-# The lower the p-value (&lt;0.01), stronger is the significance of the relationship.
-# It is not an indicator of the strength.
-# &gt; 0.871754157305
-</code></pre>
+<span class="hljs-comment"># The p-value roughly indicates the probability of an uncorrelated system producing </span>
+<span class="hljs-comment"># datasets that have a correlation at least as extreme as the one computed.</span>
+<span class="hljs-comment"># The lower the p-value (&lt;0.01), stronger is the significance of the relationship.</span>
+<span class="hljs-comment"># It is not an indicator of the strength.</span>
+<span class="hljs-comment"># &gt; 0.871754157305</span></code></pre></div>
 <p>协方差和相关系数请见<a href="https://blog.csdn.net/iloveyousunna/article/details/77948219" target="_blank" rel="noopener">这篇</a>。</p>
 <h2 id="数组的现有列中创建新列"><a href="#数组的现有列中创建新列" class="headerlink" title="数组的现有列中创建新列"></a>数组的现有列中创建新列</h2><p>在iris_2d中为卷创建一个新列，其中volume是<code>（pi x petallength x sepal_length ^ 2）/ 3</code></p>
-<pre><code class="lang-python"># Compute volume
-sepallength = iris_2d[:, 0].astype(&#39;float&#39;)
-petallength = iris_2d[:, 2].astype(&#39;float&#39;)
-volume = (np.pi * petallength * (sepallength**2))/3
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Compute volume</span>
+sepallength = iris_2d[:, <span class="hljs-number">0</span>].astype(<span class="hljs-string">'float'</span>)
+petallength = iris_2d[:, <span class="hljs-number">2</span>].astype(<span class="hljs-string">'float'</span>)
+volume = (np.pi * petallength * (sepallength**<span class="hljs-number">2</span>))/<span class="hljs-number">3</span>
 
-# Introduce new dimension to match iris_2d&#39;s
+<span class="hljs-comment"># Introduce new dimension to match iris_2d's</span>
 volume = volume[:, np.newaxis]
 
-# Add the new column
+<span class="hljs-comment"># Add the new column</span>
 out = np.hstack([iris_2d, volume])
 
-# View
-out[:4]
-# &gt; array([[b&#39;5.1&#39;, b&#39;3.5&#39;, b&#39;1.4&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;, 38.13265162927291],
-# &gt;        [b&#39;4.9&#39;, b&#39;3.0&#39;, b&#39;1.4&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;, 35.200498485922445],
-# &gt;        [b&#39;4.7&#39;, b&#39;3.2&#39;, b&#39;1.3&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;, 30.0723720777127],
-# &gt;        [b&#39;4.6&#39;, b&#39;3.1&#39;, b&#39;1.5&#39;, b&#39;0.2&#39;, b&#39;Iris-setosa&#39;, 33.238050274980004]], dtype=object)
-</code></pre>
+<span class="hljs-comment"># View</span>
+out[:<span class="hljs-number">4</span>]
+<span class="hljs-comment"># &gt; array([[b'5.1', b'3.5', b'1.4', b'0.2', b'Iris-setosa', 38.13265162927291],</span>
+<span class="hljs-comment"># &gt;        [b'4.9', b'3.0', b'1.4', b'0.2', b'Iris-setosa', 35.200498485922445],</span>
+<span class="hljs-comment"># &gt;        [b'4.7', b'3.2', b'1.3', b'0.2', b'Iris-setosa', 30.0723720777127],</span>
+<span class="hljs-comment"># &gt;        [b'4.6', b'3.1', b'1.5', b'0.2', b'Iris-setosa', 33.238050274980004]], dtype=object)</span></code></pre></div>
 <h2 id="概率抽样"><a href="#概率抽样" class="headerlink" title="概率抽样"></a>概率抽样</h2><p>随机抽鸢尾属植物的种类，使得刚毛的数量是云芝和维吉尼亚的两倍</p>
-<pre><code class="lang-python"># Get the species column
-species = iris[:, 4]
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Get the species column</span>
+species = iris[:, <span class="hljs-number">4</span>]
 
-# Approach 1: Generate Probablistically
-np.random.seed(100)
-a = np.array([&#39;Iris-setosa&#39;, &#39;Iris-versicolor&#39;, &#39;Iris-virginica&#39;])
-species_out = np.random.choice(a, 150, p=[0.5, 0.25, 0.25])
+<span class="hljs-comment"># Approach 1: Generate Probablistically</span>
+np.random.seed(<span class="hljs-number">100</span>)
+a = np.array([<span class="hljs-string">'Iris-setosa'</span>, <span class="hljs-string">'Iris-versicolor'</span>, <span class="hljs-string">'Iris-virginica'</span>])
+species_out = np.random.choice(a, <span class="hljs-number">150</span>, p=[<span class="hljs-number">0.5</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.25</span>])
 
-# Approach 2: Probablistic Sampling (preferred)
-np.random.seed(100)
-probs = np.r_[np.linspace(0, 0.500, num=50), np.linspace(0.501, .750, num=50), np.linspace(.751, 1.0, num=50)]
-index = np.searchsorted(probs, np.random.random(150))
+<span class="hljs-comment"># Approach 2: Probablistic Sampling (preferred)</span>
+np.random.seed(<span class="hljs-number">100</span>)
+probs = np.r_[np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">0.500</span>, num=<span class="hljs-number">50</span>), np.linspace(<span class="hljs-number">0.501</span>, <span class="hljs-number">.750</span>, num=<span class="hljs-number">50</span>), np.linspace(<span class="hljs-number">.751</span>, <span class="hljs-number">1.0</span>, num=<span class="hljs-number">50</span>)]
+index = np.searchsorted(probs, np.random.random(<span class="hljs-number">150</span>))
 species_out = species[index]
-print(np.unique(species_out, return_counts=True))
+print(np.unique(species_out, return_counts=<span class="hljs-literal">True</span>))
 
-# &gt; (array([b&#39;Iris-setosa&#39;, b&#39;Iris-versicolor&#39;, b&#39;Iris-virginica&#39;], dtype=object), array([77, 37, 36]))
-</code></pre>
+<span class="hljs-comment"># &gt; (array([b'Iris-setosa', b'Iris-versicolor', b'Iris-virginica'], dtype=object), array([77, 37, 36]))</span></code></pre></div>
 <p>方法2是首选方法，因为它创建了一个索引变量，该变量可用于取样2维表格数据。</p>
 <h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><p>根据sepallength列对数据集进行排序。</p>
-<pre><code class="lang-python"># Sort by column position 0: SepalLength
-print(iris[iris[:,0].argsort()][:5])
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Sort by column position 0: SepalLength</span>
+print(iris[iris[:,<span class="hljs-number">0</span>].argsort()][:<span class="hljs-number">5</span>])</code></pre></div>
 <p>利用<code>unique()</code>获取第K大的值：</p>
-<pre><code class="lang-python"># Get the species and petal length columns
-petal_len_setosa = iris[iris[:, 4] == b&#39;Iris-setosa&#39;, [2]].astype(&#39;float&#39;)
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Get the species and petal length columns</span>
+petal_len_setosa = iris[iris[:, <span class="hljs-number">4</span>] == <span class="hljs-string">b'Iris-setosa'</span>, [<span class="hljs-number">2</span>]].astype(<span class="hljs-string">'float'</span>)
 
-# Get the second last value
-np.unique(np.sort(petal_len_setosa))[-2]
-</code></pre>
+<span class="hljs-comment"># Get the second last value</span>
+np.unique(np.sort(petal_len_setosa))[<span class="hljs-number">-2</span>]</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://www.numpy.org.cn/article/advanced/numpy_exercises_for_data_analysis.html#numpy数据分析问答" target="_blank" rel="noopener">https://www.numpy.org.cn/article/advanced/numpy_exercises_for_data_analysis.html#numpy%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E9%97%AE%E7%AD%94</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/python%E5%B8%B8%E7%94%A8%E5%BA%93/">python常用库</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python%E5%B8%B8%E7%94%A8%E5%BA%93/">python常用库</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NumPy/">NumPy</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/python/">python</a>
-                
-                  <a class="hover-with-bg" href="/tags/NumPy/">NumPy</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/07/Hexo%E6%9A%97%E8%89%B2%E8%83%8C%E6%99%AF%E4%B8%8Bvaline%E7%9A%84%E4%BC%98%E5%8C%96/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo暗色背景下valine的优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/27/NumPy/">
+                        <span class="hidden-mobile">NumPy基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -658,10 +647,12 @@ np.unique(np.sort(petal_len_setosa))[-2]
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -683,48 +674,27 @@ np.unique(np.sort(petal_len_setosa))[-2]
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -734,10 +704,12 @@ np.unique(np.sort(petal_len_setosa))[-2]
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -746,24 +718,17 @@ np.unique(np.sort(petal_len_setosa))[-2]
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -809,7 +774,7 @@ np.unique(np.sort(petal_len_setosa))[-2]
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -817,16 +782,24 @@ np.unique(np.sort(petal_len_setosa))[-2]
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
   </script>
+
+
+
+
+
+
 
 
 

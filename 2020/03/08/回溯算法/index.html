@@ -13,29 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#13100f">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>回溯(Backtracking) - Homeward</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
 <!-- 自定义样式保持在最底部 -->
-
-  <link rel="stylesheet" href="/css/custom.css">
 
 
 </head>
@@ -61,41 +61,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
         
@@ -109,11 +114,11 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -121,38 +126,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Sunday, March 8th 2020, 1:12 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-08 13:12">
+                    Sunday, March 8th 2020, 1:12 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    3.7k 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    3.6k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      15 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    47
+                     分钟
                   </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="far fa-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </p>
+              </div>
             
           </div>
 
@@ -170,11 +173,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-          <div class="markdown-body">
-            <p>“想回到过去，试着让故事继续”</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>“想回到过去，试着让故事继续”</p>
 <a id="more"></a>
 <h1 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h1><p><strong>回溯</strong>（backtracking）是<strong>暴力搜索法</strong>中的一种。</p>
 <p>对于某些计算问题而言，回溯法是一种可以找出所有（或一部分）解的一般性算法，尤其适用于约束满足问题。</p>
@@ -190,7 +194,7 @@
 <p>在最坏的情况下，回溯法会导致一次<strong>复杂度</strong>为<strong>指数时间</strong>的计算。</p>
 <h1 id="典型的回溯"><a href="#典型的回溯" class="headerlink" title="典型的回溯"></a>典型的回溯</h1><p><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">leetcode 46. 全排列</a>：给定一个<strong>没有重复</strong>数字的序列，返回其所有可能的全排列。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="lang-txt">输入: [1,2,3]
+<div class="hljs"><pre><code class="hljs txt">输入: [1,2,3]
 输出:
 [
   [1,2,3],
@@ -199,37 +203,35 @@
   [2,3,1],
   [3,1,2],
   [3,2,1]
-]
-</code></pre>
+]</code></pre></div>
 <p>用比较通用的回溯算法可以这样解答：</p>
-<pre><code class="lang-python">class Solution:
-    def permute(self, nums: List[int]) -&gt; List[List[int]]:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">permute</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span>
         size = len(nums)
         res = []
-        # 记录已经选择过的数
+        <span class="hljs-comment"># 记录已经选择过的数</span>
         visited = set()
-
-        def backtrack(numList, visited):           
-            # 当所有数字都选完了，终止
-            if len(visited) == size:
-                res.append(numList[:]) # 注意深拷贝和浅拷贝的问题
-                return
-
-            # 遍历所有可能的选择
-            for i in range(size):
-                # 如果这个数已在前面出现过了，跳过
-                if i in visited: continue                 
+        
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(numList, visited)</span>:</span>           
+            <span class="hljs-comment"># 当所有数字都选完了，终止</span>
+            <span class="hljs-keyword">if</span> len(visited) == size:
+                res.append(numList[:]) <span class="hljs-comment"># 注意深拷贝和浅拷贝的问题</span>
+                <span class="hljs-keyword">return</span>
+            
+            <span class="hljs-comment"># 遍历所有可能的选择</span>
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(size):
+                <span class="hljs-comment"># 如果这个数已在前面出现过了，跳过</span>
+                <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> visited: <span class="hljs-keyword">continue</span>                 
                 visited.add(i)
                 numList.append(nums[i]) 
-                # 递归
+                <span class="hljs-comment"># 递归</span>
                 backtrack(numList,visited)          
-                # 撤销对临时数组和visited的操作
+                <span class="hljs-comment"># 撤销对临时数组和visited的操作</span>
                 numList.pop()
                 visited.remove(i)
-
+                
         backtrack([], visited)
-        return res
-</code></pre>
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <p>全排列问题能很好的体现回溯的特点：</p>
 <ul>
 <li><strong>试错：</strong>判断当前数是否在前面出现过</li>
@@ -240,13 +242,13 @@
 </ul>
 <h1 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h1><p>在经典的教科书中，<strong><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">八皇后问题</a></strong>展示了回溯法的用例。</p>
 <p><strong>八皇后问题</strong>是一个以国际象棋为背景的问题：如何能够在8×8的国际象棋棋盘上放置八个皇后，使得任何一个皇后都无法直接吃掉其他的皇后？为了达到此目的，任两个皇后都不能处于同一条横行、纵行或斜线上。</p>
-<p><img src="2020-03-08 142051.png" alt=""></p>
+<p><img src="2020-03-08 142051.png" srcset="/img/loading.gif" alt=""></p>
 <p>上图就是其中的一个解，八个皇后在8x8棋盘上共有4,426,165,368（<script type="math/tex">\binom{64}{8}</script>）种摆放方法，但只有92个<strong>互不相同</strong>的解。如果将旋转和对称的解归为一种的话，则一共有12个独立解。<a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">wiki有完整解</a></p>
 <h2 id="N皇后"><a href="#N皇后" class="headerlink" title="N皇后"></a>N皇后</h2><p><a href="https://leetcode-cn.com/problems/n-queens/" target="_blank" rel="noopener">leetcode 51. N皇后</a>是八皇后问题的推广：如何将 <em>n</em> 个皇后放置在 <em>n</em>×<em>n</em> 的棋盘上，并且使皇后彼此之间不能相互攻击。</p>
 <p>给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。</p>
 <p>每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 ‘Q’ 和 ‘.’ 分别代表了皇后和空位。</p>
 <p>示例:</p>
-<pre><code class="lang-txt">输入: 4
+<div class="hljs"><pre><code class="hljs txt">输入: 4
 输出: [
  [&quot;.Q..&quot;,  // 解法 1
   &quot;...Q&quot;,
@@ -258,58 +260,56 @@
   &quot;...Q&quot;,
   &quot;.Q..&quot;]
 ]
-解释: 4 皇后问题存在两个不同的解法。
-</code></pre>
+解释: 4 皇后问题存在两个不同的解法。</code></pre></div>
 <p>对于较为复杂的问题，我们可以用函数来封装若干步骤，比如<strong>试错</strong>、<strong>执行</strong>和<strong>撤销</strong>。</p>
-<pre><code class="lang-python">class Solution:
-    def solveNQueens(self, n: int) -&gt; List[List[str]]:
-        # 储存已有皇后的列
-        visited_c = [False] * n
-        # 储存已有皇后的/对角线
-        visited_u = [False] * (2 * n - 1)
-        # 储存已有皇后的\对角线
-        visited_d = [False] * (2 * n - 1)
-        # 储存所有皇后的列信息
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solveNQueens</span><span class="hljs-params">(self, n: int)</span> -&gt; List[List[str]]:</span>
+        <span class="hljs-comment"># 储存已有皇后的列</span>
+        visited_c = [<span class="hljs-literal">False</span>] * n
+        <span class="hljs-comment"># 储存已有皇后的/对角线</span>
+        visited_u = [<span class="hljs-literal">False</span>] * (<span class="hljs-number">2</span> * n - <span class="hljs-number">1</span>)
+        <span class="hljs-comment"># 储存已有皇后的\对角线</span>
+        visited_d = [<span class="hljs-literal">False</span>] * (<span class="hljs-number">2</span> * n - <span class="hljs-number">1</span>)
+        <span class="hljs-comment"># 储存所有皇后的列信息</span>
         queens = []
         res = []
-        # 试错
-        def isValid(i, j):
-            return not (visited_c[j] or visited_u[i + j] or visited_d[i - j])
-        # 执行
-        def place_queen(i, j):
+        <span class="hljs-comment"># 试错</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isValid</span><span class="hljs-params">(i, j)</span>:</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> (visited_c[j] <span class="hljs-keyword">or</span> visited_u[i + j] <span class="hljs-keyword">or</span> visited_d[i - j])
+        <span class="hljs-comment"># 执行</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">place_queen</span><span class="hljs-params">(i, j)</span>:</span>
             queens.append(j)
-            visited_c[j] = True 
-            visited_u[i + j] = True
-            visited_d[i - j] = True
-        # 撤销
-        def remove_queen(i, j):
+            visited_c[j] = <span class="hljs-literal">True</span> 
+            visited_u[i + j] = <span class="hljs-literal">True</span>
+            visited_d[i - j] = <span class="hljs-literal">True</span>
+        <span class="hljs-comment"># 撤销</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">remove_queen</span><span class="hljs-params">(i, j)</span>:</span>
             queens.pop()
-            visited_c[j] = False
-            visited_u[i + j] = False
-            visited_d[i - j] = False
-        # 输出结果
-        def checkerboard():
+            visited_c[j] = <span class="hljs-literal">False</span>
+            visited_u[i + j] = <span class="hljs-literal">False</span>
+            visited_d[i - j] = <span class="hljs-literal">False</span>
+        <span class="hljs-comment"># 输出结果</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">checkerboard</span><span class="hljs-params">()</span>:</span>
             tmp = []
-            for j in queens:
-                tmp.append(&#39;.&#39; * j + &#39;Q&#39; + &#39;.&#39; * (n - j - 1))
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> queens:
+                tmp.append(<span class="hljs-string">'.'</span> * j + <span class="hljs-string">'Q'</span> + <span class="hljs-string">'.'</span> * (n - j - <span class="hljs-number">1</span>))
             res.append(tmp)
-
-        def back_track(i=0):
-            # 终止条件
-            if i == n:
+        
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">back_track</span><span class="hljs-params">(i=<span class="hljs-number">0</span>)</span>:</span>
+            <span class="hljs-comment"># 终止条件</span>
+            <span class="hljs-keyword">if</span> i == n:
                 checkerboard()
-                return
-
-            for j in range(n):
-                if not isValid(i, j):
-                    continue
+                <span class="hljs-keyword">return</span>
+            
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(n):
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isValid(i, j):
+                    <span class="hljs-keyword">continue</span>
                 place_queen(i, j)
-                back_track(i + 1)
+                back_track(i + <span class="hljs-number">1</span>)
                 remove_queen(i, j)
 
         back_track()
-        return res
-</code></pre>
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <p>全排列和N皇后其实是相似的，两者的不同点在于，全排列是处理一维数组，N皇后是处理二维数组。这一点具体体现在两者在处理<strong>分布</strong>时的不同，全排列递归的深度是N次，每次分布都是遍历数组中所有数；N皇后递归的深度只有两次，这是由每行每列只能有一个皇后，所以第一个循环是遍历行，对每一行执行第二个循环——遍历列。</p>
 <p>N皇后在处理<strong>试错</strong>时的条件相对苛刻一些，但是对角线这个条件其实可以简化：</p>
 <blockquote>
@@ -324,54 +324,52 @@
 <blockquote>
 <p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</p>
 </blockquote>
-<pre><code class="lang-python">class Solution:
-    def isMatch(self, s: str, p: str) -&gt; bool:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
 
-        def backtrack(i, j):
-            # 终止条件
-            if j &gt;= size_p: 
-                if i &gt;= size_s: 
-                    return True
-                else:
-                    return False
-            # 判断第一位是否配对
-            first_match = i &lt; size_s and (s[i] == p[j] or p[j] == &#39;.&#39;)
-            # 第二位存在且第二位是&#39;*&#39;
-            if j + 1 &lt; size_p and p[j + 1] == &#39;*&#39;:
-                if first_match: 
-                    return backtrack(i + 1, j) or backtrack(i, j + 2) # 注意这里才是分步
-                else: 
-                    return backtrack(i, j + 2)  
-            # 第二位不是&#39;*&#39;或不存在 
-            else: 
-                return first_match and backtrack(i + 1, j + 1)
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(i, j)</span>:</span>
+            <span class="hljs-comment"># 终止条件</span>
+            <span class="hljs-keyword">if</span> j &gt;= size_p: 
+                <span class="hljs-keyword">if</span> i &gt;= size_s: 
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+                <span class="hljs-keyword">else</span>:
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+            <span class="hljs-comment"># 判断第一位是否配对</span>
+            first_match = i &lt; size_s <span class="hljs-keyword">and</span> (s[i] == p[j] <span class="hljs-keyword">or</span> p[j] == <span class="hljs-string">'.'</span>)
+            <span class="hljs-comment"># 第二位存在且第二位是'*'</span>
+            <span class="hljs-keyword">if</span> j + <span class="hljs-number">1</span> &lt; size_p <span class="hljs-keyword">and</span> p[j + <span class="hljs-number">1</span>] == <span class="hljs-string">'*'</span>:
+                <span class="hljs-keyword">if</span> first_match: 
+                    <span class="hljs-keyword">return</span> backtrack(i + <span class="hljs-number">1</span>, j) <span class="hljs-keyword">or</span> backtrack(i, j + <span class="hljs-number">2</span>) <span class="hljs-comment"># 注意这里才是分步</span>
+                <span class="hljs-keyword">else</span>: 
+                    <span class="hljs-keyword">return</span> backtrack(i, j + <span class="hljs-number">2</span>)  
+            <span class="hljs-comment"># 第二位不是'*'或不存在 </span>
+            <span class="hljs-keyword">else</span>: 
+                <span class="hljs-keyword">return</span> first_match <span class="hljs-keyword">and</span> backtrack(i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
 
-        return backtrack(0, 0)
-</code></pre>
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
 <p>正则表达式前两题不同之处在于，<strong>终止条件</strong>不是单一的处理，而是需要判断<code>True</code>or<code>False</code>。<strong>分步</strong>不再是循坏，而是分为两个情况讨论——‘*’前面的字母不出现和出现若干次。</p>
 <blockquote>
 <p>注意：一般这类判断是否可行的题都是判断成功<code>return True</code>，判断失败就继续运行，但是这里可以写<code>return False</code>。原因在于错误的分支被<code>or</code> 语句截断了。</p>
 </blockquote>
 <p>没有<strong>执行</strong>和<strong>撤销</strong>的过程，因为参数直接传入递归函数，对当前函数内不产生影响。下面一个例子也是这种情况。</p>
 <p><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">leetcode 22. 括号生成</a>：给出 <em>n</em> 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且<strong>有效的</strong>括号组合。</p>
-<pre><code class="lang-python">class Solution:
-    def generateParenthesis(self, n: int) -&gt; List[str]:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(self, n: int)</span> -&gt; List[str]:</span>
         res = []
-
-        def backtrack(l, r, s):
-            if not r:
+        
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(l, r, s)</span>:</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> r:
                 res.append(s)
-                return
-            if l &gt; 0:
-                backtrack(l - 1, r, s + &#39;(&#39;)
-            if l &lt; r:
-                backtrack(l, r - 1, s + &#39;)&#39;)
+                <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> l &gt; <span class="hljs-number">0</span>:
+                backtrack(l - <span class="hljs-number">1</span>, r, s + <span class="hljs-string">'('</span>)
+            <span class="hljs-keyword">if</span> l &lt; r:
+                backtrack(l, r - <span class="hljs-number">1</span>, s + <span class="hljs-string">')'</span>)
 
-        backtrack(n, n, &#39;&#39;)
-        return res
-</code></pre>
+        backtrack(n, n, <span class="hljs-string">''</span>)
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <h2 id="leetcode-40-组合总和-II"><a href="#leetcode-40-组合总和-II" class="headerlink" title="leetcode 40. 组合总和 II"></a><a href="https://leetcode-cn.com/problems/combination-sum-ii/" target="_blank" rel="noopener">leetcode 40. 组合总和 II</a></h2><p>给定一个数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
 <p><strong>说明：</strong></p>
 <ul>
@@ -380,41 +378,39 @@
 <li>解集不能包含重复的组合。 </li>
 </ul>
 <p><strong>示例：</strong></p>
-<pre><code class="lang-txt">输入: candidates = [10,1,2,7,6,1,5], target = 8,
+<div class="hljs"><pre><code class="hljs txt">输入: candidates = [10,1,2,7,6,1,5], target = 8,
 所求解集为:
 [
   [1, 7],
   [1, 2, 5],
   [2, 6],
   [1, 1, 6]
-]
-</code></pre>
+]</code></pre></div>
 <p>当对选值有特殊要求时，<strong>分步</strong>就变得复杂一些了。</p>
-<pre><code class="lang-python">class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -&gt; List[List[int]]:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combinationSum2</span><span class="hljs-params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span>
         res = []
         candidates.sort()
         size = len(candidates)
 
-        def backtrack(start, num_sum, nums):
-
-            if num_sum &gt; target:
-                return
-            if num_sum == target:
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(start, num_sum, nums)</span>:</span>
+            
+            <span class="hljs-keyword">if</span> num_sum &gt; target:
+                <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> num_sum == target:
                 res.append(nums)
-            # start保证了前面的元素不会再选取
-            for i in range(start, size):
-                # 这一步是关键，确保了若干个相同元素都在前面
-                if i &gt; start and candidates[i] == candidates[i - 1]: 
-                    continue
-
-                backtrack(i + 1, num_sum + candidates[i], nums + [candidates[i]])
-
-        backtrack(0, 0, [])
-        return res
-</code></pre>
+            <span class="hljs-comment"># start保证了前面的元素不会再选取</span>
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(start, size):
+                <span class="hljs-comment"># 这一步是关键，确保了若干个相同元素都在前面</span>
+                <span class="hljs-keyword">if</span> i &gt; start <span class="hljs-keyword">and</span> candidates[i] == candidates[i - <span class="hljs-number">1</span>]: 
+                    <span class="hljs-keyword">continue</span>
+                
+                backtrack(i + <span class="hljs-number">1</span>, num_sum + candidates[i], nums + [candidates[i]])
+                
+        backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, [])
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <p>原理如下图：</p>
-<p><img src="backtrack-2.png" alt=""></p>
+<p><img src="backtrack-2.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h1><p>简单回溯法的时间复杂度通常是指数级别的。比如正则表达式使用回溯法求解的时间复杂度为<script type="math/tex">O\left ( (T+P)2^{T+\frac{P}{2}} \right )</script>，<code>T</code> 和 <code>P</code> 分别表示匹配串和模式串的长度，<code>2</code>则是因为当出现<code>*</code>时，我们分两步试错。</p>
 <p>N皇后问题的时间复杂度为<script type="math/tex">O\left ( N！ \right )</script>，假设N足够大，第一个皇后有<code>N</code>种可能，第二个有<code>N-2</code>或<code>N-3</code>种可能，第三个有<code>N-4</code>、<code>N-5</code>或<code>N-6</code>种可能……总的来说时间复杂度是<script type="math/tex">O\left ( N！ \right )</script>。</p>
 <p>实际上，回溯法的很多递归都是重复的，引用备忘录可以在递归到重复的情况时，直接读取备忘录中的值，而不再执行一次深度可能很深的递归。下面是备忘录的一个例子：</p>
@@ -427,90 +423,86 @@
 <p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。</p>
 </blockquote>
 <p><strong>示例 1:</strong></p>
-<pre><code class="lang-txt">输入:
+<div class="hljs"><pre><code class="hljs txt">输入:
 s = &quot;aa&quot;
 p = &quot;a&quot;
 输出: false
-解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。
-</code></pre>
+解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</code></pre></div>
 <p>简单地通过一个<code>dict</code>来做备忘录：</p>
-<pre><code class="lang-python">class Solution:
-    def isMatch(self, s: str, p: str) -&gt; bool:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
-        memo = {} # 备忘录
+        memo = &#123;&#125; <span class="hljs-comment"># 备忘录</span>
 
-        def backtrack(i, j):
-            if (i,j) in memo:
-                return memo[(i, j)]
-            else:
-                tmp = False
-                if j == size_p:
-                    if i == size_s: # 注意：这里如果不成立直接返回tmp的初始值False
-                        tmp =  True               
-                elif p[j] == &#39;*&#39;:
-                    if i &lt; size_s:
-                        tmp = backtrack(i, j + 1) or backtrack(i + 1, j)
-                    else:
-                        tmp = backtrack(i, j + 1)
-                else: 
-                    if i &lt; size_s and (s[i] == p[j] or p[j] == &#39;?&#39;):
-                        tmp = backtrack(i + 1, j + 1)
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(i, j)</span>:</span>
+            <span class="hljs-keyword">if</span> (i,j) <span class="hljs-keyword">in</span> memo:
+                <span class="hljs-keyword">return</span> memo[(i, j)]
+            <span class="hljs-keyword">else</span>:
+                tmp = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">if</span> j == size_p:
+                    <span class="hljs-keyword">if</span> i == size_s: <span class="hljs-comment"># 注意：这里如果不成立直接返回tmp的初始值False</span>
+                        tmp =  <span class="hljs-literal">True</span>               
+                <span class="hljs-keyword">elif</span> p[j] == <span class="hljs-string">'*'</span>:
+                    <span class="hljs-keyword">if</span> i &lt; size_s:
+                        tmp = backtrack(i, j + <span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> backtrack(i + <span class="hljs-number">1</span>, j)
+                    <span class="hljs-keyword">else</span>:
+                        tmp = backtrack(i, j + <span class="hljs-number">1</span>)
+                <span class="hljs-keyword">else</span>: 
+                    <span class="hljs-keyword">if</span> i &lt; size_s <span class="hljs-keyword">and</span> (s[i] == p[j] <span class="hljs-keyword">or</span> p[j] == <span class="hljs-string">'?'</span>):
+                        tmp = backtrack(i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
                 memo[(i, j)] = tmp
-                return memo[(i, j)]
+                <span class="hljs-keyword">return</span> memo[(i, j)]
 
-        return backtrack(0, 0)
-</code></pre>
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
 <p>除了自己创建备忘录，还可以使用python中的装饰器<a href="https://docs.python.org/zh-cn/3/library/functools.html#functools.lru_cache" target="_blank" rel="noopener">@functools.lru_cache()</a>将函数值存在缓存中。</p>
-<pre><code class="lang-python">import functools
-class Solution:
-    def isMatch(self, s: str, p: str) -&gt; bool:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> functools
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
-
-        @functools.lru_cache(maxsize=None, typed=False) # 递归函数前面加修饰器
-        def backtrack(i, j):
-            if j == size_p:
-                if i == size_s:
-                    return True
-                else : 
-                    return False         
-            if p[j] == &#39;*&#39;:
-                if i &lt; size_s:
-                    return backtrack(i, j + 1) or backtrack(i + 1, j)
-                else:
-                    return backtrack(i, j + 1)
-            else: 
-                if i &lt; size_s and (s[i] == p[j] or p[j] == &#39;?&#39;):
-                    return backtrack(i + 1, j + 1)
-                else: return False
-
-        return backtrack(0, 0)
-</code></pre>
+        
+<span class="hljs-meta">        @functools.lru_cache(maxsize=None, typed=False) # 递归函数前面加修饰器</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(i, j)</span>:</span>
+            <span class="hljs-keyword">if</span> j == size_p:
+                <span class="hljs-keyword">if</span> i == size_s:
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+                <span class="hljs-keyword">else</span> : 
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>         
+            <span class="hljs-keyword">if</span> p[j] == <span class="hljs-string">'*'</span>:
+                <span class="hljs-keyword">if</span> i &lt; size_s:
+                    <span class="hljs-keyword">return</span> backtrack(i, j + <span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> backtrack(i + <span class="hljs-number">1</span>, j)
+                <span class="hljs-keyword">else</span>:
+                    <span class="hljs-keyword">return</span> backtrack(i, j + <span class="hljs-number">1</span>)
+            <span class="hljs-keyword">else</span>: 
+                <span class="hljs-keyword">if</span> i &lt; size_s <span class="hljs-keyword">and</span> (s[i] == p[j] <span class="hljs-keyword">or</span> p[j] == <span class="hljs-string">'?'</span>):
+                    <span class="hljs-keyword">return</span> backtrack(i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
+                <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+        
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
 <p>加上备忘录的回溯和动态规划似乎很相似：</p>
-<pre><code class="lang-python">class Solution:
-    def isMatch(self, s: str, p: str) -&gt; bool:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
-        dp = [[False for _ in range(size_p + 1)] for _ in range(size_s + 1)]
-        # dp[-1][-1]表示s，p都为空时是配对的
-        dp[-1][-1] = True
-        # -1表示空字符，s为空字符是可以和p配对的，比如p=&#39;.*&#39;，所以需要计算i=-1的情况
-        for i in range(-1, size_s):  
-            # p为空，s不为空就一定不配对，所以不考虑p=-1的情况         
-            for j in range(size_p):
-                # p[j]不是&#39;*&#39;且s[i]=p[j],注意利用i&gt;=0排除空字符
-                if i &gt;= 0 and (s[i] == p[j] or p[j] == &#39;.&#39;):                 
-                    dp[i][j] = dp[i - 1][j - 1]
-                # p[j]是&#39;*&#39;
-                if p[j] == &#39;*&#39;:
-                    # &#39;*&#39;前面的能匹配，就有两种可能，匹配0次或若干次
-                    if i &gt;= 0 and (p[j - 1] == s[i] or p[j - 1] == &#39;.&#39;):
-                        dp[i][j] = dp[i - 1][j] or dp[i][j - 2]
-                    else:
-                        dp[i][j] = dp[i][j - 2]
-        return dp[size_s - 1][size_p - 1]
-</code></pre>
+        dp = [[<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(size_p + <span class="hljs-number">1</span>)] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(size_s + <span class="hljs-number">1</span>)]
+        <span class="hljs-comment"># dp[-1][-1]表示s，p都为空时是配对的</span>
+        dp[<span class="hljs-number">-1</span>][<span class="hljs-number">-1</span>] = <span class="hljs-literal">True</span>
+        <span class="hljs-comment"># -1表示空字符，s为空字符是可以和p配对的，比如p='.*'，所以需要计算i=-1的情况</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">-1</span>, size_s):  
+            <span class="hljs-comment"># p为空，s不为空就一定不配对，所以不考虑p=-1的情况         </span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(size_p):
+                <span class="hljs-comment"># p[j]不是'*'且s[i]=p[j],注意利用i&gt;=0排除空字符</span>
+                <span class="hljs-keyword">if</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> (s[i] == p[j] <span class="hljs-keyword">or</span> p[j] == <span class="hljs-string">'.'</span>):                 
+                    dp[i][j] = dp[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>]
+                <span class="hljs-comment"># p[j]是'*'</span>
+                <span class="hljs-keyword">if</span> p[j] == <span class="hljs-string">'*'</span>:
+                    <span class="hljs-comment"># '*'前面的能匹配，就有两种可能，匹配0次或若干次</span>
+                    <span class="hljs-keyword">if</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> (p[j - <span class="hljs-number">1</span>] == s[i] <span class="hljs-keyword">or</span> p[j - <span class="hljs-number">1</span>] == <span class="hljs-string">'.'</span>):
+                        dp[i][j] = dp[i - <span class="hljs-number">1</span>][j] <span class="hljs-keyword">or</span> dp[i][j - <span class="hljs-number">2</span>]
+                    <span class="hljs-keyword">else</span>:
+                        dp[i][j] = dp[i][j - <span class="hljs-number">2</span>]
+        <span class="hljs-keyword">return</span> dp[size_s - <span class="hljs-number">1</span>][size_p - <span class="hljs-number">1</span>]</code></pre></div>
 <h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p><strong>剪枝</strong>，顾名思义，就是删去一些不重要或无用的节点，来减小计算或搜索的复杂度。使用备忘录其实也可以看成剪枝，因为重复的计算是无意义的。对于特定的问题，可以之间从算法的角度剪枝，如下面的例子：</p>
 <h2 id="leetcode-60-第k个排列"><a href="#leetcode-60-第k个排列" class="headerlink" title="leetcode 60. 第k个排列"></a><a href="https://leetcode-cn.com/problems/permutation-sequence/" target="_blank" rel="noopener">leetcode 60. 第k个排列</a></h2><p>给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。</p>
 <p>按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：</p>
@@ -529,145 +521,161 @@ class Solution:
 <li>给定 <em>k</em> 的范围是[1,  <em>n</em>!]。</li>
 </ul>
 <p><strong>示例:</strong></p>
-<pre><code class="lang-txt">输入: n = 3, k = 3
-输出: &quot;213&quot;
-</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: n = 3, k = 3
+输出: &quot;213&quot;</code></pre></div>
 <p>这题使用回溯法时间复杂度很高，挖掘其数学规律可以减少很多运算，比如我们在确定第一个数为<code>1</code>时，剩下的数共有<code>(n-1)!</code>种可能的排列，如果<code>k &gt; (n-1)!</code>，那么第一个数一定大于<code>1</code>。以此类推我们可以确定每个位置的数。</p>
-<pre><code class="lang-python">class Solution:
-    def getPermutation(self, n: int, k: int) -&gt; str:
-
-        # 求阶乘
-        def fact(n):
-            out = 1
-            while n:
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getPermutation</span><span class="hljs-params">(self, n: int, k: int)</span> -&gt; str:</span>
+        
+        <span class="hljs-comment"># 求阶乘</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fact</span><span class="hljs-params">(n)</span>:</span>
+            out = <span class="hljs-number">1</span>
+            <span class="hljs-keyword">while</span> n:
                 out *= n
-                n -= 1
-            return out
+                n -= <span class="hljs-number">1</span>
+            <span class="hljs-keyword">return</span> out
 
-        def backtrack(remainder, m, visited, permute):
-            if m &lt; 0:
-                return permute
-            for i in range(1, n + 1):
-                if i in visited:
-                    continue
-                if remainder - fact(m) &gt; 0: 
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(remainder, m, visited, permute)</span>:</span>
+            <span class="hljs-keyword">if</span> m &lt; <span class="hljs-number">0</span>:
+                <span class="hljs-keyword">return</span> permute
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+                <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> visited:
+                    <span class="hljs-keyword">continue</span>
+                <span class="hljs-keyword">if</span> remainder - fact(m) &gt; <span class="hljs-number">0</span>: 
                     remainder -= fact(m)
-                    continue
+                    <span class="hljs-keyword">continue</span>
                 visited.add(i)
-                return backtrack(remainder, m-1, visited, permute + str(i))
+                <span class="hljs-keyword">return</span> backtrack(remainder, m<span class="hljs-number">-1</span>, visited, permute + str(i))
 
-        return backtrack(k, n - 1, set(), &#39;&#39;)
-</code></pre>
+        <span class="hljs-keyword">return</span> backtrack(k, n - <span class="hljs-number">1</span>, set(), <span class="hljs-string">''</span>)</code></pre></div>
 <p>这道题通过剪枝甚至已经不需要回溯到之前的状态，通过递归直接就得到答案了。那也许意味着，有更直接的解法。实际上，这正是<a href="https://baike.baidu.com/item/康托展开" target="_blank" rel="noopener">康托展开</a>的原理。</p>
-<pre><code class="lang-python">class Solution(object):
-    def getPermutation(self, n, k):
-        res = &#39;&#39;
-        nums = [str(i+1) for i in range(n)]
-        factor = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880] # 手动输入n!，也可以写函数现场算
-        k -= 1 # 注意
-        for i in range(n-1, -1, -1):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getPermutation</span><span class="hljs-params">(self, n, k)</span>:</span>
+        res = <span class="hljs-string">''</span>
+        nums = [str(i+<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n)]
+        factor = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">24</span>, <span class="hljs-number">120</span>, <span class="hljs-number">720</span>, <span class="hljs-number">5040</span>, <span class="hljs-number">40320</span>, <span class="hljs-number">362880</span>] <span class="hljs-comment"># 手动输入n!，也可以写函数现场算</span>
+        k -= <span class="hljs-number">1</span> <span class="hljs-comment"># 注意</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>):
             n, k = divmod(k, factor[i])
             res += nums.pop(n)
-        return res
-</code></pre>
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/回溯法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%9B%9E%E6%BA%AF%E6%B3%95</a></li>
 </ol>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
                 
-              </span>&nbsp;&nbsp;
-            
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%9E%E6%BA%AF/">回溯</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%80%92%E5%BD%92/">递归</a>
+                    
+                  </div>
+                
+              </div>
               
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/python/">python</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E5%9B%9E%E6%BA%AF/">回溯</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E9%80%92%E5%BD%92/">递归</a>
-                
-              </span>
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/17/%E6%98%A5%E8%8A%B1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">春花</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/07/Hexo%E6%9A%97%E8%89%B2%E8%83%8C%E6%99%AF%E4%B8%8Bvaline%E7%9A%84%E4%BC%98%E5%8C%96/">
+                        <span class="hidden-mobile">Hexo暗色背景下valine的优化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container">
-        <div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-  <div id="tocbot"></div>
-</div>
-      </div>
-    
-  </div>
-</div>
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
 
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === 'true';
-    var verify = 'false' === 'true';
-    var oldLoad = window.onload;
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
         app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "喂？",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
 
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -701,10 +709,12 @@ class Solution:
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <b>2020</b>
-    <i class="iconfont icon-love"></i>
-    <b>lil-q</b>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
   <div>
     
@@ -726,48 +736,27 @@ class Solution:
 
     
 
-    <!-- cnzz Analytics icon -->
     
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
+
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var toc = $('#toc');
-      var main = $('main');
-      var tocT = navHeight + (toc.offset().top - main.offset().top);
-      var tocLimMin = main.offset().top - navHeight;
-      var tocLimMax = $('#comments').offset().top - navHeight;
-      $(window).scroll(function () {
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': tocT,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -777,10 +766,12 @@ class Solution:
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
@@ -789,24 +780,17 @@ class Solution:
 
 
 
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 <!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -852,7 +836,7 @@ class Solution:
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
@@ -860,12 +844,14 @@ class Solution:
 
 
   <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -873,31 +859,50 @@ class Solution:
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
+
+
 
 
 
