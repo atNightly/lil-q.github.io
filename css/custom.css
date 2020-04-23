@@ -51,11 +51,14 @@
 }
 
 .markdown-body hr {
-    background-color: #3f3f42 !important;
+    background-color: #eee !important;
 }
 
 .pagination a:hover, .pagination .current {
     background-color: #980101 !important;
+}
+
+.pagination a, .pagination .current {
     border-radius: 0rem !important;
 }
 
