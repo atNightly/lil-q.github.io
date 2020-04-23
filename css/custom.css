@@ -1,111 +1,43 @@
-/*valine 评论系统样式*/
-.v * {
-    line-height: 1 !important;
-    color: #ddd !important;
+#scroll-top-button {
+    background: #4ea1d3;
 }
 
-.v .vwrap .vheader .vinput {
-    border-bottom: 1px solid #ccc !important;
+#scroll-top-button i {
+    color: #13100f;
+}
+
+.v .vcards .vcard .vh .vmeta .vat {
+    color: #ddd;
+}
+
+.v .vcards .vcard .vh {
+    border-bottom: 1px dashed #ffffff00 !important;
+}
+
+.v .vcards .vcard .vimg {
+    border: 1px solid #fff0 !important;
+}
+
+.v .vcards .vcard .vhead .vnick {
+    color: #eee !important;
+}
+
+.v a {
+    color: #eee !important;
+}
+
+.v * {
+    color: #ccc !important;
 }
 
 .v .vbtn {
-    border: 1px solid #980101 !important;
-    background: #980101 !important;
-}
-
-.v .vlist .vcard .vhead .vsys {
-    background: #000000 !important;
-}
-
-.v .vwrap{
-    border: 2px solid #ccc !important;
-}
-
-.v .vlist .vcard .vquote {
-    border-left: 1px solid #111 !important;
-}
-
-.v .vlist .vcard .vh {
-    border-bottom: 1px solid #ccc !important;
-}
-
-.v .vlist .vcard .vimg {
-    border: 1px solid #111 !important;
-}
-
-/*设置评论头像旋转*/
-.v .vlist .vcard .vimg:hover {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -transform: rotate(360deg);
-}
-
-.markdown-body {
-    color: #ddd !important;
-}
-
-.note-warning {
-    background-color: #444 !important;
-    border-color: #444 !important;
-}
-
-.markdown-body hr {
-    background-color: #eee !important;
-}
-
-.pagination a:hover, .pagination .current {
-    background-color: #980101 !important;
-}
-
-.pagination a, .pagination .current {
-    border-radius: 0rem !important;
-}
-
-.markdown-body table td, .markdown-body table th {
-    border: 1px solid #545454 !important;
-    background-color: #2d2d2d !important;
+    color: #313131;
+    border: 1px solid #fff0 !important;
+    border-radius: .3em;
+    background: #860d00 !important;
 }
 
 .markdown-body a {
-    color: #6699cc !important;
-}
-
-.scroll-top-arrow {
-    color: #222222 !important;
-}
-
-#scroll-top-button {
-    background: #69c !important;
-}
-
-code {
-    color: #ff67ad;
-}
-
-.markdown-body code {
-    background-color: #2d2d2d;
-}
-
-.markdown-body .highlight pre, .markdown-body pre {
-    background-color: #2d2d2d !important;
-}
-
-.list-group-item {
-    background-color: #222 !important;
-}
-
-.list-group-item-action {
-    color: #ddd !important;
-}
-
-.markdown-body blockquote {
-    border-left: .2em solid #ddd !important;
-    color: #ccc !important;
-    background-color: #2d2d2d !important;
-}
-
-.row {
-    padding-bottom: 2rem !important;
+    color: #4ea1d3;
 }
 /**/
