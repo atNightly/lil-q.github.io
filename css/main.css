@@ -35,7 +35,7 @@ img[srcset] {
   padding: 0.45rem;
 }
 .hover-with-bg:hover {
-  background-color: #ebedef;
+  background-color: #1e2022;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   border-radius: 0.15rem;
@@ -652,7 +652,7 @@ a.beian-police img {
 }
 .pagination a:hover,
 .pagination .current {
-  background-color: #ebedef;
+  background-color: #1e2022;
 }
 .modal-dialog .modal-content {
   border: 0;
