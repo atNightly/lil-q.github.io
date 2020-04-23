@@ -41,7 +41,13 @@
     color: #4ea1d3;
 }
 
+.markdown-body strong {
+    font-weight: bold;
+    color: white !important;
+}
+
 code {
     color: #ea5d9e;
 }
+
 /**/
