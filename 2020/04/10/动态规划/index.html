@@ -195,8 +195,8 @@
 <div class="hljs"><pre><code class="hljs txt">输入: [10,9,2,5,3,7,101,18]
 输出: 4 
 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</code></pre></div>
-<p><strong>状态转移：</strong>求解长度为 n 的序列，需要知道前 n - 1 个序列所构成的所有子序列，如果序列结尾小于第 n 个数，则加上第 n 个数 <code>num</code> 构成新的子序列。这显然很复杂，可以根据贪心思想优化。由于这题求的是最长上升子序列，又因为向子序列添加数字只和末尾数字有关，所以对于每一个可能的子序列长度，只需要保留所有该长度序列的末尾数字中最小的那个数字即可，我们用 <code>tails</code> 保存这个信息。状态转移被优化为找到 <code>tails</code> 中所有满足 <code>tails[i] &lt; num &lt; tails[i + 1]</code>的情况，并将 <code>tails[i + 1]</code>替换为 <code>num</code>。可以证明 <code>tails</code>是递增的，所以这个数是唯一的。</p>
-<p><strong>二分查找：</strong>题目要求时间复杂度在 <script type="math/tex">O(N\log N)</script> ，所以状态转移时查找第一个大于 <code>num</code>的数采用二分查找。</p>
+<p><strong>状态转移：</strong>求解长度为 n 的序列，需要知道前 n - 1 个序列所构成的所有子序列，如果序列结尾小于第 n 个数，则加上第 n 个数<code>num</code>构成新的子序列。这显然很复杂，可以根据贪心思想优化。由于这题求的是最长上升子序列，又因为向子序列添加数字只和末尾数字有关，所以对于每一个可能的子序列长度，只需要保留所有该长度序列的末尾数字中最小的那个数字即可，我们用<code>tails</code>保存这个信息。状态转移被优化为找到<code>tails</code>中所有满足<code>tails[i] &lt; num &lt; tails[i + 1]</code>的情况，并将<code>tails[i + 1]</code>替换为 <code>num</code>。可以证明<code>tails</code>是递增的，所以这个数是唯一的。</p>
+<p><strong>二分查找：</strong>题目要求时间复杂度在 <script type="math/tex">O(N\log N)</script> ，所以状态转移时查找第一个大于<code>num</code>的数采用二分查找。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLIS</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[] tails = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];
@@ -871,10 +871,9 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre></div>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <b>2020</b>
       <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+      <b>lil-q</b>
     </div>
     
   <div>
