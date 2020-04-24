@@ -59,7 +59,7 @@
 }
 
 .list-group-item {
-    color: #eee;
+    color: #eee !important;
 }
 
 .list-group-item-action {
