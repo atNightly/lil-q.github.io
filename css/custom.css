@@ -6,6 +6,10 @@
     color: #13100f;
 }
 
+.custom, .comments {
+    margin-top: 5rem;
+}
+
 .v .vcards .vcard .vh .vmeta .vat {
     color: #ddd;
 }
@@ -42,12 +46,39 @@
 }
 
 .markdown-body strong {
-    font-weight: bold;
     color: white !important;
+}
+
+.markdown-body table td, .markdown-body table th {
+    border: 1px solid #5e5e5f;
+    background-color: #1e2022;
+}
+
+.markdown-body blockquote {
+    color: #bbb;
+}
+
+.list-group-item {
+    color: #eee;
+}
+
+.list-group-item-action {
+    background-color: #1e2022 !important;
 }
 
 code {
     color: #ea5d9e;
 }
 
+.mb-3, .my-3 {
+    border-bottom: 1px solid #eee;
+}
+
+hr {
+    border-top: 1px solid rgba(0,0,0,0);
+}
+
+.pagination a, .pagination .current {
+    font-weight: bold;
+}
 /**/
