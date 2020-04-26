@@ -303,7 +303,7 @@ cost = [3,4,5,1,2]
             &#125;
         &#125;
         <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> ch : s.toCharArray()) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> ch : s.toCharArray()) &#123; 
             i = dp[i][ch - <span class="hljs-string">'a'</span>];
             <span class="hljs-keyword">if</span> (i == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
         &#125;
