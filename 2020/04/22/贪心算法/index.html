@@ -288,7 +288,7 @@ cost = [3,4,5,1,2]
     &#125;
 &#125;</code></pre></div>
 <p>匹配一串字符需要 <script type="math/tex">O(n)</script> ，n 为 <strong>t</strong> 的长度。如果有大量输入的 <strong>S</strong>，称作 <strong>S1</strong> , <strong>S2</strong> , … , <strong>Sk</strong> 其中 k &gt;= 10 亿，你需要依次检查它们是否为 <strong>T</strong> 的子序列，这时候处理每一个子串都需要扫描一遍 <strong>T</strong> 是很费时的。</p>
-<p>在这种情况下，我们需要在匹配前对 <strong>T</strong> 做预处理，利用一个二维数组记录每个位置的下一个要匹配的字符的位置，这里的字符是<code>&#39;a&#39; ~ &#39;z&#39;</code>，所以这个数组的大小是 26 <em> n，n 为 <strong>T</strong> 的长度。那么每处理一个子串只需要扫描一遍 <strong>Si</strong> 即可，因为在数组的帮助下我们对 <em>*T</em></em> 是“跳跃”扫描的。比如下面匹配 “ada” 的例子，只需要“跳跃”三次。</p>
+<p>在这种情况下，我们需要在匹配前对 <strong>T</strong> 做预处理，利用一个二维数组记录每个位置的下一个要匹配的字符的位置，这里的字符是<code>&#39;a&#39; ~ &#39;z&#39;</code>，所以这个数组的大小是 <code>dp[n][26]</code>，n 为 <strong>T</strong> 的长度。那么每处理一个子串只需要扫描一遍 <strong>Si</strong> 即可，因为在数组的帮助下我们对 <strong>T</strong> 是“跳跃”扫描的。比如下面匹配 “ada” 的例子，只需要“跳跃”三次。</p>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/20200426180603.jpg" srcset="/img/loading.gif" alt=""></p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSubsequence</span><span class="hljs-params">(String s, String t)</span> </span>&#123;
