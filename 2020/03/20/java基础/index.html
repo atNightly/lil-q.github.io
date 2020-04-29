@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    7.4k 字
+                    7.5k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    93
+                    95
                      分钟
                   </span>
                 
@@ -241,16 +241,23 @@ System.out.println(m == n); <span class="hljs-comment">// true</span></code></pr
 <li><code>*</code> <code>/</code> <code>%</code></li>
 <li><code>+</code> <code>-</code></li>
 <li><code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code></li>
+<li><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>instanceof</code></li>
+<li><code>==</code> <code>!=</code></li>
 <li><code>&amp;</code></li>
+<li><code>^</code></li>
 <li><code>|</code></li>
+<li><code>&amp;&amp;</code></li>
+<li><code>||</code></li>
+<li><code>? :</code></li>
 <li><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code></li>
 </ul>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">1. 面试题15. 二进制中1的个数</a></p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>位操作（Bit Manipulation）是程序设计中对位模式或二进制数的一元和二元操作。在许多古老的微处理器上，位运算比加减运算略快，通常位运算比乘除法运算要快很多。在现代架构中，情况并非如此：位运算的运算速度通常与加法运算相同（仍然快于乘法运算）。</p>
+<p><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">1. 面试题15. 二进制中1的个数</a></p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 解一：</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">while</span>(n != <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;
             res += n &amp; <span class="hljs-number">1</span>; <span class="hljs-comment">// 只计算一位</span>
             n &gt;&gt;&gt;= <span class="hljs-number">1</span>; <span class="hljs-comment">// &gt;&gt;&gt; 符号位一起移动，&gt;&gt; 符号位不移动</span>
         &#125;
@@ -261,7 +268,7 @@ System.out.println(m == n); <span class="hljs-comment">// true</span></code></pr
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">while</span>(n != <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) &#123;
             res++;
             n &amp;= n - <span class="hljs-number">1</span>;
         &#125;
@@ -286,6 +293,7 @@ System.out.println(m == n); <span class="hljs-comment">// true</span></code></pr
         <span class="hljs-keyword">return</span> p;
     &#125;
 &#125;</code></pre></div>
+<p><a href="">更多题解</a></p>
 <h2 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h2><h3 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h3><p><code>short</code>和<code>int</code>计算，结果总是<code>int</code>，原因是<code>short</code>首先自动被转型为<code>int</code>：</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">short</span> s = <span class="hljs-number">1234</span>;
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">123456</span>;
