@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    5.2k 字
+                    7.1k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    57
+                    79
                      分钟
                   </span>
                 
@@ -326,54 +326,6 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre></
 <h3 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted()"></a>interrupted()</h3><p>如果一个线程的 run() 方法执行一个无限循环，并且没有执行 sleep() 等会抛出 InterruptedException 的操作，那么调用线程的 interrupt() 方法就无法使线程提前结束。</p>
 <p>但是调用 interrupt() 方法会设置线程的中断标记，此时调用 interrupted() 方法会返回 true。因此可以在循环体中使用 interrupted() 方法来判断线程是否处于中断状态，从而提前结束线程。</p>
 <h3 id="Executor-1"><a href="#Executor-1" class="headerlink" title="Executor"></a>Executor</h3><p>调用 Executor 的 shutdown() 方法会等待线程都执行完毕之后再关闭，但是如果调用的是 shutdownNow() 方法，则相当于调用每个线程的 interrupt() 方法。</p>
-<h1 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h1><p>Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
-<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p><strong>1. 同步一个代码块</strong></p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;
-        <span class="hljs-comment">// ...</span>
-    &#125;
-&#125;</code></pre></div>
-<p>它只作用于<strong>同一个对象</strong>，如果调用两个对象上的同步代码块，就不会进行同步。</p>
-<p><strong>2. 同步一个方法</strong></p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-comment">// ...</span>
-&#125;</code></pre></div>
-<p>它和同步代码块一样，作用于<strong>同一个对象</strong>。</p>
-<p><strong>3. 同步一个类</strong></p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">synchronized</span> (SynchronizedExample<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123;
-        <span class="hljs-comment">// ...</span>
-    &#125;
-&#125;</code></pre></div>
-<p>作用于<strong>整个类</strong>，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。</p>
-<p><strong>4. 同步一个静态方法</strong></p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-comment">// ...</span>
-&#125;</code></pre></div>
-<p>作用于<strong>整个类</strong>。</p>
-<h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p><code>ReentrantLock</code>是可重入锁，它和<code>synchronized</code>一样，一个线程可以多次获取同一个锁。</p>
-<p>和<code>synchronized</code>不同的是，<code>ReentrantLock</code>可以尝试获取锁：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (lock.tryLock(<span class="hljs-number">1</span>, TimeUnit.SECONDS)) &#123;
-    <span class="hljs-keyword">try</span> &#123;
-        ...
-    &#125; <span class="hljs-keyword">finally</span> &#123;
-        lock.unlock();
-    &#125;
-&#125;</code></pre></div>
-<p>上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，<code>tryLock()</code>返回<code>false</code>，程序就可以做一些额外处理，而不是无限等待下去。</p>
-<p>所以，使用<code>ReentrantLock</code>比直接使用<code>synchronized</code>更安全，线程在<code>tryLock()</code>失败的时候不会导致死锁。</p>
-<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p><strong>1. 锁的实现</strong></p>
-<p>synchronized 是 JVM 实现的，而 ReentrantLock 是 JDK 实现的。</p>
-<p><strong>2. 性能</strong></p>
-<p>新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。</p>
-<p><strong>3. 等待可中断</strong></p>
-<p>当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。</p>
-<p>ReentrantLock 可中断，而 synchronized 不行。</p>
-<p><strong>4. 公平锁</strong></p>
-<p>公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。</p>
-<p>synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。</p>
-<p><strong>5. 锁绑定多个条件</strong></p>
-<p>一个 ReentrantLock 可以同时绑定多个 Condition 对象。</p>
 <h1 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h1><p>当多个线程可以一起工作去解决某个问题时，如果某些部分必须在其它部分之前完成，那么就需要对线程进行协调。</p>
 <h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>在线程中调用另一个线程的 join() 方法，会将当前线程挂起，而不是忙等待，直到目标线程结束。</p>
 <h2 id="wait-notify-notifyAll"><a href="#wait-notify-notifyAll" class="headerlink" title="wait(), notify(), notifyAll()"></a>wait(), notify(), notifyAll()</h2><p>调用 wait() 使得线程等待某个条件满足，线程在等待时会被挂起，当其他线程的运行使得这个条件满足时，其它线程会调用 notify() 或者 notifyAll() 来唤醒挂起的线程。</p>
@@ -403,9 +355,128 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre></
     <span class="hljs-comment">// 指定时间内没有被其他线程唤醒</span>
 &#125;</code></pre></div>
 <p>可见，使用<code>Condition</code>配合<code>Lock</code>，我们可以实现更灵活的线程同步。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h1><h2 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a>不可变</h2><p>不可变（Immutable）的对象一定是线程安全的，不需要再采取任何的线程安全保障措施。只要一个不可变的对象被正确地构建出来，永远也不会看到它在多个线程之中处于不一致的状态。多线程环境下，应当尽量使对象成为不可变，来满足线程安全。</p>
+<p>不可变的类型：</p>
+<ul>
+<li>final 关键字修饰的基本数据类型</li>
+<li>String</li>
+<li>枚举类型</li>
+<li>Number 部分子类，如 Long 和 Double 等数值包装类型，BigInteger 和 BigDecimal 等大数据类型。但同为 Number 的原子类 AtomicInteger 和 AtomicLong 则是可变的。</li>
+</ul>
+<p>对于集合类型，可以使用 Collections.unmodifiableXXX() 方法来获取一个不可变的集合。</p>
+<h2 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h2><p>Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
+<h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><p><strong>1. 同步一个代码块</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;
+        <span class="hljs-comment">// ...</span>
+    &#125;
+&#125;</code></pre></div>
+<p>它只作用于<strong>同一个对象</strong>，如果调用两个对象上的同步代码块，就不会进行同步。</p>
+<p><strong>2. 同步一个方法</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// ...</span>
+&#125;</code></pre></div>
+<p>它和同步代码块一样，作用于<strong>同一个对象</strong>。</p>
+<p><strong>3. 同步一个类</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span> (SynchronizedExample<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123;
+        <span class="hljs-comment">// ...</span>
+    &#125;
+&#125;</code></pre></div>
+<p>作用于<strong>整个类</strong>，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。</p>
+<p><strong>4. 同步一个静态方法</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// ...</span>
+&#125;</code></pre></div>
+<p>作用于<strong>整个类</strong>。</p>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p><code>ReentrantLock</code>是可重入锁，它和<code>synchronized</code>一样，一个线程可以多次获取同一个锁。</p>
+<p>和<code>synchronized</code>不同的是，<code>ReentrantLock</code>可以尝试获取锁：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (lock.tryLock(<span class="hljs-number">1</span>, TimeUnit.SECONDS)) &#123;
+    <span class="hljs-keyword">try</span> &#123;
+        ...
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        lock.unlock();
+    &#125;
+&#125;</code></pre></div>
+<p>上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，<code>tryLock()</code>返回<code>false</code>，程序就可以做一些额外处理，而不是无限等待下去。</p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p><strong>1. 锁的实现</strong></p>
+<p>synchronized 是 JVM 实现的，而 ReentrantLock 是 JDK 实现的。</p>
+<p><strong>2. 性能</strong></p>
+<p>新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。</p>
+<p><strong>3. 等待可中断</strong></p>
+<p>当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。</p>
+<p>ReentrantLock 可中断，而 synchronized 不行。</p>
+<p><strong>4. 公平锁</strong></p>
+<p>公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。</p>
+<p>synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。</p>
+<p><strong>5. 锁绑定多个条件</strong></p>
+<p>一个 ReentrantLock 可以同时绑定多个 Condition 对象。</p>
+<p><strong>总结</strong></p>
+<p>推荐在 synchronized 与 ReentrantLock 都可满足需要时优先使用 synchronized，synchronized 是在 Java 语法层面的同步，足够清晰，也足够简单。</p>
+<p> ReentrantLock 应该确保在 finally 块中释放锁，否则一旦受同步保护的代码块中抛出异常，则有可能永远不会释放持有的锁。而使用 synchronized 的话则可以由 Java 虛拟机来确保即使出现异常，锁也能被自动释放。</p>
+<p>从长远来看，Java 虚拟机更容易针对 synchronized 来进行优化，因为 Java 虚拟机可以在线程和对象的元数据中记录 synchronized 中锁的相关信息，而使用 J.U.C 中的 Lock 的话，Java 虚拟机是很难得知具体哪些锁对象是由特定线程锁持有的。</p>
+<h2 id="非阻塞同步"><a href="#非阻塞同步" class="headerlink" title="非阻塞同步"></a>非阻塞同步</h2><p>互斥同步最主要的问题就是<strong>线程阻塞</strong>和<strong>唤醒</strong>所带来的性能问题，因此这种同步也称为<strong>阻塞同步</strong>。</p>
+<p>互斥同步属于一种<strong>悲观</strong>的并发策略，总是认为只要不去做正确的同步措施，那就肯定会出现问题。无论共享数据是否真的会出现竞争，它都要进行加锁（这里讨论的是概念模型，实际上虚拟机会优化掉很大一部分不必要的加锁）、用户态核心态转换、维护锁计数器和检查是否有被阻塞的线程需要唤醒等操作。</p>
+<p>随着硬件指令集的发展，我们可以使用基于<strong>冲突检测</strong>的<strong>乐观</strong>并发策略：先进行操作，如果没有其它线程争用共享数据，那操作就成功了，否则采取补偿措施（不断地重试，直到成功为止）。这种乐观的并发策略的许多实现都不需要将线程阻塞，因此这种同步操作称为<strong>非阻塞同步</strong>。</p>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p>乐观锁需要操作和冲突检测这两个步骤具备<strong>原子性</strong>，这里就不能再使用互斥同步来保证了，只能靠<strong>硬件</strong>来完成。硬件支持的原子性操作最典型的是：比较并交换（Compare-and-Swap，CAS）。CAS 指令需要有 3 个操作数，分别是内存地址 V、旧的预期值 A 和新值 B。当执行操作时，只有当 V 的值等于 A，才将 V 的值更新为 B。</p>
+<h3 id="AtomicInteger"><a href="#AtomicInteger" class="headerlink" title="AtomicInteger"></a>AtomicInteger</h3><p>J.U.C 包里面的整数原子类 AtomicInteger 的方法调用了 Unsafe 类的 CAS 操作。</p>
+<p>以下代码使用了 AtomicInteger 执行了自增的操作。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;
+    cnt.incrementAndGet();
+&#125;</code></pre></div>
+<p>以下代码是 incrementAndGet() 的源码，它调用了 Unsafe 的 getAndAddInt() 。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">incrementAndGet</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> unsafe.getAndAddInt(<span class="hljs-keyword">this</span>, valueOffset, <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>;
+&#125;</code></pre></div>
+<p>以下代码是 getAndAddInt() 源码，var1 指示对象内存地址，var2 指示该字段相对对象内存地址的偏移，var4 指示操作需要加的数值，这里为 1。通过 getIntVolatile(var1, var2) 得到旧的预期值，通过调用 compareAndSwapInt() 来进行 CAS 比较，如果该字段内存地址中的值等于 var5，那么就更新内存地址为 var1+var2 的变量为 var5+var4。</p>
+<p>可以看到 getAndAddInt() 在一个循环中进行，发生冲突的做法是不断的进行重试。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAndAddInt</span><span class="hljs-params">(Object var1, <span class="hljs-keyword">long</span> var2, <span class="hljs-keyword">int</span> var4)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> var5;
+    <span class="hljs-keyword">do</span> &#123;
+        var5 = <span class="hljs-keyword">this</span>.getIntVolatile(var1, var2);
+    &#125; <span class="hljs-keyword">while</span>(!<span class="hljs-keyword">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));
+
+    <span class="hljs-keyword">return</span> var5;
+&#125;</code></pre></div>
+<h3 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h3><p><a href="https://www.zhihu.com/question/23281499" target="_blank" rel="noopener">ABA问题</a>就是如果一个变量初次读取的时候是 A 值，它的值被改成了 B，后来又被改回为 A，那 CAS 操作就会误认为它从来没有被改变过。</p>
+<p>J.U.C 包提供了一个带有标记的原子引用类 AtomicStampedReference 来解决这个问题，它可以通过控制变量值的版本来保证 CAS 的正确性。大部分情况下 ABA 问题不会影响程序并发的正确性，如果需要解决 ABA 问题，<strong>改用传统的互斥同步可能会比原子类更高效</strong>。</p>
+<h2 id="无同步方案"><a href="#无同步方案" class="headerlink" title="无同步方案"></a>无同步方案</h2><p>要保证线程安全，并不是一定就要进行同步。如果一个方法本来就不涉及共享数据，那它自然就无须任何同步措施去保证正确性。</p>
+<h3 id="栈封闭"><a href="#栈封闭" class="headerlink" title="栈封闭"></a>栈封闭</h3><p>多个线程访问同一个方法的局部变量时，不会出现线程安全问题，因为局部变量存储在<strong>虚拟机栈</strong>中，属于<strong>线程私有</strong>的。</p>
+<h3 id="线程本地存储（Thread-Local-Storage）"><a href="#线程本地存储（Thread-Local-Storage）" class="headerlink" title="线程本地存储（Thread Local Storage）"></a>线程本地存储（Thread Local Storage）</h3><p>如果一段代码中所需要的数据必须与其他代码共享，那就看看这些共享数据的代码是否能<strong>保证在同一个线程中执行</strong>。如果能保证，我们就可以把共享数据的可见范围限制在同一个线程之内，这样，无须同步也能保证线程之间不出现数据争用的问题。</p>
+<p>符合这种特点的应用并不少见，大部分使用消费队列的架构模式（如“生产者-消费者”模式）都会将产品的消费过程尽量在一个线程中消费完。其中最重要的一个应用实例就是经典 Web 交互模型中的“一个请求对应一个服务器线程”（Thread-per-Request）的处理方式，这种处理方式的广泛应用使得很多 Web 服务端应用都可以使用线程本地存储来解决线程安全问题。</p>
+<p>可以使用 java.lang.ThreadLocal 类来实现线程本地存储功能。</p>
+<p>对于以下代码，thread1 中的 threadLocal1 和 threadLocal2 为 1，而 thread2 中的 threadLocal1 和 threadLocal2 为 2.</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadLocalExample1</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        ThreadLocal threadLocal1 = <span class="hljs-keyword">new</span> ThreadLocal();
+        ThreadLocal threadLocal2 = <span class="hljs-keyword">new</span> ThreadLocal();
+        Thread thread1 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;
+            threadLocal1.set(<span class="hljs-number">1</span>);
+            threadLocal2.set(<span class="hljs-number">1</span>);
+        &#125;);
+        Thread thread2 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;
+            threadLocal1.set(<span class="hljs-number">2</span>);
+            threadLocal2.set(<span class="hljs-number">2</span>);
+        &#125;);
+        thread1.start();
+        thread2.start();
+    &#125;
+&#125;</code></pre></div>
+<p>每个 Thread 都有一个 ThreadLocal.ThreadLocalMap 对象。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/* ThreadLocal values pertaining to this thread. This map is maintained
+ * by the ThreadLocal class. */</span>
+ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>;</code></pre></div>
+<p>当调用一个 ThreadLocal 的 set(T value) 方法时，先得到当前线程的 ThreadLocalMap 对象，然后将 ThreadLocal-&gt;value 键值对插入到该 Map 中。</p>
+<p>ThreadLocal 从理论上讲并不是用来解决多线程并发问题的，因为根本不存在多线程竞争。</p>
+<p>在一些场景 (尤其是使用线程池) 下，由于 ThreadLocal.ThreadLocalMap 的底层数据结构导致 ThreadLocal 有内存泄漏的情况，应该尽可能在每次使用 ThreadLocal 后手动调用 remove()，以避免出现 ThreadLocal 经典的内存泄漏甚至是造成自身业务混乱的风险。</p>
+<h3 id="可重入代码（Reentrant-Code）"><a href="#可重入代码（Reentrant-Code）" class="headerlink" title="可重入代码（Reentrant Code）"></a>可重入代码（Reentrant Code）</h3><p>这种代码也叫做纯代码（Pure Code），可以在代码执行的任何时刻中断它，转而去执行另外一段代码（包括递归调用它本身），而在控制权返回后，原来的程序不会出现任何错误。</p>
+<p>可重入代码有一些共同的特征，例如<strong>不依赖存储在堆上的数据和公用的系统资源</strong>、<strong>用到的状态量都由参数中传入</strong>、<strong>不调用非可重入的方法</strong>等。</p>
+<h1 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h1><h1 id="J-U-C"><a href="#J-U-C" class="headerlink" title="J.U.C"></a>J.U.C</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>周志明. 深入理解 Java 虚拟机 [M]. 机械工业出版社, 2011.</li>
 <li><a href="https://cyc2018.github.io/CS-Notes/#/notes/Java 并发?id=一、使用线程" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%B9%B6%E5%8F%91?id=%e4%b8%80%e3%80%81%e4%bd%bf%e7%94%a8%e7%ba%bf%e7%a8%8b</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1255943750561472" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1255943750561472</a></li>
 </ol>
 
             </article>

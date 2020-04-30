@@ -81,4 +81,8 @@ hr {
 .pagination a, .pagination .current {
     font-weight: bold;
 }
+
+.pagination a:hover, .pagination .current {
+    color: #AF4034;
+}
 /**/
