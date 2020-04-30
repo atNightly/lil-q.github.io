@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.9k 字
+                    5.2k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    20
+                    57
                      分钟
                   </span>
                 
@@ -218,7 +218,192 @@
 <li><p>volatile 修饰的变量不会被指令重排序优化，从而保证代码的执行顺序与程序的顺序相同。</p>
 </li>
 </ol>
-<h2 id="三个特性"><a href="#三个特性" class="headerlink" title="三个特性"></a>三个特性</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h2 id="三个特性"><a href="#三个特性" class="headerlink" title="三个特性"></a>三个特性</h2><h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>Java 内存模型保证了 read、load、use、assign、store、write、lock 和 unlock <strong>单个操作</strong>具有原子性，例如对一个 int 类型的变量执行 assign 赋值操作，这个操作就是原子性的。但是 Java 内存模型允许虚拟机将没有被 volatile 修饰的 64 位数据（long，double）的读写操作划分为两次 32 位的操作来进行，即 load、store、read 和 write 操作可以不具备原子性。</p>
+<p>AtomicInteger 能保证<strong>多个线程</strong>修改的原子性。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();</code></pre></div>
+<p>除了使用原子类之外，也可以使用 synchronized 互斥锁来保证操作的原子性。它对应的内存间交互操作为：lock 和 unlock，在虚拟机实现上对应的字节码指令为 monitorenter 和 monitorexit。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;
+    cnt++;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> cnt;
+&#125;</code></pre></div>
+<h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>可见性指当一个线程修改了共享变量的值，其它线程能够<strong>立即得知</strong>这个修改。Java 内存模型是通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值来实现可见性的。</p>
+<p>主要有三种实现可见性的方式：</p>
+<ul>
+<li>volatile</li>
+<li>synchronized，对一个变量执行 unlock 操作之前，必须把变量值同步回主内存。</li>
+<li>final，被 final 关键字修饰的字段在构造器中一旦初始化完成，并且没有发生 this 逃逸（其它线程通过 this 引用访问到初始化了一半的对象），那么其它线程就能看见 final 字段的值。</li>
+</ul>
+<p>对前面的线程不安全示例中的 cnt 变量使用 volatile 修饰，不能解决线程不安全问题，因为 volatile 并<strong>不能</strong>保证操作的<strong>原子性</strong>。</p>
+<h3 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h3><p>Java 程序中天然的有序性可以总结为一句话：如果在本线程内观察，所有的操作都是有序的：如果在一个线程中观察另一个线程所有的操作都是无序的。前半句是指“线程内似表现为串行的语义”，后半句是指“指令重排序现象和“工作内存与主内存同步延迟现象。Java语言提供了 volatile 和 synchronized 两个关键字来保证线程之间操作的有序性， volatile关键字本身就包含了<strong>禁止指令重排序</strong>的语义，而 synchronized则是由“一个变量在同一个时刻只允许一条线程对其进行lock操作”这条规则获得的，这个规则决定了持有同一个锁的两个同步块只能<strong>串行</strong>地进入。</p>
+<h2 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h2><p><strong>1. 单一线程原则（Single Thread rule）</strong></p>
+<p>在一个线程内，在程序前面的操作先行发生于后面的操作。</p>
+<p><strong>2. 管程锁定规则（Monitor Lock Rule）</strong></p>
+<p>一个 unlock 操作先行发生于后面对同一个锁的 lock 操作。</p>
+<p><strong>3. volatile 变量规则（Volatile Variable Rule）</strong></p>
+<p>对一个 volatile 变量的写操作先行发生于后面对这个变量的读操作。</p>
+<p><strong>4. 线程启动规则（Thread Start Rule）</strong></p>
+<p>Thread 对象的 start() 方法调用先行发生于此线程的每一个动作。</p>
+<p><strong>5. 线程加入规则（Thread Join Rule）</strong></p>
+<p>Thread 对象的结束先行发生于 join() 方法返回。</p>
+<p><strong>6. 线程中断规则（Thread Interruption Rule）</strong></p>
+<p>对线程 interrupt() 方法的调用先行发生于被中断线程的代码检测到中断事件的发生，可以通过 interrupted() 方法检测到是否有中断发生。</p>
+<p><strong>7. 对象终结规则（Finalizer Rule）</strong></p>
+<p>一个对象的初始化完成（构造函数执行结束）先行发生于它的 finalize() 方法的开始。</p>
+<p><strong>8. 传递性（Transitivity）</strong></p>
+<p>如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 先行发生于操作 C。</p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>主流的操作系统都提供了线程实现， Java 语言则提供了在不同硬件和操作系统平台下对线程操作的统一处理，每个已经调用过<code>start()</code>方法且还未结束的<code>Java. lang.Thread</code>类的实例就代表着一个线程。</p>
+<p>实现线程主要有三种方式：使用内核线程实现（1:1实现），使用用户线程实现（1：N实现），使用用户线程加轻量级进程混合实现（N:M实现）。</p>
+<p>有三种使用线程的方法：</p>
+<ul>
+<li><p>实现 Runnable 接口（可用lambda表达式）；</p>
+<div class="hljs"><pre><code class="hljs java">MyRunnable instance = <span class="hljs-keyword">new</span> MyRunnable();
+Thread thread = <span class="hljs-keyword">new</span> Thread(instance);</code></pre></div>
+</li>
+<li><p>实现 Callable 接口；</p>
+<div class="hljs"><pre><code class="hljs java">MyCallable mc = <span class="hljs-keyword">new</span> MyCallable();
+FutureTask&lt;Integer&gt; ft = <span class="hljs-keyword">new</span> FutureTask&lt;&gt;(mc);
+Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre></div>
+</li>
+<li><p>继承 Thread 类。</p>
+<div class="hljs"><pre><code class="hljs java">MyThread mt = <span class="hljs-keyword">new</span> MyThread();</code></pre></div>
+</li>
+</ul>
+<p>实现接口会更好一些，因为：</p>
+<ul>
+<li>Java 不支持多重继承，因此继承了 Thread 类就无法继承其它类，但是可以实现多个接口；</li>
+<li>类可能只要求可执行就行，继承整个 Thread 类开销过大。</li>
+</ul>
+<p>通过调用<code>start()</code>启动一个新线程；一个线程对象只能调用一次<code>start()</code>方法；必须调用<code>Thread</code>实例的<code>start()</code>方法才能启动新线程，<code>start()</code>方法内部调用了一个<code>private native void start0()</code>方法，<code>native</code>修饰符表示这个方法是由JVM虚拟机内部的C代码实现的。</p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，不需要进行同步操作。</p>
+<p>主要有三种 Executor：</p>
+<ul>
+<li><code>CachedThreadPool</code>：一个任务创建一个线程；</li>
+<li><code>FixedThreadPool</code>：所有任务只能使用固定大小的线程；</li>
+<li><code>SingleThreadExecutor</code>：相当于大小为 1 的 <code>FixedThreadPool</code>。</li>
+</ul>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;
+        executorService.execute(<span class="hljs-keyword">new</span> MyRunnable());
+    &#125;
+    executorService.shutdown();
+&#125;</code></pre></div>
+<h3 id="Daemon"><a href="#Daemon" class="headerlink" title="Daemon"></a>Daemon</h3><p>守护线程是程序运行时在后台提供服务的线程，不属于程序中不可或缺的部分。</p>
+<p>当所有非守护线程结束时，程序也就终止，同时会杀死所有守护线程。</p>
+<p>main() 属于非守护线程。</p>
+<p>在线程启动之前使用<code>setDaemon()</code>方法可以将一个线程设置为守护线程。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    Thread thread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> MyRunnable());
+    thread.setDaemon(<span class="hljs-keyword">true</span>);
+&#125;</code></pre></div>
+<h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep()"></a>sleep()</h3><p><code>Thread.sleep(millisec)</code> 方法会休眠当前正在执行的线程，<code>millisec</code> 单位为毫秒。</p>
+<p><code>sleep()</code> 可能会抛出 <code>InterruptedException</code>，因为异常不能跨线程传播回 <code>main()</code> 中，因此必须在<strong>本地进行处理</strong>。线程中抛出的其它异常也同样需要在本地进行处理。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        Thread.sleep(<span class="hljs-number">3000</span>);
+    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;</code></pre></div>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield()"></a>yield()</h3><p>对静态方法<code>Thread.yield()</code>的调用声明了当前线程已经完成了生命周期中最重要的部分，可以切换给其它线程来执行。该方法只是对线程调度器的一个建议，而且也只是建议具有相同优先级的其它线程可以运行。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+    Thread.yield();
+&#125;</code></pre></div>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>一个线程只能处于一种状态，并且这里的线程状态特指 Java 虚拟机的线程状态，不能反映线程在特定操作系统下的状态。</p>
+<ul>
+<li>New：新创建的线程，尚未执行；</li>
+<li>Runnable：运行中的线程，正在执行<code>run()</code>方法的Java代码；</li>
+<li>Blocked：运行中的线程，因为某些操作被阻塞而挂起；</li>
+<li>Waiting：运行中的线程，因为某些操作在等待中；</li>
+<li>Timed Waiting：运行中的线程，因为执行<code>sleep()</code>方法正在计时等待；</li>
+<li>Terminated：线程已终止，因为<code>run()</code>方法执行完毕。</li>
+</ul>
+<h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>一个线程执行完毕之后会自动结束，如果在运行过程中发生异常也会提前结束。</p>
+<h3 id="InterruptedException"><a href="#InterruptedException" class="headerlink" title="InterruptedException"></a>InterruptedException</h3><p>通过调用一个线程的 interrupt() 来中断该线程，如果该线程处于阻塞、限期等待或者无限期等待状态，那么就会抛出 InterruptedException，从而提前结束该线程。但是不能中断 I/O 阻塞和 synchronized 锁阻塞。</p>
+<h3 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted()"></a>interrupted()</h3><p>如果一个线程的 run() 方法执行一个无限循环，并且没有执行 sleep() 等会抛出 InterruptedException 的操作，那么调用线程的 interrupt() 方法就无法使线程提前结束。</p>
+<p>但是调用 interrupt() 方法会设置线程的中断标记，此时调用 interrupted() 方法会返回 true。因此可以在循环体中使用 interrupted() 方法来判断线程是否处于中断状态，从而提前结束线程。</p>
+<h3 id="Executor-1"><a href="#Executor-1" class="headerlink" title="Executor"></a>Executor</h3><p>调用 Executor 的 shutdown() 方法会等待线程都执行完毕之后再关闭，但是如果调用的是 shutdownNow() 方法，则相当于调用每个线程的 interrupt() 方法。</p>
+<h1 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h1><p>Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
+<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p><strong>1. 同步一个代码块</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;
+        <span class="hljs-comment">// ...</span>
+    &#125;
+&#125;</code></pre></div>
+<p>它只作用于<strong>同一个对象</strong>，如果调用两个对象上的同步代码块，就不会进行同步。</p>
+<p><strong>2. 同步一个方法</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// ...</span>
+&#125;</code></pre></div>
+<p>它和同步代码块一样，作用于<strong>同一个对象</strong>。</p>
+<p><strong>3. 同步一个类</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span> (SynchronizedExample<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123;
+        <span class="hljs-comment">// ...</span>
+    &#125;
+&#125;</code></pre></div>
+<p>作用于<strong>整个类</strong>，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。</p>
+<p><strong>4. 同步一个静态方法</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// ...</span>
+&#125;</code></pre></div>
+<p>作用于<strong>整个类</strong>。</p>
+<h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p><code>ReentrantLock</code>是可重入锁，它和<code>synchronized</code>一样，一个线程可以多次获取同一个锁。</p>
+<p>和<code>synchronized</code>不同的是，<code>ReentrantLock</code>可以尝试获取锁：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (lock.tryLock(<span class="hljs-number">1</span>, TimeUnit.SECONDS)) &#123;
+    <span class="hljs-keyword">try</span> &#123;
+        ...
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+        lock.unlock();
+    &#125;
+&#125;</code></pre></div>
+<p>上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，<code>tryLock()</code>返回<code>false</code>，程序就可以做一些额外处理，而不是无限等待下去。</p>
+<p>所以，使用<code>ReentrantLock</code>比直接使用<code>synchronized</code>更安全，线程在<code>tryLock()</code>失败的时候不会导致死锁。</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p><strong>1. 锁的实现</strong></p>
+<p>synchronized 是 JVM 实现的，而 ReentrantLock 是 JDK 实现的。</p>
+<p><strong>2. 性能</strong></p>
+<p>新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。</p>
+<p><strong>3. 等待可中断</strong></p>
+<p>当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。</p>
+<p>ReentrantLock 可中断，而 synchronized 不行。</p>
+<p><strong>4. 公平锁</strong></p>
+<p>公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。</p>
+<p>synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。</p>
+<p><strong>5. 锁绑定多个条件</strong></p>
+<p>一个 ReentrantLock 可以同时绑定多个 Condition 对象。</p>
+<h1 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h1><p>当多个线程可以一起工作去解决某个问题时，如果某些部分必须在其它部分之前完成，那么就需要对线程进行协调。</p>
+<h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>在线程中调用另一个线程的 join() 方法，会将当前线程挂起，而不是忙等待，直到目标线程结束。</p>
+<h2 id="wait-notify-notifyAll"><a href="#wait-notify-notifyAll" class="headerlink" title="wait(), notify(), notifyAll()"></a>wait(), notify(), notifyAll()</h2><p>调用 wait() 使得线程等待某个条件满足，线程在等待时会被挂起，当其他线程的运行使得这个条件满足时，其它线程会调用 notify() 或者 notifyAll() 来唤醒挂起的线程。</p>
+<p>它们都<strong>属于 Object 的一部分</strong>，而不属于 Thread。</p>
+<p>只能用在同步方法或者同步控制块中使用，否则会在运行时抛出 IllegalMonitorStateException。</p>
+<p>使用 wait() 挂起期间，线程会<strong>释放锁</strong>。这是因为，如果没有释放锁，那么其它线程就无法进入对象的同步方法或者同步控制块中，那么就无法执行 notify() 或者 notifyAll() 来唤醒挂起的线程，造成死锁。</p>
+<p><strong>wait() 和 sleep() 的区别</strong></p>
+<ul>
+<li>wait() 是 Object 的方法，而 sleep() 是 Thread 的静态方法；</li>
+<li>wait() 会释放锁，sleep() 不会。</li>
+</ul>
+<h2 id="await-signal-signalAll"><a href="#await-signal-signalAll" class="headerlink" title="await(), signal(), signalAll()"></a>await(), signal(), signalAll()</h2><p>java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock();
+<span class="hljs-keyword">private</span> Condition condition = lock.newCondition();</code></pre></div>
+<p>使用<code>Condition</code>时，引用的<code>Condition</code>对象必须从<code>Lock</code>实例的<code>newCondition()</code>返回，这样才能获得一个绑定了<code>Lock</code>实例的<code>Condition</code>实例。</p>
+<p><code>Condition</code>提供的<code>await()</code>、<code>signal()</code>、<code>signalAll()</code>原理和<code>synchronized</code>锁对象的<code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>是一致的，并且其行为也是一样的：</p>
+<ul>
+<li><code>await()</code>会释放当前锁，进入等待状态；</li>
+<li><code>signal()</code>会唤醒某个等待线程；</li>
+<li><code>signalAll()</code>会唤醒所有等待线程；</li>
+<li>唤醒线程从<code>await()</code>返回后需要重新获得锁。</li>
+</ul>
+<p>此外，和<code>tryLock()</code>类似，<code>await()</code>可以在等待指定时间后，如果还没有被其他线程通过<code>signal()</code>或<code>signalAll()</code>唤醒，可以自己醒来：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (condition.await(<span class="hljs-number">1</span>, TimeUnit.SECOND)) &#123;
+    <span class="hljs-comment">// 被其他线程唤醒</span>
+&#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-comment">// 指定时间内没有被其他线程唤醒</span>
+&#125;</code></pre></div>
+<p>可见，使用<code>Condition</code>配合<code>Lock</code>，我们可以实现更灵活的线程同步。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>周志明. 深入理解 Java 虚拟机 [M]. 机械工业出版社, 2011.</li>
 <li><a href="https://cyc2018.github.io/CS-Notes/#/notes/Java 并发?id=一、使用线程" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%B9%B6%E5%8F%91?id=%e4%b8%80%e3%80%81%e4%bd%bf%e7%94%a8%e7%ba%bf%e7%a8%8b</a></li>
 </ol>
