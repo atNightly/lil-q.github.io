@@ -180,8 +180,9 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>对于二叉树的遍历，通常采用递归或者利用栈的迭代方法，两者的空间复杂度都为<script type="math/tex">O\left ( N \right )</script>。morris 遍历可以将非递归遍历中的空间复杂度降为<script type="math/tex">O\left ( 1 \right )</script>。</p>
-<p>morris 遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。</p>
+              <p>morris 遍历利用的是树的叶节点左右孩子为空（树的大量空闲指针），实现空间开销的极限缩减。</p>
+<a id="more"></a>
+<p>对于二叉树的遍历，通常采用递归或者利用栈的迭代方法，两者的空间复杂度都为<script type="math/tex">O\left ( N \right )</script>。morris 遍历可以将非递归遍历中的空间复杂度降为<script type="math/tex">O\left ( 1 \right )</script>。</p>
 <h1 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h1><p>以前序遍历为例子，比如leecode上的<a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. 二叉树的前序遍历</a>，先给出代码：</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
@@ -280,26 +281,26 @@
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
         List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-        TreeNode cur1 = root;
-        TreeNode cur2 = <span class="hljs-keyword">null</span>;
-        <span class="hljs-keyword">while</span> (cur1 != <span class="hljs-keyword">null</span>) &#123;
-            cur2 = cur1.right;
-            <span class="hljs-keyword">if</span> (cur2 != <span class="hljs-keyword">null</span>) &#123;
-                <span class="hljs-keyword">while</span> (cur2.left != <span class="hljs-keyword">null</span> &amp;&amp; cur2.left != cur1) &#123;
-                    cur2 = cur2.left;
+        TreeNode cur = root;
+        TreeNode tail = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) &#123;
+            tail = cur.right;
+            <span class="hljs-keyword">if</span> (tail != <span class="hljs-keyword">null</span>) &#123;
+                <span class="hljs-keyword">while</span> (tail.left != <span class="hljs-keyword">null</span> &amp;&amp; tail.left != cur) &#123;
+                    tail = tail.left;
                 &#125;
-                <span class="hljs-keyword">if</span> (cur2.left == <span class="hljs-keyword">null</span>) &#123;
-                    cur2.left = cur1;
-                    res.add(cur1.val);
-                    cur1 = cur1.right;
+                <span class="hljs-keyword">if</span> (tail.left == <span class="hljs-keyword">null</span>) &#123;
+                    tail.left = cur;
+                    res.add(cur.val);
+                    cur = cur.right;
                     <span class="hljs-keyword">continue</span>;
                 &#125; <span class="hljs-keyword">else</span> &#123;
-                    cur2.left = <span class="hljs-keyword">null</span>;
+                    tail.left = <span class="hljs-keyword">null</span>;
                 &#125;
             &#125; <span class="hljs-keyword">else</span> &#123;
-                res.add(cur1.val);
+                res.add(cur.val);
             &#125;
-            cur1 = cur1.left;
+            cur = cur.left;
         &#125;
         Collections.reverse(res);
         <span class="hljs-keyword">return</span> res; 
@@ -335,6 +336,12 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/05/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%98%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多线程题解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">

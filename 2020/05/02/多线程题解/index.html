@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logoforapple.png">
+  <link rel="icon" type="image/png" href="/img/logo192.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#13100f">
+  <meta name="description" content="Life Goes On">
+  <meta name="author" content="戚天天">
+  <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
+  <title>多线程题解 - Homeward</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 38vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Homeward</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/pj70nu808l921.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-02 16:11">
+                    Saturday, May 2nd 2020, 4:11 pm
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.2k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    21
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="leetcode-1114-按序打印"><a href="#leetcode-1114-按序打印" class="headerlink" title="leetcode 1114. 按序打印"></a><a href="https://leetcode-cn.com/problems/print-in-order/" target="_blank" rel="noopener">leetcode 1114. 按序打印</a></h1><p>我们提供了一个类：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">one</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"one"</span>); &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">two</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"two"</span>); &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">three</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"three"</span>); &#125;
+&#125;</code></pre></div>
+<p>三个不同的线程将会共用一个 Foo 实例。</p>
+<ul>
+<li>线程 A 将会调用 one() 方法</li>
+<li>线程 B 将会调用 two() 方法</li>
+<li>线程 C 将会调用 three() 方法</li>
+</ul>
+<p>请设计修改程序，以确保 two() 方法在 one() 方法之后被执行，three() 方法在 two() 方法之后被执行。</p>
+<h2 id="解法一：synchronized"><a href="#解法一：synchronized" class="headerlink" title="解法一：synchronized"></a>解法一：synchronized</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+    <span class="hljs-keyword">int</span> state = <span class="hljs-number">1</span>;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">first</span><span class="hljs-params">(Runnable printFirst)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">synchronized</span>(<span class="hljs-keyword">this</span>) &#123;
+            printFirst.run();
+            state++;
+            notifyAll();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">second</span><span class="hljs-params">(Runnable printSecond)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">synchronized</span>(<span class="hljs-keyword">this</span>) &#123;
+            <span class="hljs-keyword">while</span> (state != <span class="hljs-number">2</span>) wait();
+            printSecond.run();
+            state++;
+            notifyAll();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">third</span><span class="hljs-params">(Runnable printThird)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">synchronized</span>(<span class="hljs-keyword">this</span>) &#123;
+            <span class="hljs-keyword">while</span> (state != <span class="hljs-number">3</span>) wait();
+            printThird.run();
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法二：CountDownLatch"><a href="#解法二：CountDownLatch" class="headerlink" title="解法二：CountDownLatch"></a>解法二：CountDownLatch</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+    <span class="hljs-keyword">private</span> CountDownLatch firstLatch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">private</span> CountDownLatch secondLatch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">first</span><span class="hljs-params">(Runnable printFirst)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        printFirst.run();
+        firstLatch.countDown();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">second</span><span class="hljs-params">(Runnable printSecond)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        firstLatch.await();
+        printSecond.run();
+        secondLatch.countDown();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">third</span><span class="hljs-params">(Runnable printThird)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        secondLatch.await();
+        printThird.run();
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法三：无锁"><a href="#解法三：无锁" class="headerlink" title="解法三：无锁"></a>解法三：无锁</h2><p>该方法也许并不可靠。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> state = <span class="hljs-number">1</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">first</span><span class="hljs-params">(Runnable printFirst)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        printFirst.run();
+        state++;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">second</span><span class="hljs-params">(Runnable printSecond)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">while</span> (state != <span class="hljs-number">2</span>) &#123; &#125;; <span class="hljs-comment">// 忙循环</span>
+        printSecond.run();
+        state++;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">third</span><span class="hljs-params">(Runnable printThird)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">while</span> (state != <span class="hljs-number">3</span>) &#123; &#125;;
+        printThird.run();
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-1115-交替打印FooBar"><a href="#leetcode-1115-交替打印FooBar" class="headerlink" title="leetcode 1115. 交替打印FooBar"></a><a href="https://leetcode-cn.com/problems/print-foobar-alternately/" target="_blank" rel="noopener">leetcode 1115. 交替打印FooBar</a></h1><p>我们提供一个类：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            print(<span class="hljs-string">"foo"</span>);
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            print(<span class="hljs-string">"bar"</span>);
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<p>两个不同的线程将会共用一个 FooBar 实例。其中一个线程将会调用 foo() 方法，另一个线程将会调用 bar() 方法。请设计修改程序，以确保 “foobar” 被输出 n 次。</p>
+<h2 id="解法一：Semaphore"><a href="#解法一：Semaphore" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> Semaphore begin = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">private</span> Semaphore halfDone = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FooBar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(Runnable printFoo)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            begin.acquire();
+            printFoo.run();
+            halfDone.release();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(Runnable printBar)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;       
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            halfDone.acquire();
+            printBar.run();
+            begin.release();
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法二：CyclicBarrier"><a href="#解法二：CyclicBarrier" class="headerlink" title="解法二：CyclicBarrier"></a>解法二：CyclicBarrier</h2><p>CyclicBarrier更适合循环运行的场景。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> CyclicBarrier cb = <span class="hljs-keyword">new</span> CyclicBarrier(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> halfDone = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FooBar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(Runnable printFoo)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            <span class="hljs-keyword">while</span> (halfDone);
+            printFoo.run();
+            halfDone = <span class="hljs-keyword">true</span>;
+            <span class="hljs-keyword">try</span> &#123;
+                cb.await();
+            &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(Runnable printBar)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            <span class="hljs-keyword">try</span> &#123;
+                cb.await();
+                printBar.run();
+                halfDone = <span class="hljs-keyword">false</span>;
+            &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;   
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法三：公平锁"><a href="#解法三：公平锁" class="headerlink" title="解法三：公平锁"></a>解法三：公平锁</h2><p>公平锁保障了多线程下各线程获取锁的顺序，先到的线程优先获取锁，从而保证了交替打印。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock(<span class="hljs-keyword">true</span>);
+    <span class="hljs-keyword">private</span> Condition condition = lock.newCondition();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> halfDone = <span class="hljs-keyword">false</span>; 
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FooBar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(Runnable printFoo)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            lock.lock();
+            <span class="hljs-keyword">try</span> &#123;
+                <span class="hljs-keyword">while</span> (halfDone) &#123; condition.await(); &#125; <span class="hljs-comment">// 只有两个线程可以用if，用while更加规范</span>
+                printFoo.run();
+                halfDone = <span class="hljs-keyword">true</span>;
+                condition.signal();
+            &#125; <span class="hljs-keyword">finally</span> &#123;
+                lock.unlock();
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(Runnable printBar)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            lock.lock();
+            <span class="hljs-keyword">try</span> &#123;
+                <span class="hljs-keyword">while</span> (!halfDone) &#123; condition.await(); &#125;
+                printBar.run();
+                halfDone = <span class="hljs-keyword">false</span>;
+                condition.signal();
+            &#125; <span class="hljs-keyword">finally</span> &#123;
+                lock.unlock();
+            &#125; 
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法四：无锁"><a href="#解法四：无锁" class="headerlink" title="解法四：无锁"></a>解法四：无锁</h2><p>该方法也许并不可靠，如果不加<code>Thread.yield();</code>可能出现有一个线程一直无法执行的情况，陷入死循环。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">boolean</span> halfDone = <span class="hljs-keyword">false</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FooBar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(Runnable printFoo)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            <span class="hljs-keyword">while</span> (halfDone) &#123; Thread.yield(); &#125;
+            printFoo.run();
+            halfDone = <span class="hljs-keyword">true</span>;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(Runnable printBar)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            <span class="hljs-keyword">while</span> (!halfDone) &#123; Thread.yield(); &#125;
+            printBar.run();
+            halfDone = <span class="hljs-keyword">false</span>;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-1116-打印零与奇偶数"><a href="#leetcode-1116-打印零与奇偶数" class="headerlink" title="leetcode 1116. 打印零与奇偶数"></a><a href="https://leetcode-cn.com/problems/print-zero-even-odd/" target="_blank" rel="noopener">leetcode 1116. 打印零与奇偶数</a></h1><h2 id="解法一：Semaphore-1"><a href="#解法一：Semaphore-1" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZeroEvenOdd</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> Semaphore zero = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">private</span> Semaphore even = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">private</span> Semaphore odd = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ZeroEvenOdd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-comment">// printNumber.accept(x) outputs "x", where x is an integer.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">zero</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;    
+            zero.acquire();
+            printNumber.accept(<span class="hljs-number">0</span>);
+            <span class="hljs-keyword">if</span> ((i &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) &#123;
+                odd.release();
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                even.release();
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">even</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i += <span class="hljs-number">2</span>) &#123;    
+            even.acquire();
+            printNumber.accept(i);
+            zero.release();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">odd</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i += <span class="hljs-number">2</span>) &#123;    
+            odd.acquire();
+            printNumber.accept(i);
+            zero.release();
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-1117-H2O-生成"><a href="#leetcode-1117-H2O-生成" class="headerlink" title="leetcode 1117. H2O 生成"></a><a href="https://leetcode-cn.com/problems/building-h2o/" target="_blank" rel="noopener">leetcode 1117. H2O 生成</a></h1><h2 id="解法一：Semaphore-2"><a href="#解法一：Semaphore-2" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Semaphore h = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">private</span> Semaphore o = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">H2O</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">hydrogen</span><span class="hljs-params">(Runnable releaseHydrogen)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+		h.acquire(<span class="hljs-number">1</span>);
+        releaseHydrogen.run();
+        o.release(<span class="hljs-number">1</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">oxygen</span><span class="hljs-params">(Runnable releaseOxygen)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        o.acquire(<span class="hljs-number">2</span>);
+		releaseOxygen.run();
+        h.release(<span class="hljs-number">2</span>);
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法二：Semaphore-CyclicBarrier"><a href="#解法二：Semaphore-CyclicBarrier" class="headerlink" title="解法二：Semaphore + CyclicBarrier"></a>解法二：Semaphore + CyclicBarrier</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Semaphore h = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">private</span> Semaphore o = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">private</span> CyclicBarrier cb = <span class="hljs-keyword">new</span> CyclicBarrier(<span class="hljs-number">3</span>, () -&gt; &#123;
+        h.release(<span class="hljs-number">2</span>);
+        o.release(<span class="hljs-number">1</span>);
+    &#125;);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">H2O</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">hydrogen</span><span class="hljs-params">(Runnable releaseHydrogen)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+		h.acquire();
+        releaseHydrogen.run();
+        <span class="hljs-keyword">try</span> &#123;
+            cb.await();
+        &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">oxygen</span><span class="hljs-params">(Runnable releaseOxygen)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        o.acquire();
+		releaseOxygen.run();
+        <span class="hljs-keyword">try</span> &#123;
+            cb.await();
+        &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;
+    &#125;
+&#125;</code></pre></div>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/01/morris%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">morris算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+        app_key: "wqRfy95wLQRm4b7BByawaNCK",
+        placeholder: "说点什么吧",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: false,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <b>2020</b>
+      <i class="iconfont icon-love"></i>
+      <b>lil-q</b>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="busuanzi_value_site_pv"></span>次访问 |
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="busuanzi_value_site_uv"></span>人来过
+    </span>
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "多线程题解&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
