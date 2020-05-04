@@ -557,7 +557,7 @@ ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>
 <li>Semaphore其实和锁有点类似，它一般用于控制对某组资源的访问权限。</li>
 </ul>
 <p><a href="https://cyc2018.github.io/CS-Notes/#/notes/Java 并发?id=八、juc-其它组件" target="_blank" rel="noopener">其他一些组件</a></p>
-<h1 id="qi多线程开发良好的实践"><a href="#qi多线程开发良好的实践" class="headerlink" title="qi多线程开发良好的实践"></a>qi多线程开发良好的实践</h1><ul>
+<h1 id="多线程开发良好的实践"><a href="#多线程开发良好的实践" class="headerlink" title="多线程开发良好的实践"></a>多线程开发良好的实践</h1><ul>
 <li>给线程起个有意义的名字，这样可以方便找 Bug。</li>
 <li>缩小同步范围，从而减少锁争用。例如对于 synchronized，应该尽量使用同步块而不是同步方法。</li>
 <li>多用同步工具少用 wait() 和 notify()。首先，CountDownLatch, CyclicBarrier, Semaphore 和 Exchanger 这些同步类简化了编码操作，而用 wait() 和 notify() 很难实现复杂控制流；其次，这些同步类是由最好的企业编写和维护，在后续的 JDK 中还会不断优化和完善。</li>

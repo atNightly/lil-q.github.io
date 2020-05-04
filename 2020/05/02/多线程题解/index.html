@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.2k 字
+                    2k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    21
+                    33
                      分钟
                   </span>
                 
@@ -487,6 +487,141 @@
         <span class="hljs-keyword">try</span> &#123;
             cb.await();
         &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-1195-交替打印字符串"><a href="#leetcode-1195-交替打印字符串" class="headerlink" title="leetcode 1195. 交替打印字符串"></a><a href="https://leetcode-cn.com/problems/fizz-buzz-multithreaded/" target="_blank" rel="noopener">leetcode 1195. 交替打印字符串</a></h1><p>编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：</p>
+<p>如果这个数字可以被 3 整除，输出 “fizz”。<br>如果这个数字可以被 5 整除，输出 “buzz”。<br>如果这个数字可以同时被 3 和 5 整除，输出 “fizzbuzz”。<br>例如，当 n = 15，输出： 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz。</p>
+<h2 id="解法一：AmoticInteger"><a href="#解法一：AmoticInteger" class="headerlink" title="解法一：AmoticInteger"></a>解法一：AmoticInteger</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
+    <span class="hljs-keyword">private</span> AtomicInteger cur = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">1</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FizzBuzz</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.n = n;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizz</span><span class="hljs-params">(Runnable printFizz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">int</span> tmp;
+        <span class="hljs-keyword">while</span> ((tmp = cur.get()) &lt;= n) &#123;
+            <span class="hljs-keyword">if</span> (tmp % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; tmp % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>) &#123;
+                printFizz.run();
+                cur.incrementAndGet();
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">buzz</span><span class="hljs-params">(Runnable printBuzz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">int</span> tmp;
+        <span class="hljs-keyword">while</span> ((tmp = cur.get()) &lt;= n) &#123;
+            <span class="hljs-keyword">if</span> (tmp % <span class="hljs-number">3</span> != <span class="hljs-number">0</span> &amp;&amp; tmp % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) &#123;
+                printBuzz.run();
+                cur.incrementAndGet();
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizzbuzz</span><span class="hljs-params">(Runnable printFizzBuzz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">int</span> tmp;
+        <span class="hljs-keyword">while</span> ((tmp = cur.get()) &lt;= n) &#123;
+            <span class="hljs-keyword">if</span> (tmp % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; tmp % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) &#123;
+                printFizzBuzz.run();
+                cur.incrementAndGet();
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">number</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-keyword">int</span> tmp;
+        <span class="hljs-keyword">while</span> ((tmp = cur.get()) &lt;= n) &#123;
+            <span class="hljs-keyword">if</span> (tmp % <span class="hljs-number">3</span> != <span class="hljs-number">0</span> &amp;&amp; tmp % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>) &#123;
+                printNumber.accept(tmp);
+                cur.incrementAndGet();
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-1226-哲学家进餐"><a href="#leetcode-1226-哲学家进餐" class="headerlink" title="leetcode 1226. 哲学家进餐"></a><a href="https://leetcode-cn.com/problems/the-dining-philosophers/" target="_blank" rel="noopener">leetcode 1226. 哲学家进餐</a></h1><p>这道题本质上其实是想考察如何<strong>避免死锁</strong>。当 5 个哲学家都拿着其左边(或右边)的叉子时，会进入死锁。</p>
+<p>死锁的 4 个必要条件：</p>
+<ol>
+<li>互斥条件：一个资源每次只能被一个进程使用，即在一段时间内某 资源仅为一个进程所占有。此时若有其他进程请求该资源，则请求进程只能等待。</li>
+<li>请求与保持条件：进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源 已被其他进程占有，此时请求进程被阻塞，但对自己已获得的资源保持不放。</li>
+<li>不可剥夺条件:进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能 由获得该资源的进程自己来释放（只能是主动释放)。</li>
+<li>循环等待条件: 若干进程间形成首尾相接循环等待资源的关系。</li>
+</ol>
+<h2 id="解法一：ReentrantLock-Semaphore"><a href="#解法一：ReentrantLock-Semaphore" class="headerlink" title="解法一：ReentrantLock + Semaphore"></a>解法一：ReentrantLock + Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReentrantLock[] locks = &#123;<span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock()&#125;;
+    <span class="hljs-comment">// 同时最多允许两个人eat</span>
+    <span class="hljs-keyword">private</span> Semaphore eat_limit = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DiningPhilosophers</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">wantsToEat</span><span class="hljs-params">(<span class="hljs-keyword">int</span> philosopher,
+                           Runnable pickLeftFork,
+                           Runnable pickRightFork,
+                           Runnable eat,
+                           Runnable putLeftFork,
+                           Runnable putRightFork)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+        <span class="hljs-comment">// 记录左右叉子的index</span>
+        <span class="hljs-keyword">int</span> left_fork = (philosopher + <span class="hljs-number">1</span>) % <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">int</span> right_fork = philosopher;
+        
+        eat_limit.acquire();
+        locks[left_fork].lock();
+        locks[right_fork].lock();
+        <span class="hljs-keyword">try</span> &#123;
+            pickLeftFork.run();
+            pickRightFork.run();
+            eat.run();
+            putLeftFork.run();
+            putRightFork.run();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            locks[left_fork].unlock();
+            locks[right_fork].unlock();
+            eat_limit.release();
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法二：设计"><a href="#解法二：设计" class="headerlink" title="解法二：设计"></a>解法二：设计</h2><p>指定部分人首先拿左边叉子，另一部分人首先拿右边叉子，这样可以避免死锁。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReentrantLock[] locks = &#123;<span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock(),
+                                           <span class="hljs-keyword">new</span> ReentrantLock()&#125;;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DiningPhilosophers</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+    <span class="hljs-comment">// call the run() method of any runnable to execute its code</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">wantsToEat</span><span class="hljs-params">(<span class="hljs-keyword">int</span> philosopher,
+                           Runnable pickLeftFork,
+                           Runnable pickRightFork,
+                           Runnable eat,
+                           Runnable putLeftFork,
+                           Runnable putRightFork)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;
+                               
+        <span class="hljs-keyword">int</span> left_fork = (philosopher + <span class="hljs-number">1</span>) % <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">int</span> right_fork = philosopher;
+
+        <span class="hljs-keyword">if</span> ((philosopher &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) &#123;
+            locks[left_fork].lock();
+            locks[right_fork].lock(); 
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            locks[right_fork].lock();
+            locks[left_fork].lock();
+        &#125;
+        <span class="hljs-keyword">try</span> &#123;
+            pickLeftFork.run();
+            pickRightFork.run();
+            eat.run();
+            putLeftFork.run();
+            putRightFork.run();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            locks[left_fork].unlock();
+            locks[right_fork].unlock();
+        &#125;
     &#125;
 &#125;</code></pre></div>
 
