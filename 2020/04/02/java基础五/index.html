@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    3.8k 字
+                    4k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    52
+                    55
                      分钟
                   </span>
                 
@@ -252,6 +252,38 @@
     &#125;
 &#125;);</code></pre></div>
 <p>注意到<code>Comparator</code>接口要求实现一个比较方法，它负责比较传入的两个元素<code>a</code>和<code>b</code>，如果<code>a &lt; b</code>，则返回负数，通常是<code>-1</code>，如果<code>a == b</code>，则返回<code>0</code>，如果<code>a &gt; b</code>，则返回正数，通常是<code>1</code>。<code>TreeMap</code>内部根据比较结果对Key进行排序。要严格按照<code>compare()</code>规范实现比较逻辑，否则，<code>TreeMap</code>将不能正常工作。</p>
+<p><a href="https://www.nowcoder.com/practice/46e837a4ea9144f5ad2021658cb54c4d?tpId=98&amp;tqId=32824&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder面试题 找工作</a></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        Scanner jin = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">int</span> N = jin.nextInt();
+        <span class="hljs-keyword">int</span> M = jin.nextInt();
+        <span class="hljs-keyword">int</span>[][] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N][<span class="hljs-number">2</span>];
+        <span class="hljs-comment">// 排序</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;
+            arr[i][<span class="hljs-number">0</span>] = jin.nextInt();
+            arr[i][<span class="hljs-number">1</span>] = jin.nextInt();
+        &#125;
+        Arrays.sort(arr, (e1, e2) -&gt; e1[<span class="hljs-number">0</span>] - e2[<span class="hljs-number">0</span>]);
+        <span class="hljs-comment">// 找出难度对应的最大工资，并保存到TreeMap中</span>
+        TreeMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> TreeMap();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;
+            <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; arr[i][<span class="hljs-number">1</span>] &lt; arr[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) arr[i][<span class="hljs-number">1</span>] = arr[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>];
+            map.put(arr[i][<span class="hljs-number">0</span>], arr[i][<span class="hljs-number">1</span>]);
+        &#125;
+        <span class="hljs-comment">// 利用.floorKey()找到最大的小于等于能力值的工作</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; M; i++) &#123;
+            Integer index = map.floorKey(jin.nextInt());
+            <span class="hljs-keyword">if</span> (index == <span class="hljs-keyword">null</span>) &#123;
+                System.out.println(<span class="hljs-number">0</span>);
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                System.out.println(map.get(index));
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
 <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/hashmapjiegoutu.png" srcset="/img/loading.gif" alt="hashmap"></p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HashMap</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMap</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt;
     <span class="hljs-keyword">implements</span> <span class="hljs-title">Map</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt;, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">Serializable</span> </span>&#123;...&#125;</code></pre></div>

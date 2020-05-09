@@ -17,7 +17,7 @@
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
-  <title>计算机网络——概述 - Homeward</title>
+  <title>操作系统——概述 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -130,8 +130,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-05 19:30">
-                    Tuesday, May 5th 2020, 7:30 pm
+                  <time datetime="2020-05-10 00:08">
+                    Sunday, May 10th 2020, 12:08 am
                   </time>
                 </div>
               
@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.1k 字
+                    1.2k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    11
+                    12
                      分钟
                   </span>
                 
@@ -180,46 +180,63 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>网络把主机连接起来，而互连网（internet）是把多种不同的网络连接起来，因此互连网是网络的网络。而互联网（Internet）是全球范围的互连网。</p>
+              <p>操作系统是配置在计算机硬件上的第一层软件，是对硬件系统的首次扩充。</p>
 <a id="more"></a>
-<h1 id="主机之间的通信方式"><a href="#主机之间的通信方式" class="headerlink" title="主机之间的通信方式"></a>主机之间的通信方式</h1><ul>
-<li><p>客户-服务器（C/S）：客户是服务的请求方，服务器是服务的提供方。</p>
-</li>
-<li><p>对等（P2P）：不区分客户和服务器。</p>
-</li>
-</ul>
-<h1 id="电路交换、报文交换和分组交换"><a href="#电路交换、报文交换和分组交换" class="headerlink" title="电路交换、报文交换和分组交换"></a>电路交换、报文交换和分组交换</h1><ul>
-<li>电路交换：整个报文的比特流连续地从源点直达终点，好像在一个管道中传送一样。</li>
-<li>报文交换：整个报文先传送到相邻结点，全部存储下来后查找转发表，转发到下一个结点。</li>
-<li>分组交换：单个分组（如p1，整个报文的一部分）传送到相邻结点，存储下来后查找转发表，转达到下一个结点。</li>
-</ul>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after5.5/web1.png" srcset="/img/loading.gif" alt=""></p>
-<h1 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h1><p>总时延 = 排队时延 + 处理时延 + 传输时延 + 传播时延</p>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after5.5/web2.png" srcset="/img/loading.gif" alt=""></p>
-<h2 id="排队时延"><a href="#排队时延" class="headerlink" title="排队时延"></a>排队时延</h2><p>分组在路由器的输入队列和输出队列中排队等待的时间，取决于网络当前的通信量。</p>
-<h2 id="处理时延"><a href="#处理时延" class="headerlink" title="处理时延"></a>处理时延</h2><p>主机或路由器收到分组时进行处理所需要的时间，例如分析首部、从分组中提取数据、进行差错检验或查找适当的路由等。</p>
-<h2 id="传输时延"><a href="#传输时延" class="headerlink" title="传输时延"></a>传输时延</h2><p>主机或路由器传输数据帧所需要的时间。</p>
-<h2 id="传播时延"><a href="#传播时延" class="headerlink" title="传播时延"></a>传播时延</h2><p>电磁波在信道中传播所需要花费的时间，电磁波传播的速度接近光速。</p>
-<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after5.5/web3.png" srcset="/img/loading.gif" style="zoom: 80%;" /></p>
-<ul>
-<li><strong>应用层</strong> ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。</li>
-<li><strong>传输层</strong> ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。TCP 主要提供完整性服务，UDP 主要提供及时性服务。</li>
-<li><strong>网络层</strong> ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。</li>
-<li><strong>数据链路层</strong> ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。</li>
-<li><strong>物理层</strong> ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</li>
-</ul>
-<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>为进行网络中的数据交换而建立的规则、标准或约定称为网络协议。</p>
-<h2 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a>OSI</h2><p>其中表示层和会话层用途如下：</p>
-<ul>
-<li><strong>表示层</strong> ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</li>
-<li><strong>会话层</strong> ：建立及管理会话。</li>
-</ul>
-<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理。</p>
-<h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p>它只有四层，相当于五层协议中数据链路层和物理层合并为网络接口层。</p>
-<p>TCP/IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层。</p>
-<p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after5.5/web4.png" srcset="/img/loading.gif" alt="img" style="zoom:67%;" /></p>
-<h2 id="数据在各层之间的传递过程"><a href="#数据在各层之间的传递过程" class="headerlink" title="数据在各层之间的传递过程"></a>数据在各层之间的传递过程</h2><p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
-<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层。</p>
+<h1 id="基础特性"><a href="#基础特性" class="headerlink" title="基础特性"></a>基础特性</h1><p>批处理系统有着高资源利用率和系统吞吐量；分时系统能获得及时响应；实时系统具有实时特征。除此之外，操作系统还具有并发、共享、虚拟和异步四个基本特性。</p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>并发是指宏观上在<strong>一段时间</strong>内能同时运行多个程序，而并行则指<strong>同一时刻</strong>能运行多个指令。</p>
+<p>并行是<strong>物理</strong>意义上的，需要硬件支持，如多流水线、多核处理器或者分布式计算系统，而并发是<strong>逻辑</strong>意义上的。</p>
+<p>操作系统通过引入<strong>进程</strong>和<strong>线程</strong>，使得程序能够<strong>并发</strong>运行。</p>
+<h2 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h2><p>共享又称<strong>资源复用</strong>，是指系统中的资源可以被多个并发进程共同使用。</p>
+<p>有两种共享方式：<strong>互斥共享</strong>和<strong>同时共享</strong>。</p>
+<p>互斥共享的资源称为<strong>临界资源</strong>，例如打印机等，在同一时刻只允许一个进程访问，需要用同步机制来实现互斥访问。</p>
+<h2 id="虚拟"><a href="#虚拟" class="headerlink" title="虚拟"></a>虚拟</h2><p>虚拟技术把一个物理实体转换为多个逻辑实体。</p>
+<p>主要有两种虚拟技术：<strong>时分复用技术</strong>和<strong>空分复用技术</strong>。</p>
+<p>多个进程能在同一个处理器上并发执行使用了时分复用技术，让每个进程轮流占用处理器，每次只执行一小个时间片并快速切换。</p>
+<p>虚拟内存使用了空分复用技术，它将物理内存抽象为地址空间，每个进程都有各自的地址空间。地址空间的页被映射到物理内存，地址空间的页并不需要全部在物理内存中，当使用到一个没有在物理内存的页时，执行页面置换算法，将该页置换到内存中。</p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>异步指进程不是一次性执行完毕，而是走走停停，以不可知的速度向前推进。</p>
+<h1 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/os/os1.png" srcset="/img/loading.gif" style="zoom: 50%;" /></p>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>处理机的分配和运行都是以进程为基本单位。</p>
+<ol>
+<li><strong>进程控制</strong>：创建进程和终止已结束进程；</li>
+<li><strong>进程同步</strong>：进程互斥方式（如加锁）和进程同步方式（如信号量机制）；</li>
+<li><strong>进程通信</strong>：直接通信方式（如源进程利用发送命令直接把消息挂到目标进程的消息队列上）；</li>
+<li><strong>调度</strong>：作业调度和进程调度；</li>
+<li><strong>死锁处理</strong>。</li>
+</ol>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>为多道程序的运行提供良好的环境，提高存储器的利用率。</p>
+<ol>
+<li><strong>内存分配</strong>：静态分配方式和动态分配方式；</li>
+<li><strong>地址映射</strong>；</li>
+<li><strong>内存保护与共享</strong>；</li>
+<li><strong>虚拟内存</strong>等。</li>
+</ol>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>为用户进程分配I/O设备，提高CPU和I/O设备的利用率。</p>
+<ol>
+<li><strong>文件存储空间的管理</strong>；</li>
+<li><strong>目录管理</strong>；</li>
+<li><strong>文件读写管理和保护</strong>。</li>
+</ol>
+<h2 id="设备管理"><a href="#设备管理" class="headerlink" title="设备管理"></a>设备管理</h2><p>完成用户的 I/O 请求，方便用户使用各种设备，并提高设备的利用率。</p>
+<ol>
+<li><strong>缓冲管理</strong>；</li>
+<li><strong>设备分配</strong>；</li>
+<li><strong>设备处理</strong>；</li>
+<li><strong>虛拟设备</strong>。</li>
+</ol>
+<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><p>如果一个进程在用户态需要使用内核态的功能，就进行系统调用从而陷入内核，由操作系统代为完成。</p>
+<h1 id="大内核和微内核"><a href="#大内核和微内核" class="headerlink" title="大内核和微内核"></a>大内核和微内核</h1><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/os/os2.png" srcset="/img/loading.gif" style="zoom: 67%;" /></p>
+<h2 id="大内核"><a href="#大内核" class="headerlink" title="大内核"></a>大内核</h2><p>大内核是将操作系统功能作为一个紧密结合的整体放到内核。</p>
+<p>由于各模块共享信息，因此有<strong>很高的性能</strong>。</p>
+<h2 id="微内核"><a href="#微内核" class="headerlink" title="微内核"></a>微内核</h2><p>由于操作系统不断复杂，因此将一部分操作系统功能移出内核，从而降低内核的复杂性。移出的部分根据分层的原则划分成若干服务，相互独立。</p>
+<p>在微内核结构下，操作系统被划分成小的、定义良好的模块，只有微内核这一个模块运行在内核态，其余模块运行在用户态。</p>
+<p>因为需要频繁地在用户态和核心态之间进行切换，所以会有一定的<strong>性能损失</strong>。</p>
+<h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><h2 id="外中断"><a href="#外中断" class="headerlink" title="外中断"></a>外中断</h2><p>由 CPU 执行指令以外的事件引起，如 I/O 完成中断，表示设备输入/输出处理已经完成，处理器能够发送下一个输入/输出请求。此外还有时钟中断、控制台中断等。</p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>由 CPU 执行指令的内部事件引起，如非法操作码、地址越界、算术溢出等。</p>
+<h2 id="陷入"><a href="#陷入" class="headerlink" title="陷入"></a>陷入</h2><p>在用户程序中使用系统调用。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://cyc2018.github.io/CS-Notes/#/notes/计算机操作系统 - 概述" target="_blank" rel="noopener">CYC cs-note</a></li>
+<li><a href="https://www.bilibili.com/video/BV1YE411D7nH?p=4" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1YE411D7nH?p=4</a></li>
+</ol>
 
             </article>
             <hr>
@@ -229,7 +246,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                      <a class="hover-with-bg" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
                     
                   </div>
                 
@@ -237,7 +254,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
                     
                   </div>
                 
@@ -248,18 +265,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统——概述</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%A2%98%E8%A7%A3/">
-                        <span class="hidden-mobile">多线程题解</span>
+                      <a href="/2020/05/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">
+                        <span class="hidden-mobile">计算机网络——概述</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -451,7 +462,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "计算机网络——概述&nbsp;",
+        "操作系统——概述&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
