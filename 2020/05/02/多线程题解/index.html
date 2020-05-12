@@ -805,7 +805,7 @@
 		&#125; 
 	&#125; 
 &#125;</code></pre></div>
-<h2 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h2><p>原理如下：允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
+<h1 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h1><p>原理如下：允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
 <div class="hljs"><pre><code class="hljs java">typedef <span class="hljs-keyword">int</span> semaphore;
 semaphore count_mutex = <span class="hljs-number">1</span>;
 semaphore data_mutex = <span class="hljs-number">1</span>;
