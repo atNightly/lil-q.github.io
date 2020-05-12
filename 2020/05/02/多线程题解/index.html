@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    2k 字
+                    2.9k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    33
+                    48
                      分钟
                   </span>
                 
@@ -354,7 +354,7 @@
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
             lock.lock();
             <span class="hljs-keyword">try</span> &#123;
-                <span class="hljs-keyword">while</span> (halfDone) &#123; condition.await(); &#125; <span class="hljs-comment">// 只有两个线程可以用if，用while更加规范</span>
+                <span class="hljs-keyword">while</span> (halfDone) &#123; condition.await(); &#125; <span class="hljs-comment">// 只有两个线程if可行，用while更加规范</span>
                 printFoo.run();
                 halfDone = <span class="hljs-keyword">true</span>;
                 condition.signal();
@@ -622,6 +622,216 @@
             locks[left_fork].unlock();
             locks[right_fork].unlock();
         &#125;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h1><h2 id="解法一：Semaphore-3"><a href="#解法一：Semaphore-3" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><p>不能先对缓冲区进行加锁，再测试信号量。也就是说，不能先执行 mutex.acquire() 再执行 notFull.acquire()。如果这么做了，那么可能会出现这种情况：生产者对缓冲区加锁后，执行 notFull.acquire() 操作，发现 notFull = 0，此时生产者睡眠。消费者不能进入临界区，因为生产者对缓冲区加锁了，消费者就无法执行 notFull.release() 操作，notFull 永远都为 0，导致生产者永远等待下，不会释放锁，消费者因此也会永远等待下去。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.Semaphore;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProducerAndConsumer</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Integer count = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">//创建三个信号量</span>
+    <span class="hljs-keyword">final</span> Semaphore notFull = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">10</span>);
+    <span class="hljs-keyword">final</span> Semaphore notEmpty = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">final</span> Semaphore mutex = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>); <span class="hljs-comment">// 实现互斥访问</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        ProducerAndConsumer pac = <span class="hljs-keyword">new</span> ProducerAndConsumer(); <span class="hljs-comment">// 实例化以构造内部类</span>
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Producer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Consumer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Producer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Consumer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Producer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Consumer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Producer()).start();
+        <span class="hljs-keyword">new</span> Thread(pac.<span class="hljs-keyword">new</span> Consumer()).start();
+    &#125;
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>&#123;
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    Thread.sleep(<span class="hljs-number">3000</span>);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                <span class="hljs-keyword">try</span> &#123;
+                    notFull.acquire(); <span class="hljs-comment">// 必须在先</span>
+                    mutex.acquire(); <span class="hljs-comment">// 必须在后</span>
+                    count++;
+                    System.out.println(Thread.currentThread().getName()
+                            + <span class="hljs-string">"生产者生产，目前总共有"</span> + count);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125; <span class="hljs-keyword">finally</span> &#123;
+                    mutex.release(); <span class="hljs-comment">// 必须在先</span>
+                    notEmpty.release(); <span class="hljs-comment">// 必须在后</span>
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>&#123;
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    Thread.sleep(<span class="hljs-number">3000</span>);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e1) &#123;
+                    e1.printStackTrace();
+                &#125;
+                <span class="hljs-keyword">try</span> &#123;
+                    notEmpty.acquire(); <span class="hljs-comment">// 必须在先</span>
+                    mutex.acquire(); <span class="hljs-comment">// 必须在后</span>
+                    count--;
+                    System.out.println(Thread.currentThread().getName()
+                            + <span class="hljs-string">"消费者消费，目前总共有"</span> + count);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125; <span class="hljs-keyword">finally</span> &#123;
+                    mutex.release(); <span class="hljs-comment">// 必须在先</span>
+                    notFull.release(); <span class="hljs-comment">// 必须在后</span>
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="解法二：管程"><a href="#解法二：管程" class="headerlink" title="解法二：管程"></a>解法二：管程</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.LinkedList; 
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Threadexample</span> </span>&#123; 
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> 
+		<span class="hljs-keyword">throws</span> InterruptedException 
+	</span>&#123; 
+		<span class="hljs-comment">// Object of a class that has both produce() </span>
+		<span class="hljs-comment">// and consume() methods </span>
+		<span class="hljs-keyword">final</span> PC pc = <span class="hljs-keyword">new</span> PC(); 
+
+		<span class="hljs-comment">// Create producer thread </span>
+		Thread t1 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123; 
+			<span class="hljs-meta">@Override</span>
+			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> 
+			</span>&#123; 
+				<span class="hljs-keyword">try</span> &#123; 
+					pc.produce(); 
+				&#125; 
+				<span class="hljs-keyword">catch</span> (InterruptedException e) &#123; 
+					e.printStackTrace(); 
+				&#125; 
+			&#125; 
+		&#125;); 
+
+		<span class="hljs-comment">// Create consumer thread </span>
+		Thread t2 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123; 
+			<span class="hljs-meta">@Override</span>
+			<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> 
+			</span>&#123; 
+				<span class="hljs-keyword">try</span> &#123; 
+					pc.consume(); 
+				&#125; 
+				<span class="hljs-keyword">catch</span> (InterruptedException e) &#123; 
+					e.printStackTrace(); 
+				&#125; 
+			&#125; 
+		&#125;); 
+
+		<span class="hljs-comment">// Start both threads </span>
+		t1.start(); 
+		t2.start(); 
+
+		<span class="hljs-comment">// t1 finishes before t2 </span>
+		t1.join(); 
+		t2.join(); 
+	&#125; 
+
+	<span class="hljs-comment">// This class has a list, producer (adds items to list </span>
+	<span class="hljs-comment">// and consumber (removes items). </span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PC</span> </span>&#123; 
+
+		<span class="hljs-comment">// Create a list shared by producer and consumer </span>
+		<span class="hljs-comment">// Size of list is 2. </span>
+		LinkedList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;(); 
+		<span class="hljs-keyword">int</span> capacity = <span class="hljs-number">2</span>; 
+
+		<span class="hljs-comment">// Function called by producer thread </span>
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">produce</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException 
+		</span>&#123; 
+			<span class="hljs-keyword">int</span> value = <span class="hljs-number">0</span>; 
+			<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123; 
+				<span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) 
+				&#123; 
+					<span class="hljs-comment">// producer thread waits while list </span>
+					<span class="hljs-comment">// is full </span>
+					<span class="hljs-keyword">while</span> (list.size() == capacity) 
+						wait(); 
+
+					System.out.println(<span class="hljs-string">"Producer produced-"</span>
+									+ value); 
+
+					<span class="hljs-comment">// to insert the jobs in the list </span>
+					list.add(value++); 
+
+					<span class="hljs-comment">// notifies the consumer thread that </span>
+					<span class="hljs-comment">// now it can start consuming </span>
+					notify(); 
+
+					<span class="hljs-comment">// makes the working of program easier </span>
+					<span class="hljs-comment">// to understand </span>
+					Thread.sleep(<span class="hljs-number">1000</span>); 
+				&#125; 
+			&#125; 
+		&#125; 
+
+		<span class="hljs-comment">// Function called by consumer thread </span>
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">consume</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException 
+		</span>&#123; 
+			<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123; 
+				<span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) 
+				&#123; 
+					<span class="hljs-comment">// consumer thread waits while list </span>
+					<span class="hljs-comment">// is empty </span>
+					<span class="hljs-keyword">while</span> (list.size() == <span class="hljs-number">0</span>) 
+						wait(); 
+
+					<span class="hljs-comment">// to retrive the ifrst job in the list </span>
+					<span class="hljs-keyword">int</span> val = list.removeFirst(); 
+
+					System.out.println(<span class="hljs-string">"Consumer consumed-"</span>
+									+ val); 
+
+					<span class="hljs-comment">// Wake up producer thread </span>
+					notify(); 
+
+					<span class="hljs-comment">// and sleep </span>
+					Thread.sleep(<span class="hljs-number">1000</span>); 
+				&#125; 
+			&#125; 
+		&#125; 
+	&#125; 
+&#125;</code></pre></div>
+<h2 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h2><p>原理如下：允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
+<div class="hljs"><pre><code class="hljs java">typedef <span class="hljs-keyword">int</span> semaphore;
+semaphore count_mutex = <span class="hljs-number">1</span>;
+semaphore data_mutex = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reader</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">while</span>(TRUE) &#123;
+        down(&amp;count_mutex);
+        count++;
+        <span class="hljs-keyword">if</span>(count == <span class="hljs-number">1</span>) down(&amp;data_mutex); <span class="hljs-comment">// 第一个读者需要对数据进行加锁，防止写进程访问</span>
+        up(&amp;count_mutex);
+        
+        read();
+        
+        down(&amp;count_mutex);
+        count--;
+        <span class="hljs-keyword">if</span>(count == <span class="hljs-number">0</span>) up(&amp;data_mutex);
+        up(&amp;count_mutex);
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writer</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">while</span>(TRUE) &#123;
+        down(&amp;data_mutex);
+        write();
+        up(&amp;data_mutex);
     &#125;
 &#125;</code></pre></div>
 
