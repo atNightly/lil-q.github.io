@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.3k 字
+                    1.4k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    18
+                    19
                      分钟
                   </span>
                 
@@ -276,6 +276,19 @@
             <span class="hljs-keyword">else</span> count--; 
         &#125;
         <span class="hljs-keyword">return</span> maj;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-9-回文数"><a href="#leetcode-9-回文数" class="headerlink" title="leetcode 9. 回文数"></a><a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">leetcode 9. 回文数</a></h1><p>这一题可以看出十进制的位运算：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 除 0 以外以 0 结尾的都不是回文数</span>
+        <span class="hljs-keyword">int</span> reversed = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (x &gt; reversed) &#123;
+            reversed = reversed * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;
+            x /= <span class="hljs-number">10</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> x == reversed || x == reversed / <span class="hljs-number">10</span>; <span class="hljs-comment">// 注意有奇数位和偶数维两个情况</span>
     &#125;
 &#125;</code></pre></div>
 <h1 id="剑指offer-面试题65-不用加减乘除做加法"><a href="#剑指offer-面试题65-不用加减乘除做加法" class="headerlink" title="剑指offer 面试题65. 不用加减乘除做加法"></a><a href="https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/" target="_blank" rel="noopener">剑指offer 面试题65. 不用加减乘除做加法</a></h1><p>写一个函数，求两个整数之和，要求在函数体内不得使用 “+”、“-”、“*”、“/” 四则运算符号。</p>
