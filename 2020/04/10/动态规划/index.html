@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    5.5k 字
+                    5.8k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    79
+                    84
                      分钟
                   </span>
                 
@@ -226,7 +226,7 @@
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxEnvelopes</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] envelopes)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (envelopes.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         <span class="hljs-keyword">int</span> size = envelopes.length;
-        <span class="hljs-comment">// 想要对信封根据w排序，当w相同时，h按照降序排列，这样可以保证相同w的信封不能装合。</span>
+        <span class="hljs-comment">// 想要对信封根据 w 排序，当 w 相同时，h 按照降序排列，这样可以保证相同 w 的信封不能装合。</span>
         Arrays.sort(envelopes, <span class="hljs-keyword">new</span> Comparator&lt;<span class="hljs-keyword">int</span>[]&gt;() &#123;
             <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] env1, <span class="hljs-keyword">int</span>[] env2)</span> </span>&#123;
                 <span class="hljs-keyword">if</span> (env1[<span class="hljs-number">0</span>] == env2[<span class="hljs-number">0</span>]) &#123;
@@ -255,6 +255,49 @@
             <span class="hljs-keyword">if</span> (i == res) res++;
         &#125;
         <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<p>类似的还有<a href="https://www.nowcoder.com/practice/55371b74b2f243e3820e57ee4c7b5504?tpId=98&amp;tqId=32841&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 搭积木</a></p>
+<p>注意要区分<strong>大于等于</strong>和<strong>大于</strong>的区别：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+        BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+        <span class="hljs-keyword">int</span> n = Integer.parseInt(br.readLine());
+        <span class="hljs-keyword">int</span>[][] toys = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n][<span class="hljs-number">2</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            String[] line = br.readLine().split(<span class="hljs-string">" "</span>);
+            toys[i][<span class="hljs-number">0</span>] = Integer.parseInt(line[<span class="hljs-number">0</span>]);
+            toys[i][<span class="hljs-number">1</span>] = Integer.parseInt(line[<span class="hljs-number">1</span>]);
+        &#125;
+        Arrays.sort(toys, (t1, t2) -&gt; t1[<span class="hljs-number">0</span>] - t2[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 不再需要对L排序，应为同W的积木可以互相搭</span>
+        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+        <span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+            <span class="hljs-keyword">if</span> (end == <span class="hljs-number">0</span> || toys[i][<span class="hljs-number">1</span>] &gt;= dp[end - <span class="hljs-number">1</span>]) &#123; <span class="hljs-comment">// 提前判定可以减少运算</span>
+                dp[end] = toys[i][<span class="hljs-number">1</span>];
+                end++;
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-keyword">int</span> index = binarySearch(dp, <span class="hljs-number">0</span>, end - <span class="hljs-number">1</span>, toys[i][<span class="hljs-number">1</span>]);
+                dp[index] = toys[i][<span class="hljs-number">1</span>];
+            &#125;
+        &#125;
+        System.out.println(end);
+    &#125;
+    
+    <span class="hljs-comment">// 找到第一个大于 target 的数，而不是找到第一个大于等于 target 的数，因为相等时还是继续搭。</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] dp, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> target)</span> </span>&#123;
+        <span class="hljs-keyword">while</span> (l &lt; r) &#123;
+            <span class="hljs-keyword">int</span> mid = l + (r - l) / <span class="hljs-number">2</span>;
+            <span class="hljs-keyword">if</span> (dp[mid] &gt;= target) &#123;
+                r = mid;
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                l = mid + <span class="hljs-number">1</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> l;
     &#125;
 &#125;</code></pre></div>
 <h2 id="leetcode-1143-最长公共子序列"><a href="#leetcode-1143-最长公共子序列" class="headerlink" title="leetcode 1143. 最长公共子序列"></a><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">leetcode 1143. 最长公共子序列</a></h2><p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。若这两个字符串没有公共子序列，则返回 0。 </p>
