@@ -277,52 +277,54 @@
 当 *k* = 2 时，应当返回: `2-&gt;1-&gt;4-&gt;3-&gt;5`
 当 *k* = 3 时，应当返回: `3-&gt;2-&gt;1-&gt;4-&gt;5`</code></pre></div>
 <p><strong>解法一：</strong>利用快慢指针和迭代。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*  when k = 2:
+*   dummy     1     2     3     4     5
+*     |       |      \
+*    tail next_tail   next_head
+*
+*   then:
+*   dummy     1     2     3     4     5
+*                   |     |      \
+*   	          tail next_tail   next_head
+*   ...
+*/</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseKGroup</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
-        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), slow = dummy, fast = dummy; <span class="hljs-comment">// fast以dummy起始</span>
+        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(), tail = dummy;
         dummy.next = head;
         <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;
-                fast = fast.next;
-                <span class="hljs-keyword">if</span> (fast == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> dummy.next; <span class="hljs-comment">// if语句后判</span>
+            ListNode next_head = tail, next_tail = tail.next;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
+                next_head = next_head.next;
+                <span class="hljs-keyword">if</span> (next_head == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> dummy.next;
             &#125;
-            ListNode next_head = fast.next;
-            ListNode tail = slow.next;     
-            fast.next = <span class="hljs-keyword">null</span>;
-            slow.next = reverseOne(slow.next);
-            tail.next = next_head;       
-            fast = tail;
-            slow = tail;    
+            ListNode pre = next_head.next, cur = next_tail;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
+                ListNode tmp = cur.next;
+                cur.next = pre;
+                pre = cur;
+                cur = tmp;
+            &#125;
+            tail.next = next_head;
+            tail = next_tail;
         &#125;
-    &#125;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseOne</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-        ListNode pre = <span class="hljs-keyword">null</span>, cur = head;
-        <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) &#123;
-            ListNode tmp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = tmp;
-        &#125;
-        <span class="hljs-keyword">return</span> pre;
     &#125;
 &#125;</code></pre></div>
 <p><strong>解法二：</strong>递归。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseKGroup</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
-        ListNode tail = head, pre = <span class="hljs-keyword">null</span>, cur = head;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;
-            <span class="hljs-keyword">if</span> (cur == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> head;
-            cur = cur.next;
+        ListNode fast = head;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
+            <span class="hljs-keyword">if</span> (fast == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> head;
+            fast = fast.next;
         &#125;
-        cur = head;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;
+        ListNode pre = reverseKGroup(fast, k), cur = head;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
             ListNode tmp = cur.next;
             cur.next = pre;
             pre = cur;
             cur = tmp;
         &#125;
-        tail.next = reverseKGroup(cur, k);
         <span class="hljs-keyword">return</span> pre;
     &#125;
 &#125;</code></pre></div>
