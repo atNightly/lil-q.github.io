@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.8k 字
+                    2.2k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    32
+                    39
                      分钟
                   </span>
                 
@@ -495,6 +495,56 @@
             map.put(sum, map.getOrDefault(sum, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>); <span class="hljs-comment">// 计数前缀和</span>
         &#125;
         <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="nowcoder-善变的同伴"><a href="#nowcoder-善变的同伴" class="headerlink" title="nowcoder 善变的同伴"></a><a href="https://www.nowcoder.com/practice/824af5cb05794606b56657bb3fa91f49?tpId=98&amp;tqId=32843&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 善变的同伴</a></h1><p>有时候对数组做累加操作再处理会带来便利，这题使用类似股票问题的动态规划会超时，计算前缀和，再利用极小值和极大值的特性可以在<script type="math/tex">O(n)</script>完成：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.*;
+<span class="hljs-comment">/*                    t3 (t3 &gt; t2, 合并 b2 至 t3, 合并后如果次数还有多，
+*        t1           /\  就要把合并损失的还回去，记录栈内所有 bi-1 - ti)        
+*   t0   /\     t2   /
+*    \  /  \    /\  /
+*     \/    \  /  \/
+*     b1     \/   b3
+*            b2 (b2 &lt; b1, 截断 t1 至 b2部分，因为这段负数影响已经大于之前的总和，
+*                记录栈内所有 ti - bi)
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+        BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+        String[] line = br.readLine().split(<span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">int</span> N = Integer.parseInt(line[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">int</span> M = Integer.parseInt(line[<span class="hljs-number">1</span>]);
+        line = br.readLine().split(<span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">int</span>[] dish = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N + <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) &#123;
+            dish[i] = dish[i - <span class="hljs-number">1</span>] + Integer.parseInt(line[i - <span class="hljs-number">1</span>]);
+        &#125;
+        
+        PriorityQueue&lt;Integer&gt; maxHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((n1, n2)-&gt; n2 - n1);
+        Deque&lt;Integer&gt; bs = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        Deque&lt;Integer&gt; ts = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">int</span> n = N + <span class="hljs-number">1</span>, b, t = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (t &lt; n) &#123;
+            <span class="hljs-keyword">for</span> (b = t; b &lt; n - <span class="hljs-number">1</span> &amp;&amp; dish[b + <span class="hljs-number">1</span>] &lt;= dish[b]; b++) &#123;&#125;
+            <span class="hljs-keyword">for</span> (t = b + <span class="hljs-number">1</span>; t &lt; n &amp;&amp; dish[t - <span class="hljs-number">1</span>] &lt;= dish[t]; t++) &#123;&#125;
+            <span class="hljs-keyword">while</span> (!bs.isEmpty() &amp;&amp; dish[b] &lt; dish[bs.peek()]) &#123;
+                maxHeap.add(dish[ts.pop() - <span class="hljs-number">1</span>] - dish[bs.pop()]);
+            &#125;
+            <span class="hljs-keyword">while</span> (!ts.isEmpty() &amp;&amp; dish[t - <span class="hljs-number">1</span>] &gt; dish[ts.peek() - <span class="hljs-number">1</span>]) &#123;
+                maxHeap.add(dish[ts.pop() - <span class="hljs-number">1</span>] - dish[b]);
+                b = bs.pop();
+            &#125;
+            bs.push(b);
+            ts.push(t);
+        &#125;
+        <span class="hljs-keyword">while</span> (!bs.isEmpty()) &#123;
+            maxHeap.add(dish[ts.pop() - <span class="hljs-number">1</span>] - dish[bs.pop()]);
+        &#125;
+        <span class="hljs-keyword">while</span> (M-- &gt; <span class="hljs-number">0</span> &amp;&amp; !maxHeap.isEmpty()) &#123;
+            res += maxHeap.poll();
+        &#125;
+        System.out.println(res);
     &#125;
 &#125;</code></pre></div>
 
