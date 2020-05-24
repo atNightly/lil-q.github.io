@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    4k 字
+                    4.3k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    55
+                    59
                      分钟
                   </span>
                 
@@ -434,6 +434,8 @@ i = (n - <span class="hljs-number">1</span>) &amp; hash;</code></pre></div>
 <li>检测键类是否实现了 <code>Comparable</code> 接口，是则调用 <code>compareTo</code> 方法进行比较，否则</li>
 <li>如果仍未比较出大小，就需要进行仲裁了，仲裁方法为 <code>tieBreakOrder</code>。</li>
 </ol>
+<h2 id="加载因子"><a href="#加载因子" class="headerlink" title="加载因子"></a>加载因子</h2><p>初始容量<code>initialCapacity</code>是哈希表中初始桶的数量，加载因子<code>loadFactor</code>是哈希表在其容量自动扩容之前可以达到多满的一种度量。当哈希表中的条目数超出了<strong>加载因子与当前容量的乘积</strong>时，则要对该哈希表进行扩容、rehash操作（即重建内部数据结构），扩容后的哈希表将具有两倍的原容量。</p>
+<p>通常，加载因子需要<strong>在时间和空间成本上寻求一种折衷</strong>，默认为<code>0.75f</code>。加载因子过高，例如为 1，虽然减少了空间开销，提高了空间利用率，但同时也增加了查询时间成本；加载因子过低，例如 0.5，虽然可以减少查询时间成本，但是空间利用率很低，同时提高了 rehash 操作的次数。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少rehash操作次数，所以，一般在使用HashMap时建议根据预估值设置初始容量，减少扩容操作。</p>
 <h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h2><p>设 <code>HashMap</code> 的 <code>table</code> 长度为 M，需要存储的键值对数量为 N，如果哈希函数满足均匀性的要求，那么每条链表的长度大约为 N/M，因此查找的复杂度为 O(N/M)。</p>
 <p>为了让查找的成本降低，应该使 N/M 尽可能小，因此需要保证 M 尽可能大，也就是说 <code>table</code> 要尽可能大。<code>HashMap</code> 采用动态扩容来根据当前的 N 值来调整 M 值，使得空间效率和时间效率都能得到保证。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 键值对的数量</span>
@@ -531,6 +533,14 @@ i = (n - <span class="hljs-number">1</span>) &amp; hash;</code></pre></div>
     <span class="hljs-comment">// 初始化，将 accessOrder 设置为 true</span>
     LRUCache() &#123;
         <span class="hljs-keyword">super</span>(MAX_ENTRIES, <span class="hljs-number">0.75f</span>, <span class="hljs-keyword">true</span>);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.getOrDefault(key, -<span class="hljs-number">1</span>);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span> value)</span> </span>&#123;
+        <span class="hljs-keyword">super</span>.put(key, value);
     &#125;
 &#125;</code></pre></div>
 <h1 id="WeakHashMap"><a href="#WeakHashMap" class="headerlink" title="WeakHashMap"></a>WeakHashMap</h1><p>待补充</p>
