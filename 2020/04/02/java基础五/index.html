@@ -477,7 +477,7 @@ i = (n - <span class="hljs-number">1</span>) &amp; hash;</code></pre></div>
 <span class="hljs-comment">// The tail (youngest) of the doubly linked list.</span>
 <span class="hljs-keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; tail;</code></pre></div>
 <p><code>accessOrder</code> 决定了顺序，默认为 <code>false</code>，此时维护的是插入顺序。显式设置为 true，代表以访问顺序进行迭代。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> accessOrder;Copy to clipboardErrorCopied</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> accessOrder;</code></pre></div>
 <p><code>LinkedHashMap</code> 最重要的是以下用于维护顺序的函数，它们会在 <code>put()</code>、<code>get()</code> 等方法中调用。<code>LinkedHashMap</code>并没有覆写<code>put()</code>，而是覆写了<code>afterNodeAccess(Node&lt;K,V&gt; p)</code>。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">afterNodeAccess</span><span class="hljs-params">(Node&lt;K,V&gt; p)</span> </span>&#123; &#125;
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">afterNodeInsertion</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> evict)</span> </span>&#123; &#125;</code></pre></div>
