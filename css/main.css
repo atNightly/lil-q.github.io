@@ -22,7 +22,7 @@ body a {
   transition-timing-function: ease-in-out;
 }
 body a:hover {
-  color: #AF4034;
+  color: white;
   text-decoration: none;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -1014,7 +1014,7 @@ h6::before {
 }
 .tocbot-active-link {
   font-weight: bold;
-  color: #AF4034;
+  color: white;
 }
 .tocbot-is-collapsed {
   max-height: 0;
@@ -1314,7 +1314,7 @@ h6::before {
   padding: 0.5rem;
 }
 .tagcloud a:hover {
-  color: #AF4034 !important;
+  color: white !important;
 }
 .links .card {
   box-shadow: none;
