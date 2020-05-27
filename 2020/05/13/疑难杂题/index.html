@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    2.9k 字
+                    3.1k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    49
+                    53
                      分钟
                   </span>
                 
@@ -652,6 +652,39 @@
             &#125;
         &#125;
         <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="leetcode-287-寻找重复数"><a href="#leetcode-287-寻找重复数" class="headerlink" title="leetcode 287. 寻找重复数"></a><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">leetcode 287. 寻找重复数</a></h1><p><strong>解法一：</strong>将数组转化为链表。</p>
+<p>由于这个数组没有 0 这个值，所以 0 结点的入度为 0，必定不成环。可以看出 0 为 head 的一个链表，求其环入口。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> slow = nums[<span class="hljs-number">0</span>], fast = nums[nums[<span class="hljs-number">0</span>]];
+        <span class="hljs-keyword">while</span> (slow != fast) &#123;
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        &#125;
+        fast = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (slow != fast) &#123;
+            slow = nums[slow];
+            fast = nums[fast];
+        &#125;
+        <span class="hljs-keyword">return</span> slow;
+    &#125;
+&#125;</code></pre></div>
+<p><strong>解法二：</strong>二分查找</p>
+<p>利用抽屉原理的思想。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = nums.length - <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span> (l &lt; r) &#123;
+            <span class="hljs-keyword">int</span> mid = l + (r - l) / <span class="hljs-number">2</span>, count = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
+                <span class="hljs-keyword">if</span> (num &lt;= mid) count++;
+            &#125;
+            <span class="hljs-keyword">if</span> (count &gt; mid) r = mid; <span class="hljs-comment">// 计数大于 mid，区间为[l，mid]</span>
+            <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>; <span class="hljs-comment">// 计数小于等于 mid，区间为[mid + 1, r]</span>
+        &#125;
+        <span class="hljs-keyword">return</span> l;
     &#125;
 &#125;</code></pre></div>
 
