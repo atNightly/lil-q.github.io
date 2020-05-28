@@ -1,5 +1,9 @@
 #scroll-top-button {
-    background: #1b6ca8;
+    background: #13100f;
+}
+
+#scroll-top-button i {
+    color: #ddd;
 }
 
 #scroll-top-button i {
