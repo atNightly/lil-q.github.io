@@ -141,7 +141,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    4.5k 字
+                    4.9k 字
                   </span>
                 
 
@@ -151,7 +151,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    58
+                    62
                      分钟
                   </span>
                 
@@ -522,6 +522,33 @@ last = <span class="hljs-keyword">new</span> Object();</code></pre></div>
 <span class="hljs-keyword">public</span> Class&lt;T&gt; clazzT;</code></pre></div>
 <p>调用<code>Class</code>的<code>getSuperclass()</code>方法返回的<code>Class</code>类型是<code>Class&lt;? super String&gt;</code>：</p>
 <div class="hljs"><pre><code class="hljs java">Class&lt;? <span class="hljs-keyword">super</span> String&gt; sup = String<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getSuperclass</span>()</span>;</code></pre></div>
+<h1 id="静态代理和动态代理"><a href="#静态代理和动态代理" class="headerlink" title="静态代理和动态代理"></a>静态代理和动态代理</h1><ul>
+<li>静态代理在编译时就已经实现，编译完成后代理类是一个实际的class文件</li>
+<li>动态代理是在运行时动态生成的，即编译完成后没有实际的class文件，而是在运行时动态生成类字节码，并加载到JVM中</li>
+</ul>
+<h2 id="静态代理-1"><a href="#静态代理-1" class="headerlink" title="静态代理"></a>静态代理</h2><p>需要代理对象和目标对象实现一样的<strong>接口</strong>。</p>
+<p>优点：可以在不修改目标对象的前提下扩展目标对象的功能。</p>
+<p>缺点：</p>
+<ol>
+<li>冗余。由于代理对象要实现与目标对象一致的接口，会产生过多的代理类。</li>
+<li>不易维护。一旦接口增加方法，目标对象与代理对象都要进行修改。</li>
+</ol>
+<h2 id="动态代理-2"><a href="#动态代理-2" class="headerlink" title="动态代理"></a>动态代理</h2><ol>
+<li>通过实现接口的方式 -&gt; JDK动态代理</li>
+<li>通过继承类的方式 -&gt; CGLIB动态代理</li>
+</ol>
+<h3 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h3><p>基于Java<strong>反射</strong>机制实现，必须要实现了接口的业务类才能用这种办法生成代理对象。</p>
+<ul>
+<li>最小化依赖关系，减少依赖意味着简化开发和维护，JDK 本身的支持，可能比 cglib 更加可靠。</li>
+<li>平滑进行 JDK 版本升级，而字节码类库通常需要进行更新以保证在新版 Java 上能够使用。</li>
+<li>代码实现简单。</li>
+</ul>
+<h3 id="CGLIB动态代理"><a href="#CGLIB动态代理" class="headerlink" title="CGLIB动态代理"></a>CGLIB动态代理</h3><p>基于<a href="https://juejin.im/post/5b549bcbe51d45169c1c8b66" target="_blank" rel="noopener">ASM</a>机制实现，通过生成业务类的子类作为代理类。</p>
+<ul>
+<li>无需实现接口，达到代理类无侵入</li>
+<li>只操作我们关心的类，而不必为其他相关类增加工作量。</li>
+<li>高性能</li>
+</ul>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a></li>
 <li><a href="http://www.sczyh30.com/posts/Java/java-reflection-1/" target="_blank" rel="noopener">深入解析 Java 反射（1）- 基础</a></li>
