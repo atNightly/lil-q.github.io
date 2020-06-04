@@ -214,7 +214,7 @@ post-content strong {
 #scroll-top-button i {
   font-size: 1.75rem;
   margin: auto;
-  color: #718096;
+  color: #3c4858;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -884,13 +884,13 @@ input[type=checkbox]:checked:after {
   text-overflow: ellipsis;
 }
 .index-btm {
-  color: #718096;
+  color: #3c4858;
 }
 .index-btm a {
-  color: #718096;
+  color: #3c4858;
 }
 .index-excerpt {
-  color: #718096;
+  color: #3c4858;
   margin: 0.5rem 0 0.5rem 0;
   max-height: calc(1.4rem * 3);
   line-height: 1.4rem;
@@ -1483,7 +1483,7 @@ h6::before {
   max-height: 2rem;
   font-size: 0.85rem;
   line-height: 1.2;
-  color: #718096;
+  color: #3c4858;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
