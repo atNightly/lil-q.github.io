@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>操作系统——进程管理 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-10 23:08">
-                    Sunday, May 10th 2020, 11:08 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-05-10 23:08">
+      May 10, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.7k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    28
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -212,27 +234,27 @@
 <p><strong>2. 临界区</strong></p>
 <p>对临界资源进行访问的那段代码称为临界区。</p>
 <p>为了互斥访问临界资源，每个进程在进入临界区之前，需要先进行检查。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 临界区伪代码</span>
+<pre><code class="hljs java"><span class="hljs-comment">// 临界区伪代码</span>
 entry section        
      critical section 
-exit section</code></pre></div>
+exit section</code></pre>
 <h2 id="3-1-硬件同步机制"><a href="#3-1-硬件同步机制" class="headerlink" title="3.1 硬件同步机制"></a>3.1 硬件同步机制</h2><p><strong>1. 关中断</strong></p>
 <p>禁用中断之后，进程（线程）就不会被切换出去，从而保证代码段能执行结束。但坏处也很明显，由于中断被禁用，如果临界区代码一直执行，其他进程就没机会执行。</p>
 <p><strong>2. 原子操作指令</strong></p>
 <p>比较常见的原子操作指令包括 <a href="https://en.wikipedia.org/wiki/Test-and-set" target="_blank" rel="noopener">test and set</a>、<a href="https://en.wikipedia.org/wiki/Compare-and-swap" target="_blank" rel="noopener">compare and swap</a>。</p>
 <h2 id="3-2-信号量机制"><a href="#3-2-信号量机制" class="headerlink" title="3.2 信号量机制"></a>3.2 信号量机制</h2><p>semaphore有一个<strong>整型变量（S）</strong>和两个<strong>原子操作</strong>组成。S表示资源的数量，而两个原子操作一般被成为P操作和V操作（有时也被成为wait、signal）。</p>
 <p>P操作表示申请一个资源，P操作的定义：S=S-1，若S&gt;=0，则执行P操作的线程继续执行；若S&lt;0，则置该线程为阻塞状态，并将其插入阻塞队列。伪码如下： </p>
-<div class="hljs"><pre><code class="hljs java">Procedure P（Var S：Semaphore）；
+<pre><code class="hljs java">Procedure P（Var S：Semaphore）；
 　　Begin
 　　　　S：=S-<span class="hljs-number">1</span>；
 　　　　If S&lt;<span class="hljs-number">0</span> <span class="hljs-function">then <span class="hljs-title">w</span><span class="hljs-params">(S)</span> </span>&#123;执行P操作的线程插入等待队列&#125;
-　　End；</code></pre></div>
+　　End；</code></pre>
 <p>V操作表示释放一个资源，V操作定义：S=S+1，若S&gt;0则执行V操作的线程继续执行；若S&lt;0，则从阻塞状态唤醒一个线程，并将其插入就绪队列。伪代码如下：</p>
- <div class="hljs"><pre><code class="hljs java">Procedure V（Var S：Semaphore）；
+ <pre><code class="hljs java">Procedure V（Var S：Semaphore）；
 　　Begin
 　　　　S：=S+<span class="hljs-number">1</span>
 　　　　If S&lt;=<span class="hljs-number">0</span> <span class="hljs-function">then <span class="hljs-title">R</span><span class="hljs-params">(s)</span> </span>&#123;从阻塞队列中唤醒一个线程&#125;
-　　End；</code></pre></div>
+　　End；</code></pre>
 <h2 id="3-3-管程"><a href="#3-3-管程" class="headerlink" title="3.3 管程"></a>3.3 管程</h2><p>管程有一个重要特性：在一个时刻只能有<strong>一个进程</strong>使用管程。进程在无法继续执行的时候不能一直占用管程，否则其它进程永远不能使用管程。</p>
 <p>管程引入了 <strong>条件变量</strong> 以及相关的操作：<strong>wait()</strong> 和 <strong>signal()</strong> 来实现同步操作。对条件变量执行 wait() 操作会导致调用进程阻塞，把管程让出来给另一个进程持有。signal() 操作用于唤醒被阻塞的进程。</p>
 <h1 id="四、进程调度算法"><a href="#四、进程调度算法" class="headerlink" title="四、进程调度算法"></a>四、进程调度算法</h1><p>不同环境的调度算法目标不同，因此需要针对不同环境来讨论调度算法。</p>
@@ -312,7 +334,7 @@ exit section</code></pre></div>
                       <a href="/2020/05/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E9%93%BE%E8%B7%AF%E5%B1%82/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">计算机网络——链路层</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -321,7 +343,7 @@ exit section</code></pre></div>
                     
                       <a href="/2020/05/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0/">
                         <span class="hidden-mobile">操作系统——概述</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -336,28 +358,26 @@ exit section</code></pre></div>
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -424,28 +444,12 @@ exit section</code></pre></div>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -456,14 +460,27 @@ exit section</code></pre></div>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -472,7 +489,7 @@ exit section</code></pre></div>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -488,22 +505,6 @@ exit section</code></pre></div>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -569,6 +570,8 @@ exit section</code></pre></div>
       }
     );
   </script>
+
+
 
 
 

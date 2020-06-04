@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>OpenCV-python学习笔记五 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-22 17:51">
-                    Saturday, February 22nd 2020, 5:51 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-02-22 17:51">
+      February 22, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    749 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    10
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      749 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -194,7 +216,7 @@
 <script type="math/tex; mode=display">\Delta^{2} \left [f  \right ]\left ( i, j \right )=f\left ( i+1, j \right )-2f\left ( i, j \right )+f\left ( i-1, j \right )</script><p>包含x轴、y轴两个方向的卷积核为：</p>
 <script type="math/tex; mode=display">Laplacian_{2} = \frac{1}{9}\left[ \begin{matrix} 0 & 1 & 0 \newline 1 & -4 & 1 \newline 0 & 1 & 0 \end{matrix} \right]</script><p>包含四个方向的卷积核为：</p>
 <script type="math/tex; mode=display">Laplacian_{4} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & -8 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>使用Laplace 算子处理后，由于所求为二阶差分，值接近0的像素点更有可能是边缘，但是对于灰度值相近的区域，经过卷积后的值也很接近0。</p>
-<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><div class="hljs"><pre><code class="hljs python">dst = cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</code></pre></div>
+<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><pre><code class="hljs python">dst = cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/差分" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86</a></li>
 <li><a href="https://www.jianshu.com/p/2334bee37de5" target="_blank" rel="noopener">https://www.jianshu.com/p/2334bee37de5</a></li>
@@ -234,7 +256,7 @@
                       <a href="/2020/02/27/NumPy/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">NumPy基础</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -243,7 +265,7 @@
                     
                       <a href="/2020/02/20/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B/">
                         <span class="hidden-mobile">OpenCV-python学习笔记四</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -258,28 +280,26 @@
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -346,28 +366,12 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -378,14 +382,27 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -394,7 +411,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -410,22 +427,6 @@
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -534,6 +535,8 @@
     <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
 
 
 

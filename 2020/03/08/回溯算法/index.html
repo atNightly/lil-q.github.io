@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>回溯(Backtracking) - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-08 13:12">
-                    Sunday, March 8th 2020, 1:12 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-03-08 13:12">
+      March 8, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    3.4k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    43
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -196,7 +218,7 @@
 <p>在最坏的情况下，回溯法会导致一次<strong>复杂度</strong>为<strong>指数时间</strong>的计算。</p>
 <h1 id="典型的回溯"><a href="#典型的回溯" class="headerlink" title="典型的回溯"></a>典型的回溯</h1><p><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">leetcode 46. 全排列</a>：给定一个<strong>没有重复</strong>数字的序列，返回其所有可能的全排列。</p>
 <p><strong>示例:</strong></p>
-<div class="hljs"><pre><code class="hljs txt">输入: [1,2,3]
+<pre><code class="hljs txt">输入: [1,2,3]
 输出:
 [
   [1,2,3],
@@ -205,9 +227,9 @@
   [2,3,1],
   [3,1,2],
   [3,2,1]
-]</code></pre></div>
+]</code></pre>
 <p>用比较通用的回溯算法可以这样解答：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">permute</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span>
         size = len(nums)
         res = []
@@ -233,7 +255,7 @@
                 visited.remove(i)
                 
         backtrack([], visited)
-        <span class="hljs-keyword">return</span> res</code></pre></div>
+        <span class="hljs-keyword">return</span> res</code></pre>
 <p>全排列问题能很好的体现回溯的特点：</p>
 <ul>
 <li><strong>试错：</strong>判断当前数是否在前面出现过</li>
@@ -250,7 +272,7 @@
 <p>给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。</p>
 <p>每一种解法包含一个明确的 n 皇后问题的棋子放置方案，该方案中 ‘Q’ 和 ‘.’ 分别代表了皇后和空位。</p>
 <p>示例:</p>
-<div class="hljs"><pre><code class="hljs txt">输入: 4
+<pre><code class="hljs txt">输入: 4
 输出: [
  [&quot;.Q..&quot;,  // 解法 1
   &quot;...Q&quot;,
@@ -262,9 +284,9 @@
   &quot;...Q&quot;,
   &quot;.Q..&quot;]
 ]
-解释: 4 皇后问题存在两个不同的解法。</code></pre></div>
+解释: 4 皇后问题存在两个不同的解法。</code></pre>
 <p>对于较为复杂的问题，我们可以用函数来封装若干步骤，比如<strong>试错</strong>、<strong>执行</strong>和<strong>撤销</strong>。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solveNQueens</span><span class="hljs-params">(self, n: int)</span> -&gt; List[List[str]]:</span>
         <span class="hljs-comment"># 储存已有皇后的列</span>
         visited_c = [<span class="hljs-literal">False</span>] * n
@@ -311,7 +333,7 @@
                 remove_queen(i, j)
 
         back_track()
-        <span class="hljs-keyword">return</span> res</code></pre></div>
+        <span class="hljs-keyword">return</span> res</code></pre>
 <p>全排列和N皇后其实是相似的，两者的不同点在于，全排列是处理一维数组，N皇后是处理二维数组。这一点具体体现在两者在处理<strong>分布</strong>时的不同，全排列递归的深度是N次，每次分布都是遍历数组中所有数；N皇后递归的深度只有两次，这是由每行每列只能有一个皇后，所以第一个循环是遍历行，对每一行执行第二个循环——遍历列。</p>
 <p>N皇后在处理<strong>试错</strong>时的条件相对苛刻一些，但是对角线这个条件其实可以简化：</p>
 <blockquote>
@@ -326,7 +348,7 @@
 <blockquote>
 <p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</p>
 </blockquote>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
@@ -350,14 +372,14 @@
             <span class="hljs-keyword">else</span>: 
                 <span class="hljs-keyword">return</span> first_match <span class="hljs-keyword">and</span> backtrack(i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
 
-        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre>
 <p>正则表达式前两题不同之处在于，<strong>终止条件</strong>不是单一的处理，而是需要判断<code>True</code>or<code>False</code>。<strong>分步</strong>不再是循坏，而是分为两个情况讨论——‘*’前面的字母不出现和出现若干次。</p>
 <blockquote>
 <p>注意：一般这类判断是否可行的题都是判断成功<code>return True</code>，判断失败就继续运行，但是这里可以写<code>return False</code>。原因在于错误的分支被<code>or</code> 语句截断了。</p>
 </blockquote>
 <p>没有<strong>执行</strong>和<strong>撤销</strong>的过程，因为参数直接传入递归函数，对当前函数内不产生影响。下面一个例子也是这种情况。</p>
 <p><a href="https://leetcode-cn.com/problems/generate-parentheses/" target="_blank" rel="noopener">leetcode 22. 括号生成</a>：给出 <em>n</em> 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且<strong>有效的</strong>括号组合。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(self, n: int)</span> -&gt; List[str]:</span>
         res = []
         
@@ -371,7 +393,7 @@
                 backtrack(l, r - <span class="hljs-number">1</span>, s + <span class="hljs-string">')'</span>)
 
         backtrack(n, n, <span class="hljs-string">''</span>)
-        <span class="hljs-keyword">return</span> res</code></pre></div>
+        <span class="hljs-keyword">return</span> res</code></pre>
 <h2 id="leetcode-40-组合总和-II"><a href="#leetcode-40-组合总和-II" class="headerlink" title="leetcode 40. 组合总和 II"></a><a href="https://leetcode-cn.com/problems/combination-sum-ii/" target="_blank" rel="noopener">leetcode 40. 组合总和 II</a></h2><p>给定一个数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
 <p><strong>说明：</strong></p>
 <ul>
@@ -380,16 +402,16 @@
 <li>解集不能包含重复的组合。 </li>
 </ul>
 <p><strong>示例：</strong></p>
-<div class="hljs"><pre><code class="hljs txt">输入: candidates = [10,1,2,7,6,1,5], target = 8,
+<pre><code class="hljs txt">输入: candidates = [10,1,2,7,6,1,5], target = 8,
 所求解集为:
 [
   [1, 7],
   [1, 2, 5],
   [2, 6],
   [1, 1, 6]
-]</code></pre></div>
+]</code></pre>
 <p>当对选值有特殊要求时，<strong>分步</strong>就变得复杂一些了。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combinationSum2</span><span class="hljs-params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span>
         res = []
         candidates.sort()
@@ -410,7 +432,7 @@
                 backtrack(i + <span class="hljs-number">1</span>, num_sum + candidates[i], nums + [candidates[i]])
                 
         backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, [])
-        <span class="hljs-keyword">return</span> res</code></pre></div>
+        <span class="hljs-keyword">return</span> res</code></pre>
 <p>原理如下图：</p>
 <p><img src="backtrack-2.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="备忘录"><a href="#备忘录" class="headerlink" title="备忘录"></a>备忘录</h1><p>简单回溯法的时间复杂度通常是指数级别的。比如正则表达式使用回溯法求解的时间复杂度为<script type="math/tex">O\left ( (T+P)2^{T+\frac{P}{2}} \right )</script>，<code>T</code> 和 <code>P</code> 分别表示匹配串和模式串的长度，<code>2</code>则是因为当出现<code>*</code>时，我们分两步试错。</p>
@@ -425,13 +447,13 @@
 <p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。</p>
 </blockquote>
 <p><strong>示例 1:</strong></p>
-<div class="hljs"><pre><code class="hljs txt">输入:
+<pre><code class="hljs txt">输入:
 s = &quot;aa&quot;
 p = &quot;a&quot;
 输出: false
-解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</code></pre></div>
+解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</code></pre>
 <p>简单地通过一个<code>dict</code>来做备忘录：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
         size_p = len(p)
@@ -456,9 +478,9 @@ p = &quot;a&quot;
                 memo[(i, j)] = tmp
                 <span class="hljs-keyword">return</span> memo[(i, j)]
 
-        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre>
 <p>除了自己创建备忘录，还可以使用python中的装饰器<a href="https://docs.python.org/zh-cn/3/library/functools.html#functools.lru_cache" target="_blank" rel="noopener">@functools.lru_cache()</a>将函数值存在缓存中。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> functools
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> functools
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(self, s: str, p: str)</span> -&gt; bool:</span>
         size_s = len(s)
@@ -481,7 +503,7 @@ p = &quot;a&quot;
                     <span class="hljs-keyword">return</span> backtrack(i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
                 <span class="hljs-keyword">else</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
         
-        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre></div>
+        <span class="hljs-keyword">return</span> backtrack(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</code></pre>
 <h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p><strong>剪枝</strong>，顾名思义，就是删去一些不重要或无用的节点，来减小计算或搜索的复杂度。使用备忘录其实也可以看成剪枝，因为重复的计算是无意义的。对于特定的问题，可以之间从算法的角度剪枝，如下面的例子：</p>
 <h2 id="leetcode-60-第k个排列"><a href="#leetcode-60-第k个排列" class="headerlink" title="leetcode 60. 第k个排列"></a><a href="https://leetcode-cn.com/problems/permutation-sequence/" target="_blank" rel="noopener">leetcode 60. 第k个排列</a></h2><p>给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。</p>
 <p>按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：</p>
@@ -500,10 +522,10 @@ p = &quot;a&quot;
 <li>给定 <em>k</em> 的范围是[1,  <em>n</em>!]。</li>
 </ul>
 <p><strong>示例:</strong></p>
-<div class="hljs"><pre><code class="hljs txt">输入: n = 3, k = 3
-输出: &quot;213&quot;</code></pre></div>
+<pre><code class="hljs txt">输入: n = 3, k = 3
+输出: &quot;213&quot;</code></pre>
 <p>这题使用回溯法时间复杂度很高，挖掘其数学规律可以减少很多运算，比如我们在确定第一个数为<code>1</code>时，剩下的数共有<code>(n-1)!</code>种可能的排列，如果<code>k &gt; (n-1)!</code>，那么第一个数一定大于<code>1</code>。以此类推我们可以确定每个位置的数。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getPermutation</span><span class="hljs-params">(self, n: int, k: int)</span> -&gt; str:</span>
         
         <span class="hljs-comment"># 求阶乘</span>
@@ -526,9 +548,9 @@ p = &quot;a&quot;
                 visited.add(i)
                 <span class="hljs-keyword">return</span> backtrack(remainder, m<span class="hljs-number">-1</span>, visited, permute + str(i))
 
-        <span class="hljs-keyword">return</span> backtrack(k, n - <span class="hljs-number">1</span>, set(), <span class="hljs-string">''</span>)</code></pre></div>
+        <span class="hljs-keyword">return</span> backtrack(k, n - <span class="hljs-number">1</span>, set(), <span class="hljs-string">''</span>)</code></pre>
 <p>这道题通过剪枝甚至已经不需要回溯到之前的状态，通过递归直接就得到答案了。那也许意味着，有更直接的解法。实际上，这正是<a href="https://baike.baidu.com/item/康托展开" target="_blank" rel="noopener">康托展开</a>的原理。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getPermutation</span><span class="hljs-params">(self, n, k)</span>:</span>
         res = <span class="hljs-string">''</span>
         nums = [str(i+<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n)]
@@ -537,7 +559,7 @@ p = &quot;a&quot;
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>):
             n, k = divmod(k, factor[i])
             res += nums.pop(n)
-        <span class="hljs-keyword">return</span> res</code></pre></div>
+        <span class="hljs-keyword">return</span> res</code></pre>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/八皇后问题" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/回溯法" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%9B%9E%E6%BA%AF%E6%B3%95</a></li>
@@ -577,7 +599,7 @@ p = &quot;a&quot;
                       <a href="/2020/03/17/%E6%98%A5%E8%8A%B1/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">春花</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -586,7 +608,7 @@ p = &quot;a&quot;
                     
                       <a href="/2020/03/07/Hexo%E6%9A%97%E8%89%B2%E8%83%8C%E6%99%AF%E4%B8%8Bvaline%E7%9A%84%E4%BC%98%E5%8C%96/">
                         <span class="hidden-mobile">Hexo暗色背景下valine的优化</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -601,28 +623,26 @@ p = &quot;a&quot;
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -689,28 +709,12 @@ p = &quot;a&quot;
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -721,14 +725,27 @@ p = &quot;a&quot;
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -737,7 +754,7 @@ p = &quot;a&quot;
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -753,22 +770,6 @@ p = &quot;a&quot;
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -877,6 +878,8 @@ p = &quot;a&quot;
     <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
 
 
 

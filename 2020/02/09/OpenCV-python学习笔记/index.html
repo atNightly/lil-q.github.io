@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>OpenCV-python学习笔记一 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-09 15:57">
-                    Sunday, February 9th 2020, 3:57 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-02-09 15:57">
+      February 9, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.4k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    33
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -185,8 +207,8 @@
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>18年结束毕业设计之后，对OpenCV接触很少了。那时使用的是C++，借由最近使用python较多，学习OpenCV-python算是一种温故。本文主要参考了<a href="http://codec.wang/opencv-python" target="_blank" rel="noopener">OpenCV-Python图像处理教程</a>以及<a href="https://docs.opencv.org/4.2.0/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
 <h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>需要注意图片的x，y轴排布，三通道以B-G-R排布，灰度图只有一个通道。</p>
 <p><img src="1546842698102_gWO39TIUVK.jpg" srcset="/img/loading.gif" alt=""></p>
-<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 加载灰度图</span>
-img = cv2.imread(<span class="hljs-string">'lena.jpg'</span>, <span class="hljs-number">0</span>)</code></pre></div>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><pre><code class="hljs python"><span class="hljs-comment"># 加载灰度图</span>
+img = cv2.imread(<span class="hljs-string">'lena.jpg'</span>, <span class="hljs-number">0</span>)</code></pre>
 <ul>
 <li>参数1：图片的文件名<ul>
 <li>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</li>
@@ -200,8 +222,8 @@ img = cv2.imread(<span class="hljs-string">'lena.jpg'</span>, <span class="hljs-
 </ul>
 </li>
 </ul>
-<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 创建窗口</span>
-cv2.namedWindow(<span class="hljs-string">'lena2'</span>, cv2.WINDOW_NORMAL)</code></pre></div>
+<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><pre><code class="hljs python"><span class="hljs-comment"># 创建窗口</span>
+cv2.namedWindow(<span class="hljs-string">'lena2'</span>, cv2.WINDOW_NORMAL)</code></pre>
 <ul>
 <li>参数1：窗口名称</li>
 <li>参数2：窗口模式<ul>
@@ -210,14 +232,14 @@ cv2.namedWindow(<span class="hljs-string">'lena2'</span>, cv2.WINDOW_NORMAL)</co
 </ul>
 </li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 显示图片</span>
-cv2.imshow(<span class="hljs-string">'lena'</span>, img)</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-comment"># 显示图片</span>
+cv2.imshow(<span class="hljs-string">'lena'</span>, img)</code></pre>
 <ul>
 <li>参数1：窗口名称</li>
 <li>参数2：图片实例</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 保持图片显示</span>
-cv2.waitKey(<span class="hljs-number">0</span>)</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-comment"># 保持图片显示</span>
+cv2.waitKey(<span class="hljs-number">0</span>)</code></pre>
 <ul>
 <li><p>参数：暂停时长，ms</p>
 <p>为0时，表示无限长。</p>
@@ -225,41 +247,41 @@ cv2.waitKey(<span class="hljs-number">0</span>)</code></pre></div>
 <li><p>传回按键的ascii码, 如<code>ESC:27</code>、<code>s:115</code></p>
 </li>
 </ul>
-<h2 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 保存图片</span>
-cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre></div>
+<h2 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h2><pre><code class="hljs python"><span class="hljs-comment"># 保存图片</span>
+cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre>
 <ul>
 <li>参数1：是包含后缀名的文件名</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">10000</span>) == <span class="hljs-number">115</span>: 
-    cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">10000</span>) == <span class="hljs-number">115</span>: 
+    cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre>
 <ul>
 <li>显示10秒，当按下<code>s</code>时，保存图片</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">10000</span>) == ord(<span class="hljs-string">'q'</span>): 
-    cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">10000</span>) == ord(<span class="hljs-string">'q'</span>): 
+    cv2.imwrite(<span class="hljs-string">'lena_gray.jpg'</span>, img)</code></pre>
 <ul>
 <li>也可以用<code>ord()</code>，按下<code>q</code>时，保存。</li>
 </ul>
 <h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>OpenCV中很多简单的操作实际上是NumPy的操作，请参照<a href="https://lil-q.github.io/2020/02/20/OpenCV-python学习笔记四/">第四篇</a>。</p>
-<h3 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h3><div class="hljs"><pre><code class="hljs python">px = img[y, x]</code></pre></div>
+<h3 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h3><pre><code class="hljs python">px = img[y, x]</code></pre>
 <ul>
 <li>先输入行，再输入列</li>
 <li>对于彩色图像会返回依次为B-G-R三个通道的值组成的列表，例如<code>[100, 110, 120]</code></li>
 <li>对于灰度图或者单通道图，只有一个值。例如<code>100</code></li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">px_blue = img[y, x, <span class="hljs-number">0</span>]
+<pre><code class="hljs python">px_blue = img[y, x, <span class="hljs-number">0</span>]
 px_green = img[y, x, <span class="hljs-number">1</span>]
-px_red = img[y, x, <span class="hljs-number">2</span>]</code></pre></div>
+px_red = img[y, x, <span class="hljs-number">2</span>]</code></pre>
 <ul>
 <li>获取单通道值</li>
 </ul>
-<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><h4 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 彩色图像，返回一个包含行数（高度）、列数（宽度）和通道数的元组</span>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><h4 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h4><pre><code class="hljs python"><span class="hljs-comment"># 彩色图像，返回一个包含行数（高度）、列数（宽度）和通道数的元组</span>
 height, width, channels = img.shape
 <span class="hljs-comment"># 灰度图，返回行数和列数的元组</span>
-height, width = img.shape</code></pre></div>
-<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><div class="hljs"><pre><code class="hljs python">img.dtype</code></pre></div>
+height, width = img.shape</code></pre>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><pre><code class="hljs python">img.dtype</code></pre>
 <p>实际上<code>img.dtype</code>现实的是图像的深度<code>depth</code>，C++中<code>type</code>包含图像深度<code>depth</code>（低三位）和通道数<code>channel</code>（高三位）。<code>channel</code>可以是1，2，3，n。<code>depth</code>有以下可选：</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">// &lt;interface.h&gt;</span>
+<pre><code class="hljs c++"><span class="hljs-comment">// &lt;interface.h&gt;</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_8U   0</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_8S   1</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_16U  2</span>
@@ -267,34 +289,34 @@ height, width = img.shape</code></pre></div>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_32S  4</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_32F  5</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_64F  6</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_16F  7</span></code></pre></div>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CV_16F  7</span></code></pre>
 <ul>
 <li>数字表示一个像素占几位内存，<code>U</code>表示<code>unsigned</code>，<code>S</code>表示<code>signed</code>，F表示<code>float</code></li>
 </ul>
-<h4 id="ROI-Region-of-Interest"><a href="#ROI-Region-of-Interest" class="headerlink" title="ROI (Region of Interest)"></a>ROI (Region of Interest)</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 截取ROI</span>
-roi = img[<span class="hljs-number">100</span>:<span class="hljs-number">200</span>, <span class="hljs-number">200</span>:<span class="hljs-number">300</span>]</code></pre></div>
+<h4 id="ROI-Region-of-Interest"><a href="#ROI-Region-of-Interest" class="headerlink" title="ROI (Region of Interest)"></a>ROI (Region of Interest)</h4><pre><code class="hljs python"><span class="hljs-comment"># 截取ROI</span>
+roi = img[<span class="hljs-number">100</span>:<span class="hljs-number">200</span>, <span class="hljs-number">200</span>:<span class="hljs-number">300</span>]</code></pre>
 <ul>
 <li>直接指定范围即可，上面表示行数为<code>100-200</code>，列数为<code>200-300</code>的区域</li>
 </ul>
-<h4 id="通道分割和合并"><a href="#通道分割和合并" class="headerlink" title="通道分割和合并"></a>通道分割和合并</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 分割</span>
+<h4 id="通道分割和合并"><a href="#通道分割和合并" class="headerlink" title="通道分割和合并"></a>通道分割和合并</h4><pre><code class="hljs python"><span class="hljs-comment"># 分割</span>
 b, g, r = cv2.split(img)
 <span class="hljs-comment"># 合并</span>
-img = cv2.merge((b, g, r))</code></pre></div>
+img = cv2.merge((b, g, r))</code></pre>
 <p><code>split()</code>函数比较耗时，<strong>更高效的方式是用numpy中的索引</strong>，如提取B通道：</p>
-<div class="hljs"><pre><code class="hljs python">b = img[:, :, <span class="hljs-number">0</span>]</code></pre></div>
-<h4 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 转换图片类型</span>
-cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</code></pre></div>
+<pre><code class="hljs python">b = img[:, :, <span class="hljs-number">0</span>]</code></pre>
+<h4 id="颜色空间转换"><a href="#颜色空间转换" class="headerlink" title="颜色空间转换"></a>颜色空间转换</h4><pre><code class="hljs python"><span class="hljs-comment"># 转换图片类型</span>
+cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</code></pre>
 <ul>
 <li>参数2：<a href="https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab" target="_blank" rel="noopener">cv2.cvtColor()</a></li>
 <li>颜色转换其实是数学运算，如灰度化最常用的是：<code>gray=R*0.299+G*0.587+B*0.114</code></li>
 </ul>
-<h3 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h3><h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 按照指定的宽度、高度缩放图片</span>
-res = cv2.resize(img, (<span class="hljs-number">132</span>, <span class="hljs-number">150</span>))</code></pre></div>
+<h3 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h3><h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><pre><code class="hljs python"><span class="hljs-comment"># 按照指定的宽度、高度缩放图片</span>
+res = cv2.resize(img, (<span class="hljs-number">132</span>, <span class="hljs-number">150</span>))</code></pre>
 <ul>
 <li>参数2：顺序是宽度，高度；并非<code>.shape</code>中高度，宽度，通道的顺序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 按照比例缩放，如x,y轴均放大一倍</span>
-res2 = cv2.resize(img, <span class="hljs-literal">None</span>, fx=<span class="hljs-number">2</span>, fy=<span class="hljs-number">2</span>, interpolation=cv2.INTER_LINEAR)</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-comment"># 按照比例缩放，如x,y轴均放大一倍</span>
+res2 = cv2.resize(img, <span class="hljs-literal">None</span>, fx=<span class="hljs-number">2</span>, fy=<span class="hljs-number">2</span>, interpolation=cv2.INTER_LINEAR)</code></pre>
 <ul>
 <li><code>interpolation</code>，插值方法，默认是<code>INTER_LINEAR</code>，<a href="https://docs.opencv.org/4.0.0/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121" target="_blank" rel="noopener">InterpolationFlags</a>：</li>
 </ul>
@@ -346,11 +368,11 @@ res2 = cv2.resize(img, <span class="hljs-literal">None</span>, fx=<span class="h
 </tbody>
 </table>
 </div>
-<h4 id="翻转"><a href="#翻转" class="headerlink" title="翻转"></a>翻转</h4><div class="hljs"><pre><code class="hljs python">dst = cv2.flip(img, <span class="hljs-number">1</span>)</code></pre></div>
+<h4 id="翻转"><a href="#翻转" class="headerlink" title="翻转"></a>翻转</h4><pre><code class="hljs python">dst = cv2.flip(img, <span class="hljs-number">1</span>)</code></pre>
 <ul>
 <li>参数2 = 0：垂直翻转(沿x轴)，参数2 &gt; 0: 水平翻转(沿y轴)，参数2 &lt; 0: 水平垂直翻转。</li>
 </ul>
-<h4 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 平移图片</span>
+<h4 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h4><pre><code class="hljs python"><span class="hljs-comment"># 平移图片</span>
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 rows, cols = img.shape[:<span class="hljs-number">2</span>]
@@ -362,12 +384,12 @@ M = np.float32([[<span class="hljs-number">1</span>, <span class="hljs-number">0
 dst = cv2.warpAffine(img, M, (cols, rows))
 
 cv2.imshow(<span class="hljs-string">'shift'</span>, dst)
-cv2.waitKey(<span class="hljs-number">0</span>)</code></pre></div>
+cv2.waitKey(<span class="hljs-number">0</span>)</code></pre>
 <ul>
 <li><code>M</code>实际上是<a href="[https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2/4289056?fr=aladdin](https://baike.baidu.com/item/仿射变换/4289056?fr=aladdin">仿射矩阵</a>)去除了最后一行，由矩阵<code>A</code>和向量<code>b</code>组成，由于只做平移，<code>A = [[1, 0], [0, 1]]</code></li>
 </ul>
 <h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p>平移相当于旋转的一种特例，但是由于仿射变换比较复杂，一般直接找很难找到这个矩阵，OpenCV提供了根据变换前后三个点的对应关系来自动求解，<code>M=cv2.getAffineTransform(pos1,pos2)</code>，其中两个位置就是变换前后的对应位置关系。输出的就是仿射矩阵<code>M</code>。然后再使用函数<code>cv2.warpAffine()</code>。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt
 <span class="hljs-keyword">import</span> cv2
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
@@ -384,43 +406,43 @@ plt.imshow(img[:,:,::<span class="hljs-number">-1</span>])
 plt.subplot(<span class="hljs-number">122</span>)
 plt.imshow(res[:,:,::<span class="hljs-number">-1</span>])
 
-plt.show()</code></pre></div>
+plt.show()</code></pre>
 <p>如果仅作旋转和缩放，可以使用 <code>cv2.getRotationMatrix2D()</code>函数来生成这个矩阵，该函数有三个参数：</p>
 <ul>
 <li>参数1：图片的旋转中心</li>
 <li>参数2：旋转角度(正：逆时针，负：顺时针)</li>
 <li>参数3：缩放比例，0.5表示缩小一半</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 45°旋转图片并缩小一半</span>
+<pre><code class="hljs python"><span class="hljs-comment"># 45°旋转图片并缩小一半</span>
 M = cv2.getRotationMatrix2D((cols / <span class="hljs-number">2</span>, rows / <span class="hljs-number">2</span>), <span class="hljs-number">45</span>, <span class="hljs-number">0.5</span>)
 dst = cv2.warpAffine(img, M, (cols, rows))
 
 cv2.imshow(<span class="hljs-string">'rotation'</span>, dst)
-cv2.waitKey(<span class="hljs-number">0</span>)</code></pre></div>
+cv2.waitKey(<span class="hljs-number">0</span>)</code></pre>
 <p>关于仿射和透视请参照<a href="http://codec.wang/opencv-python-extra-warpaffine-warpperspective/" target="_blank" rel="noopener">这里</a></p>
-<h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 打开摄像头</span>
-capture = cv2.VideoCapture(<span class="hljs-number">0</span>)</code></pre></div>
+<h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><pre><code class="hljs python"><span class="hljs-comment"># 打开摄像头</span>
+capture = cv2.VideoCapture(<span class="hljs-number">0</span>)</code></pre>
 <ul>
 <li>参数：摄像头的编号</li>
 <li><code>capture</code>相当于创建的<code>VideoCapture</code>对象</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 获取摄像头画面</span>
-ret, frame = capture.read()</code></pre></div>
+<pre><code class="hljs python"><span class="hljs-comment"># 获取摄像头画面</span>
+ret, frame = capture.read()</code></pre>
 <ul>
 <li>返回值<code>ret</code>：布尔值，表示当前这一帧是否获取正确</li>
 <li>返回值<code>frame</code>：一帧图像</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等</span>
+<pre><code class="hljs python"><span class="hljs-comment"># 获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等</span>
 cap.get(propId)
 <span class="hljs-comment"># 修改属性值</span>
-cap.set(propId,value)</code></pre></div>
+cap.set(propId,value)</code></pre>
 <ul>
 <li><code>propId</code>是<code>0~18</code>的数字，代表不同的属性，完整的属性列表：</li>
 </ul>
 <blockquote>
 <p><code>CV_CAP_PROP_POS_MSEC</code>: Current position of the video file in milliseconds.<br><code>CV_CAP_PROP_POS_FRAMES</code>: 0-based index of the frame to be decoded/captured next.<br><code>CV_CAP_PROP_POS_AVI_RATIO</code>: Relative position of the video file: 0 - start of the film, 1 - end of the film.<br><code>CV_CAP_PROP_FRAME_WIDTH</code>: Width of the frames in the video stream.<br><code>CV_CAP_PROP_FRAME_HEIGHT</code>: Height of the frames in the video stream.<br><code>CV_CAP_PROP_FPS</code>: Frame rate.<br><code>CV_CAP_PROP_FOURCC</code>: 4-character code of codec.<br><code>CV_CAP_PROP_FRAME_COUNT</code>: Number of frames in the video file.<br><code>CV_CAP_PROP_FORMAT</code>: Format of the Mat objects returned by retrieve() .<br><code>CV_CAP_PROP_MODE</code>: Backend-specific value indicating the current capture mode.<br><code>CV_CAP_PROP_BRIGHTNESS</code>: Brightness of the image (only for cameras).<br><code>CV_CAP_PROP_CONTRAST</code>: Contrast of the image (only for cameras).<br><code>CV_CAP_PROP_SATURATION</code>: Saturation of the image (only for cameras).<br><code>CV_CAP_PROP_HUE</code>: Hue of the image (only for cameras).<br><code>CV_CAP_PROP_GAIN</code>: Gain of the image (only for cameras).<br><code>CV_CAP_PROP_EXPOSURE</code>: Exposure (only for cameras).<br><code>CV_CAP_PROP_CONVERT_RGB</code>: Boolean flags indicating whether images should be converted to RGB.<br><code>CV_CAP_PROP_WHITE_BALANCE</code>: Currently unsupported<br><code>CV_CAP_PROP_RECTIFICATION</code>: Rectification flag for stereo cameras (note: only supported by DC1394 v 2.x backend cur- rently)</p>
 </blockquote>
-<h2 id="本地视频"><a href="#本地视频" class="headerlink" title="本地视频"></a>本地视频</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 播放本地视频</span>
+<h2 id="本地视频"><a href="#本地视频" class="headerlink" title="本地视频"></a>本地视频</h2><pre><code class="hljs python"><span class="hljs-comment"># 播放本地视频</span>
 capture = cv2.VideoCapture(<span class="hljs-string">'demo_video.mp4'</span>)
 
 <span class="hljs-keyword">while</span>(capture.isOpened()):
@@ -429,8 +451,8 @@ capture = cv2.VideoCapture(<span class="hljs-string">'demo_video.mp4'</span>)
 
     cv2.imshow(<span class="hljs-string">'frame'</span>, gray)
     <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">30</span>) == ord(<span class="hljs-string">'q'</span>):
-        <span class="hljs-keyword">break</span></code></pre></div>
-<h2 id="录制视频"><a href="#录制视频" class="headerlink" title="录制视频"></a>录制视频</h2><div class="hljs"><pre><code class="hljs python">capture = cv2.VideoCapture(<span class="hljs-number">0</span>)
+        <span class="hljs-keyword">break</span></code></pre>
+<h2 id="录制视频"><a href="#录制视频" class="headerlink" title="录制视频"></a>录制视频</h2><pre><code class="hljs python">capture = cv2.VideoCapture(<span class="hljs-number">0</span>)
 
 <span class="hljs-comment"># 定义编码方式并创建VideoWriter对象</span>
 fourcc = cv2.VideoWriter_fourcc(*<span class="hljs-string">'MJPG'</span>)
@@ -445,7 +467,7 @@ outfile = cv2.VideoWriter(<span class="hljs-string">'output.avi'</span>, fourcc,
         <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">1</span>) == ord(<span class="hljs-string">'q'</span>):
             <span class="hljs-keyword">break</span>
     <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">break</span></code></pre></div>
+        <span class="hljs-keyword">break</span></code></pre>
 <ul>
 <li>创建一个<code>VideoWriter</code>的对象，需要给它传入四个参数：<ul>
 <li>输出的文件名，如’output.avi’</li>
@@ -466,7 +488,7 @@ outfile = cv2.VideoWriter(<span class="hljs-string">'output.avi'</span>, fourcc,
 <li>提取蓝色范围的物体</li>
 <li>只显示蓝色物体</li>
 </ol>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 capture = cv2.VideoCapture(<span class="hljs-number">0</span>)
@@ -493,13 +515,13 @@ upper_blue = np.array([<span class="hljs-number">130</span>, <span class="hljs-n
     cv2.imshow(<span class="hljs-string">'res'</span>, res)
 
     <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">1</span>) == ord(<span class="hljs-string">'q'</span>):
-        <span class="hljs-keyword">break</span></code></pre></div>
+        <span class="hljs-keyword">break</span></code></pre>
 <p>我房间比较暗，调低了点<code>lower_blue</code>中的饱和度和亮度，哆啦A梦如图：</p>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/2020-02-15_.png" srcset="/img/loading.gif" alt=""></p>
-<h1 id="滑动条"><a href="#滑动条" class="headerlink" title="滑动条"></a>滑动条</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 创建一个名为test的窗口</span>
+<h1 id="滑动条"><a href="#滑动条" class="headerlink" title="滑动条"></a>滑动条</h1><pre><code class="hljs python"><span class="hljs-comment"># 创建一个名为test的窗口</span>
 cv2.namedWindow(<span class="hljs-string">'test'</span>)
 <span class="hljs-comment"># 创建一个滑动条</span>
-cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, nothing)</code></pre></div>
+cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, nothing)</code></pre>
 <ul>
 <li>参数1：滑动条的名称</li>
 <li>参数2：所在窗口的名称</li>
@@ -508,7 +530,7 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
 <li>参数5：回调函数名称，回调函数默认有一个表示当前值的参数</li>
 </ul>
 <p>创建好之后，可以在回调函数中获取滑动条的值，也可以用<code>cv2.getTrackbarPos()</code>得到：</p>
-<div class="hljs"><pre><code class="hljs python">r = cv2.getTrackbarPos(<span class="hljs-string">'R'</span>, <span class="hljs-string">'test'</span>)</code></pre></div>
+<pre><code class="hljs python">r = cv2.getTrackbarPos(<span class="hljs-string">'R'</span>, <span class="hljs-string">'test'</span>)</code></pre>
 <ul>
 <li>参数1是滑动条的名称</li>
 <li>参数2是窗口的名称。</li>
@@ -548,7 +570,7 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
                       <a href="/2020/02/17/OpenCV-python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">OpenCV-python学习笔记二</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -557,7 +579,7 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
                     
                       <a href="/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/">
                         <span class="hidden-mobile">HTML学习</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -572,28 +594,26 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -660,28 +680,12 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -692,14 +696,27 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -708,7 +725,7 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -724,22 +741,6 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -805,6 +806,8 @@ cv2.createTrackbar(<span class="hljs-string">'R'</span>, <span class="hljs-strin
       }
     );
   </script>
+
+
 
 
 

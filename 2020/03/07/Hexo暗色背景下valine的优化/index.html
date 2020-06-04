@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>Hexo暗色背景下valine的优化 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-07 17:12">
-                    Saturday, March 7th 2020, 5:12 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-03-07 17:12">
+      March 7, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    515 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    6
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      515 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -188,20 +210,20 @@
 <h1 id="自定义CSS"><a href="#自定义CSS" class="headerlink" title="自定义CSS"></a>自定义CSS</h1><p>以fluid主题为例（其他很多主题也有类似自定义CSS的功能），具体步骤如下：</p>
 <ol>
 <li><p>在<code>\hexo\themes\fluid\source\css</code>下创建<code>custom.css</code>文件，并在主题的配置文件<code>_config.yml</code>中添加如下路径。</p>
-<div class="hljs"><pre><code class="hljs yaml"><span class="hljs-comment"># 指定自定义 css 文件路径，路径是相对 source 目录</span>
-<span class="hljs-attr">custom_css:</span> <span class="hljs-string">/css/custom.css</span></code></pre></div>
+<pre><code class="hljs yaml"><span class="hljs-comment"># 指定自定义 css 文件路径，路径是相对 source 目录</span>
+<span class="hljs-attr">custom_css:</span> <span class="hljs-string">/css/custom.css</span></code></pre>
 </li>
 <li><p>在浏览器中找到需要修改的部分代码，修改后添加到<code>custom.css</code>，并在语句后面添加<code>!important</code>提高优先级以确保覆盖原有设置。例如修改valine输入的字体的颜色和高度就可以这样设置：</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.v</span> * &#123;
+<pre><code class="hljs css"><span class="hljs-selector-class">.v</span> * &#123;
     <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
-&#125;</code></pre></div>
+&#125;</code></pre>
 </li>
 <li><p>保存文件，<code>hexo clean</code> and <code>hexo d -g</code>。</p>
 </li>
 </ol>
 <h1 id="本博客的例子"><a href="#本博客的例子" class="headerlink" title="本博客的例子"></a>本博客的例子</h1><p>由于我对CSS不熟悉，自己的valine只做了一些简单的修改：</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*valine 评论系统样式*/</span>
+<pre><code class="hljs css"><span class="hljs-comment">/*valine 评论系统样式*/</span>
 <span class="hljs-selector-class">.v</span> * &#123;
     <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
@@ -239,7 +261,7 @@
     <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
     <span class="hljs-attribute">-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
 &#125;
-<span class="hljs-comment">/**/</span></code></pre></div>
+<span class="hljs-comment">/**/</span></code></pre>
 <p>玩的开心！</p>
 
             </article>
@@ -272,7 +294,7 @@
                       <a href="/2020/03/08/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">回溯(Backtracking)</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -281,7 +303,7 @@
                     
                       <a href="/2020/02/29/NumPy%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
                         <span class="hidden-mobile">NumPy数据分析</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -296,28 +318,26 @@
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -384,28 +404,12 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -416,14 +420,27 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -432,7 +449,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -448,22 +465,6 @@
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -529,6 +530,8 @@
       }
     );
   </script>
+
+
 
 
 

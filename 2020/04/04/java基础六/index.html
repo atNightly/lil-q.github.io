@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>java-I/O - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-04-04 14:13">
-                    Saturday, April 4th 2020, 2:13 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-04-04 14:13">
+      April 4, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    3.2k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    39
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -199,17 +221,17 @@
 <p>实例化一个具有缓存功能的字节流对象时，只需要在 FileInputStream 对象上再套一层 BufferedInputStream 对象即可。</p>
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p><code>InputStream</code>就是Java标准库提供的最基本的输入流。它位于<code>java.io</code>这个包里。<code>java.io</code>包提供了所有同步IO的功能。</p>
 <p><code>InputStream</code>并不是一个接口，而是一个抽象类，它是所有输入流的超类。这个抽象类定义的一个最重要的方法就是<code>int read()</code>：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre></div>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre>
 <p>这个方法会读取输入流的下一个字节，并返回字节表示的<code>int</code>值（0~255）。如果已读到末尾，返回<code>-1</code>表示不能继续读取了。</p>
 <p><code>FileInputStream</code>是<code>InputStream</code>的一个子类，能从文件流中读取数据。使用<code>try(resource)</code>可以保证<code>InputStream</code>正确关闭（因为<code>InputStream</code>和<code>OutputStream</code>都实现了<code>java.lang.AutoCloseable</code>接口）。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
     <span class="hljs-keyword">try</span> (InputStream input = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"src/readme.txt"</span>)) &#123;
         <span class="hljs-keyword">int</span> n;
         <span class="hljs-keyword">while</span> ((n = input.read()) != -<span class="hljs-number">1</span>) &#123;
             System.out.println(n);
         &#125;
     &#125; <span class="hljs-comment">// 编译器在此自动为我们写入finally并调用close()</span>
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h3 id="缓冲"><a href="#缓冲" class="headerlink" title="缓冲"></a>缓冲</h3><p>在读取流的时候，一次读取一个字节并不是最高效的方法。很多流支持一次性读取多个字节到缓冲区，对于文件和网络流来说，利用缓冲区一次性读取多个字节效率往往要高很多。<code>InputStream</code>提供了两个重载方法来支持读取多个字节：</p>
 <ul>
 <li><code>int read(byte[] b)</code>：读取若干字节并填充到<code>byte[]</code>数组，返回读取的字节数</li>
@@ -217,7 +239,7 @@
 </ul>
 <p>利用上述方法一次读取多个字节时，需要先定义一个<code>byte[]</code>数组作为缓冲区<code>buffer</code>，<code>read()</code>方法会尽可能多地读取字节到缓冲区， 但不会超过缓冲区的大小。<code>read()</code>方法的返回值不再是字节的<code>int</code>值，而是返回实际读取了多少个字节。如果在读入到缓存区时遇到<code>-1</code>则会跳出循环，下一次调用<code>read()</code>时就会直接读到-1而退出。</p>
 <p>利用缓冲区一次读取多个字节的代码如下：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
     <span class="hljs-keyword">try</span> (InputStream input = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"src/readme.txt"</span>)) &#123;
         <span class="hljs-comment">// 定义1000个字节大小的缓冲区:</span>
         <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1000</span>];
@@ -226,19 +248,19 @@
             System.out.println(<span class="hljs-string">"read "</span> + n + <span class="hljs-string">" bytes."</span>);
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>在调用<code>InputStream</code>的<code>read()</code>方法读取数据时，我们说<code>read()</code>方法是阻塞（Blocking）的。因为程序要等<code>read()</code>方法返回后才能继续。因为读取IO流相比执行普通代码，速度会慢很多，因此，无法确定<code>read()</code>方法调用到底要花费多长时间。</p>
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p><code>OutputStream</code>也是抽象类，它是所有输出流的超类。这个抽象类定义的一个最重要的方法就是<code>void write(int b)</code>，签名如下：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> b)</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre></div>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> b)</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre>
 <p>这个方法会写入一个字节到输出流。要注意的是，虽然传入的是<code>int</code>参数，但只会写入一个字节，即只写入<code>int</code>最低8位表示字节的部分（相当于<code>b &amp; 0xff</code>）。同样，可以用<code>OutputStream</code>提供的重载方法<code>void write(byte[])</code>来一次性写入若干字节：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
     <span class="hljs-keyword">try</span> (OutputStream output = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">"out/readme.txt"</span>)) &#123;
         output.write(<span class="hljs-string">"Hello"</span>.getBytes(<span class="hljs-string">"UTF-8"</span>)); <span class="hljs-comment">// Hello</span>
     &#125; <span class="hljs-comment">// 编译器在此自动为我们写入finally并调用close()</span>
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h3 id="flush"><a href="#flush" class="headerlink" title="flush()"></a>flush()</h3><p><code>OutputStream</code>还提供了一个<code>flush()</code>方法，它的目的是将缓冲区的内容真正输出到目的地。向磁盘、网络写入数据的时候，出于效率的考虑，操作系统并不是输出一个字节就立刻写入到文件或者发送到网络，而是把输出的字节先放到内存的一个缓冲区里（本质上就是一个<code>byte[]</code>数组），等到缓冲区写满了，再一次性写入文件或者网络。对于很多IO设备来说，一次写一个字节和一次写1000个字节，花费的时间几乎是完全一样的，所以<code>OutputStream</code>有个<code>flush()</code>方法，能强制把缓冲区内容输出。</p>
 <p>通常情况下，我们不需要调用这个<code>flush()</code>方法，因为缓冲区写满了<code>OutputStream</code>会自动调用它，并且，在调用<code>close()</code>方法关闭<code>OutputStream</code>之前，也会自动调用<code>flush()</code>方法。例如聊天软件则需要把缓冲区的内容立刻发送出去。</p>
-<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;
+<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;
 <span class="hljs-keyword">import</span> java.io.FileOutputStream;
 <span class="hljs-keyword">import</span> java.io.IOException;
 <span class="hljs-keyword">import</span> java.io.InputStream;
@@ -261,18 +283,18 @@
 			<span class="hljs-keyword">while</span> (input.read(buffer) != -<span class="hljs-number">1</span>) output.write(buffer);
 		&#125;
 	&#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="classpath资源"><a href="#classpath资源" class="headerlink" title="classpath资源"></a>classpath资源</h2><p>把资源存储在classpath中可以避免文件路径依赖；<code>Class</code>对象的<code>getResourceAsStream()</code>可以从classpath中读取指定资源；根据classpath读取资源时，如果资源文件不存在，它将返回<code>null</code>，需要检查返回的<code>InputStream</code>是否为<code>null</code>。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">try</span> (InputStream input = getClass().getResourceAsStream(<span class="hljs-string">"/default.properties"</span>)) &#123;
+<pre><code class="hljs java"><span class="hljs-keyword">try</span> (InputStream input = getClass().getResourceAsStream(<span class="hljs-string">"/default.properties"</span>)) &#123;
     <span class="hljs-keyword">if</span> (input != <span class="hljs-keyword">null</span>) &#123;
         <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span></span>
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p><strong>对象序列化</strong>是一个用于将对象状态转换为字节流的过程，可以将其保存到磁盘文件中或通过网络发送到任何其他程序；从字节流创建对象的相反的过程称为<strong>反序列化</strong>。而创建的字节流是与平台无关的，在一个平台上序列化的对象可以在不同的平台上反序列化。一个Java对象要能序列化，必须实现一个特殊的<code>java.io.Serializable</code>接口，它的定义如下：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Serializable</span> </span>&#123;&#125;</code></pre></div>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Serializable</span> </span>&#123;&#125;</code></pre>
 <p><code>Serializable</code>接口没有定义任何方法，它是一个空接口。这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。</p>
 <h3 id="序列化-1"><a href="#序列化-1" class="headerlink" title="序列化"></a>序列化</h3><p>把一个Java对象变为<code>byte[]</code>数组，需要使用<code>ObjectOutputStream</code>。它负责把一个Java对象写入一个字节流：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 <span class="hljs-keyword">import</span> java.util.Arrays;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -289,14 +311,14 @@
         &#125;
         System.out.println(Arrays.toString(buffer.toByteArray()));
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><code>ObjectOutputStream</code>既可以写入基本类型，如<code>int</code>，<code>boolean</code>，也可以写入<code>String</code>（以UTF-8编码），还可以写入实现了<code>Serializable</code>接口的<code>Object</code>。因为写入<code>Object</code>时需要大量的类型信息，所以写入的内容很大。</p>
 <h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>和<code>ObjectOutputStream</code>相反，<code>ObjectInputStream</code>负责从一个字节流读取Java对象：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">try</span> (ObjectInputStream input = <span class="hljs-keyword">new</span> ObjectInputStream(...)) &#123;
+<pre><code class="hljs java"><span class="hljs-keyword">try</span> (ObjectInputStream input = <span class="hljs-keyword">new</span> ObjectInputStream(...)) &#123;
     <span class="hljs-keyword">int</span> n = input.readInt();
     String s = input.readUTF();
     Double d = (Double) input.readObject();
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>除了能读取基本类型和<code>String</code>类型外，调用<code>readObject()</code>可以直接返回一个<code>Object</code>对象。要把它变成一个特定类型，必须强制转型。</p>
 <p><code>readObject()</code>可能抛出的异常有：</p>
 <ul>
@@ -304,15 +326,15 @@
 <li><code>InvalidClassException</code>：Class不匹配。</li>
 </ul>
 <p>为了避免这种class定义变动导致的不兼容，Java的序列化允许class定义一个特殊的<code>serialVersionUID</code>静态变量，用于标识Java类的序列化“版本”，通常可以由IDE自动生成。如果增加或修改了字段，可以改变<code>serialVersionUID</code>的值，这样就能自动阻止不匹配的class版本：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">2709425275741743919L</span>;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>反序列化时，由JVM直接构造出Java对象，<strong>不调用构造方法</strong>，构造方法内部的代码，在反序列化时根本不可能执行。这是存在一定安全隐患的。</p>
 <h3 id="transient"><a href="#transient" class="headerlink" title="transient"></a>transient</h3><p>transient 关键字可以使一些属性不会被序列化。</p>
 <p>ArrayList 中存储数据的数组 elementData 是用 transient 修饰的，因为这个数组是动态扩展的，并不是所有的空间都被使用，因此就不需要所有的内容都被序列化。通过重写序列化和反序列化方法，使得可以只序列化数组中有内容的那部分数据。</p>
 <h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>Java本身提供的基于对象的序列化和反序列化机制既存在安全性问题，也存在兼容性问题。更好的序列化方法是通过JSON这样的通用数据结构来实现，只输出基本类型（包括String）的内容，而不存储任何与代码相关的信息。</p>
 <h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><h3 id="reader"><a href="#reader" class="headerlink" title="reader"></a>reader</h3><p>以上讲到的都是字符流，<code>Reader</code>是Java的IO库提供的另一个输入流接口，是一个字符流，即以<code>char</code>为单位读取，<code>java.io.Reader</code>是所有字符输入流的超类，它最主要的方法是：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre></div>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>;</code></pre>
 <p>这个方法读取字符流的下一个字符，并返回字符表示的<code>int</code>，范围是<code>0</code>~<code>65535</code>。如果已读到末尾，返回<code>-1</code>。</p>
 <p><code>Reader</code>定义了所有字符输入流的超类：</p>
 <ul>
@@ -481,7 +503,7 @@
 </table>
 </div>
 <h2 id="分组匹配"><a href="#分组匹配" class="headerlink" title="分组匹配"></a>分组匹配</h2><p><code>String.matches()</code>方法内部调用的就是<code>Pattern</code>和<code>Matcher</code>类的方法。但是反复使用<code>String.matches()</code>对同一个正则表达式进行多次匹配效率较低，因为每次都会创建出一样的<code>Pattern</code>对象。完全可以先创建出一个<code>Pattern</code>对象，然后反复使用，就可以实现编译一次，多次匹配：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Pattern pattern = Pattern.compile(<span class="hljs-string">"(\\d&#123;3,4&#125;)\\-(\\d&#123;7,8&#125;)"</span>);
         pattern.matcher(<span class="hljs-string">"010-12345678"</span>).matches(); <span class="hljs-comment">// true</span>
@@ -497,8 +519,8 @@
             System.out.println(tel);
         &#125;
     &#125;
-&#125;</code></pre></div>
-<h2 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">render</span><span class="hljs-params">(Map&lt;String, Object&gt; data)</span> </span>&#123;
+&#125;</code></pre>
+<h2 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h2><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">render</span><span class="hljs-params">(Map&lt;String, Object&gt; data)</span> </span>&#123;
 		Matcher m = pattern.matcher(template);
 		StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
 		
@@ -507,7 +529,7 @@
 		&#125;
 		m.appendTail(sb); <span class="hljs-comment">// 添加最后的子串</span>
 		<span class="hljs-keyword">return</span> sb.toString();
-	&#125;</code></pre></div>
+	&#125;</code></pre>
 
             </article>
             <hr>
@@ -539,7 +561,7 @@
                       <a href="/2020/04/08/%E9%93%BE%E8%A1%A8/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">链表(Linked list)</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -548,7 +570,7 @@
                     
                       <a href="/2020/04/02/java%E5%9F%BA%E7%A1%80%E4%BA%94/">
                         <span class="hidden-mobile">java-Map</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -563,28 +585,26 @@
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -651,28 +671,12 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -683,14 +687,27 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -699,7 +716,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -715,22 +732,6 @@
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -796,6 +797,8 @@
       }
     );
   </script>
+
+
 
 
 

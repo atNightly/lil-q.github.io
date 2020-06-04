@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>疑难杂题 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-13 19:54">
-                    Wednesday, May 13th 2020, 7:54 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-05-13 19:54">
+      May 13, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    3.1k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    53
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      53
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -183,7 +205,7 @@
               <p>整理一些难度较大或者十分有趣的题目。</p>
 <a id="more"></a>
 <h1 id="nowcoder-整理房间"><a href="#nowcoder-整理房间" class="headerlink" title="nowcoder 整理房间"></a><a href="https://www.nowcoder.com/practice/c32f4c74446541a1ad2abbe54476681f?tpId=98&amp;tqId=32835&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 整理房间</a></h1><p>不难但是很全面的一题：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-comment">// 创建一个 Point 类</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;
@@ -267,9 +289,9 @@
         <span class="hljs-keyword">return</span> ((<span class="hljs-keyword">long</span>) (p1.a - p2.a) * (p1.a - p2.a) 
                      + (p1.b - p2.b) * (p1.b - p2.b));
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="nowcoder-小易的字典"><a href="#nowcoder-小易的字典" class="headerlink" title="nowcoder 小易的字典"></a><a href="https://www.nowcoder.com/practice/12b1b8ef17e1441f86f322b250bff4c0?tpId=98&amp;tqId=32838&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 小易的字典</a></h1><p>类似于康托展开的思路，不过这里要求的是组合数。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
@@ -315,9 +337,9 @@
         &#125;
         <span class="hljs-keyword">return</span> c;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="leetcode-42-接雨水"><a href="#leetcode-42-接雨水" class="headerlink" title="leetcode 42. 接雨水"></a><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">leetcode 42. 接雨水</a></h1><p><strong>解法一：</strong>两遍扫描。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = height.length;
         <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
@@ -335,9 +357,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><strong>解法二：</strong>双指针——按列。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = height.length - <span class="hljs-number">1</span>;
         <span class="hljs-keyword">int</span> left_max = <span class="hljs-number">0</span>, right_max = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;
@@ -354,9 +376,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><strong>解法三：</strong>双指针——按行。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = height.length;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>, h = <span class="hljs-number">0</span>;
@@ -378,9 +400,9 @@
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) sum -= height[i];
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><strong>解法四：</strong>单调栈。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
@@ -397,9 +419,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="N数和问题"><a href="#N数和问题" class="headerlink" title="N数和问题"></a>N数和问题</h1><h2 id="leetcode-1-两数之和"><a href="#leetcode-1-两数之和" class="headerlink" title="leetcode 1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">leetcode 1. 两数之和</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^2)</script>降低至<script type="math/tex">O(n)</script>：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
@@ -409,9 +431,9 @@
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="leetcode-15-三数之和"><a href="#leetcode-15-三数之和" class="headerlink" title="leetcode 15. 三数之和"></a><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">leetcode 15. 三数之和</a></h2><p>利用双指针将复杂度从<script type="math/tex">O(n^3)</script>降低至<script type="math/tex">O(n^2)</script>：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="hljs-keyword">int</span>[] nums) &#123;
         List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         Arrays.sort(nums); <span class="hljs-comment">// 排序以利用双指针</span>
@@ -432,9 +454,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><code>Arrays.asList()</code>和<code>List.of()</code>区别：<a href="https://stackoverflow.com/questions/46579074/what-is-the-difference-between-list-of-and-arrays-aslist" target="_blank" rel="noopener">What is the difference between List.of and Arrays.asList?</a></p>
-<h2 id="leetcode-18-四数之和"><a href="#leetcode-18-四数之和" class="headerlink" title="leetcode 18. 四数之和"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">leetcode 18. 四数之和</a></h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h2 id="leetcode-18-四数之和"><a href="#leetcode-18-四数之和" class="headerlink" title="leetcode 18. 四数之和"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">leetcode 18. 四数之和</a></h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
         Arrays.sort(nums); <span class="hljs-comment">// 排序以利用双指针</span>
         List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
@@ -459,9 +481,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="leetcode-454-四数相加-II"><a href="#leetcode-454-四数相加-II" class="headerlink" title="leetcode 454. 四数相加 II"></a><a href="https://leetcode-cn.com/problems/4sum-ii/" target="_blank" rel="noopener">leetcode 454. 四数相加 II</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^4)</script>降低至<script type="math/tex">O(n^2)</script>：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fourSumCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span>[] C, <span class="hljs-keyword">int</span>[] D)</span> </span>&#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>, n = A.length;
@@ -477,10 +499,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="前缀和与线段树"><a href="#前缀和与线段树" class="headerlink" title="前缀和与线段树"></a>前缀和与线段树</h1><h2 id="leetcode-560-和为K的子数组"><a href="#leetcode-560-和为K的子数组" class="headerlink" title="leetcode 560. 和为K的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">leetcode 560. 和为K的子数组</a></h2><p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的<strong>连续</strong>的子数组的个数。</p>
 <p>每扫描一个数就将这个数之前的所有数之和存进哈希表，称之为前缀和。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">subarraySum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         map.put(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
@@ -492,10 +514,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="leetcode-307-区域和检索-数组可修改"><a href="#leetcode-307-区域和检索-数组可修改" class="headerlink" title="leetcode 307. 区域和检索 - 数组可修改"></a><a href="https://leetcode-cn.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener">leetcode 307. 区域和检索 - 数组可修改</a></h2><p>前缀和并不是万能的，当需要修改数组时，修改操作的复杂度由<script type="math/tex">O(1)</script>提高至<script type="math/tex">O(n)</script>。</p>
 <p>使用线段树可以把检索和修改的时间复杂度都保持在<script type="math/tex">O(log n)</script>，以保证在检索和修改次数较为均衡的情况下，能够保持良好的效率。线段树类似堆树，利用数组作为数据结构：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumArray</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumArray</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] na;
     <span class="hljs-keyword">int</span> n;
 
@@ -538,9 +560,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="nowcoder-善变的同伴"><a href="#nowcoder-善变的同伴" class="headerlink" title="nowcoder 善变的同伴"></a><a href="https://www.nowcoder.com/practice/824af5cb05794606b56657bb3fa91f49?tpId=98&amp;tqId=32843&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 善变的同伴</a></h2><p>有时候对数组做累加操作再处理会带来便利，这题使用类似股票问题的动态规划会超时，计算前缀和，再利用极小值和极大值的特性可以在<script type="math/tex">O(n)</script>完成：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 <span class="hljs-keyword">import</span> java.util.*;
 <span class="hljs-comment">/*                    t3 (t3 &gt; t2, 合并 b2 至 t3, 合并后如果次数还有多，
 *        t1           /\  就要把合并损失的还回去，记录栈内所有 bi-1 - ti)        
@@ -595,9 +617,9 @@
         &#125;
         System.out.println(res);
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="nowcoder-鸡鸭分类问题"><a href="#nowcoder-鸡鸭分类问题" class="headerlink" title="nowcoder 鸡鸭分类问题"></a><a href="https://www.nowcoder.com/practice/f87616abbac44842b43f24ddd3cf49e8?tpId=98&amp;tqId=32861&amp;tPage=2&amp;rp=2&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 鸡鸭分类问题</a></h1><p>所谓交换就是移动一次，所以只要求所有鸡和鸭移动到前端共用次数中较小的一个：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
@@ -615,8 +637,8 @@
         &#125;
         System.out.println(Math.min(C, D));
     &#125;
-&#125;</code></pre></div>
-<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="leetcode-76-最小覆盖子串"><a href="#leetcode-76-最小覆盖子串" class="headerlink" title="leetcode 76. 最小覆盖子串"></a><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">leetcode 76. 最小覆盖子串</a></h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+&#125;</code></pre>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="leetcode-76-最小覆盖子串"><a href="#leetcode-76-最小覆盖子串" class="headerlink" title="leetcode 76. 最小覆盖子串"></a><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">leetcode 76. 最小覆盖子串</a></h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minWindow</span><span class="hljs-params">(String s, String t)</span> </span>&#123;
         <span class="hljs-comment">// map 记录 t 组成</span>
         Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
@@ -653,10 +675,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="leetcode-287-寻找重复数"><a href="#leetcode-287-寻找重复数" class="headerlink" title="leetcode 287. 寻找重复数"></a><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">leetcode 287. 寻找重复数</a></h1><p><strong>解法一：</strong>将数组转化为链表。</p>
 <p>由于这个数组没有 0 这个值，所以 0 结点的入度为 0，必定不成环。可以看出 0 为 head 的一个链表，求其环入口。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> slow = nums[<span class="hljs-number">0</span>], fast = nums[nums[<span class="hljs-number">0</span>]];
         <span class="hljs-keyword">while</span> (slow != fast) &#123;
@@ -670,10 +692,10 @@
         &#125;
         <span class="hljs-keyword">return</span> slow;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><strong>解法二：</strong>二分查找</p>
 <p>利用抽屉原理的思想。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = nums.length - <span class="hljs-number">1</span>;
         <span class="hljs-keyword">while</span> (l &lt; r) &#123;
@@ -686,7 +708,7 @@
         &#125;
         <span class="hljs-keyword">return</span> l;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
             </article>
             <hr>
@@ -718,7 +740,7 @@
                       <a href="/2020/05/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E8%A7%A3/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">图论题解</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -727,7 +749,7 @@
                     
                       <a href="/2020/05/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BA%E5%9E%8B/">
                         <span class="hidden-mobile">设计模式——创建型</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -742,28 +764,26 @@
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -830,28 +850,12 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -862,14 +866,27 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -878,7 +895,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -894,22 +911,6 @@
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -1018,6 +1019,8 @@
     <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
+
+
 
 
 

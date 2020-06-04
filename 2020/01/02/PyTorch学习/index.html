@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>PyTorch基础 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-01-02 17:39">
-                    Thursday, January 2nd 2020, 5:39 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-01-02 17:39">
+      January 2, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    5.7k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    79
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.6k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      79
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -182,7 +204,7 @@
             <article class="markdown-body">
               <p>PyTorch官方中文文档学习笔记</p>
 <a id="more"></a>
-<h1 id="张量-Tensors"><a href="#张量-Tensors" class="headerlink" title="张量(Tensors)"></a>张量(Tensors)</h1><h2 id="创建张量"><a href="#创建张量" class="headerlink" title="创建张量"></a>创建张量</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 创建一个5x3的矩阵，不初始化</span>
+<h1 id="张量-Tensors"><a href="#张量-Tensors" class="headerlink" title="张量(Tensors)"></a>张量(Tensors)</h1><h2 id="创建张量"><a href="#创建张量" class="headerlink" title="创建张量"></a>创建张量</h2><pre><code class="hljs python"><span class="hljs-comment"># 创建一个5x3的矩阵，不初始化</span>
 x_1 = torch.empty(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>)
 
 <span class="hljs-comment"># 构造一个随机初始化的矩阵</span>
@@ -192,9 +214,9 @@ x_2 = torch.rand(<span class="hljs-number">5</span>, <span class="hljs-number">3
 x_3 = torch.zeros(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, dtype=torch.long)
 
 <span class="hljs-comment"># 构造一个张量，直接使用数据</span>
-x_4 = torch.tensor([<span class="hljs-number">5.5</span>, <span class="hljs-number">3</span>])</code></pre></div>
+x_4 = torch.tensor([<span class="hljs-number">5.5</span>, <span class="hljs-number">3</span>])</code></pre>
 <p>输出：</p>
-<div class="hljs"><pre><code class="hljs python">x_1: tensor([[<span class="hljs-number">1.2875e-35</span>, <span class="hljs-number">0.0000e+00</span>, <span class="hljs-number">1.2875e-35</span>],
+<pre><code class="hljs python">x_1: tensor([[<span class="hljs-number">1.2875e-35</span>, <span class="hljs-number">0.0000e+00</span>, <span class="hljs-number">1.2875e-35</span>],
              [<span class="hljs-number">0.0000e+00</span>, <span class="hljs-number">1.7290e-39</span>, <span class="hljs-number">0.0000e+00</span>],
              [<span class="hljs-number">1.7290e-39</span>, <span class="hljs-number">0.0000e+00</span>, <span class="hljs-number">1.2876e-35</span>],
              [<span class="hljs-number">0.0000e+00</span>, <span class="hljs-number">1.2876e-35</span>, <span class="hljs-number">0.0000e+00</span>],
@@ -209,7 +231,7 @@ x_3: tensor([[<span class="hljs-number">0</span>, <span class="hljs-number">0</s
              [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
              [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
              [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]])
-x_4: tensor([<span class="hljs-number">5.5000</span>, <span class="hljs-number">3.0000</span>])</code></pre></div>
+x_4: tensor([<span class="hljs-number">5.5000</span>, <span class="hljs-number">3.0000</span>])</code></pre>
 <h2 id="张量数据类型"><a href="#张量数据类型" class="headerlink" title="张量数据类型"></a>张量数据类型</h2><p>PyTorch提供了9种用于CPU和GPU的张量类型：</p>
 <div class="table-container">
 <table>
@@ -279,7 +301,7 @@ x_4: tensor([<span class="hljs-number">5.5000</span>, <span class="hljs-number">
 </tbody>
 </table>
 </div>
-<h2 id="张量的运算"><a href="#张量的运算" class="headerlink" title="张量的运算"></a>张量的运算</h2><h3 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h3><div class="hljs"><pre><code class="hljs python">x_1 = torch.ones(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
+<h2 id="张量的运算"><a href="#张量的运算" class="headerlink" title="张量的运算"></a>张量的运算</h2><h3 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h3><pre><code class="hljs python">x_1 = torch.ones(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
 print(<span class="hljs-string">'x_1'</span>, x_1, x_1.dtype)
 
 x_2 = x_1 * <span class="hljs-number">2</span>
@@ -301,9 +323,9 @@ print(<span class="hljs-string">'x_1'</span>, x_1)
 <span class="hljs-comment"># 加法四(in-place)</span>
 y_3 = x_1.add_(x_2)
 print(<span class="hljs-string">'y_3'</span>, y_3)
-print(<span class="hljs-string">'x_1'</span>, x_1)</code></pre></div>
+print(<span class="hljs-string">'x_1'</span>, x_1)</code></pre>
 <p>输出：</p>
-<div class="hljs"><pre><code class="hljs python">x_1 tensor([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],
+<pre><code class="hljs python">x_1 tensor([[<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],
             [<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>],
             [<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>]]) torch.float32
 x_2 tensor([[<span class="hljs-number">2.</span>, <span class="hljs-number">2.</span>, <span class="hljs-number">2.</span>],
@@ -330,8 +352,8 @@ y_3 tensor([[<span class="hljs-number">3.</span>, <span class="hljs-number">3.</
             [<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>]])
 x_1 tensor([[<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>],
             [<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>],
-            [<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>]])</code></pre></div>
-<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 哈达玛积(element wise，对应元素相乘)</span>
+            [<span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>, <span class="hljs-number">3.</span>]])</code></pre>
+<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><pre><code class="hljs python"><span class="hljs-comment"># 哈达玛积(element wise，对应元素相乘)</span>
 <span class="hljs-comment"># mul和*等效</span>
 y_4 = torch.mul(x_1, x_2)
 y_5 = x_1*x_2
@@ -340,9 +362,9 @@ y_5 = x_1*x_2
 <span class="hljs-comment"># matmul和mm等效</span>
 y_6 = torch.matmul(x_1, x_2)
 y_7 = torch.mm(x_1, x_2)
-y_8 = x_1.mm(x_2)</code></pre></div>
+y_8 = x_1.mm(x_2)</code></pre>
 <p>输出：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 哈达玛积(element wise，对应元素相乘)</span>
+<pre><code class="hljs python"><span class="hljs-comment"># 哈达玛积(element wise，对应元素相乘)</span>
 <span class="hljs-comment"># mul和*等效</span>
 <span class="hljs-comment"># 注意：x_1中的值已经变成3了</span>
 y_4 tensor([[<span class="hljs-number">6.</span>, <span class="hljs-number">6.</span>, <span class="hljs-number">6.</span>],
@@ -361,9 +383,9 @@ y_7 tensor([[<span class="hljs-number">18.</span>, <span class="hljs-number">18.
             [<span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>]])
 y_8 tensor([[<span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>],
             [<span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>],
-            [<span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>]])</code></pre></div>
+            [<span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>, <span class="hljs-number">18.</span>]])</code></pre>
 <h2 id="自动微分"><a href="#自动微分" class="headerlink" title="自动微分"></a>自动微分</h2><p><code>torch.Tensor</code> 是包的核心类。如果将其属性 <code>.requires_grad</code>设置为<code>True</code>，则会开始跟踪针对 <code>tensor</code> 的所有操作。完成计算后，您可以调用 <code>.backward()</code>来自动计算所有梯度。该张量的梯度将累积到<code>.grad</code>属性中。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> torch
 x = torch.ones(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
 print(x.requires_grad)
 
@@ -372,10 +394,10 @@ print(x.requires_grad)
 x.requires_grad_(<span class="hljs-literal">True</span>)
 
 <span class="hljs-comment"># print: tensor([[1., 1.],</span>
-<span class="hljs-comment">#        	     [1., 1.]], requires_grad=True)</span></code></pre></div>
+<span class="hljs-comment">#        	     [1., 1.]], requires_grad=True)</span></code></pre>
 <p>还有一个类对于 <code>autograd</code> 实现非常重要那就是 <code>Function</code>。<code>Tensor</code> 和 <code>Function</code> 互相连接并构建一个非循环图，它保存整个完整的计算过程的历史信息。每个张量都有一个 <code>.grad_fn</code> 属性保存着创建了张量的 <code>Function</code> 的引用，（如果用户自己创建张量，则<code>grad_fn</code> 是 <code>None</code> ）。</p>
 <p>如果你想计算导数，你可以调用 <code>Tensor.backward()</code>。如果 <code>Tensor</code> 是标量（<strong>即它包含一个元素数据，相当于权重是1</strong>），则不需要指定任何参数<code>backward()</code>，但是如果它有更多元素，则需要指定一个<code>gradient</code> 参数（<strong>每个维度的权重</strong>）来指定张量的形状。</p>
-<div class="hljs"><pre><code class="hljs python">y = x + <span class="hljs-number">2</span>
+<pre><code class="hljs python">y = x + <span class="hljs-number">2</span>
 print(y)
 
 <span class="hljs-comment"># print:</span>
@@ -401,9 +423,9 @@ print(x.grad)
 
 <span class="hljs-comment"># print:</span>
 <span class="hljs-comment"># tensor([[4.5000, 4.5000],</span>
-<span class="hljs-comment">#        [4.5000, 4.5000]])</span></code></pre></div>
+<span class="hljs-comment">#        [4.5000, 4.5000]])</span></code></pre>
 <p>需要输入权重的雅克比向量积的例子：</p>
-<div class="hljs"><pre><code class="hljs python">x = torch.randn(<span class="hljs-number">3</span>, requires_grad=<span class="hljs-literal">True</span>)
+<pre><code class="hljs python">x = torch.randn(<span class="hljs-number">3</span>, requires_grad=<span class="hljs-literal">True</span>)
 y = x * <span class="hljs-number">2</span>
 <span class="hljs-keyword">while</span> y.data.norm() &lt; <span class="hljs-number">1000</span>:
     y = y * <span class="hljs-number">2</span>
@@ -417,9 +439,9 @@ y.backward(v)
 print(x.grad)
 
 <span class="hljs-comment"># print:</span>
-<span class="hljs-comment"># tensor([1.0240e+02, 1.0240e+03, 1.0240e-01])</span></code></pre></div>
+<span class="hljs-comment"># tensor([1.0240e+02, 1.0240e+03, 1.0240e-01])</span></code></pre>
 <p>要停止<code>tensor</code>历史记录的跟踪，可以调用<code>.detach()</code>，它将其与计算历史记录分离，并防止将来的计算被跟踪。还可以将代码块使用 <code>with torch.no_grad():</code> 包装起来。在评估模型时，这是特别有用，因为模型在训练阶段具有 <code>requires_grad = True</code>的可训练参数有利于调参，但在评估阶段我们不需要梯度。</p>
-<div class="hljs"><pre><code class="hljs python">print(x.requires_grad)
+<pre><code class="hljs python">print(x.requires_grad)
 print((x ** <span class="hljs-number">2</span>).requires_grad)
 
 <span class="hljs-comment"># print:</span>
@@ -430,10 +452,10 @@ print((x ** <span class="hljs-number">2</span>).requires_grad)
     print((x ** <span class="hljs-number">2</span>).requires_grad)
     
 <span class="hljs-comment"># print:</span>
-<span class="hljs-comment"># False</span></code></pre></div>
+<span class="hljs-comment"># False</span></code></pre>
 <h1 id="数据-Dataset"><a href="#数据-Dataset" class="headerlink" title="数据(Dataset)"></a>数据(Dataset)</h1><p>本节内容针对<a href="http://pytorch123.com/ThirdSection/DataLoding/" target="_blank" rel="noopener">PyTorch中文文档-数据加载和处理</a>。</p>
 <h2 id="建立数据集"><a href="#建立数据集" class="headerlink" title="建立数据集"></a>建立数据集</h2><p><code>torch.utils.data.Dataset</code>是代表自定义数据集方法的<a href="https://www.runoob.com/java/java-abstraction.html" target="_blank" rel="noopener">抽象类</a>，你可以自己定义你的数据类继承这个抽象类，非常简单，只需要定义<code>__len__</code>和<code>__getitem__</code>这两个方法就可以。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FaceLandmarksDataset</span><span class="hljs-params">(Dataset)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FaceLandmarksDataset</span><span class="hljs-params">(Dataset)</span>:</span>
     <span class="hljs-string">"""面部标记数据集."""</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, csv_file, root_dir, transform=None)</span>:</span>
@@ -465,12 +487,12 @@ print((x ** <span class="hljs-number">2</span>).requires_grad)
         <span class="hljs-keyword">if</span> self.transform:
             sample = self.transform(sample)
 
-        <span class="hljs-keyword">return</span> sample</code></pre></div>
+        <span class="hljs-keyword">return</span> sample</code></pre>
 <h2 id="数据变形"><a href="#数据变形" class="headerlink" title="数据变形"></a>数据变形</h2><p>通过上面的例子我们会发现图片并不是同样的尺寸。绝大多数神经网络都假定图片的尺寸相同。因此我们需要做一些预处理。让我们创建三个转换: <em> <code>Rescale</code>：缩放图片 </em> <code>RandomCrop</code>：对图片进行随机裁剪。这是一种数据增强操作 * <code>ToTensor</code>：把numpy格式图片转为torch格式图片 (我们需要交换坐标轴).</p>
 <p>我们会把它们写成可调用的类的形式而不是简单的函数，这样就不需要每次调用时传递一遍参数。我们只需要实现<code>__call__</code>方法，必 要的时候实现 <code>__init__</code>方法。我们可以这样调用这些转换:</p>
-<div class="hljs"><pre><code class="hljs python">tsfm = Transform(params)
-transformed_sample = tsfm(sample)</code></pre></div>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rescale</span><span class="hljs-params">(object)</span>:</span>
+<pre><code class="hljs python">tsfm = Transform(params)
+transformed_sample = tsfm(sample)</code></pre>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rescale</span><span class="hljs-params">(object)</span>:</span>
     <span class="hljs-string">"""将样本中的图像重新缩放到给定大小。.
 
     Args:
@@ -548,16 +570,16 @@ transformed_sample = tsfm(sample)</code></pre></div>
         <span class="hljs-comment"># torch包的图片是: C * H * W</span>
         image = image.transpose((<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>))
         <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">'image'</span>: torch.from_numpy(image),
-                <span class="hljs-string">'landmarks'</span>: torch.from_numpy(landmarks)&#125;</code></pre></div>
+                <span class="hljs-string">'landmarks'</span>: torch.from_numpy(landmarks)&#125;</code></pre>
 <p>可以调用一个简单的类 <code>torchvision.transforms.Compose</code>来实现组合变换。</p>
-<div class="hljs"><pre><code class="hljs python">scale = Rescale(<span class="hljs-number">256</span>)
+<pre><code class="hljs python">scale = Rescale(<span class="hljs-number">256</span>)
 crop = RandomCrop(<span class="hljs-number">128</span>)
 composed = transforms.Compose([Rescale(<span class="hljs-number">256</span>),
-                               RandomCrop(<span class="hljs-number">224</span>)])</code></pre></div>
+                               RandomCrop(<span class="hljs-number">224</span>)])</code></pre>
 <h2 id="数据加载"><a href="#数据加载" class="headerlink" title="数据加载"></a>数据加载</h2><p><code>torch.utils.data.DataLoader</code>是一个提供上述所有这些功能的迭代器。下面使用的参数必须是清楚的。一个值得关注的参数是<code>collate_fn</code>, 可以通过它来决定如何对数据进行批处理。但是绝大多数情况下默认值就能运行良好。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Windows下num_workers值取0不会报错，取其他值可能出现多线程bug</span>
+<pre><code class="hljs python"><span class="hljs-comment"># Windows下num_workers值取0不会报错，取其他值可能出现多线程bug</span>
 dataloader = DataLoader(transformed_dataset, batch_size=<span class="hljs-number">4</span>,
-                        shuffle=<span class="hljs-literal">True</span>, num_workers=<span class="hljs-number">4</span>)</code></pre></div>
+                        shuffle=<span class="hljs-literal">True</span>, num_workers=<span class="hljs-number">4</span>)</code></pre>
 <h1 id="TensorFlow-和-PyTorch"><a href="#TensorFlow-和-PyTorch" class="headerlink" title="TensorFlow 和 PyTorch"></a>TensorFlow 和 PyTorch</h1><p>PyTorch自动求导看起来非常像TensorFlow：这两个框架中，我们都定义计算图，使用自动微分来计算梯度。两者最大的不同就是TensorFlow的计算图是静态的，而PyTorch使用动态的计算图。</p>
 <p>在TensorFlow中，我们定义计算图一次，然后重复执行这个相同的图，可能会提供不同的输入数据。而在PyTorch中，每一个前向通道定义一个新的计算图。</p>
 <p>静态图的好处在于你可以预先对图进行优化。例如，一个框架可能要融合一些图的运算来提升效率，或者产生一个策略来将图分布到多个GPU或机器上。如果重复使用相同的图，那么在重复运行同一个图时，，前期潜在的代价高昂的预先优化的消耗就会被分摊开。</p>
@@ -569,7 +591,7 @@ dataloader = DataLoader(transformed_dataset, batch_size=<span class="hljs-number
 <li>将<strong>Convnet</strong>看成固定的特征提取器:首先固定ConvNet除了最后的全连接层外的其他所有层。最后的全连接层被替换成一个新的随机 初始化的层，只有这个新的层会被训练[只有这层参数会在反向传播时更新]。</li>
 </ul>
 <h2 id="微调Torchvision"><a href="#微调Torchvision" class="headerlink" title="微调Torchvision"></a>微调Torchvision</h2><p><a href="http://pytorch123.com/FourSection/FinetuningTorchVisionModel/" target="_blank" rel="noopener">原文</a>，整理成<code>.py</code>后运行会报错，需要把主程序放入<code>if __name__ == &#39;__main__&#39;:</code>下，或者将<code>num_workers</code>置为0。似乎是一个多进程处理的bug，即使修改，在PyCharm下运行完会进入死循环。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python</span>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python</span>
 <span class="hljs-comment"># coding: utf-8</span>
 
 <span class="hljs-keyword">from</span> __future__ <span class="hljs-keyword">import</span> print_function
@@ -820,7 +842,7 @@ dataloader = DataLoader(transformed_dataset, batch_size=<span class="hljs-number
     criterion = nn.CrossEntropyLoss()
 
     <span class="hljs-comment"># Train and evaluate</span>
-    model_ft, hist = train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, num_epochs=num_epochs, is_inception=(model_name==<span class="hljs-string">"inception"</span>))</code></pre></div>
+    model_ft, hist = train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, num_epochs=num_epochs, is_inception=(model_name==<span class="hljs-string">"inception"</span>))</code></pre>
 <h1 id="保存与加载模型"><a href="#保存与加载模型" class="headerlink" title="保存与加载模型"></a>保存与加载模型</h1><p>当保存和加载模型时，需要熟悉三个核心功能：</p>
 <ol>
 <li><code>torch.save</code>：将序列化对象保存到磁盘。此函数使用Python的<code>pickle</code>模块进行序列化。使用此函数可以保存如模型、tensor、字典等各种对象。</li>
@@ -832,13 +854,13 @@ dataloader = DataLoader(transformed_dataset, batch_size=<span class="hljs-number
 <h2 id="保存和加载推理模型"><a href="#保存和加载推理模型" class="headerlink" title="保存和加载推理模型"></a>保存和加载推理模型</h2><ul>
 <li>保存</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">torch.save(model.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs python">torch.save(model.state_dict(), PATH)</code></pre>
 <ul>
 <li>加载</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">model = TheModelClass(*args, **kwargs)
+<pre><code class="hljs python">model = TheModelClass(*args, **kwargs)
 model.load_state_dict(torch.load(PATH))
-model.eval()</code></pre></div>
+model.eval()</code></pre>
 <p>当保存好模型用来推断的时候，只需要保存模型学习到的参数，使用<code>torch.save()</code>函数来保存模型<code>state_dict</code>，在 PyTorch 中最常见的模型保存使‘.pt’或者是‘.pth’作为模型文件扩展名。</p>
 <p>请记住在运行<code>evaluation</code>之前，务必调用<code>model.eval()</code>去设置 dropout 和 batch normalization 为评估。如果不这样做，有可能得到不一致的<code>evaluation</code>结果。 如果你想要恢复训练，请调用<code>model.train()</code>以确保这些层处于训练模式。</p>
 <ul>
@@ -848,17 +870,17 @@ model.eval()</code></pre></div>
 <h2 id="保存和加载-Checkpoint-用于推理-继续训练"><a href="#保存和加载-Checkpoint-用于推理-继续训练" class="headerlink" title="保存和加载 Checkpoint 用于推理/继续训练"></a>保存和加载 Checkpoint 用于推理/继续训练</h2><ul>
 <li>保存</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">torch.save(&#123;
+<pre><code class="hljs python">torch.save(&#123;
             <span class="hljs-string">'epoch'</span>: epoch,
             <span class="hljs-string">'model_state_dict'</span>: model.state_dict(),
             <span class="hljs-string">'optimizer_state_dict'</span>: optimizer.state_dict(),
             <span class="hljs-string">'loss'</span>: loss,
             ...
-            &#125;, PATH)</code></pre></div>
+            &#125;, PATH)</code></pre>
 <ul>
 <li>加载</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">model = TheModelClass(*args, **kwargs)
+<pre><code class="hljs python">model = TheModelClass(*args, **kwargs)
 optimizer = TheOptimizerClass(*args, **kwargs)
 
 checkpoint = torch.load(PATH)
@@ -869,24 +891,24 @@ loss = checkpoint[<span class="hljs-string">'loss'</span>]
 
 model.eval()
 <span class="hljs-comment"># - or -</span>
-model.train()</code></pre></div>
+model.train()</code></pre>
 <p>当保存成 Checkpoint 的时候，可用于推理或者是继续训练，保存的不仅仅是模型的 state_dict 。保存优化器的 state_dict 也很重要, 因为它包含作为模型训练更新的缓冲区和参数。你也许想保存其他项目，比如最新记录的训练损失，外部的<code>torch.nn.Embedding</code>层等等。</p>
 <p>要保存多个组件，请在字典中组织它们并使用<code>torch.save()</code>来序列化字典。PyTorch 中常见的保存checkpoint 是使用 .tar 文件扩展名。</p>
 <p>要加载项目，首先需要初始化模型和优化器，然后使用<code>torch.load()</code>来加载本地字典。这里,你可以非常容易的通过简单查询字典来访问你所保存的项目。</p>
 <h2 id="在一个文件中保存多个模型"><a href="#在一个文件中保存多个模型" class="headerlink" title="在一个文件中保存多个模型"></a>在一个文件中保存多个模型</h2><ul>
 <li>保存</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">torch.save(&#123;
+<pre><code class="hljs python">torch.save(&#123;
             <span class="hljs-string">'modelA_state_dict'</span>: modelA.state_dict(),
             <span class="hljs-string">'modelB_state_dict'</span>: modelB.state_dict(),
             <span class="hljs-string">'optimizerA_state_dict'</span>: optimizerA.state_dict(),
             <span class="hljs-string">'optimizerB_state_dict'</span>: optimizerB.state_dict(),
             ...
-            &#125;, PATH)</code></pre></div>
+            &#125;, PATH)</code></pre>
 <ul>
 <li>加载</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">modelA = TheModelAClass(*args, **kwargs)
+<pre><code class="hljs python">modelA = TheModelAClass(*args, **kwargs)
 modelB = TheModelBClass(*args, **kwargs)
 optimizerA = TheOptimizerAClass(*args, **kwargs)
 optimizerB = TheOptimizerBClass(*args, **kwargs)
@@ -901,50 +923,50 @@ modelA.eval()
 modelB.eval()
 <span class="hljs-comment"># - or -</span>
 modelA.train()
-modelB.train()</code></pre></div>
+modelB.train()</code></pre>
 <p>当保存一个模型由多个<code>torch.nn.Modules</code>组成时，例如GAN(对抗生成网络)、sequence-to-sequence (序列到序列模型), 或者是多个模 型融合, 可以采用与保存常规检查点相同的方法。换句话说，保存每个模型的 state_dict 的字典和相对应的优化器。如前所述，可以通 过简单地将它们附加到字典的方式来保存任何其他项目，这样有助于恢复训练。</p>
 <p>PyTorch 中常见的保存 checkpoint 是使用 .tar 文件扩展名。</p>
 <p>要加载项目，首先需要初始化模型和优化器，然后使用<code>torch.load()</code>来加载本地字典。这里，你可以非常容易的通过简单查询字典来访问你所保存的项目。</p>
 <h2 id="使用在不同模型参数下的热启动模式"><a href="#使用在不同模型参数下的热启动模式" class="headerlink" title="使用在不同模型参数下的热启动模式"></a>使用在不同模型参数下的热启动模式</h2><ul>
 <li>保存</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">torch.save(modelA.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs python">torch.save(modelA.state_dict(), PATH)</code></pre>
 <ul>
 <li>加载</li>
 </ul>
-<div class="hljs"><pre><code class="hljs python">modelB = TheModelBClass(*args, **kwargs)
-modelB.load_state_dict(torch.load(PATH), strict=<span class="hljs-literal">False</span>)</code></pre></div>
+<pre><code class="hljs python">modelB = TheModelBClass(*args, **kwargs)
+modelB.load_state_dict(torch.load(PATH), strict=<span class="hljs-literal">False</span>)</code></pre>
 <p>在迁移学习或训练新的复杂模型时，部分加载模型或加载部分模型是常见的情况。利用训练好的参数，有助于热启动训练过程，并希望帮助你的模型比从头开始训练能够更快地收敛。</p>
 <p>无论是从缺少某些键的 state_dict 加载还是从键的数目多于加载模型的 state_dict , 都可以通过在<code>load_state_dict()</code>函数中将<code>strict</code>参数设置为 False 来忽略非匹配键的函数。</p>
 <p>如果要将参数从一个层加载到另一个层，但是某些键不匹配，主要修改正在加载的 state_dict 中的参数键的名称以匹配要在加载到模型中的键即可。</p>
 <h2 id="通过设备保存-加载模型"><a href="#通过设备保存-加载模型" class="headerlink" title="通过设备保存/加载模型"></a>通过设备保存/加载模型</h2><h3 id="Save-on-GPU-Load-on-CPU"><a href="#Save-on-GPU-Load-on-CPU" class="headerlink" title="Save on GPU, Load on CPU"></a>Save on GPU, Load on CPU</h3><p><strong>Save:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">torch.save(model.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs css"><span class="hljs-selector-tag">torch</span><span class="hljs-selector-class">.save</span>(<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.state_dict</span>(), <span class="hljs-selector-tag">PATH</span>)</code></pre>
 <p><strong>Load:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">device = torch.device(&apos;cpu&apos;)
-model = TheModelClass(*args, **kwargs)
-model.load_state_dict(torch.load(PATH, map_location=device))</code></pre></div>
+<pre><code class="hljs reasonml">device = torch.device('cpu')
+model = <span class="hljs-constructor">TheModelClass(<span class="hljs-operator">*</span><span class="hljs-params">args</span>, <span class="hljs-operator">**</span><span class="hljs-params">kwargs</span>)</span>
+model.load<span class="hljs-constructor">_state_dict(<span class="hljs-params">torch</span>.<span class="hljs-params">load</span>(PATH, <span class="hljs-params">map_location</span>=<span class="hljs-params">device</span>)</span>)</code></pre>
 <h3 id="Save-on-GPU-Load-on-GPU"><a href="#Save-on-GPU-Load-on-GPU" class="headerlink" title="Save on GPU, Load on GPU"></a>Save on GPU, Load on GPU</h3><p><strong>Save:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">torch.save(model.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs css"><span class="hljs-selector-tag">torch</span><span class="hljs-selector-class">.save</span>(<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.state_dict</span>(), <span class="hljs-selector-tag">PATH</span>)</code></pre>
 <p><strong>Load:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">device = torch.device(&quot;cuda&quot;)
+<pre><code class="hljs pgsql">device = torch.device("cuda")
 model = TheModelClass(*args, **kwargs)
-model.load_state_dict(torch.load(PATH))
-model.to(device)
-# Make sure to call input = input.to(device) on any input tensors that you feed to the model</code></pre></div>
+model.load_state_dict(torch.<span class="hljs-keyword">load</span>(<span class="hljs-type">PATH</span>))
+model.<span class="hljs-keyword">to</span>(device)
+# Make sure <span class="hljs-keyword">to</span> <span class="hljs-keyword">call</span> input = <span class="hljs-keyword">input</span>.<span class="hljs-keyword">to</span>(device) <span class="hljs-keyword">on</span> <span class="hljs-keyword">any</span> <span class="hljs-keyword">input</span> tensors that you feed <span class="hljs-keyword">to</span> the model</code></pre>
 <p>当在GPU上训练并把模型保存在GPU，只需要使用<code>model.to(torch.device(&#39;cuda&#39;))</code>，将初始化的 model 转换为 CUDA 优化模型。另外，请 务必在所有模型输入上使用<code>.to(torch.device(&#39;cuda&#39;))</code>函数来为模型准备数据。请注意，调用<code>my_tensor.to(device)</code>会在GPU上返回<code>my_tensor</code>的副本。 因此，请记住手动覆盖张量：<code>my_tensor= my_tensor.to(torch.device(&#39;cuda&#39;))</code>。</p>
 <h3 id="Save-on-CPU-Load-on-GPU"><a href="#Save-on-CPU-Load-on-GPU" class="headerlink" title="Save on CPU, Load on GPU"></a>Save on CPU, Load on GPU</h3><p><strong>Save:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">torch.save(model.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs css"><span class="hljs-selector-tag">torch</span><span class="hljs-selector-class">.save</span>(<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.state_dict</span>(), <span class="hljs-selector-tag">PATH</span>)</code></pre>
 <p><strong>Load:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">device = torch.device(&quot;cuda&quot;)
+<pre><code class="hljs pgsql">device = torch.device("cuda")
 model = TheModelClass(*args, **kwargs)
-model.load_state_dict(torch.load(PATH, map_location=&quot;cuda:0&quot;))  # Choose whatever GPU device number you want
-model.to(device)
-# Make sure to call input = input.to(device) on any input tensors that you feed to the model</code></pre></div>
+model.load_state_dict(torch.<span class="hljs-keyword">load</span>(<span class="hljs-type">PATH</span>, map_location="cuda:0"))  # Choose whatever GPU device number you want
+model.<span class="hljs-keyword">to</span>(device)
+# Make sure <span class="hljs-keyword">to</span> <span class="hljs-keyword">call</span> input = <span class="hljs-keyword">input</span>.<span class="hljs-keyword">to</span>(device) <span class="hljs-keyword">on</span> <span class="hljs-keyword">any</span> <span class="hljs-keyword">input</span> tensors that you feed <span class="hljs-keyword">to</span> the model</code></pre>
 <p>在CPU上训练好并保存的模型加载到GPU时，将<code>torch.load()</code>函数中的<code>map_location</code>参数设置为<code>cuda:device_id</code>。这会将模型加载到 指定的GPU设备。接下来，请务必调用<code>model.to(torch.device(&#39;cuda&#39;))</code>将模型的参数张量转换为 CUDA 张量。最后，确保在所有模型输入上使用 <code>.to(torch.device(&#39;cuda&#39;))</code>函数来为CUDA优化模型。请注意，调用<code>my_tensor.to(device)</code>会在GPU上返回<code>my_tensor</code>的新副本。它不会覆盖<code>my_tensor</code>。 因此， 请手动覆盖张量<code>my_tensor = my_tensor.to(torch.device(&#39;cuda&#39;))</code>。</p>
 <h3 id="Saving-torch-nn-DataParallel-Models"><a href="#Saving-torch-nn-DataParallel-Models" class="headerlink" title="Saving torch.nn.DataParallel Models"></a>Saving <code>torch.nn.DataParallel</code> Models</h3><p><strong>Save:</strong></p>
-<div class="hljs"><pre><code class="hljs plain">torch.save(model.module.state_dict(), PATH)</code></pre></div>
+<pre><code class="hljs css"><span class="hljs-selector-tag">torch</span><span class="hljs-selector-class">.save</span>(<span class="hljs-selector-tag">model</span><span class="hljs-selector-class">.module</span><span class="hljs-selector-class">.state_dict</span>(), <span class="hljs-selector-tag">PATH</span>)</code></pre>
 <p><strong>Load:</strong></p>
-<div class="hljs"><pre><code class="hljs plain"># Load to whatever device you want</code></pre></div>
+<pre><code class="hljs apache"><span class="hljs-comment"># Load to whatever device you want</span></code></pre>
 <p><code>torch.nn.DataParallel</code>是一个模型封装，支持并行GPU使用。要普通保存 DataParallel 模型, 请保存<code>model.module.state_dict()</code>。 这样，你就可以非常灵活地以任何方式加载模型到你想要的设备中。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="http://pytorch123.com/" target="_blank" rel="noopener">http://pytorch123.com/</a></li>
@@ -980,7 +1002,7 @@ model.to(device)
                       <a href="/2020/01/14/%E6%9D%BE%E5%B1%B1%E6%B9%96/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">松山湖</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -989,7 +1011,7 @@ model.to(device)
                     
                       <a href="/2020/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
                         <span class="hidden-mobile">C++编程基础</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -1004,28 +1026,26 @@ model.to(device)
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -1092,28 +1112,12 @@ model.to(device)
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -1124,14 +1128,27 @@ model.to(device)
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -1140,7 +1157,7 @@ model.to(device)
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -1156,22 +1173,6 @@ model.to(device)
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -1237,6 +1238,8 @@ model.to(device)
       }
     );
   </script>
+
+
 
 
 

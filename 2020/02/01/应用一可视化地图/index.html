@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>2019-nCoV疫情数据可视化地图 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-01 22:41">
-                    Saturday, February 1st 2020, 10:41 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-02-01 22:41">
+      February 1, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    696 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    10
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      696 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -185,12 +207,12 @@
 <h1 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h1><p>在学习<a href="https://blog.csdn.net/xufive/article/details/104093197" target="_blank" rel="noopener">该博客</a>的数据爬取时发现数据似乎已经不再更新，所以重新在<a href="https://news.qq.com/zt2020/page/feiyan.htm?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">腾讯新闻网站</a>搜索相关数据。</p>
 <p><img src="213627.png" srcset="/img/loading.gif" alt="shuju"></p>
 <p>使用<code>time</code>、<code>json</code>和<code>requests</code>获取数据。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time, json, requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> time, json, requests
 url = <span class="hljs-string">'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=&amp;_=%d'</span>%int(time.time()*<span class="hljs-number">1000</span>)
 data = json.loads(requests.get(url=url).json()[<span class="hljs-string">'data'</span>])
-print(data)</code></pre></div>
+print(data)</code></pre>
 <p>可以看到数据如下所示（省略部分内容）：</p>
-<div class="hljs"><pre><code class="hljs python">&#123;<span class="hljs-string">'chinaTotal'</span>: &#123;<span class="hljs-string">'date'</span>: <span class="hljs-string">'02.01'</span>, <span class="hljs-string">'confirm'</span>: <span class="hljs-string">'11890'</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-string">'17988'</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-string">'259'</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-string">'269'</span>&#125;, 
+<pre><code class="hljs python">&#123;<span class="hljs-string">'chinaTotal'</span>: &#123;<span class="hljs-string">'date'</span>: <span class="hljs-string">'02.01'</span>, <span class="hljs-string">'confirm'</span>: <span class="hljs-string">'11890'</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-string">'17988'</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-string">'259'</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-string">'269'</span>&#125;, 
  <span class="hljs-string">'lastUpdateTime'</span>: <span class="hljs-string">'2020-02-01 21:18:01'</span>, 
  <span class="hljs-string">'areaTree'</span>: 
  	[&#123;<span class="hljs-string">'name'</span>: <span class="hljs-string">'中国'</span>, 
@@ -201,9 +223,9 @@ print(data)</code></pre></div>
                    &#123;<span class="hljs-string">'name'</span>: <span class="hljs-string">'浙江'</span>, 
                     <span class="hljs-string">'children'</span>: [...], 
                     <span class="hljs-string">'total'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">599</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">20</span>&#125;, 
-                    <span class="hljs-string">'today'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">62</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">7</span>&#125;&#125;, ...</code></pre></div>
+                    <span class="hljs-string">'today'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">62</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">7</span>&#125;&#125;, ...</code></pre>
 <p>我们只获取各个省份确诊人数的信息已经最后更新的时间。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">catch_distribution</span><span class="hljs-params">()</span>:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">catch_distribution</span><span class="hljs-params">()</span>:</span>
     
     areaData = &#123;&#125;
     url = <span class="hljs-string">'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=&amp;_=%d'</span>%int(time.time()*<span class="hljs-number">1000</span>)
@@ -223,9 +245,9 @@ print(data)</code></pre></div>
     <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> chinaData:
         areaData[item[<span class="hljs-string">'name'</span>]] = item[<span class="hljs-string">'total'</span>][<span class="hljs-string">'confirm'</span>]
     
-    <span class="hljs-keyword">return</span> areaData, lastUpdateTime</code></pre></div>
+    <span class="hljs-keyword">return</span> areaData, lastUpdateTime</code></pre>
 <h1 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h1><p>这里使用的是<a href="https://pyecharts.org/#/zh-cn/quickstart" target="_blank" rel="noopener">pyecharts v1</a>，似乎腾讯新闻也是用的这个包。由于湖北人数远高于其他省份，<a href="https://zhuanlan.zhihu.com/p/104026698" target="_blank" rel="noopener">使用连续型的视觉映射效果不好</a>，这里采用了分段式的，可以以10的整数幂为界限传入<code>pieces</code>，<code>time</code>参数即之前得到的最近更新时间。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map_visualmap</span><span class="hljs-params">(time, pieces)</span> -&gt; Map:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map_visualmap</span><span class="hljs-params">(time, pieces)</span> -&gt; Map:</span>
     c = (
         Map()
         .add(<span class="hljs-string">"确诊人数"</span>, data.items(), <span class="hljs-string">"china"</span>)
@@ -234,8 +256,8 @@ print(data)</code></pre></div>
             visualmap_opts=opts.VisualMapOpts(max_=<span class="hljs-number">5000</span>, is_piecewise=<span class="hljs-literal">True</span>, pieces=pieces)
         )
     )
-    <span class="hljs-keyword">return</span> c</code></pre></div>
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
+    <span class="hljs-keyword">return</span> c</code></pre>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
 <span class="hljs-keyword">import</span> json
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
@@ -285,7 +307,7 @@ pieces = [
     &#123;<span class="hljs-string">"max"</span>: <span class="hljs-number">10</span>&#125;
 ]
 map1 = map_visualmap(lastUpdateTime, pieces, data)
-map1.render()</code></pre></div>
+map1.render()</code></pre>
 <p>最后的效果如下，</p>
 <p><img src="2sd15400.png" srcset="/img/loading.gif" alt="xiaoguo"></p>
 <p>运行后会在根目录下生成<a href="http://lil-q.gitee.io/demo/render.html" target="_blank" rel="noopener">render.html</a></p>
@@ -321,7 +343,7 @@ map1.render()</code></pre></div>
                       <a href="/2020/02/05/HTML%E5%AD%A6%E4%B9%A0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">HTML学习</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -330,7 +352,7 @@ map1.render()</code></pre></div>
                     
                       <a href="/2020/01/16/SQL-Structured-Query-Language/">
                         <span class="hidden-mobile">SQL(Structured Query Language)</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -345,28 +367,26 @@ map1.render()</code></pre></div>
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -433,28 +453,12 @@ map1.render()</code></pre></div>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -465,14 +469,27 @@ map1.render()</code></pre></div>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -481,7 +498,7 @@ map1.render()</code></pre></div>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -497,22 +514,6 @@ map1.render()</code></pre></div>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -578,6 +579,8 @@ map1.render()</code></pre></div>
       }
     );
   </script>
+
+
 
 
 

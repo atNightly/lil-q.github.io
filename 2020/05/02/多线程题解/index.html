@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>多线程题解 - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-02 16:11">
-                    Saturday, May 2nd 2020, 4:11 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-05-02 16:11">
+      May 2, 2020 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.9k 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    48
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      48
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -183,11 +205,11 @@
               <p>多线程真的伤脑筋啊</p>
 <a id="more"></a>
 <h1 id="leetcode-1114-按序打印"><a href="#leetcode-1114-按序打印" class="headerlink" title="leetcode 1114. 按序打印"></a><a href="https://leetcode-cn.com/problems/print-in-order/" target="_blank" rel="noopener">leetcode 1114. 按序打印</a></h1><p>我们提供了一个类：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">one</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"one"</span>); &#125;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">two</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"two"</span>); &#125;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">three</span><span class="hljs-params">()</span> </span>&#123; print(<span class="hljs-string">"three"</span>); &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>三个不同的线程将会共用一个 Foo 实例。</p>
 <ul>
 <li>线程 A 将会调用 one() 方法</li>
@@ -195,7 +217,7 @@
 <li>线程 C 将会调用 three() 方法</li>
 </ul>
 <p>请设计修改程序，以确保 two() 方法在 one() 方法之后被执行，three() 方法在 two() 方法之后被执行。</p>
-<h2 id="解法一：synchronized"><a href="#解法一：synchronized" class="headerlink" title="解法一：synchronized"></a>解法一：synchronized</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+<h2 id="解法一：synchronized"><a href="#解法一：synchronized" class="headerlink" title="解法一：synchronized"></a>解法一：synchronized</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
     <span class="hljs-keyword">int</span> state = <span class="hljs-number">1</span>;
     
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span> </span>&#123;&#125;
@@ -223,8 +245,8 @@
             printThird.run();
         &#125;
     &#125;
-&#125;</code></pre></div>
-<h2 id="解法二：CountDownLatch"><a href="#解法二：CountDownLatch" class="headerlink" title="解法二：CountDownLatch"></a>解法二：CountDownLatch</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+&#125;</code></pre>
+<h2 id="解法二：CountDownLatch"><a href="#解法二：CountDownLatch" class="headerlink" title="解法二：CountDownLatch"></a>解法二：CountDownLatch</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
     <span class="hljs-keyword">private</span> CountDownLatch firstLatch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
     <span class="hljs-keyword">private</span> CountDownLatch secondLatch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">1</span>);
 
@@ -245,9 +267,9 @@
         secondLatch.await();
         printThird.run();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解法三：无锁"><a href="#解法三：无锁" class="headerlink" title="解法三：无锁"></a>解法三：无锁</h2><p>该方法也许并不可靠。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> state = <span class="hljs-number">1</span>;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Foo</span><span class="hljs-params">()</span> </span>&#123;&#125;
@@ -267,9 +289,9 @@
         <span class="hljs-keyword">while</span> (state != <span class="hljs-number">3</span>) &#123; &#125;;
         printThird.run();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="leetcode-1115-交替打印FooBar"><a href="#leetcode-1115-交替打印FooBar" class="headerlink" title="leetcode 1115. 交替打印FooBar"></a><a href="https://leetcode-cn.com/problems/print-foobar-alternately/" target="_blank" rel="noopener">leetcode 1115. 交替打印FooBar</a></h1><p>我们提供一个类：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>&#123;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
             print(<span class="hljs-string">"foo"</span>);
@@ -281,9 +303,9 @@
             print(<span class="hljs-string">"bar"</span>);
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>两个不同的线程将会共用一个 FooBar 实例。其中一个线程将会调用 foo() 方法，另一个线程将会调用 bar() 方法。请设计修改程序，以确保 “foobar” 被输出 n 次。</p>
-<h2 id="解法一：Semaphore"><a href="#解法一：Semaphore" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+<h2 id="解法一：Semaphore"><a href="#解法一：Semaphore" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> Semaphore begin = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
     <span class="hljs-keyword">private</span> Semaphore halfDone = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
@@ -307,9 +329,9 @@
             begin.release();
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解法二：CyclicBarrier"><a href="#解法二：CyclicBarrier" class="headerlink" title="解法二：CyclicBarrier"></a>解法二：CyclicBarrier</h2><p>CyclicBarrier更适合循环运行的场景。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> CyclicBarrier cb = <span class="hljs-keyword">new</span> CyclicBarrier(<span class="hljs-number">2</span>);
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> halfDone = <span class="hljs-keyword">false</span>;
@@ -338,9 +360,9 @@
             &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;   
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解法三：公平锁"><a href="#解法三：公平锁" class="headerlink" title="解法三：公平锁"></a>解法三：公平锁</h2><p>公平锁保障了多线程下各线程获取锁的顺序，先到的线程优先获取锁，从而保证了交替打印。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock(<span class="hljs-keyword">true</span>);
     <span class="hljs-keyword">private</span> Condition condition = lock.newCondition();
@@ -378,9 +400,9 @@
             &#125; 
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解法四：无锁"><a href="#解法四：无锁" class="headerlink" title="解法四：无锁"></a>解法四：无锁</h2><p>该方法也许并不可靠，如果不加<code>Thread.yield();</code>可能出现有一个线程一直无法执行的情况，陷入死循环。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooBar</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">boolean</span> halfDone = <span class="hljs-keyword">false</span>;
 
@@ -405,8 +427,8 @@
             halfDone = <span class="hljs-keyword">false</span>;
         &#125;
     &#125;
-&#125;</code></pre></div>
-<h1 id="leetcode-1116-打印零与奇偶数"><a href="#leetcode-1116-打印零与奇偶数" class="headerlink" title="leetcode 1116. 打印零与奇偶数"></a><a href="https://leetcode-cn.com/problems/print-zero-even-odd/" target="_blank" rel="noopener">leetcode 1116. 打印零与奇偶数</a></h1><h2 id="解法一：Semaphore-1"><a href="#解法一：Semaphore-1" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZeroEvenOdd</span> </span>&#123;
+&#125;</code></pre>
+<h1 id="leetcode-1116-打印零与奇偶数"><a href="#leetcode-1116-打印零与奇偶数" class="headerlink" title="leetcode 1116. 打印零与奇偶数"></a><a href="https://leetcode-cn.com/problems/print-zero-even-odd/" target="_blank" rel="noopener">leetcode 1116. 打印零与奇偶数</a></h1><h2 id="解法一：Semaphore-1"><a href="#解法一：Semaphore-1" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZeroEvenOdd</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> Semaphore zero = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
     <span class="hljs-keyword">private</span> Semaphore even = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
@@ -444,8 +466,8 @@
             zero.release();
         &#125;
     &#125;
-&#125;</code></pre></div>
-<h1 id="leetcode-1117-H2O-生成"><a href="#leetcode-1117-H2O-生成" class="headerlink" title="leetcode 1117. H2O 生成"></a><a href="https://leetcode-cn.com/problems/building-h2o/" target="_blank" rel="noopener">leetcode 1117. H2O 生成</a></h1><h2 id="解法一：Semaphore-2"><a href="#解法一：Semaphore-2" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
+&#125;</code></pre>
+<h1 id="leetcode-1117-H2O-生成"><a href="#leetcode-1117-H2O-生成" class="headerlink" title="leetcode 1117. H2O 生成"></a><a href="https://leetcode-cn.com/problems/building-h2o/" target="_blank" rel="noopener">leetcode 1117. H2O 生成</a></h1><h2 id="解法一：Semaphore-2"><a href="#解法一：Semaphore-2" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
     <span class="hljs-keyword">private</span> Semaphore h = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);
     <span class="hljs-keyword">private</span> Semaphore o = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);
 
@@ -462,8 +484,8 @@
 		releaseOxygen.run();
         h.release(<span class="hljs-number">2</span>);
     &#125;
-&#125;</code></pre></div>
-<h2 id="解法二：Semaphore-CyclicBarrier"><a href="#解法二：Semaphore-CyclicBarrier" class="headerlink" title="解法二：Semaphore + CyclicBarrier"></a>解法二：Semaphore + CyclicBarrier</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
+&#125;</code></pre>
+<h2 id="解法二：Semaphore-CyclicBarrier"><a href="#解法二：Semaphore-CyclicBarrier" class="headerlink" title="解法二：Semaphore + CyclicBarrier"></a>解法二：Semaphore + CyclicBarrier</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">H2O</span> </span>&#123;
     <span class="hljs-keyword">private</span> Semaphore h = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);
     <span class="hljs-keyword">private</span> Semaphore o = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
     <span class="hljs-keyword">private</span> CyclicBarrier cb = <span class="hljs-keyword">new</span> CyclicBarrier(<span class="hljs-number">3</span>, () -&gt; &#123;
@@ -488,10 +510,10 @@
             cb.await();
         &#125; <span class="hljs-keyword">catch</span> (BrokenBarrierException e) &#123;&#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="leetcode-1195-交替打印字符串"><a href="#leetcode-1195-交替打印字符串" class="headerlink" title="leetcode 1195. 交替打印字符串"></a><a href="https://leetcode-cn.com/problems/fizz-buzz-multithreaded/" target="_blank" rel="noopener">leetcode 1195. 交替打印字符串</a></h1><p>编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：</p>
 <p>如果这个数字可以被 3 整除，输出 “fizz”。<br>如果这个数字可以被 5 整除，输出 “buzz”。<br>如果这个数字可以同时被 3 和 5 整除，输出 “fizzbuzz”。<br>例如，当 n = 15，输出： 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz。</p>
-<h2 id="解法一：AmoticInteger"><a href="#解法一：AmoticInteger" class="headerlink" title="解法一：AmoticInteger"></a>解法一：AmoticInteger</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span> </span>&#123;
+<h2 id="解法一：AmoticInteger"><a href="#解法一：AmoticInteger" class="headerlink" title="解法一：AmoticInteger"></a>解法一：AmoticInteger</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;
     <span class="hljs-keyword">private</span> AtomicInteger cur = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">1</span>);
 
@@ -538,7 +560,7 @@
             &#125;
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="leetcode-1226-哲学家进餐"><a href="#leetcode-1226-哲学家进餐" class="headerlink" title="leetcode 1226. 哲学家进餐"></a><a href="https://leetcode-cn.com/problems/the-dining-philosophers/" target="_blank" rel="noopener">leetcode 1226. 哲学家进餐</a></h1><p>这道题本质上其实是想考察如何<strong>避免死锁</strong>。当 5 个哲学家都拿着其左边(或右边)的叉子时，会进入死锁。</p>
 <p>死锁的 4 个必要条件：</p>
 <ol>
@@ -547,7 +569,7 @@
 <li>不可剥夺条件:进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能 由获得该资源的进程自己来释放（只能是主动释放)。</li>
 <li>循环等待条件: 若干进程间形成首尾相接循环等待资源的关系。</li>
 </ol>
-<h2 id="解法一：ReentrantLock-Semaphore"><a href="#解法一：ReentrantLock-Semaphore" class="headerlink" title="解法一：ReentrantLock + Semaphore"></a>解法一：ReentrantLock + Semaphore</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
+<h2 id="解法一：ReentrantLock-Semaphore"><a href="#解法一：ReentrantLock-Semaphore" class="headerlink" title="解法一：ReentrantLock + Semaphore"></a>解法一：ReentrantLock + Semaphore</h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReentrantLock[] locks = &#123;<span class="hljs-keyword">new</span> ReentrantLock(),
                                            <span class="hljs-keyword">new</span> ReentrantLock(),
                                            <span class="hljs-keyword">new</span> ReentrantLock(),
@@ -583,9 +605,9 @@
             eat_limit.release();
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解法二：设计"><a href="#解法二：设计" class="headerlink" title="解法二：设计"></a>解法二：设计</h2><p>指定部分人首先拿左边叉子，另一部分人首先拿右边叉子，这样可以避免死锁。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DiningPhilosophers</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReentrantLock[] locks = &#123;<span class="hljs-keyword">new</span> ReentrantLock(),
                                            <span class="hljs-keyword">new</span> ReentrantLock(),
                                            <span class="hljs-keyword">new</span> ReentrantLock(),
@@ -623,9 +645,9 @@
             locks[right_fork].unlock();
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h1><h2 id="解法一：Semaphore-3"><a href="#解法一：Semaphore-3" class="headerlink" title="解法一：Semaphore"></a>解法一：Semaphore</h2><p>不能先对缓冲区进行加锁，再测试信号量。也就是说，不能先执行 mutex.acquire() 再执行 notFull.acquire()。如果这么做了，那么可能会出现这种情况：生产者对缓冲区加锁后，执行 notFull.acquire() 操作，发现 notFull = 0，此时生产者睡眠。消费者不能进入临界区，因为生产者对缓冲区加锁了，消费者就无法执行 notFull.release() 操作，notFull 永远都为 0，导致生产者永远等待下，不会释放锁，消费者因此也会永远等待下去。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.Semaphore;
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.Semaphore;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProducerAndConsumer</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Integer count = <span class="hljs-number">0</span>;
@@ -692,8 +714,8 @@
             &#125;
         &#125;
     &#125;
-&#125;</code></pre></div>
-<h2 id="解法二：管程"><a href="#解法二：管程" class="headerlink" title="解法二：管程"></a>解法二：管程</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.LinkedList; 
+&#125;</code></pre>
+<h2 id="解法二：管程"><a href="#解法二：管程" class="headerlink" title="解法二：管程"></a>解法二：管程</h2><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.LinkedList; 
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Threadexample</span> </span>&#123; 
 	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> 
@@ -804,9 +826,9 @@
 			&#125; 
 		&#125; 
 	&#125; 
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h1 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h1><p>原理如下：允许多个进程同时对数据进行读操作，但是不允许读和写以及写和写操作同时发生。一个整型变量 count 记录在对数据进行读操作的进程数量，一个互斥量 count_mutex 用于对 count 加锁，一个互斥量 data_mutex 用于对读写的数据加锁。</p>
-<div class="hljs"><pre><code class="hljs java">typedef <span class="hljs-keyword">int</span> semaphore;
+<pre><code class="hljs java">typedef <span class="hljs-keyword">int</span> semaphore;
 semaphore count_mutex = <span class="hljs-number">1</span>;
 semaphore data_mutex = <span class="hljs-number">1</span>;
 <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
@@ -833,7 +855,7 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
         write();
         up(&amp;data_mutex);
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
             </article>
             <hr>
@@ -867,7 +889,7 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
                       <a href="/2020/05/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">计算机网络——概述</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -876,7 +898,7 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
                     
                       <a href="/2020/05/01/morris%E7%AE%97%E6%B3%95/">
                         <span class="hidden-mobile">morris算法</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -891,28 +913,26 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -979,28 +999,12 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -1011,14 +1015,27 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -1027,7 +1044,7 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -1043,22 +1060,6 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -1124,6 +1125,8 @@ semaphore data_mutex = <span class="hljs-number">1</span>;
       }
     );
   </script>
+
+
 
 
 

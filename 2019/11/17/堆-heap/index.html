@@ -13,25 +13,29 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#13100f">
+  <meta name="theme-color" content="#111">
   <meta name="description" content="Life Goes On">
   <meta name="author" content="戚天天">
   <meta name="keywords" content="python, 机器学习, cpp, 深度学习, 机器视觉, 算法, 数据结构">
   <title>堆(Heap) - Homeward</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -40,6 +44,7 @@
   <link rel="stylesheet" href="/css/custom.css">
 
 
+  <script  src="/js/utils.js" ></script>
 </head>
 
 
@@ -63,47 +68,62 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              Home</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              Categories</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              About</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -128,36 +148,38 @@
 
             
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2019-11-17 15:49">
-                    Sunday, November 17th 2019, 3:49 pm
-                  </time>
-                </div>
-              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-11-17 15:49">
+      November 17, 2019 pm
+    </time>
+  </div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    940 字
-                  </span>
-                
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    12
-                     分钟
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      940 字
+    </span>
+  
 
-                
-              </div>
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
             
           </div>
 
@@ -191,9 +213,9 @@
 <h2 id="堆的建立"><a href="#堆的建立" class="headerlink" title="堆的建立"></a>堆的建立</h2><p>堆的建立并不建立一个新的树，而是对数组进行原地改动，第一个数（index=0）为完全二叉树的level 0，即根，第二个数和第三个数为level 1，以此类推。</p>
 <p><img src="建堆.png" srcset="/img/loading.gif" alt="建堆"></p>
 <p>由于数组是升序数组，我们直接得到了最小堆。但是如果要进行升序排序，算法上需要建立最大堆。也就是说，当原数组是升序时，堆排序算法遇到了最坏情况。本文也以这种情况作为例子。</p>
-<div class="hljs"><pre><code class="hljs python">nums=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</code></pre></div>
+<pre><code class="hljs python">nums=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</code></pre>
 <h3 id="堆的维护"><a href="#堆的维护" class="headerlink" title="堆的维护"></a>堆的维护</h3><p>上图的根节点是1，小于子节点，那么这显然违反了最大堆的性质，这时候需要让该元素在最大堆中逐级下降，维护最大堆的性质。处理一次维护的代码如下：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">adjust_heap</span><span class="hljs-params">(idx, max_len,nums)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">adjust_heap</span><span class="hljs-params">(idx, max_len,nums)</span>:</span>
     left = <span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>
     right = <span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>
     max_loc = idx
@@ -203,23 +225,23 @@
         max_loc = right
     <span class="hljs-keyword">if</span> max_loc != idx:
         nums[idx], nums[max_loc] = nums[max_loc], nums[idx]
-        adjust_heap(max_loc, max_len,nums)</code></pre></div>
+        adjust_heap(max_loc, max_len,nums)</code></pre>
 <h3 id="建立最大堆"><a href="#建立最大堆" class="headerlink" title="建立最大堆"></a>建立最大堆</h3><ol>
 <li>自底向上处理， 因为数组<code>list[n//2,n]</code>中的所有元素都在堆树的叶节点中，因此可以看成只包含一个元素的堆， 无需维护。其中<code>n=len(list)</code>；</li>
 <li>从<code>index=n//2-1</code>开始，直到<code>index=0</code>，对每一个节点或根进行一次维护。</li>
 </ol>
 <p><em>注意：一次维护并不是最多只交换一次，而是交换到某节点满足最大堆条件或者<code>index&gt;=n</code>为止。</em></p>
 <p><img src="heapflow.png" srcset="/img/loading.gif" alt="heapflow"></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">build_heap</span><span class="hljs-params">(nums)</span>:</span>    
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">build_heap</span><span class="hljs-params">(nums)</span>:</span>    
     n = len(nums)
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n // <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>):
         adjust_heap(i, n,nums)
     <span class="hljs-keyword">return</span> nums
 heap=build_heap(nums)
 print(<span class="hljs-string">"heap:"</span>,heap)
-<span class="hljs-comment">#输出：heap: [5, 4, 3, 1, 2]</span></code></pre></div>
+<span class="hljs-comment">#输出：heap: [5, 4, 3, 1, 2]</span></code></pre>
 <h2 id="最大堆中插入节点"><a href="#最大堆中插入节点" class="headerlink" title="最大堆中插入节点"></a>最大堆中插入节点</h2><p>最大堆的插入节点的思想就是先在堆的最后添加一个节点，也就是在<code>list.append()</code>，然后沿着堆树上升。跟最大堆的初始建立过程大致相同。 </p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_insert</span><span class="hljs-params">(heap,num)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_insert</span><span class="hljs-params">(heap,num)</span>:</span>
     heap=heap+[num]
     n=len(heap)
     i=n<span class="hljs-number">-1</span>
@@ -230,10 +252,10 @@ print(<span class="hljs-string">"heap:"</span>,heap)
     <span class="hljs-keyword">return</span> heap
 heap=heap_insert(heap,<span class="hljs-number">6</span>)
 print(<span class="hljs-string">"heapIns:"</span>,heap)
-<span class="hljs-comment">#输出：heapIns: [6, 4, 5, 1, 2, 3]</span></code></pre></div>
+<span class="hljs-comment">#输出：heapIns: [6, 4, 5, 1, 2, 3]</span></code></pre>
 <p><img src="heapinsert.png" srcset="/img/loading.gif" alt="charu"></p>
 <h2 id="最大堆节点的删除"><a href="#最大堆节点的删除" class="headerlink" title="最大堆节点的删除"></a>最大堆节点的删除</h2><p>对一个节点的删除就是交换该节点和最后一个叶子节点的值，然后从该节点开始一次<code>adjust_heap()</code>：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_delete</span><span class="hljs-params">(heap,idx)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_delete</span><span class="hljs-params">(heap,idx)</span>:</span>
     n=len(heap)
     heap[idx],heap[<span class="hljs-number">-1</span>]=heap[<span class="hljs-number">-1</span>],heap[idx]
     adjust_heap(idx, n - <span class="hljs-number">1</span>,heap)
@@ -241,16 +263,16 @@ print(<span class="hljs-string">"heapIns:"</span>,heap)
     <span class="hljs-keyword">return</span> heap
 heap=heap_delete(heap,<span class="hljs-number">0</span>)
 print(<span class="hljs-string">"heapDel:"</span>,heap)
-<span class="hljs-comment">#输出：heapDel: [5, 4, 3, 1, 2]</span></code></pre></div>
+<span class="hljs-comment">#输出：heapDel: [5, 4, 3, 1, 2]</span></code></pre>
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>特殊地，当我们交换根和最后一个叶子节点时，就能够提出最大值，并且存放在<code>index=-1</code>的位置。然后再对前n-1个数组成的最大堆进行该处理，以此类推，最终完成堆排序。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_sorted</span><span class="hljs-params">(heap)</span>:</span>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heap_sorted</span><span class="hljs-params">(heap)</span>:</span>
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(heap)):
         heap[<span class="hljs-number">0</span>], heap[-i] = heap[-i], heap[<span class="hljs-number">0</span>]
         adjust_heap(<span class="hljs-number">0</span>, n - i,heap)
     <span class="hljs-keyword">return</span> heap
 heapSort=heap_sorted(heap)
 print(<span class="hljs-string">"heapSort:"</span>,heapSort)
-<span class="hljs-comment">#输出：heapSort: [1, 2, 3, 4, 5]</span></code></pre></div>
+<span class="hljs-comment">#输出：heapSort: [1, 2, 3, 4, 5]</span></code></pre>
 <p><a href="https://github.com/lil-q/data-structures-python/tree/master/Heap" target="_blank" rel="noopener">完整测试代码地址</a></p>
 <p><p align="right"><u><i>错误与不足请不吝指正，转载请注明，谢谢</i></u></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -287,7 +309,7 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
                       <a href="/2019/11/18/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">分治算法(Divide-and-conquer algorithm)</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </div>
@@ -296,7 +318,7 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
                     
                       <a href="/2019/11/16/%E6%8E%92%E5%BA%8F-Sort-%E7%AE%97%E6%B3%95/">
                         <span class="hidden-mobile">排序算法(Sorting algorithm)</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -311,28 +333,26 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
-        app_key: "wqRfy95wLQRm4b7BByawaNCK",
-        placeholder: "说点什么吧",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: false,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "iDVdqah8oVl5qmT8UM7qmde9-gzGzoHsz",
+          app_key: "wqRfy95wLQRm4b7BByawaNCK",
+          placeholder: "说点什么吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    createObserver(loadValine, 'vcomments');
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
@@ -399,28 +419,12 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <b>2020</b>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <b>lil-q</b>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
-    
-      <!-- 不蒜子统计PV -->
-      
-      <span id="busuanzi_container_site_pv" style="display: none">
-      <span id="busuanzi_value_site_pv"></span>次访问 |
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
-      
-      <span id="busuanzi_container_site_uv" style="display: none">
-      <span id="busuanzi_value_site_uv"></span>人来过
-    </span>
-    
-  </div>
-
 
     
 
@@ -431,14 +435,27 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -447,7 +464,7 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: 'article.markdown-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -463,22 +480,6 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-<!-- Plugins -->
 
 
 
@@ -544,6 +545,8 @@ print(<span class="hljs-string">"heapSort:"</span>,heapSort)
       }
     );
   </script>
+
+
 
 
 
