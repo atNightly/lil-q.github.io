@@ -1,13 +1,9 @@
 #scroll-top-button {
-    background: #13100f;
+    background: #222430;
 }
 
 #scroll-top-button i {
-    color: #ddd;
-}
-
-.custom, .comments {
-    margin-top: 5rem;
+    color: #eee;
 }
 
 .v .vcards .vcard .vh .vmeta .vat {
@@ -23,72 +19,33 @@
 }
 
 .v .vcards .vcard .vhead .vnick {
-    color: #eee !important;
+    color: #3c4858 !important;
 }
 
 .v a {
-    color: #eee !important;
+    color: #3c4858 !important;
 }
 
 .v * {
-    color: #ccc !important;
+    color: #3c4858 !important;
 }
 
 .v .vbtn {
     color: #313131;
-    border: 1px solid #fff0 !important;
     border-radius: .3em;
-    background: #860d00 !important;
 }
 
-.markdown-body a {
-    color: #4ea1d3;
+.toc-header, .toc-header > i {
+    color: #fffe;
 }
 
-.markdown-body strong {
-    color: white !important;
+.tocbot-link {
+    color: #fffe;
 }
 
-.markdown-body table td, .markdown-body table th {
-    border: 1px solid #5e5e5f;
-    background-color: #1e2022;
-}
-
-.markdown-body blockquote {
-    color: #bbb;
-}
-
-.markdown-body h2 {
-	font-size: 1.7em;
-	padding-bottom: 0em;
-    border-bottom: 1px solid #1e2022;
-}
-
-.list-group-item {
-    color: #eee !important;
-}
-
-.list-group-item-action {
-    background-color: #1e2022 !important;
-}
-
-code {
-    color: #ea5d9e;
-}
-
-.mb-3, .my-3 {
-    border-bottom: 1px solid #eee;
-}
-
-hr {
-    border-top: 1px solid rgba(0,0,0,0);
-}
-
-.pagination a, .pagination .current {
+.tocbot-active-link {
     font-weight: bold;
+    color: #55967e;
 }
 
-.pagination a:hover, .pagination .current {
-    color: #AF4034;
-}
 /**/
