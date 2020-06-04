@@ -216,7 +216,7 @@
 <script type="math/tex; mode=display">\Delta^{2} \left [f  \right ]\left ( i, j \right )=f\left ( i+1, j \right )-2f\left ( i, j \right )+f\left ( i-1, j \right )</script><p>包含x轴、y轴两个方向的卷积核为：</p>
 <script type="math/tex; mode=display">Laplacian_{2} = \frac{1}{9}\left[ \begin{matrix} 0 & 1 & 0 \newline 1 & -4 & 1 \newline 0 & 1 & 0 \end{matrix} \right]</script><p>包含四个方向的卷积核为：</p>
 <script type="math/tex; mode=display">Laplacian_{4} = \frac{1}{9}\left[ \begin{matrix} 1 & 1 & 1 \newline 1 & -8 & 1 \newline 1 & 1 & 1 \end{matrix} \right]</script><p>使用Laplace 算子处理后，由于所求为二阶差分，值接近0的像素点更有可能是边缘，但是对于灰度值相近的区域，经过卷积后的值也很接近0。</p>
-<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><pre><code class="hljs python">dst = cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</code></pre>
+<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><h2 id="Sobel"><a href="#Sobel" class="headerlink" title="Sobel"></a>Sobel</h2><div class="hljs"><pre><code class="hljs python">dst = cv.Sobel(src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]])</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/差分" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86</a></li>
 <li><a href="https://www.jianshu.com/p/2334bee37de5" target="_blank" rel="noopener">https://www.jianshu.com/p/2334bee37de5</a></li>

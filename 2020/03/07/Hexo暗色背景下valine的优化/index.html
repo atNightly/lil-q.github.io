@@ -210,20 +210,20 @@
 <h1 id="自定义CSS"><a href="#自定义CSS" class="headerlink" title="自定义CSS"></a>自定义CSS</h1><p>以fluid主题为例（其他很多主题也有类似自定义CSS的功能），具体步骤如下：</p>
 <ol>
 <li><p>在<code>\hexo\themes\fluid\source\css</code>下创建<code>custom.css</code>文件，并在主题的配置文件<code>_config.yml</code>中添加如下路径。</p>
-<pre><code class="hljs yaml"><span class="hljs-comment"># 指定自定义 css 文件路径，路径是相对 source 目录</span>
-<span class="hljs-attr">custom_css:</span> <span class="hljs-string">/css/custom.css</span></code></pre>
+<div class="hljs"><pre><code class="hljs yaml"><span class="hljs-comment"># 指定自定义 css 文件路径，路径是相对 source 目录</span>
+<span class="hljs-attr">custom_css:</span> <span class="hljs-string">/css/custom.css</span></code></pre></div>
 </li>
 <li><p>在浏览器中找到需要修改的部分代码，修改后添加到<code>custom.css</code>，并在语句后面添加<code>!important</code>提高优先级以确保覆盖原有设置。例如修改valine输入的字体的颜色和高度就可以这样设置：</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.v</span> * &#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.v</span> * &#123;
     <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 <li><p>保存文件，<code>hexo clean</code> and <code>hexo d -g</code>。</p>
 </li>
 </ol>
 <h1 id="本博客的例子"><a href="#本博客的例子" class="headerlink" title="本博客的例子"></a>本博客的例子</h1><p>由于我对CSS不熟悉，自己的valine只做了一些简单的修改：</p>
-<pre><code class="hljs css"><span class="hljs-comment">/*valine 评论系统样式*/</span>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*valine 评论系统样式*/</span>
 <span class="hljs-selector-class">.v</span> * &#123;
     <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span> <span class="hljs-meta">!important</span>;
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span> <span class="hljs-meta">!important</span>;
@@ -261,7 +261,7 @@
     <span class="hljs-attribute">-ms-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
     <span class="hljs-attribute">-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);
 &#125;
-<span class="hljs-comment">/**/</span></code></pre>
+<span class="hljs-comment">/**/</span></code></pre></div>
 <p>玩的开心！</p>
 
             </article>

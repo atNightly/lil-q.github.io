@@ -292,29 +292,29 @@
 </ol>
 <h3 id="1-正整数"><a href="#1-正整数" class="headerlink" title="1. 正整数"></a>1. 正整数</h3><p>获取正整数哈希值最常用的方法是使用除留余数法。即对于大小为素数M的数组，对于任意正整数k，计算k除以M的余数。M一般取素数。</p>
 <h3 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2. 字符串"></a>2. 字符串</h3><p>将字符串作为键的时候，我们也可以将他作为一个大的整数，采用保留除余法。我们可以将组成字符串的每一个字符取值然后进行哈希，比如</p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHashCode</span><span class="hljs-params">(str)</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHashCode</span><span class="hljs-params">(str)</span>:</span>
     hash = <span class="hljs-number">0</span>
     <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> str:
         hash = int(char) + (<span class="hljs-number">31</span> * hash)
-    <span class="hljs-keyword">return</span> hash</code></pre>
+    <span class="hljs-keyword">return</span> hash</code></pre></div>
 <p>上面的哈希值是Horner计算字符串哈希值的方法，公式为:</p>
 <script type="math/tex; mode=display">h = s[0] · 31^{L–1} + … + s[L – 3] · 31^2 + s[L – 2] · 31^1 + s[L – 1] · 31^0</script><p>举个例子，比如要获取”call”的哈希值，字符串c对应的unicode为99，a对应的unicode为97，L对应的unicode为108，所以字符串”call”的哈希值为 3045982 = 99·31^3 + 97·31^2 + 108·31^1 + 108·31^0 = 108 + 31· (108 + 31 · (97 + 31 · (99)))。</p>
-<pre><code class="hljs python">print(getHashCode(<span class="hljs-string">"call"</span>))
+<div class="hljs"><pre><code class="hljs python">print(getHashCode(<span class="hljs-string">"call"</span>))
 <span class="hljs-string">'''
 输出： 3045982
-'''</span></code></pre>
+'''</span></code></pre></div>
 <p>如果对每个字符去哈希值可能会比较耗时，所以可以通过间隔取N个字符来获取哈西值来节省时间，比如，可以 获取每8-9个字符来获取哈希值。但是，对于某些情况，不同的字符串会产生相同的哈希值，这就是前面说到的哈希冲突（Hash Collisions），比如下面的四个字符串：</p>
 <p><img src="312300343319616.jpg" srcset="/img/loading.gif" alt="hash code collision"></p>
 <p>如果我们按照每8个字符取哈希的话，就会得到一样的哈希值。</p>
 <h2 id="哈希冲撞"><a href="#哈希冲撞" class="headerlink" title="哈希冲撞"></a>哈希冲撞</h2><p>如果将2450个密钥散列到一百万个存储桶中，即使具有完全均匀的随机分布，则根据生日问题，至少有两个密钥散列到同一存储桶的机率大约为95％。<script type="math/tex">1*\frac{10^6-1}{10^6}*\frac{10^6-2}{10^6}</script>…<script type="math/tex">\frac{10^6-2449}{10^6}</script></p>
-<pre><code class="hljs python">res=<span class="hljs-number">1</span>
+<div class="hljs"><pre><code class="hljs python">res=<span class="hljs-number">1</span>
 n=<span class="hljs-number">1000000</span>
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2450</span>):
 	res*=(n<span class="hljs-number">-1</span>)/n
 print(res)
 <span class="hljs-string">'''
 0.9975529975784029
-'''</span></code></pre>
+'''</span></code></pre></div>
 <p><a href="https://zh.wikipedia.org/zh-hans/生日攻击" target="_blank" rel="noopener">有兴趣可以了解一下生日攻击。</a></p>
 <h3 id="1-Separate-chaining"><a href="#1-Separate-chaining" class="headerlink" title="1. Separate chaining"></a>1. Separate chaining</h3><p>每一个<code>bucket</code>指向一个数组、链表或其他数据结构。</p>
 <p><img src="675px-Hash_table_5_0_1_1_1_1_1_LL.svg.png" srcset="/img/loading.gif" alt="spe"></p>
@@ -365,7 +365,7 @@ print(res)
 </table>
 </div>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-力扣（leetcode）204-计数质数"><a href="#1-力扣（leetcode）204-计数质数" class="headerlink" title="1. 力扣（leetcode）204. 计数质数"></a>1. <a href="https://leetcode-cn.com/problems/count-primes/" target="_blank" rel="noopener">力扣（leetcode）204. 计数质数</a></h2><p>统计所有小于非负整数 <em>n</em> 的质数的数量。</p>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(self, n: int)</span> -&gt; int:</span>
         isPrime = [<span class="hljs-number">1</span>] * n 
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>, int(n ** <span class="hljs-number">0.5</span>) + <span class="hljs-number">1</span>):
@@ -375,10 +375,10 @@ print(res)
         counts = <span class="hljs-number">0</span>
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,len(isPrime)):
             <span class="hljs-keyword">if</span> isPrime[i] : counts += <span class="hljs-number">1</span>
-        <span class="hljs-keyword">return</span> counts</code></pre>
+        <span class="hljs-keyword">return</span> counts</code></pre></div>
 <h2 id="2-力扣（leetcode）355-设计推特"><a href="#2-力扣（leetcode）355-设计推特" class="headerlink" title="2. 力扣（leetcode）355. 设计推特"></a>2. <a href="https://leetcode-cn.com/problems/design-twitter/" target="_blank" rel="noopener">力扣（leetcode）355. 设计推特</a></h2><p>设计一个简化版的推特(Twitter)，可以让用户实现发送推文，关注/取消关注其他用户，能够看见关注人（包括自己）的最近十条推文。你的设计需要支持以下的几个功能：</p>
 <p>postTweet(userId, tweetId): 创建一条新的推文<br>getNewsFeed(userId): 检索最近的十条推文。每个推文都必须是由此用户关注的人或者是用户自己发出的。推文必须按照时间顺序由最近的开始排序。<br>follow(followerId, followeeId): 关注一个用户<br>unfollow(followerId, followeeId): 取消关注一个用户</p>
-<pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
 
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Twitter</span>:</span>
@@ -447,7 +447,7 @@ print(res)
         Follower unfollows a followee. If the operation is invalid, it should be a no-op.
         """</span>
 
-        self.userId_follower[followerId].discard(followeeId)</code></pre>
+        self.userId_follower[followerId].discard(followeeId)</code></pre></div>
 <p>采用了<a href="https://leetcode-cn.com/problems/design-twitter/solution/mian-xiang-dui-xiang-she-ji-he-bing-k-ge-you-xu-li/" target="_blank" rel="noopener">优先队列</a>的思路</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/数组" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84</a></li>

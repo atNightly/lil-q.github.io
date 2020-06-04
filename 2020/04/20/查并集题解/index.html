@@ -206,7 +206,7 @@
 <a id="more"></a>
 <p>查并集的进化之路在<a href="https://lil-q.github.io/2020/01/02/查并集-union-find-algorithm/">这里</a>。</p>
 <h1 id="leetcode-200-岛屿数量"><a href="#leetcode-200-岛屿数量" class="headerlink" title="leetcode 200. 岛屿数量"></a><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">leetcode 200. 岛屿数量</a></h1><p><strong>解法一：</strong>查并集</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] parent;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
@@ -250,9 +250,9 @@
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>DFS</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span> rows;
     <span class="hljs-keyword">int</span> cols;
 
@@ -279,9 +279,9 @@
         <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; grid[i - <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) dfs(i - <span class="hljs-number">1</span>, j, grid);
         <span class="hljs-keyword">if</span> (i &lt; rows - <span class="hljs-number">1</span> &amp;&amp; grid[i + <span class="hljs-number">1</span>][j] == <span class="hljs-string">'1'</span>) dfs(i + <span class="hljs-number">1</span>, j, grid);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>BFS</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
@@ -323,19 +323,19 @@
 
         <span class="hljs-keyword">return</span> count;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-547-朋友圈"><a href="#leetcode-547-朋友圈" class="headerlink" title="leetcode 547. 朋友圈"></a><a href="https://leetcode-cn.com/problems/friend-circles/" target="_blank" rel="noopener">leetcode 547. 朋友圈</a></h1><p>班上有 N 名学生。其中有些人是朋友，有些则不是。他们的友谊具有是传递性。如果已知 A 是 B 的朋友，B 是 C 的朋友，那么我们可以认为 A 也是 C 的朋友。所谓的朋友圈，是指所有朋友的集合。</p>
 <p>给定一个 N * N 的矩阵 M，表示班级中学生之间的朋友关系。如果<code>M[i][j] = 1</code>，表示已知第 i 个和 j 个学生互为朋友关系，否则为不知道。你必须输出所有学生中的已知的朋友圈总数。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: 
+<div class="hljs"><pre><code class="hljs txt">输入: 
 [[1,1,0],
  [1,1,0],
  [0,0,1]]
 输出: 2 
 说明：已知学生0和学生1互为朋友，他们在一个朋友圈。
-第2个学生自己在一个朋友圈。所以返回2。</code></pre>
+第2个学生自己在一个朋友圈。所以返回2。</code></pre></div>
 <p><strong>解法一：</strong>查并集</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] parent;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCircleNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M)</span> </span>&#123;
@@ -368,9 +368,9 @@
             parent[f1] = f2;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>DFS</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M, <span class="hljs-keyword">int</span> i)</span> </span>&#123;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; M.length; j++) &#123;
             <span class="hljs-keyword">if</span> (M[i][j] == <span class="hljs-number">1</span> &amp;&amp; M[j][j] == <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 利用M[i][i]代替visited</span>
@@ -389,9 +389,9 @@
         &#125;
         <span class="hljs-keyword">return</span> count;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>BFS</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCircleNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] M)</span> </span>&#123;
         <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
         Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
@@ -412,16 +412,16 @@
         &#125;
         <span class="hljs-keyword">return</span> count; 
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-684-冗余连接"><a href="#leetcode-684-冗余连接" class="headerlink" title="leetcode 684. 冗余连接"></a><a href="https://leetcode-cn.com/problems/redundant-connection/" target="_blank" rel="noopener">leetcode 684. 冗余连接</a></h1><p><strong>示例：</strong></p>
-<pre><code class="hljs txt">输入: [[1,2], [1,3], [2,3]]
+<div class="hljs"><pre><code class="hljs txt">输入: [[1,2], [1,3], [2,3]]
 输出: [2,3]
 解释: 给定的无向图为:
   1
  / \
-2 - 3</code></pre>
+2 - 3</code></pre></div>
 <p>可以证明最早出现的已经<code>union</code>的<code>pair</code>即是解。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] parent;
 
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] findRedundantConnection(<span class="hljs-keyword">int</span>[][] edges) &#123;
@@ -451,9 +451,9 @@
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-765-情侣牵手"><a href="#leetcode-765-情侣牵手" class="headerlink" title="leetcode 765. 情侣牵手"></a><a href="https://leetcode-cn.com/problems/couples-holding-hands/" target="_blank" rel="noopener">leetcode 765. 情侣牵手</a></h1><p>先给出贪心算法，每次合理的交换只能促成一对或者两对，这个数字是一定的，所以顺序遍历，每次都交换即可。利用数组储存位置信息可以在时间复杂度 <script type="math/tex">O(N)</script> 内解决问题。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minSwapsCouples</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[] site = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row.length];
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row.length; i++) site[row[i]] = i;
@@ -467,9 +467,9 @@
         &#125;
         <span class="hljs-keyword">return</span> count;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>利用查并集解题的关键在于把相邻的两个位置看出一组（官方题解叫做<a href="https://leetcode-cn.com/problems/couples-holding-hands/solution/qing-lu-qian-shou-by-leetcode/" target="_blank" rel="noopener">沙发</a>），每有一个连通域，交换次数就减一。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] parent;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minSwapsCouples</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] row)</span> </span>&#123;
@@ -502,12 +502,12 @@
             parent[f2] = f1;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-924-尽量减少恶意软件的传播"><a href="#leetcode-924-尽量减少恶意软件的传播" class="headerlink" title="leetcode 924. 尽量减少恶意软件的传播"></a><a href="https://leetcode-cn.com/problems/minimize-malware-spread/" target="_blank" rel="noopener">leetcode 924. 尽量减少恶意软件的传播</a></h1><p><strong>示例：</strong></p>
-<pre><code class="hljs txt">输入：graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
-输出：0</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入：graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+输出：0</code></pre></div>
 <p>本体关键在于，<code>initial</code>中只出现一次的节点移除才是有收益的，移除这些节点中所在连通域最大的节点即可。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] size;
     <span class="hljs-keyword">int</span>[] parent;
 
@@ -559,7 +559,7 @@
             size[f1] += size[f2]; <span class="hljs-comment">// 合并两个root的size到新的root</span>
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
             </article>
             <hr>

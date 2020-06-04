@@ -234,27 +234,27 @@
 <p><strong>2. 临界区</strong></p>
 <p>对临界资源进行访问的那段代码称为临界区。</p>
 <p>为了互斥访问临界资源，每个进程在进入临界区之前，需要先进行检查。</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 临界区伪代码</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 临界区伪代码</span>
 entry section        
      critical section 
-exit section</code></pre>
+exit section</code></pre></div>
 <h2 id="3-1-硬件同步机制"><a href="#3-1-硬件同步机制" class="headerlink" title="3.1 硬件同步机制"></a>3.1 硬件同步机制</h2><p><strong>1. 关中断</strong></p>
 <p>禁用中断之后，进程（线程）就不会被切换出去，从而保证代码段能执行结束。但坏处也很明显，由于中断被禁用，如果临界区代码一直执行，其他进程就没机会执行。</p>
 <p><strong>2. 原子操作指令</strong></p>
 <p>比较常见的原子操作指令包括 <a href="https://en.wikipedia.org/wiki/Test-and-set" target="_blank" rel="noopener">test and set</a>、<a href="https://en.wikipedia.org/wiki/Compare-and-swap" target="_blank" rel="noopener">compare and swap</a>。</p>
 <h2 id="3-2-信号量机制"><a href="#3-2-信号量机制" class="headerlink" title="3.2 信号量机制"></a>3.2 信号量机制</h2><p>semaphore有一个<strong>整型变量（S）</strong>和两个<strong>原子操作</strong>组成。S表示资源的数量，而两个原子操作一般被成为P操作和V操作（有时也被成为wait、signal）。</p>
 <p>P操作表示申请一个资源，P操作的定义：S=S-1，若S&gt;=0，则执行P操作的线程继续执行；若S&lt;0，则置该线程为阻塞状态，并将其插入阻塞队列。伪码如下： </p>
-<pre><code class="hljs java">Procedure P（Var S：Semaphore）；
+<div class="hljs"><pre><code class="hljs java">Procedure P（Var S：Semaphore）；
 　　Begin
 　　　　S：=S-<span class="hljs-number">1</span>；
 　　　　If S&lt;<span class="hljs-number">0</span> <span class="hljs-function">then <span class="hljs-title">w</span><span class="hljs-params">(S)</span> </span>&#123;执行P操作的线程插入等待队列&#125;
-　　End；</code></pre>
+　　End；</code></pre></div>
 <p>V操作表示释放一个资源，V操作定义：S=S+1，若S&gt;0则执行V操作的线程继续执行；若S&lt;0，则从阻塞状态唤醒一个线程，并将其插入就绪队列。伪代码如下：</p>
- <pre><code class="hljs java">Procedure V（Var S：Semaphore）；
+ <div class="hljs"><pre><code class="hljs java">Procedure V（Var S：Semaphore）；
 　　Begin
 　　　　S：=S+<span class="hljs-number">1</span>
 　　　　If S&lt;=<span class="hljs-number">0</span> <span class="hljs-function">then <span class="hljs-title">R</span><span class="hljs-params">(s)</span> </span>&#123;从阻塞队列中唤醒一个线程&#125;
-　　End；</code></pre>
+　　End；</code></pre></div>
 <h2 id="3-3-管程"><a href="#3-3-管程" class="headerlink" title="3.3 管程"></a>3.3 管程</h2><p>管程有一个重要特性：在一个时刻只能有<strong>一个进程</strong>使用管程。进程在无法继续执行的时候不能一直占用管程，否则其它进程永远不能使用管程。</p>
 <p>管程引入了 <strong>条件变量</strong> 以及相关的操作：<strong>wait()</strong> 和 <strong>signal()</strong> 来实现同步操作。对条件变量执行 wait() 操作会导致调用进程阻塞，把管程让出来给另一个进程持有。signal() 操作用于唤醒被阻塞的进程。</p>
 <h1 id="四、进程调度算法"><a href="#四、进程调度算法" class="headerlink" title="四、进程调度算法"></a>四、进程调度算法</h1><p>不同环境的调度算法目标不同，因此需要针对不同环境来讨论调度算法。</p>

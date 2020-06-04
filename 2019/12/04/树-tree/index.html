@@ -237,7 +237,7 @@
 </ol>
 <p><img src="BinaryTree2.png" srcset="/img/loading.gif" alt="full"></p>
 <h2 id="二叉树-Binary-tree"><a href="#二叉树-Binary-tree" class="headerlink" title="二叉树(Binary tree)"></a>二叉树(Binary tree)</h2><p><strong>二叉树</strong>（英语：Binary tree）是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
-<pre><code class="hljs python"><span class="hljs-comment"># 建一个单节点</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 建一个单节点</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span><span class="hljs-params">(object)</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, value)</span>:</span>
         self.val = value
@@ -261,15 +261,15 @@ value = <span class="hljs-number">2</span>
 	value += <span class="hljs-number">1</span>
 	cur.right = Node(value)
 	stack.append(cur.right)
-	value += <span class="hljs-number">1</span></code></pre>
+	value += <span class="hljs-number">1</span></code></pre></div>
 <h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>二叉树的遍历有前序遍历、中序遍历、后序遍历和层序遍历等，这里用迭代和递归两个方法介绍。</p>
-<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span> 
     print(root.val, end = <span class="hljs-string">' '</span>)
     preorderTraversal(root.left)
-    preorderTraversal(root.right)</code></pre>
-<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
+    preorderTraversal(root.right)</code></pre></div>
+<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">preorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span> res
@@ -292,14 +292,14 @@ value = <span class="hljs-number">2</span>
             print(root.val, end = <span class="hljs-string">' '</span>)
             root=root.left
         root=stack.pop()
-        root=root.right</code></pre>
-<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><h5 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h5><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+        root=root.right</code></pre></div>
+<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><h5 id="递归-1"><a href="#递归-1" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span>  
     inorderTraversal(root.left)
     print(root.val)
-    inorderTraversal(root.right)</code></pre>
-<h5 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代"></a>迭代</h5><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
+    inorderTraversal(root.right)</code></pre></div>
+<h5 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代"></a>迭代</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span> res
     stack = []
@@ -309,15 +309,15 @@ value = <span class="hljs-number">2</span>
             root=root.left
         root=stack.pop()
         print(root.val, end = <span class="hljs-string">' '</span>)
-        root=root.right</code></pre>
-<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><h5 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h5><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(root)</span>:</span>
+        root=root.right</code></pre></div>
+<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><h5 id="递归-2"><a href="#递归-2" class="headerlink" title="递归"></a>递归</h5><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span>  
     postorderTraversal(root.left)
     postorderTraversal(root.right)
-    print(root.val)</code></pre>
+    print(root.val)</code></pre></div>
 <h5 id="迭代-2"><a href="#迭代-2" class="headerlink" title="迭代"></a>迭代</h5><p>比较tricky的办法是吧后序遍历转变成中右左遍历的倒序，代码如下</p>
-<pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 方法一</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">postorderTraversalIter</span><span class="hljs-params">(root)</span>:</span>
     res = []
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
@@ -344,8 +344,8 @@ value = <span class="hljs-number">2</span>
             root = root.right
         root = stack.pop()
         root = root.left
-    <span class="hljs-keyword">return</span> res[::<span class="hljs-number">-1</span>]</code></pre>
-<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrderTraversal</span><span class="hljs-params">(root)</span>:</span>
+    <span class="hljs-keyword">return</span> res[::<span class="hljs-number">-1</span>]</code></pre></div>
+<h4 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrderTraversal</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-comment"># 使用列表模拟先进先出队列queue</span>
     queue = [root]
     <span class="hljs-keyword">while</span> queue:
@@ -354,8 +354,8 @@ value = <span class="hljs-number">2</span>
             queue.append(node.left)
         <span class="hljs-keyword">if</span> node.right:
             queue.append(node.right)
-        print(node.val, end = <span class="hljs-string">' '</span>)</code></pre>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code class="hljs python">前序遍历_递归：
+        print(node.val, end = <span class="hljs-string">' '</span>)</code></pre></div>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><div class="hljs"><pre><code class="hljs python">前序遍历_递归：
 <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> 
 前序遍历_迭代：
 <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> 
@@ -368,11 +368,11 @@ value = <span class="hljs-number">2</span>
 后序遍历_迭代：
 <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span> 
 层序遍历：
-<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span></code></pre>
+<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span></code></pre></div>
 <h3 id="二叉树的序列化"><a href="#二叉树的序列化" class="headerlink" title="二叉树的序列化"></a>二叉树的序列化</h3><p>「序列化」（serialization），指的是把复杂的数据结构转化为线性结构，以方便存储的过程。序列化得到的线性结构必须能重建出原有的结构，才有意义。</p>
 <h4 id="仅使用一种遍历的序列化方法"><a href="#仅使用一种遍历的序列化方法" class="headerlink" title="仅使用一种遍历的序列化方法"></a>仅使用一种遍历的序列化方法</h4><p>这是最常见的序列化方法。可以采用的遍历顺序包括先序、后序、层序。在遍历时，要把空指针也包含在遍历的结果中。例如，对下图的二叉树，进行先序、后序、层序遍历的结果分别为 12##3#4##、##2###431、123###4##（# 表示空指针）。</p>
 <p><img src="v2-fa1e727f17845ced6ad75d476b9ec3cf_hd.jpg" srcset="/img/loading.gif" alt="xu"></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reconstruct</span><span class="hljs-params">(root)</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reconstruct</span><span class="hljs-params">(root)</span>:</span>
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
         <span class="hljs-keyword">return</span> res
     stack = [root]
@@ -386,7 +386,7 @@ value = <span class="hljs-number">2</span>
         <span class="hljs-keyword">if</span> node.left:
             stack.append(node.left)
         <span class="hljs-keyword">else</span>:
-            print(<span class="hljs-string">'#'</span>, end = <span class="hljs-string">' '</span>)</code></pre>
+            print(<span class="hljs-string">'#'</span>, end = <span class="hljs-string">' '</span>)</code></pre></div>
 <p>而仅根据（带空指针的）中序遍历，是不能重建二叉树的。比如，上面这棵树的中序遍历为 #2#1#3#4#。事实上可以证明，任何一棵二叉树的中序遍历结果，都会是空指针与树中结点交替出现的形式，所以空指针没有提供任何额外的信息。<a href="https://zhuanlan.zhihu.com/p/26418233" target="_blank" rel="noopener">原文</a></p>
 <h2 id="二叉搜索树-Binary-search-tree"><a href="#二叉搜索树-Binary-search-tree" class="headerlink" title="二叉搜索树(Binary search tree)"></a>二叉搜索树(Binary search tree)</h2><p><strong>二叉查找树</strong>（英语：Binary Search Tree），也称为<strong>二叉搜索树</strong>、<strong>有序二叉树</strong>（ordered binary tree）或<strong>排序二叉树</strong>（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
 <ol>
@@ -440,7 +440,7 @@ value = <span class="hljs-number">2</span>
 <li>查找右子树</li>
 </ol>
 <h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-bst/solution/pythonchang-gui-jie-fa-by-lil-q/" target="_blank" rel="noopener">自己做leetcode 450时的解法</a>，非递归，算法有些复杂。</p>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(self, root: TreeNode, key: int)</span> -&gt; TreeNode:</span>
         <span class="hljs-comment"># 删除节点返回新的子树    </span>
         <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete</span><span class="hljs-params">(node)</span>:</span>
@@ -488,7 +488,7 @@ value = <span class="hljs-number">2</span>
             <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node:<span class="hljs-keyword">return</span> root
         <span class="hljs-keyword">if</span> father.left==node:father.left=delete(node)
         <span class="hljs-keyword">else</span>: father.right=delete(node)
-        <span class="hljs-keyword">return</span> root</code></pre>
+        <span class="hljs-keyword">return</span> root</code></pre></div>
 <p>这里给出递归的方式。递归的好处在于不用考虑寻找父节点以及待删除结点到底是父节点的左子节点还是右子节点。</p>
 <p>在二叉查找树删去一个结点，分三种情况讨论：</p>
 <ol>
@@ -497,7 +497,7 @@ value = <span class="hljs-number">2</span>
 <li>若p结点的左子树和右子树均不空。在删去p之后，为保持其它元素之间的相对位置不变，可按中序遍历保持有序进行调整，可以有两种做法：其一是令p的左子树为f的左/右（依p是f的左子树还是右子树而定）子树，s为p左子树的最右下的结点，而p的右子树为s的右子树；其二是令p的直接前驱（in-order predecessor）或直接后继（in-order successor）替代p，然后再从二叉查找树中删去它的直接前驱（或直接后继）。</li>
 </ol>
 <p><img src="720px-Binary_search_tree_delete.svg.png" srcset="/img/loading.gif" alt="deletenode"></p>
-<h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span>:</span>
+<h4 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h4><div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span>:</span>
     <span class="hljs-comment"># 初始化</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, value)</span>:</span>
         self.val = value
@@ -560,10 +560,10 @@ value = <span class="hljs-number">2</span>
                 <span class="hljs-keyword">else</span>:
                     <span class="hljs-keyword">return</span> self.right
         <span class="hljs-keyword">else</span>:
-            <span class="hljs-keyword">return</span> self</code></pre>
+            <span class="hljs-keyword">return</span> self</code></pre></div>
 <p><em>注：代码中没有考虑空树。</em></p>
 <h2 id="字典树-Trie"><a href="#字典树-Trie" class="headerlink" title="字典树(Trie)"></a>字典树(Trie)</h2><p>Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串。与二叉查找树不同，键不是直接保存在节点中，而是由节点在树中的位置决定。一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串，而根节点对应空字符串。一般情况下，不是所有的节点都有对应的值，只有叶子节点和部分内部节点所对应的键才有相关的值。</p>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Trie</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Trie</span>:</span>
 	<span class="hljs-comment"># 初始化</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
         self.lookup = &#123;&#125;
@@ -593,7 +593,7 @@ value = <span class="hljs-number">2</span>
             <span class="hljs-keyword">if</span> a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> tree:
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
             tree = tree[a]
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></code></pre></div>
 <h2 id="B树-B-tree-和B-树-B-tree"><a href="#B树-B-tree-和B-树-B-tree" class="headerlink" title="B树(B-tree)和B+树(B+ tree)"></a>B树(B-tree)和B+树(B+ tree)</h2><p><strong>B树</strong>（B-tree）是一种自平衡的树，能够保持数据有序。这种数据结构能够让查找数据、顺序访问、插入数据及删除的动作，都在对数时间内完成。B树，概括来说是一个一般化的二叉查找树（binary search tree）一个节点可以拥有2个以上的子节点。与自平衡二叉查找树不同，B树适用于读写相对大的数据块的存储系统，例如磁盘。B树减少定位记录时所经历的中间过程，从而加快存取速度。B树这种数据结构可以用来描述外部存储。这种数据结构常被应用在数据库和文件系统的实现上。</p>
 <p><strong>B+ 树</strong>是一种树数据结构，通常用于数据库和操作系统的文件系统中。B+ 树的特点是能够保持数据稳定有序，其插入与修改拥有较稳定的对数时间复杂度。B+ 树元素自底向上插入，这与二叉树恰好相反。</p>
 <p>B+树与B树最大的不同是内部结点不保存数据，只用于索引，所有数据（或者说记录）都保存在叶子结点中。</p>

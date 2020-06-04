@@ -326,9 +326,9 @@
 <p>BCD编码也有很多用途，比如银行、超市这种需要用到小数记金额的情况就很合适，但是如果表示很小、或者很大的数就不是很合适了，比如地球到太阳的距离，一个氢原子的半径等等。而且这样编码非常浪费，对于32位整数我们可以表示将近40亿个数字，而BCD编码的数字只能表示1亿个数字。</p>
 <h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE754标准规定，浮点数由“符号”、“指数”和“尾数”3部分构成，float的规格化表示为：<script type="math/tex">±1.*f*×2^{*E*−127}</script><br> ，其中，<em>f</em>是尾数，<em>E</em>是指数。以float为例：<br><img src="20180716165243972.png" srcset="/img/loading.gif" alt="image2"></p>
 <h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>srand函数是随机数发生器的初始化函数。</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">srand</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> seed)</span></span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">srand</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> seed)</span></span></code></pre></div>
 <p><code>srand()</code>需要提供一个种子，这个种子会对应一个随机数，如果使用相同的种子后面的rand()函数会出现一样的随机数。如：<code>srand(1)</code>，直接使用 1 来初始化种子。不过为了防止随机数每次重复，常常使用系统时间来初始化，即使用 time 函数来获得系统时间，它的返回值为从 00:00:00 GMT, January 1, 1970 到现在所持续的秒数，然后将 time_t 型数据转化为(unsigned)型再传给 srand 函数，即： srand((unsigned) time(&amp;t)); 还有一个经常用法，不需要定义time_t型t变量，即： srand((unsigned) time(NULL))；直接传入一个空指针，因为你的程序中往往并不需要经过参数获得的t数据。</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;time.h&gt; /*用到了time函数，所以要有这个头文件*/</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX 10</span>
@@ -345,7 +345,7 @@
 	&#125;
 	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><div class="table-container">
 <table>
 <thead>
@@ -413,10 +413,10 @@
 <h1 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h1><p>在 C++ 中，有两种简单的定义常量的方式：</p>
 <ul>
 <li><p>使用 <strong>#define</strong> 预处理器。</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> identifier value</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> identifier value</span></code></pre></div>
 </li>
 <li><p>使用 <strong>const</strong> 关键字。</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">const</span> type variable = value;</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> type variable = value;</code></pre></div>
 </li>
 </ul>
 <h1 id="Struct和Class"><a href="#Struct和Class" class="headerlink" title="Struct和Class"></a>Struct和Class</h1><p>C++ 中关键字<code>struct</code>和<code>class</code>都是用来定义类的，二者除了默认访问限定符不同，结构体（包括共用体）默认成员为public，而类默认成员是private型的。其他所有方面都一样。</p>

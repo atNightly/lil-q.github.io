@@ -207,12 +207,12 @@
 <h1 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h1><p>在学习<a href="https://blog.csdn.net/xufive/article/details/104093197" target="_blank" rel="noopener">该博客</a>的数据爬取时发现数据似乎已经不再更新，所以重新在<a href="https://news.qq.com/zt2020/page/feiyan.htm?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">腾讯新闻网站</a>搜索相关数据。</p>
 <p><img src="213627.png" srcset="/img/loading.gif" alt="shuju"></p>
 <p>使用<code>time</code>、<code>json</code>和<code>requests</code>获取数据。</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> time, json, requests
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time, json, requests
 url = <span class="hljs-string">'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=&amp;_=%d'</span>%int(time.time()*<span class="hljs-number">1000</span>)
 data = json.loads(requests.get(url=url).json()[<span class="hljs-string">'data'</span>])
-print(data)</code></pre>
+print(data)</code></pre></div>
 <p>可以看到数据如下所示（省略部分内容）：</p>
-<pre><code class="hljs python">&#123;<span class="hljs-string">'chinaTotal'</span>: &#123;<span class="hljs-string">'date'</span>: <span class="hljs-string">'02.01'</span>, <span class="hljs-string">'confirm'</span>: <span class="hljs-string">'11890'</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-string">'17988'</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-string">'259'</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-string">'269'</span>&#125;, 
+<div class="hljs"><pre><code class="hljs python">&#123;<span class="hljs-string">'chinaTotal'</span>: &#123;<span class="hljs-string">'date'</span>: <span class="hljs-string">'02.01'</span>, <span class="hljs-string">'confirm'</span>: <span class="hljs-string">'11890'</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-string">'17988'</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-string">'259'</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-string">'269'</span>&#125;, 
  <span class="hljs-string">'lastUpdateTime'</span>: <span class="hljs-string">'2020-02-01 21:18:01'</span>, 
  <span class="hljs-string">'areaTree'</span>: 
  	[&#123;<span class="hljs-string">'name'</span>: <span class="hljs-string">'中国'</span>, 
@@ -223,9 +223,9 @@ print(data)</code></pre>
                    &#123;<span class="hljs-string">'name'</span>: <span class="hljs-string">'浙江'</span>, 
                     <span class="hljs-string">'children'</span>: [...], 
                     <span class="hljs-string">'total'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">599</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">20</span>&#125;, 
-                    <span class="hljs-string">'today'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">62</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">7</span>&#125;&#125;, ...</code></pre>
+                    <span class="hljs-string">'today'</span>: &#123;<span class="hljs-string">'confirm'</span>: <span class="hljs-number">62</span>, <span class="hljs-string">'suspect'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'dead'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'heal'</span>: <span class="hljs-number">7</span>&#125;&#125;, ...</code></pre></div>
 <p>我们只获取各个省份确诊人数的信息已经最后更新的时间。</p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">catch_distribution</span><span class="hljs-params">()</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">catch_distribution</span><span class="hljs-params">()</span>:</span>
     
     areaData = &#123;&#125;
     url = <span class="hljs-string">'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=&amp;_=%d'</span>%int(time.time()*<span class="hljs-number">1000</span>)
@@ -245,9 +245,9 @@ print(data)</code></pre>
     <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> chinaData:
         areaData[item[<span class="hljs-string">'name'</span>]] = item[<span class="hljs-string">'total'</span>][<span class="hljs-string">'confirm'</span>]
     
-    <span class="hljs-keyword">return</span> areaData, lastUpdateTime</code></pre>
+    <span class="hljs-keyword">return</span> areaData, lastUpdateTime</code></pre></div>
 <h1 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h1><p>这里使用的是<a href="https://pyecharts.org/#/zh-cn/quickstart" target="_blank" rel="noopener">pyecharts v1</a>，似乎腾讯新闻也是用的这个包。由于湖北人数远高于其他省份，<a href="https://zhuanlan.zhihu.com/p/104026698" target="_blank" rel="noopener">使用连续型的视觉映射效果不好</a>，这里采用了分段式的，可以以10的整数幂为界限传入<code>pieces</code>，<code>time</code>参数即之前得到的最近更新时间。</p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map_visualmap</span><span class="hljs-params">(time, pieces)</span> -&gt; Map:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map_visualmap</span><span class="hljs-params">(time, pieces)</span> -&gt; Map:</span>
     c = (
         Map()
         .add(<span class="hljs-string">"确诊人数"</span>, data.items(), <span class="hljs-string">"china"</span>)
@@ -256,8 +256,8 @@ print(data)</code></pre>
             visualmap_opts=opts.VisualMapOpts(max_=<span class="hljs-number">5000</span>, is_piecewise=<span class="hljs-literal">True</span>, pieces=pieces)
         )
     )
-    <span class="hljs-keyword">return</span> c</code></pre>
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
+    <span class="hljs-keyword">return</span> c</code></pre></div>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
 <span class="hljs-keyword">import</span> json
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
@@ -307,7 +307,7 @@ pieces = [
     &#123;<span class="hljs-string">"max"</span>: <span class="hljs-number">10</span>&#125;
 ]
 map1 = map_visualmap(lastUpdateTime, pieces, data)
-map1.render()</code></pre>
+map1.render()</code></pre></div>
 <p>最后的效果如下，</p>
 <p><img src="2sd15400.png" srcset="/img/loading.gif" alt="xiaoguo"></p>
 <p>运行后会在根目录下生成<a href="http://lil-q.gitee.io/demo/render.html" target="_blank" rel="noopener">render.html</a></p>

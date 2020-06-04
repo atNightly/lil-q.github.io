@@ -218,7 +218,7 @@
 <li>左括号必须用相同类型的右括号闭合。</li>
 <li>左括号必须以正确的顺序闭合。</li>
 </ol>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isValid</span><span class="hljs-params">(self, s: str)</span> -&gt; bool:</span>
         dic=&#123;<span class="hljs-string">')'</span>:<span class="hljs-string">'('</span>,<span class="hljs-string">'&#125;'</span>:<span class="hljs-string">'&#123;'</span>,<span class="hljs-string">']'</span>:<span class="hljs-string">'['</span>&#125;
         stack=[]
@@ -234,11 +234,11 @@
             <span class="hljs-comment"># 左括号直接插入</span>
             <span class="hljs-keyword">else</span>:
                 stack.append(char)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> stack <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span></code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> stack <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span></code></pre></div>
 <h3 id="leetcode-84-柱状图中最大的矩形"><a href="#leetcode-84-柱状图中最大的矩形" class="headerlink" title="leetcode 84. 柱状图中最大的矩形"></a><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">leetcode 84. 柱状图中最大的矩形</a></h3><p>给定 <em>n</em> 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
 <p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
 <p><img src="histogram_area.png" srcset="/img/loading.gif" alt="84"></p>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">largestRectangleArea</span><span class="hljs-params">(self, heights: List[int])</span> -&gt; int:</span>
         stack = [<span class="hljs-number">0</span>]
         <span class="hljs-comment"># 增加左右边界</span>
@@ -251,9 +251,9 @@
                 tmp = stack.pop()
                 res = max(res, (i - stack[<span class="hljs-number">-1</span>] - <span class="hljs-number">1</span>) * heights[tmp])
             stack.append(i)
-        <span class="hljs-keyword">return</span> res</code></pre>
+        <span class="hljs-keyword">return</span> res</code></pre></div>
 <h3 id="leetcode-316-去除重复字母"><a href="#leetcode-316-去除重复字母" class="headerlink" title="leetcode 316. 去除重复字母"></a><a href="https://leetcode-cn.com/problems/remove-duplicate-letters/" target="_blank" rel="noopener">leetcode 316. 去除重复字母</a></h3><p>给定一个仅包含小写字母的字符串，去除字符串中重复的字母，使得每个字母只出现一次。需保证返回结果的字典序最小（要求不能打乱其他字符的相对位置）。</p>
-<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">removeDuplicateLetters</span><span class="hljs-params">(self, s: str)</span> -&gt; str:</span>
         stack = []
         existed = set()
@@ -268,14 +268,14 @@
                 stack.append(c)
                 existed.add(c)
             counter[c]-=<span class="hljs-number">1</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>.join(stack)</code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>.join(stack)</code></pre></div>
 <p>其实也是建立了一个递增栈，但是这里需要满足所有的字母最后只出现一次。</p>
 <h1 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列(Queue)"></a>队列(Queue)</h1><p><strong>队列</strong>(queue)，是先进先出(FIFO, First-In-First-Out)的线性表。在具体应用中通常用链表或者数组来实现。</p>
 <h2 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h2><p>队列只允许在后端（<em>rear</em>）进行插入操作，在前端（<em>front</em>）进行删除操作。</p>
 <p>在python中，可用<code>list</code>模拟简单模拟队列，<code>append()</code>模拟插入，<code>pop(0)</code>模拟删除。或使用<code>deque</code>。</p>
-<pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque</code></pre></div>
 <p><a href="https://zhuanlan.zhihu.com/p/45798936" target="_blank" rel="noopener">队列的实现分为顺序存储结构和链式存储结构，前者基于数组实现，后者则实基于单链表。</a>简单来说，顺序储存结构在进行队列删除操作时会留出空的储存空间，最后导致假溢。解决办法是引入了循环向量这个概念，也就是把队列的头尾相连接并且使用顺序存储结构进行数据存储的队列，这时队列称<strong>循环队列</strong>。</p>
-<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><h3 id="leetcode-622-设计循环队列"><a href="#leetcode-622-设计循环队列" class="headerlink" title="leetcode 622. 设计循环队列"></a><a href="https://leetcode-cn.com/problems/design-circular-queue/" target="_blank" rel="noopener">leetcode 622. 设计循环队列</a></h3><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCircularQueue</span>:</span>
+<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><h3 id="leetcode-622-设计循环队列"><a href="#leetcode-622-设计循环队列" class="headerlink" title="leetcode 622. 设计循环队列"></a><a href="https://leetcode-cn.com/problems/design-circular-queue/" target="_blank" rel="noopener">leetcode 622. 设计循环队列</a></h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCircularQueue</span>:</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, k: int)</span>:</span>
         self.size = k
@@ -317,9 +317,9 @@
         <span class="hljs-keyword">return</span> self.count == <span class="hljs-number">0</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isFull</span><span class="hljs-params">(self)</span> -&gt; bool:</span>
-        <span class="hljs-keyword">return</span> self.count == self.size</code></pre>
+        <span class="hljs-keyword">return</span> self.count == self.size</code></pre></div>
 <p>这里每当头尾指针溢出（也就是等于k时），将其置为0。当然也可以一直使用<code>self.eq%self.size</code>和<code>self.dq%self.size</code>作为指针。</p>
-<h3 id="leetcode-102-二叉树的层次遍历"><a href="#leetcode-102-二叉树的层次遍历" class="headerlink" title="leetcode 102. 二叉树的层次遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">leetcode 102. 二叉树的层次遍历</a></h3><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h3 id="leetcode-102-二叉树的层次遍历"><a href="#leetcode-102-二叉树的层次遍历" class="headerlink" title="leetcode 102. 二叉树的层次遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">leetcode 102. 二叉树的层次遍历</a></h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrder</span><span class="hljs-params">(self, root)</span>:</span>
         levels = []
@@ -338,9 +338,9 @@
                 <span class="hljs-keyword">if</span> node.right:
                     queue.append(node.right)
             level += <span class="hljs-number">1</span> 
-        <span class="hljs-keyword">return</span> levels</code></pre>
+        <span class="hljs-keyword">return</span> levels</code></pre></div>
 <p>当然如果不分层的话会更直观：</p>
-<pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">levelOrderTraversal</span><span class="hljs-params">(root)</span>:</span>
     res=[]
     queue = deque([root,])
@@ -351,7 +351,7 @@
             <span class="hljs-keyword">if</span> node.right:
                 queue.append(node.right)
                 res.append(node.val)
-    <span class="hljs-keyword">return</span> res</code></pre>
+    <span class="hljs-keyword">return</span> res</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/堆栈" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%A0%86%E6%A0%88</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/队列" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E9%98%9F%E5%88%97</a></li>

@@ -217,25 +217,25 @@
 <li>获取链表大小（包含元素的个数）：<code>int size()</code></li>
 </ul>
 <p><code>List</code>接口允许我们添加重复的元素，即<code>List</code>内部的元素可以重复，<code>List</code>还允许添加<code>null</code>。调用<code>List.of()</code>，它返回的是一个<strong>只读</strong><code>List</code>：</p>
-<pre><code class="hljs java">List&lt;Integer&gt; list = List.of(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);</code></pre>
+<div class="hljs"><pre><code class="hljs java">List&lt;Integer&gt; list = List.of(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);</code></pre></div>
 <p>但是<code>List.of()</code>方法不接受<code>null</code>值，如果传入<code>null</code>，会抛出<code>NullPointerException</code>异常。</p>
 <h2 id="List遍历"><a href="#List遍历" class="headerlink" title="List遍历"></a>List遍历</h2><p><code>List</code>的遍历采用了迭代器的设计模式：</p>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/iterator.png" srcset="/img/loading.gif" alt=""></p>
 <p><code>Iterable</code>接口声明如下：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;
     <span class="hljs-function">Iterator&lt;T&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span></span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><code>Iterator</code>接口声明如下：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
     <span class="hljs-comment">// 判断是否还有下一个对象，如果有，则返回true，否则false</span>
     <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>; 
     <span class="hljs-comment">// 返回集合的下个值，此方法只能在hasNext方法返回true时调用</span>
     <span class="hljs-function">E <span class="hljs-title">next</span><span class="hljs-params">()</span></span>; 
     <span class="hljs-comment">// 删除集合的当前值，此方法也只能在hasNext方法返回true时调用</span>
     <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span></span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><code>ListIterator</code>接口声明如下：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ListIterator</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ListIterator</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
     <span class="hljs-comment">// 支持双向移动</span>
     <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>;
     <span class="hljs-function">E <span class="hljs-title">next</span><span class="hljs-params">()</span></span>;
@@ -249,9 +249,9 @@
     <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(E e)</span></span>;
     <span class="hljs-comment">// 可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素</span>
     <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span></span>; 
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>通过<code>Iterator</code>遍历<code>List</code>永远是最高效的方式。并且，由于<code>Iterator</code>遍历是如此常用，所以，Java的<code>for each</code>循环本身就可以帮我们使用<code>Iterator</code>遍历。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Iterator;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Iterator;
 <span class="hljs-keyword">import</span> java.util.List;
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
@@ -261,8 +261,8 @@
             System.out.println(s);
         &#125;
     &#125;
-&#125;</code></pre>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         List&lt;String&gt; list = List.of(<span class="hljs-string">"apple"</span>, <span class="hljs-string">"pear"</span>, <span class="hljs-string">"banana"</span>);
@@ -270,9 +270,9 @@
             System.out.println(s);
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="List和Array转换"><a href="#List和Array转换" class="headerlink" title="List和Array转换"></a>List和Array转换</h2><h3 id="List-gt-Array"><a href="#List-gt-Array" class="headerlink" title="List -&gt; Array"></a>List -&gt; Array</h3><p>给<code>toArray(T[])</code>传入一个类型相同的<code>Array</code>，<code>List</code>内部自动把元素复制到传入的<code>Array</code>中：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         List&lt;Integer&gt; list = List.of(<span class="hljs-number">12</span>, <span class="hljs-number">34</span>, <span class="hljs-number">56</span>);
@@ -281,18 +281,18 @@
             System.out.println(n);
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><code>toArray(T[])</code>方法的泛型参数<code>&lt;T&gt;</code>并不是<code>List</code>接口定义的泛型参数<code>&lt;E&gt;</code>，所以，我们实际上可以传入其他类型的数组。</p>
-<pre><code class="hljs java">Number[] array = list.toArray(<span class="hljs-keyword">new</span> Number[<span class="hljs-number">3</span>]);</code></pre>
+<div class="hljs"><pre><code class="hljs java">Number[] array = list.toArray(<span class="hljs-keyword">new</span> Number[<span class="hljs-number">3</span>]);</code></pre></div>
 <p>如果传入的数组不够大，那么<code>List</code>内部会创建一个新的刚好够大的数组，填充后返回；如果传入的数组比<code>List</code>元素还要多，那么填充完元素后，剩下的数组元素一律填充<code>null</code>。实际上，最常用的是传入一个“恰好”大小的数组：</p>
-<pre><code class="hljs java">Integer[] array = list.toArray(<span class="hljs-keyword">new</span> Integer[list.size()]);</code></pre>
-<h3 id="Array-gt-List"><a href="#Array-gt-List" class="headerlink" title="Array -&gt; List"></a>Array -&gt; List</h3><pre><code class="hljs java">Integer[] array = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;;
-List&lt;Integer&gt; list = List.of(array);</code></pre>
+<div class="hljs"><pre><code class="hljs java">Integer[] array = list.toArray(<span class="hljs-keyword">new</span> Integer[list.size()]);</code></pre></div>
+<h3 id="Array-gt-List"><a href="#Array-gt-List" class="headerlink" title="Array -&gt; List"></a>Array -&gt; List</h3><div class="hljs"><pre><code class="hljs java">Integer[] array = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;;
+List&lt;Integer&gt; list = List.of(array);</code></pre></div>
 <p>对于JDK 11之前的版本，可以使用<code>Arrays.asList(T...)</code>方法把数组转换成<code>List</code>。</p>
 <h2 id="contains-和indexOf"><a href="#contains-和indexOf" class="headerlink" title="contains()和indexOf()"></a>contains()和indexOf()</h2><p><code>List</code>内部按照放入元素的先后顺序存放，并且每个元素都可以通过索引确定自己的位置。<code>List</code>提供了<code>boolean contains(Object o)</code>方法来判断<code>List</code>是否包含某个指定元素。此外，<code>int indexOf(Object o)</code>方法可以返回某个元素的索引，如果元素不存在，就返回<code>-1</code>。</p>
 <p><code>List</code>内部并不是通过<code>==</code>判断两个元素是否相等，而是使用<code>equals()</code>方法判断两个元素是否相等，所以放入的实例必须要正确override。</p>
 <p>如果<code>this.name</code>为<code>null</code>，那么<code>equals()</code>方法会报错，因此，需要继续改写如下：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (o <span class="hljs-keyword">instanceof</span> Person) &#123;
         Person p = (Person) o;
         <span class="hljs-keyword">boolean</span> nameEquals = <span class="hljs-keyword">false</span>;
@@ -305,15 +305,15 @@ List&lt;Integer&gt; list = List.of(array);</code></pre>
         <span class="hljs-keyword">return</span> nameEquals &amp;&amp; <span class="hljs-keyword">this</span>.age == p.age;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>如果<code>Person</code>有好几个引用类型的字段，上面的写法就太复杂了。要简化引用类型的比较，我们使用<code>Objects.equals()</code>静态方法：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object o)</span> </span>&#123;
     <span class="hljs-keyword">if</span> (o <span class="hljs-keyword">instanceof</span> Person) &#123;
         Person p = (Person) o;
         <span class="hljs-keyword">return</span> Objects.equals(<span class="hljs-keyword">this</span>.name, p.name) &amp;&amp; <span class="hljs-keyword">this</span>.age == p.age;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="List实现类"><a href="#List实现类" class="headerlink" title="List实现类"></a>List实现类</h2><ul>
 <li>ArrayList：基于动态数组实现，支持随机访问。</li>
 <li>Vector：和 ArrayList 类似，但它是线程安全的。</li>
@@ -354,17 +354,17 @@ List&lt;Integer&gt; list = List.of(array);</code></pre>
 </table>
 </div>
 <p>通常情况下，我们总是优先使用<code>ArrayList</code>。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractList</span>&lt;<span class="hljs-title">E</span>&gt;
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractList</span>&lt;<span class="hljs-title">E</span>&gt;
         <span class="hljs-keyword">implements</span> <span class="hljs-title">List</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">RandomAccess</span>, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>
 </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">8683452581122892189L</span>;
 
     <span class="hljs-comment">// Default initial capacity</span>
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DEFAULT_CAPACITY = <span class="hljs-number">10</span>;
-    ...</code></pre>
+    ...</code></pre></div>
 <p>RandomAccess 接口标识着该类支持快速随机访问，java.io.Serializable是支持序列化接口。数组的默认大小为 10。</p>
 <h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><p>添加元素时如果容量不够时，需要使用 grow() 方法进行扩容，新容量的大小默认为 <code>oldCapacity + (oldCapacity &gt;&gt; 1)</code>，也就是旧容量的 1.5 倍。当需求的容量大于它时，则会选用两个<code>list</code>长度之和作为新容量，扩容操作需要调用 <code>Arrays.copyOf()</code> 把原数组整个复制到新数组中，这个操作代价很高，因此最好在创建 ArrayList 对象时就指定大概的容量大小，减少扩容操作的次数。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">addAll</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">addAll</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;
     Object[] a = c.toArray();
     modCount++;
     <span class="hljs-keyword">int</span> numNew = a.length;
@@ -394,9 +394,9 @@ List&lt;Integer&gt; list = List.of(array);</code></pre>
 
 <span class="hljs-keyword">private</span> Object[] grow() &#123;
     <span class="hljs-keyword">return</span> grow(size + <span class="hljs-number">1</span>);
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>ArraySupport.class下的<code>newLength()</code>：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">newLength</span><span class="hljs-params">(<span class="hljs-keyword">int</span> oldLength, <span class="hljs-keyword">int</span> minGrowth, <span class="hljs-keyword">int</span> prefGrowth)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">newLength</span><span class="hljs-params">(<span class="hljs-keyword">int</span> oldLength, <span class="hljs-keyword">int</span> minGrowth, <span class="hljs-keyword">int</span> prefGrowth)</span> </span>&#123;
     <span class="hljs-comment">// assert oldLength &gt;= 0</span>
     <span class="hljs-comment">// assert minGrowth &gt; 0</span>
 
@@ -405,9 +405,9 @@ List&lt;Integer&gt; list = List.of(array);</code></pre>
         <span class="hljs-keyword">return</span> newLength;
     &#125;
     <span class="hljs-keyword">return</span> hugeLength(oldLength, minGrowth); <span class="hljs-comment">// 处理溢出情况</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>Arrays.class下的<code>copyOf()</code>：</p>
-<pre><code class="hljs java">@SuppressWarnings("unchecked")
+<div class="hljs"><pre><code class="hljs java">@SuppressWarnings("unchecked")
 public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
     return (T[]) copyOf(original, newLength, original.getClass());
 &#125;
@@ -421,13 +421,13 @@ public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
         System.arraycopy(original, 0, copy, 0,
                          Math.min(original.length, newLength));
         return copy;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 <p>System.class下的<code>arraycopy()</code>：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title">arraycopy</span><span class="hljs-params">(Object src,  <span class="hljs-keyword">int</span>  srcPos,
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title">arraycopy</span><span class="hljs-params">(Object src,  <span class="hljs-keyword">int</span>  srcPos,
                                     Object dest, <span class="hljs-keyword">int</span> destPos,
-                                    <span class="hljs-keyword">int</span> length)</span></span>;</code></pre>
+                                    <span class="hljs-keyword">int</span> length)</span></span>;</code></pre></div>
 <h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p><code>remove()</code>调用了<code>fastRemove()</code>，其中调用 System.arraycopy() 将 index+1 后面的元素都复制到 index 位置上，该操作的时间复杂度为 O(N)，可以看到 ArrayList 删除元素的代价是非常高的。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> E <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
     Objects.checkIndex(index, size);
     <span class="hljs-keyword">final</span> Object[] es = elementData;
 
@@ -443,11 +443,11 @@ public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
     <span class="hljs-keyword">if</span> ((newSize = size - <span class="hljs-number">1</span>) &gt; i)
         System.arraycopy(es, i + <span class="hljs-number">1</span>, es, i, newSize - i);
     es[size = newSize] = <span class="hljs-keyword">null</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>保存元素的数组 <code>elementData</code> 使用 <code>transient</code> 修饰，该关键字声明数组默认不会被序列化。也就是说 <code>elementData</code> 的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">transient</span> Object[] elementData; <span class="hljs-comment">// non-private to simplify nested class access</span></code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">transient</span> Object[] elementData; <span class="hljs-comment">// non-private to simplify nested class access</span></code></pre></div>
 <p>ArrayList 实现了 writeObject() 和 readObject() 来控制只序列化数组中有元素填充那部分内容。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream s)</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream s)</span>
     <span class="hljs-keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;
 
     <span class="hljs-comment">// Read in size, and any hidden stuff</span>
@@ -472,8 +472,8 @@ public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
     &#125; <span class="hljs-keyword">else</span> &#123;
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> java.io.InvalidObjectException(<span class="hljs-string">"Invalid size: "</span> + size);
     &#125;
-&#125;</code></pre>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream s)</span>
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream s)</span>
     <span class="hljs-keyword">throws</span> java.io.IOException </span>&#123;
     <span class="hljs-comment">// Write out element count, and any hidden stuff</span>
     <span class="hljs-keyword">int</span> expectedModCount = modCount;
@@ -490,24 +490,24 @@ public static &lt;T&gt; T[] copyOf(T[] original, int newLength) &#123;
     <span class="hljs-keyword">if</span> (modCount != expectedModCount) &#123;
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ConcurrentModificationException();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>序列化时需要使用 ObjectOutputStream 的 writeObject() 将对象转换为字节流并输出。而 writeObject() 方法在传入的对象存在 writeObject() 的时候会去反射调用该对象的 writeObject() 来实现序列化。反序列化使用的是 ObjectInputStream 的 readObject() 方法，原理类似。</p>
-<pre><code class="hljs java">ArrayList list = <span class="hljs-keyword">new</span> ArrayList();
+<div class="hljs"><pre><code class="hljs java">ArrayList list = <span class="hljs-keyword">new</span> ArrayList();
 ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(file));
-oos.writeObject(list);</code></pre>
+oos.writeObject(list);</code></pre></div>
 <h4 id="fail-fast机制"><a href="#fail-fast机制" class="headerlink" title="fail-fast机制"></a>fail-fast机制</h4><p> AbstractList.class中使用 <code>modCount</code> 来记录 <code>ArrayList</code> 结构发生变化的次数。结构发生变化是指添加或者删除至少一个元素的所有操作，或者是调整内部数组的大小，仅仅只是设置元素的值不算结构发生变化。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> modCount = <span class="hljs-number">0</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> modCount = <span class="hljs-number">0</span>;</code></pre></div>
 <p>迭代器在调用<code>next()</code>、<code>remove()</code>方法时都是调用<code>checkForComodification()</code>方法，它检测<code>modCount == expectedModCount</code> ？ 若不等则抛出<code>ConcurrentModificationException</code>异常，从而产生fail-fast机制。</p>
 <p>有两种解决方案：</p>
 <ul>
 <li>在遍历过程中所有涉及到改变<code>modCount</code>值得地方全部加上<code>synchronized</code>或者直接使用<code>Collections.synchronizedList</code>（不推荐）；</li>
 <li>使用<code>CopyOnWriteArrayList</code>来替换<code>ArrayList</code>。</li>
 </ul>
-<h4 id="toArray"><a href="#toArray" class="headerlink" title="toArray()"></a>toArray()</h4><pre><code class="hljs java"><span class="hljs-keyword">public</span> Object[] toArray() &#123;
+<h4 id="toArray"><a href="#toArray" class="headerlink" title="toArray()"></a>toArray()</h4><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Object[] toArray() &#123;
         <span class="hljs-keyword">return</span> Arrays.copyOf(elementData, size);
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 <p>注意到传入的<code>elementData</code>和返回值是<code>Object[]</code>，如果需要传回原格式：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> &lt;T&gt; T[] toArray(T[] a) &#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> &lt;T&gt; T[] toArray(T[] a) &#123;
         <span class="hljs-keyword">if</span> (a.length &lt; size)
             <span class="hljs-comment">// Make a new array of a's runtime type, but my contents:</span>
             <span class="hljs-keyword">return</span> (T[]) Arrays.copyOf(elementData, size, a.getClass()); <span class="hljs-comment">// 利用反射</span>
@@ -515,11 +515,11 @@ oos.writeObject(list);</code></pre>
         <span class="hljs-keyword">if</span> (a.length &gt; size)
             a[size] = <span class="hljs-keyword">null</span>;
         <span class="hljs-keyword">return</span> a;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 <h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><h4 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h4><p>写操作在一个复制的数组上进行，读操作还是在原始数组中进行，读写分离，互不影响。</p>
 <p>写操作需要加锁，否则多线程写的时候会Copy出N个副本，防止并发写入时导致写入数据丢失。</p>
 <p>写操作结束之后需要把原始数组指向新的复制数组。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;
     <span class="hljs-keyword">final</span> ReentrantLock lock = <span class="hljs-keyword">this</span>.lock;
     <span class="hljs-comment">// 获得锁</span>
     lock.lock();
@@ -545,7 +545,7 @@ oos.writeObject(list);</code></pre>
 <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"unchecked"</span>)
 <span class="hljs-function"><span class="hljs-keyword">private</span> E <span class="hljs-title">get</span><span class="hljs-params">(Object[] a, <span class="hljs-keyword">int</span> index)</span> </span>&#123;
     <span class="hljs-keyword">return</span> (E) a[index];
-&#125;Copy to clipboardErrorCopied</code></pre>
+&#125;Copy to clipboardErrorCopied</code></pre></div>
 <p>使用CopyOnWriteMap需要注意两件事情：</p>
 <ol>
 <li><strong>减少扩容开销。</strong>根据实际需要，初始化CopyOnWriteMap的大小，避免写时CopyOnWriteMap扩容的开销。</li>
@@ -612,7 +612,7 @@ oos.writeObject(list);</code></pre>
 </tbody>
 </table>
 </div>
-<h2 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h2><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Deque</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Queue</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;...&#125;</code></pre>
+<h2 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Deque</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Queue</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;...&#125;</code></pre></div>
 <p><code>Deque</code>实现了一个双端队列（Double Ended Queue），比较<code>Queue</code>和<code>Deque</code>出队和入队的方法：</p>
 <div class="table-container">
 <table>
@@ -665,7 +665,7 @@ oos.writeObject(list);</code></pre>
 </ul>
 <p>用<code>Deque</code>可以实现<code>Stack</code>的功能，注意只调用<code>push()</code>/<code>pop()</code>/<code>peek()</code>方法，避免调用<code>Deque</code>的其他方法。实际上，以上都是对队首进行操作而不是队尾。</p>
 <p><a href="https://leetcode-cn.com/problems/remove-duplicate-letters/" target="_blank" rel="noopener">leetcode 316. 去除重复字母</a></p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">removeDuplicateLetters</span><span class="hljs-params">(String s)</span> </span>&#123;
         LinkedList&lt;Character&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];
@@ -684,13 +684,13 @@ oos.writeObject(list);</code></pre>
         <span class="hljs-keyword">while</span> (!stack.isEmpty()) res.append(stack.removeLast());
         <span class="hljs-keyword">return</span> res.toString();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="Stack的作用"><a href="#Stack的作用" class="headerlink" title="Stack的作用"></a>Stack的作用</h3><p>JVM在处理Java方法调用的时候就会通过栈这种数据结构维护方法调用的层次。JVM会创建方法调用栈，每调用一个方法时，先将参数压栈，然后执行对应的方法；当方法返回时，返回值压栈，调用方法通过出栈操作获得方法返回值。</p>
 <h2 id="Queue实现类"><a href="#Queue实现类" class="headerlink" title="Queue实现类"></a>Queue实现类</h2><ul>
 <li>LinkedList：可以用它来实现双向队列。</li>
 <li>PriorityQueue：基于<strong>堆结构</strong>实现，可以用它来实现优先队列。</li>
 </ul>
-<h3 id="LinkedList源码分析"><a href="#LinkedList源码分析" class="headerlink" title="LinkedList源码分析"></a>LinkedList源码分析</h3><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span>&lt;<span class="hljs-title">E</span>&gt;
+<h3 id="LinkedList源码分析"><a href="#LinkedList源码分析" class="headerlink" title="LinkedList源码分析"></a>LinkedList源码分析</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span>&lt;<span class="hljs-title">E</span>&gt;
     <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSequentialList</span>&lt;<span class="hljs-title">E</span>&gt;
     <span class="hljs-keyword">implements</span> <span class="hljs-title">List</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">Deque</span>&lt;<span class="hljs-title">E</span>&gt;, <span class="hljs-title">Cloneable</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>
 </span>&#123;
@@ -701,9 +701,9 @@ oos.writeObject(list);</code></pre>
 
     <span class="hljs-comment">// Pointer to last node.</span>
     <span class="hljs-keyword">transient</span> Node&lt;E&gt; last;
-    ...</code></pre>
+    ...</code></pre></div>
 <p>LinkedList()中的节点定义如下：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>&lt;<span class="hljs-title">E</span>&gt; </span>&#123;
         E item;
         Node&lt;E&gt; next;
         Node&lt;E&gt; prev;
@@ -713,7 +713,7 @@ oos.writeObject(list);</code></pre>
             <span class="hljs-keyword">this</span>.next = next;
             <span class="hljs-keyword">this</span>.prev = prev;
         &#125;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 <h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>PriorityQueue中堆结构默认是<strong>最小堆</strong>，如需实现最大堆，覆写<code>compare()</code>即可。父子节点的编号之间有如下关系：</p>
 <ul>
 <li>leftNo = parentNo * 2 + 1</li>

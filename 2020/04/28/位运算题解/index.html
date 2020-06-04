@@ -214,10 +214,10 @@
 <p>需要注意的是，用位运算代替其它运算方式（即第一种应用）在很多时候并不能带来太大的优化，反而会使代码变得复杂，使用时需要斟酌。（但像“乘 2 的非负整数次幂”和“除以 2 的非负整数次幂”就最好使用位运算，因为此时使用位运算可以优化复杂度。）</p>
 <h1 id="leetcode-136-只出现一次的数字"><a href="#leetcode-136-只出现一次的数字" class="headerlink" title="leetcode 136. 只出现一次的数字"></a><a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">leetcode 136. 只出现一次的数字</a></h1><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现<strong>两次</strong>。找出那个只出现了一次的元素。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [2,2,1]
-输出: 1</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: [2,2,1]
+输出: 1</code></pre></div>
 <p>利用异或运算的特性：<code>x ^ 0 = x</code> ， <code>x ^ x = 0</code>，对所有数做一遍异或就可以提出唯一数。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
@@ -225,14 +225,14 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-137-只出现一次的数字-II"><a href="#leetcode-137-只出现一次的数字-II" class="headerlink" title="leetcode 137. 只出现一次的数字 II"></a><a href="https://leetcode-cn.com/problems/single-number-ii/" target="_blank" rel="noopener">leetcode 137. 只出现一次的数字 II</a></h1><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了<strong>三次</strong>。找出那个只出现了一次的元素。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [2,2,3,2]
-输出: 3</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: [2,2,3,2]
+输出: 3</code></pre></div>
 <p>同样利用异或位运算来处理，由于位运算的特性，处理一位可以推导出处理一个数。如果是 0 ，不处理；如果是 1 ，有三种情况，相加求余分别为 0 ，1 ，2 。建立有限状态机：</p>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/bitc_1.png" srcset="/img/loading.gif" style="zoom:50%;" /></p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> zero = ~<span class="hljs-number">0</span>, one = <span class="hljs-number">0</span>, two = <span class="hljs-number">0</span>; <span class="hljs-comment">// 表示余0，余1，余2的三种状态，每一位上1表示在该状态，0表示不在该状态</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
@@ -242,9 +242,9 @@
         &#125;
         <span class="hljs-keyword">return</span> one; 
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>实际上还可以再简化过程，<code>zero</code>可以去掉，用已经更新过的<code>one</code>来更新<code>two</code>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> one = <span class="hljs-number">0</span>, two = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
@@ -253,13 +253,13 @@
         &#125;
         <span class="hljs-keyword">return</span> one; 
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-260-只出现一次的数字-III"><a href="#leetcode-260-只出现一次的数字-III" class="headerlink" title="leetcode 260. 只出现一次的数字 III"></a><a href="https://leetcode-cn.com/problems/single-number-iii/" target="_blank" rel="noopener">leetcode 260. 只出现一次的数字 III</a></h1><p>给定一个整数数组 nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。</p>
 <p>示例 :</p>
-<pre><code class="hljs txt">输入: [1,2,1,3,2,5]
-输出: [3,5]</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: [1,2,1,3,2,5]
+输出: [3,5]</code></pre></div>
 <p>求出两个数的异或，再分组处理。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] singleNumber(<span class="hljs-keyword">int</span>[] nums) &#123;
         <span class="hljs-keyword">int</span> c = <span class="hljs-number">0</span>; <span class="hljs-comment">// c = a ^ b</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) c ^= num;
@@ -268,14 +268,14 @@
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) <span class="hljs-keyword">if</span> ((num &amp; diff) == <span class="hljs-number">0</span>) a ^= num;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;a, c ^ a&#125;; <span class="hljs-comment">// 利用b ^ a ^ a == b</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-169-多数元素"><a href="#leetcode-169-多数元素" class="headerlink" title="leetcode 169. 多数元素"></a><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">leetcode 169. 多数元素</a></h1><p>给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素。</p>
 <p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [3,2,3]
-输出: 3</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: [3,2,3]
+输出: 3</code></pre></div>
 <p>可以按位求多数位：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">32</span>; k++) &#123;
@@ -287,9 +287,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>也可用<a href="https://leetcode-cn.com/problems/majority-element/solution/duo-shu-yuan-su-by-leetcode-solution/" target="_blank" rel="noopener">Boyer-Moore 投票算法</a>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> maj = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
@@ -299,9 +299,9 @@
         &#125;
         <span class="hljs-keyword">return</span> maj;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-9-回文数"><a href="#leetcode-9-回文数" class="headerlink" title="leetcode 9. 回文数"></a><a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">leetcode 9. 回文数</a></h1><p>这一题可以看出十进制的位运算：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
         <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 除 0 以外以 0 结尾的都不是回文数</span>
@@ -312,9 +312,9 @@
         &#125;
         <span class="hljs-keyword">return</span> x == reversed || x == reversed / <span class="hljs-number">10</span>; <span class="hljs-comment">// 注意有奇数位和偶数维两个情况</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="剑指offer-面试题65-不用加减乘除做加法"><a href="#剑指offer-面试题65-不用加减乘除做加法" class="headerlink" title="剑指offer 面试题65. 不用加减乘除做加法"></a><a href="https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/" target="_blank" rel="noopener">剑指offer 面试题65. 不用加减乘除做加法</a></h1><p>写一个函数，求两个整数之和，要求在函数体内不得使用 “+”、“-”、“*”、“/” 四则运算符号。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;
         <span class="hljs-keyword">while</span> (b != <span class="hljs-number">0</span>) &#123;
             <span class="hljs-keyword">int</span> f = (a &amp; b) &lt;&lt; <span class="hljs-number">1</span>; <span class="hljs-comment">// 计算进位</span>
@@ -323,9 +323,9 @@
         &#125;
         <span class="hljs-keyword">return</span> a; 
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="剑指offer-面试题15-二进制中1的个数"><a href="#剑指offer-面试题15-二进制中1的个数" class="headerlink" title="剑指offer 面试题15. 二进制中1的个数"></a><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">剑指offer 面试题15. 二进制中1的个数</a></h1><p>本题中输入视为无符号数。</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 解一：</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 解一：</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
@@ -346,9 +346,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="剑指offer-面试题16-数值的整数次方"><a href="#剑指offer-面试题16-数值的整数次方" class="headerlink" title="剑指offer 面试题16. 数值的整数次方"></a><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">剑指offer 面试题16. 数值的整数次方</a></h1><p>经典快速幂：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
         <span class="hljs-keyword">double</span> p = <span class="hljs-number">1</span>;
@@ -364,7 +364,7 @@
         &#125;
         <span class="hljs-keyword">return</span> p;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://oi-wiki.org/math/bit/" target="_blank" rel="noopener">https://oi-wiki.org/math/bit/</a></li>
 </ol>

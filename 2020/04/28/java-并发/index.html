@@ -242,15 +242,15 @@
 </ol>
 <h2 id="三个特性"><a href="#三个特性" class="headerlink" title="三个特性"></a>三个特性</h2><h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>Java 内存模型保证了 read、load、use、assign、store、write、lock 和 unlock <strong>单个操作</strong>具有原子性，例如对一个 int 类型的变量执行 assign 赋值操作，这个操作就是原子性的。但是 Java 内存模型允许虚拟机将没有被 volatile 修饰的 64 位数据（long，double）的读写操作划分为两次 32 位的操作来进行，即 load、store、read 和 write 操作可以不具备原子性。</p>
 <p>AtomicInteger 能保证<strong>多个线程</strong>修改的原子性。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();</code></pre></div>
 <p>除了使用原子类之外，也可以使用 synchronized 互斥锁来保证操作的原子性。它对应的内存间交互操作为：lock 和 unlock，在虚拟机实现上对应的字节码指令为 monitorenter 和 monitorexit。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;
     cnt++;
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">return</span> cnt;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>可见性指当一个线程修改了共享变量的值，其它线程能够<strong>立即得知</strong>这个修改。Java 内存模型是通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值来实现可见性的。</p>
 <p>主要有三种实现可见性的方式：</p>
 <ul>
@@ -281,16 +281,16 @@
 <p>有三种使用线程的方法：</p>
 <ul>
 <li><p>实现 Runnable 接口（可用lambda表达式）；</p>
-<pre><code class="hljs java">MyRunnable instance = <span class="hljs-keyword">new</span> MyRunnable();
-Thread thread = <span class="hljs-keyword">new</span> Thread(instance);</code></pre>
+<div class="hljs"><pre><code class="hljs java">MyRunnable instance = <span class="hljs-keyword">new</span> MyRunnable();
+Thread thread = <span class="hljs-keyword">new</span> Thread(instance);</code></pre></div>
 </li>
 <li><p>实现 Callable 接口；</p>
-<pre><code class="hljs java">MyCallable mc = <span class="hljs-keyword">new</span> MyCallable();
+<div class="hljs"><pre><code class="hljs java">MyCallable mc = <span class="hljs-keyword">new</span> MyCallable();
 FutureTask&lt;Integer&gt; ft = <span class="hljs-keyword">new</span> FutureTask&lt;&gt;(mc);
-Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
+Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre></div>
 </li>
 <li><p>继承 Thread 类。</p>
-<pre><code class="hljs java">MyThread mt = <span class="hljs-keyword">new</span> MyThread();</code></pre>
+<div class="hljs"><pre><code class="hljs java">MyThread mt = <span class="hljs-keyword">new</span> MyThread();</code></pre></div>
 </li>
 </ul>
 <p>实现接口会更好一些，因为：</p>
@@ -306,34 +306,34 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <li><code>FixedThreadPool</code>：所有任务只能使用固定大小的线程；</li>
 <li><code>SingleThreadExecutor</code>：相当于大小为 1 的 <code>FixedThreadPool</code>。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
     ExecutorService executorService = Executors.newCachedThreadPool();
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;
         executorService.execute(<span class="hljs-keyword">new</span> MyRunnable());
     &#125;
     executorService.shutdown();
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="Daemon"><a href="#Daemon" class="headerlink" title="Daemon"></a>Daemon</h3><p>守护线程是程序运行时在后台提供服务的线程，不属于程序中不可或缺的部分。</p>
 <p>当所有非守护线程结束时，程序也就终止，同时会杀死所有守护线程。</p>
 <p>main() 属于非守护线程。</p>
 <p>在线程启动之前使用<code>setDaemon()</code>方法可以将一个线程设置为守护线程。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
     Thread thread = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> MyRunnable());
     thread.setDaemon(<span class="hljs-keyword">true</span>);
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep()"></a>sleep()</h3><p><code>Thread.sleep(millisec)</code> 方法会休眠当前正在执行的线程，<code>millisec</code> 单位为毫秒。</p>
 <p><code>sleep()</code> 可能会抛出 <code>InterruptedException</code>，因为异常不能跨线程传播回 <code>main()</code> 中，因此必须在<strong>本地进行处理</strong>。线程中抛出的其它异常也同样需要在本地进行处理。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">try</span> &#123;
         Thread.sleep(<span class="hljs-number">3000</span>);
     &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
         e.printStackTrace();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="yield"><a href="#yield" class="headerlink" title="yield()"></a>yield()</h3><p>对静态方法<code>Thread.yield()</code>的调用声明了当前线程已经完成了生命周期中最重要的部分，可以切换给其它线程来执行。该方法只是对线程调度器的一个建议，而且也只是建议具有相同优先级的其它线程可以运行。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
     Thread.yield();
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>一个线程只能处于一种状态，并且这里的线程状态特指 Java 虚拟机的线程状态，不能反映线程在特定操作系统下的状态。</p>
 <ul>
 <li>New：新创建的线程，尚未执行；</li>
@@ -360,8 +360,8 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <li>wait() 会释放锁，sleep() 不会。</li>
 </ul>
 <h2 id="await-signal-signalAll"><a href="#await-signal-signalAll" class="headerlink" title="await(), signal(), signalAll()"></a>await(), signal(), signalAll()</h2><p>java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock();
-<span class="hljs-keyword">private</span> Condition condition = lock.newCondition();</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> Lock lock = <span class="hljs-keyword">new</span> ReentrantLock();
+<span class="hljs-keyword">private</span> Condition condition = lock.newCondition();</code></pre></div>
 <p>使用<code>Condition</code>时，引用的<code>Condition</code>对象必须从<code>Lock</code>实例的<code>newCondition()</code>返回，这样才能获得一个绑定了<code>Lock</code>实例的<code>Condition</code>实例。</p>
 <p><code>Condition</code>提供的<code>await()</code>、<code>signal()</code>、<code>signalAll()</code>原理和<code>synchronized</code>锁对象的<code>wait()</code>、<code>notify()</code>、<code>notifyAll()</code>是一致的，并且其行为也是一样的：</p>
 <ul>
@@ -371,11 +371,11 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <li>唤醒线程从<code>await()</code>返回后需要重新获得锁。</li>
 </ul>
 <p>此外，和<code>tryLock()</code>类似，<code>await()</code>可以在等待指定时间后，如果还没有被其他线程通过<code>signal()</code>或<code>signalAll()</code>唤醒，可以自己醒来：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">if</span> (condition.await(<span class="hljs-number">1</span>, TimeUnit.SECOND)) &#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (condition.await(<span class="hljs-number">1</span>, TimeUnit.SECOND)) &#123;
     <span class="hljs-comment">// 被其他线程唤醒</span>
 &#125; <span class="hljs-keyword">else</span> &#123;
     <span class="hljs-comment">// 指定时间内没有被其他线程唤醒</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>可见，使用<code>Condition</code>配合<code>Lock</code>，我们可以实现更灵活的线程同步。</p>
 <h1 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h1><h2 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a>不可变</h2><p>不可变（Immutable）的对象一定是线程安全的，不需要再采取任何的线程安全保障措施。只要一个不可变的对象被正确地构建出来，永远也不会看到它在多个线程之中处于不一致的状态。多线程环境下，应当尽量使对象成为不可变，来满足线程安全。</p>
 <p>不可变的类型：</p>
@@ -388,38 +388,38 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <p>对于集合类型，可以使用 Collections.unmodifiableXXX() 方法来获取一个不可变的集合。</p>
 <h2 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h2><p>Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
 <h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><p><strong>1. 同步一个代码块</strong></p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;
         <span class="hljs-comment">// ...</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>它只作用于<strong>同一个对象</strong>，如果调用两个对象上的同步代码块，就不会进行同步。</p>
 <p><strong>2. 同步一个方法</strong></p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span> <span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-comment">// ...</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>它和同步代码块一样，作用于<strong>同一个对象</strong>。</p>
 <p><strong>3. 同步一个类</strong></p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">synchronized</span> (SynchronizedExample<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123;
         <span class="hljs-comment">// ...</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>作用于<strong>整个类</strong>，也就是说两个线程调用同一个类的不同对象上的这种同步语句，也会进行同步。</p>
 <p><strong>4. 同步一个静态方法</strong></p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-comment">// ...</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>作用于<strong>整个类</strong>。</p>
 <h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p><code>ReentrantLock</code>是可重入锁，它和<code>synchronized</code>一样，一个线程可以多次获取同一个锁。</p>
 <p>和<code>synchronized</code>不同的是，<code>ReentrantLock</code>可以尝试获取锁：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">if</span> (lock.tryLock(<span class="hljs-number">1</span>, TimeUnit.SECONDS)) &#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (lock.tryLock(<span class="hljs-number">1</span>, TimeUnit.SECONDS)) &#123;
     <span class="hljs-keyword">try</span> &#123;
         ...
     &#125; <span class="hljs-keyword">finally</span> &#123;
         lock.unlock();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>上述代码在尝试获取锁的时候，最多等待1秒。如果1秒后仍未获取到锁，<code>tryLock()</code>返回<code>false</code>，程序就可以做一些额外处理，而不是无限等待下去。</p>
 <h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p><strong>1. 锁的实现</strong></p>
 <p>synchronized 是 JVM 实现的，而 ReentrantLock 是 JDK 实现的。</p>
@@ -443,25 +443,25 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p>乐观锁需要操作和冲突检测这两个步骤具备<strong>原子性</strong>，这里就不能再使用互斥同步来保证了，只能靠<strong>硬件</strong>来完成。硬件支持的原子性操作最典型的是：比较并交换（Compare-and-Swap，CAS）。CAS 指令需要有 3 个操作数，分别是内存地址 V、旧的预期值 A 和新值 B。当执行操作时，只有当 V 的值等于 A，才将 V 的值更新为 B。</p>
 <h3 id="AtomicInteger"><a href="#AtomicInteger" class="headerlink" title="AtomicInteger"></a>AtomicInteger</h3><p>J.U.C 包里面的整数原子类 AtomicInteger 的方法调用了 Unsafe 类的 CAS 操作。</p>
 <p>以下代码使用了 AtomicInteger 执行了自增的操作。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> AtomicInteger cnt = <span class="hljs-keyword">new</span> AtomicInteger();
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;
     cnt.incrementAndGet();
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>以下代码是 incrementAndGet() 的源码，它调用了 Unsafe 的 getAndAddInt() 。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">incrementAndGet</span><span class="hljs-params">()</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">incrementAndGet</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">return</span> unsafe.getAndAddInt(<span class="hljs-keyword">this</span>, valueOffset, <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>以下代码是 getAndAddInt() 源码，var1 指示对象内存地址，var2 指示该字段相对对象内存地址的偏移，var4 指示操作需要加的数值，这里为 1。通过 getIntVolatile(var1, var2) 得到旧的预期值，通过调用 compareAndSwapInt() 来进行 CAS 比较，如果该字段内存地址中的值等于 var5，那么就更新内存地址为 var1+var2 的变量为 var5+var4。</p>
 <p>可以看到 getAndAddInt() 在一个循环中进行，发生冲突的做法是不断的进行重试。</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAndAddInt</span><span class="hljs-params">(Object var1, <span class="hljs-keyword">long</span> var2, <span class="hljs-keyword">int</span> var4)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAndAddInt</span><span class="hljs-params">(Object var1, <span class="hljs-keyword">long</span> var2, <span class="hljs-keyword">int</span> var4)</span> </span>&#123;
     <span class="hljs-keyword">int</span> var5;
     <span class="hljs-keyword">do</span> &#123;
         var5 = <span class="hljs-keyword">this</span>.getIntVolatile(var1, var2);
     &#125; <span class="hljs-keyword">while</span>(!<span class="hljs-keyword">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));
 
     <span class="hljs-keyword">return</span> var5;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h3><p><a href="https://www.zhihu.com/question/23281499" target="_blank" rel="noopener">ABA问题</a>就是如果一个变量初次读取的时候是 A 值，它的值被改成了 B，后来又被改回为 A，那 CAS 操作就会误认为它从来没有被改变过。</p>
 <p>J.U.C 包提供了一个带有标记的原子引用类 AtomicStampedReference 来解决这个问题，它可以通过控制变量值的版本来保证 CAS 的正确性。大部分情况下 ABA 问题不会影响程序并发的正确性，如果需要解决 ABA 问题，<strong>改用传统的互斥同步可能会比原子类更高效</strong>。</p>
 <h2 id="无同步方案"><a href="#无同步方案" class="headerlink" title="无同步方案"></a>无同步方案</h2><p>要保证线程安全，并不是一定就要进行同步。如果一个方法本来就不涉及共享数据，那它自然就无须任何同步措施去保证正确性。</p>
@@ -470,7 +470,7 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
 <p>符合这种特点的应用并不少见，大部分使用消费队列的架构模式（如“生产者-消费者”模式）都会将产品的消费过程尽量在一个线程中消费完。其中最重要的一个应用实例就是经典 Web 交互模型中的“一个请求对应一个服务器线程”（Thread-per-Request）的处理方式，这种处理方式的广泛应用使得很多 Web 服务端应用都可以使用线程本地存储来解决线程安全问题。</p>
 <p>可以使用 java.lang.ThreadLocal 类来实现线程本地存储功能。</p>
 <p>对于以下代码，thread1 中的 threadLocal1 和 threadLocal2 为 1，而 thread2 中的 threadLocal1 和 threadLocal2 为 2.</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadLocalExample1</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadLocalExample1</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         ThreadLocal threadLocal1 = <span class="hljs-keyword">new</span> ThreadLocal();
         ThreadLocal threadLocal2 = <span class="hljs-keyword">new</span> ThreadLocal();
@@ -485,11 +485,11 @@ Thread thread = <span class="hljs-keyword">new</span> Thread(ft);</code></pre>
         thread1.start();
         thread2.start();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>每个 Thread 都有一个 ThreadLocal.ThreadLocalMap 对象。</p>
-<pre><code class="hljs java"><span class="hljs-comment">/* ThreadLocal values pertaining to this thread. This map is maintained
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/* ThreadLocal values pertaining to this thread. This map is maintained
  * by the ThreadLocal class. */</span>
-ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>;</code></pre>
+ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>;</code></pre></div>
 <p>当调用一个 ThreadLocal 的 set(T value) 方法时，先得到当前线程的 ThreadLocalMap 对象，然后将 ThreadLocal-&gt;value 键值对插入到该 Map 中。</p>
 <p>ThreadLocal 从理论上讲并不是用来解决多线程并发问题的，因为根本不存在多线程竞争。</p>
 <p>在一些场景 (尤其是使用线程池) 下，由于 ThreadLocal.ThreadLocalMap 的底层数据结构导致 ThreadLocal 有内存泄漏的情况，应该尽可能在每次使用 ThreadLocal 后手动调用 remove()，以避免出现 ThreadLocal 经典的内存泄漏甚至是造成自身业务混乱的风险。</p>
@@ -501,17 +501,17 @@ ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>
 <h2 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h2><p>锁消除是指对于被检测出不可能存在竞争的共享数据的锁进行消除。</p>
 <p>锁消除主要是通过逃逸分析来支持，如果堆上的共享数据不可能逃逸出去被其它线程访问到，那么就可以把它们当成私有数据对待，也就可以将它们的锁进行消除。</p>
 <p>对于一些看起来没有加锁的代码，其实隐式的加了很多锁。例如下面的字符串拼接代码就隐式加了锁：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">concatString</span><span class="hljs-params">(String s1, String s2, String s3)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">concatString</span><span class="hljs-params">(String s1, String s2, String s3)</span> </span>&#123;
     <span class="hljs-keyword">return</span> s1 + s2 + s3;
-&#125;Copy to clipboardErrorCopied</code></pre>
+&#125;Copy to clipboardErrorCopied</code></pre></div>
 <p>String 是一个不可变的类，编译器会对 String 的拼接自动优化。在 JDK 1.5 之前，会转化为 StringBuffer 对象的连续 append() 操作：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">concatString</span><span class="hljs-params">(String s1, String s2, String s3)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">concatString</span><span class="hljs-params">(String s1, String s2, String s3)</span> </span>&#123;
     StringBuffer sb = <span class="hljs-keyword">new</span> StringBuffer();
     sb.append(s1);
     sb.append(s2);
     sb.append(s3);
     <span class="hljs-keyword">return</span> sb.toString();
-&#125;Copy to clipboardErrorCopied</code></pre>
+&#125;Copy to clipboardErrorCopied</code></pre></div>
 <p>每个 append() 方法中都有一个同步块。虚拟机观察变量 sb，很快就会发现它的动态作用域被限制在 concatString() 方法内部。也就是说，sb 的所有引用永远不会逃逸到 concatString() 方法之外，其他线程无法访问到它，因此可以进行消除。</p>
 <h2 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h2><p>如果一系列的连续操作都对同一个对象<strong>反复加锁和解锁</strong>，频繁的加锁操作就会导致性能损耗。</p>
 <p>上面的 append() 方法就属于这类情况。如果虚拟机探测到由这样的一串零碎的操作都对同一个对象加锁，将会把加锁的范围<strong>扩展（粗化）</strong>到整个操作序列的外部。对于上一节的示例代码就是扩展到第一个 append() 操作之前直至最后一个 append() 操作之后，这样只需要加锁一次就可以了。</p>
@@ -532,47 +532,47 @@ ThreadLocal.ThreadLocalMap threadLocals = <span class="hljs-keyword">null</span>
 <p>AQS维护了一个<code>volatile int state</code>（代表共享资源）和一个 FIFO 线程等待队列（多线程争用资源被阻塞时会进入此队列）。</p>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/2020-05-02%20004256.png" srcset="/img/loading.gif" style="zoom: 80%;" /></p>
 <h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><p>CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。CountDownLatch类只提供了一个构造器：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CountDownLatch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> count)</span> </span>&#123;  &#125;;  <span class="hljs-comment">//参数count为计数值</span></code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CountDownLatch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> count)</span> </span>&#123;  &#125;;  <span class="hljs-comment">//参数count为计数值</span></code></pre></div>
 <p>然后下面这3个方法是CountDownLatch类中最重要的方法：</p>
-<pre><code class="hljs java"><span class="hljs-comment">//调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">await</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;;  
 <span class="hljs-comment">//和await()类似，只不过等待一定的时间后count值还没变为0的话就会继续执行</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">await</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;;  
 <span class="hljs-comment">//将count值减1</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">countDown</span><span class="hljs-params">()</span> </span>&#123; &#125;;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">countDown</span><span class="hljs-params">()</span> </span>&#123; &#125;;</code></pre></div>
 <h2 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h2><p>回环栅栏，通过它可以实现让一组线程等待至某个状态之后再全部同时执行。叫做回环是因为当所有等待线程都被释放以后，CyclicBarrier可以被重用。我们暂且把这个状态就叫做barrier，当调用await()方法之后，线程就处于barrier了。CyclicBarrier提供2个构造器：</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 参数parties指让多少个线程或者任务等待至barrier状态；</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 参数parties指让多少个线程或者任务等待至barrier状态；</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CyclicBarrier</span><span class="hljs-params">(<span class="hljs-keyword">int</span> parties)</span> </span>&#123;...&#125;
 <span class="hljs-comment">// 参数barrierAction为当这些线程都达到barrier状态时会执行的内容。 </span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CyclicBarrier</span><span class="hljs-params">(<span class="hljs-keyword">int</span> parties, Runnable barrierAction)</span> </span>&#123;...&#125;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CyclicBarrier</span><span class="hljs-params">(<span class="hljs-keyword">int</span> parties, Runnable barrierAction)</span> </span>&#123;...&#125;</code></pre></div>
 <p>CyclicBarrier中最重要的方法就是await方法，它有2个重载版本：</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">await</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException, BrokenBarrierException </span>&#123; &#125;;
 <span class="hljs-comment">// 让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">await</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException,BrokenBarrierException,TimeoutException </span>&#123; &#125;;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">await</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException,BrokenBarrierException,TimeoutException </span>&#123; &#125;;</code></pre></div>
 <h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><p>信号量，Semaphore可以控同时访问的线程个数，通过 acquire() 获取一个许可，如果没有就等待，而 release() 释放一个许可。它提供了2个构造器：</p>
-<pre><code class="hljs java"><span class="hljs-comment">//参数permits表示许可数目，即同时可以允许多少线程进行访问</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//参数permits表示许可数目，即同时可以允许多少线程进行访问</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Semaphore</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits)</span> </span>&#123;          
     sync = <span class="hljs-keyword">new</span> NonfairSync(permits);
 &#125;
 <span class="hljs-comment">//参数fair表示是否是公平的，即等待时间越久的越先获取许可</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Semaphore</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits, <span class="hljs-keyword">boolean</span> fair)</span> </span>&#123;    
     sync = (fair)? <span class="hljs-keyword">new</span> FairSync(permits) : <span class="hljs-keyword">new</span> NonfairSync(permits);
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>下面说一下Semaphore类中比较重要的几个方法，首先是acquire()、release()方法：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acquire</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;  &#125;     <span class="hljs-comment">//获取一个许可</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acquire</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;  &#125;     <span class="hljs-comment">//获取一个许可</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acquire</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;    <span class="hljs-comment">//获取permits个许可</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">release</span><span class="hljs-params">()</span> </span>&#123; &#125;          <span class="hljs-comment">//释放一个许可</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">release</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits)</span> </span>&#123; &#125;    <span class="hljs-comment">//释放permits个许可</span></code></pre>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">release</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits)</span> </span>&#123; &#125;    <span class="hljs-comment">//释放permits个许可</span></code></pre></div>
 <p>这4个方法都会被阻塞，如果想立即得到执行结果，可以使用下面几个方法：</p>
-<pre><code class="hljs java"><span class="hljs-comment">//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryAcquire</span><span class="hljs-params">()</span> </span>&#123; &#125;;    
 <span class="hljs-comment">//尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryAcquire</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;;  
 <span class="hljs-comment">//尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryAcquire</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits)</span> </span>&#123; &#125;; 
 <span class="hljs-comment">//尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryAcquire</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits, <span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryAcquire</span><span class="hljs-params">(<span class="hljs-keyword">int</span> permits, <span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123; &#125;;</code></pre></div>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行，不能够重用；</li>
 <li>CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行，可以重用；</li>

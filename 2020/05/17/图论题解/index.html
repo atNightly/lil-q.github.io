@@ -205,7 +205,7 @@
               <p>图论</p>
 <a id="more"></a>
 <h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><h2 id="leetcode-207-课程表"><a href="#leetcode-207-课程表" class="headerlink" title="leetcode 207. 课程表"></a><a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">leetcode 207. 课程表</a></h2><p>解法一：DFS</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     Map&lt;Integer, List&lt;Integer&gt;&gt; map; <span class="hljs-comment">// 邻接表存边</span>
     <span class="hljs-keyword">int</span>[] visited; <span class="hljs-comment">// 记录访问情况（-1：当前访问；0：未访问；1：已访问）</span>
 
@@ -234,9 +234,9 @@
         visited[course] = <span class="hljs-number">1</span>;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>解法二：BFS + 入度表</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canFinish</span><span class="hljs-params">(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites)</span> </span>&#123;
         <span class="hljs-comment">// 邻接表存边</span>
         Map&lt;Integer, List&lt;Integer&gt;&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
@@ -264,9 +264,9 @@
         &#125;
         <span class="hljs-keyword">return</span> numCourses == <span class="hljs-number">0</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-210-课程表-II"><a href="#leetcode-210-课程表-II" class="headerlink" title="leetcode 210. 课程表 II"></a><a href="https://leetcode-cn.com/problems/course-schedule-ii/" target="_blank" rel="noopener">leetcode 210. 课程表 II</a></h2><p>解法一：DFS + 入度表</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     List[] edges; <span class="hljs-comment">// 还可以用 List 来存邻接表，在边较多时效率比 Map 好且不浪费空间</span>
     <span class="hljs-keyword">int</span>[] indegree;
     <span class="hljs-keyword">int</span>[] res; <span class="hljs-comment">// 全局变量记录 result</span>
@@ -302,9 +302,9 @@
             &#125;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>解法二：BFS</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] findOrder(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites) &#123;
         List[] edges = <span class="hljs-keyword">new</span> ArrayList[numCourses];
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;
@@ -330,7 +330,7 @@
         &#125;
         <span class="hljs-keyword">return</span> index == numCourses ? res : <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
             </article>
             <hr>

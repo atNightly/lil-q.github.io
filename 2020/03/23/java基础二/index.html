@@ -257,11 +257,11 @@
 </ul>
 <p><code>instanceof</code>判断一个变量所指向的实例是否是指定类型，或者这个类型的子类。如果一个引用变量为<code>null</code>，那么对任何<code>instanceof</code>的判断都为<code>false</code>。</p>
 <p>利用<code>instanceof</code>，在向下转型前可以先判断：</p>
-<pre><code class="hljs java">Person p = <span class="hljs-keyword">new</span> Student();
+<div class="hljs"><pre><code class="hljs java">Person p = <span class="hljs-keyword">new</span> Student();
 <span class="hljs-keyword">if</span> (p <span class="hljs-keyword">instanceof</span> Student) &#123;
     <span class="hljs-comment">// 只有判断成功才会向下转型:</span>
     Student s = (Student) p; <span class="hljs-comment">// 一定会成功</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>从Java 14开始，判断<code>instanceof</code>后，可以直接转型为指定变量，避免再次强制转型。</p>
 <h2 id="Override和Overload"><a href="#Override和Overload" class="headerlink" title="Override和Overload"></a>Override和Overload</h2><p><strong>1. 重写（Override）</strong></p>
 <p>存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法。</p>
@@ -279,7 +279,7 @@
 <li>子类抛出的异常类型为 Exception，是父类抛出异常 Throwable 的子类。</li>
 <li>子类重写方法使用 @Override 注解，从而让编译器自动检查是否满足限制条件。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SuperClass</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SuperClass</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
     &#125;
@@ -290,7 +290,7 @@
     <span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>在调用一个方法时，先从本类中查找看是否有对应的方法，如果没有再到父类中查看，看是否从父类继承来。否则就要对参数进行转型，转成父类之后看是否有对应的方法。总的来说，方法调用的优先级为：</p>
 <ul>
 <li>this.func(this)</li>
@@ -298,7 +298,7 @@
 <li>this.func(super)</li>
 <li>super.func(super)</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-comment">/*
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*
     A
     |
     B
@@ -332,8 +332,8 @@
 &#125;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">C</span> </span>&#123;
-&#125;</code></pre>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
 
     A a = <span class="hljs-keyword">new</span> A();
     B b = <span class="hljs-keyword">new</span> B();
@@ -353,7 +353,7 @@
     A ba = <span class="hljs-keyword">new</span> B();
     ba.show(c); <span class="hljs-comment">// A.show(C)</span>
     ba.show(d); <span class="hljs-comment">// A.show(C)</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>在子类的覆写方法中，如果要调用父类的被覆写的方法，可以通过<code>super</code>来调用。</p>
 <ol>
 <li>重载（Overlode）**</li>
@@ -372,7 +372,7 @@
 <li>一致性（Consistent）：对于非<code>null</code>的<code>x</code>和<code>y</code>来说，只要<code>x</code>和<code>y</code>状态不变，则<code>x.equals(y)</code>总是一致地返回<code>true</code>或者<code>false</code>；</li>
 <li>对<code>null</code>的比较：即<code>x.equals(null)</code>永远返回<code>false</code>。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EqualExample</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EqualExample</span> </span>&#123;
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> x;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> y;
@@ -395,33 +395,33 @@
         <span class="hljs-keyword">if</span> (y != that.y) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
         <span class="hljs-keyword">return</span> z == that.z;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h3><p>hashCode() 返回哈希值，而 equals() 是用来判断两个对象是否等价。等价的两个对象散列值一定相同，但是散列值相同的两个对象不一定等价，这是因为计算哈希值具有随机性，两个值不同的对象可能计算出相同的哈希值。</p>
 <p>在覆盖 equals() 方法时应当总是覆盖 hashCode() 方法，保证等价的两个对象哈希值也相等。</p>
 <p>HashSet 和 HashMap 等集合类使用了 hashCode() 方法来计算对象应该存储的位置，因此要将对象添加到这些集合类中，需要让对应的类实现 hashCode() 方法。</p>
 <p>下面的代码中，新建了两个等价的对象，并将它们添加到 HashSet 中。我们希望将这两个对象当成一样的，只在集合中添加一个对象。但是 EqualExample 没有实现 hashCode() 方法，因此这两个对象的哈希值是不同的，最终导致集合添加了两个等价的对象。</p>
-<pre><code class="hljs java">EqualExample e1 = <span class="hljs-keyword">new</span> EqualExample(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+<div class="hljs"><pre><code class="hljs java">EqualExample e1 = <span class="hljs-keyword">new</span> EqualExample(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
 EqualExample e2 = <span class="hljs-keyword">new</span> EqualExample(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
 System.out.println(e1.equals(e2)); <span class="hljs-comment">// true</span>
 HashSet&lt;EqualExample&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();
 set.add(e1);
 set.add(e2);
-System.out.println(set.size());   <span class="hljs-comment">// 2</span></code></pre>
+System.out.println(set.size());   <span class="hljs-comment">// 2</span></code></pre></div>
 <p>理想的哈希函数应当具有均匀性，即不相等的对象应当均匀分布到所有可能的哈希值上。这就要求了哈希函数要把所有域的值都考虑进来。可以将每个域都当成 R 进制的某一位，然后组成一个 R 进制的整数。</p>
 <p>R 一般取 31，因为它是一个奇素数，如果是偶数的话，当出现乘法溢出，信息就会丢失，因为与 2 相乘相当于向左移一位，最左边的位丢失。并且一个数与 31 相乘可以转换成移位和减法：<code>31*x == (x&lt;&lt;5)-x</code>，编译器会自动进行这个优化。</p>
-<pre><code class="hljs java"><span class="hljs-meta">@Override</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">int</span> result = <span class="hljs-number">17</span>;
     result = <span class="hljs-number">31</span> * result + x;
     result = <span class="hljs-number">31</span> * result + y;
     result = <span class="hljs-number">31</span> * result + z;
     <span class="hljs-keyword">return</span> result;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>默认返回 ToStringExample@4554617c 这种形式，其中 @ 后面的数值为散列码的无符号十六进制表示。</p>
 <h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3><p><strong>1. cloneable</strong></p>
 <p>clone() 是 Object 的 protected 方法，它不是 public，一个类不显式去重写 clone()，其它类就不能直接去调用该类实例的 clone() 方法。</p>
 <p>重写 clone() 需要实现 Cloneable 接口。应该注意的是，clone() 方法并不是 Cloneable 接口的方法，而是 Object 的一个 protected 方法。Cloneable 接口只是规定，如果一个类没有实现 Cloneable 接口又调用了 clone() 方法，就会抛出 CloneNotSupportedException。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> a;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> b;
 
@@ -429,11 +429,11 @@ System.out.println(set.size());   <span class="hljs-comment">// 2</span></code><
     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>&#123;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.clone();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>拷贝分为深拷贝和浅拷贝，两种方式生成的对象的地址是不同的，这有别于赋值。</p>
 <p><strong>2. 浅拷贝</strong></p>
 <p>拷贝对象和原始对象的引用类型引用同一个对象。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShallowCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShallowCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
@@ -456,8 +456,8 @@ System.out.println(set.size());   <span class="hljs-comment">// 2</span></code><
     <span class="hljs-function"><span class="hljs-keyword">protected</span> ShallowCloneExample <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>&#123;
         <span class="hljs-keyword">return</span> (ShallowCloneExample) <span class="hljs-keyword">super</span>.clone();
     &#125;
-&#125;</code></pre>
-<pre><code class="hljs java">ShallowCloneExample e1 = <span class="hljs-keyword">new</span> ShallowCloneExample();
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">ShallowCloneExample e1 = <span class="hljs-keyword">new</span> ShallowCloneExample();
 ShallowCloneExample e2 = <span class="hljs-keyword">null</span>;
 <span class="hljs-keyword">try</span> &#123;
     e2 = e1.clone();
@@ -465,10 +465,10 @@ ShallowCloneExample e2 = <span class="hljs-keyword">null</span>;
     e.printStackTrace();
 &#125;
 e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
-System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 222</span></code></pre>
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 222</span></code></pre></div>
 <p><strong>3. 深拷贝</strong></p>
 <p>拷贝对象和原始对象的引用类型引用不同对象。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DeepCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DeepCloneExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Cloneable</span> </span>&#123;
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
@@ -496,8 +496,8 @@ System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hlj
         &#125;
         <span class="hljs-keyword">return</span> result;
     &#125;
-&#125;</code></pre>
-<pre><code class="hljs java">DeepCloneExample e1 = <span class="hljs-keyword">new</span> DeepCloneExample();
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">DeepCloneExample e1 = <span class="hljs-keyword">new</span> DeepCloneExample();
 DeepCloneExample e2 = <span class="hljs-keyword">null</span>;
 <span class="hljs-keyword">try</span> &#123;
     e2 = e1.clone();
@@ -505,10 +505,10 @@ DeepCloneExample e2 = <span class="hljs-keyword">null</span>;
     e.printStackTrace();
 &#125;
 e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
-System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre>
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre></div>
 <p><strong>4. clone() 的替代方案</strong></p>
 <p>使用 clone() 方法来拷贝一个对象即复杂又有风险，它会抛出异常，并且还需要类型转换。Effective Java 书上讲到，最好不要去使用 clone()，可以使用拷贝构造函数或者拷贝工厂来拷贝一个对象。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneConstructorExample</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CloneConstructorExample</span> </span>&#123;
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
 
@@ -533,11 +533,11 @@ System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hlj
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;
         <span class="hljs-keyword">return</span> arr[index];
     &#125;
-&#125;</code></pre>
-<pre><code class="hljs java">CloneConstructorExample e1 = <span class="hljs-keyword">new</span> CloneConstructorExample();
+&#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs java">CloneConstructorExample e1 = <span class="hljs-keyword">new</span> CloneConstructorExample();
 CloneConstructorExample e2 = <span class="hljs-keyword">new</span> CloneConstructorExample(e1);
 e1.set(<span class="hljs-number">2</span>, <span class="hljs-number">222</span>);
-System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre>
+System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 2</span></code></pre></div>
 <h2 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h2><p>接口和抽象类都是继承树的上层，他们的共同点如下：</p>
 <ol>
 <li>都是上层的抽象层。</li>
@@ -625,13 +625,13 @@ System.out.println(e2.get(<span class="hljs-number">2</span>)); <span class="hlj
 </ol>
 <p>如果没有发生异常，就正常执行<code>try { ... }</code>语句块，然后执行<code>finally</code>。如果发生了异常，就中断执行<code>try { ... }</code>语句块，然后跳转执行匹配的<code>catch</code>语句块，最后执行<code>finally</code>。可见，<code>finally</code>是用来保证一些代码必须执行的。</p>
 <p>某些情况下，可以没有<code>catch</code>，只使用<code>try ... finally</code>结构。例如：</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(String file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(String file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
     <span class="hljs-keyword">try</span> &#123;
         ...
     &#125; <span class="hljs-keyword">finally</span> &#123;
         System.out.println(<span class="hljs-string">"END"</span>);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>因为方法声明了可能抛出的异常，所以可以不写<code>catch</code>。</p>
 <h2 id="异常处理要领"><a href="#异常处理要领" class="headerlink" title="异常处理要领"></a>异常处理要领</h2><ol>
 <li>尽量避免出现runtimeException 。例如对于可能出现空指针的代码，带使用对象之前一定要判断一下该对象是否为空，必要的时候对runtimeException也进行try catch处理。</li>

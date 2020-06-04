@@ -205,33 +205,33 @@
               <p><strong>链表</strong>（Linked list）是一种常见的基础数据结构，是一种<strong>线性表</strong><a id="more"></a>，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的<strong>指针</strong>(Pointer)。由于不必须按顺序存储，链表在<strong>插入</strong>的时候可以达到<strong>O(1)</strong>的复杂度，比另一种线性表顺序表快得多，但是<strong>查找</strong>一个节点或者访问特定编号的节点则需要<strong>O(n)</strong>的时间，而顺序表相应的时间复杂度分别是O(logn)和O(1)。</p>
 <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h2><p>链表中最简单的一种是单向链表，它包含两个域，一个信息域和一个指针域。这个链接指向列表中的下一个节点，而最后一个节点则指向一个空值。</p>
 <p><img src="612px-Singly-linked-list.svg.jpg" srcset="/img/loading.gif" alt=""></p>
-<pre><code class="hljs java"><span class="hljs-comment">// Definition for singly-linked list.</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// Definition for singly-linked list.</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
     <span class="hljs-keyword">int</span> val;
     ListNode next;
     ListNode(<span class="hljs-keyword">int</span> x) &#123; val = x; &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>双向链表的每个节点有两个连接：一个指向前一个节点，（当此“连接”为第一个“连接”时，指向空值或者空列表）；而另一个指向下一个节点，（当此“连接”为最后一个“连接”时，指向空值或者空列表）。</p>
 <p><img src="915px-Doubly-linked-list.svg.jpg" srcset="/img/loading.gif" alt=""></p>
-<pre><code class="hljs java"><span class="hljs-comment">// Definition for Doubly-linked list.</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// Definition for Doubly-linked list.</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
     <span class="hljs-keyword">int</span> val;
     ListNode prev;
     ListNode next;
     ListNode(<span class="hljs-keyword">int</span> x) &#123; val = x; &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><p>在一个 <strong>循环链表</strong>中, 首节点和末节点被连接在一起。这种方式在单向和双向链表中皆可实现。要转换一个循环链表，你开始于任意一个节点然后沿着列表的任一方向直到返回开始的节点。再来看另一种方法，循环链表可以被视为“无头无尾”。这种列表很利于节约数据存储缓存， 假定你在一个列表中有一个对象并且希望所有其他对象迭代在一个非特殊的排列下。</p>
 <p>指向整个列表的指针可以被称作<strong>访问指针</strong>。</p>
 <p><img src="525px-Circularly-linked-list.svg.jpg" srcset="/img/loading.gif" alt=""></p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="leetcode-61-旋转链表"><a href="#leetcode-61-旋转链表" class="headerlink" title="leetcode 61. 旋转链表"></a><a href="https://leetcode-cn.com/problems/rotate-list/" target="_blank" rel="noopener">leetcode 61. 旋转链表</a></h3><p>给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
+<div class="hljs"><pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
 输出: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
 解释:
 向右旋转 1 步: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL
-向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code></pre>
+向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code></pre></div>
 <p>遍历取余。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">rotateRight</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> head;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), tail = dummy;
@@ -252,13 +252,13 @@
         t.next = <span class="hljs-keyword">null</span>;
         <span class="hljs-keyword">return</span> h;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="leetcode-92-反转链表-II"><a href="#leetcode-92-反转链表-II" class="headerlink" title="leetcode 92. 反转链表 II"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">leetcode 92. 反转链表 II</a></h3><p>反转从位置 m 到 n 的链表。请使用一趟扫描完成反转（1 ≤ m ≤ n ≤ 链表长度）。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4
-输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4
+输出: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</code></pre></div>
 <p><strong>解法一：</strong>迭代。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseBetween</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), pre = dummy;
         dummy.next = head;
@@ -274,9 +274,9 @@
         pre.next = p;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>递归。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseBetween</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (m == <span class="hljs-number">1</span>) &#123;
             <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> head;
@@ -290,16 +290,16 @@
             <span class="hljs-keyword">return</span> head;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="leetcode-25-K-个一组翻转链表"><a href="#leetcode-25-K-个一组翻转链表" class="headerlink" title="leetcode 25. K 个一组翻转链表"></a><a href="https://leetcode-cn.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">leetcode 25. K 个一组翻转链表</a></h3><p>给你一个链表，每 <em>k</em> 个节点一组进行翻转，请你返回翻转后的链表。<em>k</em> 是一个正整数，它的值小于或等于链表的长度。</p>
 <p>如果节点总数不是 <em>k</em> 的整数倍，那么请将最后剩余的节点保持原有顺序。</p>
 <p><strong>示例：</strong></p>
-<pre><code class="hljs txt">给你这个链表：`1-&gt;2-&gt;3-&gt;4-&gt;5`
+<div class="hljs"><pre><code class="hljs txt">给你这个链表：`1-&gt;2-&gt;3-&gt;4-&gt;5`
 
 当 *k* = 2 时，应当返回: `2-&gt;1-&gt;4-&gt;3-&gt;5`
-当 *k* = 3 时，应当返回: `3-&gt;2-&gt;1-&gt;4-&gt;5`</code></pre>
+当 *k* = 3 时，应当返回: `3-&gt;2-&gt;1-&gt;4-&gt;5`</code></pre></div>
 <p><strong>解法一：</strong>利用快慢指针和迭代。</p>
-<pre><code class="hljs java"><span class="hljs-comment">/*  when k = 2:
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*  when k = 2:
 *   dummy     1     2     3     4     5
 *     |       |      \
 *    tail next_tail   next_head
@@ -331,9 +331,9 @@
             tail = next_tail;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>递归。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseKGroup</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
         ListNode fast = head;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
@@ -349,9 +349,9 @@
         &#125;
         <span class="hljs-keyword">return</span> pre;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>利用栈。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseKGroup</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
         Deque&lt;ListNode&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), pre = dummy, cur = head; <span class="hljs-comment">// cur起始为head</span>
@@ -368,13 +368,13 @@
             pre.next = cur;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><h3 id="leetcode-82-删除排序链表中的重复元素-II"><a href="#leetcode-82-删除排序链表中的重复元素-II" class="headerlink" title="leetcode 82. 删除排序链表中的重复元素 II"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">leetcode 82. 删除排序链表中的重复元素 II</a></h3><p>给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5
-输出: 1-&gt;2-&gt;5</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5
+输出: 1-&gt;2-&gt;5</code></pre></div>
 <p>需要注意条件的判断：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), slow = dummy, fast = head;
         dummy.next = head;
@@ -389,13 +389,13 @@
         &#125;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="leetcode-19-删除链表的倒数第N个节点"><a href="#leetcode-19-删除链表的倒数第N个节点" class="headerlink" title="leetcode 19. 删除链表的倒数第N个节点"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">leetcode 19. 删除链表的倒数第N个节点</a></h3><p>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。</p>
 <p><strong>示例：</strong></p>
-<pre><code class="hljs txt">给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
-当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.</code></pre>
+<div class="hljs"><pre><code class="hljs txt">给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
+当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.</code></pre></div>
 <p>快慢指针充当了建议队列<code>Queue</code>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
         Queue&lt;ListNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
@@ -409,14 +409,14 @@
         slow.next = slow.next.next;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="leetcode-142-环形链表-II"><a href="#leetcode-142-环形链表-II" class="headerlink" title="leetcode 142. 环形链表 II"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">leetcode 142. 环形链表 II</a></h3><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
 <p><strong>示例：</strong></p>
-<pre><code class="hljs txt">输入：head = [3,2,0,-4], pos = 1
+<div class="hljs"><pre><code class="hljs txt">输入：head = [3,2,0,-4], pos = 1
 输出：tail connects to node index 1
-解释：链表中有一个环，其尾部连接到第二个节点。</code></pre>
+解释：链表中有一个环，其尾部连接到第二个节点。</code></pre></div>
 <p>假设直链表长度为 <em>L</em> ，环链表长度为 <em>C</em> 。利用快慢指针，两指针第一次相遇时慢指针经过 <em>C</em> ，快指针经过 <em>2C</em> 。将快指针移回<code>head</code>，步长改为 1，移动 <em>L</em> 后与移动了 <em>L + C</em> 的慢指针在环形链表入口节点相遇。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
         ListNode slow = head, fast = head;
         <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123; <span class="hljs-comment">// 找到第一次相遇点</span>
@@ -432,15 +432,15 @@
         &#125;
         <span class="hljs-keyword">return</span> fast;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>类似的双指针还有<a href="https://leetcode-cn.com/problems/palindrome-linked-list/solution/java-shuang-zhi-zhen-by-lil-q/" target="_blank" rel="noopener">leetcode 234. 回文链表</a>，<a href="https://leetcode-cn.com/problems/partition-list/solution/java-bu-chuang-jian-xin-de-jie-dian-by-lil-q/" target="_blank" rel="noopener">leetcode 86. 分隔链表</a>。</p>
 <h2 id="多链表处理"><a href="#多链表处理" class="headerlink" title="多链表处理"></a>多链表处理</h2><h3 id="leetcode-2-两数相加"><a href="#leetcode-2-两数相加" class="headerlink" title="leetcode 2. 两数相加"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">leetcode 2. 两数相加</a></h3><p>给出两个<strong>非空</strong>的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储<strong>一位</strong>数字。</p>
 <p><strong>示例：</strong></p>
-<pre><code class="hljs txt">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+<div class="hljs"><pre><code class="hljs txt">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
 输出：7 -&gt; 0 -&gt; 8
-原因：342 + 465 = 807</code></pre>
+原因：342 + 465 = 807</code></pre></div>
 <p>分开处理两个链表节点会简化程序：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;
         <span class="hljs-keyword">int</span> flag = <span class="hljs-number">0</span>;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode();
@@ -457,18 +457,18 @@
         <span class="hljs-keyword">if</span> (flag == <span class="hljs-number">1</span>) cur.next = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">1</span>);
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h3 id="leetcode-23-合并K个排序链表"><a href="#leetcode-23-合并K个排序链表" class="headerlink" title="leetcode 23. 合并K个排序链表"></a><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">leetcode 23. 合并K个排序链表</a></h3><p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入:
+<div class="hljs"><pre><code class="hljs txt">输入:
 [
   1-&gt;4-&gt;5,
   1-&gt;3-&gt;4,
   2-&gt;6
 ]
-输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</code></pre>
+输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</code></pre></div>
 <p><strong>解法一：</strong>利用最小堆原理的优先队列，时间复杂度： <script type="math/tex">O(N\log k)</script> ；空间复杂度：<script type="math/tex">O(k)</script>，用于建立优先队列。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeKLists</span><span class="hljs-params">(ListNode[] lists)</span> </span>&#123;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), cur = dummy;
         PriorityQueue&lt;ListNode&gt; pq = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((o1, o2) -&gt; o1.val - o2.val);
@@ -483,9 +483,9 @@
         &#125;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>分治，时间复杂度： <script type="math/tex">O(N\log k)</script> ；空间复杂度：<script type="math/tex">O(1)</script>。</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 自底向上的迭代求解</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 自底向上的迭代求解</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeKLists</span><span class="hljs-params">(ListNode[] lists)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (lists.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
@@ -542,13 +542,13 @@
             <span class="hljs-keyword">return</span> l2;
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="leetcode-148-排序链表"><a href="#leetcode-148-排序链表" class="headerlink" title="leetcode 148. 排序链表"></a><a href="https://leetcode-cn.com/problems/sort-list/" target="_blank" rel="noopener">leetcode 148. 排序链表</a></h3><p>在 <em>O</em>(<em>n</em> log <em>n</em>) 时间复杂度和常数级空间复杂度下，对链表进行排序。</p>
 <p><strong>示例 1:</strong></p>
-<pre><code class="hljs txt">输入: 4-&gt;2-&gt;1-&gt;3
-输出: 1-&gt;2-&gt;3-&gt;4</code></pre>
+<div class="hljs"><pre><code class="hljs txt">输入: 4-&gt;2-&gt;1-&gt;3
+输出: 1-&gt;2-&gt;3-&gt;4</code></pre></div>
 <p>采用归并排序的思想，对排序后的子链表做类似于合并k个排序链表的操作：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">sortList</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> head;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), slow = dummy, fast = head;
@@ -578,7 +578,7 @@
         pre.next = l1 != <span class="hljs-keyword">null</span> ? l1 : l2;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>当然，递归的做法并不能满足空间复杂度<script type="math/tex">O(1)</script>的要求，可以利用自底向上的思想和位运算实现迭代算法，类似的题还有<a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/java-di-gui-by-lil-q/" target="_blank" rel="noopener">leetcode 109. 有序链表转换二叉搜索树</a>。</p>
 
             </article>

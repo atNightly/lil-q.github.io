@@ -214,12 +214,12 @@
 </ol>
 <h1 id="子序列问题"><a href="#子序列问题" class="headerlink" title="子序列问题"></a>子序列问题</h1><h2 id="leetcode-300-最长上升子序列"><a href="#leetcode-300-最长上升子序列" class="headerlink" title="leetcode 300. 最长上升子序列"></a><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">leetcode 300. 最长上升子序列</a></h2><p>给定一个无序的整数数组，找到其中最长上升子序列的长度，时间复杂度降低到 <script type="math/tex">O(N\log N)</script> 。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [10,9,2,5,3,7,101,18]
+<div class="hljs"><pre><code class="hljs txt">输入: [10,9,2,5,3,7,101,18]
 输出: 4 
-解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</code></pre>
+解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</code></pre></div>
 <p><strong>状态转移：</strong>求解长度为 n 的序列，需要知道前 n - 1 个序列所构成的所有子序列，如果序列结尾小于第 n 个数，则加上第 n 个数<code>num</code>构成新的子序列。这显然很复杂，可以根据贪心思想优化。由于这题求的是最长上升子序列，又因为向子序列添加数字只和末尾数字有关，所以对于每一个可能的子序列长度，只需要保留所有该长度序列的末尾数字中最小的那个数字即可，我们用<code>tails</code>保存这个信息。状态转移被优化为找到<code>tails</code>中所有满足<code>tails[i] &lt; num &lt; tails[i + 1]</code>的情况，并将<code>tails[i + 1]</code>替换为 <code>num</code>。可以证明<code>tails</code>是递增的，所以这个数是唯一的。</p>
 <p><strong>二分查找：</strong>题目要求时间复杂度在 <script type="math/tex">O(N\log N)</script> ，所以状态转移时查找第一个大于<code>num</code>的数采用二分查找。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLIS</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[] tails = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>; <span class="hljs-comment">// 记录右边界</span>
@@ -237,14 +237,14 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-354-俄罗斯套娃信封问题"><a href="#leetcode-354-俄罗斯套娃信封问题" class="headerlink" title="leetcode 354. 俄罗斯套娃信封问题"></a><a href="https://leetcode-cn.com/problems/russian-doll-envelopes/" target="_blank" rel="noopener">leetcode 354. 俄罗斯套娃信封问题</a></h2><p>给定一些标记了宽度和高度的信封，宽度和高度以整数对形式 (w, h) 出现。当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。请计算最多能有多少个信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]
+<div class="hljs"><pre><code class="hljs txt">输入: envelopes = [[5,4],[6,4],[6,7],[2,3]]
 输出: 3 
-解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。</code></pre>
+解释: 最多信封的个数为 3, 组合为: [2,3] =&gt; [5,4] =&gt; [6,7]。</code></pre></div>
 <p>通过对信封排序，可以把该问题简化为最长上升子序列问题。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxEnvelopes</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] envelopes)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (envelopes.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         <span class="hljs-keyword">int</span> size = envelopes.length;
@@ -278,10 +278,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>类似的还有<a href="https://www.nowcoder.com/practice/55371b74b2f243e3820e57ee4c7b5504?tpId=98&amp;tqId=32841&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 搭积木</a></p>
 <p>注意要区分<strong>大于等于</strong>和<strong>大于</strong>的区别：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 <span class="hljs-keyword">import</span> java.util.Arrays;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -321,14 +321,14 @@
         &#125;
         <span class="hljs-keyword">return</span> l;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-1143-最长公共子序列"><a href="#leetcode-1143-最长公共子序列" class="headerlink" title="leetcode 1143. 最长公共子序列"></a><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">leetcode 1143. 最长公共子序列</a></h2><p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。若这两个字符串没有公共子序列，则返回 0。 </p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入：text1 = &quot;abcde&quot;, text2 = &quot;ace&quot; 
+<div class="hljs"><pre><code class="hljs txt">输入：text1 = &quot;abcde&quot;, text2 = &quot;ace&quot; 
 输出：3  
-解释：最长公共子序列是 &quot;ace&quot;，它的长度为 3。</code></pre>
+解释：最长公共子序列是 &quot;ace&quot;，它的长度为 3。</code></pre></div>
 <p>这里可以将二维 dp 转化为一维 dp ，但需要记录<code>dp[i - 1][j - 1]</code>。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestCommonSubsequence</span><span class="hljs-params">(String text1, String text2)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[text2.length() + <span class="hljs-number">1</span>];
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = text1.length() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;
@@ -342,9 +342,9 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="最优决策"><a href="#最优决策" class="headerlink" title="最优决策"></a>最优决策</h1><h2 id="leetcode-887-鸡蛋掉落"><a href="#leetcode-887-鸡蛋掉落" class="headerlink" title="leetcode 887. 鸡蛋掉落"></a><a href="https://leetcode-cn.com/problems/super-egg-drop/" target="_blank" rel="noopener">leetcode 887. 鸡蛋掉落</a></h2><p>题目较复杂，请参考<a href="https://leetcode-cn.com/problems/super-egg-drop/solution/ji-dan-diao-luo-by-leetcode-solution-2/" target="_blank" rel="noopener">官方题解</a>。使用二维dp的基础做法：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[K + <span class="hljs-number">1</span>][N + <span class="hljs-number">1</span>];
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) dp[<span class="hljs-number">1</span>][i] = i; <span class="hljs-comment">// 一个鸡蛋的base case</span>
@@ -364,9 +364,9 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[K][N];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>利用决策单调性并将二维dp简化为线性dp：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N + <span class="hljs-number">1</span>];
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) dp[i] = i; <span class="hljs-comment">// 一个鸡蛋的base case</span>
@@ -383,10 +383,10 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[N];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>另一个类似单调决策的例子：<a href="https://leetcode-cn.com/problems/new-21-game/" target="_blank" rel="noopener">leetcode 837. 新21点</a>。</p>
 <p>思路是求以每一个分数开始，最后获胜的概率。所以<code>[K, N]</code>区间内是 1，从<code>K - 1</code>开始往前动态规划。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">new21Game</span><span class="hljs-params">(<span class="hljs-keyword">int</span> N, <span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> W)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (K == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span>;
         <span class="hljs-keyword">double</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[K + W];
@@ -399,14 +399,14 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-188-买卖股票的最佳时机-IV"><a href="#leetcode-188-买卖股票的最佳时机-IV" class="headerlink" title="leetcode 188. 买卖股票的最佳时机 IV"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">leetcode 188. 买卖股票的最佳时机 IV</a></h2><p>给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。设计一个算法来计算所能获取的最大利润。最多可以完成 k 笔交易。不能同时参与多笔交易（必须在再次购买前出售掉之前的股票）。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [2,4,1], k = 2
+<div class="hljs"><pre><code class="hljs txt">输入: [2,4,1], k = 2
 输出: 2
-解释: 在第 1 天 (股票价格 = 2) 的时候买入，在第 2 天 (股票价格 = 4) 的时候卖出，这笔交易所能获得利润 = 4-2 = 2 。</code></pre>
+解释: 在第 1 天 (股票价格 = 2) 的时候买入，在第 2 天 (股票价格 = 4) 的时候卖出，这笔交易所能获得利润 = 4-2 = 2 。</code></pre></div>
 <p>股票类问题都可以用两个二维 dp 来解决，一个记录 sold 状态，另一个记录 hold 状态。dp 第一个维度对应天数，第二个维度对应第几次买卖操作，当操作次数不足时，后面会重复最后的操作。由于当天的情况只与前一天有关，第一个维度可以压缩至常量。当买卖次数不限时，只关心最优解，前若干次操作可以不记录，第二个维度可以压缩至常量。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;
         <span class="hljs-comment">// k 大于天数的一半时，用简单的贪心算法即可，也简化了很多重复运算</span>
         <span class="hljs-keyword">if</span>(k &gt;= prices.length / <span class="hljs-number">2</span>)&#123;
@@ -431,9 +431,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sold[k];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-312-戳气球"><a href="#leetcode-312-戳气球" class="headerlink" title="leetcode 312. 戳气球"></a><a href="https://leetcode-cn.com/problems/burst-balloons/" target="_blank" rel="noopener">leetcode 312. 戳气球</a></h2><p>这题正向思维会很难解，我们在决策时可以不考虑哪个先戳破，而是考虑哪个最后戳破。这样就可以用分治算法简化运算。递归不难实现，迭代时需要先把较短数组的子问题解决，再解决包含这些子问题的问题。</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 自顶向下的递归</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 自顶向下的递归</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[][] memo;
 
@@ -474,9 +474,9 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][n - <span class="hljs-number">1</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>类似的扫描方式还有<a href="https://leetcode-cn.com/problems/longest-palindromic-subsequence/" target="_blank" rel="noopener">leetcode 516. 最长回文子序列</a>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestPalindromeSubseq</span><span class="hljs-params">(String s)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = s.length();
         <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n][n];
@@ -489,10 +489,10 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][n - <span class="hljs-number">1</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/after3.26/20200426185521.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>下面的这题可以展示另一种遍历方式——<a href="https://leetcode-cn.com/problems/minimum-score-triangulation-of-polygon/" target="_blank" rel="noopener">leetcode 1039. 多边形三角剖分的最低得分</a>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minScoreTriangulation</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = A.length;
         <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n][n];
@@ -507,17 +507,17 @@
         &#125;
         <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][n - <span class="hljs-number">1</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-664-奇怪的打印机"><a href="#leetcode-664-奇怪的打印机" class="headerlink" title="leetcode 664. 奇怪的打印机"></a><a href="https://leetcode-cn.com/problems/strange-printer/" target="_blank" rel="noopener">leetcode 664. 奇怪的打印机</a></h2><p>有台奇怪的打印机有以下两个特殊要求：</p>
 <ul>
 <li>打印机每次只能打印同一个字符序列。</li>
 <li>每次可以在任意起始和结束位置打印新字符，并且会覆盖掉原来已有的字符。</li>
 </ul>
-<pre><code class="hljs txt">输入: &quot;aaabbb&quot;
+<div class="hljs"><pre><code class="hljs txt">输入: &quot;aaabbb&quot;
 输出: 2
-解释: 首先打印 &quot;aaa&quot; 然后打印 &quot;bbb&quot;。</code></pre>
+解释: 首先打印 &quot;aaa&quot; 然后打印 &quot;bbb&quot;。</code></pre></div>
 <p>给定一个只包含小写英文字母的字符串，你的任务是计算这个打印机打印它需要的最少次数。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span>[][] memo;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">strangePrinter</span><span class="hljs-params">(String s)</span> </span>&#123;
@@ -538,14 +538,14 @@
         &#125;
         <span class="hljs-keyword">return</span> memo[l][r];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><p>字符串处理基本都能用动态规划来做。</p>
 <h2 id="leetcode-10-正则表达式匹配"><a href="#leetcode-10-正则表达式匹配" class="headerlink" title="leetcode 10. 正则表达式匹配"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">leetcode 10. 正则表达式匹配</a></h2><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
-<pre><code class="hljs txt">&apos;.&apos; 匹配任意单个字符
+<div class="hljs"><pre><code class="hljs txt">&apos;.&apos; 匹配任意单个字符
 &apos;*&apos; 匹配零个或多个前面的那一个元素
-所谓匹配，是要涵盖整个字符串 s 的，而不是部分字符串。</code></pre>
+所谓匹配，是要涵盖整个字符串 s 的，而不是部分字符串。</code></pre></div>
 <p>这里采用从后往前匹配的方式，对于空字符串的匹配结果可以放在二维数组<code>memo</code>的末尾，算法更加清晰。</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 迭代</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 迭代</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(String s, String p)</span> </span>&#123;
         <span class="hljs-keyword">boolean</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[s.length() + <span class="hljs-number">1</span>][p.length() + <span class="hljs-number">1</span>];
@@ -590,7 +590,7 @@
         memo[i][j] = ans ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
         <span class="hljs-keyword">return</span> ans;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-72-编辑距离"><a href="#leetcode-72-编辑距离" class="headerlink" title="leetcode 72. 编辑距离"></a><a href="https://leetcode-cn.com/problems/edit-distance/" target="_blank" rel="noopener">leetcode 72. 编辑距离</a></h2><p>给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。你可以对一个单词进行如下三种操作：</p>
 <ul>
 <li>插入一个字符</li>
@@ -598,14 +598,14 @@
 <li>替换一个字符</li>
 </ul>
 <p><strong>示例：</strong></p>
-<pre><code class="hljs txt">输入：word1 = &quot;horse&quot;, word2 = &quot;ros&quot;
+<div class="hljs"><pre><code class="hljs txt">输入：word1 = &quot;horse&quot;, word2 = &quot;ros&quot;
 输出：3
 解释：
 horse -&gt; rorse (将 &apos;h&apos; 替换为 &apos;r&apos;)
 rorse -&gt; rose (删除 &apos;r&apos;)
-rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
+rose -&gt; ros (删除 &apos;e&apos;)</code></pre></div>
 <p>先用二维 dp 理清思路，之后压缩空间占用。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minDistance</span><span class="hljs-params">(String word1, String word2)</span> </span>&#123;
         <span class="hljs-keyword">int</span> len1 = word1.length(), len2 = word2.length();
         <span class="hljs-comment">// 初始化</span>
@@ -647,22 +647,22 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         &#125;
         <span class="hljs-keyword">return</span> dp[len2];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h1><p><a href="https://zh.wikipedia.org/wiki/背包问题" target="_blank" rel="noopener">背包问题</a>作为<a href="https://zh.wikipedia.org/wiki/NP完全" target="_blank" rel="noopener">NP完全</a>问题，暂时不存在多项式时间算法。动态规划属于背包问题求解最优解的可行方法之一。此外，求解背包问题最优解还有搜索法等，近似解还有贪心法等，分数背包问题有最优贪心解等。 背包问题具有<strong>最优子结构</strong>和<strong>重叠子问题</strong>。</p>
 <h2 id="AcWing-5-多重背包问题"><a href="#AcWing-5-多重背包问题" class="headerlink" title="AcWing 5 多重背包问题"></a><a href="https://www.acwing.com/problem/content/5/" target="_blank" rel="noopener">AcWing 5 多重背包问题</a></h2><p>有 <script type="math/tex">N</script> 种物品和一个容量是 <script type="math/tex">V</script> 的背包。第 <script type="math/tex">i</script> 种物品最多有 <script type="math/tex">s_i</script> 件，每件体积是 <script type="math/tex">v_i</script>，价值是 <script type="math/tex">w_i</script>。求解将哪些物品装入背包，可使物品体积总和不超过背包容量，且价值总和最大，输出最大价值。</p>
 <p><strong>输入格式</strong></p>
 <p>第一行两个整数，<script type="math/tex">N</script>，<script type="math/tex">V</script>，用空格隔开，分别表示物品种数和背包容积。</p>
 <p>接下来有 <script type="math/tex">N</script> 行，每行三个整数 <script type="math/tex">u</script>、<script type="math/tex">w</script>、<script type="math/tex">s</script>，用空格隔开，分别表示第 <script type="math/tex">i</script> 种物品的体积、价值和数量。</p>
-<pre><code class="hljs txt">输入样例
+<div class="hljs"><pre><code class="hljs txt">输入样例
 4 5
 1 2 3
 2 4 1
 3 4 3
 4 5 2
 输出样例：
-10</code></pre>
+10</code></pre></div>
 <p>当 <script type="math/tex">s</script> 很大时，单纯使用0-1背包会消耗大量时间，可以使用二进制优化方法。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;
 <span class="hljs-keyword">import</span> java.util.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
@@ -702,11 +702,11 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         &#125;
         System.out.print(dp[v]);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-494-目标和"><a href="#leetcode-494-目标和" class="headerlink" title="leetcode 494. 目标和"></a><a href="https://leetcode-cn.com/problems/target-sum/" target="_blank" rel="noopener">leetcode 494. 目标和</a></h2><p>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。</p>
 <p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: nums: [1, 1, 1, 1, 1], S: 3
+<div class="hljs"><pre><code class="hljs txt">输入: nums: [1, 1, 1, 1, 1], S: 3
 输出: 5
 解释: 
 
@@ -716,9 +716,9 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
 +1+1+1-1+1 = 3
 +1+1+1+1-1 = 3
 
-一共有5种方法让最终目标和为3。</code></pre>
+一共有5种方法让最终目标和为3。</code></pre></div>
 <p>这是背包问题的变种，base case是全减，这时候有一种可能，之后每一个数字可以改成加号或者不改，类似0/1背包。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findTargetSumWays</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> S)</span> </span>&#123;
         <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) sum += num;
@@ -733,9 +733,9 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         &#125;
         <span class="hljs-keyword">return</span> dp[len];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-474-一和零"><a href="#leetcode-474-一和零" class="headerlink" title="leetcode 474. 一和零"></a><a href="https://leetcode-cn.com/problems/ones-and-zeroes/" target="_blank" rel="noopener">leetcode 474. 一和零</a></h2><p>二维背包，可以想象成一些游戏内的背包，有固定的长和宽。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findMaxForm</span><span class="hljs-params">(String[] strs, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m + <span class="hljs-number">1</span>][n + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 相应的dp数组也为二维</span>
         <span class="hljs-keyword">for</span> (String str : strs) &#123;
@@ -752,17 +752,17 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         &#125;
         <span class="hljs-keyword">return</span> dp[m][n];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="树型问题"><a href="#树型问题" class="headerlink" title="树型问题"></a>树型问题</h1><h2 id="leetcode-124-二叉树中的最大路径和"><a href="#leetcode-124-二叉树中的最大路径和" class="headerlink" title="leetcode 124. 二叉树中的最大路径和"></a><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">leetcode 124. 二叉树中的最大路径和</a></h2><p>给定一个非空二叉树，返回其最大路径和。路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [1,2,3]
+<div class="hljs"><pre><code class="hljs txt">输入: [1,2,3]
    1
   / \
  2   3
  
- 输出: 6</code></pre>
+ 输出: 6</code></pre></div>
 <p>利用全局变量记录最大值。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">int</span> max_sum = Integer.MIN_VALUE;
     
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
@@ -777,20 +777,20 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         max_sum = Math.max(max_sum, root.val + left + right); <span class="hljs-comment">// 注意</span>
         <span class="hljs-keyword">return</span> root.val + Math.max(left, right);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-337-打家劫舍-III"><a href="#leetcode-337-打家劫舍-III" class="headerlink" title="leetcode 337. 打家劫舍 III"></a><a href="https://leetcode-cn.com/problems/house-robber-iii/" target="_blank" rel="noopener">leetcode 337. 打家劫舍 III</a></h2><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。</p>
 <p>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。</p>
 <p><strong>示例:</strong></p>
-<pre><code class="hljs txt">输入: [3,2,3,null,3,null,1]
+<div class="hljs"><pre><code class="hljs txt">输入: [3,2,3,null,3,null,1]
  3
 / \
 2   3
  \   \ 
   3   1
 输出: 7 
-解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.</code></pre>
+解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.</code></pre></div>
 <p>原地修改可以减少递归次数，<a href="https://leetcode-cn.com/problems/house-robber-iii/solution/java-ji-yi-hua-dphe-yuan-di-xiu-gai-by-lil-q/" target="_blank" rel="noopener">对比</a>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
         <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         <span class="hljs-keyword">int</span> f = root.val, s = <span class="hljs-number">0</span>; <span class="hljs-comment">// f: 选取root；s: 不选取root</span>
@@ -806,7 +806,7 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre>
         root.val = Math.max(f, s);
         <span class="hljs-keyword">return</span> root.val;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
             </article>
             <hr>

@@ -205,56 +205,56 @@
               <p>NumPy的使用以及图片亮度和对比度分析</p>
 <a id="more"></a>
 <h1 id="OpenCV与NumPy"><a href="#OpenCV与NumPy" class="headerlink" title="OpenCV与NumPy"></a>OpenCV与NumPy</h1><p>OpenCV读取一张图片，返回的实际上是一个<code>numpy.ndarray</code>类。所以一些对<code>numpy.ndarray</code>的操作可以直接对<code>cv2.imread()</code>返回的对象使用。</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 img = cv2.imread(<span class="hljs-string">'connelly.jpg'</span>)
 print(type(img)) <span class="hljs-comment"># &lt;class 'numpy.ndarray'&gt;</span>
 
 rows, cols = img.shape[:<span class="hljs-number">2</span>]
-print(rows, cols) <span class="hljs-comment"># 210 270</span></code></pre>
+print(rows, cols) <span class="hljs-comment"># 210 270</span></code></pre></div>
 <h2 id="访问和修改像素值"><a href="#访问和修改像素值" class="headerlink" title="访问和修改像素值"></a>访问和修改像素值</h2><p>根据像素值的行和列坐标可以访问特定像素点。对于BGR图像，它返回一个蓝色、绿色、红色值数组。灰度图像，只返回相应的亮度。</p>
-<pre><code class="hljs python">px = img[<span class="hljs-number">100</span>, <span class="hljs-number">120</span>]
+<div class="hljs"><pre><code class="hljs python">px = img[<span class="hljs-number">100</span>, <span class="hljs-number">120</span>]
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 px_gray = img_gray[<span class="hljs-number">100</span>, <span class="hljs-number">120</span>]
 print(px) <span class="hljs-comment"># [130 131 181]</span>
-print(px_gray) <span class="hljs-comment"># 146</span></code></pre>
+print(px_gray) <span class="hljs-comment"># 146</span></code></pre></div>
 <p>可以用同样的方式修改像素值。</p>
-<pre><code class="hljs python">img[<span class="hljs-number">100</span>, <span class="hljs-number">120</span>] = [<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>]</code></pre>
+<div class="hljs"><pre><code class="hljs python">img[<span class="hljs-number">100</span>, <span class="hljs-number">120</span>] = [<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>]</code></pre></div>
 <p>NumPy是一个用于快速数组计算的优化库。因此，使用原生python的数组简单地访问每个像素值，并修改它将非常缓慢，不推荐这种方法。</p>
 <p>上述方法通常用于选择数组区域，例如前5行和最后3列。对于单个像素访问，但用NumPy数组的方法、<code>array.tem()</code>和<code>array.itemset()</code>会更适合。因为它总是返回一个标量。因此，如果想访问所有的B，G，R值，你需要为所有通道分别调用<code>array.tem()</code>。</p>
-<pre><code class="hljs python"><span class="hljs-comment"># 获取红色通道值</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 获取红色通道值</span>
 print(img.item(<span class="hljs-number">100</span>, <span class="hljs-number">120</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment"># 181</span>
 
 <span class="hljs-comment"># 修改红色通道值</span>
-img.itemset((<span class="hljs-number">100</span>, <span class="hljs-number">120</span>, <span class="hljs-number">2</span>), <span class="hljs-number">255</span>)</code></pre>
+img.itemset((<span class="hljs-number">100</span>, <span class="hljs-number">120</span>, <span class="hljs-number">2</span>), <span class="hljs-number">255</span>)</code></pre></div>
 <h2 id="访问图像属性"><a href="#访问图像属性" class="headerlink" title="访问图像属性"></a>访问图像属性</h2><p>图像属性包括行数，列数和通道数，图像数据类型，像素数等。</p>
 <p><code>img.shape</code>可以访问图像的形状。 它返回一组行，列和通道的元组（如果图像是彩色的），如果图像是灰度，则返回的元组仅包含行数和列数。因此，检查加载的图像是灰度还是彩色图像是一种很好的方法。：</p>
-<pre><code class="hljs python">print(img.shape) <span class="hljs-comment"># (210, 270, 3)</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">print(img.shape) <span class="hljs-comment"># (210, 270, 3)</span></code></pre></div>
 <p><code>img.size</code>访问的像素总数：</p>
-<pre><code class="hljs python">print(img.size) <span class="hljs-comment"># 170100</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">print(img.size) <span class="hljs-comment"># 170100</span></code></pre></div>
 <p>图像数据类型由<code>img.dtype</code>获得：</p>
-<pre><code class="hljs python">print(img.dtype) <span class="hljs-comment"># uint8</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">print(img.dtype) <span class="hljs-comment"># uint8</span></code></pre></div>
 <p> <code>img.dtype</code>在调试时非常重要，因为OpenCV-Python代码中的大量错误是由无效的数据类型引起的。</p>
 <h2 id="提取ROI"><a href="#提取ROI" class="headerlink" title="提取ROI"></a>提取ROI</h2><p>ROI (Region of Interest)即感兴趣的区域，</p>
-<pre><code class="hljs python">roi = img[<span class="hljs-number">100</span>:<span class="hljs-number">200</span>, <span class="hljs-number">200</span>:<span class="hljs-number">300</span>]</code></pre>
+<div class="hljs"><pre><code class="hljs python">roi = img[<span class="hljs-number">100</span>:<span class="hljs-number">200</span>, <span class="hljs-number">200</span>:<span class="hljs-number">300</span>]</code></pre></div>
 <ul>
 <li>直接指定范围即可，上面表示行数为<code>100-200</code>，列数为<code>200-300</code>的区域</li>
 </ul>
 <h2 id="拆分和合并图像通道"><a href="#拆分和合并图像通道" class="headerlink" title="拆分和合并图像通道"></a>拆分和合并图像通道</h2><p>有时需要在B,G,R通道图像上单独工作。需要将BGR图像分割为单个平面或者需要将这些单独的通道连接到BGR图像。可以通过以下方式完成：</p>
-<pre><code class="hljs python">b,g,r = cv2.split(img)
-img = cv2.merge((b,g,r))</code></pre>
+<div class="hljs"><pre><code class="hljs python">b,g,r = cv2.split(img)
+img = cv2.merge((b,g,r))</code></pre></div>
 <p><code>cv2.split()</code> 是一项代价昂贵的的操作（就运算时间而言）。所以只有在需要时才使用这个方法。否则请使用Numpy索引。</p>
-<pre><code class="hljs python">b = img[:,:,<span class="hljs-number">0</span>]</code></pre>
+<div class="hljs"><pre><code class="hljs python">b = img[:,:,<span class="hljs-number">0</span>]</code></pre></div>
 <p>假设，想要将所有红色像素设为零，不需要像这样分割并将其等于零。 可以简单地使用Numpy索引，这样更快。</p>
-<pre><code class="hljs python">img[:,:,<span class="hljs-number">2</span>] = <span class="hljs-number">0</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">img[:,:,<span class="hljs-number">2</span>] = <span class="hljs-number">0</span></code></pre></div>
 <h1 id="图片亮度和对比度"><a href="#图片亮度和对比度" class="headerlink" title="图片亮度和对比度"></a>图片亮度和对比度</h1><p>简单的改变图片的亮度和对比度可以是一个线性的过程：</p>
 <script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot f\left ( i,j \right )+\beta\tag{1}</script><p>式子1中<script type="math/tex">f\left ( i,j \right )</script>相当于就是原图像每个像素点对应色彩或灰度的映射。直观上看，<script type="math/tex">\alpha</script>决定了对比度，<script type="math/tex">\alpha</script>越大，各像素之间的差别越大，对比度越大。<script type="math/tex">\beta</script>决定了亮度，<script type="math/tex">\beta</script>越大，各像素整体都变大，亮度提升了。</p>
 <p>但其实这种表述并不准确，因为在对图像进行线性处理时存在溢出的问题，当<script type="math/tex">\beta</script>值太大时，<script type="math/tex">g\left (i,j  \right )</script>由于超过数据类型的上限被OpenCV置为特定值（比如CV_8U会被置为255）。对于灰度图，这些值都被置为相同值，相当于这部分像素点对比度调节完全失效了；对于三通道的彩色图，有一部分通道溢出，则会导致对比度比预期小的现象。</p>
 <p>另一个层面上，<script type="math/tex">\alpha</script>的改变也影响了亮度，因为上式中<script type="math/tex">\alpha</script>的变化会统一的放大或缩小所有像素点的灰度值。当想要提高对比度时，如果不变化<script type="math/tex">\beta</script>的值，视觉上的”亮度“还是会提升。不妨把上式改写成如下式子：</p>
 <script type="math/tex; mode=display">g\left (i,j  \right )= \alpha \cdot \left (f\left ( i,j \right )-T  \right )+\beta\tag{2}</script><p>当<script type="math/tex">\alpha</script>大于1时，式子2表示将比T小的像素点的灰度值变得更小，把比T大的像素点的灰度值变得更大，这样当T值等于图像的平均灰度值（当然，是否就是平均灰度值也有待商榷）时就不会带来<script type="math/tex">\alpha</script>的改变影响亮度的问题了。式子1实际上就是式子2中T等于0的特例，所有像素点的灰度值都大于等于0，所以整幅图像的亮度被<script type="math/tex">\alpha</script>影响了。</p>
 <p>完整的调整代码如下：</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 img = cv2.imread(<span class="hljs-string">'connelly.jpg'</span>)
@@ -264,18 +264,18 @@ res = np.uint8(np.clip((<span class="hljs-number">2</span> * (np.int16(img) - <s
 tmp = np.hstack((img, res))  <span class="hljs-comment"># 两张图片横向合并显示</span>
 
 cv2.imshow(<span class="hljs-string">'image'</span>, tmp)
-cv2.waitKey(<span class="hljs-number">0</span>)</code></pre>
+cv2.waitKey(<span class="hljs-number">0</span>)</code></pre></div>
 <p>输出效果如下：</p>
 <p><img src="compare.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>在用python改变图片的亮度和对比度时，有两个问题需要注意，第一个问题是数据类型，式子中其实有一个乘法，这是极有可能出现溢出的，如果代码是这样<code>res = np.uint8(np.clip((2 * img - 60) + 50), 0, 255))</code>，就会出现这样的结果:</p>
 <p><img src="compare_wrong.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>解决的办法有两个，一是改变img的类型：使用<code>np.int16(img)</code>代替<code>img</code>；二是用浮点数<code>2.0</code>代替<code>2</code>，这样<code>2.0 * img</code>的数据类型会自动变成<code>float64</code>。</p>
-<pre><code class="hljs python">print((<span class="hljs-number">2.0</span> * img).dtype) <span class="hljs-comment"># float64</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">print((<span class="hljs-number">2.0</span> * img).dtype) <span class="hljs-comment"># float64</span></code></pre></div>
 <p>第二个问题是对于溢出NumPy和OpenCV的处理方式不同：</p>
-<pre><code class="hljs python">x = np.uint8([<span class="hljs-number">250</span>])
+<div class="hljs"><pre><code class="hljs python">x = np.uint8([<span class="hljs-number">250</span>])
 y = np.uint8([<span class="hljs-number">10</span>])
 print(cv2.add(x, y))  <span class="hljs-comment"># 250 + 10 = 260 =&gt; 255 --255封顶</span>
-print(x + y)  <span class="hljs-comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></code></pre>
+print(x + y)  <span class="hljs-comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></code></pre></div>
 <p>如果我们使用NumPy处理就需要使用<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" target="_blank" rel="noopener"><code>np.clip()</code></a>函数将数据限定在0~255。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://www.numpy.org.cn/article/other/py_basic_ops.html#目标" target="_blank" rel="noopener">https://www.numpy.org.cn/article/other/py_basic_ops.html#%E7%9B%AE%E6%A0%87</a></li>

@@ -205,7 +205,7 @@
               <p>整理一些难度较大或者十分有趣的题目。</p>
 <a id="more"></a>
 <h1 id="nowcoder-整理房间"><a href="#nowcoder-整理房间" class="headerlink" title="nowcoder 整理房间"></a><a href="https://www.nowcoder.com/practice/c32f4c74446541a1ad2abbe54476681f?tpId=98&amp;tqId=32835&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 整理房间</a></h1><p>不难但是很全面的一题：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-comment">// 创建一个 Point 类</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;
@@ -289,9 +289,9 @@
         <span class="hljs-keyword">return</span> ((<span class="hljs-keyword">long</span>) (p1.a - p2.a) * (p1.a - p2.a) 
                      + (p1.b - p2.b) * (p1.b - p2.b));
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="nowcoder-小易的字典"><a href="#nowcoder-小易的字典" class="headerlink" title="nowcoder 小易的字典"></a><a href="https://www.nowcoder.com/practice/12b1b8ef17e1441f86f322b250bff4c0?tpId=98&amp;tqId=32838&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 小易的字典</a></h1><p>类似于康托展开的思路，不过这里要求的是组合数。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
@@ -337,9 +337,9 @@
         &#125;
         <span class="hljs-keyword">return</span> c;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-42-接雨水"><a href="#leetcode-42-接雨水" class="headerlink" title="leetcode 42. 接雨水"></a><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">leetcode 42. 接雨水</a></h1><p><strong>解法一：</strong>两遍扫描。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = height.length;
         <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
@@ -357,9 +357,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>双指针——按列。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = height.length - <span class="hljs-number">1</span>;
         <span class="hljs-keyword">int</span> left_max = <span class="hljs-number">0</span>, right_max = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;
@@ -376,9 +376,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法三：</strong>双指针——按行。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         <span class="hljs-keyword">int</span> n = height.length;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>, h = <span class="hljs-number">0</span>;
@@ -400,9 +400,9 @@
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) sum -= height[i];
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法四：</strong>单调栈。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;
         Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
@@ -419,9 +419,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="N数和问题"><a href="#N数和问题" class="headerlink" title="N数和问题"></a>N数和问题</h1><h2 id="leetcode-1-两数之和"><a href="#leetcode-1-两数之和" class="headerlink" title="leetcode 1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">leetcode 1. 两数之和</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^2)</script>降低至<script type="math/tex">O(n)</script>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
@@ -431,9 +431,9 @@
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-15-三数之和"><a href="#leetcode-15-三数之和" class="headerlink" title="leetcode 15. 三数之和"></a><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">leetcode 15. 三数之和</a></h2><p>利用双指针将复杂度从<script type="math/tex">O(n^3)</script>降低至<script type="math/tex">O(n^2)</script>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="hljs-keyword">int</span>[] nums) &#123;
         List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
         Arrays.sort(nums); <span class="hljs-comment">// 排序以利用双指针</span>
@@ -454,9 +454,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><code>Arrays.asList()</code>和<code>List.of()</code>区别：<a href="https://stackoverflow.com/questions/46579074/what-is-the-difference-between-list-of-and-arrays-aslist" target="_blank" rel="noopener">What is the difference between List.of and Arrays.asList?</a></p>
-<h2 id="leetcode-18-四数之和"><a href="#leetcode-18-四数之和" class="headerlink" title="leetcode 18. 四数之和"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">leetcode 18. 四数之和</a></h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h2 id="leetcode-18-四数之和"><a href="#leetcode-18-四数之和" class="headerlink" title="leetcode 18. 四数之和"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">leetcode 18. 四数之和</a></h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
         Arrays.sort(nums); <span class="hljs-comment">// 排序以利用双指针</span>
         List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
@@ -481,9 +481,9 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-454-四数相加-II"><a href="#leetcode-454-四数相加-II" class="headerlink" title="leetcode 454. 四数相加 II"></a><a href="https://leetcode-cn.com/problems/4sum-ii/" target="_blank" rel="noopener">leetcode 454. 四数相加 II</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^4)</script>降低至<script type="math/tex">O(n^2)</script>：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fourSumCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span>[] C, <span class="hljs-keyword">int</span>[] D)</span> </span>&#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>, n = A.length;
@@ -499,10 +499,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="前缀和与线段树"><a href="#前缀和与线段树" class="headerlink" title="前缀和与线段树"></a>前缀和与线段树</h1><h2 id="leetcode-560-和为K的子数组"><a href="#leetcode-560-和为K的子数组" class="headerlink" title="leetcode 560. 和为K的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">leetcode 560. 和为K的子数组</a></h2><p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的<strong>连续</strong>的子数组的个数。</p>
 <p>每扫描一个数就将这个数之前的所有数之和存进哈希表，称之为前缀和。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">subarraySum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
         Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
         map.put(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
@@ -514,10 +514,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="leetcode-307-区域和检索-数组可修改"><a href="#leetcode-307-区域和检索-数组可修改" class="headerlink" title="leetcode 307. 区域和检索 - 数组可修改"></a><a href="https://leetcode-cn.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener">leetcode 307. 区域和检索 - 数组可修改</a></h2><p>前缀和并不是万能的，当需要修改数组时，修改操作的复杂度由<script type="math/tex">O(1)</script>提高至<script type="math/tex">O(n)</script>。</p>
 <p>使用线段树可以把检索和修改的时间复杂度都保持在<script type="math/tex">O(log n)</script>，以保证在检索和修改次数较为均衡的情况下，能够保持良好的效率。线段树类似堆树，利用数组作为数据结构：</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumArray</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumArray</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] na;
     <span class="hljs-keyword">int</span> n;
 
@@ -560,9 +560,9 @@
         &#125;
         <span class="hljs-keyword">return</span> sum;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="nowcoder-善变的同伴"><a href="#nowcoder-善变的同伴" class="headerlink" title="nowcoder 善变的同伴"></a><a href="https://www.nowcoder.com/practice/824af5cb05794606b56657bb3fa91f49?tpId=98&amp;tqId=32843&amp;tPage=1&amp;rp=1&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 善变的同伴</a></h2><p>有时候对数组做累加操作再处理会带来便利，这题使用类似股票问题的动态规划会超时，计算前缀和，再利用极小值和极大值的特性可以在<script type="math/tex">O(n)</script>完成：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 <span class="hljs-keyword">import</span> java.util.*;
 <span class="hljs-comment">/*                    t3 (t3 &gt; t2, 合并 b2 至 t3, 合并后如果次数还有多，
 *        t1           /\  就要把合并损失的还回去，记录栈内所有 bi-1 - ti)        
@@ -617,9 +617,9 @@
         &#125;
         System.out.println(res);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="nowcoder-鸡鸭分类问题"><a href="#nowcoder-鸡鸭分类问题" class="headerlink" title="nowcoder 鸡鸭分类问题"></a><a href="https://www.nowcoder.com/practice/f87616abbac44842b43f24ddd3cf49e8?tpId=98&amp;tqId=32861&amp;tPage=2&amp;rp=2&amp;ru=/ta/2019test&amp;qru=/ta/2019test/question-ranking" target="_blank" rel="noopener">nowcoder 鸡鸭分类问题</a></h1><p>所谓交换就是移动一次，所以只要求所有鸡和鸭移动到前端共用次数中较小的一个：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;
 
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
@@ -637,8 +637,8 @@
         &#125;
         System.out.println(Math.min(C, D));
     &#125;
-&#125;</code></pre>
-<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="leetcode-76-最小覆盖子串"><a href="#leetcode-76-最小覆盖子串" class="headerlink" title="leetcode 76. 最小覆盖子串"></a><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">leetcode 76. 最小覆盖子串</a></h2><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+&#125;</code></pre></div>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><h2 id="leetcode-76-最小覆盖子串"><a href="#leetcode-76-最小覆盖子串" class="headerlink" title="leetcode 76. 最小覆盖子串"></a><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">leetcode 76. 最小覆盖子串</a></h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minWindow</span><span class="hljs-params">(String s, String t)</span> </span>&#123;
         <span class="hljs-comment">// map 记录 t 组成</span>
         Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
@@ -675,10 +675,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h1 id="leetcode-287-寻找重复数"><a href="#leetcode-287-寻找重复数" class="headerlink" title="leetcode 287. 寻找重复数"></a><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">leetcode 287. 寻找重复数</a></h1><p><strong>解法一：</strong>将数组转化为链表。</p>
 <p>由于这个数组没有 0 这个值，所以 0 结点的入度为 0，必定不成环。可以看出 0 为 head 的一个链表，求其环入口。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> slow = nums[<span class="hljs-number">0</span>], fast = nums[nums[<span class="hljs-number">0</span>]];
         <span class="hljs-keyword">while</span> (slow != fast) &#123;
@@ -692,10 +692,10 @@
         &#125;
         <span class="hljs-keyword">return</span> slow;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>解法二：</strong>二分查找</p>
 <p>利用抽屉原理的思想。</p>
-<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = nums.length - <span class="hljs-number">1</span>;
         <span class="hljs-keyword">while</span> (l &lt; r) &#123;
@@ -708,7 +708,7 @@
         &#125;
         <span class="hljs-keyword">return</span> l;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
             </article>
             <hr>

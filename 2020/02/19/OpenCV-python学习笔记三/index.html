@@ -205,14 +205,14 @@
               <p>图像混合与形态学操作</p>
 <a id="more"></a>
 <h1 id="图片混合"><a href="#图片混合" class="headerlink" title="图片混合"></a>图片混合</h1><h2 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h2><p>图像混合<code>cv2.addWeighted()</code>要求两幅图片的形状（高度/宽度/通道数）必须相同，<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>分别为两幅图像的权重，b则是一个偏置：</p>
-<script type="math/tex; mode=display">dst = \omega_{1}\times img1+\omega_{2}\times img2 + b</script><pre><code class="hljs python">img1 = cv2.imread(<span class="hljs-string">'img1_name.jpg'</span>)
+<script type="math/tex; mode=display">dst = \omega_{1}\times img1+\omega_{2}\times img2 + b</script><div class="hljs"><pre><code class="hljs python">img1 = cv2.imread(<span class="hljs-string">'img1_name.jpg'</span>)
 img2 = cv2.imread(<span class="hljs-string">'img2_name.png'</span>)
-res = cv2.addWeighted(img1, <span class="hljs-number">0.6</span>, img2, <span class="hljs-number">0.4</span>, <span class="hljs-number">0</span>)</code></pre>
+res = cv2.addWeighted(img1, <span class="hljs-number">0.6</span>, img2, <span class="hljs-number">0.4</span>, <span class="hljs-number">0</span>)</code></pre></div>
 <p>特别的，当<script type="math/tex">\omega_{1}</script>和<script type="math/tex">\omega_{2}</script>都为1，b为0时，就是两张图片相加。可以用<code>cv2.add()</code>函数。numpy 中可以直接用<code>res = img1 + img2</code>相加，但这两者的结果并不相同：</p>
-<pre><code class="hljs python">x = np.uint8([<span class="hljs-number">250</span>])
+<div class="hljs"><pre><code class="hljs python">x = np.uint8([<span class="hljs-number">250</span>])
 y = np.uint8([<span class="hljs-number">10</span>])
 print(cv2.add(x, y))  <span class="hljs-comment"># 250 + 10 = 260 =&gt; 255 --255封顶</span>
-print(x + y)  <span class="hljs-comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></code></pre>
+print(x + y)  <span class="hljs-comment"># 250 + 10 = 260 % 256 = 4 --会溢出</span></code></pre></div>
 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><p>按位操作包括按位与/或/非/异或操作，如果将两幅图片直接相加会改变图片的颜色，如果用图像混合，则会改变图片的透明度，所以我们需要用按位操作。</p>
 <ul>
 <li><code>cv2.bitwise_and()</code>：按位与操作 </li>
@@ -221,7 +221,7 @@ print(x + y)  <span class="hljs-comment"># 250 + 10 = 260 % 256 = 4 --会溢出<
 <li><code>cv2.bitwise_xor()</code>：按位异或操作</li>
 </ul>
 <p>通过位操作，我们可以得到<a href="https://baike.baidu.com/item/掩膜/8544392?fr=aladdin" target="_blank" rel="noopener">掩膜</a>（mask）——用来对另外一幅图片进行局部的遮挡的二值化图片，通过掩膜把原图中要放logo的区域抠出来，再把logo放进去就行了：</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
 
 img1 = cv2.imread(<span class="hljs-string">'lena.jpg'</span>)
 img2 = cv2.imread(<span class="hljs-string">'opencv-logo-white.png'</span>)
@@ -241,14 +241,14 @@ dst = cv2.add(img1_bg, img2)  <span class="hljs-comment"># 进行融合</span>
 img1[:rows, :cols] = dst  <span class="hljs-comment"># 融合后放在原图上</span>
 
 cv2.imshow(<span class="hljs-string">"dst"</span>,img1)
-cv2.waitKey(<span class="hljs-number">10000</span>)</code></pre>
+cv2.waitKey(<span class="hljs-number">10000</span>)</code></pre></div>
 <p><img src="2020-02-20 124157.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="形态学操作"><a href="#形态学操作" class="headerlink" title="形态学操作"></a>形态学操作</h1><h2 id="腐蚀膨胀"><a href="#腐蚀膨胀" class="headerlink" title="腐蚀膨胀"></a>腐蚀膨胀</h2><p>腐蚀的效果是把图片”变瘦”，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有 0 和 255 ，所以小区域内有一个是 0 该像素点就为 0 。</p>
 <p><img src="cv2_understand_erosion.jpg" srcset="/img/loading.gif" alt=""></p>
-<pre><code class="hljs python"><span class="hljs-comment"># 腐蚀</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 腐蚀</span>
 img = cv2.imread(<span class="hljs-string">'j.bmp'</span>, <span class="hljs-number">0</span>)
 kernel = np.ones((<span class="hljs-number">5</span>, <span class="hljs-number">5</span>), np.uint8)
-erosion = cv2.erode(img, kernel)</code></pre>
+erosion = cv2.erode(img, kernel)</code></pre></div>
 <ul>
 <li><code>kernel</code>：结构元素，因为形态学操作其实也是应用卷积来实现的。结构元素可以是矩形/椭圆/十字形，可以用<code>cv2.getStructuringElement()</code>来生成不同形状的结构元素：<ul>
 <li>矩形结构：<code>cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))</code>  </li>
@@ -259,30 +259,30 @@ erosion = cv2.erode(img, kernel)</code></pre>
 </ul>
 <p><img src="cv2_morphological_struct_element.jpg" srcset="/img/loading.gif" alt=""></p>
 <h2 id="膨胀"><a href="#膨胀" class="headerlink" title="膨胀"></a>膨胀</h2><p>膨胀与腐蚀相反，取的是局部最大值，效果是把图片”变胖”：</p>
-<pre><code class="hljs python"><span class="hljs-comment"># 膨胀</span>
-dilation = cv2.dilate(img, kernel)</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 膨胀</span>
+dilation = cv2.dilate(img, kernel)</code></pre></div>
 <h2 id="开运算"><a href="#开运算" class="headerlink" title="开运算"></a>开运算</h2><p>先腐蚀后膨胀叫开运算（因为先腐蚀会分开物体，这样容易记住），其作用是：分离物体，消除小区域。这类形态学操作用<code>cv2.morphologyEx()</code>函数实现：</p>
-<pre><code class="hljs python">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>))  <span class="hljs-comment"># 定义结构元素</span>
+<div class="hljs"><pre><code class="hljs python">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>))  <span class="hljs-comment"># 定义结构元素</span>
 
 img = cv2.imread(<span class="hljs-string">'j_noise_out.bmp'</span>, <span class="hljs-number">0</span>)
-opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="hljs-comment"># 开运算</span></code></pre>
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)  <span class="hljs-comment"># 开运算</span></code></pre></div>
 <h2 id="闭运算"><a href="#闭运算" class="headerlink" title="闭运算"></a>闭运算</h2><p>闭运算则相反：先膨胀后腐蚀（先膨胀会使白色的部分扩张，以至于消除/“闭合”物体里面的小黑洞，所以叫闭运算）</p>
-<pre><code class="hljs python">img = cv2.imread(<span class="hljs-string">'j_noise_in.bmp'</span>, <span class="hljs-number">0</span>)
-closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="hljs-comment"># 闭运算</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">img = cv2.imread(<span class="hljs-string">'j_noise_in.bmp'</span>, <span class="hljs-number">0</span>)
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  <span class="hljs-comment"># 闭运算</span></code></pre></div>
 <p><img src="cv2_morphological_opening_closing.jpg" srcset="/img/loading.gif" alt=""></p>
 <h2 id="其他形态学操作"><a href="#其他形态学操作" class="headerlink" title="其他形态学操作"></a>其他形态学操作</h2><ul>
 <li>形态学梯度：膨胀图减去腐蚀图，<code>dilation - erosion</code>，这样会得到物体的轮廓：</li>
 </ul>
-<pre><code class="hljs python">img = cv2.imread(<span class="hljs-string">'school.bmp'</span>, <span class="hljs-number">0</span>)
-gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</code></pre>
+<div class="hljs"><pre><code class="hljs python">img = cv2.imread(<span class="hljs-string">'school.bmp'</span>, <span class="hljs-number">0</span>)
+gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)</code></pre></div>
 <ul>
 <li>顶帽：原图减去开运算后的图：<code>src - opening</code></li>
 </ul>
-<pre><code class="hljs python">tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)</code></pre>
+<div class="hljs"><pre><code class="hljs python">tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)</code></pre></div>
 <ul>
 <li>黑帽：闭运算后的图减去原图：<code>closing - src</code></li>
 </ul>
-<pre><code class="hljs python">blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)</code></pre>
+<div class="hljs"><pre><code class="hljs python">blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)</code></pre></div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="http://codec.wang/opencv-python-erode-and-dilate/" target="_blank" rel="noopener">http://codec.wang/opencv-python-erode-and-dilate/</a></li>
 <li><a href="http://codec.wang/opencv-python-image-blending/" target="_blank" rel="noopener">http://codec.wang/opencv-python-image-blending/</a></li>

@@ -211,7 +211,7 @@
 <li><strong>数学任务</strong>：NumPy对于执行各种数学任务非常有用，如数值积分、微分、内插、外推等。因此，当涉及到数学任务时，它形成了一种基于Python的MATLAB的快速替代。</li>
 </ul>
 <h1 id="数组-Arrays"><a href="#数组-Arrays" class="headerlink" title="数组(Arrays)"></a>数组(Arrays)</h1><p>NumPy围绕<code>ndarrays</code>展开的。它可以完成如下操作：</p>
-<pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])   <span class="hljs-comment"># Create a rank 1 array</span>
+<div class="hljs"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])   <span class="hljs-comment"># Create a rank 1 array</span>
 print(type(a))            <span class="hljs-comment"># Prints "&lt;class 'numpy.ndarray'&gt;"</span>
 print(a.shape)            <span class="hljs-comment"># Prints "(3,)"</span>
 print(a[<span class="hljs-number">0</span>], a[<span class="hljs-number">1</span>], a[<span class="hljs-number">2</span>])   <span class="hljs-comment"># Prints "1 2 3"</span>
@@ -220,9 +220,9 @@ print(a)                  <span class="hljs-comment"># Prints "[5, 2, 3]"</span>
 
 b = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]])    <span class="hljs-comment"># Create a rank 2 array</span>
 print(b.shape)                     <span class="hljs-comment"># Prints "(2, 3)"</span>
-print(b[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], b[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], b[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])   <span class="hljs-comment"># Prints "1 2 4"</span></code></pre>
+print(b[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], b[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], b[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])   <span class="hljs-comment"># Prints "1 2 4"</span></code></pre></div>
 <h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><p>可以通过<code>ndarray</code>类的属性获取数组属性：</p>
-<pre><code class="hljs python"><span class="hljs-comment"># Array properties</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Array properties</span>
 a = np.array([[<span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>],
               [<span class="hljs-number">16</span>, <span class="hljs-number">17</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-number">20</span>],
               [<span class="hljs-number">21</span>, <span class="hljs-number">22</span>, <span class="hljs-number">23</span>, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>],
@@ -241,9 +241,9 @@ print(a.itemsize) <span class="hljs-comment"># &gt;&gt;&gt;8</span>
 <span class="hljs-comment"># 数组维度</span>
 print(a.ndim) <span class="hljs-comment"># &gt;&gt;&gt;2</span>
 <span class="hljs-comment"># 所有数据消耗的字节数，小于等于数组占据的总字节数</span>
-print(a.nbytes) <span class="hljs-comment"># &gt;&gt;&gt;200</span></code></pre>
+print(a.nbytes) <span class="hljs-comment"># &gt;&gt;&gt;200</span></code></pre></div>
 <h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><p><code>ndarray</code>支持以下运算操作，</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-comment"># Basic Operators</span>
 a = np.arange(<span class="hljs-number">25</span>)
 a = a.reshape((<span class="hljs-number">5</span>, <span class="hljs-number">5</span>))
@@ -262,27 +262,27 @@ print(a ** <span class="hljs-number">2</span>)
 print(a &lt; b)
 print(a &gt; b)
 
-print(a.dot(b))</code></pre>
+print(a.dot(b))</code></pre></div>
 <p>除了<code>dot()</code>之外，这些操作符都是对数组进行逐元素运算。比如<code>(a, b, c) + (d, e, f)</code>的结果就是<code>(a+d, b+e, c+f)</code>。它将分别对每一个元素进行配对，然后对它们进行运算。它返回的结果是一个数组。注意，当使用逻辑运算符比如 “&lt;” 和 “&gt;” 的时候，返回的将是一个布尔型数组。<code>dot()</code> 函数计算两个数组的点积。它返回的是一个标量（只有大小没有方向的一个值）而不是数组。</p>
 <p>NumPy还提供了一些别的用于处理数组的好用的运算符。</p>
-<pre><code class="hljs python"><span class="hljs-comment"># dot, sum, min, max, cumsum</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># dot, sum, min, max, cumsum</span>
 a = np.arange(<span class="hljs-number">10</span>)
 
 print(a.sum()) <span class="hljs-comment"># &gt;&gt;&gt;45</span>
 print(a.min()) <span class="hljs-comment"># &gt;&gt;&gt;0</span>
 print(a.max()) <span class="hljs-comment"># &gt;&gt;&gt;9</span>
-print(a.cumsum()) <span class="hljs-comment"># &gt;&gt;&gt;[ 0  1  3  6 10 15 21 28 36 45]</span></code></pre>
+print(a.cumsum()) <span class="hljs-comment"># &gt;&gt;&gt;[ 0  1  3  6 10 15 21 28 36 45]</span></code></pre></div>
 <p><code>sum()</code>、<code>min()</code>和<code>max()</code>函数的作用非常明显。将所有元素相加，找出最小和最大元素。<code>cumsum()</code>函数保存从第二个数开始每个数和之前所有数之和。</p>
 <h2 id="切片操作"><a href="#切片操作" class="headerlink" title="切片操作"></a>切片操作</h2><p><img src="numpy_2D_slicing_diagram-1.jpg" srcset="/img/loading.gif" alt=""></p>
 <h3 id="花式索引"><a href="#花式索引" class="headerlink" title="花式索引"></a>花式索引</h3><p>花式索引是获取数组中多个特定元素的有效方法：</p>
-<pre><code class="hljs python"><span class="hljs-comment"># Fancy indexing</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Fancy indexing</span>
 a = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>)
 a = a.reshape(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>)
 indices = [<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">-1</span>]
 b = a[<span class="hljs-number">1</span>, indices]
-print(b) <span class="hljs-comment"># &gt;&gt;&gt;[11 15 19]</span></code></pre>
+print(b) <span class="hljs-comment"># &gt;&gt;&gt;[11 15 19]</span></code></pre></div>
 <h3 id="布尔屏蔽"><a href="#布尔屏蔽" class="headerlink" title="布尔屏蔽"></a>布尔屏蔽</h3><p>布尔屏蔽是根据指定的条件检索数组中的元素：</p>
-<pre><code class="hljs python"><span class="hljs-comment"># Boolean masking</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Boolean masking</span>
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
 
@@ -293,22 +293,22 @@ mask = b &gt;= <span class="hljs-number">0</span>
 plt.plot(a[mask], b[mask], <span class="hljs-string">'bo'</span>)
 mask = (b &gt;= <span class="hljs-number">0</span>) &amp; (a &lt;= np.pi / <span class="hljs-number">2</span>)
 plt.plot(a[mask], b[mask], <span class="hljs-string">'go'</span>)
-plt.show()</code></pre>
+plt.show()</code></pre></div>
 <p>之所以叫布尔屏蔽，应该是这里的<code>mask</code>是由布尔值组成的。结果如下图：</p>
 <p><img src="Figure_1.png" srcset="/img/loading.gif" alt=""></p>
 <h3 id="缺省索引"><a href="#缺省索引" class="headerlink" title="缺省索引"></a>缺省索引</h3><p>不完全索引是从多维数组的第一个维度获取索引或切片的一种方便方法。</p>
-<pre><code class="hljs python"><span class="hljs-comment"># Incomplete Indexing</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Incomplete Indexing</span>
 a = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">10</span>)
 b = a[:<span class="hljs-number">5</span>]
 c = a[a &lt; <span class="hljs-number">50</span>]
 print(b) <span class="hljs-comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span>
-print(c) <span class="hljs-comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span></code></pre>
+print(c) <span class="hljs-comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span></code></pre></div>
 <h3 id="Where-函数"><a href="#Where-函数" class="headerlink" title="Where 函数"></a>Where 函数</h3><p><code>where()</code>函数分为两种情况，三个参数和单个参数。</p>
 <ol>
 <li>三个参数<code>where(cond, x, y)</code>：满足条件cond输出x，不满足输出y。</li>
 <li>一个参数<code>where(array)</code>：输出<code>array</code>中真值（非零值）的坐标。</li>
 </ol>
-<pre><code class="hljs python"><span class="hljs-comment"># Where</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># Where</span>
 a = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">10</span>)
 a=a.reshape(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>)
 print(a)
@@ -324,7 +324,7 @@ print(a % <span class="hljs-number">20</span> == <span class="hljs-number">0</sp
 b = np.where(a % <span class="hljs-number">20</span> == <span class="hljs-number">0</span>) 
 c = np.where(a % <span class="hljs-number">20</span> == <span class="hljs-number">0</span>)[<span class="hljs-number">0</span>]
 print(b) <span class="hljs-comment"># &gt;&gt;&gt;(array([0, 0, 0, 1, 1], dtype=int64), array([0, 2, 4, 1, 3], dtype=int64))</span>
-print(c) <span class="hljs-comment"># &gt;&gt;&gt;[0 0 0 1 1]</span></code></pre>
+print(c) <span class="hljs-comment"># &gt;&gt;&gt;[0 0 0 1 1]</span></code></pre></div>
 <h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>当维度不同的两个数组做运算时，自动将维度小的扩展成和另一个数组相同形状的处理就是广播。以下内容详情见参考[2]。</p>
 <p>将两个数组一起广播遵循以下规则：</p>
 <ol>
@@ -334,7 +334,7 @@ print(c) <span class="hljs-comment"># &gt;&gt;&gt;[0 0 0 1 1]</span></code></pre
 <li>广播之后，每个数组的行为就好像它的形状等于两个输入数组的形状的元素最大值。</li>
 <li>在一个数组的大小为1且另一个数组的大小大于1的任何维度中，第一个数组的行为就像沿着该维度复制一样</li>
 </ol>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 <span class="hljs-comment"># Compute outer product of vectors</span>
 v = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])  <span class="hljs-comment"># v has shape (3,)</span>
@@ -375,18 +375,18 @@ print(x + np.reshape(w, (<span class="hljs-number">2</span>, <span class="hljs-n
 <span class="hljs-comment"># following array:</span>
 <span class="hljs-comment"># [[ 2  4  6]</span>
 <span class="hljs-comment">#  [ 8 10 12]]</span>
-print(x * <span class="hljs-number">2</span>)</code></pre>
+print(x * <span class="hljs-number">2</span>)</code></pre></div>
 <p>注意：对一个<code>array</code>转置可以使用<code>array.T</code>，或者使用<code>np.reshape()</code>。对于矩阵可使用<code>np.transpose()</code>。</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="arange-和linspace"><a href="#arange-和linspace" class="headerlink" title="arange()和linspace()"></a>arange()和linspace()</h2><p><code>arange()</code>类似于内置函数<code>range()</code>，通过指定开始值、终值和步长创建表示等差数列的一维数组，<strong>得到的结果数组不包含终值</strong>。</p>
 <p><code>linspace()</code>通过指定开始值、终值和元素个数创建表示等差数列的一维数组。</p>
-<pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>, axis=<span class="hljs-number">0</span>)</code></pre>
+<div class="hljs"><pre><code class="hljs python">numpy.linspace(start, stop, num=<span class="hljs-number">50</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">False</span>, dtype=<span class="hljs-literal">None</span>, axis=<span class="hljs-number">0</span>)</code></pre></div>
 <ul>
 <li>在<code>start</code>和<code>stop</code>之间返回均匀间隔的<code>num</code>个数据</li>
 <li><code>endpoint</code>控制是否包含<code>stop</code>点</li>
 <li><code>retstep</code>控制是否返回间隔</li>
 <li><code>axis</code>仅当<code>start</code>和<code>stop</code>为<code>array</code>时才有效，传入一维<code>array</code>时可取0或-1，<code>axis = -1</code> 相当于转置</li>
 </ul>
-<pre><code class="hljs python">a = np.linspace(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, num=<span class="hljs-number">5</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">True</span>)
+<div class="hljs"><pre><code class="hljs python">a = np.linspace(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, num=<span class="hljs-number">5</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">True</span>)
 print(a) <span class="hljs-comment"># &gt;&gt;&gt;(array([1., 2., 3., 4., 5.]), 1.0)</span>
 
 b = np.linspace([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>], num=<span class="hljs-number">5</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">True</span>, axis=<span class="hljs-number">0</span>)
@@ -405,9 +405,9 @@ print(c)
        [1. , 4. , 6. ],
        [1. , 4.5, 6.5],
        [1. , 5. , 7. ]]), array([0. , 0.5, 0.5]))
-'''</span></code></pre>
+'''</span></code></pre></div>
 <p>当然也可以这样用：</p>
-<pre><code class="hljs python">d = np.linspace([[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">7</span>]], [[<span class="hljs-number">1</span>,<span class="hljs-number">5</span>],[<span class="hljs-number">7</span>,<span class="hljs-number">9</span>]], num=<span class="hljs-number">5</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">True</span>, axis=<span class="hljs-number">2</span>)</code></pre>
+<div class="hljs"><pre><code class="hljs python">d = np.linspace([[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">7</span>]], [[<span class="hljs-number">1</span>,<span class="hljs-number">5</span>],[<span class="hljs-number">7</span>,<span class="hljs-number">9</span>]], num=<span class="hljs-number">5</span>, endpoint=<span class="hljs-literal">True</span>, retstep=<span class="hljs-literal">True</span>, axis=<span class="hljs-number">2</span>)</code></pre></div>
 <p>多维数组的<code>axis</code>有些难理解，可以参考<a href="https://blog.csdn.net/m0_37673307/article/details/82118030" target="_blank" rel="noopener">这篇</a>，当传入n维数组时，<code>axis=n-1</code>与<code>axis=-1</code>等效。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://www.numpy.org.cn/article/basics/an_introduction_to_scientific_python_numpy.html#创建一个数组" target="_blank" rel="noopener">https://www.numpy.org.cn/article/basics/an_introduction_to_scientific_python_numpy.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84</a></li>
