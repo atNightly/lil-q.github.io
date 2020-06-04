@@ -48,4 +48,8 @@
     color: #55967e;
 }
 
+.pagination a, .pagination .current {
+    font-weight: bold;
+}
+
 /**/
