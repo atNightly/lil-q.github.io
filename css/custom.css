@@ -52,4 +52,7 @@
     font-weight: bold;
 }
 
+.pagination a:hover, .pagination .current {
+    color: #c70000;
+}
 /**/
