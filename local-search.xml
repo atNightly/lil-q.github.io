@@ -4,58 +4,6 @@
   
   
   <entry>
-    <title>计算机网络——网络层</title>
-    <link href="/2020/06/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
-    <url>/2020/06/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
-    
-    <content type="html"><![CDATA[<p>网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。</p><a id="more"></a><p>使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。</p><h1 id="IP-地址编址方式"><a href="#IP-地址编址方式" class="headerlink" title="IP 地址编址方式"></a>IP 地址编址方式</h1><p>IP 地址的编址方式经历了三个历史阶段：</p><ul><li>分类：{&lt; 网络号 &gt;, &lt; 主机号 &gt;}</li><li>子网划分：{&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</li><li>无分类：{&lt; 网络前缀号 &gt;, &lt; 主机号 &gt;}</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>理论基础</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>网络</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>图论题解</title>
-    <link href="/2020/05/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E8%A7%A3/"/>
-    <url>/2020/05/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E8%A7%A3/</url>
-    
-    <content type="html"><![CDATA[<p>图论</p><a id="more"></a><h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><h2 id="leetcode-207-课程表"><a href="#leetcode-207-课程表" class="headerlink" title="leetcode 207. 课程表"></a><a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">leetcode 207. 课程表</a></h2><p>解法一：DFS</p><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    Map&lt;Integer, List&lt;Integer&gt;&gt; map; <span class="hljs-comment">// 邻接表存边</span>    <span class="hljs-keyword">int</span>[] visited; <span class="hljs-comment">// 记录访问情况（-1：当前访问；0：未访问；1：已访问）</span>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canFinish</span><span class="hljs-params">(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites)</span> </span>&#123;        map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();        visited = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            map.put(i, <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;());        &#125;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] pr : prerequisites) &#123;            map.get(pr[<span class="hljs-number">1</span>]).add(pr[<span class="hljs-number">0</span>]);        &#125;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            <span class="hljs-keyword">if</span> (!backTrack(i)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 有环立即返回 false</span>        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">backTrack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> course)</span> </span>&#123;        <span class="hljs-keyword">if</span> (visited[course] == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 遇到当前访问的路径上的结点说明有环， 返回 false</span>        <span class="hljs-keyword">if</span> (visited[course] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// 路径结束，返回 true</span>        visited[course] = -<span class="hljs-number">1</span>;         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> nextCourse : map.get(course)) &#123;            <span class="hljs-keyword">if</span> (!backTrack(nextCourse)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;        &#125;        visited[course] = <span class="hljs-number">1</span>;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;    &#125;&#125;</code></pre></div><p>解法二：BFS + 入度表</p><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canFinish</span><span class="hljs-params">(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites)</span> </span>&#123;        <span class="hljs-comment">// 邻接表存边</span>        Map&lt;Integer, List&lt;Integer&gt;&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            map.put(i, <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;());        &#125;        <span class="hljs-comment">// 建立入度表</span>        <span class="hljs-keyword">int</span>[] indegree = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] pr : prerequisites) &#123;            map.get(pr[<span class="hljs-number">1</span>]).add(pr[<span class="hljs-number">0</span>]);            indegree[pr[<span class="hljs-number">0</span>]] += <span class="hljs-number">1</span>;        &#125;        <span class="hljs-comment">// BFS 常用数据结构 Queue</span>        Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            <span class="hljs-keyword">if</span> (indegree[i] == <span class="hljs-number">0</span>) queue.add(i);        &#125;        <span class="hljs-comment">// 不断把入读为 0 的结点加入队列</span>        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;            <span class="hljs-keyword">int</span> pre = queue.remove();            numCourses--;            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> cur : map.get(pre)) &#123;                <span class="hljs-keyword">if</span> (--indegree[cur] == <span class="hljs-number">0</span>) queue.add(cur);            &#125;        &#125;        <span class="hljs-keyword">return</span> numCourses == <span class="hljs-number">0</span>;    &#125;&#125;</code></pre></div><h2 id="leetcode-210-课程表-II"><a href="#leetcode-210-课程表-II" class="headerlink" title="leetcode 210. 课程表 II"></a><a href="https://leetcode-cn.com/problems/course-schedule-ii/" target="_blank" rel="noopener">leetcode 210. 课程表 II</a></h2><p>解法一：DFS + 入度表</p><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    List[] edges; <span class="hljs-comment">// 还可以用 List 来存邻接表，在边较多时效率比 Map 好且不浪费空间</span>    <span class="hljs-keyword">int</span>[] indegree;    <span class="hljs-keyword">int</span>[] res; <span class="hljs-comment">// 全局变量记录 result</span>    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; <span class="hljs-comment">// 全局变量记录 result 当前处理位</span>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] findOrder(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites) &#123;        edges = <span class="hljs-keyword">new</span> ArrayList[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            edges[i] = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();        &#125;        indegree = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] pr : prerequisites) &#123;            edges[pr[<span class="hljs-number">1</span>]].add(pr[<span class="hljs-number">0</span>]);            indegree[pr[<span class="hljs-number">0</span>]]++;        &#125;        res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            <span class="hljs-keyword">if</span> (indegree[i] == <span class="hljs-number">0</span>) &#123;                res[index++] = i;                backTrack(i);            &#125;        &#125;        <span class="hljs-keyword">return</span> index == numCourses ? res : <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">backTrack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> course)</span> </span>&#123;        indegree[course] = -<span class="hljs-number">1</span>; <span class="hljs-comment">// 入读置为 -1，防止重复运算</span>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> nextCourse : (ArrayList&lt;Integer&gt;) edges[course]) &#123;            indegree[nextCourse]--;            <span class="hljs-keyword">if</span> (indegree[nextCourse] == <span class="hljs-number">0</span>) &#123;                res[index++] = nextCourse;                backTrack(nextCourse);            &#125;        &#125;    &#125;&#125;</code></pre></div><p>解法二：BFS</p><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] findOrder(<span class="hljs-keyword">int</span> numCourses, <span class="hljs-keyword">int</span>[][] prerequisites) &#123;        List[] edges = <span class="hljs-keyword">new</span> ArrayList[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            edges[i] = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();        &#125;        <span class="hljs-keyword">int</span>[] indegree = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] pr : prerequisites) &#123;            edges[pr[<span class="hljs-number">1</span>]].add(pr[<span class="hljs-number">0</span>]);            indegree[pr[<span class="hljs-number">0</span>]]++;        &#125;        Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numCourses; i++) &#123;            <span class="hljs-keyword">if</span> (indegree[i] == <span class="hljs-number">0</span>) queue.add(i);        &#125;        <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[numCourses];        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;            <span class="hljs-keyword">int</span> pre = queue.remove();            res[index++] = pre;            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> cur : (ArrayList&lt;Integer&gt;) edges[pre]) &#123;                <span class="hljs-keyword">if</span> (--indegree[cur] == <span class="hljs-number">0</span>) queue.add(cur);            &#125;        &#125;        <span class="hljs-keyword">return</span> index == numCourses ? res : <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];    &#125;&#125;</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>java</tag>
-      
-      <tag>图</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>疑难杂题</title>
     <link href="/2020/05/13/%E7%96%91%E9%9A%BE%E6%9D%82%E9%A2%98/"/>
     <url>/2020/05/13/%E7%96%91%E9%9A%BE%E6%9D%82%E9%A2%98/</url>
@@ -905,31 +853,6 @@
     <tags>
       
       <tag>数据库</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>松山湖</title>
-    <link href="/2020/01/14/%E6%9D%BE%E5%B1%B1%E6%B9%96/"/>
-    <url>/2020/01/14/%E6%9D%BE%E5%B1%B1%E6%B9%96/</url>
-    
-    <content type="html"><![CDATA[<a id="more"></a><p>这个镜头和我一样，罹患飞蚊症。大光圈时倒是看不出来，调小了拍风景就变得显眼。不经意看拍的松山湖，还以为有飞鸟击水。</p><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7350.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7339.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7367.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7377.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://qttblog.oss-cn-hangzhou.aliyuncs.com/DSCF7475.png" srcset="/img/loading.gif" alt=""></p><p align="right">一月十四日同实习期同事于松山湖</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>游记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>摄影</tag>
       
     </tags>
     
