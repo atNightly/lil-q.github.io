@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.9k 字
+      6.4k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      86
+      94
        分钟
     </span>
   
@@ -539,6 +539,32 @@
         <span class="hljs-keyword">return</span> memo[l][r];
     &#125;
 &#125;</code></pre></div>
+<p>更特别的，可以再加一个维度来完成更多处理，如<a href="https://leetcode-cn.com/problems/remove-boxes/" target="_blank" rel="noopener">leetcode 546. 移除盒子</a>。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span>[][][] dp;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeBoxes</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] boxes)</span> </span>&#123;
+        dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>][<span class="hljs-number">101</span>];
+        <span class="hljs-keyword">return</span> remove(boxes, <span class="hljs-number">0</span>, boxes.length - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] boxes, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (l &gt; r) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (dp[l][r][k] != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> dp[l][r][k];
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; boxes[l] == boxes[l + <span class="hljs-number">1</span>]) &#123;
+            l++;
+            k++;
+        &#125;
+        dp[l][r][k] = k * k + remove(boxes, l + <span class="hljs-number">1</span>, r, <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = l + <span class="hljs-number">1</span>; index &lt;= r; index++) &#123;
+            <span class="hljs-keyword">if</span> (boxes[index] == boxes[l]) &#123;
+                dp[l][r][k] = Math.max(dp[l][r][k], 
+                	remove(boxes, l + <span class="hljs-number">1</span>, index - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>) + remove(boxes, index, r, k + <span class="hljs-number">1</span>));
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> dp[l][r][k];
+    &#125;
+&#125;</code></pre></div>
 <h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><p>字符串处理基本都能用动态规划来做。</p>
 <h2 id="leetcode-10-正则表达式匹配"><a href="#leetcode-10-正则表达式匹配" class="headerlink" title="leetcode 10. 正则表达式匹配"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">leetcode 10. 正则表达式匹配</a></h2><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
 <div class="hljs"><pre><code class="hljs txt">&apos;.&apos; 匹配任意单个字符
@@ -752,6 +778,41 @@ rose -&gt; ros (删除 &apos;e&apos;)</code></pre></div>
         &#125;
         <span class="hljs-keyword">return</span> dp[m][n];
     &#125;
+&#125;</code></pre></div>
+<h2 id="vivo-面试题-挖矿石"><a href="#vivo-面试题-挖矿石" class="headerlink" title="vivo 面试题 挖矿石"></a><a href="https://www.nowcoder.com/test/question/b58f922cc924478fa1e2dca2cc4f4eb7?pid=20555525&amp;tid=33895923" target="_blank" rel="noopener">vivo 面试题 挖矿石</a></h2><p>找出一个数组对半分后两组数之和相差最小的情况，求差。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">solution</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] input)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>, n = input.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> weight : input) sum += weight;
+    <span class="hljs-keyword">int</span> rows = (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>, cols = sum / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[rows + <span class="hljs-number">1</span>][cols + <span class="hljs-number">1</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-keyword">int</span> weight = input[i];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = Math.min(rows, i + <span class="hljs-number">1</span>); j &gt; <span class="hljs-number">0</span>; j--) &#123; <span class="hljs-comment">// 注意，只能从 i + 1 开始处理</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = cols; k &gt;= weight; k--) &#123;
+                dp[j][k] = Math.max(dp[j][k], dp[j - <span class="hljs-number">1</span>][k - weight] + weight);
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> sum - dp[rows][cols] * <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">return</span> sum - Math.max(dp[rows][cols], dp[rows - <span class="hljs-number">1</span>][cols]) * <span class="hljs-number">2</span>;
+&#125;</code></pre></div>
+<p>另一种做法是利用布尔数组。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">solution</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] input)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>, n = input.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> weight : input) sum += weight;
+    <span class="hljs-keyword">int</span> v = (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>, w = sum / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">boolean</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[v + <span class="hljs-number">1</span>][w + <span class="hljs-number">1</span>];
+    dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = v; j &gt; <span class="hljs-number">0</span>; j--) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = w; k &gt;= input[i]; k--) &#123;
+                dp[j][k] = dp[j][k] || dp[j - <span class="hljs-number">1</span>][k - input[i]];
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">int</span> i = w;
+    <span class="hljs-keyword">while</span> (!dp[v][i] &amp;&amp; !dp[v - <span class="hljs-number">1</span>][i]) i--;
+    <span class="hljs-keyword">return</span> sum - i * <span class="hljs-number">2</span>;
 &#125;</code></pre></div>
 <h1 id="树型问题"><a href="#树型问题" class="headerlink" title="树型问题"></a>树型问题</h1><h2 id="leetcode-124-二叉树中的最大路径和"><a href="#leetcode-124-二叉树中的最大路径和" class="headerlink" title="leetcode 124. 二叉树中的最大路径和"></a><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">leetcode 124. 二叉树中的最大路径和</a></h2><p>给定一个非空二叉树，返回其最大路径和。路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。</p>
 <p><strong>示例:</strong></p>
