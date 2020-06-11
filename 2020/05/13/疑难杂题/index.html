@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.3k 字
+      3.6k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      55
+      62
        分钟
     </span>
   
@@ -418,6 +418,74 @@
             stack.push(r);
         &#125;
         <span class="hljs-keyword">return</span> sum;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><h2 id="leetcode-739-每日温度"><a href="#leetcode-739-每日温度" class="headerlink" title="leetcode 739. 每日温度"></a><a href="https://leetcode-cn.com/problems/daily-temperatures/" target="_blank" rel="noopener">leetcode 739. 每日温度</a></h2><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] dailyTemperatures(<span class="hljs-keyword">int</span>[] T) &#123;
+        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[T.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; T.length; i++) &#123;
+            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; T[stack.peek()] &lt; T[i]) &#123;
+                res[stack.peek()] = i - stack.pop();
+            &#125;
+            stack.push(i);
+        &#125;
+        <span class="hljs-comment">//while (!stack.isEmpty()) res[stack.pop()] = 0;</span>
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 同样的思路，可以从后往前遍历，利用res数组跳跃检查(j += res[j])</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] dailyTemperatures(<span class="hljs-keyword">int</span>[] T) &#123;
+        <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[T.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = T.length - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; T.length; j += res[j]) &#123;
+                <span class="hljs-keyword">if</span> (T[i] &lt; T[j]) &#123;
+                    res[i] = j - i;
+                    <span class="hljs-keyword">break</span>;
+                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res[j] == <span class="hljs-number">0</span>) &#123;
+                    res[i] = <span class="hljs-number">0</span>;
+                    <span class="hljs-keyword">break</span>;
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="摩尔投票"><a href="#摩尔投票" class="headerlink" title="摩尔投票"></a>摩尔投票</h1><h2 id="剑指offer-面试题39-数组中出现次数超过一半的数字"><a href="#剑指offer-面试题39-数组中出现次数超过一半的数字" class="headerlink" title="剑指offer 面试题39. 数组中出现次数超过一半的数字"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/" target="_blank" rel="noopener">剑指offer 面试题39. 数组中出现次数超过一半的数字</a></h2><p>实际上也是利用了栈的思路，把不相同的两两一对消除，剩下的就是数量大于一般的数了。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> res = nums[<span class="hljs-number">0</span>], flag = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) &#123;
+            <span class="hljs-keyword">if</span> (flag == <span class="hljs-number">0</span>) res = num;
+            flag += num == res ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h1><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MedianFinder</span> </span>&#123;
+    Queue&lt;Integer&gt; minHeap, maxHeap;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MedianFinder</span><span class="hljs-params">()</span> </span>&#123;
+        minHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;();
+        maxHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((n1, n2) -&gt; n2 - n1);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) &#123;
+            maxHeap.add(num);
+            minHeap.add(maxHeap.remove());
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            minHeap.add(num);
+            maxHeap.add(minHeap.remove());
+        &#125;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedian</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) 
+            <span class="hljs-keyword">return</span> (minHeap.peek() + maxHeap.peek()) / <span class="hljs-number">2.0</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> minHeap.peek();
     &#125;
 &#125;</code></pre></div>
 <h1 id="N数和问题"><a href="#N数和问题" class="headerlink" title="N数和问题"></a>N数和问题</h1><h2 id="leetcode-1-两数之和"><a href="#leetcode-1-两数之和" class="headerlink" title="leetcode 1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">leetcode 1. 两数之和</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^2)</script>降低至<script type="math/tex">O(n)</script>：</p>
