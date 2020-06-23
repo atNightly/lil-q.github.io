@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.6k 字
+      3.9k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      62
+      66
        分钟
     </span>
   
@@ -794,6 +794,51 @@
             res += (n / divider) * i + Math.min(i, Math.max(<span class="hljs-number">0</span>, n % divider - i + <span class="hljs-number">1</span>));
         &#125;
         <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="剑指-Offer-45-把数组排成最小的数"><a href="#剑指-Offer-45-把数组排成最小的数" class="headerlink" title="剑指 Offer 45. 把数组排成最小的数"></a><a href="https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/" target="_blank" rel="noopener">剑指 Offer 45. 把数组排成最小的数</a></h1><p>手写快排：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        String[] ns = <span class="hljs-keyword">new</span> String[nums.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            ns[i] = nums[i] + <span class="hljs-string">""</span>;
+        &#125;
+        fastSort(ns, <span class="hljs-number">0</span>, ns.length - <span class="hljs-number">1</span>);
+        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            sb.append(ns[i]);
+        &#125;
+        <span class="hljs-keyword">return</span> sb.toString();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fastSort</span><span class="hljs-params">(String[] ns, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (l &gt; r) <span class="hljs-keyword">return</span>;
+        String mid = ns[l];
+        <span class="hljs-keyword">int</span> lo = l, hi = r;
+        <span class="hljs-keyword">while</span> (lo &lt; hi) &#123;
+            <span class="hljs-keyword">while</span> (lo &lt; hi &amp;&amp; (ns[hi] + mid).compareTo(mid + ns[hi]) &gt;= <span class="hljs-number">0</span>) hi--;
+            ns[lo] = ns[hi];
+            <span class="hljs-keyword">while</span> (lo &lt; hi &amp;&amp; (ns[lo] + mid).compareTo(mid + ns[lo]) &lt;= <span class="hljs-number">0</span>) lo++;
+            ns[hi] = ns[lo];
+        &#125;
+        ns[lo] = mid;
+        fastSort(ns, l, lo - <span class="hljs-number">1</span>);
+        fastSort(ns, lo + <span class="hljs-number">1</span>, r);
+    &#125;
+&#125;</code></pre></div>
+<p>库函数传入比较器：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">minNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        String[] ns = <span class="hljs-keyword">new</span> String[nums.length];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            ns[i] = nums[i] + <span class="hljs-string">""</span>;
+        &#125;
+        Arrays.sort(ns, (s1, s2) -&gt; (s1 + s2).compareTo(s2 + s1));
+        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            sb.append(ns[i]);
+        &#125;
+        <span class="hljs-keyword">return</span> sb.toString();
     &#125;
 &#125;</code></pre></div>
 
