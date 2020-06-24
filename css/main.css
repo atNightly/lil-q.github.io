@@ -22,7 +22,7 @@ body a {
   transition-timing-function: ease-in-out;
 }
 body a:hover {
-  color: #55967e;
+  color: #495A80;
   text-decoration: none;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -595,7 +595,7 @@ sup > a::before,
   }
 }
 .navbar .dropdown-item:hover {
-  color: #55967e;
+  color: #495A80;
 }
 .navbar .dropdown-collapse {
   background-color: #111;
@@ -1077,7 +1077,7 @@ h6::before {
 }
 .tocbot-active-link {
   font-weight: bold;
-  color: #55967e;
+  color: #495A80;
 }
 .tocbot-is-collapsed {
   max-height: 0;
@@ -1425,7 +1425,7 @@ h6::before {
   padding: 0.5rem;
 }
 .tagcloud a:hover {
-  color: #55967e !important;
+  color: #495A80 !important;
 }
 .links .card {
   box-shadow: none;
