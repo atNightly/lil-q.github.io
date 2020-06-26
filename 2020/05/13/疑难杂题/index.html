@@ -560,7 +560,7 @@
     &#125;
 &#125;</code></pre></div>
 <h2 id="leetcode-307-区域和检索-数组可修改"><a href="#leetcode-307-区域和检索-数组可修改" class="headerlink" title="leetcode 307. 区域和检索 - 数组可修改"></a><a href="https://leetcode-cn.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener">leetcode 307. 区域和检索 - 数组可修改</a></h2><p>前缀和并不是万能的，当需要修改数组时，修改操作的复杂度由<script type="math/tex">O(1)</script>提高至<script type="math/tex">O(n)</script>。</p>
-<p>使用线段树可以把检索和修改的时间复杂度都保持在<script type="math/tex">O(log n)</script>，以保证在检索和修改次数较为均衡的情况下，能够保持良好的效率。线段树类似堆树，利用数组作为数据结构：</p>
+<p>使用<strong>线段树</strong>可以把检索和修改的时间复杂度都保持在<script type="math/tex">O(log n)</script>，以保证在检索和修改次数较为均衡的情况下，能够保持良好的效率。线段树类似堆树，利用数组作为数据结构：</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumArray</span> </span>&#123;
     <span class="hljs-keyword">int</span>[] na;
     <span class="hljs-keyword">int</span> n;
