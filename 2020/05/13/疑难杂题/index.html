@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4k 字
+      4.4k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      68
+      74
        分钟
     </span>
   
@@ -462,30 +462,6 @@
             flag += num == res ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
         &#125;
         <span class="hljs-keyword">return</span> res;
-    &#125;
-&#125;</code></pre></div>
-<h1 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h1><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MedianFinder</span> </span>&#123;
-    Queue&lt;Integer&gt; minHeap, maxHeap;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MedianFinder</span><span class="hljs-params">()</span> </span>&#123;
-        minHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;();
-        maxHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((n1, n2) -&gt; n2 - n1);
-    &#125;
-    
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) &#123;
-            maxHeap.add(num);
-            minHeap.add(maxHeap.remove());
-        &#125; <span class="hljs-keyword">else</span> &#123;
-            minHeap.add(num);
-            maxHeap.add(minHeap.remove());
-        &#125;
-    &#125;
-    
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedian</span><span class="hljs-params">()</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) 
-            <span class="hljs-keyword">return</span> (minHeap.peek() + maxHeap.peek()) / <span class="hljs-number">2.0</span>;
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> minHeap.peek();
     &#125;
 &#125;</code></pre></div>
 <h1 id="N数和问题"><a href="#N数和问题" class="headerlink" title="N数和问题"></a>N数和问题</h1><h2 id="leetcode-1-两数之和"><a href="#leetcode-1-两数之和" class="headerlink" title="leetcode 1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">leetcode 1. 两数之和</a></h2><p>利用 Map 将复杂度从<script type="math/tex">O(n^2)</script>降低至<script type="math/tex">O(n)</script>：</p>
@@ -861,6 +837,84 @@
             x = (m + x) % i;
         &#125;
         <span class="hljs-keyword">return</span> x;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="剑指-Offer-40-最小的k个数"><a href="#剑指-Offer-40-最小的k个数" class="headerlink" title="剑指 Offer 40. 最小的k个数"></a><a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/" target="_blank" rel="noopener">剑指 Offer 40. 最小的k个数</a></h1><p><strong>解法一：最小堆</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] getLeastNumbers(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> k) &#123;
+        <span class="hljs-keyword">if</span> (k == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+        PriorityQueue&lt;Integer&gt; minHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(k);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : arr) &#123;
+            minHeap.offer(num);
+        &#125;
+        <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[k];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) res[i] = minHeap.poll();
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<p><strong>解法二：优化快排</strong></p>
+<p>并不需要整个数组进行排序，只需要递归<code>k - 1</code>坐标所在的区域，当基准值位于<code>k - 1</code>位置时就可以停止递归了。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] getLeastNumbers(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> k) &#123;
+        <span class="hljs-keyword">if</span> (k == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+        fastSort(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span> Arrays.copyOf(arr, k);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fastSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">int</span> lo = l, hi = r, p = arr[l];
+        <span class="hljs-keyword">while</span> (lo &lt; hi) &#123;
+            <span class="hljs-keyword">while</span> (lo &lt; hi &amp;&amp; arr[hi] &gt; p) hi--;
+            arr[lo] = arr[hi];
+            <span class="hljs-keyword">while</span> (lo &lt; hi &amp;&amp; arr[lo] &lt;= p) lo++;
+            arr[hi] = arr[lo]; 
+        &#125;
+        arr[lo] = p;
+        <span class="hljs-comment">// 注意</span>
+        <span class="hljs-keyword">if</span> (lo &lt; k) fastSort(arr, lo + <span class="hljs-number">1</span>, r, k);
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lo &gt; k) fastSort(arr, l, lo - <span class="hljs-number">1</span>, k);
+    &#125;
+&#125;</code></pre></div>
+<p><strong>解法三：计数排序</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] getLeastNumbers(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> k) &#123;
+        <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">10001</span>], res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[k];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : arr) count[num]++;
+        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>, num = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (k &gt; <span class="hljs-number">0</span>) &#123;
+            k -= count[num];
+            <span class="hljs-keyword">while</span> (count[num]-- &gt; <span class="hljs-number">0</span> &amp;&amp; index &lt; res.length) &#123;
+                res[index++] = num;
+            &#125;
+            num++;
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<h1 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h1><h2 id="剑指-Offer-41-数据流中的中位数"><a href="#剑指-Offer-41-数据流中的中位数" class="headerlink" title="剑指 Offer 41. 数据流中的中位数"></a><a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/" target="_blank" rel="noopener">剑指 Offer 41. 数据流中的中位数</a></h2><p>这里需要用<strong>最大堆保持较小值部分的数，用最小堆保持较大值部分的数</strong>，这样就可以实时查看中位数。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MedianFinder</span> </span>&#123;
+    Queue&lt;Integer&gt; minHeap, maxHeap;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MedianFinder</span><span class="hljs-params">()</span> </span>&#123;
+        minHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;();
+        maxHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;((n1, n2) -&gt; n2 - n1);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) &#123;
+            maxHeap.add(num);
+            minHeap.add(maxHeap.remove()); <span class="hljs-comment">// 始终保证最小堆的 size 大于等于最大堆</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            minHeap.add(num);
+            maxHeap.add(minHeap.remove());
+        &#125;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">findMedian</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (minHeap.size() == maxHeap.size()) 
+            <span class="hljs-keyword">return</span> (minHeap.peek() + maxHeap.peek()) / <span class="hljs-number">2.0</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> minHeap.peek(); <span class="hljs-comment">// 奇数个数时，可以直接从最小堆取</span>
     &#125;
 &#125;</code></pre></div>
 

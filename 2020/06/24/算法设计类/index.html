@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.3k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      24
        分钟
     </span>
   
@@ -330,7 +330,9 @@
     <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;
         <span class="hljs-keyword">int</span> val, key;
         Node prev, next;
+        
         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Node</span><span class="hljs-params">()</span> </span>&#123;&#125;
+        
         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Node</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val, <span class="hljs-keyword">int</span> key)</span> </span>&#123;
             <span class="hljs-keyword">this</span>.val = val;
             <span class="hljs-keyword">this</span>.key = key;
@@ -404,6 +406,7 @@
     <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TrieNode</span> </span>&#123;
         <span class="hljs-keyword">boolean</span> end;
         TrieNode[] next;
+        
         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TrieNode</span><span class="hljs-params">()</span> </span>&#123;
             next = <span class="hljs-keyword">new</span> TrieNode[<span class="hljs-number">26</span>];
         &#125;
@@ -449,61 +452,7 @@
     &#125;
 &#125;</code></pre></div>
 <h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><h2 id="leetcode-297-二叉树的序列化与反序列化"><a href="#leetcode-297-二叉树的序列化与反序列化" class="headerlink" title="leetcode 297. 二叉树的序列化与反序列化"></a><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">leetcode 297. 二叉树的序列化与反序列化</a></h2><p><strong>解法一：递归</strong></p>
-<div class="hljs"><pre><code class="hljs java">vpublic <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
-
-    <span class="hljs-comment">// Encodes a tree to a single string.</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">serialize</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">"#"</span>;
-        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
-        sb.append(root.val + <span class="hljs-string">","</span>);
-        Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-        queue.add(root);
-        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;
-            <span class="hljs-keyword">int</span> len = queue.size();
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;
-                TreeNode node = queue.remove();
-                <span class="hljs-keyword">if</span> (node.left == <span class="hljs-keyword">null</span>) sb.append(<span class="hljs-string">"#,"</span>);
-                <span class="hljs-keyword">else</span> &#123;
-                    sb.append(node.left.val + <span class="hljs-string">","</span>);
-                    queue.add(node.left);
-                &#125;
-                <span class="hljs-keyword">if</span> (node.right == <span class="hljs-keyword">null</span>) sb.append(<span class="hljs-string">"#,"</span>);
-                <span class="hljs-keyword">else</span> &#123;
-                    sb.append(node.right.val + <span class="hljs-string">","</span>);
-                    queue.add(node.right);
-                &#125;
-            &#125;
-        &#125;
-        <span class="hljs-keyword">return</span> sb.toString();
-    &#125;
-
-    <span class="hljs-comment">// Decodes your encoded data to tree.</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">deserialize</span><span class="hljs-params">(String data)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (data.equals(<span class="hljs-string">"#"</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-        String[] vals = data.split(<span class="hljs-string">","</span>);
-        TreeNode root = <span class="hljs-keyword">new</span> TreeNode(Integer.parseInt(vals[<span class="hljs-number">0</span>]));
-        Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-        queue.add(root);
-        <span class="hljs-keyword">int</span> index = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;
-            <span class="hljs-keyword">int</span> len = queue.size();
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;
-                TreeNode node = queue.remove();
-                <span class="hljs-keyword">if</span> (!vals[index].equals(<span class="hljs-string">"#"</span>)) &#123;
-                    node.left = <span class="hljs-keyword">new</span> TreeNode(Integer.parseInt(vals[index]));
-                    queue.add(node.left);
-                &#125;
-                index++;
-                <span class="hljs-keyword">if</span> (!vals[index].equals(<span class="hljs-string">"#"</span>)) &#123;
-                    node.right = <span class="hljs-keyword">new</span> TreeNode(Integer.parseInt(vals[index]));
-                    queue.add(node.right);
-                &#125;
-                index++;
-            &#125;
-        &#125;
-        <span class="hljs-keyword">return</span> root;
-    &#125;
-&#125;<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
 
     <span class="hljs-comment">// Encodes a tree to a single string.</span>
     StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();;
@@ -530,7 +479,14 @@
 
     <span class="hljs-function"><span class="hljs-keyword">private</span> TreeNode <span class="hljs-title">des</span><span class="hljs-params">(String[] vals)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (vals[++index].equals(<span class="hljs-string">"#"</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-        TreeNode root = <span class="hljs-keyword">new</span> TreeNode(Integevpublic <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
+        TreeNode root = <span class="hljs-keyword">new</span> TreeNode(Integer.parseInt(vals[index]));
+        root.left = des(vals);
+        root.right = des(vals);
+        <span class="hljs-keyword">return</span> root;
+    &#125;
+&#125;</code></pre></div>
+<p><strong>解法二：迭代</strong></p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
 
     <span class="hljs-comment">// Encodes a tree to a single string.</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">serialize</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
@@ -584,15 +540,7 @@
         &#125;
         <span class="hljs-keyword">return</span> root;
     &#125;
-&#125;r.parseInt(vals[index]));
-        root.left = des(vals);
-        root.right = des(vals);
-        <span class="hljs-keyword">return</span> root;
-    &#125;
 &#125;</code></pre></div>
-<p><strong>解法二：迭代</strong></p>
-<div class="hljs"><pre><code class="hljs java">
-</code></pre></div>
 
             </article>
             <hr>
