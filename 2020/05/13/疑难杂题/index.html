@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.4k 字
+      4.5k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      74
+      76
        分钟
     </span>
   
@@ -720,7 +720,7 @@
         <span class="hljs-keyword">return</span> res;
     &#125;
 &#125;</code></pre></div>
-<h1 id="leetcode-287-寻找重复数"><a href="#leetcode-287-寻找重复数" class="headerlink" title="leetcode 287. 寻找重复数"></a><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">leetcode 287. 寻找重复数</a></h1><p><strong>解法一：将数组转化为链表</strong></p>
+<h1 id="数组的其他形式"><a href="#数组的其他形式" class="headerlink" title="数组的其他形式"></a>数组的其他形式</h1><h2 id="leetcode-287-寻找重复数"><a href="#leetcode-287-寻找重复数" class="headerlink" title="leetcode 287. 寻找重复数"></a><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">leetcode 287. 寻找重复数</a></h2><p><strong>解法一：将数组转化为链表</strong></p>
 <p>由于这个数组没有 0 这个值，所以 0 结点的入度为 0，必定不成环。可以看出 0 为 head 的一个链表，求其环入口。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
@@ -751,6 +751,25 @@
             <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>; <span class="hljs-comment">// 计数小于等于 mid，区间为[mid + 1, r]</span>
         &#125;
         <span class="hljs-keyword">return</span> l;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="leetcode-41-缺失的第一个正数"><a href="#leetcode-41-缺失的第一个正数" class="headerlink" title="leetcode 41. 缺失的第一个正数"></a><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">leetcode 41. 缺失的第一个正数</a></h2><p>原地哈希</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">firstMissingPositive</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            <span class="hljs-comment">// nums[i] &lt;= nums.length 也是可行的，但等号的情况后面已经包括了。</span>
+            <span class="hljs-keyword">while</span> (<span class="hljs-number">0</span> &lt; nums[i] &amp;&amp; nums[i] &lt; nums.length &amp;&amp; nums[i] != nums[nums[i] - <span class="hljs-number">1</span>]) &#123;
+                <span class="hljs-keyword">int</span> temp = nums[nums[i] - <span class="hljs-number">1</span>];
+                nums[nums[i] - <span class="hljs-number">1</span>] = nums[i];
+                nums[i] = temp;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+            <span class="hljs-keyword">if</span> (nums[i] != i + <span class="hljs-number">1</span>) &#123;
+                <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> nums.length + <span class="hljs-number">1</span>;
     &#125;
 &#125;</code></pre></div>
 <h1 id="leetcode-233-数字-1-的个数"><a href="#leetcode-233-数字-1-的个数" class="headerlink" title="leetcode 233. 数字 1 的个数"></a><a href="https://leetcode-cn.com/problems/number-of-digit-one/" target="_blank" rel="noopener">leetcode 233. 数字 1 的个数</a></h1><div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
